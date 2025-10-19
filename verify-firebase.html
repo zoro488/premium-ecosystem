@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificación Firebase</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+        h1 { margin-top: 0; }
+        .status {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .success { background: rgba(34, 197, 94, 0.2); border-left: 4px solid #22c55e; }
+        .error { background: rgba(239, 68, 68, 0.2); border-left: 4px solid #ef4444; }
+        .warning { background: rgba(251, 191, 36, 0.2); border-left: 4px solid #fbbf24; }
+        .info { background: rgba(59, 130, 246, 0.2); border-left: 4px solid #3b82f6; }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: transform 0.2s;
+        }
+        button:hover { transform: scale(1.05); }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        #results {
+            margin-top: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .result-item {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔥 Verificación de Firebase</h1>
+
+        <div class="status info">
+            <strong>Project ID:</strong> premium-ecosystem-1760790572<br>
+            <strong>Estado:</strong> <span id="status">Esperando pruebas...</span>
+        </div>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <button onclick="testFirestore()" id="btnFirestore">🧪 Probar Firestore</button>
+            <button onclick="testAuth()" id="btnAuth">🧪 Probar Authentication</button>
+            <button onclick="testAll()" id="btnAll">🚀 Probar Todo</button>
+            <button onclick="clearResults()" id="btnClear">🗑️ Limpiar</button>
+        </div>
+
+        <div id="results"></div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCR7zKZJAzCEq-jBbfkLJxWaz98zuRCkX4",
+            authDomain: "premium-ecosystem-1760790572.firebaseapp.com",
+            projectId: "premium-ecosystem-1760790572",
+            storageBucket: "premium-ecosystem-1760790572.firebasestorage.app",
+            messagingSenderId: "100411784487",
+            appId: "1:100411784487:web:ac2713291717869bc83d02"
+        };
+
+        let app, db, auth;
+
+        try {
+            app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            auth = getAuth(app);
+            addResult('✅ Firebase inicializado correctamente', 'success');
+        } catch (error) {
+            addResult('❌ Error inicializando Firebase: ' + error.message, 'error');
+        }
+
+        function addResult(message, type = 'info') {
+            const results = document.getElementById('results');
+            const item = document.createElement('div');
+            item.className = `result-item status ${type}`;
+            const time = new Date().toLocaleTimeString();
+            item.innerHTML = `[${time}] ${message}`;
+            results.insertBefore(item, results.firstChild);
+        }
+
+        function setStatus(message) {
+            document.getElementById('status').textContent = message;
+        }
+
+        function disableButtons(disabled) {
+            ['btnFirestore', 'btnAuth', 'btnAll'].forEach(id => {
+                document.getElementById(id).disabled = disabled;
+            });
+        }
+
+        window.testFirestore = async function() {
+            disableButtons(true);
+            setStatus('Probando Firestore...');
+            addResult('🧪 Iniciando prueba de Firestore...', 'info');
+
+            try {
+                addResult('📝 Intentando crear documento de prueba...', 'info');
+
+                const docRef = await addDoc(collection(db, 'test_verificacion'), {
+                    message: 'Prueba desde verify-firebase.html',
+                    timestamp: new Date().toISOString()
+                });
+
+                addResult(`✅ Documento creado con ID: ${docRef.id}`, 'success');
+
+                addResult('📖 Leyendo documentos...', 'info');
+                const querySnapshot = await getDocs(collection(db, 'test_verificacion'));
+                addResult(`✅ Se encontraron ${querySnapshot.size} documentos`, 'success');
+
+                addResult('🗑️ Eliminando documento de prueba...', 'info');
+                await deleteDoc(doc(db, 'test_verificacion', docRef.id));
+                addResult('✅ Documento eliminado', 'success');
+
+                addResult('🎉 FIRESTORE FUNCIONA CORRECTAMENTE', 'success');
+                setStatus('✅ Firestore funcionando');
+
+            } catch (error) {
+                console.error('Error Firestore:', error);
+                addResult(`❌ Error: ${error.code}`, 'error');
+                addResult(`   Mensaje: ${error.message}`, 'error');
+
+                if (error.code === 'permission-denied') {
+                    addResult('⚠️ Firestore NO está habilitado o las reglas bloquean el acceso', 'warning');
+                    addResult('📋 Para activar Firestore:', 'info');
+                    addResult('1. Ve a: https://console.firebase.google.com/project/premium-ecosystem-1760790572/firestore', 'info');
+                    addResult('2. Click en "Crear base de datos"', 'info');
+                    addResult('3. Selecciona "Iniciar en modo de prueba"', 'info');
+                    addResult('4. Ubicación: us-central1', 'info');
+                    addResult('5. Click en "Habilitar"', 'info');
+                    setStatus('❌ Firestore no habilitado');
+                } else if (error.code === 'unavailable') {
+                    addResult('⚠️ Firestore no está disponible', 'warning');
+                    setStatus('❌ Firestore no disponible');
+                }
+            } finally {
+                disableButtons(false);
+            }
+        };
+
+        window.testAuth = async function() {
+            disableButtons(true);
+            setStatus('Probando Authentication...');
+            addResult('🧪 Iniciando prueba de Authentication...', 'info');
+
+            try {
+                const testEmail = `test-${Date.now()}@test.com`;
+                const testPassword = 'test123456';
+
+                addResult('👤 Creando usuario de prueba...', 'info');
+                const userCredential = await createUserWithEmailAndPassword(auth, testEmail, testPassword);
+                addResult(`✅ Usuario creado: ${userCredential.user.email}`, 'success');
+
+                addResult('🚪 Cerrando sesión...', 'info');
+                await signOut(auth);
+                addResult('✅ Sesión cerrada', 'success');
+
+                addResult('🔑 Iniciando sesión...', 'info');
+                const signInCredential = await signInWithEmailAndPassword(auth, testEmail, testPassword);
+                addResult(`✅ Sesión iniciada: ${signInCredential.user.email}`, 'success');
+
+                await signOut(auth);
+                addResult('✅ Limpieza completada', 'success');
+
+                addResult('🎉 AUTHENTICATION FUNCIONA CORRECTAMENTE', 'success');
+                setStatus('✅ Authentication funcionando');
+
+            } catch (error) {
+                console.error('Error Auth:', error);
+                addResult(`❌ Error: ${error.code}`, 'error');
+                addResult(`   Mensaje: ${error.message}`, 'error');
+
+                if (error.code === 'auth/operation-not-allowed') {
+                    addResult('⚠️ Email/Password NO está habilitado', 'warning');
+                    addResult('📋 Para activar Authentication:', 'info');
+                    addResult('1. Ve a: https://console.firebase.google.com/project/premium-ecosystem-1760790572/authentication', 'info');
+                    addResult('2. Click en "Comenzar"', 'info');
+                    addResult('3. Click en "Email/Password"', 'info');
+                    addResult('4. Habilitar y Guardar', 'info');
+                    setStatus('❌ Authentication no habilitado');
+                }
+            } finally {
+                disableButtons(false);
+            }
+        };
+
+        window.testAll = async function() {
+            clearResults();
+            addResult('🚀 Iniciando pruebas completas...', 'info');
+            await testFirestore();
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            await testAuth();
+            addResult('✅ Todas las pruebas completadas', 'success');
+        };
+
+        window.clearResults = function() {
+            document.getElementById('results').innerHTML = '';
+            setStatus('Listo para probar');
+        };
+    </script>
+</body>
+</html>

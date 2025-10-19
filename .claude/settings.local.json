@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Read(//c/Users/xpovo/Downloads/**)",
+      "Bash(wc -l \"C:\\Users\\xpovo\\Downloads\\flowdistributor-premium-complete (1).html\")",
+      "Bash(npm run dev)",
+      "Bash(npm install firebase)",
+      "Bash(if [ -f bulkActions.js ])",
+      "Bash(then mv bulkActions.js bulkActions.jsx)",
+      "Bash(fi)",
+      "Bash(if [ -f dragAndDrop.js ])",
+      "Bash(then mv dragAndDrop.js dragAndDrop.jsx)",
+      "Bash(npm install -g firebase-tools)",
+      "Bash(firebase login --help)",
+      "Bash(gcloud --version)",
+      "Bash(firebase login:ci --no-localhost)",
+      "Bash(firebase use premium-ecosystem-1760790572)",
+      "Bash(firebase projects:list)",
+      "Bash(curl -X POST \"https://firestore.googleapis.com/v1/projects/premium-ecosystem-1760790572/databases?databaseId=(default)&key=AIzaSyCR7zKZJAzCEq-jBbfkLJxWaz98zuRCkX4\" -H \"Content-Type: application/json\" -d '{\"\"type\"\":\"\"FIRESTORE_NATIVE\"\",\"\"locationId\"\":\"\"us-central1\"\"}')",
+      "Bash(tasklist)",
+      "Bash(findstr \"node.exe\")",
+      "Bash(dir \"c:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\")",
+      "Bash(dir \"c:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\" /b)",
+      "Bash(node -c FlowDistributor.jsx)",
+      "Bash(dir /b /a)",
+      "Bash(git add .)",
+      "Bash(git commit -m \"feat: complete GitHub integration setup\n\n- Initialize Git repository with secure .gitignore\n- Add 3 GitHub Actions workflows (CI, Deploy, Security)\n- Create issue and PR templates\n- Configure Dependabot for automatic dependency updates\n- Setup DevContainer for GitHub Codespaces\n- Add comprehensive documentation (CONTRIBUTING, SECURITY)\n- Create complete GitHub setup guide\n- Update README with badges and new features\n- Add CODEOWNERS for code review automation\n- Configure CodeQL security scanning\n\nThis commit establishes a professional-grade GitHub integration\nwith CI/CD, security scanning, and collaboration tools.\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -1,0 +1,46 @@
+# CODEOWNERS - Define quién debe revisar cambios en archivos específicos
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Propietario por defecto para todo el repositorio
+* @yourusername
+
+# GitHub Actions y CI/CD
+/.github/ @yourusername
+/.github/workflows/ @yourusername
+
+# Configuración de build y deployment
+/vite.config.js @yourusername
+/package.json @yourusername
+/package-lock.json @yourusername
+/firebase.json @yourusername
+/vercel.json @yourusername
+
+# FlowDistributor App
+/src/apps/FlowDistributor/ @yourusername
+
+# ShadowPrime App
+/src/apps/ShadowPrime/ @yourusername
+
+# Apollo App
+/src/apps/Apollo/ @yourusername
+
+# Synapse App
+/src/apps/Synapse/ @yourusername
+
+# Nexus App
+/src/apps/Nexus/ @yourusername
+
+# Componentes compartidos
+/src/components/shared/ @yourusername
+
+# Configuración de APIs y servicios
+/src/config/ @yourusername
+/src/services/ @yourusername
+
+# Tests
+/src/test/ @yourusername
+/playwright.config.js @yourusername
+
+# Documentación
+*.md @yourusername
+/docs/ @yourusername

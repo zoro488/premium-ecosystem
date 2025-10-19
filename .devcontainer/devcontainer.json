@@ -1,0 +1,74 @@
+{
+  "name": "Premium Ecosystem",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:18",
+
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        },
+        "files.eol": "\n",
+        "files.trimTrailingWhitespace": true,
+        "files.insertFinalNewline": true,
+        "javascript.updateImportsOnFileMove.enabled": "always",
+        "typescript.updateImportsOnFileMove.enabled": "always",
+        "eslint.validate": [
+          "javascript",
+          "javascriptreact"
+        ]
+      },
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "formulahendry.auto-rename-tag",
+        "christian-kohler.path-intellisense",
+        "zignd.html-css-class-completion",
+        "ms-playwright.playwright",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "eamodio.gitlens",
+        "usernamehw.errorlens",
+        "naumovs.color-highlight",
+        "PKief.material-icon-theme",
+        "gruntfuggly.todo-tree",
+        "streetsidesoftware.code-spell-checker"
+      ]
+    }
+  },
+
+  "forwardPorts": [5173, 3000, 4173],
+  "portsAttributes": {
+    "5173": {
+      "label": "Vite Dev Server",
+      "onAutoForward": "notify"
+    },
+    "3000": {
+      "label": "Preview Server",
+      "onAutoForward": "silent"
+    },
+    "4173": {
+      "label": "Production Preview",
+      "onAutoForward": "silent"
+    }
+  },
+
+  "postCreateCommand": "npm install && echo '✅ Premium Ecosystem está listo para usar!'",
+
+  "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+
+  "remoteUser": "node",
+
+  "mounts": [
+    "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,readonly,type=bind,consistency=cached"
+  ]
+}
