@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limpiando FlowDistributor...</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 32px;
+        }
+
+        .message {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .status {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .progress {
+            width: 100%;
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            animation: progress 3s ease forwards;
+        }
+
+        @keyframes progress {
+            to { width: 100%; }
+        }
+
+        .success-icon {
+            display: none;
+            font-size: 80px;
+            animation: scaleIn 0.5s ease;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .redirect-message {
+            display: none;
+            color: #28a745;
+            font-weight: bold;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon" id="loadingIcon">🧹</div>
+        <div class="success-icon" id="successIcon">✅</div>
+
+        <h1 id="title">Limpiando Datos</h1>
+
+        <div class="message" id="message">
+            Eliminando datos antiguos de FlowDistributor...<br>
+            Esto solo tomará unos segundos.
+        </div>
+
+        <div class="status" id="status">
+            <div id="statusText">Preparando limpieza...</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+
+        <div class="redirect-message" id="redirectMessage">
+            Redirigiendo a FlowDistributor...
+        </div>
+    </div>
+
+    <script>
+        // Función para actualizar el estado
+        function updateStatus(text) {
+            document.getElementById('statusText').textContent = text;
+        }
+
+        // Función para mostrar éxito
+        function showSuccess() {
+            document.getElementById('loadingIcon').style.display = 'none';
+            document.getElementById('successIcon').style.display = 'block';
+            document.getElementById('title').textContent = '¡Limpieza Completada!';
+            document.getElementById('message').textContent = 'Todos los datos han sido eliminados exitosamente.';
+            document.getElementById('redirectMessage').style.display = 'block';
+        }
+
+        // Proceso de limpieza
+        setTimeout(function() {
+            updateStatus('🗑️ Eliminando bancos...');
+            localStorage.removeItem('flow_bancos');
+        }, 500);
+
+        setTimeout(function() {
+            updateStatus('📦 Eliminando órdenes de compra...');
+            localStorage.removeItem('flow_ordenes_compra');
+        }, 1000);
+
+        setTimeout(function() {
+            updateStatus('👥 Eliminando distribuidores...');
+            localStorage.removeItem('flow_distribuidores');
+        }, 1500);
+
+        setTimeout(function() {
+            updateStatus('💳 Eliminando ventas...');
+            localStorage.removeItem('flow_ventas');
+        }, 2000);
+
+        setTimeout(function() {
+            updateStatus('👤 Eliminando clientes...');
+            localStorage.removeItem('flow_clientes');
+        }, 2500);
+
+        setTimeout(function() {
+            updateStatus('📦 Eliminando almacén...');
+            localStorage.removeItem('flow_almacen');
+        }, 3000);
+
+        setTimeout(function() {
+            updateStatus('✅ ¡Limpieza completada!');
+            showSuccess();
+        }, 3500);
+
+        // Redirigir después de 5 segundos
+        setTimeout(function() {
+            window.location.href = '/';
+        }, 5000);
+
+        // Log para verificación
+        console.log('🧹 Iniciando limpieza de FlowDistributor...');
+    </script>
+</body>
+</html>

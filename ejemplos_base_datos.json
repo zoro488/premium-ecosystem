@@ -1,0 +1,1285 @@
+{
+  "banco_ejemplo": {
+    "nombre": "bovedaMonte",
+    "capitalActual": 0,
+    "ingresos": [
+      {
+        "fecha": "2025-08-23",
+        "concepto": "Ax - ",
+        "monto": 315000,
+        "origen": "Ax"
+      },
+      {
+        "fecha": "2025-08-23",
+        "concepto": "Negrito - ",
+        "monto": 157500,
+        "origen": "Negrito"
+      },
+      {
+        "fecha": "2025-08-23",
+        "concepto": "Valle - ",
+        "monto": 189000,
+        "origen": "Valle"
+      },
+      {
+        "fecha": "2025-08-25",
+        "concepto": "Galvan - ",
+        "monto": 18900,
+        "origen": "Galvan"
+      },
+      {
+        "fecha": "2025-08-25",
+        "concepto": "Valle Local - ",
+        "monto": 12600,
+        "origen": "Valle Local"
+      },
+      {
+        "fecha": "2025-08-25",
+        "concepto": "Tocayo - ",
+        "monto": 126000,
+        "origen": "Tocayo"
+      },
+      {
+        "fecha": "2025-08-25",
+        "concepto": "Sierra47 - ",
+        "monto": 94500,
+        "origen": "Sierra47"
+      },
+      {
+        "fecha": "2025-08-29",
+        "concepto": "Robalo - robalo #30 gaviota",
+        "monto": 198000,
+        "origen": "Robalo"
+      },
+      {
+        "fecha": "2025-08-30",
+        "concepto": "Chucho - venta local monte#15",
+        "monto": 94500,
+        "origen": "Chucho"
+      },
+      {
+        "fecha": "2025-09-01",
+        "concepto": "Ax - venta local monte #14",
+        "monto": 88200,
+        "origen": "Ax"
+      },
+      {
+        "fecha": "2025-09-02",
+        "concepto": "Galvan - venta local monte rafa#1",
+        "monto": 6300,
+        "origen": "Galvan"
+      },
+      {
+        "fecha": "2025-09-02",
+        "concepto": "Galvan - venta local galvan #1",
+        "monto": 6300,
+        "origen": "Galvan"
+      },
+      {
+        "fecha": "2025-09-02",
+        "concepto": "Sierra47 - venta local monte #8",
+        "monto": 50400,
+        "origen": "Sierra47"
+      },
+      {
+        "fecha": "2025-09-03",
+        "concepto": "470 - venta local monte #1",
+        "monto": 6300,
+        "origen": "470"
+      },
+      {
+        "fecha": "2025-09-03",
+        "concepto": "Valle Local - venta local monte#5",
+        "monto": 31500,
+        "origen": "Valle Local"
+      },
+      {
+        "fecha": "2025-09-04",
+        "concepto": "Chucho - venta local monte#22",
+        "monto": 138600,
+        "origen": "Chucho"
+      },
+      {
+        "fecha": "2025-09-05",
+        "concepto": "Galvan - venta local monte#1",
+        "monto": 6300,
+        "origen": "Galvan"
+      },
+      {
+        "fecha": "2025-09-05",
+        "concepto": "Negrito - venta local monte#10",
+        "monto": 63000,
+        "origen": "Negrito"
+      },
+      {
+        "fecha": "2025-09-05",
+        "concepto": "Robalo - robalo#20 gaviota",
+        "monto": 132000,
+        "origen": "Robalo"
+      },
+      {
+        "fecha": "2025-09-05",
+        "concepto": "Primo - abono primo resta (1,872dlls)",
+        "monto": 3000,
+        "origen": "Primo"
+      },
+      {
+        "fecha": "2025-09-05",
+        "concepto": "Ax - DANY1 SERVICIO",
+        "monto": 210000,
+        "origen": "Ax"
+      },
+      {
+        "fecha": "2025-09-08",
+        "concepto": "Ax - DANY1 SERVICIO",
+        "monto": 266280,
+        "origen": "Ax"
+      },
+      {
+        "fecha": "2025-09-08",
+        "concepto": "Gasto Bóveda Usa - pagamos boveda usa-boveda monte",
+        "monto": 345100,
+        "origen": "Gasto Bóveda Usa"
+      },
+      {
+        "fecha": "2025-09-09",
+        "concepto": "Sierra47 - venta local monte #5",
+        "monto": 31500,
+        "origen": "Sierra47"
+      },
+      {
+        "fecha": "2025-09-10",
+        "concepto": "Chucho - venta local monte #9",
+        "monto": 56700,
+        "origen": "Chucho"
+      },
+      {
+        "fecha": "2025-09-10",
+        "concepto": "Galvan - venta local monte#1",
+        "monto": 6300,
+        "origen": "Galvan"
+      },
+      {
+        "fecha": "2025-09-11",
+        "concepto": "Chucho - venta local monte#16",
+        "monto": 100800,
+        "origen": "Chucho"
+      },
+      {
+        "fecha": "2025-09-11",
+        "concepto": "Negrito - venta local monte#10",
+        "monto": 63000,
+        "origen": "Negrito"
+      },
+      {
+        "fecha": "2025-09-11",
+        "concepto": "Robalo - resto venta monte #60 (gaviota)",
+        "monto": 66000,
+        "origen": "Robalo"
+      },
+      {
+        "fecha": "2025-09-12",
+        "concepto": "Galvan - venta local monte#1 rafa",
+        "monto": 6300,
+        "origen": "Galvan"
+      },
+      {
+        "fecha": "2025-09-12",
+        "concepto": "Abono - abono a/x cta vieja",
+        "monto": 200000,
+        "origen": "Abono"
+      },
+      {
+        "fecha": "2025-09-12",
+        "concepto": "Ax - pago a/x (33x5,500) y flete (25x500) pacman",
+        "monto": 194000,
+        "origen": "Ax"
+      },
+      {
+        "fecha": "2025-09-13",
+        "concepto": "tx8 - venta local monte#5",
+        "monto": 31500,
+        "origen": "tx8"
+      },
+      {
+        "fecha": "2025-09-16",
+        "concepto": "Galvan - venta local monte#1",
+        "monto": 6300,
+        "origen": "Galvan"
+      },
+      {
+        "fecha": "2025-09-16",
+        "concepto": "Tocayo - venta local monte#3",
+        "monto": 18900,
+        "origen": "Tocayo"
+      },
+      {
+        "fecha": "2025-09-16",
+        "concepto": "Abono - venta local lamas #23",
+        "monto": 60000,
+        "origen": "Abono"
+      },
+      {
+        "fecha": "2025-09-17",
+        "concepto": "Galvan - venta local monte#1",
+        "monto": 6300,
+        "origen": "Galvan"
+      },
+      {
+        "fecha": "2025-09-17",
+        "concepto": "Valle - monte local #30 gaviota",
+        "monto": 189000,
+        "origen": "Valle"
+      },
+      {
+        "fecha": "2025-09-18",
+        "concepto": "Tocayo - venta local monte#20",
+        "monto": 126000,
+        "origen": "Tocayo"
+      },
+      {
+        "fecha": "2025-09-18",
+        "concepto": "Ax - venta local monte#1 (psico bunny)",
+        "monto": 6300,
+        "origen": "Ax"
+      },
+      {
+        "fecha": "2025-09-19",
+        "concepto": "Negrito - venta local monte#5",
+        "monto": 31500,
+        "origen": "Negrito"
+      },
+      {
+        "fecha": "2025-09-19",
+        "concepto": "Don Rafa - venta local monte#1",
+        "monto": 6300,
+        "origen": "Don Rafa"
+      },
+      {
+        "fecha": "2025-09-20",
+        "concepto": "Sierra47 - venta local monte#12",
+        "monto": 75600,
+        "origen": "Sierra47"
+      },
+      {
+        "fecha": "2025-09-20",
+        "concepto": "Rojo - venta local monte#2",
+        "monto": 12600,
+        "origen": "Rojo"
+      },
+      {
+        "fecha": "2025-09-20",
+        "concepto": "Ax - venta local monte#3",
+        "monto": 18900,
+        "origen": "Ax"
+      },
+      {
+        "fecha": "2025-09-20",
+        "concepto": "Galvan - venta local monte#1",
+        "monto": 6300,
+        "origen": "Galvan"
+      },
+      {
+        "fecha": "2025-09-25",
+        "concepto": "Ax - psico bunny (wero a/x)",
+        "monto": 6300,
+        "origen": "Ax"
+      },
+      {
+        "fecha": "2025-09-29",
+        "concepto": "Sierra47 - venta local monte#20",
+        "monto": 140000,
+        "origen": "Sierra47"
+      },
+      {
+        "fecha": "2025-10-06",
+        "concepto": "Valle Local - venta local monte valle#2",
+        "monto": 12600,
+        "origen": "Valle Local"
+      },
+      {
+        "fecha": "2025-10-06",
+        "concepto": "Abono - a/x pacman #25",
+        "monto": 137500,
+        "origen": "Abono"
+      },
+      {
+        "fecha": "2025-10-06",
+        "concepto": "Abono - tocallo#50 pacman ( 4,725 x 50)",
+        "monto": 236250,
+        "origen": "Abono"
+      },
+      {
+        "fecha": "2025-10-07",
+        "concepto": "tx8 - venta local monte#10",
+        "monto": 63000,
+        "origen": "tx8"
+      },
+      {
+        "fecha": "2025-10-07",
+        "concepto": "Valle Local - venta local monte#30",
+        "monto": 189000,
+        "origen": "Valle Local"
+      },
+      {
+        "fecha": "2025-10-07",
+        "concepto": "Sierra47 - venta local monte#3",
+        "monto": 18900,
+        "origen": "Sierra47"
+      },
+      {
+        "fecha": "2025-10-07",
+        "concepto": "Tocayo - venta local monte#3",
+        "monto": 18900,
+        "origen": "Tocayo"
+      },
+      {
+        "fecha": "2025-10-07",
+        "concepto": "Abono - robalo #40 gaviota",
+        "monto": 264000,
+        "origen": "Abono"
+      },
+      {
+        "fecha": "2025-10-07",
+        "concepto": "Abono - liquido cuenta primo",
+        "monto": 1880,
+        "origen": "Abono"
+      },
+      {
+        "fecha": "2025-10-09",
+        "concepto": "cabo - venta local monte#1",
+        "monto": 6300,
+        "origen": "cabo"
+      },
+      {
+        "fecha": "2025-10-09",
+        "concepto": "Ax - venta local monte psico bunny #1",
+        "monto": 6300,
+        "origen": "Ax"
+      },
+      {
+        "fecha": "2025-10-09",
+        "concepto": "Galvan - venta local monte#1 (tito)",
+        "monto": 6300,
+        "origen": "Galvan"
+      },
+      {
+        "fecha": "2025-10-11",
+        "concepto": "Galvan - venta local monte #1 (rafa)",
+        "monto": 6300,
+        "origen": "Galvan"
+      },
+      {
+        "fecha": "2025-10-14",
+        "concepto": "tx8 - venta local monte#1",
+        "monto": 6300,
+        "origen": "tx8"
+      },
+      {
+        "fecha": "2025-10-15",
+        "concepto": "Rojo - venta local monte#1",
+        "monto": 6300,
+        "origen": "Rojo"
+      },
+      {
+        "fecha": "2025-10-16",
+        "concepto": "compa - venta local monte#2 psico bunny",
+        "monto": 12600,
+        "origen": "compa"
+      },
+      {
+        "fecha": "2025-10-17",
+        "concepto": "Sierra47 - venta local monte#10",
+        "monto": 63000,
+        "origen": "Sierra47"
+      },
+      {
+        "fecha": "2025-10-17",
+        "concepto": "Galvan - venta local monte#1👁️",
+        "monto": 6300,
+        "origen": "Galvan"
+      },
+      {
+        "fecha": "2025-10-17",
+        "concepto": "Valle - valle #40 pacman (5,500x40)",
+        "monto": 220000,
+        "origen": "Valle"
+      },
+      {
+        "fecha": "2025-10-19",
+        "concepto": "Valle - valle#30 gaviota (6,000x30)",
+        "monto": 180000,
+        "origen": "Valle"
+      },
+      {
+        "fecha": "2025-10-20",
+        "concepto": "Gasto Bóveda Usa - transpaso boveda usa-boveda monte",
+        "monto": 234870,
+        "origen": "Gasto Bóveda Usa"
+      }
+    ],
+    "gastos": [
+      {
+        "fecha": "2025-08-22",
+        "concepto": "Gasto Bóveda Monte - ",
+        "monto": 189000,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-08-22",
+        "concepto": "Gasto Bóveda Monte - ",
+        "monto": 136000,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-08-25",
+        "concepto": "Gasto Bóveda Monte - ",
+        "monto": 350000,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-08-25",
+        "concepto": "Gasto Bóveda Monte - ",
+        "monto": 50000,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-08-26",
+        "concepto": "Gasto Bóveda Monte - corporativo-boveda valle",
+        "monto": 400000,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-08-29",
+        "concepto": "Gasto Bóveda Monte - corporativo-boveda valle",
+        "monto": 198000,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-09-04",
+        "concepto": "Gasto Bóveda Monte - corporativo-boveda valle",
+        "monto": 500000,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-09-04",
+        "concepto": "Gasto Bóveda Monte - corporativo-boveda valle",
+        "monto": 260000,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-09-05",
+        "concepto": "Gasto Bóveda Monte - corporativo-boveda valle (servicio a/x)",
+        "monto": 210000,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-09-08",
+        "concepto": "Gasto Bóveda Monte - dany1 corporativo servicio a/x",
+        "monto": 266280,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-09-09",
+        "concepto": "Gasto Bóveda Monte - abono cuenta chavis #100",
+        "monto": 40000,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-09-11",
+        "concepto": "Gasto Bóveda Monte - corporativo- boveda valle",
+        "monto": 250000,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-09-15",
+        "concepto": "Gasto Bóveda Monte - corporativo-boveda valle",
+        "monto": 550000,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-09-17",
+        "concepto": "Gasto Bóveda Monte - corporativo-boveda valle",
+        "monto": 100000,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-09-17",
+        "concepto": "Gasto Bóveda Monte - corporativo-boveda valle",
+        "monto": 189000,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-09-18",
+        "concepto": "Gasto Bóveda Monte - corporativo-boveda valle",
+        "monto": 30000,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-09-18",
+        "concepto": "Gasto Bóveda Monte - corporativo-boveda valle",
+        "monto": 55000,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-09-22",
+        "concepto": "Gasto Bóveda Monte - GASTOS GALVAN SEPTIEMBRE",
+        "monto": 14000,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-09-30",
+        "concepto": "Gasto Bóveda Monte - corporativo-boveda valle",
+        "monto": 140000,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-10-06",
+        "concepto": "Gasto Bóveda Monte - corporativo-boveda valle✅",
+        "monto": 250000,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-10-09",
+        "concepto": "Gasto Bóveda Monte - corporativo-boveda valle",
+        "monto": 500000,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-10-13",
+        "concepto": "Gasto Bóveda Monte - corporativo-boveda valle",
+        "monto": 300000,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-10-15",
+        "concepto": "Gasto Bóveda Monte - corporativo-boveda valle",
+        "monto": 260000,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-10-16",
+        "concepto": "Gasto Bóveda Monte - corporativo-boveda valle",
+        "monto": 250000,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-10-17",
+        "concepto": "Gasto Bóveda Monte - corporativo- valle #40 pacman",
+        "monto": 220000,
+        "destino": "Gasto Bóveda Monte"
+      },
+      {
+        "fecha": "2025-10-20",
+        "concepto": "Gasto Bóveda Monte - corporativo-boveda valle",
+        "monto": 15000,
+        "destino": "Gasto Bóveda Monte"
+      }
+    ],
+    "estado": "activo"
+  },
+  "cliente_ejemplo": {
+    "id": "CLI-TAVO",
+    "nombre": "Tavo",
+    "totalComprado": 0,
+    "totalAbonado": 0,
+    "adeudo": 0,
+    "estado": "saldado",
+    "observaciones": "(33 panaderia)",
+    "ventas": []
+  },
+  "venta_ejemplo": {
+    "id": "VENTA-2025-08-23T00:00:00-Bódega M-P-4",
+    "tipo": "venta",
+    "fecha": "2025-08-23T00:00:00",
+    "ocRelacionada": "OC0001",
+    "cantidad": 150,
+    "cliente": "Bódega M-P",
+    "productos": [
+      {
+        "nombre": "Producto",
+        "cantidad": 150,
+        "precio": 6300.0,
+        "subtotal": 945000.0
+      }
+    ],
+    "totalVenta": 945000.0,
+    "totalFletes": 75000.0,
+    "totalUtilidades": 0.0,
+    "estatus": "Pendiente",
+    "estadoPago": "pendiente",
+    "adeudo": 0,
+    "montoPagado": 0,
+    "destino": "bovedaMonte",
+    "concepto": "",
+    "aplicaFlete": true,
+    "bovedaMonte": 945000.0
+  },
+  "compra_ejemplo": {
+    "id": "OC0001",
+    "tipo": "compra",
+    "fecha": "2025-08-25",
+    "distribuidor": "Q-MAYA",
+    "cantidad": 423.0,
+    "costoUnitario": 6300,
+    "costoTotal": 2664900,
+    "costoDistribuidor": 6100.0,
+    "costoTransporte": 200.0,
+    "estado": "completada"
+  },
+  "distribuidor_ejemplo": {
+    "id": "DIST-PACMAN",
+    "nombre": "PACMAN",
+    "totalComprado": 6142500,
+    "totalPagado": 0,
+    "adeudo": 6142500,
+    "ordenesCompra": 2,
+    "estado": "activo"
+  },
+  "almacen_ejemplo": {
+    "stockActual": 17,
+    "totalEntradas": 2296,
+    "totalSalidas": 2279,
+    "movimientos": [
+      {
+        "tipo": "entrada",
+        "fecha": "2025-08-25",
+        "cantidad": 423,
+        "origen": "Q-MAYA",
+        "oc": "OC0001"
+      },
+      {
+        "tipo": "entrada",
+        "fecha": "2025-08-25",
+        "cantidad": 32,
+        "origen": "Q-MAYA",
+        "oc": "OC0002"
+      },
+      {
+        "tipo": "entrada",
+        "fecha": "2025-08-25",
+        "cantidad": 33,
+        "origen": "A/X🌶️🦀",
+        "oc": "OC0003"
+      },
+      {
+        "tipo": "entrada",
+        "fecha": "2025-08-30",
+        "cantidad": 487,
+        "origen": "PACMAN",
+        "oc": "OC0004"
+      },
+      {
+        "tipo": "entrada",
+        "fecha": "2025-09-06",
+        "cantidad": 513,
+        "origen": "Q-MAYA",
+        "oc": "OC0005"
+      },
+      {
+        "tipo": "entrada",
+        "fecha": "2025-09-09",
+        "cantidad": 100,
+        "origen": "CH-MONTE",
+        "oc": "OC0006"
+      },
+      {
+        "tipo": "entrada",
+        "fecha": "2025-09-29",
+        "cantidad": 20,
+        "origen": "VALLE-MONTE",
+        "oc": "OC0007"
+      },
+      {
+        "tipo": "entrada",
+        "fecha": "2025-10-05",
+        "cantidad": 488,
+        "origen": "PACMAN",
+        "oc": "OC0008"
+      },
+      {
+        "tipo": "entrada",
+        "fecha": "2025-10-05",
+        "cantidad": 200,
+        "origen": "Q-MAYA-MP",
+        "oc": "OC0009"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-08-23",
+        "cantidad": 150,
+        "destino": "Bódega M-P"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-08-23",
+        "cantidad": 60,
+        "destino": "Valle"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-08-23",
+        "cantidad": 50,
+        "destino": "Ax"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-08-23",
+        "cantidad": 25,
+        "destino": "Negrito"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-08-23",
+        "cantidad": 20,
+        "destino": "Wero Benavides"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-08-23",
+        "cantidad": 30,
+        "destino": "Lamas"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-08-25",
+        "cantidad": 48,
+        "destino": "Trámite Chucho"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-08-25",
+        "cantidad": 3,
+        "destino": "Galvan"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-08-25",
+        "cantidad": 2,
+        "destino": "Valle Local"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-08-25",
+        "cantidad": 20,
+        "destino": "Tocayo"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-08-25",
+        "cantidad": 15,
+        "destino": "Sierra47"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-08-26",
+        "cantidad": 33,
+        "destino": "Lamas"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-08-30",
+        "cantidad": 33,
+        "destino": "Ax"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-08-30",
+        "cantidad": 75,
+        "destino": "Valle"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-08-30",
+        "cantidad": 25,
+        "destino": "Ax"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-08-30",
+        "cantidad": 44,
+        "destino": "Tocayo"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-08-30",
+        "cantidad": 50,
+        "destino": "Tio Tocayo"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-08-30",
+        "cantidad": 15,
+        "destino": "Chucho"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-08-31",
+        "cantidad": 22,
+        "destino": "Lamas"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-08-31",
+        "cantidad": 22,
+        "destino": "Lamas"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-01",
+        "cantidad": 14,
+        "destino": "Ax"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-02",
+        "cantidad": 24,
+        "destino": "Trámite Güerito"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-02",
+        "cantidad": 1,
+        "destino": "Galvan"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-02",
+        "cantidad": 1,
+        "destino": "Galvan"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-02",
+        "cantidad": 8,
+        "destino": "Sierra47"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-03",
+        "cantidad": 1,
+        "destino": "470"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-03",
+        "cantidad": 1,
+        "destino": "Trámite Playa Azul"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-03",
+        "cantidad": 5,
+        "destino": "Valle Local"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-04",
+        "cantidad": 22,
+        "destino": "Chucho"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-04",
+        "cantidad": 16,
+        "destino": "Trámite Chucho"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-05",
+        "cantidad": 1,
+        "destino": "Galvan"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-05",
+        "cantidad": 10,
+        "destino": "Negrito"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-06",
+        "cantidad": 60,
+        "destino": "Robalo"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-06",
+        "cantidad": 230,
+        "destino": "Bódega M-P"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-08",
+        "cantidad": 16,
+        "destino": "Trámite Chucho"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-08",
+        "cantidad": 100,
+        "destino": "Tavo"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-08",
+        "cantidad": 12,
+        "destino": "mg"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-09",
+        "cantidad": 16,
+        "destino": "Trámite Chucho"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-09",
+        "cantidad": 5,
+        "destino": "Sierra47"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-10",
+        "cantidad": 9,
+        "destino": "Chucho"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-10",
+        "cantidad": 1,
+        "destino": "Galvan"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-11",
+        "cantidad": 16,
+        "destino": "Chucho"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-11",
+        "cantidad": 10,
+        "destino": "Negrito"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-12",
+        "cantidad": 1,
+        "destino": "Galvan"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-13",
+        "cantidad": 5,
+        "destino": "tx8"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-13",
+        "cantidad": 50,
+        "destino": "amigo playa azul"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-13",
+        "cantidad": 50,
+        "destino": "flama"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-15",
+        "cantidad": 16,
+        "destino": "Trámite Chucho"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-16",
+        "cantidad": 23,
+        "destino": "Lamas"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-16",
+        "cantidad": 1,
+        "destino": "Galvan"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-16",
+        "cantidad": 3,
+        "destino": "Tocayo"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-17",
+        "cantidad": 20,
+        "destino": "Wero Benavides"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-17",
+        "cantidad": 1,
+        "destino": "Galvan"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-18",
+        "cantidad": 16,
+        "destino": "Trámite Chucho"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-18",
+        "cantidad": 20,
+        "destino": "Tocayo"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-18",
+        "cantidad": 1,
+        "destino": "Ax"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-19",
+        "cantidad": 5,
+        "destino": "Negrito"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-19",
+        "cantidad": 1,
+        "destino": "Don Rafa"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-20",
+        "cantidad": 14,
+        "destino": "mg"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-20",
+        "cantidad": 12,
+        "destino": "Sierra47"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-20",
+        "cantidad": 2,
+        "destino": "Rojo"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-20",
+        "cantidad": 3,
+        "destino": "Ax"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-20",
+        "cantidad": 1,
+        "destino": "Galvan"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-23",
+        "cantidad": 1,
+        "destino": "Trámite Chucho"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-25",
+        "cantidad": 1,
+        "destino": "Ax"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-09-29",
+        "cantidad": 20,
+        "destino": "Sierra47"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-03",
+        "cantidad": 2,
+        "destino": "Galvan"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-05",
+        "cantidad": 60,
+        "destino": "Valle"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-05",
+        "cantidad": 20,
+        "destino": "Valle"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-05",
+        "cantidad": 30,
+        "destino": "Valle"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-05",
+        "cantidad": 100,
+        "destino": "Bódega M-P"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-06",
+        "cantidad": 25,
+        "destino": "Ax"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-06",
+        "cantidad": 24,
+        "destino": "Ax"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-06",
+        "cantidad": 40,
+        "destino": "Robalo"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-06",
+        "cantidad": 2,
+        "destino": "Valle Local"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-06",
+        "cantidad": 20,
+        "destino": "Trámite Playa Azul"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-06",
+        "cantidad": 48,
+        "destino": "Trámite Chucho"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-06",
+        "cantidad": 48,
+        "destino": "Trámite Chucho"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-06",
+        "cantidad": 50,
+        "destino": "Tocayo"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-06",
+        "cantidad": 74,
+        "destino": "Tio Tocayo"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-07",
+        "cantidad": 10,
+        "destino": "tx8"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-07",
+        "cantidad": 30,
+        "destino": "Valle Local"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-07",
+        "cantidad": 3,
+        "destino": "Sierra47"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-07",
+        "cantidad": 3,
+        "destino": "Tocayo"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-09",
+        "cantidad": 15,
+        "destino": "mg"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-09",
+        "cantidad": 1,
+        "destino": "cabo"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-09",
+        "cantidad": 1,
+        "destino": "Ax"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-09",
+        "cantidad": 1,
+        "destino": "Galvan"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-11",
+        "cantidad": 1,
+        "destino": "Galvan"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-14",
+        "cantidad": 1,
+        "destino": "tx8"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-15",
+        "cantidad": 1,
+        "destino": "Rojo"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-16",
+        "cantidad": 2,
+        "destino": "compa"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-17",
+        "cantidad": 10,
+        "destino": "Sierra47"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-17",
+        "cantidad": 1,
+        "destino": "Galvan"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-18",
+        "cantidad": 20,
+        "destino": "Lamas"
+      },
+      {
+        "tipo": "salida",
+        "fecha": "2025-10-20",
+        "cantidad": 48,
+        "destino": "Trámite Chucho"
+      }
+    ]
+  }
+}

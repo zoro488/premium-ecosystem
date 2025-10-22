@@ -1,0 +1,143 @@
+rules_version = '2';
+
+/**
+ * ============================================
+ * FIREBASE STORAGE SECURITY RULES
+ * Reglas de seguridad para Cloud Storage
+ * ============================================
+ */
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // ============================================
+    // FUNCIONES AUXILIARES
+    // ============================================
+
+    // Verificar si el usuario está autenticado
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Verificar si el usuario es el propietario
+    function isOwner(userId) {
+      return request.auth.uid == userId;
+    }
+
+    // Verificar tamaño máximo de archivo (10MB)
+    function isValidSize() {
+      return request.resource.size < 10 * 1024 * 1024;
+    }
+
+    // Verificar tipo de imagen
+    function isImage() {
+      return request.resource.contentType.matches('image/.*');
+    }
+
+    // Verificar tipo de documento
+    function isDocument() {
+      return request.resource.contentType.matches('application/(pdf|msword|vnd.openxmlformats-officedocument.*|vnd.ms-excel)');
+    }
+
+    // ============================================
+    // REGLAS PARA ARCHIVOS DE USUARIOS
+    // ============================================
+
+    match /usuarios/{userId}/{allPaths=**} {
+      // Lectura: usuario propietario o autenticado
+      allow read: if isAuthenticated();
+
+      // Escritura: solo el propietario
+      allow write: if isOwner(userId) && isValidSize();
+    }
+
+    // ============================================
+    // REGLAS PARA AVATARES
+    // ============================================
+
+    match /avatars/{userId} {
+      allow read: if isAuthenticated();
+
+      allow write: if isOwner(userId) &&
+                      isImage() &&
+                      request.resource.size < 2 * 1024 * 1024; // 2MB max
+    }
+
+    // ============================================
+    // REGLAS PARA DOCUMENTOS DE VENTAS
+    // ============================================
+
+    match /ventas/{ventaId}/{documento} {
+      allow read: if isAuthenticated();
+
+      allow write: if isAuthenticated() &&
+                      (isImage() || isDocument()) &&
+                      isValidSize();
+    }
+
+    // ============================================
+    // REGLAS PARA DOCUMENTOS DE COMPRAS
+    // ============================================
+
+    match /compras/{compraId}/{documento} {
+      allow read: if isAuthenticated();
+
+      allow write: if isAuthenticated() &&
+                      (isImage() || isDocument()) &&
+                      isValidSize();
+    }
+
+    // ============================================
+    // REGLAS PARA DOCUMENTOS DE CLIENTES
+    // ============================================
+
+    match /clientes/{clienteId}/{documento} {
+      allow read: if isAuthenticated();
+
+      allow write: if isAuthenticated() &&
+                      (isImage() || isDocument()) &&
+                      isValidSize();
+    }
+
+    // ============================================
+    // REGLAS PARA REPORTES
+    // ============================================
+
+    match /reportes/{reporteId} {
+      allow read: if isAuthenticated();
+
+      allow write: if isAuthenticated() &&
+                      isDocument() &&
+                      isValidSize();
+    }
+
+    // ============================================
+    // REGLAS PARA IMPORTS (Excel)
+    // ============================================
+
+    match /imports/{userId}/{fileName} {
+      allow read: if isOwner(userId);
+
+      allow write: if isOwner(userId) &&
+                      request.resource.contentType.matches('application/vnd.*') &&
+                      request.resource.size < 20 * 1024 * 1024; // 20MB max para Excel
+    }
+
+    // ============================================
+    // REGLAS PARA BACKUPS
+    // ============================================
+
+    match /backups/{fileName} {
+      // Solo lectura y escritura para admin (validar en Cloud Function)
+      allow read, write: if isAuthenticated();
+    }
+
+    // ============================================
+    // REGLA POR DEFECTO
+    // ============================================
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

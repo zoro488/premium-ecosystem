@@ -2,10 +2,10 @@
  * 🎯 TOUR GUIADO INTERACTIVO
  * Onboarding para nuevos usuarios
  */
+import { useEffect, useState } from 'react';
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, Check } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Check, ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 /**
  * Pasos del tour
@@ -14,59 +14,66 @@ export const TOUR_STEPS = [
   {
     id: 'welcome',
     title: '¡Bienvenido a FlowDistributor! 🚀',
-    content: 'Tu sistema completo de gestión empresarial. Te mostraremos las funciones principales en solo 2 minutos.',
+    content:
+      'Tu sistema completo de gestión empresarial. Te mostraremos las funciones principales en solo 2 minutos.',
     target: null,
-    position: 'center'
+    position: 'center',
   },
   {
     id: 'dashboard',
     title: 'Dashboard Inteligente 📊',
-    content: 'Aquí verás el resumen de tu negocio: KPIs, gráficos en tiempo real, alertas y acciones rápidas.',
+    content:
+      'Aquí verás el resumen de tu negocio: KPIs, gráficos en tiempo real, alertas y acciones rápidas.',
     target: '.dashboard-section',
-    position: 'bottom'
+    position: 'bottom',
   },
   {
     id: 'search',
     title: 'Búsqueda Global 🔍',
-    content: 'Busca cualquier cosa: clientes, productos, ventas u órdenes. Usa Ctrl+K para acceso rápido.',
+    content:
+      'Busca cualquier cosa: clientes, productos, ventas u órdenes. Usa Ctrl+K para acceso rápido.',
     target: 'button[aria-label="search"]',
-    position: 'bottom'
+    position: 'bottom',
   },
   {
     id: 'navigation',
     title: 'Navegación Rápida 🗺️',
-    content: 'Accede a todos los módulos desde el sidebar. También puedes usar atajos: Ctrl+1 a Ctrl+8.',
+    content:
+      'Accede a todos los módulos desde el sidebar. También puedes usar atajos: Ctrl+1 a Ctrl+8.',
     target: 'aside nav',
-    position: 'right'
+    position: 'right',
   },
   {
     id: 'ai-assistant',
     title: 'Flow AI - Tu Asistente Inteligente 🤖',
-    content: 'Pregunta cualquier cosa en lenguaje natural. Flow AI analiza tus datos y te da recomendaciones personalizadas.',
+    content:
+      'Pregunta cualquier cosa en lenguaje natural. Flow AI analiza tus datos y te da recomendaciones personalizadas.',
     target: '.ai-widget',
-    position: 'top'
+    position: 'top',
   },
   {
     id: 'notifications',
     title: 'Centro de Notificaciones 🔔',
-    content: 'Recibe alertas de stock bajo, ventas importantes, adeudos y más. Todo organizado por prioridad.',
+    content:
+      'Recibe alertas de stock bajo, ventas importantes, adeudos y más. Todo organizado por prioridad.',
     target: 'button[aria-label="notifications"]',
-    position: 'bottom'
+    position: 'bottom',
   },
   {
     id: 'shortcuts',
     title: 'Atajos de Teclado ⌨️',
     content: 'Acelera tu trabajo con shortcuts. Presiona ? para ver todos los atajos disponibles.',
     target: null,
-    position: 'center'
+    position: 'center',
   },
   {
     id: 'complete',
     title: '¡Todo Listo! ✨',
-    content: 'Ya conoces lo básico. Explora FlowDistributor y descubre todas sus funcionalidades. ¡Éxito en tu gestión!',
+    content:
+      'Ya conoces lo básico. Explora FlowDistributor y descubre todas sus funcionalidades. ¡Éxito en tu gestión!',
     target: null,
-    position: 'center'
-  }
+    position: 'center',
+  },
 ];
 
 /**
@@ -82,12 +89,12 @@ export const useTour = (steps = TOUR_STEPS) => {
       return false;
     }
   });
-  
+
   const start = () => {
     setCurrentStep(0);
     setIsActive(true);
   };
-  
+
   const next = () => {
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1);
@@ -95,31 +102,31 @@ export const useTour = (steps = TOUR_STEPS) => {
       complete();
     }
   };
-  
+
   const prev = () => {
     if (currentStep > 0) {
       setCurrentStep(currentStep - 1);
     }
   };
-  
+
   const skip = () => {
     setIsActive(false);
     setCompleted(true);
     localStorage.setItem('flowdistributor_tour_completed', 'true');
   };
-  
+
   const complete = () => {
     setIsActive(false);
     setCompleted(true);
     localStorage.setItem('flowdistributor_tour_completed', 'true');
   };
-  
+
   const reset = () => {
     setCompleted(false);
     setCurrentStep(0);
     localStorage.removeItem('flowdistributor_tour_completed');
   };
-  
+
   return {
     isActive,
     currentStep,
@@ -131,7 +138,7 @@ export const useTour = (steps = TOUR_STEPS) => {
     prev,
     skip,
     complete,
-    reset
+    reset,
   };
 };
 
@@ -141,12 +148,12 @@ export const useTour = (steps = TOUR_STEPS) => {
 export const GuidedTour = ({ tour }) => {
   const { isActive, currentStep, totalSteps, currentStepData, next, prev, skip } = tour;
   const [highlightedElement, setHighlightedElement] = useState(null);
-  
+
   useEffect(() => {
     if (isActive && currentStepData?.target) {
       const element = document.querySelector(currentStepData.target);
       setHighlightedElement(element);
-      
+
       if (element) {
         element.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
@@ -154,13 +161,13 @@ export const GuidedTour = ({ tour }) => {
       setHighlightedElement(null);
     }
   }, [isActive, currentStep, currentStepData]);
-  
+
   if (!isActive) return null;
-  
+
   const isFirst = currentStep === 0;
   const isLast = currentStep === totalSteps - 1;
   const isCentered = currentStepData.position === 'center';
-  
+
   return (
     <AnimatePresence>
       {/* Overlay */}
@@ -180,11 +187,11 @@ export const GuidedTour = ({ tour }) => {
               top: highlightedElement.offsetTop - 8,
               left: highlightedElement.offsetLeft - 8,
               width: highlightedElement.offsetWidth + 16,
-              height: highlightedElement.offsetHeight + 16
+              height: highlightedElement.offsetHeight + 16,
             }}
           />
         )}
-        
+
         {/* Card del tour */}
         <motion.div
           key={currentStep}
@@ -192,21 +199,21 @@ export const GuidedTour = ({ tour }) => {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -20, scale: 0.9 }}
           className={`fixed bg-slate-900 rounded-2xl shadow-2xl border border-white/20 max-w-md w-full p-6 ${
-            isCentered
-              ? 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
-              : ''
+            isCentered ? 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' : ''
           }`}
           style={
             !isCentered && highlightedElement
               ? {
-                  top: currentStepData.position === 'bottom'
-                    ? highlightedElement.offsetTop + highlightedElement.offsetHeight + 20
-                    : currentStepData.position === 'top'
-                    ? highlightedElement.offsetTop - 300
-                    : highlightedElement.offsetTop,
-                  left: currentStepData.position === 'right'
-                    ? highlightedElement.offsetLeft + highlightedElement.offsetWidth + 20
-                    : highlightedElement.offsetLeft
+                  top:
+                    currentStepData.position === 'bottom'
+                      ? highlightedElement.offsetTop + highlightedElement.offsetHeight + 20
+                      : currentStepData.position === 'top'
+                        ? highlightedElement.offsetTop - 300
+                        : highlightedElement.offsetTop,
+                  left:
+                    currentStepData.position === 'right'
+                      ? highlightedElement.offsetLeft + highlightedElement.offsetWidth + 20
+                      : highlightedElement.offsetLeft,
                 }
               : {}
           }
@@ -222,23 +229,16 @@ export const GuidedTour = ({ tour }) => {
                   Paso {currentStep + 1} de {totalSteps}
                 </span>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">
-                {currentStepData.title}
-              </h3>
+              <h3 className="text-xl font-bold text-white mb-2">{currentStepData.title}</h3>
             </div>
-            <button
-              onClick={skip}
-              className="p-2 hover:bg-white/10 rounded-lg transition-colors"
-            >
+            <button onClick={skip} className="p-2 hover:bg-white/10 rounded-lg transition-colors">
               <X className="w-5 h-5" />
             </button>
           </div>
-          
+
           {/* Contenido */}
-          <p className="text-slate-300 mb-6 leading-relaxed">
-            {currentStepData.content}
-          </p>
-          
+          <p className="text-slate-300 mb-6 leading-relaxed">{currentStepData.content}</p>
+
           {/* Progress bar */}
           <div className="mb-6">
             <div className="h-2 bg-white/10 rounded-full overflow-hidden">
@@ -249,7 +249,7 @@ export const GuidedTour = ({ tour }) => {
               />
             </div>
           </div>
-          
+
           {/* Botones */}
           <div className="flex gap-3">
             {!isFirst && (
@@ -278,7 +278,7 @@ export const GuidedTour = ({ tour }) => {
               )}
             </button>
           </div>
-          
+
           {/* Skip */}
           {!isLast && (
             <button

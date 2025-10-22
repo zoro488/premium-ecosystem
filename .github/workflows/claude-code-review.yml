@@ -1,0 +1,95 @@
+# 🤖 Claude Code Action - AI-Powered Code Review
+name: Claude AI Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+      - develop
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  claude-review:
+    name: 🧠 AI Code Review
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🤖 Claude Code Review
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          model: claude-3-7-sonnet-20250219
+          max_tokens: 8096
+          temperature: 0.3
+          review_prompt: |
+            You are an expert code reviewer for a premium enterprise React + Firebase application.
+
+            **Project Context:**
+            - Frontend: React 18 + Vite + TypeScript
+            - Backend: Firebase v12 (Firestore, Auth, Storage)
+            - Styling: TailwindCSS
+            - State: Zustand
+            - Testing: Vitest + Playwright
+
+            **Review Focus:**
+            1. ✅ TypeScript strict typing and safety
+            2. 🔥 Firebase v12 modular API best practices
+            3. ⚡ Performance optimizations (React.memo, useMemo, useCallback)
+            4. 🎨 TailwindCSS utility-first patterns
+            5. 🧪 Test coverage for new code
+            6. 🔒 Security vulnerabilities
+            7. ♿ Accessibility (ARIA, semantic HTML)
+            8. 📱 Responsive design
+            9. 🌐 SEO optimization
+            10. 📚 JSDoc documentation
+
+            **Code Standards:**
+            - No `any` types (use `unknown` instead)
+            - Functional components with hooks
+            - Error boundaries for error handling
+            - Lazy loading for heavy components
+            - Optimistic updates for better UX
+
+            **Output Format:**
+            - Provide specific file:line references
+            - Suggest concrete improvements with code examples
+            - Rate severity: 🔴 Critical | 🟠 Important | 🟡 Nice-to-have
+            - Include performance impact estimates
+
+      - name: 📊 Code Quality Report
+        if: always()
+        run: |
+          echo "### 🤖 Claude AI Review Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Review performed with Claude 3.7 Sonnet" >> $GITHUB_STEP_SUMMARY
+          echo "Focus: React + Firebase + TypeScript best practices" >> $GITHUB_STEP_SUMMARY
+
+  security-scan:
+    name: 🔒 Security Analysis
+    runs-on: ubuntu-latest
+    needs: claude-review
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🔍 Dependency Review
+        uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: moderate
+
+      - name: 🛡️ Secret Scanning
+        run: |
+          echo "Checking for exposed secrets..."
+          # Add secret scanning logic here

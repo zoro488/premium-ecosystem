@@ -1,34 +1,35 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
 import {
   Activity,
-  Bell,
   AlertTriangle,
+  Bell,
   CheckCircle,
-  XCircle,
   Clock,
-  TrendingUp,
-  Zap,
   Eye,
   Filter,
   Radio,
-  Wifi
+  TrendingUp,
+  Wifi,
+  XCircle,
+  Zap,
 } from 'lucide-react';
 import {
-  LineChart,
-  Line,
-  AreaChart,
   Area,
-  BarChart,
+  AreaChart,
   Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  Legend,
+  Line,
+  LineChart,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-  PieChart,
-  Pie,
-  Cell
 } from 'recharts';
 
 const Pulse = () => {
@@ -37,7 +38,7 @@ const Pulse = () => {
   const [filters, setFilters] = useState({
     severity: 'all',
     type: 'all',
-    status: 'all'
+    status: 'all',
   });
   const eventStreamRef = useRef(null);
 
@@ -48,7 +49,7 @@ const Pulse = () => {
     warningEvents: 45,
     infoEvents: 890,
     avgResponseTime: 234,
-    systemHealth: 98.5
+    systemHealth: 98.5,
   });
 
   // Datos de eventos por hora
@@ -58,7 +59,7 @@ const Pulse = () => {
     { time: '08:00', critical: 3, warning: 12, info: 180, success: 220 },
     { time: '12:00', critical: 4, warning: 15, info: 210, success: 250 },
     { time: '16:00', critical: 2, warning: 10, info: 165, success: 200 },
-    { time: '20:00', critical: 1, warning: 6, info: 140, success: 170 }
+    { time: '20:00', critical: 1, warning: 6, info: 140, success: 170 },
   ];
 
   // Distribución de eventos
@@ -66,7 +67,7 @@ const Pulse = () => {
     { name: 'Información', value: 890, color: '#3b82f6' },
     { name: 'Advertencias', value: 45, color: '#f59e0b' },
     { name: 'Críticos', value: 12, color: '#ef4444' },
-    { name: 'Exitosos', value: 300, color: '#10b981' }
+    { name: 'Exitosos', value: 300, color: '#10b981' },
   ];
 
   // Tipos de eventos
@@ -75,7 +76,7 @@ const Pulse = () => {
     { type: 'Red', count: 312, trend: '+8%', color: 'cyan' },
     { type: 'Seguridad', count: 178, trend: '-3%', color: 'red' },
     { type: 'Aplicación', count: 245, trend: '+15%', color: 'purple' },
-    { type: 'Base de Datos', count: 89, trend: '+5%', color: 'green' }
+    { type: 'Base de Datos', count: 89, trend: '+5%', color: 'green' },
   ];
 
   // Generar eventos en tiempo real
@@ -84,7 +85,7 @@ const Pulse = () => {
     const severities = [
       { level: 'info', weight: 70 },
       { level: 'warning', weight: 20 },
-      { level: 'critical', weight: 10 }
+      { level: 'critical', weight: 10 },
     ];
 
     const randomSeverity = () => {
@@ -105,22 +106,22 @@ const Pulse = () => {
         'Conexión establecida',
         'Backup realizado',
         'Actualización aplicada',
-        'Usuario autenticado'
+        'Usuario autenticado',
       ],
       warning: [
         'Uso de CPU elevado',
         'Memoria cerca del límite',
         'Latencia aumentada',
         'Reintentos detectados',
-        'Cache cerca de capacidad'
+        'Cache cerca de capacidad',
       ],
       critical: [
         'Servicio no responde',
         'Error de conexión',
         'Fallo de autenticación',
         'Disco lleno',
-        'Base de datos inaccesible'
-      ]
+        'Base de datos inaccesible',
+      ],
     };
 
     return {
@@ -130,7 +131,7 @@ const Pulse = () => {
       severity,
       message: messages[severity][Math.floor(Math.random() * messages[severity].length)],
       source: `srv-${Math.floor(Math.random() * 10 + 1)}.prod.local`,
-      status: severity === 'critical' ? 'pending' : 'resolved'
+      status: severity === 'critical' ? 'pending' : 'resolved',
     };
   };
 
@@ -142,21 +143,21 @@ const Pulse = () => {
     // Simular stream de eventos
     const interval = setInterval(() => {
       const newEvent = generateEvent();
-      setEvents(prev => [newEvent, ...prev.slice(0, 49)]);
+      setEvents((prev) => [newEvent, ...prev.slice(0, 49)]);
 
-      setStats(prev => ({
+      setStats((prev) => ({
         ...prev,
         totalEvents: prev.totalEvents + 1,
         criticalEvents: prev.criticalEvents + (newEvent.severity === 'critical' ? 1 : 0),
         warningEvents: prev.warningEvents + (newEvent.severity === 'warning' ? 1 : 0),
-        infoEvents: prev.infoEvents + (newEvent.severity === 'info' ? 1 : 0)
+        infoEvents: prev.infoEvents + (newEvent.severity === 'info' ? 1 : 0),
       }));
     }, 3000);
 
     return () => clearInterval(interval);
   }, []);
 
-  const filteredEvents = events.filter(event => {
+  const filteredEvents = events.filter((event) => {
     if (filters.severity !== 'all' && event.severity !== filters.severity) return false;
     if (filters.type !== 'all' && event.type !== filters.type) return false;
     if (filters.status !== 'all' && event.status !== filters.status) return false;
@@ -262,14 +263,14 @@ const Pulse = () => {
               className="border-b border-gray-200 p-4 hover:bg-gray-50 transition-colors"
             >
               <div className="flex items-start gap-4">
-                <div className="mt-1">
-                  {getSeverityIcon(event.severity)}
-                </div>
+                <div className="mt-1">{getSeverityIcon(event.severity)}</div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-start justify-between gap-4 mb-2">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className={`px-2 py-1 rounded text-xs font-medium border ${getSeverityColor(event.severity)}`}>
+                        <span
+                          className={`px-2 py-1 rounded text-xs font-medium border ${getSeverityColor(event.severity)}`}
+                        >
                           {event.severity.toUpperCase()}
                         </span>
                         <span className="px-2 py-1 rounded text-xs font-medium bg-gray-100 text-gray-700">
@@ -318,10 +319,38 @@ const Pulse = () => {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Area type="monotone" dataKey="critical" stackId="1" stroke="#ef4444" fill="#ef4444" name="Críticos" />
-              <Area type="monotone" dataKey="warning" stackId="1" stroke="#f59e0b" fill="#f59e0b" name="Advertencias" />
-              <Area type="monotone" dataKey="info" stackId="1" stroke="#3b82f6" fill="#3b82f6" name="Info" />
-              <Area type="monotone" dataKey="success" stackId="1" stroke="#10b981" fill="#10b981" name="Exitosos" />
+              <Area
+                type="monotone"
+                dataKey="critical"
+                stackId="1"
+                stroke="#ef4444"
+                fill="#ef4444"
+                name="Críticos"
+              />
+              <Area
+                type="monotone"
+                dataKey="warning"
+                stackId="1"
+                stroke="#f59e0b"
+                fill="#f59e0b"
+                name="Advertencias"
+              />
+              <Area
+                type="monotone"
+                dataKey="info"
+                stackId="1"
+                stroke="#3b82f6"
+                fill="#3b82f6"
+                name="Info"
+              />
+              <Area
+                type="monotone"
+                dataKey="success"
+                stackId="1"
+                stroke="#10b981"
+                fill="#10b981"
+                name="Exitosos"
+              />
             </AreaChart>
           </ResponsiveContainer>
         </div>
@@ -358,7 +387,10 @@ const Pulse = () => {
         <h3 className="text-lg font-bold mb-4">Eventos por Tipo</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
           {eventTypes.map((type, index) => (
-            <div key={index} className={`bg-gradient-to-br from-${type.color}-500 to-${type.color}-700 rounded-xl p-6 text-white`}>
+            <div
+              key={`item-${index}`}
+              className={`bg-gradient-to-br from-${type.color}-500 to-${type.color}-700 rounded-xl p-6 text-white`}
+            >
               <div className="text-sm opacity-80 mb-1">{type.type}</div>
               <div className="text-3xl font-bold mb-2">{type.count}</div>
               <div className="text-sm flex items-center gap-1">
@@ -380,13 +412,19 @@ const Pulse = () => {
           const statuses = ['operational', 'operational', 'degraded', 'operational'];
           const status = statuses[index];
           return (
-            <div key={index} className="bg-white rounded-xl shadow-lg p-6">
+            <div key={`item-${index}`} className="bg-white rounded-xl shadow-lg p-6">
               <div className="flex items-center justify-between mb-4">
-                <Wifi className={`w-6 h-6 ${status === 'operational' ? 'text-green-600' : 'text-yellow-600'}`} />
-                <div className={`w-3 h-3 rounded-full ${status === 'operational' ? 'bg-green-500' : 'bg-yellow-500'} animate-pulse`}></div>
+                <Wifi
+                  className={`w-6 h-6 ${status === 'operational' ? 'text-green-600' : 'text-yellow-600'}`}
+                />
+                <div
+                  className={`w-3 h-3 rounded-full ${status === 'operational' ? 'bg-green-500' : 'bg-yellow-500'} animate-pulse`}
+                ></div>
               </div>
               <h3 className="font-bold mb-1">{service}</h3>
-              <p className={`text-sm ${status === 'operational' ? 'text-green-600' : 'text-yellow-600'}`}>
+              <p
+                className={`text-sm ${status === 'operational' ? 'text-green-600' : 'text-yellow-600'}`}
+              >
                 {status === 'operational' ? 'Operacional' : 'Degradado'}
               </p>
               <div className="mt-4 pt-4 border-t">
@@ -408,8 +446,20 @@ const Pulse = () => {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="success" stroke="#10b981" strokeWidth={2} name="Operaciones Exitosas" />
-            <Line type="monotone" dataKey="warning" stroke="#f59e0b" strokeWidth={2} name="Advertencias" />
+            <Line
+              type="monotone"
+              dataKey="success"
+              stroke="#10b981"
+              strokeWidth={2}
+              name="Operaciones Exitosas"
+            />
+            <Line
+              type="monotone"
+              dataKey="warning"
+              stroke="#f59e0b"
+              strokeWidth={2}
+              name="Advertencias"
+            />
           </LineChart>
         </ResponsiveContainer>
       </div>

@@ -1,5 +1,6 @@
-import { describe, it, expect } from 'vitest';
-import { renderHook, act } from '@testing-library/react';
+import { act, renderHook } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+
 import { useUndoRedo } from '../utils/undoRedo';
 
 describe('useUndoRedo', () => {
@@ -67,7 +68,7 @@ describe('useUndoRedo', () => {
         result.current.setState(5);
       });
       rerender();
-      
+
       act(() => {
         result.current.undo();
       });
@@ -85,7 +86,7 @@ describe('useUndoRedo', () => {
         result.current.setState(5);
       });
       rerender();
-      
+
       act(() => {
         result.current.undo();
       });

@@ -1,30 +1,212 @@
 rules_version = '2';
 
+/**
+ * ============================================
+ * FIRESTORE SECURITY RULES - ULTRA PREMIUM
+ * Reglas de seguridad avanzadas para FlowDistributor
+ * ============================================
+ */
+
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Reglas en modo de prueba - Cualquiera puede leer/escribir por 30 días
-    // CAMBIAR EN PRODUCCIÓN
+    // ============================================
+    // FUNCIONES AUXILIARES
+    // ============================================
+
+    // Verificar si el usuario está autenticado
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Verificar si el usuario es propietario del documento
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Verificar si el usuario es admin
+    function isAdmin() {
+      return isAuthenticated() &&
+             exists(/databases/$(database)/documents/usuarios/$(request.auth.uid)) &&
+             get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    // Verificar campos requeridos en creación
+    function hasRequiredFields(fields) {
+      return request.resource.data.keys().hasAll(fields);
+    }
+
+    // Verificar que no se modifiquen campos específicos
+    function unchangedFields(fields) {
+      return !request.resource.data.diff(resource.data).affectedKeys().hasAny(fields);
+    }
+
+    // ============================================
+    // REGLAS PARA USUARIOS
+    // ============================================
+
+    match /usuarios/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow create: if isAuthenticated() &&
+                       hasRequiredFields(['email', 'role']) &&
+                       request.resource.data.role in ['user', 'admin', 'viewer'];
+      allow update: if (isOwner(userId) && unchangedFields(['email', 'role', 'createdAt', 'id'])) ||
+                       isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ============================================
+    // REGLAS PARA VENTAS
+    // ============================================
+
+    match /ventas/{ventaId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() &&
+                       hasRequiredFields(['tipo', 'fecha', 'cliente', 'totalVenta']) &&
+                       request.resource.data.tipo == 'venta' &&
+                       request.resource.data.totalVenta is number &&
+                       request.resource.data.totalVenta >= 0;
+      allow update: if isAuthenticated() &&
+                       unchangedFields(['id', 'tipo']);
+      allow delete: if isAdmin();
+    }
+
+    // ============================================
+    // REGLAS PARA COMPRAS
+    // ============================================
+
+    match /compras/{compraId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() &&
+                       hasRequiredFields(['tipo', 'fecha', 'distribuidor', 'costoTotal']) &&
+                       request.resource.data.tipo == 'compra' &&
+                       request.resource.data.costoTotal is number &&
+                       request.resource.data.costoTotal >= 0;
+      allow update: if isAuthenticated() &&
+                       unchangedFields(['id', 'tipo']);
+      allow delete: if isAdmin();
+    }
+
+    // ============================================
+    // REGLAS PARA DISTRIBUIDORES
+    // ============================================
+
+    match /distribuidores/{distribuidorId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() &&
+                       hasRequiredFields(['nombre', 'estado']) &&
+                       request.resource.data.estado in ['activo', 'inactivo'];
+      allow update: if isAuthenticated() &&
+                       unchangedFields(['id']);
+      allow delete: if isAdmin();
+    }
+
+    // ============================================
+    // REGLAS PARA CLIENTES
+    // ============================================
+
+    match /clientes/{clienteId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() &&
+                       hasRequiredFields(['nombre', 'estado']) &&
+                       request.resource.data.estado in ['activo', 'inactivo'];
+      allow update: if isAuthenticated() &&
+                       unchangedFields(['id']);
+      allow delete: if isAdmin();
+    }
+
+    // ============================================
+    // REGLAS PARA BANCOS
+    // ============================================
+
+    match /bancos/{bancoId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() &&
+                       hasRequiredFields(['nombre', 'saldoActual']) &&
+                       request.resource.data.saldoActual is number;
+      allow update: if isAuthenticated() &&
+                       unchangedFields(['id']) &&
+                       request.resource.data.saldoActual is number;
+      allow delete: if isAdmin();
+    }
+
+    // ============================================
+    // REGLAS PARA ALMACÉN
+    // ============================================
+
+    match /almacen/{almacenId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() &&
+                       hasRequiredFields(['nombre', 'stockActual']) &&
+                       request.resource.data.stockActual is number &&
+                       request.resource.data.stockActual >= 0;
+      allow update: if isAuthenticated() &&
+                       unchangedFields(['id']) &&
+                       request.resource.data.stockActual >= 0;
+      allow delete: if isAdmin();
+    }
+
+    // ============================================
+    // REGLAS PARA MOVIMIENTOS
+    // ============================================
+
+    match /movimientos/{movimientoId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() &&
+                       hasRequiredFields(['tipo', 'monto', 'fecha']) &&
+                       request.resource.data.tipo in ['ingreso', 'gasto', 'transferencia'] &&
+                       request.resource.data.monto is number;
+      allow update: if isAuthenticated() &&
+                       unchangedFields(['id', 'tipo']);
+      allow delete: if isAdmin();
+    }
+
+    // ============================================
+    // REGLAS PARA MÉTRICAS
+    // ============================================
+
+    match /metricas/{metricaId} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
+    // ============================================
+    // REGLAS PARA REPORTES
+    // ============================================
+
+    match /reportes/{reporteId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated() && unchangedFields(['id']);
+      allow delete: if isAdmin() || (resource.data.userId != null && isOwner(resource.data.userId));
+    }
+
+    // ============================================
+    // REGLAS PARA CONFIGURACIÓN
+    // ============================================
+
+    match /configuracion/{configId} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
+    // ============================================
+    // REGLAS PARA LOGS Y AUDITORÍA
+    // ============================================
+
+    match /logs/{logId} {
+      allow read: if isAdmin();
+      allow create: if isAuthenticated();
+      allow update, delete: if false;
+    }
+
+    // ============================================
+    // REGLA POR DEFECTO
+    // ============================================
+
+    // Denegar todo lo demás por defecto
     match /{document=**} {
-      allow read, write: if request.time < timestamp.date(2025, 2, 18);
+      allow read, write: if false;
     }
-
-    // Reglas seguras para producción (descomenta cuando tengas auth)
-    /*
-    match /{collection}/{document} {
-      // Solo usuarios autenticados
-      allow read, write: if request.auth != null;
-
-      // Solo el dueño puede acceder a sus datos
-      allow read, write: if request.auth != null
-                          && resource.data.userId == request.auth.uid;
-    }
-
-    match /{collection}/{document} {
-      // Permitir crear si el userId coincide
-      allow create: if request.auth != null
-                    && request.resource.data.userId == request.auth.uid;
-    }
-    */
   }
 }

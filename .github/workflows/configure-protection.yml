@@ -1,0 +1,39 @@
+# 🔒 Branch Protection Configuration
+# This file documents the recommended branch protection rules
+# Apply these via: gh api repos/:owner/:repo/branches/main/protection
+
+name: Configure Branch Protection
+on:
+  workflow_dispatch:
+
+jobs:
+  setup-protection:
+    name: 🛡️ Setup Branch Protection
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🔒 Configure main branch protection
+        run: |
+          gh api --method PUT /repos/${{ github.repository }}/branches/main/protection \
+            --header 'Accept: application/vnd.github+json' \
+            --field required_status_checks='{"strict":true,"contexts":["build","test","lint"]}' \
+            --field enforce_admins=true \
+            --field required_pull_request_reviews='{"dismiss_stale_reviews":true,"require_code_owner_reviews":true,"required_approving_review_count":1}' \
+            --field restrictions=null \
+            --field required_linear_history=true \
+            --field allow_force_pushes=false \
+            --field allow_deletions=false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: ✅ Protection rules applied
+        run: |
+          echo "### 🛡️ Branch Protection Configured" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Rules Applied:**" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Required status checks: build, test, lint" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Require pull request reviews (1 approval)" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Dismiss stale reviews" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Require code owner reviews" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Linear history enforced" >> $GITHUB_STEP_SUMMARY
+          echo "- 🔒 Force push disabled" >> $GITHUB_STEP_SUMMARY
+          echo "- 🔒 Branch deletion disabled" >> $GITHUB_STEP_SUMMARY

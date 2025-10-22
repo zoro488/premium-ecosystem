@@ -1,0 +1,385 @@
+name: Enterprise CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop, 'release/**', 'hotfix/**']
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment'
+        required: true
+        type: choice
+        options:
+          - development
+          - staging
+          - production
+      skip-tests:
+        description: 'Skip tests'
+        required: false
+        type: boolean
+        default: false
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: '18'
+  CACHE_VERSION: v1
+
+jobs:
+  # ============================================
+  # STAGE 1: CODE QUALITY & SECURITY
+  # ============================================
+
+  lint:
+    name: 🔍 Lint & Format Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Check formatting
+        run: npx prettier --check "src/**/*.{js,jsx,ts,tsx,json,css,md}"
+
+  security-scan:
+    name: 🔒 Security Scan
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      actions: read
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Snyk Security Scan
+        uses: snyk/actions/node@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+
+      - name: Upload Trivy results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+  # ============================================
+  # STAGE 2: TESTING (MATRIX STRATEGY)
+  # ============================================
+
+  test-matrix:
+    name: 🧪 Test Matrix
+    if: ${{ !inputs.skip-tests }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: ['18', '20', '21']
+        exclude:
+          # Excluir combinaciones innecesarias
+          - os: macos-latest
+            node: '20'
+          - os: windows-latest
+            node: '21'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run unit tests
+        run: npm run test:run
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-${{ matrix.os }}-${{ matrix.node }}
+          path: test-results/
+
+  test-coverage:
+    name: 📊 Test Coverage
+    uses: ./.github/workflows/reusable/test.yml
+    with:
+      node-version: '["18", "20"]'
+      coverage: true
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+  e2e-tests:
+    name: 🎭 E2E Tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        browser: [chromium, firefox, webkit]
+        shard: [1, 2, 3, 4]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright
+        run: npx playwright install --with-deps ${{ matrix.browser }}
+
+      - name: Run E2E tests (Shard ${{ matrix.shard }})
+        run: npx playwright test --project=${{ matrix.browser }} --shard=${{ matrix.shard }}/4
+
+      - name: Upload E2E results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-${{ matrix.browser }}-shard-${{ matrix.shard }}
+          path: playwright-report/
+
+  # ============================================
+  # STAGE 3: BUILD (MULTI-ENVIRONMENT)
+  # ============================================
+
+  build-development:
+    name: 🏗️ Build (Development)
+    if: github.ref == 'refs/heads/develop' || inputs.environment == 'development'
+    needs: [lint, security-scan]
+    uses: ./.github/workflows/reusable/build.yml
+    with:
+      environment: development
+      node-version: '18'
+    secrets: inherit
+
+  build-staging:
+    name: 🏗️ Build (Staging)
+    if: github.event_name == 'pull_request' || inputs.environment == 'staging'
+    needs: [lint, security-scan]
+    uses: ./.github/workflows/reusable/build.yml
+    with:
+      environment: staging
+      node-version: '18'
+    secrets: inherit
+
+  build-production:
+    name: 🏗️ Build (Production)
+    if: github.ref == 'refs/heads/main' || inputs.environment == 'production'
+    needs: [lint, security-scan, test-coverage, e2e-tests]
+    uses: ./.github/workflows/reusable/build.yml
+    with:
+      environment: production
+      node-version: '18'
+    secrets: inherit
+
+  # ============================================
+  # STAGE 4: PERFORMANCE & QUALITY CHECKS
+  # ============================================
+
+  lighthouse:
+    name: 💡 Lighthouse Performance
+    needs: build-staging
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-staging
+          path: dist/
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          urls: |
+            http://localhost:3000
+            http://localhost:3000/flow
+            http://localhost:3000/shadow
+            http://localhost:3000/apollo
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+  bundle-analysis:
+    name: 📦 Bundle Analysis
+    needs: build-production
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-production
+          path: dist/
+
+      - name: Analyze bundle
+        run: |
+          npx vite-bundle-visualizer --template sunburst
+
+      - name: Upload bundle analysis
+        uses: actions/upload-artifact@v4
+        with:
+          name: bundle-analysis
+          path: dist/stats.html
+
+  # ============================================
+  # STAGE 5: DEPLOYMENT
+  # ============================================
+
+  deploy-development:
+    name: 🚀 Deploy to Development
+    if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+    needs: build-development
+    uses: ./.github/workflows/reusable/deploy.yml
+    with:
+      environment: development
+      platform: vercel
+      artifact-name: dist
+    secrets: inherit
+
+  deploy-staging:
+    name: 🚀 Deploy to Staging
+    if: github.event_name == 'pull_request'
+    needs: [build-staging, lighthouse]
+    uses: ./.github/workflows/reusable/deploy.yml
+    with:
+      environment: staging
+      platform: vercel
+      artifact-name: dist
+    secrets: inherit
+
+  deploy-production-canary:
+    name: 🕯️ Canary Deploy (10%)
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: [build-production, bundle-analysis]
+    uses: ./.github/workflows/reusable/deploy.yml
+    with:
+      environment: production-canary
+      platform: vercel
+      artifact-name: dist
+    secrets: inherit
+
+  smoke-tests-canary:
+    name: 🔥 Smoke Tests (Canary)
+    needs: deploy-production-canary
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run smoke tests
+        run: |
+          curl -f ${{ needs.deploy-production-canary.outputs.deployment-url }} || exit 1
+          echo "✅ Canary smoke tests passed"
+
+  deploy-production-full:
+    name: 🚀 Full Production Deploy
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: [smoke-tests-canary]
+    uses: ./.github/workflows/reusable/deploy.yml
+    with:
+      environment: production
+      platform: firebase
+      artifact-name: dist
+    secrets: inherit
+
+  # ============================================
+  # STAGE 6: POST-DEPLOYMENT
+  # ============================================
+
+  create-sentry-release:
+    name: 📊 Create Sentry Release
+    needs: deploy-production-full
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create Sentry release
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+        with:
+          environment: production
+          version: ${{ github.sha }}
+          sourcemaps: './dist'
+
+  notify-slack:
+    name: 📢 Notify Slack
+    needs: deploy-production-full
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack notification
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {
+              "text": "🚀 Premium Ecosystem deployed to production",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Premium Ecosystem* has been deployed to production!\n*URL:* ${{ needs.deploy-production-full.outputs.deployment-url }}\n*Version:* ${{ github.sha }}"
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  create-github-release:
+    name: 🏷️ Create GitHub Release
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: deploy-production-full
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          git log --pretty=format:"- %s (%h)" $(git describe --tags --abbrev=0)..HEAD > CHANGELOG.txt
+
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ github.run_number }}
+          release_name: Release v${{ github.run_number }}
+          body_path: CHANGELOG.txt
+          draft: false
+          prerelease: false

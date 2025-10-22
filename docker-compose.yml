@@ -1,0 +1,182 @@
+# 🐳 Premium Ecosystem - Docker Compose Configuration
+# Desarrollo completo con todos los servicios
+
+version: '3.9'
+
+services:
+  # ========================================
+  # Aplicación Principal (Frontend)
+  # ========================================
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: premium-ecosystem-app
+    ports:
+      - "3001:3001"
+    volumes:
+      # Montar código fuente para hot reload
+      - .:/app
+      # Prevenir que node_modules del host sobrescriba el del contenedor
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - VITE_FIREBASE_API_KEY=${VITE_FIREBASE_API_KEY}
+      - VITE_FIREBASE_AUTH_DOMAIN=${VITE_FIREBASE_AUTH_DOMAIN}
+      - VITE_FIREBASE_PROJECT_ID=${VITE_FIREBASE_PROJECT_ID}
+      - VITE_FIREBASE_STORAGE_BUCKET=${VITE_FIREBASE_STORAGE_BUCKET}
+      - VITE_FIREBASE_MESSAGING_SENDER_ID=${VITE_FIREBASE_MESSAGING_SENDER_ID}
+      - VITE_FIREBASE_APP_ID=${VITE_FIREBASE_APP_ID}
+      - VITE_FIREBASE_MEASUREMENT_ID=${VITE_FIREBASE_MEASUREMENT_ID}
+      - VITE_GA_MEASUREMENT_ID=${VITE_GA_MEASUREMENT_ID}
+    networks:
+      - premium-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3001"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # ========================================
+  # Firebase Emulators (Desarrollo Local)
+  # ========================================
+  firebase:
+    image: node:20-alpine
+    container_name: premium-ecosystem-firebase
+    working_dir: /app
+    command: >
+      sh -c "npm install -g firebase-tools &&
+             firebase emulators:start --project demo-premium-ecosystem"
+    ports:
+      - "4000:4000"  # Emulator Suite UI
+      - "9099:9099"  # Authentication
+      - "8080:8080"  # Firestore
+      - "9199:9199"  # Storage
+      - "5001:5001"  # Functions
+      - "8085:8085"  # Analytics
+    volumes:
+      - ./firebase.json:/app/firebase.json
+      - ./firestore.rules:/app/firestore.rules
+      - ./firestore.indexes.json:/app/firestore.indexes.json
+      - firebase-data:/app/.firebase
+    networks:
+      - premium-network
+    restart: unless-stopped
+
+  # ========================================
+  # Testing (Vitest + Playwright)
+  # ========================================
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    container_name: premium-ecosystem-test
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - CI=true
+      - NODE_ENV=test
+    networks:
+      - premium-network
+    profiles:
+      - test
+
+  # ========================================
+  # E2E Testing (Playwright)
+  # ========================================
+  e2e:
+    build:
+      context: .
+      dockerfile: Dockerfile.e2e
+    container_name: premium-ecosystem-e2e
+    depends_on:
+      - app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - CI=true
+      - BASE_URL=http://app:3001
+    networks:
+      - premium-network
+    profiles:
+      - test
+
+  # ========================================
+  # Nginx (Producción)
+  # ========================================
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    container_name: premium-ecosystem-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./docker/ssl:/etc/nginx/ssl:ro
+    networks:
+      - premium-network
+    restart: unless-stopped
+    profiles:
+      - production
+
+  # ========================================
+  # Monitoring con Prometheus (Opcional)
+  # ========================================
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: premium-ecosystem-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./docker/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    networks:
+      - premium-network
+    profiles:
+      - monitoring
+
+  # ========================================
+  # Grafana para visualización (Opcional)
+  # ========================================
+  grafana:
+    image: grafana/grafana:latest
+    container_name: premium-ecosystem-grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./docker/grafana/dashboards:/etc/grafana/provisioning/dashboards
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    networks:
+      - premium-network
+    profiles:
+      - monitoring
+
+# ========================================
+# Networks
+# ========================================
+networks:
+  premium-network:
+    driver: bridge
+    name: premium-ecosystem-network
+
+# ========================================
+# Volumes (persistencia de datos)
+# ========================================
+volumes:
+  firebase-data:
+    name: premium-ecosystem-firebase-data
+  prometheus-data:
+    name: premium-ecosystem-prometheus-data
+  grafana-data:
+    name: premium-ecosystem-grafana-data

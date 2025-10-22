@@ -1,7 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Check } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+
 import { clsx } from 'clsx';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Check, ChevronDown } from 'lucide-react';
 
 const Select = ({
   options = [],
@@ -29,7 +30,7 @@ const Select = ({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const selectedOption = options.find(option => option.value === value);
+  const selectedOption = options.find((option) => option.value === value);
 
   const handleSelect = (optionValue) => {
     onChange(optionValue);
@@ -38,11 +39,7 @@ const Select = ({
 
   return (
     <div className="space-y-2" ref={selectRef}>
-      {label && (
-        <label className="block text-sm font-medium text-slate-200 mb-2">
-          {label}
-        </label>
-      )}
+      {label && <label className="block text-sm font-medium text-slate-200 mb-2">{label}</label>}
 
       <div className="relative">
         <button
@@ -56,10 +53,10 @@ const Select = ({
             'text-left flex items-center justify-between',
             'focus:bg-white/10 focus:border-blue-400/50 focus:outline-none focus:ring-2 focus:ring-blue-400/20',
             'disabled:opacity-50 disabled:cursor-not-allowed',
-            
+
             // Estado de error
             error ? 'border-red-400/50 focus:border-red-400 focus:ring-red-400/20' : '',
-            
+
             // Clases adicionales
             className
           )}
@@ -68,11 +65,8 @@ const Select = ({
           <span className={selectedOption ? 'text-white' : 'text-slate-400'}>
             {selectedOption ? selectedOption.label : placeholder}
           </span>
-          
-          <motion.div
-            animate={{ rotate: isOpen ? 180 : 0 }}
-            transition={{ duration: 0.2 }}
-          >
+
+          <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
             <ChevronDown className="w-5 h-5 text-slate-400" />
           </motion.div>
         </button>
@@ -109,12 +103,10 @@ const Select = ({
                   )}
                 >
                   <span>{option.label}</span>
-                  {option.value === value && (
-                    <Check className="w-4 h-4 text-blue-400" />
-                  )}
+                  {option.value === value && <Check className="w-4 h-4 text-blue-400" />}
                 </motion.button>
               ))}
-              
+
               {options.length === 0 && (
                 <div className="px-4 py-3 text-slate-400 text-sm text-center">
                   No hay opciones disponibles

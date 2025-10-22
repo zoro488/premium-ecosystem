@@ -1,0 +1,278 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "🌐 Chrome: Launch & Debug",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/src",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:///./src/*": "${webRoot}/*",
+        "webpack:///src/*": "${webRoot}/*",
+        "webpack:///*": "*",
+        "webpack:///./~/*": "${webRoot}/node_modules/*"
+      },
+      "userDataDir": "${workspaceFolder}/.vscode/chrome-debug-profile",
+      "runtimeArgs": [
+        "--disable-web-security",
+        "--disable-features=IsolateOrigins,site-per-process"
+      ]
+    },
+    {
+      "type": "chrome",
+      "request": "attach",
+      "name": "🔗 Chrome: Attach to Instance",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/src",
+      "port": 9222
+    },
+    {
+      "type": "msedge",
+      "request": "launch",
+      "name": "🌐 Edge: Launch & Debug",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/src",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:///./src/*": "${webRoot}/*",
+        "webpack:///src/*": "${webRoot}/*"
+      },
+      "userDataDir": "${workspaceFolder}/.vscode/edge-debug-profile"
+    },
+    {
+      "type": "firefox",
+      "request": "launch",
+      "name": "🦊 Firefox: Launch & Debug",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/src",
+      "pathMappings": [
+        {
+          "url": "webpack:///src/",
+          "path": "${workspaceFolder}/src"
+        }
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "🚀 Vite: Start Dev Server",
+      "skipFiles": ["<node_internals>/**"],
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "serverReadyAction": {
+        "pattern": "Local:.*http://localhost:([0-9]+)",
+        "uriFormat": "http://localhost:%s",
+        "action": "debugWithChrome"
+      },
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "🧪 Vitest: Debug Current File",
+      "program": "${workspaceFolder}/node_modules/vitest/vitest.mjs",
+      "args": [
+        "run",
+        "${file}",
+        "--reporter=verbose"
+      ],
+      "skipFiles": ["<node_internals>/**"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "🧪 Vitest: Debug All Tests",
+      "program": "${workspaceFolder}/node_modules/vitest/vitest.mjs",
+      "args": ["run", "--reporter=verbose"],
+      "skipFiles": ["<node_internals>/**"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "🧪 Vitest: Watch Mode",
+      "program": "${workspaceFolder}/node_modules/vitest/vitest.mjs",
+      "args": ["--watch"],
+      "skipFiles": ["<node_internals>/**"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "📊 Vitest: Debug with Coverage",
+      "program": "${workspaceFolder}/node_modules/vitest/vitest.mjs",
+      "args": [
+        "run",
+        "--coverage",
+        "--reporter=verbose"
+      ],
+      "skipFiles": ["<node_internals>/**"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "🎭 Playwright: Debug Current Test",
+      "program": "${workspaceFolder}/node_modules/@playwright/test/cli.js",
+      "args": [
+        "test",
+        "${file}",
+        "--debug"
+      ],
+      "skipFiles": ["<node_internals>/**"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "🎭 Playwright: Debug All E2E Tests",
+      "program": "${workspaceFolder}/node_modules/@playwright/test/cli.js",
+      "args": ["test", "--debug"],
+      "skipFiles": ["<node_internals>/**"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "🎭 Playwright: Headed Mode",
+      "program": "${workspaceFolder}/node_modules/@playwright/test/cli.js",
+      "args": [
+        "test",
+        "--headed",
+        "--project=chromium"
+      ],
+      "skipFiles": ["<node_internals>/**"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "🔥 Firebase: Debug Functions",
+      "program": "${workspaceFolder}/node_modules/.bin/firebase",
+      "args": [
+        "functions:shell"
+      ],
+      "skipFiles": ["<node_internals>/**"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "🔥 Firebase: Emulators",
+      "program": "${workspaceFolder}/node_modules/.bin/firebase",
+      "args": [
+        "emulators:start",
+        "--inspect-functions"
+      ],
+      "skipFiles": ["<node_internals>/**"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "🏗️ Build: Debug Build Process",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "build"],
+      "skipFiles": ["<node_internals>/**"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "🔍 ESLint: Debug Current File",
+      "program": "${workspaceFolder}/node_modules/eslint/bin/eslint.js",
+      "args": [
+        "${file}",
+        "--fix"
+      ],
+      "skipFiles": ["<node_internals>/**"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "🔗 Attach to Process",
+      "port": 9229,
+      "skipFiles": ["<node_internals>/**"],
+      "restart": true,
+      "sourceMaps": true
+    },
+    {
+      "name": "🤖 Debug with Copilot Insights",
+      "type": "node",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/src/main.jsx",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/vite",
+      "runtimeArgs": ["--host"],
+      "serverReadyAction": {
+        "pattern": "Local:.*http://localhost:([0-9]+)",
+        "uriFormat": "http://localhost:%s",
+        "action": "debugWithChrome"
+      },
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "🚀 Full Stack Debug",
+      "configurations": [
+        "🚀 Vite: Start Dev Server",
+        "🌐 Chrome: Launch & Debug"
+      ],
+      "presentation": {
+        "hidden": false,
+        "group": "1_full",
+        "order": 1
+      },
+      "stopAll": true
+    },
+    {
+      "name": "🧪 Test Everything",
+      "configurations": [
+        "🧪 Vitest: Debug All Tests",
+        "🎭 Playwright: Debug All E2E Tests"
+      ],
+      "presentation": {
+        "hidden": false,
+        "group": "2_test",
+        "order": 1
+      },
+      "stopAll": true
+    },
+    {
+      "name": "🔥 Firebase Full Stack",
+      "configurations": [
+        "🔥 Firebase: Emulators",
+        "🌐 Chrome: Launch & Debug"
+      ],
+      "presentation": {
+        "hidden": false,
+        "group": "3_firebase",
+        "order": 1
+      },
+      "stopAll": true
+    }
+  ]
+}

@@ -1,26 +1,25 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+// React solo se usa para JSX (no necesita import explícito en algunos bundlers)
 import {
-  LineChart,
-  Line,
-  BarChart,
-  Bar,
-  PieChart,
-  Pie,
-  Cell,
-  AreaChart,
   Area,
+  AreaChart,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  Legend,
+  Line,
+  LineChart,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
 } from 'recharts';
 
 // Componente de gráficos para reportes
 export const ReportsCharts = ({ bancos, totalIngresos, totalEgresos }) => {
-  const totalBancos = Object.values(bancos).reduce((sum, b) => sum + b.capitalActual, 0);
+  const _totalBancos = Object.values(bancos).reduce((sum, b) => sum + b.capitalActual, 0); // ✅ Variable calculada legacy
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -37,14 +36,14 @@ export const ReportsCharts = ({ bancos, totalIngresos, totalEgresos }) => {
                   fletes: 'Fletes',
                   azteca: 'Azteca',
                   leftie: 'Leftie',
-                  profit: 'Profit'
+                  profit: 'Profit',
                 }[key],
-                value: banco.capitalActual
+                value: banco.capitalActual,
               }))}
               cx="50%"
               cy="50%"
               labelLine={false}
-              label={({name, percent}) => `${name}: ${(percent * 100).toFixed(0)}%`}
+              label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
               outerRadius={100}
               fill="#8884d8"
               dataKey="value"
@@ -59,7 +58,7 @@ export const ReportsCharts = ({ bancos, totalIngresos, totalEgresos }) => {
                 backgroundColor: 'rgba(15, 23, 42, 0.9)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
                 borderRadius: '12px',
-                color: '#fff'
+                color: '#fff',
               }}
               formatter={(value) => `$${value.toLocaleString()}`}
             />
@@ -80,9 +79,9 @@ export const ReportsCharts = ({ bancos, totalIngresos, totalEgresos }) => {
                 fletes: 'Fletes',
                 azteca: 'Azteca',
                 leftie: 'Leftie',
-                profit: 'Profit'
+                profit: 'Profit',
               }[key].split(' ')[0],
-              capital: banco.capitalActual
+              capital: banco.capitalActual,
             }))}
             margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
           >
@@ -94,7 +93,7 @@ export const ReportsCharts = ({ bancos, totalIngresos, totalEgresos }) => {
                 backgroundColor: 'rgba(15, 23, 42, 0.9)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
                 borderRadius: '12px',
-                color: '#fff'
+                color: '#fff',
               }}
               formatter={(value) => `$${value.toLocaleString()}`}
             />
@@ -123,12 +122,12 @@ export const ReportsCharts = ({ bancos, totalIngresos, totalEgresos }) => {
           >
             <defs>
               <linearGradient id="colorIngresos" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#10b981" stopOpacity={0.8}/>
-                <stop offset="95%" stopColor="#10b981" stopOpacity={0.1}/>
+                <stop offset="5%" stopColor="#10b981" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="#10b981" stopOpacity={0.1} />
               </linearGradient>
               <linearGradient id="colorEgresos" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#ef4444" stopOpacity={0.8}/>
-                <stop offset="95%" stopColor="#ef4444" stopOpacity={0.1}/>
+                <stop offset="5%" stopColor="#ef4444" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="#ef4444" stopOpacity={0.1} />
               </linearGradient>
             </defs>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
@@ -139,13 +138,25 @@ export const ReportsCharts = ({ bancos, totalIngresos, totalEgresos }) => {
                 backgroundColor: 'rgba(15, 23, 42, 0.9)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
                 borderRadius: '12px',
-                color: '#fff'
+                color: '#fff',
               }}
               formatter={(value) => `$${value.toLocaleString()}`}
             />
             <Legend />
-            <Area type="monotone" dataKey="ingresos" stroke="#10b981" fillOpacity={1} fill="url(#colorIngresos)" />
-            <Area type="monotone" dataKey="egresos" stroke="#ef4444" fillOpacity={1} fill="url(#colorEgresos)" />
+            <Area
+              type="monotone"
+              dataKey="ingresos"
+              stroke="#10b981"
+              fillOpacity={1}
+              fill="url(#colorIngresos)"
+            />
+            <Area
+              type="monotone"
+              dataKey="egresos"
+              stroke="#ef4444"
+              fillOpacity={1}
+              fill="url(#colorEgresos)"
+            />
           </AreaChart>
         </ResponsiveContainer>
       </div>
@@ -171,7 +182,7 @@ export const ReportsCharts = ({ bancos, totalIngresos, totalEgresos }) => {
                 backgroundColor: 'rgba(15, 23, 42, 0.9)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
                 borderRadius: '12px',
-                color: '#fff'
+                color: '#fff',
               }}
               formatter={(value) => `$${value.toLocaleString()}`}
             />

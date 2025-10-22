@@ -1,0 +1,36 @@
+
+REPORTE DE VALIDACIÓN ENTERPRISE
+=================================
+Fecha: 2025-10-20T21:04:18.455Z
+Archivo: excel_data.json
+
+ESTADO GENERAL:
+- Validación: EXITOSA ✅
+- Errores críticos: 0
+- Advertencias: 21
+
+ESTADÍSTICAS:
+- ventasProcesadas: 80
+- ventasValidadas: 80
+- clientesProcesados: 29
+- clientesValidados: 29
+- ordenesProcesadas: 9
+- ordenesValidadas: 9
+- bancosProcesados: 6
+- bancosValidados: 6
+
+TRANSFORMACIONES:
+- Clientes numéricos transformados: 1
+- Estatus normalizados: 80
+- Adeudos negativos convertidos: 2
+
+INTEGRIDAD:
+- OCs faltantes: 0
+- Clientes no encontrados: 10
+- Diferencias en adeudos: 6
+
+CONCLUSIÓN:
+✅ Los datos están listos para importar.
+⚠️  21 advertencias detectadas (no bloquean importación).
+
+Reporte completo: validation_report_enterprise.json

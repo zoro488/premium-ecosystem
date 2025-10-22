@@ -1,14 +1,8 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { clsx } from 'clsx';
 
-const Badge = ({
-  children,
-  variant = 'default',
-  size = 'md',
-  className,
-  ...props
-}) => {
+import { clsx } from 'clsx';
+import { motion } from 'framer-motion';
+
+const Badge = ({ children, variant = 'default', size = 'md', className, ...props }) => {
   const variants = {
     default: 'bg-slate-100/10 text-slate-200 border border-slate-700/50',
     primary: 'bg-blue-500/20 text-blue-300 border border-blue-500/30',
@@ -34,13 +28,13 @@ const Badge = ({
         // Estilos base
         'inline-flex items-center gap-1 font-medium rounded-lg backdrop-blur-xl',
         'transition-all duration-200 ease-in-out',
-        
+
         // Tamaños
         sizes[size],
-        
+
         // Variantes
         variants[variant],
-        
+
         // Clases adicionales
         className
       )}

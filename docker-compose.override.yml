@@ -1,0 +1,29 @@
+# 🔥 Docker Compose Override para desarrollo local
+# Este archivo se combina automáticamente con docker-compose.yml
+
+version: '3.9'
+
+services:
+  app:
+    # Build más rápido sin cache
+    build:
+      cache_from:
+        - premium-ecosystem-app:latest
+    # Hot reload más rápido
+    environment:
+      - WATCHPACK_POLLING=true
+      - CHOKIDAR_USEPOLLING=true
+    # Límites de recursos para desarrollo
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+        reservations:
+          cpus: '1'
+          memory: 1G
+
+  firebase:
+    # Variables específicas para desarrollo
+    environment:
+      - FIREBASE_EMULATOR_HUB_HOST=0.0.0.0

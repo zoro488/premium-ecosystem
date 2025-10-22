@@ -2,23 +2,23 @@
  * 🔔 CENTRO DE NOTIFICACIONES COMPLETO
  * Sistema avanzado con prioridades, categorías, historial y acciones
  */
+import { useEffect, useState } from 'react';
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import {
-  Bell,
-  X,
-  CheckCircle2,
   AlertCircle,
-  Info,
   AlertTriangle,
-  Trash2,
-  Filter,
-  Check,
   Archive,
+  Bell,
+  Check,
+  CheckCircle2,
+  Filter,
+  Info,
+  Settings,
+  Trash2,
   Volume2,
   VolumeX,
-  Settings
+  X,
 } from 'lucide-react';
 
 /**
@@ -28,7 +28,7 @@ export const NOTIFICATION_PRIORITY = {
   LOW: 'low',
   MEDIUM: 'medium',
   HIGH: 'high',
-  CRITICAL: 'critical'
+  CRITICAL: 'critical',
 };
 
 /**
@@ -40,7 +40,7 @@ export const NOTIFICATION_CATEGORY = {
   INVENTORY: 'inventory',
   FINANCE: 'finance',
   ALERT: 'alert',
-  INFO: 'info'
+  INFO: 'info',
 };
 
 /**
@@ -50,7 +50,7 @@ export const useNotifications = () => {
   const [notifications, setNotifications] = useState([]);
   const [unreadCount, setUnreadCount] = useState(0);
   const [soundEnabled, setSoundEnabled] = useState(true);
-  
+
   // Cargar notificaciones del localStorage
   useEffect(() => {
     try {
@@ -58,68 +58,66 @@ export const useNotifications = () => {
       if (stored) {
         const parsed = JSON.parse(stored);
         setNotifications(parsed);
-        setUnreadCount(parsed.filter(n => !n.read).length);
+        setUnreadCount(parsed.filter((n) => !n.read).length);
       }
     } catch (error) {
-      console.error('Error loading notifications:', error);
+      // console.error('Error loading notifications:', error);
     }
   }, []);
-  
+
   // Guardar notificaciones en localStorage
   useEffect(() => {
     try {
       localStorage.setItem('flowdistributor_notifications', JSON.stringify(notifications));
-      setUnreadCount(notifications.filter(n => !n.read).length);
+      setUnreadCount(notifications.filter((n) => !n.read).length);
     } catch (error) {
-      console.error('Error saving notifications:', error);
+      // console.error('Error saving notifications:', error);
     }
   }, [notifications]);
-  
+
   const addNotification = (notification) => {
     const newNotification = {
       id: Date.now() + Math.random(),
       timestamp: new Date().toISOString(),
       read: false,
-      ...notification
+      ...notification,
     };
-    
-    setNotifications(prev => [newNotification, ...prev]);
-    
+
+    setNotifications((prev) => [newNotification, ...prev]);
+
     // Reproducir sonido si está habilitado
     if (soundEnabled && notification.priority !== NOTIFICATION_PRIORITY.LOW) {
       playNotificationSound(notification.priority);
     }
-    
+
     // Notificación del navegador si es crítica
     if (notification.priority === NOTIFICATION_PRIORITY.CRITICAL) {
       sendBrowserNotification(notification);
     }
-    
+
     return newNotification.id;
   };
-  
+
   const markAsRead = (id) => {
-    setNotifications(prev =>
-      prev.map(n => n.id === id ? { ...n, read: true } : n)
-    );
+    setNotifications((prev) => prev.map((n) => (n.id === id ? { ...n, read: true } : n)));
   };
-  
+
   const markAllAsRead = () => {
-    setNotifications(prev => prev.map(n => ({ ...n, read: true })));
+    setNotifications((prev) => prev.map((n) => ({ ...n, read: true })));
   };
-  
+
   const deleteNotification = (id) => {
-    setNotifications(prev => prev.filter(n => n.id !== id));
+    setNotifications((prev) => prev.filter((n) => n.id !== id));
   };
-  
+
   const clearAll = () => {
     setNotifications([]);
   };
-  
+
   const clearRead = () => {
-    setNotifications(prev => prev.filter(n => !n.read));
+    setNotifications((prev) => prev.filter((n) => !n.read));
   };
-  
+
   return {
     notifications,
     unreadCount,
@@ -130,7 +128,7 @@ export const useNotifications = () => {
     markAllAsRead,
     deleteNotification,
     clearAll,
-    clearRead
+    clearRead,
   };
 };
 
@@ -142,25 +140,25 @@ const playNotificationSound = (priority) => {
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     const oscillator = audioContext.createOscillator();
     const gainNode = audioContext.createGain();
-    
+
     oscillator.connect(gainNode);
     gainNode.connect(audioContext.destination);
-    
+
     // Frecuencias según prioridad
     const frequencies = {
       [NOTIFICATION_PRIORITY.LOW]: 400,
       [NOTIFICATION_PRIORITY.MEDIUM]: 600,
       [NOTIFICATION_PRIORITY.HIGH]: 800,
-      [NOTIFICATION_PRIORITY.CRITICAL]: 1000
+      [NOTIFICATION_PRIORITY.CRITICAL]: 1000,
     };
-    
+
     oscillator.frequency.value = frequencies[priority] || 600;
     gainNode.gain.value = 0.1;
-    
+
     oscillator.start();
     oscillator.stop(audioContext.currentTime + 0.1);
   } catch (error) {
-    console.error('Error playing sound:', error);
+    // console.error('Error playing sound:', error);
   }
 };
 
@@ -169,16 +167,16 @@ const playNotificationSound = (priority) => {
  */
 const sendBrowserNotification = (notification) => {
   if (!('Notification' in window)) return;
-  
+
   if (Notification.permission === 'granted') {
     new Notification('FlowDistributor', {
       body: notification.message,
       icon: '/favicon.ico',
       tag: notification.id,
-      requireInteraction: true
+      requireInteraction: true,
     });
   } else if (Notification.permission !== 'denied') {
-    Notification.requestPermission().then(permission => {
+    Notification.requestPermission().then((permission) => {
       if (permission === 'granted') {
         sendBrowserNotification(notification);
       }
@@ -192,35 +190,35 @@ const sendBrowserNotification = (notification) => {
 const NotificationCenter = ({ isOpen, onClose, notifications, onAction }) => {
   const [filter, setFilter] = useState('all');
   const [categoryFilter, setCategoryFilter] = useState('all');
-  
-  const filteredNotifications = notifications.filter(n => {
+
+  const filteredNotifications = notifications.filter((n) => {
     if (filter === 'unread' && n.read) return false;
     if (filter === 'read' && !n.read) return false;
     if (categoryFilter !== 'all' && n.category !== categoryFilter) return false;
     return true;
   });
-  
+
   const getPriorityColor = (priority) => {
     const colors = {
       [NOTIFICATION_PRIORITY.LOW]: 'text-blue-400 bg-blue-500/20',
       [NOTIFICATION_PRIORITY.MEDIUM]: 'text-yellow-400 bg-yellow-500/20',
       [NOTIFICATION_PRIORITY.HIGH]: 'text-orange-400 bg-orange-500/20',
-      [NOTIFICATION_PRIORITY.CRITICAL]: 'text-red-400 bg-red-500/20'
+      [NOTIFICATION_PRIORITY.CRITICAL]: 'text-red-400 bg-red-500/20',
     };
     return colors[priority] || colors[NOTIFICATION_PRIORITY.MEDIUM];
   };
-  
+
   const getPriorityIcon = (priority) => {
     const icons = {
       [NOTIFICATION_PRIORITY.LOW]: Info,
       [NOTIFICATION_PRIORITY.MEDIUM]: Bell,
       [NOTIFICATION_PRIORITY.HIGH]: AlertTriangle,
-      [NOTIFICATION_PRIORITY.CRITICAL]: AlertCircle
+      [NOTIFICATION_PRIORITY.CRITICAL]: AlertCircle,
     };
     const Icon = icons[priority] || Bell;
     return <Icon className="w-5 h-5" />;
   };
-  
+
   const getCategoryIcon = (category) => {
     const icons = {
       [NOTIFICATION_CATEGORY.SYSTEM]: Settings,
@@ -228,12 +226,12 @@ const NotificationCenter = ({ isOpen, onClose, notifications, onAction }) => {
       [NOTIFICATION_CATEGORY.INVENTORY]: Archive,
       [NOTIFICATION_CATEGORY.FINANCE]: Bell,
       [NOTIFICATION_CATEGORY.ALERT]: AlertTriangle,
-      [NOTIFICATION_CATEGORY.INFO]: Info
+      [NOTIFICATION_CATEGORY.INFO]: Info,
     };
     const Icon = icons[category] || Bell;
     return <Icon className="w-4 h-4" />;
   };
-  
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -246,7 +244,7 @@ const NotificationCenter = ({ isOpen, onClose, notifications, onAction }) => {
             onClick={onClose}
             className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
           />
-          
+
           {/* Panel */}
           <motion.div
             initial={{ x: 400, opacity: 0 }}
@@ -265,7 +263,7 @@ const NotificationCenter = ({ isOpen, onClose, notifications, onAction }) => {
                   <div>
                     <h2 className="text-xl font-bold text-white">Notificaciones</h2>
                     <p className="text-sm text-slate-400">
-                      {notifications.filter(n => !n.read).length} sin leer
+                      {notifications.filter((n) => !n.read).length} sin leer
                     </p>
                   </div>
                 </div>
@@ -276,7 +274,7 @@ const NotificationCenter = ({ isOpen, onClose, notifications, onAction }) => {
                   <X className="w-5 h-5" />
                 </button>
               </div>
-              
+
               {/* Filtros */}
               <div className="flex gap-2">
                 <select
@@ -288,7 +286,7 @@ const NotificationCenter = ({ isOpen, onClose, notifications, onAction }) => {
                   <option value="unread">Sin leer</option>
                   <option value="read">Leídas</option>
                 </select>
-                
+
                 <select
                   value={categoryFilter}
                   onChange={(e) => setCategoryFilter(e.target.value)}
@@ -302,7 +300,7 @@ const NotificationCenter = ({ isOpen, onClose, notifications, onAction }) => {
                   <option value={NOTIFICATION_CATEGORY.SYSTEM}>Sistema</option>
                 </select>
               </div>
-              
+
               {/* Acciones rápidas */}
               <div className="flex gap-2 mt-3">
                 <button
@@ -321,7 +319,7 @@ const NotificationCenter = ({ isOpen, onClose, notifications, onAction }) => {
                 </button>
               </div>
             </div>
-            
+
             {/* Lista de notificaciones */}
             <div className="flex-1 overflow-y-auto p-4 space-y-2">
               <AnimatePresence mode="popLayout">
@@ -336,7 +334,7 @@ const NotificationCenter = ({ isOpen, onClose, notifications, onAction }) => {
                     <p className="text-sm">Estás al día con todo</p>
                   </motion.div>
                 ) : (
-                  filteredNotifications.map(notification => (
+                  filteredNotifications.map((notification) => (
                     <motion.div
                       key={notification.id}
                       layout
@@ -350,13 +348,17 @@ const NotificationCenter = ({ isOpen, onClose, notifications, onAction }) => {
                       } hover:bg-white/10`}
                     >
                       <div className="flex gap-3">
-                        <div className={`w-10 h-10 rounded-lg ${getPriorityColor(notification.priority)} flex items-center justify-center flex-shrink-0`}>
+                        <div
+                          className={`w-10 h-10 rounded-lg ${getPriorityColor(notification.priority)} flex items-center justify-center flex-shrink-0`}
+                        >
                           {getPriorityIcon(notification.priority)}
                         </div>
-                        
+
                         <div className="flex-1 min-w-0">
                           <div className="flex items-start justify-between gap-2 mb-1">
-                            <h4 className={`font-medium ${notification.read ? 'text-slate-300' : 'text-white'}`}>
+                            <h4
+                              className={`font-medium ${notification.read ? 'text-slate-300' : 'text-white'}`}
+                            >
                               {notification.title || 'Notificación'}
                             </h4>
                             <button
@@ -366,22 +368,22 @@ const NotificationCenter = ({ isOpen, onClose, notifications, onAction }) => {
                               <X className="w-3 h-3" />
                             </button>
                           </div>
-                          
-                          <p className="text-sm text-slate-400 mb-2">
-                            {notification.message}
-                          </p>
-                          
+
+                          <p className="text-sm text-slate-400 mb-2">{notification.message}</p>
+
                           <div className="flex items-center justify-between text-xs">
                             <div className="flex items-center gap-2 text-slate-500">
                               {getCategoryIcon(notification.category)}
-                              <span>{new Date(notification.timestamp).toLocaleString('es-MX', {
-                                day: '2-digit',
-                                month: 'short',
-                                hour: '2-digit',
-                                minute: '2-digit'
-                              })}</span>
+                              <span>
+                                {new Date(notification.timestamp).toLocaleString('es-MX', {
+                                  day: '2-digit',
+                                  month: 'short',
+                                  hour: '2-digit',
+                                  minute: '2-digit',
+                                })}
+                              </span>
                             </div>
-                            
+
                             {!notification.read && (
                               <button
                                 onClick={() => onAction('markRead', notification.id)}
@@ -391,7 +393,7 @@ const NotificationCenter = ({ isOpen, onClose, notifications, onAction }) => {
                               </button>
                             )}
                           </div>
-                          
+
                           {notification.action && (
                             <button
                               onClick={() => notification.action.callback()}

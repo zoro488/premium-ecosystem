@@ -1,0 +1,82 @@
+# 🤖 GitHub Models Integration - GPT-4, Claude, Gemini
+name: GitHub Models Demo
+
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: 'Choose AI Model'
+        required: true
+        type: choice
+        options:
+          - gpt-4o
+          - gpt-4-turbo
+          - claude-3-opus
+          - claude-3-sonnet
+          - gemini-pro
+      prompt:
+        description: 'Your prompt'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  run-model:
+    name: 🧠 Execute AI Model
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🤖 Run GitHub Model
+        id: ai_response
+        uses: github/models-action@v1
+        with:
+          model: ${{ inputs.model }}
+          prompt: |
+            Context: Premium Enterprise React + Firebase Ecosystem
+
+            Project Tech Stack:
+            - React 18 + TypeScript + Vite
+            - Firebase v12 (Firestore, Auth, Storage)
+            - TailwindCSS + Zustand + React Query
+            - Vitest + Playwright
+
+            User Request: ${{ inputs.prompt }}
+
+            Provide expert advice specific to this tech stack.
+
+      - name: 📝 Display Response
+        run: |
+          echo "### 🤖 AI Response from ${{ inputs.model }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "${{ steps.ai_response.outputs.response }}" >> $GITHUB_STEP_SUMMARY
+
+  code-generation:
+    name: 🎨 AI Code Generator
+    runs-on: ubuntu-latest
+    if: contains(github.event.inputs.prompt, 'generate')
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🛠️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 🤖 Generate Code with AI
+        run: |
+          echo "Using GitHub Models for code generation..."
+          # Future: Integrate actual code generation here
+
+      - name: ✅ Validate Generated Code
+        run: |
+          echo "Running ESLint and TypeScript checks..."
+          npm run lint || true

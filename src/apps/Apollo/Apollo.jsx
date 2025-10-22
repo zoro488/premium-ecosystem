@@ -1,83 +1,85 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+
+import { AnimatePresence, motion, useMotionValue, useSpring } from 'framer-motion';
 import {
-  Map,
-  Car,
-  Radio,
-  Scan,
-  Target,
-  TrendingUp,
-  AlertCircle,
-  Navigation,
-  Battery,
-  Video,
-  Zap,
-  MapPin,
   Activity,
-  Clock,
-  User,
-  Menu,
-  X,
-  Maximize2,
-  RefreshCw,
-  Settings,
-  Filter,
-  Eye,
-  Camera,
-  Plane,
-  Circle,
-  Play,
-  Pause,
-  Square,
-  Crosshair,
-  Radar,
-  Satellite,
-  Compass,
-  Signal,
-  Gauge,
-  Wind,
-  CloudRain,
-  Thermometer,
-  Layers,
-  Globe,
-  MapPinned,
-  Locate,
-  Route,
-  Navigation2,
-  Wifi,
-  WifiOff,
-  Power,
-  Cpu,
-  HardDrive,
-  Database,
-  Lock,
-  Unlock,
-  Shield,
+  AlertCircle,
   Award,
-  Flame,
-  Sparkles,
-  CircuitBoard,
-  Search,
-  Download,
-  Upload,
-  ChevronRight,
-  CheckCircle,
-  XCircle,
-  Info,
+  BarChart3,
+  Battery,
   Bell,
   BellOff,
-  Trash2,
-  Edit,
-  BarChart3,
-  PieChart,
-  LineChart,
-  TrendingDown,
   Calendar,
-  Users,
+  Camera,
+  Car,
+  CheckCircle,
+  ChevronRight,
+  Circle,
+  CircuitBoard,
+  Clock,
+  CloudRain,
+  Compass,
+  Cpu,
+  Crosshair,
+  Database,
+  Download,
+  Edit,
+  Eye,
+  Filter,
+  Flame,
+  Gauge,
+  Globe,
+  HardDrive,
+  Info,
+  Layers,
+  LineChart,
+  Locate,
+  Lock,
+  Map,
+  MapPin,
+  MapPinned,
+  Maximize2,
+  Menu,
+  Navigation,
+  Navigation2,
   Package,
+  Pause,
+  PieChart,
+  Plane,
+  Play,
+  Power,
+  Radar,
+  Radio,
+  RefreshCw,
+  Route,
+  Satellite,
+  Scan,
+  Search,
+  Settings,
+  Shield,
+  Signal,
+  Sparkles,
+  Square,
+  Target,
+  Thermometer,
+  Trash2,
+  TrendingDown,
+  TrendingUp,
+  Unlock,
+  Upload,
+  User,
+  Users,
+  Video,
+  Wifi,
+  WifiOff,
+  Wind,
+  X,
+  XCircle,
+  Zap,
 } from 'lucide-react';
+
 import AIAssistant from '../../components/shared/AIAssistant';
-import { storage, STORAGE_KEYS, useLocalStorage } from '../../utils/storage';
+import { STORAGE_KEYS, useLocalStorage } from '../../utils/storage';
 
 // Mock data de vehículos con GPS
 const initialVehicles = [
@@ -106,7 +108,7 @@ const initialVehicles = [
     driver: 'María García',
     status: 'stopped',
     speed: 0,
-    location: { lat: 25.6750, lng: -100.3090, address: 'Centro de Monterrey' },
+    location: { lat: 25.675, lng: -100.309, address: 'Centro de Monterrey' },
     battery: 95,
     fuel: 90,
     lastUpdate: '5 min ago',
@@ -124,7 +126,7 @@ const initialVehicles = [
     driver: 'Carlos López',
     status: 'moving',
     speed: 45,
-    location: { lat: 25.6800, lng: -100.3200, address: 'San Pedro Garza García' },
+    location: { lat: 25.68, lng: -100.32, address: 'San Pedro Garza García' },
     battery: 72,
     fuel: 60,
     lastUpdate: '1 min ago',
@@ -142,7 +144,7 @@ const initialVehicles = [
     driver: 'Ana Martínez',
     status: 'idle',
     speed: 0,
-    location: { lat: 25.6900, lng: -100.3250, address: 'Santa Catarina' },
+    location: { lat: 25.69, lng: -100.325, address: 'Santa Catarina' },
     battery: 45,
     fuel: 30,
     lastUpdate: '10 min ago',
@@ -162,7 +164,7 @@ const initialDrones = [
     name: 'Drone Alpha',
     model: 'DJI Matrice 300',
     status: 'active',
-    location: { lat: 25.6850, lng: -100.3180 },
+    location: { lat: 25.685, lng: -100.318 },
     altitude: 120,
     battery: 78,
     camera: 'streaming',
@@ -180,7 +182,7 @@ const initialDrones = [
     name: 'Drone Beta',
     model: 'DJI Mavic 3',
     status: 'standby',
-    location: { lat: 25.6770, lng: -100.3050 },
+    location: { lat: 25.677, lng: -100.305 },
     altitude: 0,
     battery: 100,
     camera: 'offline',
@@ -198,7 +200,7 @@ const initialDrones = [
     name: 'Drone Gamma',
     model: 'Autel EVO II',
     status: 'active',
-    location: { lat: 25.6820, lng: -100.3120 },
+    location: { lat: 25.682, lng: -100.312 },
     altitude: 85,
     battery: 62,
     camera: 'streaming',
@@ -226,7 +228,7 @@ const initialDetections = [
       accessories: 'Backpack',
     },
     timestamp: '10:45:23',
-    location: { lat: 25.6850, lng: -100.3180 },
+    location: { lat: 25.685, lng: -100.318 },
     threat: 'low',
     droneId: 1,
     date: '2024-01-15',
@@ -258,7 +260,7 @@ const initialDetections = [
       accessories: 'Handbag',
     },
     timestamp: '10:43:05',
-    location: { lat: 25.6820, lng: -100.3120 },
+    location: { lat: 25.682, lng: -100.312 },
     threat: 'low',
     droneId: 3,
     date: '2024-01-15',
@@ -374,13 +376,55 @@ const CursorGlow = () => {
 // Sidebar Premium
 const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed }) => {
   const menuItems = [
-    { id: 'map', icon: Map, label: 'Mapa Táctico', color: 'from-green-500 to-emerald-500', badge: null },
-    { id: 'vehicles', icon: Car, label: 'Vehículos GPS', color: 'from-blue-500 to-cyan-500', badge: 4 },
-    { id: 'drones', icon: Radio, label: 'Control Drones', color: 'from-purple-500 to-pink-500', badge: 3 },
-    { id: 'scanner', icon: Scan, label: 'Scanner IA', color: 'from-cyan-500 to-teal-500', badge: 'LIVE' },
-    { id: 'detections', icon: Target, label: 'Detecciones', color: 'from-red-500 to-orange-500', badge: 12 },
-    { id: 'analytics', icon: TrendingUp, label: 'Analytics', color: 'from-yellow-500 to-amber-500', badge: null },
-    { id: 'alerts', icon: AlertCircle, label: 'Alertas', color: 'from-orange-500 to-red-500', badge: 2 },
+    {
+      id: 'map',
+      icon: Map,
+      label: 'Mapa Táctico',
+      color: 'from-green-500 to-emerald-500',
+      badge: null,
+    },
+    {
+      id: 'vehicles',
+      icon: Car,
+      label: 'Vehículos GPS',
+      color: 'from-blue-500 to-cyan-500',
+      badge: 4,
+    },
+    {
+      id: 'drones',
+      icon: Radio,
+      label: 'Control Drones',
+      color: 'from-purple-500 to-pink-500',
+      badge: 3,
+    },
+    {
+      id: 'scanner',
+      icon: Scan,
+      label: 'Scanner IA',
+      color: 'from-cyan-500 to-teal-500',
+      badge: 'LIVE',
+    },
+    {
+      id: 'detections',
+      icon: Target,
+      label: 'Detecciones',
+      color: 'from-red-500 to-orange-500',
+      badge: 12,
+    },
+    {
+      id: 'analytics',
+      icon: TrendingUp,
+      label: 'Analytics',
+      color: 'from-yellow-500 to-amber-500',
+      badge: null,
+    },
+    {
+      id: 'alerts',
+      icon: AlertCircle,
+      label: 'Alertas',
+      color: 'from-orange-500 to-red-500',
+      badge: 2,
+    },
   ];
 
   return (
@@ -398,7 +442,8 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
           transition={{ duration: 20, repeat: Infinity, repeatType: 'reverse' }}
           className="absolute inset-0 opacity-20"
           style={{
-            backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 50%)',
+            backgroundImage:
+              'radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 50%)',
             backgroundSize: '100% 100%',
           }}
         />
@@ -491,14 +536,17 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
               <div
                 className={`
                   relative flex items-center gap-3 px-4 py-3 rounded-xl transition-all
-                  ${isActive
-                    ? `bg-gradient-to-r ${item.color} bg-opacity-20 border border-white/20 shadow-lg`
-                    : 'hover:bg-white/5 border border-transparent'
+                  ${
+                    isActive
+                      ? `bg-gradient-to-r ${item.color} bg-opacity-20 border border-white/20 shadow-lg`
+                      : 'hover:bg-white/5 border border-transparent'
                   }
                 `}
               >
                 <div className={`relative ${isActive ? 'scale-110' : ''} transition-transform`}>
-                  <Icon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'} transition-colors`} />
+                  <Icon
+                    className={`w-5 h-5 ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'} transition-colors`}
+                  />
                   {isActive && (
                     <motion.div
                       animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
@@ -510,7 +558,9 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
 
                 {!isCollapsed && (
                   <>
-                    <span className={`font-medium flex-1 text-left ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'} transition-colors`}>
+                    <span
+                      className={`font-medium flex-1 text-left ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'} transition-colors`}
+                    >
                       {item.label}
                     </span>
                     {item.badge && (
@@ -519,9 +569,10 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
                         animate={{ scale: 1 }}
                         className={`
                           px-2 py-0.5 rounded-full text-xs font-bold
-                          ${typeof item.badge === 'number'
-                            ? 'bg-green-500/20 text-green-400 border border-green-500/30'
-                            : 'bg-gradient-to-r from-red-500 to-orange-500 text-white animate-pulse'
+                          ${
+                            typeof item.badge === 'number'
+                              ? 'bg-green-500/20 text-green-400 border border-green-500/30'
+                              : 'bg-gradient-to-r from-red-500 to-orange-500 text-white animate-pulse'
                           }
                         `}
                       >
@@ -635,17 +686,23 @@ const HUDOverlay = ({ vehicles, drones, selectedVehicle, selectedDrone }) => {
           <div className="grid grid-cols-4 gap-4">
             <div className="text-center">
               <Car className="w-5 h-5 text-blue-400 mx-auto mb-1" />
-              <div className="text-lg font-bold text-white">{vehicles.filter(v => v.status === 'moving').length}</div>
+              <div className="text-lg font-bold text-white">
+                {vehicles.filter((v) => v.status === 'moving').length}
+              </div>
               <div className="text-xs text-slate-400">En Movimiento</div>
             </div>
             <div className="text-center">
               <Radio className="w-5 h-5 text-purple-400 mx-auto mb-1" />
-              <div className="text-lg font-bold text-white">{drones.filter(d => d.status === 'active').length}</div>
+              <div className="text-lg font-bold text-white">
+                {drones.filter((d) => d.status === 'active').length}
+              </div>
               <div className="text-xs text-slate-400">Drones Activos</div>
             </div>
             <div className="text-center">
               <Target className="w-5 h-5 text-red-400 mx-auto mb-1" />
-              <div className="text-lg font-bold text-white">{drones.reduce((acc, d) => acc + d.detections, 0)}</div>
+              <div className="text-lg font-bold text-white">
+                {drones.reduce((acc, d) => acc + d.detections, 0)}
+              </div>
               <div className="text-xs text-slate-400">Detecciones IA</div>
             </div>
             <div className="text-center">
@@ -688,9 +745,11 @@ const MapboxView = ({ vehicles, drones, selectedVehicle, setSelectedVehicle }) =
         {/* Simulated Mapbox with grid */}
         <div className="absolute inset-0">
           {/* Grid overlay */}
-          <div className="absolute inset-0 opacity-20"
+          <div
+            className="absolute inset-0 opacity-20"
             style={{
-              backgroundImage: 'linear-gradient(rgba(16, 185, 129, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(16, 185, 129, 0.2) 1px, transparent 1px)',
+              backgroundImage:
+                'linear-gradient(rgba(16, 185, 129, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(16, 185, 129, 0.2) 1px, transparent 1px)',
               backgroundSize: '40px 40px',
             }}
           />
@@ -771,7 +830,9 @@ const MapboxView = ({ vehicles, drones, selectedVehicle, setSelectedVehicle }) =
                 )}
 
                 {/* Main marker */}
-                <div className={`relative p-4 rounded-2xl bg-gradient-to-br ${vehicle.color} shadow-2xl group-hover:shadow-green-500/50 transition-all`}>
+                <div
+                  className={`relative p-4 rounded-2xl bg-gradient-to-br ${vehicle.color} shadow-2xl group-hover:shadow-green-500/50 transition-all`}
+                >
                   <Car className="w-6 h-6 text-white" />
                 </div>
 
@@ -834,7 +895,9 @@ const MapboxView = ({ vehicles, drones, selectedVehicle, setSelectedVehicle }) =
                 )}
 
                 {/* Main drone marker */}
-                <div className={`relative p-4 rounded-2xl bg-gradient-to-br ${drone.color} shadow-2xl`}>
+                <div
+                  className={`relative p-4 rounded-2xl bg-gradient-to-br ${drone.color} shadow-2xl`}
+                >
                   <Radio className="w-6 h-6 text-white" />
                 </div>
 
@@ -888,9 +951,7 @@ const VehiclesSection = ({ vehicles }) => {
   const [selectedVehicle, setSelectedVehicle] = useState(null);
   const [filter, setFilter] = useState('all');
 
-  const filteredVehicles = vehicles.filter(v =>
-    filter === 'all' ? true : v.status === filter
-  );
+  const filteredVehicles = vehicles.filter((v) => (filter === 'all' ? true : v.status === filter));
 
   return (
     <motion.div
@@ -923,7 +984,7 @@ const VehiclesSection = ({ vehicles }) => {
               : 'bg-white/5 text-slate-400 hover:bg-white/10'
           }`}
         >
-          En Movimiento ({vehicles.filter(v => v.status === 'moving').length})
+          En Movimiento ({vehicles.filter((v) => v.status === 'moving').length})
         </motion.button>
         <motion.button
           whileHover={{ scale: 1.05 }}
@@ -935,7 +996,7 @@ const VehiclesSection = ({ vehicles }) => {
               : 'bg-white/5 text-slate-400 hover:bg-white/10'
           }`}
         >
-          Detenidos ({vehicles.filter(v => v.status === 'stopped' || v.status === 'idle').length})
+          Detenidos ({vehicles.filter((v) => v.status === 'stopped' || v.status === 'idle').length})
         </motion.button>
       </div>
 
@@ -952,7 +1013,9 @@ const VehiclesSection = ({ vehicles }) => {
             className="relative backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-green-500/20 rounded-2xl p-6 cursor-pointer group overflow-hidden"
           >
             {/* Glow effect */}
-            <div className={`absolute inset-0 bg-gradient-to-br ${vehicle.color} opacity-0 group-hover:opacity-10 transition-opacity`} />
+            <div
+              className={`absolute inset-0 bg-gradient-to-br ${vehicle.color} opacity-0 group-hover:opacity-10 transition-opacity`}
+            />
 
             {/* Header */}
             <div className="relative flex items-center justify-between mb-4">
@@ -965,11 +1028,13 @@ const VehiclesSection = ({ vehicles }) => {
                   <p className="text-sm text-slate-400">{vehicle.plate}</p>
                 </div>
               </div>
-              <div className={`px-3 py-1 rounded-full text-xs font-bold ${
-                vehicle.status === 'moving'
-                  ? 'bg-green-500/20 text-green-400 border border-green-500/30'
-                  : 'bg-slate-500/20 text-slate-400 border border-slate-500/30'
-              }`}>
+              <div
+                className={`px-3 py-1 rounded-full text-xs font-bold ${
+                  vehicle.status === 'moving'
+                    ? 'bg-green-500/20 text-green-400 border border-green-500/30'
+                    : 'bg-slate-500/20 text-slate-400 border border-slate-500/30'
+                }`}
+              >
                 {vehicle.status === 'moving' ? 'En Movimiento' : 'Detenido'}
               </div>
             </div>
@@ -1059,7 +1124,9 @@ const DronesSection = ({ drones }) => {
             className="relative backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-purple-500/20 rounded-2xl p-6 overflow-hidden group"
           >
             {/* Animated background */}
-            <div className={`absolute inset-0 bg-gradient-to-br ${drone.color} opacity-0 group-hover:opacity-10 transition-opacity`} />
+            <div
+              className={`absolute inset-0 bg-gradient-to-br ${drone.color} opacity-0 group-hover:opacity-10 transition-opacity`}
+            />
 
             {/* Header */}
             <div className="relative mb-4">
@@ -1067,11 +1134,13 @@ const DronesSection = ({ drones }) => {
                 <div className={`p-3 rounded-xl bg-gradient-to-br ${drone.color}`}>
                   <Radio className="w-6 h-6 text-white" />
                 </div>
-                <div className={`px-3 py-1 rounded-full text-xs font-bold ${
-                  drone.status === 'active'
-                    ? 'bg-green-500/20 text-green-400 border border-green-500/30 animate-pulse'
-                    : 'bg-slate-500/20 text-slate-400 border border-slate-500/30'
-                }`}>
+                <div
+                  className={`px-3 py-1 rounded-full text-xs font-bold ${
+                    drone.status === 'active'
+                      ? 'bg-green-500/20 text-green-400 border border-green-500/30 animate-pulse'
+                      : 'bg-slate-500/20 text-slate-400 border border-slate-500/30'
+                  }`}
+                >
                   {drone.status === 'active' ? 'ACTIVO' : 'STANDBY'}
                 </div>
               </div>
@@ -1093,8 +1162,11 @@ const DronesSection = ({ drones }) => {
                       animate={{ width: `${drone.battery}%` }}
                       transition={{ delay: index * 0.1 + 0.3 }}
                       className={`h-full ${
-                        drone.battery > 60 ? 'bg-green-500' :
-                        drone.battery > 30 ? 'bg-yellow-500' : 'bg-red-500'
+                        drone.battery > 60
+                          ? 'bg-green-500'
+                          : drone.battery > 30
+                            ? 'bg-yellow-500'
+                            : 'bg-red-500'
                       }`}
                     />
                   </div>
@@ -1123,9 +1195,11 @@ const DronesSection = ({ drones }) => {
                   <Video className="w-4 h-4" />
                   <span>Cámara</span>
                 </div>
-                <span className={`text-sm font-bold ${
-                  drone.camera === 'streaming' ? 'text-green-400' : 'text-slate-500'
-                }`}>
+                <span
+                  className={`text-sm font-bold ${
+                    drone.camera === 'streaming' ? 'text-green-400' : 'text-slate-500'
+                  }`}
+                >
                   {drone.camera === 'streaming' ? 'STREAMING' : 'OFFLINE'}
                 </span>
               </div>
@@ -1158,7 +1232,11 @@ const DronesSection = ({ drones }) => {
                     : 'bg-green-500/20 border border-green-500/30 text-green-400'
                 } font-medium transition-all`}
               >
-                {drone.status === 'active' ? <Pause className="w-4 h-4 mx-auto" /> : <Play className="w-4 h-4 mx-auto" />}
+                {drone.status === 'active' ? (
+                  <Pause className="w-4 h-4 mx-auto" />
+                ) : (
+                  <Play className="w-4 h-4 mx-auto" />
+                )}
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -1181,67 +1259,69 @@ const DronesSection = ({ drones }) => {
 
       {/* Camera Feeds */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
-        {drones.filter(d => d.camera === 'streaming').map((drone, index) => (
-          <motion.div
-            key={drone.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-            className="relative backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-purple-500/20 rounded-2xl p-6 overflow-hidden"
-          >
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-3">
-                <div className={`p-2 rounded-lg bg-gradient-to-br ${drone.color}`}>
-                  <Video className="w-5 h-5 text-white" />
+        {drones
+          .filter((d) => d.camera === 'streaming')
+          .map((drone, index) => (
+            <motion.div
+              key={drone.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="relative backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-purple-500/20 rounded-2xl p-6 overflow-hidden"
+            >
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <div className={`p-2 rounded-lg bg-gradient-to-br ${drone.color}`}>
+                    <Video className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-white">{drone.name}</h4>
+                    <p className="text-xs text-slate-400">Live Feed</p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-sm font-bold text-white">{drone.name}</h4>
-                  <p className="text-xs text-slate-400">Live Feed</p>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                  <span className="text-xs text-red-400 font-medium">LIVE</span>
                 </div>
               </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                <span className="text-xs text-red-400 font-medium">LIVE</span>
-              </div>
-            </div>
 
-            {/* Camera feed simulation */}
-            <div className="relative aspect-video bg-slate-900/50 rounded-xl overflow-hidden border border-slate-700/50">
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-800/50 to-slate-900/50" />
+              {/* Camera feed simulation */}
+              <div className="relative aspect-video bg-slate-900/50 rounded-xl overflow-hidden border border-slate-700/50">
+                <div className="absolute inset-0 bg-gradient-to-br from-slate-800/50 to-slate-900/50" />
 
-              {/* Crosshair overlay */}
-              <div className="absolute inset-0 flex items-center justify-center">
+                {/* Crosshair overlay */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
+                  >
+                    <Crosshair className="w-24 h-24 text-green-400/30" />
+                  </motion.div>
+                </div>
+
+                {/* HUD overlay */}
+                <div className="absolute inset-0 p-4">
+                  <div className="flex items-start justify-between">
+                    <div className="space-y-1">
+                      <div className="text-xs font-mono text-green-400">ALT: {drone.altitude}m</div>
+                      <div className="text-xs font-mono text-green-400">SPD: {drone.speed} m/s</div>
+                      <div className="text-xs font-mono text-green-400">HDG: {drone.heading}°</div>
+                    </div>
+                    <div className="text-xs font-mono text-green-400">
+                      {new Date().toLocaleTimeString()}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Scan lines */}
                 <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
-                >
-                  <Crosshair className="w-24 h-24 text-green-400/30" />
-                </motion.div>
+                  animate={{ y: ['0%', '100%'] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+                  className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-green-500/50 to-transparent"
+                />
               </div>
-
-              {/* HUD overlay */}
-              <div className="absolute inset-0 p-4">
-                <div className="flex items-start justify-between">
-                  <div className="space-y-1">
-                    <div className="text-xs font-mono text-green-400">ALT: {drone.altitude}m</div>
-                    <div className="text-xs font-mono text-green-400">SPD: {drone.speed} m/s</div>
-                    <div className="text-xs font-mono text-green-400">HDG: {drone.heading}°</div>
-                  </div>
-                  <div className="text-xs font-mono text-green-400">
-                    {new Date().toLocaleTimeString()}
-                  </div>
-                </div>
-              </div>
-
-              {/* Scan lines */}
-              <motion.div
-                animate={{ y: ['0%', '100%'] }}
-                transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-                className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-green-500/50 to-transparent"
-              />
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
       </div>
     </motion.div>
   );
@@ -1255,7 +1335,7 @@ const ScannerSection = ({ detections }) => {
   useEffect(() => {
     if (isScanning) {
       const interval = setInterval(() => {
-        setScanProgress(prev => (prev + 1) % 100);
+        setScanProgress((prev) => (prev + 1) % 100);
       }, 50);
       return () => clearInterval(interval);
     }
@@ -1315,8 +1395,11 @@ const ScannerSection = ({ detections }) => {
                     }}
                     transition={{ duration: 2, repeat: Infinity }}
                     className={`w-4 h-4 rounded-full ${
-                      detection.threat === 'high' ? 'bg-red-500' :
-                      detection.threat === 'medium' ? 'bg-yellow-500' : 'bg-green-500'
+                      detection.threat === 'high'
+                        ? 'bg-red-500'
+                        : detection.threat === 'medium'
+                          ? 'bg-yellow-500'
+                          : 'bg-green-500'
                     }`}
                   />
                 </motion.div>
@@ -1329,7 +1412,7 @@ const ScannerSection = ({ detections }) => {
             </div>
 
             {/* Range circles */}
-            {[25, 50, 75].map(radius => (
+            {[25, 50, 75].map((radius) => (
               <div
                 key={radius}
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-500/20"
@@ -1373,7 +1456,7 @@ const ScannerSection = ({ detections }) => {
               </div>
             </div>
             <div className="text-3xl font-bold text-green-400">
-              {detections.filter(d => d.threat === 'low').length}
+              {detections.filter((d) => d.threat === 'low').length}
             </div>
           </motion.div>
 
@@ -1393,7 +1476,7 @@ const ScannerSection = ({ detections }) => {
               </div>
             </div>
             <div className="text-3xl font-bold text-yellow-400">
-              {detections.filter(d => d.threat === 'medium').length}
+              {detections.filter((d) => d.threat === 'medium').length}
             </div>
           </motion.div>
 
@@ -1413,7 +1496,7 @@ const ScannerSection = ({ detections }) => {
               </div>
             </div>
             <div className="text-3xl font-bold text-red-400">
-              {detections.filter(d => d.threat === 'high').length}
+              {detections.filter((d) => d.threat === 'high').length}
             </div>
           </motion.div>
 
@@ -1455,10 +1538,15 @@ const ScannerSection = ({ detections }) => {
               transition={{ delay: index * 0.05 }}
               className="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all"
             >
-              <div className={`w-3 h-3 rounded-full ${
-                detection.threat === 'high' ? 'bg-red-500' :
-                detection.threat === 'medium' ? 'bg-yellow-500' : 'bg-green-500'
-              }`} />
+              <div
+                className={`w-3 h-3 rounded-full ${
+                  detection.threat === 'high'
+                    ? 'bg-red-500'
+                    : detection.threat === 'medium'
+                      ? 'bg-yellow-500'
+                      : 'bg-green-500'
+                }`}
+              />
               <div className="flex-1">
                 <div className="text-sm font-medium text-white capitalize">{detection.type}</div>
                 <div className="text-xs text-slate-400">{detection.timestamp}</div>
@@ -1479,7 +1567,7 @@ const DetectionsSection = ({ detections }) => {
   const [filter, setFilter] = useState('all');
   const [selectedDetection, setSelectedDetection] = useState(null);
 
-  const filteredDetections = detections.filter(d =>
+  const filteredDetections = detections.filter((d) =>
     filter === 'all' ? true : d.threat === filter
   );
 
@@ -1514,7 +1602,7 @@ const DetectionsSection = ({ detections }) => {
               : 'bg-white/5 text-slate-400 hover:bg-white/10'
           }`}
         >
-          Alta Amenaza ({detections.filter(d => d.threat === 'high').length})
+          Alta Amenaza ({detections.filter((d) => d.threat === 'high').length})
         </motion.button>
         <motion.button
           whileHover={{ scale: 1.05 }}
@@ -1526,7 +1614,7 @@ const DetectionsSection = ({ detections }) => {
               : 'bg-white/5 text-slate-400 hover:bg-white/10'
           }`}
         >
-          Media ({detections.filter(d => d.threat === 'medium').length})
+          Media ({detections.filter((d) => d.threat === 'medium').length})
         </motion.button>
         <motion.button
           whileHover={{ scale: 1.05 }}
@@ -1538,7 +1626,7 @@ const DetectionsSection = ({ detections }) => {
               : 'bg-white/5 text-slate-400 hover:bg-white/10'
           }`}
         >
-          Baja ({detections.filter(d => d.threat === 'low').length})
+          Baja ({detections.filter((d) => d.threat === 'low').length})
         </motion.button>
       </div>
 
@@ -1567,17 +1655,24 @@ const DetectionsSection = ({ detections }) => {
                   className="border-b border-white/5 hover:bg-white/5 transition-all"
                 >
                   <td className="px-6 py-4">
-                    <div className={`w-3 h-3 rounded-full ${
-                      detection.threat === 'high' ? 'bg-red-500 animate-pulse' :
-                      detection.threat === 'medium' ? 'bg-yellow-500' : 'bg-green-500'
-                    }`} />
+                    <div
+                      className={`w-3 h-3 rounded-full ${
+                        detection.threat === 'high'
+                          ? 'bg-red-500 animate-pulse'
+                          : detection.threat === 'medium'
+                            ? 'bg-yellow-500'
+                            : 'bg-green-500'
+                      }`}
+                    />
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-2">
                       {detection.type === 'person' && <User className="w-4 h-4 text-blue-400" />}
                       {detection.type === 'vehicle' && <Car className="w-4 h-4 text-purple-400" />}
                       {detection.type === 'weapon' && <Target className="w-4 h-4 text-red-400" />}
-                      {detection.type === 'suspicious' && <AlertCircle className="w-4 h-4 text-yellow-400" />}
+                      {detection.type === 'suspicious' && (
+                        <AlertCircle className="w-4 h-4 text-yellow-400" />
+                      )}
                       <span className="text-sm text-white capitalize">{detection.type}</span>
                     </div>
                   </td>
@@ -1589,16 +1684,26 @@ const DetectionsSection = ({ detections }) => {
                           style={{ width: `${detection.confidence * 100}%` }}
                         />
                       </div>
-                      <span className="text-sm text-slate-300">{(detection.confidence * 100).toFixed(0)}%</span>
+                      <span className="text-sm text-slate-300">
+                        {(detection.confidence * 100).toFixed(0)}%
+                      </span>
                     </div>
                   </td>
                   <td className="px-6 py-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-                      detection.threat === 'high' ? 'bg-red-500/20 text-red-400 border border-red-500/30' :
-                      detection.threat === 'medium' ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30' :
-                      'bg-green-500/20 text-green-400 border border-green-500/30'
-                    }`}>
-                      {detection.threat === 'high' ? 'ALTA' : detection.threat === 'medium' ? 'MEDIA' : 'BAJA'}
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-bold ${
+                        detection.threat === 'high'
+                          ? 'bg-red-500/20 text-red-400 border border-red-500/30'
+                          : detection.threat === 'medium'
+                            ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
+                            : 'bg-green-500/20 text-green-400 border border-green-500/30'
+                      }`}
+                    >
+                      {detection.threat === 'high'
+                        ? 'ALTA'
+                        : detection.threat === 'medium'
+                          ? 'MEDIA'
+                          : 'BAJA'}
                     </span>
                   </td>
                   <td className="px-6 py-4">
@@ -1642,12 +1747,12 @@ const DetectionsSection = ({ detections }) => {
 // Analytics Section
 const AnalyticsSection = ({ vehicles, drones, detections }) => {
   const totalDetections = detections.length;
-  const highThreat = detections.filter(d => d.threat === 'high').length;
-  const mediumThreat = detections.filter(d => d.threat === 'medium').length;
-  const lowThreat = detections.filter(d => d.threat === 'low').length;
+  const highThreat = detections.filter((d) => d.threat === 'high').length;
+  const mediumThreat = detections.filter((d) => d.threat === 'medium').length;
+  const lowThreat = detections.filter((d) => d.threat === 'low').length;
 
-  const vehiclesMoving = vehicles.filter(v => v.status === 'moving').length;
-  const dronesActive = drones.filter(d => d.status === 'active').length;
+  const vehiclesMoving = vehicles.filter((v) => v.status === 'moving').length;
+  const dronesActive = drones.filter((d) => d.status === 'active').length;
 
   return (
     <motion.div
@@ -1749,7 +1854,9 @@ const AnalyticsSection = ({ vehicles, drones, detections }) => {
             <div>
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm text-slate-300">Alta Amenaza</span>
-                <span className="text-sm font-bold text-red-400">{highThreat} ({((highThreat / totalDetections) * 100).toFixed(0)}%)</span>
+                <span className="text-sm font-bold text-red-400">
+                  {highThreat} ({((highThreat / totalDetections) * 100).toFixed(0)}%)
+                </span>
               </div>
               <div className="w-full h-3 bg-slate-700/50 rounded-full overflow-hidden">
                 <motion.div
@@ -1764,7 +1871,9 @@ const AnalyticsSection = ({ vehicles, drones, detections }) => {
             <div>
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm text-slate-300">Amenaza Media</span>
-                <span className="text-sm font-bold text-yellow-400">{mediumThreat} ({((mediumThreat / totalDetections) * 100).toFixed(0)}%)</span>
+                <span className="text-sm font-bold text-yellow-400">
+                  {mediumThreat} ({((mediumThreat / totalDetections) * 100).toFixed(0)}%)
+                </span>
               </div>
               <div className="w-full h-3 bg-slate-700/50 rounded-full overflow-hidden">
                 <motion.div
@@ -1779,7 +1888,9 @@ const AnalyticsSection = ({ vehicles, drones, detections }) => {
             <div>
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm text-slate-300">Baja Amenaza</span>
-                <span className="text-sm font-bold text-green-400">{lowThreat} ({((lowThreat / totalDetections) * 100).toFixed(0)}%)</span>
+                <span className="text-sm font-bold text-green-400">
+                  {lowThreat} ({((lowThreat / totalDetections) * 100).toFixed(0)}%)
+                </span>
               </div>
               <div className="w-full h-3 bg-slate-700/50 rounded-full overflow-hidden">
                 <motion.div
@@ -1812,7 +1923,7 @@ const AnalyticsSection = ({ vehicles, drones, detections }) => {
 
           <div className="space-y-4">
             {['moving', 'stopped', 'idle'].map((status, index) => {
-              const count = vehicles.filter(v => v.status === status).length;
+              const count = vehicles.filter((v) => v.status === status).length;
               const percentage = (count / vehicles.length) * 100;
               const colors = {
                 moving: 'from-green-500 to-emerald-500',
@@ -1824,7 +1935,9 @@ const AnalyticsSection = ({ vehicles, drones, detections }) => {
                 <div key={status}>
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm text-slate-300 capitalize">{status}</span>
-                    <span className="text-sm font-bold text-white">{count} ({percentage.toFixed(0)}%)</span>
+                    <span className="text-sm font-bold text-white">
+                      {count} ({percentage.toFixed(0)}%)
+                    </span>
                   </div>
                   <div className="w-full h-3 bg-slate-700/50 rounded-full overflow-hidden">
                     <motion.div
@@ -1867,20 +1980,37 @@ const AnalyticsSection = ({ vehicles, drones, detections }) => {
               transition={{ delay: 0.7 + index * 0.05 }}
               className="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all"
             >
-              <div className={`w-2 h-2 rounded-full ${
-                detection.threat === 'high' ? 'bg-red-500' :
-                detection.threat === 'medium' ? 'bg-yellow-500' : 'bg-green-500'
-              }`} />
+              <div
+                className={`w-2 h-2 rounded-full ${
+                  detection.threat === 'high'
+                    ? 'bg-red-500'
+                    : detection.threat === 'medium'
+                      ? 'bg-yellow-500'
+                      : 'bg-green-500'
+                }`}
+              />
               <div className="flex-1">
-                <div className="text-sm font-medium text-white capitalize">{detection.type} detectado</div>
-                <div className="text-xs text-slate-400">{detection.timestamp} - Confianza: {(detection.confidence * 100).toFixed(0)}%</div>
+                <div className="text-sm font-medium text-white capitalize">
+                  {detection.type} detectado
+                </div>
+                <div className="text-xs text-slate-400">
+                  {detection.timestamp} - Confianza: {(detection.confidence * 100).toFixed(0)}%
+                </div>
               </div>
-              <div className={`px-3 py-1 rounded-full text-xs font-bold ${
-                detection.threat === 'high' ? 'bg-red-500/20 text-red-400 border border-red-500/30' :
-                detection.threat === 'medium' ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30' :
-                'bg-green-500/20 text-green-400 border border-green-500/30'
-              }`}>
-                {detection.threat === 'high' ? 'ALTA' : detection.threat === 'medium' ? 'MEDIA' : 'BAJA'}
+              <div
+                className={`px-3 py-1 rounded-full text-xs font-bold ${
+                  detection.threat === 'high'
+                    ? 'bg-red-500/20 text-red-400 border border-red-500/30'
+                    : detection.threat === 'medium'
+                      ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
+                      : 'bg-green-500/20 text-green-400 border border-green-500/30'
+                }`}
+              >
+                {detection.threat === 'high'
+                  ? 'ALTA'
+                  : detection.threat === 'medium'
+                    ? 'MEDIA'
+                    : 'BAJA'}
               </div>
             </motion.div>
           ))}
@@ -1895,16 +2025,14 @@ const AlertsSection = ({ alerts: initialAlerts }) => {
   const [alerts, setAlerts] = useState(initialAlerts);
   const [filter, setFilter] = useState('all');
 
-  const filteredAlerts = alerts.filter(a =>
-    filter === 'all' ? true : a.type === filter
-  );
+  const filteredAlerts = alerts.filter((a) => (filter === 'all' ? true : a.type === filter));
 
   const markAsRead = (id) => {
-    setAlerts(alerts.map(a => a.id === id ? { ...a, read: true } : a));
+    setAlerts(alerts.map((a) => (a.id === id ? { ...a, read: true } : a)));
   };
 
   const deleteAlert = (id) => {
-    setAlerts(alerts.filter(a => a.id !== id));
+    setAlerts(alerts.filter((a) => a.id !== id));
   };
 
   return (
@@ -1938,7 +2066,9 @@ const AlertsSection = ({ alerts: initialAlerts }) => {
             <AlertCircle className="w-5 h-5 text-red-400" />
             <span className="text-sm text-slate-400">Críticas</span>
           </div>
-          <div className="text-3xl font-bold text-white">{alerts.filter(a => a.type === 'critical').length}</div>
+          <div className="text-3xl font-bold text-white">
+            {alerts.filter((a) => a.type === 'critical').length}
+          </div>
         </motion.div>
 
         <motion.div
@@ -1951,7 +2081,9 @@ const AlertsSection = ({ alerts: initialAlerts }) => {
             <AlertCircle className="w-5 h-5 text-yellow-400" />
             <span className="text-sm text-slate-400">Advertencias</span>
           </div>
-          <div className="text-3xl font-bold text-white">{alerts.filter(a => a.type === 'warning').length}</div>
+          <div className="text-3xl font-bold text-white">
+            {alerts.filter((a) => a.type === 'warning').length}
+          </div>
         </motion.div>
 
         <motion.div
@@ -1964,7 +2096,9 @@ const AlertsSection = ({ alerts: initialAlerts }) => {
             <Info className="w-5 h-5 text-blue-400" />
             <span className="text-sm text-slate-400">Información</span>
           </div>
-          <div className="text-3xl font-bold text-white">{alerts.filter(a => a.type === 'info').length}</div>
+          <div className="text-3xl font-bold text-white">
+            {alerts.filter((a) => a.type === 'info').length}
+          </div>
         </motion.div>
       </div>
 
@@ -2029,16 +2163,23 @@ const AlertsSection = ({ alerts: initialAlerts }) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.05 }}
             className={`backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border rounded-2xl p-6 ${
-              alert.type === 'critical' ? 'border-red-500/30' :
-              alert.type === 'warning' ? 'border-yellow-500/30' : 'border-blue-500/30'
+              alert.type === 'critical'
+                ? 'border-red-500/30'
+                : alert.type === 'warning'
+                  ? 'border-yellow-500/30'
+                  : 'border-blue-500/30'
             } ${!alert.read ? 'bg-white/5' : ''}`}
           >
             <div className="flex items-start gap-4">
-              <div className={`p-3 rounded-xl ${
-                alert.type === 'critical' ? 'bg-gradient-to-br from-red-500 to-orange-500' :
-                alert.type === 'warning' ? 'bg-gradient-to-br from-yellow-500 to-amber-500' :
-                'bg-gradient-to-br from-blue-500 to-cyan-500'
-              }`}>
+              <div
+                className={`p-3 rounded-xl ${
+                  alert.type === 'critical'
+                    ? 'bg-gradient-to-br from-red-500 to-orange-500'
+                    : alert.type === 'warning'
+                      ? 'bg-gradient-to-br from-yellow-500 to-amber-500'
+                      : 'bg-gradient-to-br from-blue-500 to-cyan-500'
+                }`}
+              >
                 {alert.type === 'critical' && <AlertCircle className="w-6 h-6 text-white" />}
                 {alert.type === 'warning' && <AlertCircle className="w-6 h-6 text-white" />}
                 {alert.type === 'info' && <Info className="w-6 h-6 text-white" />}
@@ -2121,7 +2262,10 @@ export default function Apollo() {
   const [isCollapsed, setIsCollapsed] = useLocalStorage(STORAGE_KEYS.SIDEBAR_STATE, false);
   const [vehicles, setVehicles] = useLocalStorage(STORAGE_KEYS.APOLLO_VEHICLES, initialVehicles);
   const [drones, setDrones] = useLocalStorage(STORAGE_KEYS.APOLLO_DRONES, initialDrones);
-  const [detections, setDetections] = useLocalStorage(STORAGE_KEYS.APOLLO_DETECTIONS, initialDetections);
+  const [detections, setDetections] = useLocalStorage(
+    STORAGE_KEYS.APOLLO_DETECTIONS,
+    initialDetections
+  );
   const [alerts, setAlerts] = useState(initialAlerts);
 
   const renderSection = () => {
@@ -2152,10 +2296,14 @@ export default function Apollo() {
 
       {/* Animated grid background */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'linear-gradient(rgba(16, 185, 129, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(16, 185, 129, 0.1) 1px, transparent 1px)',
-          backgroundSize: '50px 50px',
-        }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(16, 185, 129, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(16, 185, 129, 0.1) 1px, transparent 1px)',
+            backgroundSize: '50px 50px',
+          }}
+        />
       </div>
 
       <Sidebar
@@ -2178,14 +2326,23 @@ export default function Apollo() {
           >
             <div>
               <h2 className="text-3xl font-bold bg-gradient-to-r from-green-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent capitalize">
-                {activeSection === 'map' ? 'Mapa Táctico' :
-                 activeSection === 'vehicles' ? 'Vehículos GPS' :
-                 activeSection === 'drones' ? 'Control Drones' :
-                 activeSection === 'scanner' ? 'Scanner IA' :
-                 activeSection === 'detections' ? 'Detecciones' :
-                 activeSection === 'analytics' ? 'Analytics' : 'Alertas'}
+                {activeSection === 'map'
+                  ? 'Mapa Táctico'
+                  : activeSection === 'vehicles'
+                    ? 'Vehículos GPS'
+                    : activeSection === 'drones'
+                      ? 'Control Drones'
+                      : activeSection === 'scanner'
+                        ? 'Scanner IA'
+                        : activeSection === 'detections'
+                          ? 'Detecciones'
+                          : activeSection === 'analytics'
+                            ? 'Analytics'
+                            : 'Alertas'}
               </h2>
-              <p className="text-slate-400 mt-1">Control táctico de vehículos y drones en tiempo real</p>
+              <p className="text-slate-400 mt-1">
+                Control táctico de vehículos y drones en tiempo real
+              </p>
             </div>
 
             <div className="flex gap-3">

@@ -1,0 +1,436 @@
+name: Advanced CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop, 'release/**', 'hotfix/**']
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy'
+        required: true
+        type: choice
+        options:
+          - development
+          - staging
+          - production
+
+# Permisos mínimos requeridos
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+  id-token: write # Para OIDC
+
+# Variables globales
+env:
+  NODE_VERSION: '18'
+  CACHE_VERSION: v1
+
+# Evitar ejecuciones concurrentes
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ==================================================
+  # JOB 1: SETUP Y VALIDACIÓN
+  # ==================================================
+  setup:
+    name: Setup & Validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      cache-key: ${{ steps.cache-keys.outputs.node-modules }}
+      should-deploy: ${{ steps.check-deploy.outputs.should-deploy }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Full history para mejor análisis
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Generate cache keys
+        id: cache-keys
+        run: |
+          echo "node-modules=${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}-${{ env.CACHE_VERSION }}" >> $GITHUB_OUTPUT
+
+      - name: Cache node modules
+        uses: actions/cache@v4
+        id: npm-cache
+        with:
+          path: |
+            node_modules
+            ~/.npm
+            .vite
+          key: ${{ steps.cache-keys.outputs.node-modules }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: npm ci --prefer-offline --no-audit
+
+      - name: Validate package.json
+        run: npm run lint --if-present
+
+      - name: Check for deploy
+        id: check-deploy
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]] || [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "should-deploy=true" >> $GITHUB_OUTPUT
+          else
+            echo "should-deploy=false" >> $GITHUB_OUTPUT
+          fi
+
+  # ==================================================
+  # JOB 2: LINTING Y FORMATEO
+  # ==================================================
+  lint:
+    name: Lint & Format
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Restore node modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            ~/.npm
+          key: ${{ needs.setup.outputs.cache-key }}
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: Run ESLint
+        run: npm run lint
+        continue-on-error: true
+
+      - name: Check formatting
+        run: npx prettier --check "src/**/*.{js,jsx,json,css,md}"
+        continue-on-error: true
+
+  # ==================================================
+  # JOB 3: TESTING CON MATRIX STRATEGY
+  # ==================================================
+  test:
+    name: Test (Node ${{ matrix.node-version }}, ${{ matrix.os }})
+    needs: setup
+    timeout-minutes: 30
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node-version: ['18', '20', '21']
+        exclude:
+          # Excluir combinaciones innecesarias para ahorrar minutos
+          - os: macos-latest
+            node-version: '18'
+          - os: windows-latest
+            node-version: '18'
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            ~/.npm
+          key: ${{ needs.setup.outputs.cache-key }}
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: Run unit tests
+        run: npm run test:run
+        env:
+          NODE_ENV: test
+
+      - name: Upload coverage to Codecov
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == '20'
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage/coverage-final.json
+          flags: unittests
+          name: codecov-umbrella
+
+  # ==================================================
+  # JOB 4: E2E TESTING
+  # ==================================================
+  e2e:
+    name: E2E Tests (Playwright)
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.0-jammy
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            ~/.npm
+          key: ${{ needs.setup.outputs.cache-key }}
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: Run Playwright tests
+        run: npm run test:e2e
+        env:
+          CI: true
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
+
+  # ==================================================
+  # JOB 5: BUILD CON MÚLTIPLES TARGETS
+  # ==================================================
+  build:
+    name: Build (${{ matrix.target }})
+    needs: [lint, test]
+    timeout-minutes: 20
+
+    strategy:
+      matrix:
+        target: [development, staging, production]
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            ~/.npm
+          key: ${{ needs.setup.outputs.cache-key }}
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: Build application
+        run: npm run build
+        env:
+          NODE_ENV: ${{ matrix.target }}
+          VITE_ENV: ${{ matrix.target }}
+
+      - name: Analyze bundle size
+        run: |
+          npx vite-bundle-visualizer --open false
+        continue-on-error: true
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-${{ matrix.target }}
+          path: dist/
+          retention-days: 7
+
+      - name: Upload bundle stats
+        uses: actions/upload-artifact@v4
+        if: matrix.target == 'production'
+        with:
+          name: bundle-stats
+          path: stats.html
+          retention-days: 30
+
+  # ==================================================
+  # JOB 6: SECURITY SCAN
+  # ==================================================
+  security:
+    name: Security Scan
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    permissions:
+      security-events: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run npm audit
+        run: npm audit --production --audit-level=moderate
+        continue-on-error: true
+
+      - name: Run Snyk security scan
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high
+        continue-on-error: true
+
+      - name: OWASP Dependency Check
+        uses: dependency-check/Dependency-Check_Action@main
+        with:
+          project: 'premium-ecosystem'
+          path: '.'
+          format: 'HTML'
+        continue-on-error: true
+
+  # ==================================================
+  # JOB 7: PERFORMANCE TESTING
+  # ==================================================
+  performance:
+    name: Performance Testing
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-production
+          path: dist/
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v11
+        with:
+          urls: |
+            http://localhost:4173
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+  # ==================================================
+  # JOB 8: DEPLOY
+  # ==================================================
+  deploy:
+    name: Deploy to ${{ matrix.environment }}
+    needs: [build, e2e, security]
+    if: needs.setup.outputs.should-deploy == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    strategy:
+      matrix:
+        environment: [development, staging]
+
+    environment:
+      name: ${{ matrix.environment }}
+      url: ${{ steps.deploy.outputs.url }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-${{ matrix.environment }}
+          path: dist/
+
+      - name: Deploy to Firebase
+        id: deploy
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          channelId: ${{ matrix.environment }}
+          projectId: premium-ecosystem-1760790572
+
+      - name: Comment PR with preview URL
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `✅ Preview deployed to: ${{ steps.deploy.outputs.url }}`
+            })
+
+  # ==================================================
+  # JOB 9: NOTIFICACIONES
+  # ==================================================
+  notify:
+    name: Send Notifications
+    needs: [deploy]
+    if: always()
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check workflow status
+        id: check-status
+        run: |
+          if [[ "${{ needs.deploy.result }}" == "success" ]]; then
+            echo "status=success" >> $GITHUB_OUTPUT
+            echo "color=#36a64f" >> $GITHUB_OUTPUT
+          else
+            echo "status=failure" >> $GITHUB_OUTPUT
+            echo "color=#ff0000" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Send Slack notification
+        uses: slackapi/slack-github-action@v1.26.0
+        if: always()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        with:
+          payload: |
+            {
+              "text": "Deployment ${{ steps.check-status.outputs.status }}",
+              "attachments": [{
+                "color": "${{ steps.check-status.outputs.color }}",
+                "fields": [
+                  {"title": "Repository", "value": "${{ github.repository }}", "short": true},
+                  {"title": "Branch", "value": "${{ github.ref_name }}", "short": true},
+                  {"title": "Status", "value": "${{ steps.check-status.outputs.status }}", "short": true},
+                  {"title": "Workflow", "value": "${{ github.workflow }}", "short": true}
+                ]
+              }]
+            }

@@ -1,12 +1,13 @@
-# CODEOWNERS - Define quién debe revisar cambios en archivos específicos
-# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+# 👥 Code Owners - Premium Ecosystem
+# These owners will be requested for review when someone opens a pull request.
 
-# Propietario por defecto para todo el repositorio
-* @yourusername
+# Default owner for everything
+* @zoro488
 
-# GitHub Actions y CI/CD
-/.github/ @yourusername
-/.github/workflows/ @yourusername
+# GitHub Actions & CI/CD
+/.github/ @zoro488
+/.github/workflows/ @zoro488
+/.github/scripts/ @zoro488
 
 # Configuración de build y deployment
 /vite.config.js @yourusername

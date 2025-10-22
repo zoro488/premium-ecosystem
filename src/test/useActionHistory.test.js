@@ -1,5 +1,6 @@
-import { describe, it, expect, beforeEach } from 'vitest';
-import { renderHook, act } from '@testing-library/react';
+import { act, renderHook } from '@testing-library/react';
+import { beforeEach, describe, expect, it } from 'vitest';
+
 import { useActionHistory } from '../utils/undoRedo';
 
 describe('useActionHistory', () => {
@@ -10,7 +11,7 @@ describe('useActionHistory', () => {
   describe('initialization', () => {
     it('should initialize with empty history', () => {
       const { result } = renderHook(() => useActionHistory());
-      
+
       expect(result.current.history).toHaveLength(0);
       expect(result.current.currentIndex).toBe(-1);
       expect(result.current.canUndo).toBe(false);
@@ -19,7 +20,7 @@ describe('useActionHistory', () => {
 
     it('should accept custom maxHistory', () => {
       const { result } = renderHook(() => useActionHistory(10));
-      
+
       expect(result.current.historyLength).toBe(0);
     });
   });
@@ -27,12 +28,17 @@ describe('useActionHistory', () => {
   describe('executeAction', () => {
     it('should execute action and add to history', () => {
       const { result } = renderHook(() => useActionHistory());
-      
+
       let value = 0;
       const action = {
-        execute: () => { value = 10; return value; },
-        undo: () => { value = 0; },
-        description: 'Set value to 10'
+        execute: () => {
+          value = 10;
+          return value;
+        },
+        undo: () => {
+          value = 0;
+        },
+        description: 'Set value to 10',
       };
 
       act(() => {
@@ -47,11 +53,11 @@ describe('useActionHistory', () => {
 
     it('should store action description', () => {
       const { result } = renderHook(() => useActionHistory());
-      
+
       const action = {
         execute: () => 'result',
         undo: () => {},
-        description: 'Test action'
+        description: 'Test action',
       };
 
       act(() => {
@@ -64,23 +70,23 @@ describe('useActionHistory', () => {
 
     it('should clear future actions when executing in middle of history', () => {
       const { result } = renderHook(() => useActionHistory());
-      
+
       // Execute 3 actions
       act(() => {
         result.current.executeAction({
           execute: () => 1,
           undo: () => {},
-          description: 'Action 1'
+          description: 'Action 1',
         });
         result.current.executeAction({
           execute: () => 2,
           undo: () => {},
-          description: 'Action 2'
+          description: 'Action 2',
         });
         result.current.executeAction({
           execute: () => 3,
           undo: () => {},
-          description: 'Action 3'
+          description: 'Action 3',
         });
       });
 
@@ -97,7 +103,7 @@ describe('useActionHistory', () => {
         result.current.executeAction({
           execute: () => 4,
           undo: () => {},
-          description: 'Action 4'
+          description: 'Action 4',
         });
       });
 
@@ -106,14 +112,14 @@ describe('useActionHistory', () => {
 
     it('should limit history to maxHistory', () => {
       const { result } = renderHook(() => useActionHistory(3));
-      
+
       // Execute 5 actions
       act(() => {
         for (let i = 0; i < 5; i++) {
           result.current.executeAction({
             execute: () => i,
             undo: () => {},
-            description: `Action ${i}`
+            description: `Action ${i}`,
           });
         }
       });
@@ -125,12 +131,17 @@ describe('useActionHistory', () => {
   describe('undo', () => {
     it('should undo last action', () => {
       const { result } = renderHook(() => useActionHistory());
-      
+
       let value = 0;
       const action = {
-        execute: () => { value = 10; return value; },
-        undo: (prevValue) => { value = 0; },
-        description: 'Increment'
+        execute: () => {
+          value = 10;
+          return value;
+        },
+        undo: (prevValue) => {
+          value = 0;
+        },
+        description: 'Increment',
       };
 
       act(() => {
@@ -149,7 +160,7 @@ describe('useActionHistory', () => {
 
     it('should not undo when canUndo is false', () => {
       const { result } = renderHook(() => useActionHistory());
-      
+
       const initialIndex = result.current.currentIndex;
 
       act(() => {
@@ -161,25 +172,40 @@ describe('useActionHistory', () => {
 
     it('should allow multiple undos', () => {
       const { result } = renderHook(() => useActionHistory());
-      
+
       let value = 0;
 
       // Execute 3 actions
       act(() => {
         result.current.executeAction({
-          execute: () => { value += 1; return value; },
-          undo: () => { value -= 1; },
-          description: 'Add 1'
+          execute: () => {
+            value += 1;
+            return value;
+          },
+          undo: () => {
+            value -= 1;
+          },
+          description: 'Add 1',
         });
         result.current.executeAction({
-          execute: () => { value += 1; return value; },
-          undo: () => { value -= 1; },
-          description: 'Add 1'
+          execute: () => {
+            value += 1;
+            return value;
+          },
+          undo: () => {
+            value -= 1;
+          },
+          description: 'Add 1',
         });
         result.current.executeAction({
-          execute: () => { value += 1; return value; },
-          undo: () => { value -= 1; },
-          description: 'Add 1'
+          execute: () => {
+            value += 1;
+            return value;
+          },
+          undo: () => {
+            value -= 1;
+          },
+          description: 'Add 1',
         });
       });
 
@@ -200,12 +226,17 @@ describe('useActionHistory', () => {
   describe('redo', () => {
     it('should redo undone action', () => {
       const { result } = renderHook(() => useActionHistory());
-      
+
       let value = 0;
       const action = {
-        execute: () => { value = 10; return value; },
-        undo: () => { value = 0; },
-        description: 'Set to 10'
+        execute: () => {
+          value = 10;
+          return value;
+        },
+        undo: () => {
+          value = 0;
+        },
+        description: 'Set to 10',
       };
 
       act(() => {
@@ -225,7 +256,7 @@ describe('useActionHistory', () => {
 
     it('should not redo when canRedo is false', () => {
       const { result } = renderHook(() => useActionHistory());
-      
+
       const initialIndex = result.current.currentIndex;
 
       act(() => {
@@ -239,18 +270,18 @@ describe('useActionHistory', () => {
   describe('clearHistory', () => {
     it('should clear all history', () => {
       const { result } = renderHook(() => useActionHistory());
-      
+
       // Execute some actions
       act(() => {
         result.current.executeAction({
           execute: () => 1,
           undo: () => {},
-          description: 'Action 1'
+          description: 'Action 1',
         });
         result.current.executeAction({
           execute: () => 2,
           undo: () => {},
-          description: 'Action 2'
+          description: 'Action 2',
         });
       });
 
@@ -270,23 +301,23 @@ describe('useActionHistory', () => {
   describe('getLastAction', () => {
     it('should return null when no actions', () => {
       const { result } = renderHook(() => useActionHistory());
-      
+
       expect(result.current.getLastAction()).toBeNull();
     });
 
     it('should return last executed action', () => {
       const { result } = renderHook(() => useActionHistory());
-      
+
       act(() => {
         result.current.executeAction({
           execute: () => 1,
           undo: () => {},
-          description: 'First action'
+          description: 'First action',
         });
         result.current.executeAction({
           execute: () => 2,
           undo: () => {},
-          description: 'Second action'
+          description: 'Second action',
         });
       });
 
@@ -296,17 +327,17 @@ describe('useActionHistory', () => {
 
     it('should return correct action after undo', () => {
       const { result } = renderHook(() => useActionHistory());
-      
+
       act(() => {
         result.current.executeAction({
           execute: () => 1,
           undo: () => {},
-          description: 'First action'
+          description: 'First action',
         });
         result.current.executeAction({
           execute: () => 2,
           undo: () => {},
-          description: 'Second action'
+          description: 'Second action',
         });
         result.current.undo();
       });
@@ -319,20 +350,20 @@ describe('useActionHistory', () => {
   describe('action timestamps', () => {
     it('should store timestamp for each action', () => {
       const { result } = renderHook(() => useActionHistory());
-      
+
       const before = new Date();
 
       act(() => {
         result.current.executeAction({
           execute: () => 'test',
           undo: () => {},
-          description: 'Test action'
+          description: 'Test action',
         });
       });
 
       const after = new Date();
       const lastAction = result.current.getLastAction();
-      
+
       expect(lastAction.timestamp).toBeInstanceOf(Date);
       expect(lastAction.timestamp.getTime()).toBeGreaterThanOrEqual(before.getTime());
       expect(lastAction.timestamp.getTime()).toBeLessThanOrEqual(after.getTime());

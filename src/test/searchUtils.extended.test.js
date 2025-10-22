@@ -1,9 +1,10 @@
-import { describe, it, expect } from 'vitest';
-import { 
-  multiFieldSearch,
-  getAutocompleteSuggestions,
+import { describe, expect, it } from 'vitest';
+
+import {
   applyFilters,
-  sortData
+  getAutocompleteSuggestions,
+  multiFieldSearch,
+  sortData,
 } from '../utils/searchUtils';
 
 describe('searchUtils - Extended', () => {
@@ -11,7 +12,7 @@ describe('searchUtils - Extended', () => {
     const items = [
       { id: 1, name: 'John Doe', email: 'john@example.com', city: 'New York' },
       { id: 2, name: 'Jane Smith', email: 'jane@example.com', city: 'Los Angeles' },
-      { id: 3, name: 'Bob Johnson', email: 'bob@example.com', city: 'Chicago' }
+      { id: 3, name: 'Bob Johnson', email: 'bob@example.com', city: 'Chicago' },
     ];
 
     it('should search across multiple fields', () => {
@@ -38,7 +39,7 @@ describe('searchUtils - Extended', () => {
     it('should handle nested fields', () => {
       const nestedItems = [
         { id: 1, user: { name: 'John' } },
-        { id: 2, user: { name: 'Jane' } }
+        { id: 2, user: { name: 'Jane' } },
       ];
       const results = multiFieldSearch(nestedItems, 'john', ['user.name']);
       expect(results).toHaveLength(1);
@@ -50,7 +51,7 @@ describe('searchUtils - Extended', () => {
       { name: 'Apple', category: 'Fruit' },
       { name: 'Banana', category: 'Fruit' },
       { name: 'Apricot', category: 'Fruit' },
-      { name: 'Carrot', category: 'Vegetable' }
+      { name: 'Carrot', category: 'Vegetable' },
     ];
 
     it('should return matching suggestions', () => {
@@ -75,11 +76,7 @@ describe('searchUtils - Extended', () => {
     });
 
     it('should return unique suggestions', () => {
-      const duplicateItems = [
-        { name: 'Apple' },
-        { name: 'Apple' },
-        { name: 'Apricot' }
-      ];
+      const duplicateItems = [{ name: 'Apple' }, { name: 'Apple' }, { name: 'Apricot' }];
       const suggestions = getAutocompleteSuggestions(duplicateItems, 'ap', ['name']);
       expect(suggestions.length).toBeLessThanOrEqual(2); // No duplicates
     });
@@ -89,13 +86,13 @@ describe('searchUtils - Extended', () => {
     const data = [
       { id: 1, estado: 'activo', fecha: new Date('2025-10-01') },
       { id: 2, estado: 'inactivo', fecha: new Date('2025-09-01') },
-      { id: 3, estado: 'activo', fecha: new Date('2025-10-15') }
+      { id: 3, estado: 'activo', fecha: new Date('2025-10-15') },
     ];
 
     it('should filter by status', () => {
       const filtered = applyFilters(data, { status: 'activo' });
       expect(filtered).toHaveLength(2);
-      expect(filtered.every(item => item.estado === 'activo')).toBe(true);
+      expect(filtered.every((item) => item.estado === 'activo')).toBe(true);
     });
 
     it('should return all items when status is "todos"', () => {
@@ -114,11 +111,11 @@ describe('searchUtils - Extended', () => {
     });
 
     it('should handle combined filters', () => {
-      const filtered = applyFilters(data, { 
-        status: 'activo', 
-        dateRange: 'mes' 
+      const filtered = applyFilters(data, {
+        status: 'activo',
+        dateRange: 'mes',
       });
-      expect(filtered.every(item => item.estado === 'activo')).toBe(true);
+      expect(filtered.every((item) => item.estado === 'activo')).toBe(true);
     });
   });
 
@@ -126,7 +123,7 @@ describe('searchUtils - Extended', () => {
     const data = [
       { name: 'Charlie', age: 30, date: new Date('2025-01-15') },
       { name: 'Alice', age: 25, date: new Date('2025-03-20') },
-      { name: 'Bob', age: 35, date: new Date('2025-02-10') }
+      { name: 'Bob', age: 35, date: new Date('2025-02-10') },
     ];
 
     it('should sort by name ascending', () => {

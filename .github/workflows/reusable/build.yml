@@ -1,0 +1,110 @@
+name: Reusable Build Workflow
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+      node-version:
+        required: false
+        type: string
+        default: '18'
+      build-command:
+        required: false
+        type: string
+        default: 'npm run build'
+      artifact-name:
+        required: false
+        type: string
+        default: 'dist'
+    outputs:
+      build-size:
+        description: "Build size in MB"
+        value: ${{ jobs.build.outputs.size }}
+      artifact-path:
+        description: "Artifact download path"
+        value: ${{ jobs.build.outputs.artifact }}
+    secrets:
+      ENV_VARS:
+        required: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    outputs:
+      size: ${{ steps.size.outputs.mb }}
+      artifact: ${{ steps.upload.outputs.artifact-url }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: 'npm'
+
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.npm
+            node_modules
+            .cache
+          key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: Load environment variables
+        if: secrets.ENV_VARS != ''
+        run: echo "${{ secrets.ENV_VARS }}" > .env.production
+
+      - name: Build project
+        run: ${{ inputs.build-command }}
+        env:
+          NODE_ENV: production
+          CI: true
+
+      - name: Calculate build size
+        id: size
+        run: |
+          SIZE=$(du -sh dist/ | cut -f1)
+          SIZE_MB=$(du -sm dist/ | cut -f1)
+          echo "size=$SIZE" >> $GITHUB_OUTPUT
+          echo "mb=$SIZE_MB" >> $GITHUB_OUTPUT
+          echo "📦 Build size: $SIZE"
+
+      - name: Analyze bundle
+        run: |
+          if [ -f "dist/stats.html" ]; then
+            echo "📊 Bundle analysis available"
+          fi
+
+      - name: Upload build artifacts
+        id: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.artifact-name }}-${{ inputs.environment }}
+          path: dist/
+          retention-days: 30
+          compression-level: 9
+
+      - name: Create build summary
+        run: |
+          echo "## Build Summary 📦" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Environment:** ${{ inputs.environment }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Node Version:** ${{ inputs.node-version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Build Size:** ${{ steps.size.outputs.size }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Artifact:** ${{ inputs.artifact-name }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Build Files" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          ls -lh dist/ | head -20 >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY

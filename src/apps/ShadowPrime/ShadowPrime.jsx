@@ -1,18 +1,48 @@
 // ESTE ES EL ARCHIVO COMPLETO DE SHADOWPRIME CON TODAS LAS SECCIONES IMPLEMENTADAS
 // Después de revisar, reemplazar el archivo original src/apps/ShadowPrime/ShadowPrime.jsx con este
+import { useEffect, useState } from 'react';
 
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
+import { AnimatePresence, motion, useMotionValue, useSpring } from 'framer-motion';
 import {
-  Wallet, Plus, Send, Download, Shield, TrendingUp, TrendingDown, BarChart3, Mail,
-  Copy, Eye, EyeOff, Check, AlertCircle, ArrowUpRight, ArrowDownRight, Sparkles,
-  RefreshCw, Settings, Lock, Menu, X, QrCode, ExternalLink, Zap, DollarSign,
-  Bitcoin, Coins, CreditCard, Activity, Target, Flame, Crown, Star, CircuitBoard,
-  Key, Fingerprint, Smartphone, Globe, Inbox, Trash2, Search, Filter, TrendingDown as ChartDown,
-  Users, Building, Package
+  Activity,
+  AlertCircle,
+  ArrowDownRight,
+  ArrowUpRight,
+  BarChart3,
+  Check,
+  Clock,
+  Coins,
+  Copy,
+  Crown,
+  Download,
+  Eye,
+  EyeOff,
+  Fingerprint,
+  Flame,
+  Inbox,
+  Key,
+  Mail,
+  Menu,
+  Plus,
+  QrCode,
+  RefreshCw,
+  Search,
+  Send,
+  Settings,
+  Shield,
+  Smartphone,
+  Sparkles,
+  Star,
+  Trash2,
+  TrendingDown,
+  TrendingUp,
+  Wallet,
+  X,
+  Zap,
 } from 'lucide-react';
+
 import AIAssistant from '../../components/shared/AIAssistant';
-import { storage, STORAGE_KEYS, useLocalStorage } from '../../utils/storage';
+import { STORAGE_KEYS, useLocalStorage } from '../../utils/storage';
 
 // Mock data de wallets (SIN CAMBIOS)
 const initialWallets = [
@@ -27,10 +57,42 @@ const initialWallets = [
     icon: '🔴',
     change24h: 5.2,
     assets: [
-      { symbol: 'TRX', name: 'Tron', amount: 15234.56, price: 0.08, change: 5.2, icon: '⭕', color: 'text-red-400' },
-      { symbol: 'USDT', name: 'Tether', amount: 8000, price: 1.00, change: 0.1, icon: '💵', color: 'text-green-400' },
-      { symbol: 'BTT', name: 'BitTorrent', amount: 450000, price: 0.00000123, change: -2.3, icon: '🎬', color: 'text-purple-400' },
-      { symbol: 'SUN', name: 'Sun Token', amount: 12000, price: 0.005, change: 8.5, icon: '☀️', color: 'text-yellow-400' },
+      {
+        symbol: 'TRX',
+        name: 'Tron',
+        amount: 15234.56,
+        price: 0.08,
+        change: 5.2,
+        icon: '⭕',
+        color: 'text-red-400',
+      },
+      {
+        symbol: 'USDT',
+        name: 'Tether',
+        amount: 8000,
+        price: 1.0,
+        change: 0.1,
+        icon: '💵',
+        color: 'text-green-400',
+      },
+      {
+        symbol: 'BTT',
+        name: 'BitTorrent',
+        amount: 450000,
+        price: 0.00000123,
+        change: -2.3,
+        icon: '🎬',
+        color: 'text-purple-400',
+      },
+      {
+        symbol: 'SUN',
+        name: 'Sun Token',
+        amount: 12000,
+        price: 0.005,
+        change: 8.5,
+        icon: '☀️',
+        color: 'text-yellow-400',
+      },
     ],
   },
   {
@@ -38,15 +100,39 @@ const initialWallets = [
     name: 'Trading Wallet',
     type: 'Trust Wallet',
     address: '0x742d35Cc6a3AfC2F593C2d9F8a7b31e8c9A2F1B3',
-    balance: 8452.30,
-    balanceUSD: 18234.50,
+    balance: 8452.3,
+    balanceUSD: 18234.5,
     color: 'from-blue-500 via-cyan-500 to-teal-500',
     icon: '🔵',
     change24h: 3.8,
     assets: [
-      { symbol: 'BNB', name: 'Binance Coin', amount: 24.5, price: 320.45, change: 3.8, icon: '💎', color: 'text-yellow-400' },
-      { symbol: 'BUSD', name: 'Binance USD', amount: 10000, price: 1.00, change: 0.0, icon: '💵', color: 'text-green-400' },
-      { symbol: 'CAKE', name: 'PancakeSwap', amount: 1200, price: 2.34, change: 12.5, icon: '🥞', color: 'text-pink-400' },
+      {
+        symbol: 'BNB',
+        name: 'Binance Coin',
+        amount: 24.5,
+        price: 320.45,
+        change: 3.8,
+        icon: '💎',
+        color: 'text-yellow-400',
+      },
+      {
+        symbol: 'BUSD',
+        name: 'Binance USD',
+        amount: 10000,
+        price: 1.0,
+        change: 0.0,
+        icon: '💵',
+        color: 'text-green-400',
+      },
+      {
+        symbol: 'CAKE',
+        name: 'PancakeSwap',
+        amount: 1200,
+        price: 2.34,
+        change: 12.5,
+        icon: '🥞',
+        color: 'text-pink-400',
+      },
     ],
   },
   {
@@ -54,26 +140,95 @@ const initialWallets = [
     name: 'Cold Storage',
     type: 'Exodus',
     address: 'bc1qxy2kgd93dh82k3mf8qla9s8r7tc5np2kq8fh4m',
-    balance: 45678.90,
+    balance: 45678.9,
     balanceUSD: 67890.12,
     color: 'from-purple-500 via-pink-500 to-rose-500',
     icon: '🟣',
     change24h: 8.5,
     assets: [
-      { symbol: 'BTC', name: 'Bitcoin', amount: 0.823, price: 52340.00, change: 8.5, icon: '₿', color: 'text-orange-400' },
-      { symbol: 'ETH', name: 'Ethereum', amount: 5.234, price: 3200.00, change: 6.2, icon: '⟠', color: 'text-blue-400' },
-      { symbol: 'LTC', name: 'Litecoin', amount: 45.6, price: 85.30, change: -1.2, icon: 'Ł', color: 'text-slate-400' },
+      {
+        symbol: 'BTC',
+        name: 'Bitcoin',
+        amount: 0.823,
+        price: 52340.0,
+        change: 8.5,
+        icon: '₿',
+        color: 'text-orange-400',
+      },
+      {
+        symbol: 'ETH',
+        name: 'Ethereum',
+        amount: 5.234,
+        price: 3200.0,
+        change: 6.2,
+        icon: '⟠',
+        color: 'text-blue-400',
+      },
+      {
+        symbol: 'LTC',
+        name: 'Litecoin',
+        amount: 45.6,
+        price: 85.3,
+        change: -1.2,
+        icon: 'Ł',
+        color: 'text-slate-400',
+      },
     ],
   },
 ];
 
 // Transacciones recientes (SIN CAMBIOS)
 const recentTransactions = [
-  { id: 1, type: 'send', amount: 1234.56, currency: 'TRX', to: 'TK2x...4kL9', timestamp: '2 min ago', status: 'completed', hash: '0xabc...def' },
-  { id: 2, type: 'receive', amount: 5000, currency: 'USDT', from: 'TS8k...2mN4', timestamp: '15 min ago', status: 'completed', hash: '0x123...456' },
-  { id: 3, type: 'send', amount: 0.05, currency: 'BTC', to: 'bc1q...8fh4m', timestamp: '1 hour ago', status: 'completed', hash: '0x789...abc' },
-  { id: 4, type: 'receive', amount: 2.5, currency: 'ETH', from: '0x92f...1kL2', timestamp: '3 hours ago', status: 'completed', hash: '0xdef...123' },
-  { id: 5, type: 'send', amount: 500, currency: 'CAKE', to: '0x45c...9mN3', timestamp: '5 hours ago', status: 'pending', hash: '0x456...789' },
+  {
+    id: 1,
+    type: 'send',
+    amount: 1234.56,
+    currency: 'TRX',
+    to: 'TK2x...4kL9',
+    timestamp: '2 min ago',
+    status: 'completed',
+    hash: '0xabc...def',
+  },
+  {
+    id: 2,
+    type: 'receive',
+    amount: 5000,
+    currency: 'USDT',
+    from: 'TS8k...2mN4',
+    timestamp: '15 min ago',
+    status: 'completed',
+    hash: '0x123...456',
+  },
+  {
+    id: 3,
+    type: 'send',
+    amount: 0.05,
+    currency: 'BTC',
+    to: 'bc1q...8fh4m',
+    timestamp: '1 hour ago',
+    status: 'completed',
+    hash: '0x789...abc',
+  },
+  {
+    id: 4,
+    type: 'receive',
+    amount: 2.5,
+    currency: 'ETH',
+    from: '0x92f...1kL2',
+    timestamp: '3 hours ago',
+    status: 'completed',
+    hash: '0xdef...123',
+  },
+  {
+    id: 5,
+    type: 'send',
+    amount: 500,
+    currency: 'CAKE',
+    to: '0x45c...9mN3',
+    timestamp: '5 hours ago',
+    status: 'pending',
+    hash: '0x456...789',
+  },
 ];
 
 // Cursor tracker component (SIN CAMBIOS)
@@ -111,14 +266,56 @@ const CursorGlow = () => {
 // Sidebar premium (SIN CAMBIOS - Ya está completo)
 const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed }) => {
   const menuItems = [
-    { id: 'overview', icon: BarChart3, label: 'Overview', color: 'from-purple-500 to-violet-500', badge: null },
-    { id: 'wallets', icon: Wallet, label: 'Mis Wallets', color: 'from-blue-500 to-cyan-500', badge: 3 },
-    { id: 'create', icon: Plus, label: 'Crear Wallet', color: 'from-green-500 to-emerald-500', badge: null },
+    {
+      id: 'overview',
+      icon: BarChart3,
+      label: 'Overview',
+      color: 'from-purple-500 to-violet-500',
+      badge: null,
+    },
+    {
+      id: 'wallets',
+      icon: Wallet,
+      label: 'Mis Wallets',
+      color: 'from-blue-500 to-cyan-500',
+      badge: 3,
+    },
+    {
+      id: 'create',
+      icon: Plus,
+      label: 'Crear Wallet',
+      color: 'from-green-500 to-emerald-500',
+      badge: null,
+    },
     { id: 'send', icon: Send, label: 'Enviar', color: 'from-cyan-500 to-teal-500', badge: null },
-    { id: 'receive', icon: Download, label: 'Recibir', color: 'from-pink-500 to-rose-500', badge: null },
-    { id: 'trading', icon: TrendingUp, label: 'Trading', color: 'from-yellow-500 to-orange-500', badge: 'HOT' },
-    { id: 'emails', icon: Mail, label: 'Emails Proton', color: 'from-orange-500 to-red-500', badge: 5 },
-    { id: 'security', icon: Shield, label: 'Seguridad', color: 'from-red-500 to-pink-500', badge: null },
+    {
+      id: 'receive',
+      icon: Download,
+      label: 'Recibir',
+      color: 'from-pink-500 to-rose-500',
+      badge: null,
+    },
+    {
+      id: 'trading',
+      icon: TrendingUp,
+      label: 'Trading',
+      color: 'from-yellow-500 to-orange-500',
+      badge: 'HOT',
+    },
+    {
+      id: 'emails',
+      icon: Mail,
+      label: 'Emails Proton',
+      color: 'from-orange-500 to-red-500',
+      badge: 5,
+    },
+    {
+      id: 'security',
+      icon: Shield,
+      label: 'Seguridad',
+      color: 'from-red-500 to-pink-500',
+      badge: null,
+    },
   ];
 
   return (
@@ -136,7 +333,8 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
           transition={{ duration: 20, repeat: Infinity, repeatType: 'reverse' }}
           className="absolute inset-0 opacity-20"
           style={{
-            backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.1) 0%, transparent 50%)',
+            backgroundImage:
+              'radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.1) 0%, transparent 50%)',
             backgroundSize: '100% 100%',
           }}
         />
@@ -223,15 +421,18 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
               <div
                 className={`
                   relative flex items-center gap-3 px-4 py-3 rounded-xl transition-all
-                  ${isActive
-                    ? `bg-gradient-to-r ${item.color} bg-opacity-20 border border-white/20 shadow-lg`
-                    : 'hover:bg-white/5 border border-transparent'
+                  ${
+                    isActive
+                      ? `bg-gradient-to-r ${item.color} bg-opacity-20 border border-white/20 shadow-lg`
+                      : 'hover:bg-white/5 border border-transparent'
                   }
                 `}
               >
                 {/* Icon with gradient */}
                 <div className={`relative ${isActive ? 'scale-110' : ''} transition-transform`}>
-                  <Icon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'} transition-colors`} />
+                  <Icon
+                    className={`w-5 h-5 ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'} transition-colors`}
+                  />
                   {isActive && (
                     <motion.div
                       animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
@@ -243,7 +444,9 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
 
                 {!isCollapsed && (
                   <>
-                    <span className={`font-medium flex-1 text-left ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'} transition-colors`}>
+                    <span
+                      className={`font-medium flex-1 text-left ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'} transition-colors`}
+                    >
                       {item.label}
                     </span>
                     {item.badge && (
@@ -252,9 +455,10 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
                         animate={{ scale: 1 }}
                         className={`
                           px-2 py-0.5 rounded-full text-xs font-bold
-                          ${typeof item.badge === 'number'
-                            ? 'bg-red-500/20 text-red-400 border border-red-500/30'
-                            : 'bg-gradient-to-r from-orange-500 to-red-500 text-white'
+                          ${
+                            typeof item.badge === 'number'
+                              ? 'bg-red-500/20 text-red-400 border border-red-500/30'
+                              : 'bg-gradient-to-r from-orange-500 to-red-500 text-white'
                           }
                         `}
                       >
@@ -380,7 +584,9 @@ const WalletCard = ({ wallet, onClick, delay = 0 }) => {
         <div className="mb-4 backdrop-blur-sm bg-black/20 rounded-lg p-3 border border-white/10 group-hover:border-white/20 transition-all">
           <div className="flex items-center justify-between">
             <code className="text-xs text-slate-300 font-mono flex-1">
-              {showAddress ? wallet.address : `${wallet.address.slice(0, 12)}...${wallet.address.slice(-8)}`}
+              {showAddress
+                ? wallet.address
+                : `${wallet.address.slice(0, 12)}...${wallet.address.slice(-8)}`}
             </code>
             <div className="flex gap-2 ml-2">
               <motion.button
@@ -400,7 +606,11 @@ const WalletCard = ({ wallet, onClick, delay = 0 }) => {
                 onClick={copyAddress}
                 className="p-1.5 hover:bg-white/10 rounded transition-colors"
               >
-                {copied ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4" />}
+                {copied ? (
+                  <Check className="w-4 h-4 text-green-400" />
+                ) : (
+                  <Copy className="w-4 h-4" />
+                )}
               </motion.button>
             </div>
           </div>
@@ -423,10 +633,16 @@ const WalletCard = ({ wallet, onClick, delay = 0 }) => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: delay + 0.3 }}
               className={`flex items-center gap-1 px-2 py-1 rounded-lg ${
-                wallet.change24h >= 0 ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'
+                wallet.change24h >= 0
+                  ? 'bg-green-500/20 text-green-400'
+                  : 'bg-red-500/20 text-red-400'
               }`}
             >
-              {wallet.change24h >= 0 ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
+              {wallet.change24h >= 0 ? (
+                <TrendingUp className="w-3 h-3" />
+              ) : (
+                <TrendingDown className="w-3 h-3" />
+              )}
               <span className="text-sm font-medium">{Math.abs(wallet.change24h)}%</span>
             </motion.div>
           </div>
@@ -444,8 +660,11 @@ const WalletCard = ({ wallet, onClick, delay = 0 }) => {
             >
               <div className="flex items-center justify-between mb-1">
                 <span className="text-lg">{asset.icon}</span>
-                <span className={`text-xs font-medium ${asset.change >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-                  {asset.change >= 0 ? '+' : ''}{asset.change}%
+                <span
+                  className={`text-xs font-medium ${asset.change >= 0 ? 'text-green-400' : 'text-red-400'}`}
+                >
+                  {asset.change >= 0 ? '+' : ''}
+                  {asset.change}%
                 </span>
               </div>
               <div className="text-xs font-medium text-white">{asset.symbol}</div>
@@ -468,7 +687,9 @@ const WalletCard = ({ wallet, onClick, delay = 0 }) => {
 // Overview Section (SIN CAMBIOS - Ya está completo)
 const OverviewSection = ({ wallets }) => {
   const totalBalance = wallets.reduce((acc, w) => acc + w.balanceUSD, 0);
-  const totalChange = ((wallets.reduce((acc, w) => acc + w.change24h, 0)) / wallets.length).toFixed(2);
+  const totalChange = (wallets.reduce((acc, w) => acc + w.change24h, 0) / wallets.length).toFixed(
+    2
+  );
 
   return (
     <motion.div
@@ -486,7 +707,8 @@ const OverviewSection = ({ wallets }) => {
           transition={{ duration: 20, repeat: Infinity, repeatType: 'reverse' }}
           className="absolute inset-0 opacity-20"
           style={{
-            backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.3) 0%, transparent 50%)',
+            backgroundImage:
+              'radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.3) 0%, transparent 50%)',
             backgroundSize: '200% 200%',
           }}
         />
@@ -505,11 +727,20 @@ const OverviewSection = ({ wallets }) => {
             <span className="text-6xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent">
               ${totalBalance.toLocaleString('en-US', { minimumFractionDigits: 2 })}
             </span>
-            <div className={`flex items-center gap-2 px-4 py-2 rounded-xl ${
-              totalChange >= 0 ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'
-            }`}>
-              {totalChange >= 0 ? <TrendingUp className="w-5 h-5" /> : <TrendingDown className="w-5 h-5" />}
-              <span className="text-2xl font-bold">{totalChange >= 0 ? '+' : ''}{totalChange}%</span>
+            <div
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl ${
+                totalChange >= 0 ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'
+              }`}
+            >
+              {totalChange >= 0 ? (
+                <TrendingUp className="w-5 h-5" />
+              ) : (
+                <TrendingDown className="w-5 h-5" />
+              )}
+              <span className="text-2xl font-bold">
+                {totalChange >= 0 ? '+' : ''}
+                {totalChange}%
+              </span>
             </div>
           </motion.div>
 
@@ -604,25 +835,39 @@ const OverviewSection = ({ wallets }) => {
               className="flex items-center justify-between p-4 rounded-xl border border-white/10 hover:border-white/20 transition-all group cursor-pointer"
             >
               <div className="flex items-center gap-4">
-                <div className={`p-3 rounded-xl ${
-                  tx.type === 'send' ? 'bg-red-500/20' : 'bg-green-500/20'
-                }`}>
-                  {tx.type === 'send' ? <ArrowUpRight className="w-5 h-5 text-red-400" /> : <ArrowDownRight className="w-5 h-5 text-green-400" />}
+                <div
+                  className={`p-3 rounded-xl ${
+                    tx.type === 'send' ? 'bg-red-500/20' : 'bg-green-500/20'
+                  }`}
+                >
+                  {tx.type === 'send' ? (
+                    <ArrowUpRight className="w-5 h-5 text-red-400" />
+                  ) : (
+                    <ArrowDownRight className="w-5 h-5 text-green-400" />
+                  )}
                 </div>
                 <div>
-                  <div className="font-medium text-white">{tx.type === 'send' ? 'Enviado' : 'Recibido'}</div>
+                  <div className="font-medium text-white">
+                    {tx.type === 'send' ? 'Enviado' : 'Recibido'}
+                  </div>
                   <div className="text-sm text-slate-400">{tx.timestamp}</div>
                 </div>
               </div>
               <div className="text-right">
-                <div className={`font-bold ${tx.type === 'send' ? 'text-red-400' : 'text-green-400'}`}>
+                <div
+                  className={`font-bold ${tx.type === 'send' ? 'text-red-400' : 'text-green-400'}`}
+                >
                   {tx.type === 'send' ? '-' : '+'} {tx.amount} {tx.currency}
                 </div>
                 <div className="text-xs text-slate-500">{tx.hash}</div>
               </div>
-              <div className={`px-2 py-1 rounded-lg text-xs ${
-                tx.status === 'completed' ? 'bg-green-500/20 text-green-400' : 'bg-yellow-500/20 text-yellow-400'
-              }`}>
+              <div
+                className={`px-2 py-1 rounded-lg text-xs ${
+                  tx.status === 'completed'
+                    ? 'bg-green-500/20 text-green-400'
+                    : 'bg-yellow-500/20 text-yellow-400'
+                }`}
+              >
                 {tx.status}
               </div>
             </motion.div>
@@ -640,9 +885,10 @@ const WalletsSection = ({ wallets }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterType, setFilterType] = useState('all');
 
-  const filteredWallets = wallets.filter(wallet => {
-    const matchesSearch = wallet.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         wallet.address.toLowerCase().includes(searchTerm.toLowerCase());
+  const filteredWallets = wallets.filter((wallet) => {
+    const matchesSearch =
+      wallet.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      wallet.address.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesFilter = filterType === 'all' || wallet.type === filterType;
     return matchesSearch && matchesFilter;
   });
@@ -706,7 +952,10 @@ const CreateWalletSection = () => {
 
   const generateWallet = () => {
     // Simular generación de dirección
-    const address = 'T' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    const address =
+      'T' +
+      Math.random().toString(36).substring(2, 15) +
+      Math.random().toString(36).substring(2, 15);
     setNewAddress(address);
     setGenerated(true);
   };
@@ -738,7 +987,9 @@ const CreateWalletSection = () => {
         {!generated ? (
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-slate-400 mb-2">Nombre de la Wallet</label>
+              <label className="block text-sm font-medium text-slate-400 mb-2">
+                Nombre de la Wallet
+              </label>
               <input
                 type="text"
                 value={walletName}
@@ -749,7 +1000,9 @@ const CreateWalletSection = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-400 mb-2">Tipo de Wallet</label>
+              <label className="block text-sm font-medium text-slate-400 mb-2">
+                Tipo de Wallet
+              </label>
               <select
                 value={walletType}
                 onChange={(e) => setWalletType(e.target.value)}
@@ -796,7 +1049,9 @@ const CreateWalletSection = () => {
                 <div>
                   <p className="text-sm text-slate-400 mb-1">Dirección</p>
                   <div className="flex items-center gap-2">
-                    <code className="flex-1 p-2 rounded bg-black/30 text-green-400 font-mono text-sm">{newAddress}</code>
+                    <code className="flex-1 p-2 rounded bg-black/30 text-green-400 font-mono text-sm">
+                      {newAddress}
+                    </code>
                     <button
                       onClick={() => navigator.clipboard.writeText(newAddress)}
                       className="p-2 hover:bg-white/5 rounded transition-colors"
@@ -812,10 +1067,12 @@ const CreateWalletSection = () => {
               <div className="flex gap-3">
                 <AlertCircle className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-yellow-400 mb-2">Importante: Guarda tu información</h4>
+                  <h4 className="font-semibold text-yellow-400 mb-2">
+                    Importante: Guarda tu información
+                  </h4>
                   <p className="text-sm text-slate-300">
-                    Asegúrate de guardar tu dirección y clave privada en un lugar seguro.
-                    No podrás recuperar tu wallet si pierdes esta información.
+                    Asegúrate de guardar tu dirección y clave privada en un lugar seguro. No podrás
+                    recuperar tu wallet si pierdes esta información.
                   </p>
                 </div>
               </div>
@@ -850,7 +1107,7 @@ const SendSection = ({ wallets }) => {
   const handleSend = async () => {
     setSending(true);
     // Simular envío
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     setSending(false);
     setSent(true);
     setTimeout(() => setSent(false), 3000);
@@ -886,14 +1143,18 @@ const SendSection = ({ wallets }) => {
                 className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-cyan-500/50 focus:outline-none transition-colors text-white cursor-pointer"
               >
                 <option value="">Seleccionar wallet...</option>
-                {wallets.map(w => (
-                  <option key={w.id} value={w.id}>{w.name} (${w.balanceUSD.toLocaleString()})</option>
+                {wallets.map((w) => (
+                  <option key={w.id} value={w.id}>
+                    {w.name} (${w.balanceUSD.toLocaleString()})
+                  </option>
                 ))}
               </select>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-400 mb-2">Dirección Destino</label>
+              <label className="block text-sm font-medium text-slate-400 mb-2">
+                Dirección Destino
+              </label>
               <input
                 type="text"
                 value={toAddress}
@@ -936,7 +1197,9 @@ const SendSection = ({ wallets }) => {
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-slate-400">Total a Enviar</span>
-                <span className="text-white font-bold text-lg">{amount || '0'} {currency}</span>
+                <span className="text-white font-bold text-lg">
+                  {amount || '0'} {currency}
+                </span>
               </div>
             </div>
 
@@ -983,7 +1246,7 @@ const ReceiveSection = ({ wallets }) => {
   const [selectedWallet, setSelectedWallet] = useState(wallets[0]?.id || '');
   const [copied, setCopied] = useState(false);
 
-  const wallet = wallets.find(w => w.id === parseInt(selectedWallet));
+  const wallet = wallets.find((w) => w.id === parseInt(selectedWallet));
 
   const copyAddress = () => {
     if (wallet) {
@@ -1015,14 +1278,18 @@ const ReceiveSection = ({ wallets }) => {
 
         <div className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-slate-400 mb-2">Seleccionar Wallet</label>
+            <label className="block text-sm font-medium text-slate-400 mb-2">
+              Seleccionar Wallet
+            </label>
             <select
               value={selectedWallet}
               onChange={(e) => setSelectedWallet(e.target.value)}
               className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-pink-500/50 focus:outline-none transition-colors text-white cursor-pointer"
             >
-              {wallets.map(w => (
-                <option key={w.id} value={w.id}>{w.name} - {w.type}</option>
+              {wallets.map((w) => (
+                <option key={w.id} value={w.id}>
+                  {w.name} - {w.type}
+                </option>
               ))}
             </select>
           </div>
@@ -1049,7 +1316,11 @@ const ReceiveSection = ({ wallets }) => {
                     onClick={copyAddress}
                     className="p-3 hover:bg-white/5 rounded-lg transition-colors flex-shrink-0"
                   >
-                    {copied ? <Check className="w-5 h-5 text-green-400" /> : <Copy className="w-5 h-5" />}
+                    {copied ? (
+                      <Check className="w-5 h-5 text-green-400" />
+                    ) : (
+                      <Copy className="w-5 h-5" />
+                    )}
                   </button>
                 </div>
               </div>
@@ -1072,8 +1343,8 @@ const ReceiveSection = ({ wallets }) => {
                 <div>
                   <h4 className="font-semibold text-yellow-400 mb-1">Importante</h4>
                   <p className="text-sm text-slate-300">
-                    Solo envía criptomonedas compatibles con esta red a esta dirección.
-                    Enviar tokens incompatibles puede resultar en pérdida permanente.
+                    Solo envía criptomonedas compatibles con esta red a esta dirección. Enviar
+                    tokens incompatibles puede resultar en pérdida permanente.
                   </p>
                 </div>
               </div>
@@ -1091,7 +1362,7 @@ const TradingSection = () => {
   const [toCurrency, setToCurrency] = useState('USDT');
   const [amount, setAmount] = useState('');
 
-  const exchangeRate = 52340.00; // BTC to USDT
+  const exchangeRate = 52340.0; // BTC to USDT
   const estimatedAmount = amount ? (parseFloat(amount) * exchangeRate).toFixed(2) : '0.00';
 
   return (
@@ -1106,7 +1377,9 @@ const TradingSection = () => {
           <div className="inline-block mb-4">
             <div className="p-4 rounded-2xl bg-gradient-to-br from-yellow-500 to-orange-500 relative">
               <TrendingUp className="w-12 h-12 text-white" />
-              <span className="absolute -top-2 -right-2 px-2 py-1 rounded-full bg-red-500 text-white text-xs font-bold">HOT</span>
+              <span className="absolute -top-2 -right-2 px-2 py-1 rounded-full bg-red-500 text-white text-xs font-bold">
+                HOT
+              </span>
             </div>
           </div>
           <h2 className="text-3xl font-bold mb-2 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
@@ -1174,7 +1447,9 @@ const TradingSection = () => {
           <div className="p-4 rounded-xl bg-white/5 border border-white/10 space-y-2">
             <div className="flex items-center justify-between text-sm">
               <span className="text-slate-400">Tasa de Cambio</span>
-              <span className="text-white font-semibold">1 {fromCurrency} = {exchangeRate.toLocaleString()} {toCurrency}</span>
+              <span className="text-white font-semibold">
+                1 {fromCurrency} = {exchangeRate.toLocaleString()} {toCurrency}
+              </span>
             </div>
             <div className="flex items-center justify-between text-sm">
               <span className="text-slate-400">Fee de Trading</span>
@@ -1204,11 +1479,46 @@ const TradingSection = () => {
 // Emails Section
 const EmailsSection = () => {
   const mockEmails = [
-    { id: 1, from: 'security@protonmail.com', subject: 'Security Alert - New Login', preview: 'We detected a new login to your account...', time: '2 min ago', read: false },
-    { id: 2, from: 'support@binance.com', subject: 'Withdrawal Confirmed', preview: 'Your withdrawal of 0.5 BTC has been processed...', time: '1 hour ago', read: true },
-    { id: 3, from: 'notifications@coinbase.com', subject: 'Price Alert: BTC', preview: 'Bitcoin has reached your target price of $52,000...', time: '3 hours ago', read: true },
-    { id: 4, from: 'noreply@blockchain.com', subject: 'Transaction Received', preview: 'You have received 2.5 ETH to your wallet...', time: '1 day ago', read: true },
-    { id: 5, from: 'updates@protonmail.com', subject: 'New Proton Features', preview: 'Check out our latest privacy features...', time: '2 days ago', read: true },
+    {
+      id: 1,
+      from: 'security@protonmail.com',
+      subject: 'Security Alert - New Login',
+      preview: 'We detected a new login to your account...',
+      time: '2 min ago',
+      read: false,
+    },
+    {
+      id: 2,
+      from: 'support@binance.com',
+      subject: 'Withdrawal Confirmed',
+      preview: 'Your withdrawal of 0.5 BTC has been processed...',
+      time: '1 hour ago',
+      read: true,
+    },
+    {
+      id: 3,
+      from: 'notifications@coinbase.com',
+      subject: 'Price Alert: BTC',
+      preview: 'Bitcoin has reached your target price of $52,000...',
+      time: '3 hours ago',
+      read: true,
+    },
+    {
+      id: 4,
+      from: 'noreply@blockchain.com',
+      subject: 'Transaction Received',
+      preview: 'You have received 2.5 ETH to your wallet...',
+      time: '1 day ago',
+      read: true,
+    },
+    {
+      id: 5,
+      from: 'updates@protonmail.com',
+      subject: 'New Proton Features',
+      preview: 'Check out our latest privacy features...',
+      time: '2 days ago',
+      read: true,
+    },
   ];
 
   const [emails, setEmails] = useState(mockEmails);
@@ -1228,7 +1538,9 @@ const EmailsSection = () => {
             <h3 className="text-xl font-bold flex items-center gap-2">
               <Mail className="w-5 h-5 text-orange-400" />
               Inbox
-              <span className="px-2 py-0.5 rounded-full bg-red-500/20 text-red-400 text-xs font-bold">5</span>
+              <span className="px-2 py-0.5 rounded-full bg-red-500/20 text-red-400 text-xs font-bold">
+                5
+              </span>
             </h3>
             <button className="p-2 hover:bg-white/5 rounded-lg transition-colors">
               <RefreshCw className="w-4 h-4" />
@@ -1251,14 +1563,20 @@ const EmailsSection = () => {
               >
                 <div className="flex items-start justify-between mb-2">
                   <div className="flex items-center gap-2 flex-1 min-w-0">
-                    <div className={`w-2 h-2 rounded-full flex-shrink-0 ${email.read ? 'bg-slate-600' : 'bg-blue-400'}`} />
-                    <span className={`text-sm truncate ${email.read ? 'text-slate-400' : 'text-white font-semibold'}`}>
+                    <div
+                      className={`w-2 h-2 rounded-full flex-shrink-0 ${email.read ? 'bg-slate-600' : 'bg-blue-400'}`}
+                    />
+                    <span
+                      className={`text-sm truncate ${email.read ? 'text-slate-400' : 'text-white font-semibold'}`}
+                    >
                       {email.from}
                     </span>
                   </div>
                   <span className="text-xs text-slate-500 flex-shrink-0">{email.time}</span>
                 </div>
-                <h4 className={`text-sm mb-1 ${email.read ? 'text-slate-300' : 'text-white font-semibold'}`}>
+                <h4
+                  className={`text-sm mb-1 ${email.read ? 'text-slate-300' : 'text-white font-semibold'}`}
+                >
                   {email.subject}
                 </h4>
                 <p className="text-xs text-slate-500 line-clamp-1">{email.preview}</p>
@@ -1301,16 +1619,16 @@ const EmailsSection = () => {
 
               {/* Email Body */}
               <div className="prose prose-invert max-w-none">
-                <p className="text-slate-300 leading-relaxed">
-                  {selectedEmail.preview}
+                <p className="text-slate-300 leading-relaxed">{selectedEmail.preview}</p>
+                <p className="text-slate-300 leading-relaxed mt-4">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                 </p>
                 <p className="text-slate-300 leading-relaxed mt-4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-                <p className="text-slate-300 leading-relaxed mt-4">
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                  fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                  culpa qui officia deserunt mollit anim id est laborum.
                 </p>
               </div>
 
@@ -1345,8 +1663,20 @@ const SecuritySection = () => {
   const [sessionTimeout, setSessionTimeout] = useState('15');
 
   const securityFeatures = [
-    { name: '2FA Autenticación', enabled: twoFAEnabled, toggle: setTwoFAEnabled, icon: Smartphone, color: 'text-green-400' },
-    { name: 'Biométrica', enabled: biometricEnabled, toggle: setBiometricEnabled, icon: Fingerprint, color: 'text-blue-400' },
+    {
+      name: '2FA Autenticación',
+      enabled: twoFAEnabled,
+      toggle: setTwoFAEnabled,
+      icon: Smartphone,
+      color: 'text-green-400',
+    },
+    {
+      name: 'Biométrica',
+      enabled: biometricEnabled,
+      toggle: setBiometricEnabled,
+      icon: Fingerprint,
+      color: 'text-blue-400',
+    },
   ];
 
   return (
@@ -1375,11 +1705,18 @@ const SecuritySection = () => {
             {securityFeatures.map((feature) => {
               const Icon = feature.icon;
               return (
-                <div key={feature.name} className="p-6 rounded-xl bg-white/5 border border-white/10">
+                <div
+                  key={feature.name}
+                  className="p-6 rounded-xl bg-white/5 border border-white/10"
+                >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                      <div className={`p-3 rounded-xl ${feature.enabled ? 'bg-green-500/20' : 'bg-white/5'}`}>
-                        <Icon className={`w-6 h-6 ${feature.enabled ? feature.color : 'text-slate-400'}`} />
+                      <div
+                        className={`p-3 rounded-xl ${feature.enabled ? 'bg-green-500/20' : 'bg-white/5'}`}
+                      >
+                        <Icon
+                          className={`w-6 h-6 ${feature.enabled ? feature.color : 'text-slate-400'}`}
+                        />
                       </div>
                       <div>
                         <h3 className="text-white font-semibold">{feature.name}</h3>
@@ -1414,7 +1751,9 @@ const SecuritySection = () => {
               </div>
               <div className="flex-1">
                 <h3 className="text-white font-semibold">Tiempo de Sesión</h3>
-                <p className="text-sm text-slate-400">Cerrar sesión automáticamente después de inactividad</p>
+                <p className="text-sm text-slate-400">
+                  Cerrar sesión automáticamente después de inactividad
+                </p>
               </div>
             </div>
             <select
@@ -1437,13 +1776,34 @@ const SecuritySection = () => {
             </h3>
             <div className="space-y-3">
               {[
-                { action: 'Inicio de sesión', location: 'Monterrey, México', time: 'Hace 2 horas', icon: Check, color: 'text-green-400' },
-                { action: 'Cambio de contraseña', location: 'Monterrey, México', time: 'Hace 1 día', icon: Key, color: 'text-blue-400' },
-                { action: 'Nueva dispositivo', location: 'CDMX, México', time: 'Hace 3 días', icon: Smartphone, color: 'text-yellow-400' },
+                {
+                  action: 'Inicio de sesión',
+                  location: 'Monterrey, México',
+                  time: 'Hace 2 horas',
+                  icon: Check,
+                  color: 'text-green-400',
+                },
+                {
+                  action: 'Cambio de contraseña',
+                  location: 'Monterrey, México',
+                  time: 'Hace 1 día',
+                  icon: Key,
+                  color: 'text-blue-400',
+                },
+                {
+                  action: 'Nueva dispositivo',
+                  location: 'CDMX, México',
+                  time: 'Hace 3 días',
+                  icon: Smartphone,
+                  color: 'text-yellow-400',
+                },
               ].map((activity, index) => {
                 const Icon = activity.icon;
                 return (
-                  <div key={index} className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors">
+                  <div
+                    key={`item-${index}`}
+                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors"
+                  >
                     <Icon className={`w-5 h-5 ${activity.color}`} />
                     <div className="flex-1">
                       <p className="text-white text-sm font-medium">{activity.action}</p>
@@ -1471,7 +1831,8 @@ const SecuritySection = () => {
               />
             </div>
             <p className="text-sm text-slate-300">
-              Tu cuenta tiene un buen nivel de seguridad. Activa la autenticación biométrica para alcanzar el 100%.
+              Tu cuenta tiene un buen nivel de seguridad. Activa la autenticación biométrica para
+              alcanzar el 100%.
             </p>
           </div>
         </div>
@@ -1485,7 +1846,10 @@ export default function ShadowPrime() {
   const [activeSection, setActiveSection] = useLocalStorage('shadow_active_section', 'overview');
   const [isCollapsed, setIsCollapsed] = useLocalStorage(STORAGE_KEYS.SIDEBAR_STATE, false);
   const [wallets, setWallets] = useLocalStorage(STORAGE_KEYS.SHADOW_WALLETS, initialWallets);
-  const [transactions, setTransactions] = useLocalStorage(STORAGE_KEYS.SHADOW_TRANSACTIONS, recentTransactions);
+  const [transactions, setTransactions] = useLocalStorage(
+    STORAGE_KEYS.SHADOW_TRANSACTIONS,
+    recentTransactions
+  );
 
   const renderSection = () => {
     switch (activeSection) {
@@ -1517,10 +1881,14 @@ export default function ShadowPrime() {
 
       {/* Animated grid background */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'linear-gradient(rgba(168, 85, 247, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(168, 85, 247, 0.1) 1px, transparent 1px)',
-          backgroundSize: '50px 50px',
-        }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(168, 85, 247, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(168, 85, 247, 0.1) 1px, transparent 1px)',
+            backgroundSize: '50px 50px',
+          }}
+        />
       </div>
 
       <Sidebar

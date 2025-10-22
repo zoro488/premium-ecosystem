@@ -1,111 +1,113 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { AnimatePresence, motion, useMotionValue, useSpring } from 'framer-motion';
 import {
-  Network,
   Activity,
-  Zap,
-  TrendingUp,
-  TrendingDown,
-  Users,
-  DollarSign,
-  ShoppingCart,
-  Package,
-  Wallet,
-  Radio,
+  AlertCircle,
+  AlertTriangle,
+  Award,
+  BarChart3,
+  Bell,
+  Box,
+  Boxes,
   Brain,
   Building2,
-  Server,
-  Database,
-  Cpu,
-  HardDrive,
-  Wifi,
-  WifiOff,
-  AlertTriangle,
-  CheckCircle,
-  XCircle,
-  Clock,
   Calendar,
-  Mail,
-  Bell,
-  Settings,
-  Search,
-  Filter,
-  Download,
-  Upload,
-  RefreshCw,
-  BarChart3,
-  PieChart,
-  LineChart,
-  Globe,
-  MapPin,
-  Target,
-  Layers,
-  Box,
-  Truck,
-  CreditCard,
-  Eye,
-  Lock,
-  Shield,
+  CheckCircle,
   ChevronRight,
-  Menu,
-  X,
-  Maximize2,
-  Star,
-  Heart,
-  Share2,
-  ExternalLink,
-  Power,
-  AlertCircle,
-  Info,
-  Sparkles,
-  Gauge,
   CircuitBoard,
+  Clock,
+  Cloud,
   CloudLightning,
-  Boxes,
-  Award,
-  Flame,
-  Rocket,
-  Satellite,
-  Radar,
+  Cpu,
+  CreditCard,
   Crosshair,
-  Play,
+  Database,
+  DollarSign,
+  Download,
+  ExternalLink,
+  Eye,
+  Filter,
+  Flame,
+  Gauge,
+  Globe,
+  HardDrive,
+  Heart,
+  Info,
+  Layers,
+  LineChart,
+  Lock,
+  Mail,
+  MapPin,
+  Maximize2,
+  Menu,
+  Monitor,
+  Network,
+  Package,
   Pause,
-  StopCircle,
+  PieChart,
+  Play,
+  Power,
+  Radar,
+  Radio,
+  RefreshCw,
+  Rocket,
   RotateCw,
+  Satellite,
   Save,
+  Search,
+  Server,
+  Settings,
+  Share2,
+  Shield,
+  ShoppingCart,
+  Smartphone,
+  Sparkles,
+  Star,
+  StopCircle,
+  Tablet,
+  Target,
   ToggleLeft,
   ToggleRight,
-  Monitor,
-  Smartphone,
-  Tablet,
-  Cloud,
+  TrendingDown,
+  TrendingUp,
+  Truck,
+  Upload,
+  Users,
+  Wallet,
+  Wifi,
+  WifiOff,
+  X,
+  XCircle,
+  Zap,
 } from 'lucide-react';
 import {
-  LineChart as RechartsLine,
-  Line,
-  AreaChart,
   Area,
-  BarChart,
+  AreaChart,
   Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  ComposedChart,
+  Legend,
+  Line,
+  Pie,
+  PolarAngleAxis,
+  PolarGrid,
+  PolarRadiusAxis,
+  RadarChart,
+  LineChart as RechartsLine,
+  PieChart as RechartsPie,
+  Radar as RechartsRadar,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-  PieChart as RechartsPie,
-  Pie,
-  Cell,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  Radar as RechartsRadar,
-  ComposedChart,
 } from 'recharts';
+
 import AIAssistant from '../../components/shared/AIAssistant';
-import { storage, STORAGE_KEYS, useLocalStorage } from '../../utils/storage';
+import { STORAGE_KEYS, useLocalStorage } from '../../utils/storage';
 
 // Mock data del dashboard central
 const systemStats = {
@@ -274,11 +276,46 @@ const analyticsData = {
 // Network data
 const networkData = {
   connections: [
-    { id: 1, source: 'FlowDistributor', target: 'Database', status: 'active', latency: 12, bandwidth: '1.2 Gbps' },
-    { id: 2, source: 'ShadowPrime', target: 'Blockchain', status: 'active', latency: 45, bandwidth: '800 Mbps' },
-    { id: 3, source: 'Apollo', target: 'IoT Network', status: 'active', latency: 8, bandwidth: '500 Mbps' },
-    { id: 4, source: 'Synapse', target: 'AI Cluster', status: 'active', latency: 23, bandwidth: '2.4 Gbps' },
-    { id: 5, source: 'API Gateway', target: 'Load Balancer', status: 'active', latency: 5, bandwidth: '10 Gbps' },
+    {
+      id: 1,
+      source: 'FlowDistributor',
+      target: 'Database',
+      status: 'active',
+      latency: 12,
+      bandwidth: '1.2 Gbps',
+    },
+    {
+      id: 2,
+      source: 'ShadowPrime',
+      target: 'Blockchain',
+      status: 'active',
+      latency: 45,
+      bandwidth: '800 Mbps',
+    },
+    {
+      id: 3,
+      source: 'Apollo',
+      target: 'IoT Network',
+      status: 'active',
+      latency: 8,
+      bandwidth: '500 Mbps',
+    },
+    {
+      id: 4,
+      source: 'Synapse',
+      target: 'AI Cluster',
+      status: 'active',
+      latency: 23,
+      bandwidth: '2.4 Gbps',
+    },
+    {
+      id: 5,
+      source: 'API Gateway',
+      target: 'Load Balancer',
+      status: 'active',
+      latency: 5,
+      bandwidth: '10 Gbps',
+    },
   ],
   traffic: [
     { time: '00:00', incoming: 245, outgoing: 189 },
@@ -369,13 +406,49 @@ const CursorGlow = () => {
 // Sidebar Premium
 const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed }) => {
   const menuItems = [
-    { id: 'dashboard', icon: Gauge, label: 'Mission Control', color: 'from-pink-500 to-rose-500', badge: null },
-    { id: 'apps', icon: Boxes, label: 'Aplicaciones', color: 'from-blue-500 to-cyan-500', badge: 4 },
-    { id: 'analytics', icon: BarChart3, label: 'Analytics', color: 'from-purple-500 to-violet-500', badge: null },
-    { id: 'network', icon: Network, label: 'Red & Conexiones', color: 'from-green-500 to-emerald-500', badge: null },
-    { id: 'performance', icon: Activity, label: 'Rendimiento', color: 'from-cyan-500 to-teal-500', badge: 'LIVE' },
+    {
+      id: 'dashboard',
+      icon: Gauge,
+      label: 'Mission Control',
+      color: 'from-pink-500 to-rose-500',
+      badge: null,
+    },
+    {
+      id: 'apps',
+      icon: Boxes,
+      label: 'Aplicaciones',
+      color: 'from-blue-500 to-cyan-500',
+      badge: 4,
+    },
+    {
+      id: 'analytics',
+      icon: BarChart3,
+      label: 'Analytics',
+      color: 'from-purple-500 to-violet-500',
+      badge: null,
+    },
+    {
+      id: 'network',
+      icon: Network,
+      label: 'Red & Conexiones',
+      color: 'from-green-500 to-emerald-500',
+      badge: null,
+    },
+    {
+      id: 'performance',
+      icon: Activity,
+      label: 'Rendimiento',
+      color: 'from-cyan-500 to-teal-500',
+      badge: 'LIVE',
+    },
     { id: 'alerts', icon: Bell, label: 'Alertas', color: 'from-orange-500 to-red-500', badge: 3 },
-    { id: 'settings', icon: Settings, label: 'Configuración', color: 'from-slate-500 to-slate-600', badge: null },
+    {
+      id: 'settings',
+      icon: Settings,
+      label: 'Configuración',
+      color: 'from-slate-500 to-slate-600',
+      badge: null,
+    },
   ];
 
   return (
@@ -393,7 +466,8 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
           transition={{ duration: 20, repeat: Infinity, repeatType: 'reverse' }}
           className="absolute inset-0 opacity-20"
           style={{
-            backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 50%)',
+            backgroundImage:
+              'radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 50%)',
             backgroundSize: '100% 100%',
           }}
         />
@@ -489,14 +563,17 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
               <div
                 className={`
                   relative flex items-center gap-3 px-4 py-3 rounded-xl transition-all
-                  ${isActive
-                    ? `bg-gradient-to-r ${item.color} bg-opacity-20 border border-white/20 shadow-lg`
-                    : 'hover:bg-white/5 border border-transparent'
+                  ${
+                    isActive
+                      ? `bg-gradient-to-r ${item.color} bg-opacity-20 border border-white/20 shadow-lg`
+                      : 'hover:bg-white/5 border border-transparent'
                   }
                 `}
               >
                 <div className={`relative ${isActive ? 'scale-110' : ''} transition-transform`}>
-                  <Icon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'} transition-colors`} />
+                  <Icon
+                    className={`w-5 h-5 ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'} transition-colors`}
+                  />
                   {isActive && (
                     <motion.div
                       animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
@@ -508,7 +585,9 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
 
                 {!isCollapsed && (
                   <>
-                    <span className={`font-medium flex-1 text-left ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'} transition-colors`}>
+                    <span
+                      className={`font-medium flex-1 text-left ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'} transition-colors`}
+                    >
                       {item.label}
                     </span>
                     {item.badge && (
@@ -517,9 +596,10 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
                         animate={{ scale: 1 }}
                         className={`
                           px-2 py-0.5 rounded-full text-xs font-bold
-                          ${typeof item.badge === 'number'
-                            ? 'bg-pink-500/20 text-pink-400 border border-pink-500/30'
-                            : 'bg-gradient-to-r from-red-500 to-orange-500 text-white animate-pulse'
+                          ${
+                            typeof item.badge === 'number'
+                              ? 'bg-pink-500/20 text-pink-400 border border-pink-500/30'
+                              : 'bg-gradient-to-r from-red-500 to-orange-500 text-white animate-pulse'
                           }
                         `}
                       >
@@ -547,7 +627,9 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
                 <span className="text-xs text-slate-400">System Health</span>
                 <div className="flex items-center gap-1">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="text-xs text-green-400 font-medium">{systemStats.systemHealth}%</span>
+                  <span className="text-xs text-green-400 font-medium">
+                    {systemStats.systemHealth}%
+                  </span>
                 </div>
               </div>
               <div className="h-2 bg-white/5 rounded-full overflow-hidden mb-3">
@@ -561,7 +643,9 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <div>
                   <span className="text-slate-500">Apps:</span>
-                  <span className="text-pink-400 ml-1 font-medium">{systemStats.activeApps}/{systemStats.totalApps}</span>
+                  <span className="text-pink-400 ml-1 font-medium">
+                    {systemStats.activeApps}/{systemStats.totalApps}
+                  </span>
                 </div>
                 <div>
                   <span className="text-slate-500">Users:</span>
@@ -634,7 +718,9 @@ const AppStatusCard = ({ app, navigate, delay = 0 }) => {
             <div>
               <h3 className="text-lg font-bold text-white">{app.name}</h3>
               <div className="flex items-center gap-2 mt-1">
-                <div className={`w-2 h-2 rounded-full ${app.status === 'online' ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`} />
+                <div
+                  className={`w-2 h-2 rounded-full ${app.status === 'online' ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`}
+                />
                 <span className="text-xs text-slate-400">{app.status}</span>
               </div>
             </div>
@@ -711,7 +797,8 @@ const DashboardView = ({ apps, navigate }) => {
           transition={{ duration: 20, repeat: Infinity, repeatType: 'reverse' }}
           className="absolute inset-0 opacity-20"
           style={{
-            backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.3) 0%, transparent 50%)',
+            backgroundImage:
+              'radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.3) 0%, transparent 50%)',
             backgroundSize: '200% 200%',
           }}
         />
@@ -735,7 +822,9 @@ const DashboardView = ({ apps, navigate }) => {
                 </div>
                 <div>
                   <p className="text-xs text-slate-400">Total Revenue</p>
-                  <p className="text-2xl font-bold text-white">${(totalBalance / 1000).toFixed(0)}K</p>
+                  <p className="text-2xl font-bold text-white">
+                    ${(totalBalance / 1000).toFixed(0)}K
+                  </p>
                 </div>
               </div>
               <div className="flex items-center gap-2 text-xs">
@@ -816,7 +905,9 @@ const DashboardView = ({ apps, navigate }) => {
           </h2>
           <div className="flex items-center gap-2 text-sm">
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            <span className="text-slate-400">{systemStats.activeApps} de {systemStats.totalApps} en línea</span>
+            <span className="text-slate-400">
+              {systemStats.activeApps} de {systemStats.totalApps} en línea
+            </span>
           </div>
         </div>
 
@@ -852,7 +943,9 @@ const DashboardView = ({ apps, navigate }) => {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="font-medium text-white text-sm">{activity.message}</p>
-                    <p className="text-xs text-slate-500">{activity.app} • {activity.timestamp}</p>
+                    <p className="text-xs text-slate-500">
+                      {activity.app} • {activity.timestamp}
+                    </p>
                   </div>
                   <span className="text-sm font-semibold text-green-400">{activity.value}</span>
                 </motion.div>
@@ -871,22 +964,32 @@ const DashboardView = ({ apps, navigate }) => {
             <AreaChart data={performanceData}>
               <defs>
                 <linearGradient id="colorCpu" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#ec4899" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#ec4899" stopOpacity={0}/>
+                  <stop offset="5%" stopColor="#ec4899" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#ec4899" stopOpacity={0} />
                 </linearGradient>
                 <linearGradient id="colorRam" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0}/>
+                  <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="#333" />
               <XAxis dataKey="time" stroke="#666" />
               <YAxis stroke="#666" />
-              <Tooltip
-                contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #ec4899' }}
+              <Tooltip contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #ec4899' }} />
+              <Area
+                type="monotone"
+                dataKey="cpu"
+                stroke="#ec4899"
+                fillOpacity={1}
+                fill="url(#colorCpu)"
               />
-              <Area type="monotone" dataKey="cpu" stroke="#ec4899" fillOpacity={1} fill="url(#colorCpu)" />
-              <Area type="monotone" dataKey="ram" stroke="#8b5cf6" fillOpacity={1} fill="url(#colorRam)" />
+              <Area
+                type="monotone"
+                dataKey="ram"
+                stroke="#8b5cf6"
+                fillOpacity={1}
+                fill="url(#colorRam)"
+              />
             </AreaChart>
           </ResponsiveContainer>
         </div>
@@ -918,7 +1021,9 @@ const AppsView = ({ apps, navigate }) => {
             <div>
               <h3 className="text-xl font-bold text-white mb-1">{app.name}</h3>
               <div className="flex items-center gap-2">
-                <div className={`w-2 h-2 rounded-full ${isRunning ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`} />
+                <div
+                  className={`w-2 h-2 rounded-full ${isRunning ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`}
+                />
                 <span className="text-sm text-slate-400">{isRunning ? 'Online' : 'Offline'}</span>
                 <span className="text-xs text-slate-500">• Uptime: {app.uptime}%</span>
               </div>
@@ -932,7 +1037,11 @@ const AppsView = ({ apps, navigate }) => {
               onClick={() => setIsRunning(!isRunning)}
               className={`p-2 rounded-lg ${isRunning ? 'bg-red-500/20 hover:bg-red-500/30' : 'bg-green-500/20 hover:bg-green-500/30'} transition-colors`}
             >
-              {isRunning ? <Pause className="w-5 h-5 text-red-400" /> : <Play className="w-5 h-5 text-green-400" />}
+              {isRunning ? (
+                <Pause className="w-5 h-5 text-red-400" />
+              ) : (
+                <Play className="w-5 h-5 text-green-400" />
+              )}
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -1013,7 +1122,9 @@ const AppsView = ({ apps, navigate }) => {
             <Boxes className="w-8 h-8 text-blue-400" />
             Gestión de Aplicaciones
           </h2>
-          <p className="text-slate-400 mt-1">Control total sobre todas las aplicaciones del ecosistema</p>
+          <p className="text-slate-400 mt-1">
+            Control total sobre todas las aplicaciones del ecosistema
+          </p>
         </div>
         <div className="flex gap-3">
           <motion.button
@@ -1066,13 +1177,37 @@ const AnalyticsView = () => {
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {[
-          { label: 'Total Revenue', value: '$2.8M', change: '+12.5%', icon: DollarSign, color: 'from-green-500 to-emerald-500' },
-          { label: 'Total Users', value: '3,892', change: '+15.2%', icon: Users, color: 'from-blue-500 to-cyan-500' },
-          { label: 'Active Apps', value: '4/5', change: '80%', icon: Boxes, color: 'from-purple-500 to-violet-500' },
-          { label: 'Avg Response', value: '328ms', change: '-8.3%', icon: Zap, color: 'from-orange-500 to-amber-500' },
+          {
+            label: 'Total Revenue',
+            value: '$2.8M',
+            change: '+12.5%',
+            icon: DollarSign,
+            color: 'from-green-500 to-emerald-500',
+          },
+          {
+            label: 'Total Users',
+            value: '3,892',
+            change: '+15.2%',
+            icon: Users,
+            color: 'from-blue-500 to-cyan-500',
+          },
+          {
+            label: 'Active Apps',
+            value: '4/5',
+            change: '80%',
+            icon: Boxes,
+            color: 'from-purple-500 to-violet-500',
+          },
+          {
+            label: 'Avg Response',
+            value: '328ms',
+            change: '-8.3%',
+            icon: Zap,
+            color: 'from-orange-500 to-amber-500',
+          },
         ].map((kpi, index) => (
           <motion.div
-            key={index}
+            key={`item-${index}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
@@ -1103,8 +1238,8 @@ const AnalyticsView = () => {
             <ComposedChart data={analyticsData.userGrowth}>
               <defs>
                 <linearGradient id="userGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
+                  <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="#333" />
@@ -1112,8 +1247,20 @@ const AnalyticsView = () => {
               <YAxis stroke="#666" />
               <Tooltip contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #ec4899' }} />
               <Legend />
-              <Area type="monotone" dataKey="users" fill="url(#userGradient)" stroke="#3b82f6" name="Total Users" />
-              <Line type="monotone" dataKey="activeUsers" stroke="#10b981" name="Active Users" strokeWidth={2} />
+              <Area
+                type="monotone"
+                dataKey="users"
+                fill="url(#userGradient)"
+                stroke="#3b82f6"
+                name="Total Users"
+              />
+              <Line
+                type="monotone"
+                dataKey="activeUsers"
+                stroke="#10b981"
+                name="Active Users"
+                strokeWidth={2}
+              />
               <Bar dataKey="newUsers" fill="#8b5cf6" name="New Users" />
             </ComposedChart>
           </ResponsiveContainer>
@@ -1156,8 +1303,8 @@ const AnalyticsView = () => {
             <BarChart data={analyticsData.revenueByApp}>
               <defs>
                 <linearGradient id="revenueGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#10b981" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#10b981" stopOpacity={0.3}/>
+                  <stop offset="5%" stopColor="#10b981" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#10b981" stopOpacity={0.3} />
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="#333" />
@@ -1165,7 +1312,12 @@ const AnalyticsView = () => {
               <YAxis stroke="#666" />
               <Tooltip contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #ec4899' }} />
               <Legend />
-              <Bar dataKey="revenue" fill="url(#revenueGradient)" name="Revenue ($)" radius={[8, 8, 0, 0]} />
+              <Bar
+                dataKey="revenue"
+                fill="url(#revenueGradient)"
+                name="Revenue ($)"
+                radius={[8, 8, 0, 0]}
+              />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -1199,7 +1351,7 @@ const NetworkView = () => {
           { label: 'Avg Latency', value: '18ms', status: 'good', icon: Zap },
         ].map((stat, index) => (
           <motion.div
-            key={index}
+            key={`item-${index}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
@@ -1248,7 +1400,9 @@ const NetworkView = () => {
                   <p className="text-xs text-slate-400">Bandwidth</p>
                   <p className="text-sm font-medium text-white">{conn.bandwidth}</p>
                 </div>
-                <div className={`w-2 h-2 rounded-full ${conn.status === 'active' ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`} />
+                <div
+                  className={`w-2 h-2 rounded-full ${conn.status === 'active' ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`}
+                />
               </div>
             </motion.div>
           ))}
@@ -1265,12 +1419,12 @@ const NetworkView = () => {
           <AreaChart data={networkData.traffic}>
             <defs>
               <linearGradient id="incoming" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#10b981" stopOpacity={0.8}/>
-                <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
+                <stop offset="5%" stopColor="#10b981" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="#10b981" stopOpacity={0} />
               </linearGradient>
               <linearGradient id="outgoing" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8}/>
-                <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
+                <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
               </linearGradient>
             </defs>
             <CartesianGrid strokeDasharray="3 3" stroke="#333" />
@@ -1278,8 +1432,20 @@ const NetworkView = () => {
             <YAxis stroke="#666" />
             <Tooltip contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #ec4899' }} />
             <Legend />
-            <Area type="monotone" dataKey="incoming" stroke="#10b981" fill="url(#incoming)" name="Incoming (Mbps)" />
-            <Area type="monotone" dataKey="outgoing" stroke="#3b82f6" fill="url(#outgoing)" name="Outgoing (Mbps)" />
+            <Area
+              type="monotone"
+              dataKey="incoming"
+              stroke="#10b981"
+              fill="url(#incoming)"
+              name="Incoming (Mbps)"
+            />
+            <Area
+              type="monotone"
+              dataKey="outgoing"
+              stroke="#3b82f6"
+              fill="url(#outgoing)"
+              name="Outgoing (Mbps)"
+            />
           </AreaChart>
         </ResponsiveContainer>
       </div>
@@ -1293,14 +1459,17 @@ const PerformanceView = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setLiveData(prev => {
-        const newData = [...prev.slice(1), {
-          time: new Date().toLocaleTimeString(),
-          cpu: Math.floor(Math.random() * 30 + 30),
-          ram: Math.floor(Math.random() * 30 + 50),
-          network: Math.floor(Math.random() * 20 + 70),
-          db: Math.floor(Math.random() * 30 + 25),
-        }];
+      setLiveData((prev) => {
+        const newData = [
+          ...prev.slice(1),
+          {
+            time: new Date().toLocaleTimeString(),
+            cpu: Math.floor(Math.random() * 30 + 30),
+            ram: Math.floor(Math.random() * 30 + 50),
+            network: Math.floor(Math.random() * 20 + 70),
+            db: Math.floor(Math.random() * 30 + 25),
+          },
+        ];
         return newData;
       });
     }, 3000);
@@ -1322,7 +1491,9 @@ const PerformanceView = () => {
             <Activity className="w-8 h-8 text-cyan-400" />
             Performance Monitoring
           </h2>
-          <p className="text-slate-400 mt-1">Monitoreo en tiempo real del rendimiento del sistema</p>
+          <p className="text-slate-400 mt-1">
+            Monitoreo en tiempo real del rendimiento del sistema
+          </p>
         </div>
         <motion.div
           animate={{ scale: [1, 1.1, 1] }}
@@ -1337,13 +1508,37 @@ const PerformanceView = () => {
       {/* Real-time Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {[
-          { label: 'CPU Usage', value: currentMetrics.cpu, icon: Cpu, color: 'from-pink-500 to-rose-500', unit: '%' },
-          { label: 'RAM Usage', value: currentMetrics.ram, icon: HardDrive, color: 'from-purple-500 to-violet-500', unit: '%' },
-          { label: 'Network Load', value: currentMetrics.network, icon: Wifi, color: 'from-blue-500 to-cyan-500', unit: '%' },
-          { label: 'DB Connections', value: currentMetrics.db, icon: Database, color: 'from-green-500 to-emerald-500', unit: '%' },
+          {
+            label: 'CPU Usage',
+            value: currentMetrics.cpu,
+            icon: Cpu,
+            color: 'from-pink-500 to-rose-500',
+            unit: '%',
+          },
+          {
+            label: 'RAM Usage',
+            value: currentMetrics.ram,
+            icon: HardDrive,
+            color: 'from-purple-500 to-violet-500',
+            unit: '%',
+          },
+          {
+            label: 'Network Load',
+            value: currentMetrics.network,
+            icon: Wifi,
+            color: 'from-blue-500 to-cyan-500',
+            unit: '%',
+          },
+          {
+            label: 'DB Connections',
+            value: currentMetrics.db,
+            icon: Database,
+            color: 'from-green-500 to-emerald-500',
+            unit: '%',
+          },
         ].map((metric, index) => (
           <motion.div
-            key={index}
+            key={`item-${index}`}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: index * 0.1 }}
@@ -1359,7 +1554,8 @@ const PerformanceView = () => {
                 animate={{ scale: 1, opacity: 1 }}
                 className="text-2xl font-bold text-white"
               >
-                {metric.value}{metric.unit}
+                {metric.value}
+                {metric.unit}
               </motion.span>
             </div>
             <p className="text-sm text-slate-400 mb-2">{metric.label}</p>
@@ -1387,10 +1583,38 @@ const PerformanceView = () => {
             <YAxis stroke="#666" />
             <Tooltip contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #ec4899' }} />
             <Legend />
-            <Line type="monotone" dataKey="cpu" stroke="#ec4899" strokeWidth={2} name="CPU %" dot={false} />
-            <Line type="monotone" dataKey="ram" stroke="#8b5cf6" strokeWidth={2} name="RAM %" dot={false} />
-            <Line type="monotone" dataKey="network" stroke="#06b6d4" strokeWidth={2} name="Network %" dot={false} />
-            <Line type="monotone" dataKey="db" stroke="#10b981" strokeWidth={2} name="DB %" dot={false} />
+            <Line
+              type="monotone"
+              dataKey="cpu"
+              stroke="#ec4899"
+              strokeWidth={2}
+              name="CPU %"
+              dot={false}
+            />
+            <Line
+              type="monotone"
+              dataKey="ram"
+              stroke="#8b5cf6"
+              strokeWidth={2}
+              name="RAM %"
+              dot={false}
+            />
+            <Line
+              type="monotone"
+              dataKey="network"
+              stroke="#06b6d4"
+              strokeWidth={2}
+              name="Network %"
+              dot={false}
+            />
+            <Line
+              type="monotone"
+              dataKey="db"
+              stroke="#10b981"
+              strokeWidth={2}
+              name="DB %"
+              dot={false}
+            />
           </LineChart>
         </ResponsiveContainer>
       </div>
@@ -1409,10 +1633,12 @@ const PerformanceView = () => {
               { label: 'Disk Space', value: '2 TB', usage: '45%' },
               { label: 'Network I/O', value: '10 Gbps', usage: '85%' },
             ].map((resource, index) => (
-              <div key={index} className="space-y-2">
+              <div key={`item-${index}`} className="space-y-2">
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-slate-400">{resource.label}</span>
-                  <span className="text-white font-medium">{resource.value} • {resource.usage}</span>
+                  <span className="text-white font-medium">
+                    {resource.value} • {resource.usage}
+                  </span>
                 </div>
                 <div className="h-2 bg-white/5 rounded-full overflow-hidden">
                   <motion.div
@@ -1439,11 +1665,18 @@ const PerformanceView = () => {
               { name: 'Synapse AI Engine', cpu: 22, mem: 2.8 },
               { name: 'Database Server', cpu: 18, mem: 3.2 },
             ].map((process, index) => (
-              <div key={index} className="flex items-center justify-between p-3 rounded-lg bg-white/5 border border-white/10">
+              <div
+                key={`item-${index}`}
+                className="flex items-center justify-between p-3 rounded-lg bg-white/5 border border-white/10"
+              >
                 <span className="text-white font-medium">{process.name}</span>
                 <div className="flex items-center gap-4 text-sm">
-                  <span className="text-slate-400">CPU: <span className="text-cyan-400">{process.cpu}%</span></span>
-                  <span className="text-slate-400">MEM: <span className="text-purple-400">{process.mem} GB</span></span>
+                  <span className="text-slate-400">
+                    CPU: <span className="text-cyan-400">{process.cpu}%</span>
+                  </span>
+                  <span className="text-slate-400">
+                    MEM: <span className="text-purple-400">{process.mem} GB</span>
+                  </span>
                 </div>
               </div>
             ))}
@@ -1459,9 +1692,8 @@ const AlertsView = () => {
   const [alerts, setAlerts] = useState(alertsData);
   const [filter, setFilter] = useState('all');
 
-  const filteredAlerts = filter === 'all'
-    ? alerts
-    : alerts.filter(alert => alert.status === filter);
+  const filteredAlerts =
+    filter === 'all' ? alerts : alerts.filter((alert) => alert.status === filter);
 
   const alertColors = {
     error: 'from-red-500 to-rose-500',
@@ -1507,13 +1739,33 @@ const AlertsView = () => {
       {/* Alert Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {[
-          { label: 'Active Alerts', value: alerts.filter(a => a.status === 'active').length, icon: AlertTriangle, color: 'from-red-500 to-rose-500' },
-          { label: 'Resolved', value: alerts.filter(a => a.status === 'resolved').length, icon: CheckCircle, color: 'from-green-500 to-emerald-500' },
-          { label: 'High Severity', value: alerts.filter(a => a.severity === 'high').length, icon: XCircle, color: 'from-orange-500 to-amber-500' },
-          { label: 'Total Alerts', value: alerts.length, icon: Bell, color: 'from-blue-500 to-cyan-500' },
+          {
+            label: 'Active Alerts',
+            value: alerts.filter((a) => a.status === 'active').length,
+            icon: AlertTriangle,
+            color: 'from-red-500 to-rose-500',
+          },
+          {
+            label: 'Resolved',
+            value: alerts.filter((a) => a.status === 'resolved').length,
+            icon: CheckCircle,
+            color: 'from-green-500 to-emerald-500',
+          },
+          {
+            label: 'High Severity',
+            value: alerts.filter((a) => a.severity === 'high').length,
+            icon: XCircle,
+            color: 'from-orange-500 to-amber-500',
+          },
+          {
+            label: 'Total Alerts',
+            value: alerts.length,
+            icon: Bell,
+            color: 'from-blue-500 to-cyan-500',
+          },
         ].map((stat, index) => (
           <motion.div
-            key={index}
+            key={`item-${index}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
@@ -1547,10 +1799,14 @@ const AlertsView = () => {
                 transition={{ delay: index * 0.05 }}
                 className="relative overflow-hidden rounded-xl border border-white/10 hover:border-white/20 transition-all"
               >
-                <div className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b ${alertColors[alert.type]}`} />
+                <div
+                  className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b ${alertColors[alert.type]}`}
+                />
                 <div className="flex items-center justify-between p-4 pl-6">
                   <div className="flex items-center gap-4">
-                    <div className={`p-2 rounded-lg bg-gradient-to-br ${alertColors[alert.type]} bg-opacity-20`}>
+                    <div
+                      className={`p-2 rounded-lg bg-gradient-to-br ${alertColors[alert.type]} bg-opacity-20`}
+                    >
                       <Icon className="w-5 h-5 text-white" />
                     </div>
                     <div>
@@ -1560,22 +1816,28 @@ const AlertsView = () => {
                         <span>•</span>
                         <span>{alert.timestamp}</span>
                         <span>•</span>
-                        <span className={`px-2 py-0.5 rounded-full ${
-                          alert.severity === 'high' ? 'bg-red-500/20 text-red-400' :
-                          alert.severity === 'medium' ? 'bg-orange-500/20 text-orange-400' :
-                          'bg-blue-500/20 text-blue-400'
-                        }`}>
+                        <span
+                          className={`px-2 py-0.5 rounded-full ${
+                            alert.severity === 'high'
+                              ? 'bg-red-500/20 text-red-400'
+                              : alert.severity === 'medium'
+                                ? 'bg-orange-500/20 text-orange-400'
+                                : 'bg-blue-500/20 text-blue-400'
+                          }`}
+                        >
                           {alert.severity}
                         </span>
                       </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                      alert.status === 'active'
-                        ? 'bg-red-500/20 text-red-400'
-                        : 'bg-green-500/20 text-green-400'
-                    }`}>
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-medium ${
+                        alert.status === 'active'
+                          ? 'bg-red-500/20 text-red-400'
+                          : 'bg-green-500/20 text-green-400'
+                      }`}
+                    >
                       {alert.status}
                     </span>
                     <motion.button
@@ -1608,7 +1870,7 @@ const SettingsView = () => {
   });
 
   const toggleSetting = (key) => {
-    setSettings(prev => ({ ...prev, [key]: !prev[key] }));
+    setSettings((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
   return (
@@ -1635,10 +1897,18 @@ const SettingsView = () => {
           </h3>
           <div className="space-y-4">
             {[
-              { key: 'notifications', label: 'Enable Notifications', description: 'Receive system notifications' },
+              {
+                key: 'notifications',
+                label: 'Enable Notifications',
+                description: 'Receive system notifications',
+              },
               { key: 'autoBackup', label: 'Auto Backup', description: 'Automatic daily backups' },
               { key: 'darkMode', label: 'Dark Mode', description: 'Use dark theme' },
-              { key: 'analytics', label: 'Analytics Tracking', description: 'Track system analytics' },
+              {
+                key: 'analytics',
+                label: 'Analytics Tracking',
+                description: 'Track system analytics',
+              },
             ].map((setting, index) => (
               <motion.div
                 key={setting.key}
@@ -1678,8 +1948,16 @@ const SettingsView = () => {
           </h3>
           <div className="space-y-4">
             {[
-              { key: 'twoFactor', label: 'Two-Factor Authentication', description: 'Add extra security layer' },
-              { key: 'maintenance', label: 'Maintenance Mode', description: 'Enable maintenance mode' },
+              {
+                key: 'twoFactor',
+                label: 'Two-Factor Authentication',
+                description: 'Add extra security layer',
+              },
+              {
+                key: 'maintenance',
+                label: 'Maintenance Mode',
+                description: 'Enable maintenance mode',
+              },
             ].map((setting, index) => (
               <motion.div
                 key={setting.key}
@@ -1726,7 +2004,10 @@ const SettingsView = () => {
               { label: 'Uptime', value: '45 days 12 hours' },
               { label: 'Last Backup', value: '2 hours ago' },
             ].map((info, index) => (
-              <div key={index} className="flex items-center justify-between p-3 rounded-lg bg-white/5">
+              <div
+                key={`item-${index}`}
+                className="flex items-center justify-between p-3 rounded-lg bg-white/5"
+              >
                 <span className="text-slate-400">{info.label}</span>
                 <span className="text-white font-medium">{info.value}</span>
               </div>
@@ -1814,10 +2095,14 @@ export default function Nexus() {
 
       {/* Animated grid background */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'linear-gradient(rgba(236, 72, 153, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(236, 72, 153, 0.1) 1px, transparent 1px)',
-          backgroundSize: '50px 50px',
-        }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(236, 72, 153, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(236, 72, 153, 0.1) 1px, transparent 1px)',
+            backgroundSize: '50px 50px',
+          }}
+        />
       </div>
 
       <Sidebar

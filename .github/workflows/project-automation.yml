@@ -1,0 +1,355 @@
+name: GitHub Projects Automation
+
+on:
+  issues:
+    types: [opened, reopened, closed, labeled, assigned]
+  pull_request:
+    types: [opened, reopened, closed, ready_for_review, review_requested, labeled]
+  issue_comment:
+    types: [created]
+  project_card:
+    types: [moved]
+
+permissions:
+  issues: write
+  pull-requests: write
+  repository-projects: write
+  contents: read
+
+jobs:
+  # ==================================================
+  # AUTO-ASSIGN TO PROJECT
+  # ==================================================
+  add-to-project:
+    name: Add to Project Board
+    runs-on: ubuntu-latest
+    if: github.event.action == 'opened'
+
+    steps:
+      - name: Add issue to project
+        uses: actions/add-to-project@v0.5.0
+        with:
+          project-url: https://github.com/orgs/YOUR_ORG/projects/YOUR_PROJECT_NUMBER
+          github-token: ${{ secrets.GH_PROJECT_TOKEN }}
+
+  # ==================================================
+  # AUTO-LABEL BASED ON CONTENT
+  # ==================================================
+  auto-label:
+    name: Auto Label Issues & PRs
+    runs-on: ubuntu-latest
+    if: github.event.action == 'opened'
+
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue || context.payload.pull_request;
+            const title = issue.title.toLowerCase();
+            const body = (issue.body || '').toLowerCase();
+            const labels = [];
+
+            // Auto-label basado en keywords
+            if (title.includes('bug') || body.includes('bug')) {
+              labels.push('bug');
+            }
+            if (title.includes('feature') || body.includes('feature')) {
+              labels.push('enhancement');
+            }
+            if (title.includes('docs') || title.includes('documentation')) {
+              labels.push('documentation');
+            }
+            if (title.includes('security') || body.includes('security')) {
+              labels.push('security');
+            }
+            if (title.includes('performance') || body.includes('performance')) {
+              labels.push('performance');
+            }
+            if (title.includes('test') || body.includes('test')) {
+              labels.push('testing');
+            }
+
+            // Labels basados en apps
+            const apps = ['flowdistributor', 'smartsales', 'clienthub', 'analyticspro', 'teamsync'];
+            for (const app of apps) {
+              if (title.includes(app) || body.includes(app)) {
+                labels.push(`app:${app}`);
+              }
+            }
+
+            // Aplicar labels si hay alguno
+            if (labels.length > 0) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                labels: labels
+              });
+            }
+
+  # ==================================================
+  # AUTO-ASSIGN REVIEWERS
+  # ==================================================
+  auto-assign-reviewers:
+    name: Auto Assign Reviewers
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.action == 'opened'
+
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const author = pr.user.login;
+
+            // Lista de reviewers potenciales (excluir el autor)
+            const allReviewers = ['reviewer1', 'reviewer2', 'reviewer3'];
+            const reviewers = allReviewers.filter(r => r !== author);
+
+            // Asignar basado en archivos modificados
+            const { data: files } = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pr.number
+            });
+
+            // CODEOWNERS logic simplificado
+            const codeOwners = {
+              'src/apps/FlowDistributor': ['team-flowdistributor'],
+              'src/apps/SmartSales': ['team-smartsales'],
+              'src/apps/ClientHub': ['team-clienthub'],
+              '.github': ['devops-team'],
+              '*.yml': ['devops-team']
+            };
+
+            const assignReviewers = new Set();
+            for (const file of files) {
+              for (const [pattern, owners] of Object.entries(codeOwners)) {
+                if (file.filename.includes(pattern)) {
+                  owners.forEach(owner => assignReviewers.add(owner));
+                }
+              }
+            }
+
+            // Asignar reviewers si hay
+            if (assignReviewers.size > 0) {
+              await github.rest.pulls.requestReviewers({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: pr.number,
+                reviewers: Array.from(assignReviewers).slice(0, 3) // Max 3 reviewers
+              });
+            }
+
+  # ==================================================
+  # UPDATE PROJECT STATUS
+  # ==================================================
+  update-project-status:
+    name: Update Project Status
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'pull_request' ||
+      github.event_name == 'issues'
+
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const item = context.payload.issue || context.payload.pull_request;
+            const action = context.payload.action;
+
+            // Determinar el estado del proyecto
+            let status = null;
+
+            if (action === 'opened' || action === 'reopened') {
+              status = item.pull_request ? 'In Review' : 'Todo';
+            } else if (action === 'closed') {
+              status = item.pull_request?.merged ? 'Done' : 'Closed';
+            } else if (action === 'ready_for_review') {
+              status = 'In Review';
+            } else if (context.payload.review?.state === 'approved') {
+              status = 'Approved';
+            }
+
+            if (status) {
+              core.info(`Setting status to: ${status}`);
+              // Aquí iría la lógica para actualizar el proyecto
+              // Requiere GraphQL API
+            }
+
+  # ==================================================
+  # AUTO-CLOSE STALE ISSUES
+  # ==================================================
+  stale:
+    name: Close Stale Issues
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+
+    steps:
+      - uses: actions/stale@v9
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          stale-issue-message: '🔔 Este issue ha estado inactivo por 60 días y será cerrado en 7 días si no hay actividad.'
+          close-issue-message: '🔒 Cerrando este issue por inactividad. Puede reabrirse si es necesario.'
+          stale-pr-message: '🔔 Este PR ha estado inactivo por 30 días y será cerrado en 7 días si no hay actividad.'
+          close-pr-message: '🔒 Cerrando este PR por inactividad.'
+          days-before-stale: 60
+          days-before-close: 7
+          days-before-pr-stale: 30
+          days-before-pr-close: 7
+          stale-issue-label: 'stale'
+          stale-pr-label: 'stale'
+          exempt-issue-labels: 'pinned,security,critical'
+          exempt-pr-labels: 'pinned,security,work-in-progress'
+
+  # ==================================================
+  # WELCOME NEW CONTRIBUTORS
+  # ==================================================
+  welcome:
+    name: Welcome New Contributors
+    runs-on: ubuntu-latest
+    if: github.event.action == 'opened'
+
+    steps:
+      - uses: actions/first-interaction@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: |
+            👋 ¡Hola @${{ github.actor }}!
+
+            Gracias por abrir tu primer issue en Premium Ecosystem. Un miembro del equipo lo revisará pronto.
+
+            Mientras tanto, asegúrate de que:
+            - [ ] El título describe claramente el problema
+            - [ ] Incluiste todos los detalles relevantes
+            - [ ] Revisaste issues similares existentes
+
+            ¡Bienvenido a la comunidad! 🎉
+
+          pr-message: |
+            👋 ¡Hola @${{ github.actor }}!
+
+            Gracias por tu primer Pull Request en Premium Ecosystem. Aquí hay algunos consejos:
+
+            - Asegúrate de que todos los tests pasen ✅
+            - Revisa que el código siga nuestras guías de estilo
+            - Añade tests para nuevas funcionalidades
+            - Actualiza la documentación si es necesario
+
+            Un reviewer será asignado pronto. ¡Gracias por contribuir! 🚀
+
+  # ==================================================
+  # SIZE LABELER
+  # ==================================================
+  size-label:
+    name: Label PR Size
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+
+            const { data: files } = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pr.number
+            });
+
+            // Calcular cambios totales
+            let additions = 0;
+            let deletions = 0;
+
+            for (const file of files) {
+              additions += file.additions;
+              deletions += file.deletions;
+            }
+
+            const totalChanges = additions + deletions;
+
+            // Determinar tamaño
+            let sizeLabel = '';
+            if (totalChanges < 10) {
+              sizeLabel = 'size/XS';
+            } else if (totalChanges < 50) {
+              sizeLabel = 'size/S';
+            } else if (totalChanges < 200) {
+              sizeLabel = 'size/M';
+            } else if (totalChanges < 500) {
+              sizeLabel = 'size/L';
+            } else {
+              sizeLabel = 'size/XL';
+            }
+
+            // Remover labels de tamaño anteriores
+            const { data: currentLabels } = await github.rest.issues.listLabelsOnIssue({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: pr.number
+            });
+
+            for (const label of currentLabels) {
+              if (label.name.startsWith('size/')) {
+                await github.rest.issues.removeLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: pr.number,
+                  name: label.name
+                });
+              }
+            }
+
+            // Añadir nuevo label
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: pr.number,
+              labels: [sizeLabel]
+            });
+
+  # ==================================================
+  # CONVENTIONAL COMMITS CHECK
+  # ==================================================
+  conventional-commits:
+    name: Check Conventional Commits
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check commits
+        uses: wagoid/commitlint-github-action@v5
+        with:
+          configFile: .commitlintrc.json
+          failOnWarnings: false
+
+  # ==================================================
+  # DEPENDENCY UPDATES AUTO-MERGE
+  # ==================================================
+  dependabot-auto-merge:
+    name: Auto-merge Dependabot PRs
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'pull_request' &&
+      github.actor == 'dependabot[bot]'
+
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Auto-merge for patch and minor updates
+        if: |
+          steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
+          steps.metadata.outputs.update-type == 'version-update:semver-minor'
+        run: gh pr merge --auto --squash "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,240 @@
+{
+  "summary": {
+    "totalErrors": 0,
+    "totalWarnings": 21,
+    "isValid": true,
+    "timestamp": "2025-10-20T21:04:18.452Z"
+  },
+  "stats": {
+    "ventasProcesadas": 80,
+    "ventasValidadas": 80,
+    "clientesProcesados": 29,
+    "clientesValidados": 29,
+    "ordenesProcesadas": 9,
+    "ordenesValidadas": 9,
+    "bancosProcesados": 6,
+    "bancosValidados": 6
+  },
+  "errors": [],
+  "warnings": [
+    {
+      "type": "SALDO_FAVOR_DETECTADO",
+      "severity": "WARNING",
+      "entity": "cliente",
+      "id": "CLI-Primo",
+      "nombre": "Primo",
+      "message": "Cliente tiene saldo a favor de $3000.00",
+      "recommendation": "Verificar si el cliente pagó de más o si hay un error en los abonos"
+    },
+    {
+      "type": "SALDO_FAVOR_DETECTADO",
+      "severity": "WARNING",
+      "entity": "cliente",
+      "id": "CLI-Ax",
+      "nombre": "Ax",
+      "message": "Cliente tiene saldo a favor de $317380.00",
+      "recommendation": "Verificar si el cliente pagó de más o si hay un error en los abonos"
+    },
+    {
+      "type": "MISSING_CLIENTE_REFERENCE",
+      "severity": "WARNING",
+      "entity": "venta",
+      "id": "VENTA-2025-08-25-Trámite Chucho-10",
+      "cliente": "Trámite Chucho",
+      "message": "Venta referencia cliente \"Trámite Chucho\" que no existe en lista de clientes",
+      "recommendation": "Se creará automáticamente al importar, pero verificar datos"
+    },
+    {
+      "type": "MISSING_CLIENTE_REFERENCE",
+      "severity": "WARNING",
+      "entity": "venta",
+      "id": "VENTA-2025-09-03-470.0-29",
+      "cliente": "Cliente 470",
+      "message": "Venta referencia cliente \"Cliente 470\" que no existe en lista de clientes",
+      "recommendation": "Se creará automáticamente al importar, pero verificar datos"
+    },
+    {
+      "type": "MISSING_CLIENTE_REFERENCE",
+      "severity": "WARNING",
+      "entity": "venta",
+      "id": "VENTA-2025-09-04-Trámite Chucho-33",
+      "cliente": "Trámite Chucho",
+      "message": "Venta referencia cliente \"Trámite Chucho\" que no existe en lista de clientes",
+      "recommendation": "Se creará automáticamente al importar, pero verificar datos"
+    },
+    {
+      "type": "MISSING_CLIENTE_REFERENCE",
+      "severity": "WARNING",
+      "entity": "venta",
+      "id": "VENTA-2025-09-08-Trámite Chucho-38",
+      "cliente": "Trámite Chucho",
+      "message": "Venta referencia cliente \"Trámite Chucho\" que no existe en lista de clientes",
+      "recommendation": "Se creará automáticamente al importar, pero verificar datos"
+    },
+    {
+      "type": "MISSING_CLIENTE_REFERENCE",
+      "severity": "WARNING",
+      "entity": "venta",
+      "id": "VENTA-2025-09-09-Trámite Chucho-41",
+      "cliente": "Trámite Chucho",
+      "message": "Venta referencia cliente \"Trámite Chucho\" que no existe en lista de clientes",
+      "recommendation": "Se creará automáticamente al importar, pero verificar datos"
+    },
+    {
+      "type": "MISSING_CLIENTE_REFERENCE",
+      "severity": "WARNING",
+      "entity": "venta",
+      "id": "VENTA-2025-09-15-Trámite Chucho-51",
+      "cliente": "Trámite Chucho",
+      "message": "Venta referencia cliente \"Trámite Chucho\" que no existe en lista de clientes",
+      "recommendation": "Se creará automáticamente al importar, pero verificar datos"
+    },
+    {
+      "type": "MISSING_CLIENTE_REFERENCE",
+      "severity": "WARNING",
+      "entity": "venta",
+      "id": "VENTA-2025-09-18-Trámite Chucho-57",
+      "cliente": "Trámite Chucho",
+      "message": "Venta referencia cliente \"Trámite Chucho\" que no existe en lista de clientes",
+      "recommendation": "Se creará automáticamente al importar, pero verificar datos"
+    },
+    {
+      "type": "MISSING_CLIENTE_REFERENCE",
+      "severity": "WARNING",
+      "entity": "venta",
+      "id": "VENTA-2025-09-23-Trámite Chucho-67",
+      "cliente": "Trámite Chucho",
+      "message": "Venta referencia cliente \"Trámite Chucho\" que no existe en lista de clientes",
+      "recommendation": "Se creará automáticamente al importar, pero verificar datos"
+    },
+    {
+      "type": "MISSING_CLIENTE_REFERENCE",
+      "severity": "WARNING",
+      "entity": "venta",
+      "id": "VENTA-2025-10-06-Trámite Chucho-80",
+      "cliente": "Trámite Chucho",
+      "message": "Venta referencia cliente \"Trámite Chucho\" que no existe en lista de clientes",
+      "recommendation": "Se creará automáticamente al importar, pero verificar datos"
+    },
+    {
+      "type": "MISSING_CLIENTE_REFERENCE",
+      "severity": "WARNING",
+      "entity": "venta",
+      "id": "VENTA-2025-10-06-Trámite Chucho-81",
+      "cliente": "Trámite Chucho",
+      "message": "Venta referencia cliente \"Trámite Chucho\" que no existe en lista de clientes",
+      "recommendation": "Se creará automáticamente al importar, pero verificar datos"
+    },
+    {
+      "type": "ADEUDO_MISMATCH",
+      "severity": "WARNING",
+      "entity": "cliente",
+      "id": "CLI-Ax",
+      "nombre": "Ax",
+      "adeudoCalculado": "365400.00",
+      "adeudoDeclarado": "0.00",
+      "diferencia": "365400.00",
+      "message": "Adeudo calculado ($365400.00) difiere del declarado ($0.00)",
+      "recommendation": "Verificar cálculos de adeudos en Excel o si hay abonos no registrados"
+    },
+    {
+      "type": "ADEUDO_MISMATCH",
+      "severity": "WARNING",
+      "entity": "cliente",
+      "id": "CLI-Robalo",
+      "nombre": "Robalo",
+      "adeudoCalculado": "660000.00",
+      "adeudoDeclarado": "234000.00",
+      "diferencia": "426000.00",
+      "message": "Adeudo calculado ($660000.00) difiere del declarado ($234000.00)",
+      "recommendation": "Verificar cálculos de adeudos en Excel o si hay abonos no registrados"
+    },
+    {
+      "type": "ADEUDO_MISMATCH",
+      "severity": "WARNING",
+      "entity": "cliente",
+      "id": "CLI-Valle",
+      "nombre": "Valle",
+      "adeudoCalculado": "880500.00",
+      "adeudoDeclarado": "435000.00",
+      "diferencia": "445500.00",
+      "message": "Adeudo calculado ($880500.00) difiere del declarado ($435000.00)",
+      "recommendation": "Verificar cálculos de adeudos en Excel o si hay abonos no registrados"
+    },
+    {
+      "type": "ADEUDO_MISMATCH",
+      "severity": "WARNING",
+      "entity": "cliente",
+      "id": "CLI-Lamas",
+      "nombre": "Lamas",
+      "adeudoCalculado": "915200.00",
+      "adeudoDeclarado": "116200.00",
+      "diferencia": "799000.00",
+      "message": "Adeudo calculado ($915200.00) difiere del declarado ($116200.00)",
+      "recommendation": "Verificar cálculos de adeudos en Excel o si hay abonos no registrados"
+    },
+    {
+      "type": "ADEUDO_MISMATCH",
+      "severity": "WARNING",
+      "entity": "cliente",
+      "id": "CLI-Tocayo",
+      "nombre": "Tocayo",
+      "adeudoCalculado": "277200.00",
+      "adeudoDeclarado": "255200.00",
+      "diferencia": "22000.00",
+      "message": "Adeudo calculado ($277200.00) difiere del declarado ($255200.00)",
+      "recommendation": "Verificar cálculos de adeudos en Excel o si hay abonos no registrados"
+    },
+    {
+      "type": "ADEUDO_MISMATCH",
+      "severity": "WARNING",
+      "entity": "cliente",
+      "id": "CLI-Wero Benavides",
+      "nombre": "Wero Benavides",
+      "adeudoCalculado": "284000.00",
+      "adeudoDeclarado": "142000.00",
+      "diferencia": "142000.00",
+      "message": "Adeudo calculado ($284000.00) difiere del declarado ($142000.00)",
+      "recommendation": "Verificar cálculos de adeudos en Excel o si hay abonos no registrados"
+    },
+    {
+      "type": "BALANCE_BANCARIO_INCONSISTENTE",
+      "severity": "WARNING",
+      "entity": "banco",
+      "nombre": "azteca",
+      "capitalActual": "0.00",
+      "balanceCalculado": "1880970.00",
+      "diferencia": "1880970.00",
+      "message": "Balance calculado ($1880970.00) difiere del capital actual ($0.00)",
+      "recommendation": "Puede deberse a capital inicial o transferencias no registradas"
+    },
+    {
+      "type": "BALANCE_BANCARIO_INCONSISTENTE",
+      "severity": "WARNING",
+      "entity": "banco",
+      "nombre": "leftie",
+      "capitalActual": "0.00",
+      "balanceCalculado": "1003600.00",
+      "diferencia": "1003600.00",
+      "message": "Balance calculado ($1003600.00) difiere del capital actual ($0.00)",
+      "recommendation": "Puede deberse a capital inicial o transferencias no registradas"
+    },
+    {
+      "type": "BALANCE_BANCARIO_INCONSISTENTE",
+      "severity": "WARNING",
+      "entity": "banco",
+      "nombre": "profit",
+      "capitalActual": "0.00",
+      "balanceCalculado": "7865774.00",
+      "diferencia": "7865774.00",
+      "message": "Balance calculado ($7865774.00) difiere del capital actual ($0.00)",
+      "recommendation": "Puede deberse a capital inicial o transferencias no registradas"
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": "MEDIUM",
+      "message": "6 clientes tienen diferencias entre adeudo calculado y declarado. Revisar abonos y cálculos en Excel."
+    }
+  ]
+}

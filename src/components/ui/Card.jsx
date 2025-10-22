@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+
 import { clsx } from 'clsx';
+import { motion } from 'framer-motion';
 
 const cardVariants = {
   sizes: {
@@ -13,9 +13,10 @@ const cardVariants = {
     default: 'card-premium',
     glass: 'glass-card',
     strong: 'glass-strong rounded-2xl',
-    gradient: 'bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20 backdrop-blur-xl rounded-2xl',
+    gradient:
+      'bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20 backdrop-blur-xl rounded-2xl',
     glow: 'card-premium hover-glow',
-  }
+  },
 };
 
 const Card = ({
@@ -33,13 +34,13 @@ const Card = ({
       className={clsx(
         // Estilos base
         'transition-all duration-300 ease-out',
-        
+
         // Tamaños
         cardVariants.sizes[size],
-        
+
         // Variantes
         cardVariants.variants[variant],
-        
+
         // Clases adicionales
         className
       )}

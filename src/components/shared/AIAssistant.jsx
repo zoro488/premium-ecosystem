@@ -1,28 +1,30 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+
+import { AnimatePresence, motion } from 'framer-motion';
 import {
   Brain,
-  Send,
-  X,
-  Minimize2,
-  Maximize2,
-  Loader2,
-  Copy,
   Check,
-  Sparkles,
-  MessageSquare,
-  User,
-  Mic,
-  Paperclip,
-  Settings,
-  Trash2,
-  MicOff,
+  Copy,
   Download,
-  FileText,
   File,
+  FileText,
   Image as ImageIcon,
+  Loader2,
+  Maximize2,
+  MessageSquare,
+  Mic,
+  MicOff,
+  Minimize2,
+  Paperclip,
+  Send,
+  Settings,
+  Sparkles,
+  Trash2,
+  User,
+  X,
 } from 'lucide-react';
-import { isSpeechRecognitionAvailable, initVoiceRecognition } from '../../utils/voiceRecognition';
+
+import { initVoiceRecognition, isSpeechRecognitionAvailable } from '../../utils/voiceRecognition';
 
 /**
  * AIAssistant - Componente de asistente IA reutilizable
@@ -36,10 +38,10 @@ import { isSpeechRecognitionAvailable, initVoiceRecognition } from '../../utils/
  */
 
 const AIAssistant = ({
-  systemName = "Sistema",
-  systemContext = "",
-  accentColor = "orange",
-  position = "bottom-right"
+  systemName = 'Sistema',
+  systemContext = '',
+  accentColor = 'orange',
+  position = 'bottom-right',
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
@@ -49,7 +51,7 @@ const AIAssistant = ({
       role: 'assistant',
       content: `¡Hola! Soy tu asistente IA para ${systemName}. ¿En qué puedo ayudarte hoy?`,
       timestamp: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
-    }
+    },
   ]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -59,8 +61,12 @@ const AIAssistant = ({
   const [attachedFiles, setAttachedFiles] = useState([]);
   const [showExportMenu, setShowExportMenu] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-  const [ollamaHost, setOllamaHost] = useState(localStorage.getItem('ollama_host') || 'http://localhost:11434');
-  const [ollamaModel, setOllamaModel] = useState(localStorage.getItem('ollama_model') || 'llama3.2:latest');
+  const [ollamaHost, setOllamaHost] = useState(
+    localStorage.getItem('ollama_host') || 'http://localhost:11434'
+  );
+  const [ollamaModel, setOllamaModel] = useState(
+    localStorage.getItem('ollama_model') || 'llama3.2:latest'
+  );
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
   const fileInputRef = useRef(null);
@@ -89,7 +95,7 @@ const AIAssistant = ({
       inputRef.current.focus();
     }
   }, [isOpen, isMinimized]);
-  
+
   // 🎤 Inicializar reconocimiento de voz
   useEffect(() => {
     if (isSpeechRecognitionAvailable()) {
@@ -104,20 +110,20 @@ const AIAssistant = ({
           }
         },
         (error) => {
-          console.error('Voice recognition error:', error);
+          // console.error('Voice recognition error:', error);
           setIsRecording(false);
         }
       );
       setRecognition(voiceRecognition);
     }
   }, []);
-  
+
   const toggleVoiceRecording = () => {
     if (!recognition) {
       alert('Tu navegador no soporta reconocimiento de voz');
       return;
     }
-    
+
     if (isRecording) {
       recognition.stop();
       setIsRecording(false);
@@ -135,16 +141,16 @@ const AIAssistant = ({
       id: messages.length + 1,
       role: 'user',
       content: inputMessage.trim(),
-      attachments: attachedFiles.map(f => ({
+      attachments: attachedFiles.map((f) => ({
         name: f.name,
         size: f.size,
-        type: f.type
+        type: f.type,
       })),
       timestamp: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
     };
 
     const currentInput = inputMessage.trim();
-    setMessages(prev => [...prev, userMessage]);
+    setMessages((prev) => [...prev, userMessage]);
     setInputMessage('');
     setAttachedFiles([]);
     setIsLoading(true);
@@ -153,11 +159,11 @@ const AIAssistant = ({
       // 🧠 OLLAMA LOCAL AI - Modelos de última generación ejecutándose localmente
       const OLLAMA_HOST = localStorage.getItem('ollama_host') || 'http://localhost:11434';
       const OLLAMA_MODEL = localStorage.getItem('ollama_model') || 'llama3.2:latest';
-      
+
       // Construir contexto con historial para aprendizaje continuo
-      const conversationHistory = messages.slice(-8).map(m => ({
+      const conversationHistory = messages.slice(-8).map((m) => ({
         role: m.role,
-        content: m.content
+        content: m.content,
       }));
 
       // Sistema de optimización: aprende patrones del usuario
@@ -181,7 +187,7 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
           messages: [
             { role: 'system', content: systemPrompt },
             ...conversationHistory,
-            { role: 'user', content: currentInput }
+            { role: 'user', content: currentInput },
           ],
           stream: false,
           options: {
@@ -190,8 +196,8 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
             top_k: 40,
             num_ctx: 4096, // Contexto expandido
             num_predict: 512,
-          }
-        })
+          },
+        }),
       });
 
       if (!response.ok) {
@@ -199,8 +205,7 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
       }
 
       const data = await response.json();
-      const aiContent = data.message?.content || 
-        '❌ Error procesando respuesta del modelo local.';
+      const aiContent = data.message?.content || '❌ Error procesando respuesta del modelo local.';
 
       const aiMessage = {
         id: messages.length + 2,
@@ -210,45 +215,44 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
         timestamp: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
       };
 
-      setMessages(prev => [...prev, aiMessage]);
-      
+      setMessages((prev) => [...prev, aiMessage]);
+
       // 📊 Sistema de aprendizaje continuo
       saveToLearningCache(currentInput, aiContent, systemName);
-
     } catch (error) {
-      console.error('Error calling Ollama:', error);
-      
+      // console.error('Error calling Ollama:', error);
       // 🔄 Fallback inteligente basado en aprendizaje previo
       const learningData = JSON.parse(localStorage.getItem('ai_learning_data') || '[]');
       const similarQuery = findSimilarQuery(learningData, currentInput, systemName);
 
-      const fallbackContent = similarQuery?.response || 
+      const fallbackContent =
+        similarQuery?.response ||
         `🔴 **No se pudo conectar con Ollama**\n\n` +
-        `💡 **Instala Ollama (100% gratis y local):**\n\n` +
-        `**1. Descarga e instala:**\n` +
-        `   → Windows: https://ollama.com/download\n` +
-        `   → Ejecuta: \`ollama serve\` (corre en background)\n\n` +
-        `**2. Descarga un modelo potente:**\n` +
-        `   → \`ollama pull llama3.2\` (3B parámetros, rápido)\n` +
-        `   → \`ollama pull mistral\` (7B, muy inteligente)\n` +
-        `   → \`ollama pull codellama\` (código especializado)\n` +
-        `   → \`ollama pull phi3\` (3.8B, Microsoft)\n` +
-        `   → \`ollama pull qwen2.5\` (7B, multilingüe)\n\n` +
-        `**3. Modelos disponibles:**\n` +
-        `   🚀 llama3.2 - Rápido y eficiente (recomendado)\n` +
-        `   🧠 mistral - Muy inteligente, balance perfecto\n` +
-        `   💻 codellama - Especializado en código\n` +
-        `   ⚡ phi3 - Ultra rápido de Microsoft\n` +
-        `   🌍 qwen2.5 - Excelente en español\n\n` +
-        `**4. Ventajas:**\n` +
-        `   ✅ 100% gratis, sin límites\n` +
-        `   ✅ Privacidad total (todo local)\n` +
-        `   ✅ Sin internet necesario\n` +
-        `   ✅ Modelos de última generación\n` +
-        `   ✅ Aprendizaje continuo optimizado\n\n` +
-        `⚙️ **Configuración:**\n` +
-        `   Haz clic en ⚙️ arriba para cambiar el modelo.\n\n` +
-        `${similarQuery ? `📚 Respuesta basada en aprendizaje previo:\n${similarQuery.response}` : ''}`;
+          `💡 **Instala Ollama (100% gratis y local):**\n\n` +
+          `**1. Descarga e instala:**\n` +
+          `   → Windows: https://ollama.com/download\n` +
+          `   → Ejecuta: \`ollama serve\` (corre en background)\n\n` +
+          `**2. Descarga un modelo potente:**\n` +
+          `   → \`ollama pull llama3.2\` (3B parámetros, rápido)\n` +
+          `   → \`ollama pull mistral\` (7B, muy inteligente)\n` +
+          `   → \`ollama pull codellama\` (código especializado)\n` +
+          `   → \`ollama pull phi3\` (3.8B, Microsoft)\n` +
+          `   → \`ollama pull qwen2.5\` (7B, multilingüe)\n\n` +
+          `**3. Modelos disponibles:**\n` +
+          `   🚀 llama3.2 - Rápido y eficiente (recomendado)\n` +
+          `   🧠 mistral - Muy inteligente, balance perfecto\n` +
+          `   💻 codellama - Especializado en código\n` +
+          `   ⚡ phi3 - Ultra rápido de Microsoft\n` +
+          `   🌍 qwen2.5 - Excelente en español\n\n` +
+          `**4. Ventajas:**\n` +
+          `   ✅ 100% gratis, sin límites\n` +
+          `   ✅ Privacidad total (todo local)\n` +
+          `   ✅ Sin internet necesario\n` +
+          `   ✅ Modelos de última generación\n` +
+          `   ✅ Aprendizaje continuo optimizado\n\n` +
+          `⚙️ **Configuración:**\n` +
+          `   Haz clic en ⚙️ arriba para cambiar el modelo.\n\n` +
+          `${similarQuery ? `📚 Respuesta basada en aprendizaje previo:\n${similarQuery.response}` : ''}`;
 
       const aiMessage = {
         id: messages.length + 2,
@@ -257,7 +261,7 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
         timestamp: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
       };
 
-      setMessages(prev => [...prev, aiMessage]);
+      setMessages((prev) => [...prev, aiMessage]);
     } finally {
       setIsLoading(false);
     }
@@ -267,22 +271,22 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
   const getLearningInsights = () => {
     const learningData = JSON.parse(localStorage.getItem('ai_learning_data') || '[]');
     const relevantData = learningData
-      .filter(d => d.system === systemName && d.useful === true)
+      .filter((d) => d.system === systemName && d.useful === true)
       .slice(-5);
-    
+
     if (relevantData.length === 0) return 'Sin datos previos';
-    
-    return relevantData.map(d => `Q: ${d.query} | A: ${d.response.slice(0, 100)}...`).join(' | ');
+
+    return relevantData.map((d) => `Q: ${d.query} | A: ${d.response.slice(0, 100)}...`).join(' | ');
   };
 
   // 🔍 Encontrar query similar en caché
   const findSimilarQuery = (learningData, query, system) => {
-    const systemData = learningData.filter(d => d.system === system);
+    const systemData = learningData.filter((d) => d.system === system);
     const words = query.toLowerCase().split(' ');
-    
-    return systemData.find(d => {
+
+    return systemData.find((d) => {
       const dWords = d.query.toLowerCase();
-      return words.some(word => word.length > 3 && dWords.includes(word));
+      return words.some((word) => word.length > 3 && dWords.includes(word));
     });
   };
 
@@ -294,9 +298,9 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
       query: query,
       response: response,
       timestamp: new Date().toISOString(),
-      useful: null
+      useful: null,
     });
-    
+
     // Mantener últimas 200 conversaciones
     if (learningData.length > 200) learningData.shift();
     localStorage.setItem('ai_learning_data', JSON.stringify(learningData));
@@ -323,7 +327,9 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
       const response = await fetch(`${host}/api/tags`);
       const data = await response.json();
       const models = data.models || [];
-      alert(`📦 Modelos disponibles:\n\n${models.map(m => `• ${m.name}`).join('\n')}\n\nTotal: ${models.length} modelos`);
+      alert(
+        `📦 Modelos disponibles:\n\n${models.map((m) => `• ${m.name}`).join('\n')}\n\nTotal: ${models.length} modelos`
+      );
     } catch (error) {
       alert('❌ Error: Ollama no está corriendo.\n\nEjecuta: ollama serve');
     }
@@ -332,8 +338,8 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
   // 👍 Marcar respuesta como útil (aprendizaje)
   const markResponseUseful = (messageId, useful) => {
     const learningData = JSON.parse(localStorage.getItem('ai_learning_data') || '[]');
-    const updated = learningData.map(d => {
-      if (d.timestamp === messages.find(m => m.id === messageId)?.timestamp) {
+    const updated = learningData.map((d) => {
+      if (d.timestamp === messages.find((m) => m.id === messageId)?.timestamp) {
         return { ...d, useful };
       }
       return d;
@@ -348,7 +354,7 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
         role: 'assistant',
         content: `¡Hola! Soy tu asistente IA para ${systemName}. ¿En qué puedo ayudarte hoy?`,
         timestamp: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
-      }
+      },
     ]);
     setAttachedFiles([]);
   };
@@ -356,22 +362,22 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
   // 📎 Manejar adjuntos de archivos
   const handleFileAttach = (event) => {
     const files = Array.from(event.target.files || []);
-    const newFiles = files.map(file => ({
+    const newFiles = files.map((file) => ({
       id: Date.now() + Math.random(),
       name: file.name,
       size: file.size,
       type: file.type,
       file: file,
-      preview: file.type.startsWith('image/') ? URL.createObjectURL(file) : null
+      preview: file.type.startsWith('image/') ? URL.createObjectURL(file) : null,
     }));
-    setAttachedFiles(prev => [...prev, ...newFiles]);
+    setAttachedFiles((prev) => [...prev, ...newFiles]);
   };
 
   const removeFile = (fileId) => {
-    setAttachedFiles(prev => {
-      const file = prev.find(f => f.id === fileId);
+    setAttachedFiles((prev) => {
+      const file = prev.find((f) => f.id === fileId);
       if (file?.preview) URL.revokeObjectURL(file.preview);
-      return prev.filter(f => f.id !== fileId);
+      return prev.filter((f) => f.id !== fileId);
     });
   };
 
@@ -384,11 +390,11 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
       const data = {
         system: systemName,
         exportDate: new Date().toISOString(),
-        messages: messages.map(m => ({
+        messages: messages.map((m) => ({
           role: m.role,
           content: m.content,
-          timestamp: m.timestamp
-        }))
+          timestamp: m.timestamp,
+        })),
       };
       const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
@@ -398,9 +404,9 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
       link.click();
       URL.revokeObjectURL(url);
     } else if (format === 'txt') {
-      const text = messages.map(m => 
-        `[${m.timestamp}] ${m.role === 'user' ? 'Tú' : 'AI'}: ${m.content}`
-      ).join('\n\n');
+      const text = messages
+        .map((m) => `[${m.timestamp}] ${m.role === 'user' ? 'Tú' : 'AI'}: ${m.content}`)
+        .join('\n\n');
       const blob = new Blob([text], { type: 'text/plain' });
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
@@ -409,12 +415,16 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
       link.click();
       URL.revokeObjectURL(url);
     } else if (format === 'md') {
-      const markdown = `# Conversación con AI - ${systemName}\n\n` +
+      const markdown =
+        `# Conversación con AI - ${systemName}\n\n` +
         `**Fecha**: ${new Date().toLocaleString()}\n\n` +
         `---\n\n` +
-        messages.map(m => 
-          `### ${m.role === 'user' ? '👤 Usuario' : '🤖 AI'} - ${m.timestamp}\n\n${m.content}\n`
-        ).join('\n');
+        messages
+          .map(
+            (m) =>
+              `### ${m.role === 'user' ? '👤 Usuario' : '🤖 AI'} - ${m.timestamp}\n\n${m.content}\n`
+          )
+          .join('\n');
       const blob = new Blob([markdown], { type: 'text/markdown' });
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
@@ -436,25 +446,35 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
         className={`flex gap-3 ${isUser ? 'flex-row-reverse' : ''}`}
       >
         {/* Avatar */}
-        <div className={`
+        <div
+          className={`
           w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0
-          ${isUser
-            ? 'bg-gradient-to-br from-blue-500 to-cyan-500'
-            : `bg-gradient-to-br ${gradientColor}`
+          ${
+            isUser
+              ? 'bg-gradient-to-br from-blue-500 to-cyan-500'
+              : `bg-gradient-to-br ${gradientColor}`
           }
-        `}>
-          {isUser ? <User className="w-4 h-4 text-white" /> : <Brain className="w-4 h-4 text-white" />}
+        `}
+        >
+          {isUser ? (
+            <User className="w-4 h-4 text-white" />
+          ) : (
+            <Brain className="w-4 h-4 text-white" />
+          )}
         </div>
 
         {/* Message Bubble */}
         <div className={`flex-1 max-w-[75%] ${isUser ? 'flex flex-col items-end' : ''}`}>
-          <div className={`
+          <div
+            className={`
             rounded-2xl p-3 text-sm
-            ${isUser
-              ? 'bg-blue-500/20 border border-blue-500/30'
-              : 'bg-white/5 border border-white/10'
+            ${
+              isUser
+                ? 'bg-blue-500/20 border border-blue-500/30'
+                : 'bg-white/5 border border-white/10'
             }
-          `}>
+          `}
+          >
             <p className="text-white whitespace-pre-wrap">{message.content}</p>
             <p className="text-xs text-slate-500 mt-2">{message.timestamp}</p>
           </div>
@@ -467,7 +487,11 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
                 className="p-1.5 hover:bg-white/5 rounded-lg transition-colors"
                 title="Copiar"
               >
-                {copied ? <Check className="w-3 h-3 text-green-400" /> : <Copy className="w-3 h-3 text-slate-400" />}
+                {copied ? (
+                  <Check className="w-3 h-3 text-green-400" />
+                ) : (
+                  <Copy className="w-3 h-3 text-slate-400" />
+                )}
               </button>
             </div>
           )}
@@ -525,7 +549,7 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
               opacity: 1,
               scale: 1,
               y: 0,
-              height: isMinimized ? 'auto' : '600px'
+              height: isMinimized ? 'auto' : '600px',
             }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
             className={`
@@ -576,8 +600,7 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
                               onClick={() => exportConversation(fmt)}
                               className="w-full px-3 py-2 text-left text-sm text-white hover:bg-white/10 transition-colors flex items-center gap-2"
                             >
-                              <FileText className="w-3 h-3" />
-                              .{fmt.toUpperCase()}
+                              <FileText className="w-3 h-3" />.{fmt.toUpperCase()}
                             </button>
                           ))}
                         </motion.div>
@@ -595,7 +618,11 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
                     onClick={() => setIsMinimized(!isMinimized)}
                     className="p-2 hover:bg-white/10 rounded-lg transition-colors"
                   >
-                    {isMinimized ? <Maximize2 className="w-4 h-4 text-white" /> : <Minimize2 className="w-4 h-4 text-white" />}
+                    {isMinimized ? (
+                      <Maximize2 className="w-4 h-4 text-white" />
+                    ) : (
+                      <Minimize2 className="w-4 h-4 text-white" />
+                    )}
                   </button>
                   <button
                     onClick={() => setIsOpen(false)}
@@ -622,7 +649,9 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
                       animate={{ opacity: 1 }}
                       className="flex gap-3"
                     >
-                      <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${gradientColor} flex items-center justify-center`}>
+                      <div
+                        className={`w-8 h-8 rounded-full bg-gradient-to-br ${gradientColor} flex items-center justify-center`}
+                      >
                         <Brain className="w-4 h-4 text-white" />
                       </div>
                       <div className="bg-white/5 border border-white/10 rounded-2xl p-3">
@@ -638,7 +667,10 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
                 </div>
 
                 {/* Input Area */}
-                <form onSubmit={handleSendMessage} className="p-4 border-t border-white/10 bg-slate-950/50">
+                <form
+                  onSubmit={handleSendMessage}
+                  className="p-4 border-t border-white/10 bg-slate-950/50"
+                >
                   <div className="relative">
                     <input
                       ref={inputRef}
@@ -664,10 +696,14 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
                           }`}
                           title={isRecording ? 'Detener grabación' : 'Grabar mensaje de voz'}
                         >
-                          {isRecording ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
+                          {isRecording ? (
+                            <MicOff className="w-4 h-4" />
+                          ) : (
+                            <Mic className="w-4 h-4" />
+                          )}
                         </button>
                       )}
-                      
+
                       <button
                         type="button"
                         className="p-2 hover:bg-white/5 rounded-lg transition-colors text-slate-400 hover:text-white"
@@ -739,7 +775,9 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
             >
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
-                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${gradientColor} flex items-center justify-center`}>
+                  <div
+                    className={`w-10 h-10 rounded-lg bg-gradient-to-br ${gradientColor} flex items-center justify-center`}
+                  >
                     <Settings className="w-5 h-5 text-white" />
                   </div>
                   <div>
@@ -794,7 +832,8 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
                     <option value="gemma2:latest">💎 Gemma 2 (Google - 9B)</option>
                   </select>
                   <p className="text-xs text-slate-500 mt-1">
-                    Descarga modelos: <code className="text-cyan-400">ollama pull &lt;modelo&gt;</code>
+                    Descarga modelos:{' '}
+                    <code className="text-cyan-400">ollama pull &lt;modelo&gt;</code>
                   </p>
                 </div>
 
@@ -804,9 +843,23 @@ Datos de aprendizaje previo: ${getLearningInsights()}`;
                     📦 <strong>Instalación:</strong>
                   </p>
                   <ol className="text-xs text-slate-400 space-y-1 ml-4 list-decimal">
-                    <li>Descarga: <a href="https://ollama.com/download" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">ollama.com/download</a></li>
-                    <li>Ejecuta: <code className="text-cyan-400">ollama serve</code></li>
-                    <li>Descarga modelo: <code className="text-cyan-400">ollama pull llama3.2</code></li>
+                    <li>
+                      Descarga:{' '}
+                      <a
+                        href="https://ollama.com/download"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-cyan-400 hover:underline"
+                      >
+                        ollama.com/download
+                      </a>
+                    </li>
+                    <li>
+                      Ejecuta: <code className="text-cyan-400">ollama serve</code>
+                    </li>
+                    <li>
+                      Descarga modelo: <code className="text-cyan-400">ollama pull llama3.2</code>
+                    </li>
                   </ol>
                 </div>
 

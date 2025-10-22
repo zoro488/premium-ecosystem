@@ -2,7 +2,6 @@
  * Sistema de Persistencia Premium
  * Maneja localStorage, sessionStorage e IndexedDB
  */
-
 import { useState } from 'react';
 
 // ============================================
@@ -58,7 +57,7 @@ export const storage = {
       localStorage.clear();
       return true;
     } catch (error) {
-      console.error('Error clearing localStorage:', error);
+      // console.error('Error clearing localStorage:', error);
       return false;
     }
   },
@@ -68,7 +67,7 @@ export const storage = {
    */
   has: (key) => {
     return localStorage.getItem(key) !== null;
-  }
+  },
 };
 
 // ============================================
@@ -112,10 +111,10 @@ export const sessionStorage = {
       window.sessionStorage.clear();
       return true;
     } catch (error) {
-      console.error('Error clearing sessionStorage:', error);
+      // console.error('Error clearing sessionStorage:', error);
       return false;
     }
-  }
+  },
 };
 
 // ============================================
@@ -146,7 +145,7 @@ class IndexedDBManager {
         const db = event.target.result;
 
         // Crear stores si no existen
-        stores.forEach(storeName => {
+        stores.forEach((storeName) => {
           if (!db.objectStoreNames.contains(storeName)) {
             db.createObjectStore(storeName, { keyPath: 'id', autoIncrement: true });
           }
@@ -314,6 +313,7 @@ export const STORAGE_KEYS = {
   FLOW_CLIENTES: 'flow_clientes',
   FLOW_ALMACEN: 'flow_almacen',
   FLOW_SETTINGS: 'flow_settings',
+  FLOW_GASTOS_ABONOS: 'flow_gastos_abonos', // ⭐ NUEVO - Lógica del Excel
 
   // ShadowPrime
   SHADOW_WALLETS: 'shadow_wallets',
@@ -367,7 +367,7 @@ export const migrateToIndexedDB = async (localStorageKey, storeName) => {
       return true;
     }
   } catch (error) {
-    console.error('Migration error:', error);
+    // console.error('Migration error:', error);
     return false;
   }
 };
@@ -406,7 +406,7 @@ export const importData = (jsonString) => {
     });
     return true;
   } catch (error) {
-    console.error('Import error:', error);
+    // console.error('Import error:', error);
     return false;
   }
 };

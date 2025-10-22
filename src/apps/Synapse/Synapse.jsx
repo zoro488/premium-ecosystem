@@ -1,62 +1,64 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+
+import { AnimatePresence, motion, useMotionValue, useSpring } from 'framer-motion';
 import {
-  Brain,
-  MessageSquare,
-  Send,
-  Sparkles,
-  Zap,
-  Code,
-  FileText,
-  Image,
-  Video,
-  Music,
-  Database,
-  Globe,
-  Search,
-  Settings,
-  User,
-  Bot,
-  TrendingUp,
-  BarChart3,
   Activity,
-  Clock,
-  Star,
-  Heart,
-  Download,
-  Upload,
-  Copy,
-  Check,
-  Loader2,
-  Mic,
-  Camera,
-  Paperclip,
-  MoreVertical,
-  Trash2,
-  Edit,
-  Archive,
-  Share2,
-  Bookmark,
   AlertCircle,
+  Archive,
+  BarChart3,
+  Bookmark,
+  Bot,
+  Brain,
+  Camera,
+  Check,
   ChevronDown,
+  Clock,
+  CloudLightning,
+  Code,
+  Copy,
+  Cpu,
+  Database,
+  Download,
+  Edit,
+  FileText,
   Filter,
-  SlidersHorizontal,
-  X,
-  Menu,
+  Globe,
+  Heart,
+  Image,
+  Layers,
+  Loader2,
   Maximize2,
+  Menu,
+  MessageSquare,
+  Mic,
   Minimize2,
+  Moon,
+  MoreVertical,
+  Music,
+  Paperclip,
+  Plus,
+  Search,
+  Send,
+  Settings,
+  Share2,
+  SlidersHorizontal,
+  Sparkles,
+  Star,
+  Sun,
+  Target,
+  Trash2,
+  TrendingUp,
+  Upload,
+  User,
+  Video,
   Volume2,
   VolumeX,
-  Moon,
-  Sun,
-  Cpu,
-  CloudLightning,
-  Target,
-  Layers,
-  Plus,
+  X,
+  Zap,
 } from 'lucide-react';
-import { storage, STORAGE_KEYS, useLocalStorage } from '../../utils/storage';
+
 import AIAssistant from '../../components/shared/AIAssistant';
+import { STORAGE_KEYS, useLocalStorage } from '../../utils/storage';
 
 // Mock data de conversaciones
 const initialConversations = [
@@ -167,14 +169,15 @@ Aquí está mi propuesta de arquitectura:
       />
     </div>
   );
-};`
-      }
-    ]
+};`,
+      },
+    ],
   },
   {
     id: 3,
     role: 'user',
-    content: 'Perfecto, pero agrega también notificaciones push cuando las ventas superen cierto umbral',
+    content:
+      'Perfecto, pero agrega también notificaciones push cuando las ventas superen cierto umbral',
     timestamp: '10:46 AM',
   },
   {
@@ -209,9 +212,9 @@ Aquí está mi propuesta de arquitectura:
   }, [threshold]);
 
   return <NotificationBadge />;
-};`
-      }
-    ]
+};`,
+      },
+    ],
   },
 ];
 
@@ -256,7 +259,13 @@ const aiModels = [
 ];
 
 // Sidebar Component
-const Sidebar = ({ conversations, activeConversation, setActiveConversation, isCollapsed, setIsCollapsed }) => {
+const Sidebar = ({
+  conversations,
+  activeConversation,
+  setActiveConversation,
+  isCollapsed,
+  setIsCollapsed,
+}) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filter, setFilter] = useState('all');
 
@@ -268,7 +277,7 @@ const Sidebar = ({ conversations, activeConversation, setActiveConversation, isC
     { id: 'data', label: 'Datos', icon: Database, color: 'cyan' },
   ];
 
-  const filteredConversations = conversations.filter(conv => {
+  const filteredConversations = conversations.filter((conv) => {
     const matchesSearch = conv.title.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesFilter = filter === 'all' || conv.category === filter;
     return matchesSearch && matchesFilter;
@@ -328,9 +337,10 @@ const Sidebar = ({ conversations, activeConversation, setActiveConversation, isC
                   onClick={() => setFilter(cat.id)}
                   className={`
                     px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all
-                    ${filter === cat.id
-                      ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30'
-                      : 'bg-white/5 text-slate-400 hover:text-white'
+                    ${
+                      filter === cat.id
+                        ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30'
+                        : 'bg-white/5 text-slate-400 hover:text-white'
                     }
                   `}
                 >
@@ -362,23 +372,22 @@ const Sidebar = ({ conversations, activeConversation, setActiveConversation, isC
             onClick={() => setActiveConversation(conv.id)}
             className={`
               w-full text-left px-4 py-3 rounded-xl transition-all
-              ${activeConversation === conv.id
-                ? 'bg-gradient-to-r from-orange-500/20 to-amber-500/20 border border-orange-500/30'
-                : 'hover:bg-white/5 border border-transparent'
+              ${
+                activeConversation === conv.id
+                  ? 'bg-gradient-to-r from-orange-500/20 to-amber-500/20 border border-orange-500/30'
+                  : 'hover:bg-white/5 border border-transparent'
               }
             `}
           >
             {!isCollapsed ? (
               <div>
                 <div className="flex items-start justify-between mb-1">
-                  <h3 className="font-medium text-white text-sm line-clamp-1">
-                    {conv.title}
-                  </h3>
-                  {conv.starred && <Star className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400 flex-shrink-0" />}
+                  <h3 className="font-medium text-white text-sm line-clamp-1">{conv.title}</h3>
+                  {conv.starred && (
+                    <Star className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400 flex-shrink-0" />
+                  )}
                 </div>
-                <p className="text-xs text-slate-400 line-clamp-1 mb-2">
-                  {conv.preview}
-                </p>
+                <p className="text-xs text-slate-400 line-clamp-1 mb-2">{conv.preview}</p>
                 <div className="flex items-center justify-between text-xs">
                   <span className="text-slate-500">{conv.model}</span>
                   <span className="text-slate-500">{conv.timestamp}</span>
@@ -421,61 +430,82 @@ const Message = ({ message }) => {
       className={`flex gap-4 ${isUser ? 'flex-row-reverse' : ''}`}
     >
       {/* Avatar */}
-      <div className={`
+      <div
+        className={`
         w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0
-        ${isUser
-          ? 'bg-gradient-to-br from-blue-500 to-cyan-500'
-          : 'bg-gradient-to-br from-orange-500 to-amber-500'
+        ${
+          isUser
+            ? 'bg-gradient-to-br from-blue-500 to-cyan-500'
+            : 'bg-gradient-to-br from-orange-500 to-amber-500'
         }
-      `}>
-        {isUser ? <User className="w-5 h-5 text-white" /> : <Brain className="w-5 h-5 text-white" />}
+      `}
+      >
+        {isUser ? (
+          <User className="w-5 h-5 text-white" />
+        ) : (
+          <Brain className="w-5 h-5 text-white" />
+        )}
       </div>
 
       {/* Message Content */}
       <div className={`flex-1 max-w-3xl ${isUser ? 'flex flex-col items-end' : ''}`}>
-        <div className={`
+        <div
+          className={`
           glass rounded-2xl p-4 border
-          ${isUser
-            ? 'bg-blue-500/10 border-blue-500/20'
-            : 'border-white/10'
-          }
-        `}>
+          ${isUser ? 'bg-blue-500/10 border-blue-500/20' : 'border-white/10'}
+        `}
+        >
           {/* Message Text */}
           <div className="prose prose-invert prose-sm max-w-none">
             {message.content.split('\n').map((line, i) => {
               if (line.startsWith('##')) {
-                return <h2 key={i} className="text-xl font-bold mb-2 mt-4 first:mt-0">{line.replace('##', '').trim()}</h2>;
+                return (
+                  <h2 key={`item-${i}`} className="text-xl font-bold mb-2 mt-4 first:mt-0">
+                    {line.replace('##', '').trim()}
+                  </h2>
+                );
               }
               if (line.startsWith('-')) {
-                return <li key={i} className="ml-4">{line.replace('-', '').trim()}</li>;
+                return (
+                  <li key={`item-${i}`} className="ml-4">
+                    {line.replace('-', '').trim()}
+                  </li>
+                );
               }
               if (line.trim() === '') {
-                return <br key={i} />;
+                return <br key={`item-${i}`} />;
               }
-              return <p key={i} className="mb-2 last:mb-0">{line}</p>;
+              return (
+                <p key={`item-${i}`} className="mb-2 last:mb-0">
+                  {line}
+                </p>
+              );
             })}
           </div>
 
           {/* Code Blocks */}
-          {message.codeBlocks && message.codeBlocks.map((block, index) => (
-            <div key={index} className="mt-4 rounded-xl overflow-hidden border border-white/10">
-              <div className="flex items-center justify-between px-4 py-2 bg-slate-900/50 border-b border-white/10">
-                <span className="text-xs font-mono text-slate-400">{block.language}</span>
-                <button
-                  onClick={() => handleCopy(block.code)}
-                  className="p-1.5 hover:bg-white/5 rounded-lg transition-colors text-slate-400 hover:text-white"
-                >
-                  {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                </button>
+          {message.codeBlocks &&
+            message.codeBlocks.map((block, index) => (
+              <div key={`item-${index}`} className="mt-4 rounded-xl overflow-hidden border border-white/10">
+                <div className="flex items-center justify-between px-4 py-2 bg-slate-900/50 border-b border-white/10">
+                  <span className="text-xs font-mono text-slate-400">{block.language}</span>
+                  <button
+                    onClick={() => handleCopy(block.code)}
+                    className="p-1.5 hover:bg-white/5 rounded-lg transition-colors text-slate-400 hover:text-white"
+                  >
+                    {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                  </button>
+                </div>
+                <pre className="p-4 overflow-x-auto bg-slate-950/50">
+                  <code className="text-sm font-mono text-slate-300">{block.code}</code>
+                </pre>
               </div>
-              <pre className="p-4 overflow-x-auto bg-slate-950/50">
-                <code className="text-sm font-mono text-slate-300">{block.code}</code>
-              </pre>
-            </div>
-          ))}
+            ))}
 
           {/* Timestamp */}
-          <div className={`flex items-center gap-2 mt-3 pt-3 border-t border-white/5 text-xs text-slate-500`}>
+          <div
+            className={`flex items-center gap-2 mt-3 pt-3 border-t border-white/5 text-xs text-slate-500`}
+          >
             <Clock className="w-3 h-3" />
             {message.timestamp}
           </div>
@@ -525,7 +555,9 @@ const ModelSelector = ({ selectedModel, setSelectedModel }) => {
           >
             <div className="p-3 border-b border-white/10">
               <h3 className="font-semibold text-sm mb-1">Seleccionar Modelo</h3>
-              <p className="text-xs text-slate-400">Elige el modelo de IA más adecuado para tu tarea</p>
+              <p className="text-xs text-slate-400">
+                Elige el modelo de IA más adecuado para tu tarea
+              </p>
             </div>
 
             <div className="p-2 max-h-96 overflow-y-auto">
@@ -540,9 +572,10 @@ const ModelSelector = ({ selectedModel, setSelectedModel }) => {
                     }}
                     className={`
                       w-full p-3 rounded-lg text-left transition-all mb-1
-                      ${selectedModel.id === model.id
-                        ? 'bg-orange-500/20 border border-orange-500/30'
-                        : 'hover:bg-white/5'
+                      ${
+                        selectedModel.id === model.id
+                          ? 'bg-orange-500/20 border border-orange-500/30'
+                          : 'hover:bg-white/5'
                       }
                     `}
                   >
@@ -710,8 +743,14 @@ const CursorGlow = () => {
 
 // Main Component
 export default function Synapse() {
-  const [conversations, setConversations] = useLocalStorage(STORAGE_KEYS.SYNAPSE_CONVERSATIONS, initialConversations);
-  const [activeConversation, setActiveConversation] = useLocalStorage('synapse_active_conversation', 1);
+  const [conversations, setConversations] = useLocalStorage(
+    STORAGE_KEYS.SYNAPSE_CONVERSATIONS,
+    initialConversations
+  );
+  const [activeConversation, setActiveConversation] = useLocalStorage(
+    'synapse_active_conversation',
+    1
+  );
   const [messages, setMessages] = useLocalStorage(STORAGE_KEYS.SYNAPSE_MESSAGES, initialMessages);
   const [isCollapsed, setIsCollapsed] = useLocalStorage(STORAGE_KEYS.SIDEBAR_STATE, false);
   const [selectedModel, setSelectedModel] = useLocalStorage('synapse_selected_model', aiModels[0]);
@@ -770,10 +809,14 @@ Te ayudaré con eso de manera eficiente y profesional.
 
       {/* Animated grid background */}
       <div className="absolute inset-0 opacity-20 pointer-events-none">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'linear-gradient(rgba(251, 146, 60, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(251, 146, 60, 0.1) 1px, transparent 1px)',
-          backgroundSize: '50px 50px',
-        }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(251, 146, 60, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(251, 146, 60, 0.1) 1px, transparent 1px)',
+            backgroundSize: '50px 50px',
+          }}
+        />
       </div>
 
       <Sidebar
@@ -793,7 +836,7 @@ Te ayudaré con eso de manera eficiente y profesional.
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-xl font-bold">
-                {conversations.find(c => c.id === activeConversation)?.title}
+                {conversations.find((c) => c.id === activeConversation)?.title}
               </h2>
               <p className="text-sm text-slate-400 mt-0.5">
                 {messages.length} mensajes • Modelo: {selectedModel.name}
@@ -821,11 +864,7 @@ Te ayudaré con eso de manera eficiente y profesional.
 
             {/* Loading indicator */}
             {isLoading && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="flex gap-4"
-              >
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex gap-4">
                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
                   <Brain className="w-5 h-5 text-white" />
                 </div>

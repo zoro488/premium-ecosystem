@@ -1,13 +1,14 @@
 import React from 'react';
+
 import { AlertCircle, RefreshCw } from 'lucide-react';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      hasError: false, 
+    this.state = {
+      hasError: false,
       error: null,
-      errorInfo: null 
+      errorInfo: null,
     };
   }
 
@@ -18,20 +19,20 @@ class ErrorBoundary extends React.Component {
   componentDidCatch(error, errorInfo) {
     this.setState({
       error,
-      errorInfo
+      errorInfo,
     });
-    
+
     // Log to console in development
     if (import.meta.env.DEV) {
-      console.error('Error Boundary caught error:', error, errorInfo);
+      // console.error('Error Boundary caught error:', error, errorInfo);
     }
   }
 
   handleReset = () => {
-    this.setState({ 
-      hasError: false, 
+    this.setState({
+      hasError: false,
       error: null,
-      errorInfo: null 
+      errorInfo: null,
     });
   };
 
@@ -45,20 +46,14 @@ class ErrorBoundary extends React.Component {
                 <AlertCircle className="w-6 h-6 text-red-400" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-red-400">
-                  Algo salió mal
-                </h1>
-                <p className="text-gray-400 text-sm">
-                  Lo sentimos, ocurrió un error inesperado
-                </p>
+                <h1 className="text-xl font-bold text-red-400">Algo salió mal</h1>
+                <p className="text-gray-400 text-sm">Lo sentimos, ocurrió un error inesperado</p>
               </div>
             </div>
 
             {import.meta.env.DEV && this.state.error && (
               <div className="mb-6 p-4 bg-gray-900/50 rounded-lg border border-gray-700">
-                <p className="text-xs font-mono text-red-300 mb-2">
-                  {this.state.error.toString()}
-                </p>
+                <p className="text-xs font-mono text-red-300 mb-2">{this.state.error.toString()}</p>
                 {this.state.errorInfo && (
                   <details className="text-xs font-mono text-gray-400">
                     <summary className="cursor-pointer text-gray-500 hover:text-gray-300">

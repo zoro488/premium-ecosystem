@@ -1,0 +1,86 @@
+# ============================================================================
+# EditorConfig - Configuración universal de editor
+# Soportado por VSCode, IntelliJ, Sublime, etc.
+# ============================================================================
+
+root = true
+
+# Universal settings
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+# JavaScript/TypeScript
+[*.{js,jsx,ts,tsx,mjs,cjs}]
+indent_style = space
+indent_size = 2
+max_line_length = 100
+quote_type = single
+
+# JSON
+[*.json]
+indent_style = space
+indent_size = 2
+
+# YAML
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# Markdown
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = off
+
+# HTML
+[*.{html,htm}]
+indent_style = space
+indent_size = 2
+
+# CSS/SCSS/LESS
+[*.{css,scss,sass,less}]
+indent_style = space
+indent_size = 2
+
+# Python
+[*.py]
+indent_style = space
+indent_size = 4
+max_line_length = 88
+
+# Go
+[*.go]
+indent_style = tab
+indent_size = 4
+
+# Rust
+[*.rs]
+indent_style = space
+indent_size = 4
+
+# Shell scripts
+[*.{sh,bash,zsh}]
+indent_style = space
+indent_size = 2
+
+# Makefile
+[Makefile]
+indent_style = tab
+
+# Docker
+[Dockerfile]
+indent_style = space
+indent_size = 2
+
+# Git
+[.gitignore]
+insert_final_newline = false
+
+# Package files
+[{package.json,package-lock.json,yarn.lock,pnpm-lock.yaml}]
+indent_style = space
+indent_size = 2

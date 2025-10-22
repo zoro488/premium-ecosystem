@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef, useEffect } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 // 🎨 DRAG & DROP SYSTEM - Sistema de Arrastrar y Soltar
 
@@ -17,11 +17,11 @@ export const useDragAndDrop = (items = [], onReorder) => {
   const handleDragStart = useCallback((e, item, index) => {
     setDraggedItem({ item, index });
     setIsDragging(true);
-    
+
     // Configurar datos de arrastre
     e.dataTransfer.effectAllowed = 'move';
     e.dataTransfer.setData('text/html', e.target);
-    
+
     // Añadir clase visual al elemento arrastrado
     setTimeout(() => {
       e.target.style.opacity = '0.4';
@@ -48,7 +48,7 @@ export const useDragAndDrop = (items = [], onReorder) => {
   const handleDragLeave = useCallback((e) => {
     e.preventDefault();
     dragCounter.current--;
-    
+
     if (dragCounter.current === 0) {
       setDragOverItem(null);
     }
@@ -61,32 +61,35 @@ export const useDragAndDrop = (items = [], onReorder) => {
   }, []);
 
   // Soltar elemento
-  const handleDrop = useCallback((e, targetItem, targetIndex) => {
-    e.preventDefault();
-    e.stopPropagation();
-    
-    if (!draggedItem || draggedItem.index === targetIndex) {
+  const handleDrop = useCallback(
+    (e, targetItem, targetIndex) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (!draggedItem || draggedItem.index === targetIndex) {
+        setDraggedItem(null);
+        setDragOverItem(null);
+        setIsDragging(false);
+        return;
+      }
+
+      // Reordenar array
+      const newItems = [...items];
+      const [removed] = newItems.splice(draggedItem.index, 1);
+      newItems.splice(targetIndex, 0, removed);
+
+      // Notificar cambio
+      if (onReorder) {
+        onReorder(newItems);
+      }
+
       setDraggedItem(null);
       setDragOverItem(null);
       setIsDragging(false);
-      return;
-    }
-
-    // Reordenar array
-    const newItems = [...items];
-    const [removed] = newItems.splice(draggedItem.index, 1);
-    newItems.splice(targetIndex, 0, removed);
-
-    // Notificar cambio
-    if (onReorder) {
-      onReorder(newItems);
-    }
-
-    setDraggedItem(null);
-    setDragOverItem(null);
-    setIsDragging(false);
-    dragCounter.current = 0;
-  }, [items, draggedItem, onReorder]);
+      dragCounter.current = 0;
+    },
+    [items, draggedItem, onReorder]
+  );
 
   return {
     draggedItem,
@@ -97,16 +100,16 @@ export const useDragAndDrop = (items = [], onReorder) => {
     handleDragEnter,
     handleDragLeave,
     handleDragOver,
-    handleDrop
+    handleDrop,
   };
 };
 
 /**
  * Custom hook para drag & drop entre categorías/listas
- * @param {Object} lists - Objeto con listas categorizadas {categoria1: [...], categoria2: [...]}
+ * @param {Object} _lists - Objeto con listas categorizadas {categoria1: [...], categoria2: [...]}
  * @param {Function} onMove - Callback cuando se mueve item entre listas
  */
-export const useDragBetweenLists = (lists = {}, onMove) => {
+export const useDragBetweenLists = (_lists = {}, onMove) => {
   const [draggedItem, setDraggedItem] = useState(null);
   const [dragOverList, setDragOverList] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -115,7 +118,7 @@ export const useDragBetweenLists = (lists = {}, onMove) => {
     setDraggedItem({ item, sourceList });
     setIsDragging(true);
     e.dataTransfer.effectAllowed = 'move';
-    
+
     setTimeout(() => {
       e.target.style.opacity = '0.4';
     }, 0);
@@ -143,30 +146,33 @@ export const useDragBetweenLists = (lists = {}, onMove) => {
     e.dataTransfer.dropEffect = 'move';
   }, []);
 
-  const handleDropOnList = useCallback((e, targetList) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleDropOnList = useCallback(
+    (e, targetList) => {
+      e.preventDefault();
+      e.stopPropagation();
 
-    if (!draggedItem || draggedItem.sourceList === targetList) {
+      if (!draggedItem || draggedItem.sourceList === targetList) {
+        setDraggedItem(null);
+        setDragOverList(null);
+        setIsDragging(false);
+        return;
+      }
+
+      // Notificar movimiento entre listas
+      if (onMove) {
+        onMove({
+          item: draggedItem.item,
+          from: draggedItem.sourceList,
+          to: targetList,
+        });
+      }
+
       setDraggedItem(null);
       setDragOverList(null);
       setIsDragging(false);
-      return;
-    }
-
-    // Notificar movimiento entre listas
-    if (onMove) {
-      onMove({
-        item: draggedItem.item,
-        from: draggedItem.sourceList,
-        to: targetList
-      });
-    }
-
-    setDraggedItem(null);
-    setDragOverList(null);
-    setIsDragging(false);
-  }, [draggedItem, onMove]);
+    },
+    [draggedItem, onMove]
+  );
 
   return {
     draggedItem,
@@ -177,26 +183,26 @@ export const useDragBetweenLists = (lists = {}, onMove) => {
     handleDragEnterList,
     handleDragLeaveList,
     handleDragOverList,
-    handleDropOnList
+    handleDropOnList,
   };
 };
 
 /**
  * Componente: Contenedor draggable para items
  */
-export const DraggableItem = ({ 
-  item, 
-  index, 
-  children, 
-  onDragStart, 
-  onDragEnd, 
-  onDragEnter, 
-  onDragLeave, 
-  onDragOver, 
+export const DraggableItem = ({
+  item,
+  index,
+  children,
+  onDragStart,
+  onDragEnd,
+  onDragEnter,
+  onDragLeave,
+  onDragOver,
   onDrop,
   isDraggedOver = false,
   isDragging = false,
-  className = ''
+  className = '',
 }) => {
   return (
     <div
@@ -221,11 +227,9 @@ export const DraggableItem = ({
             <path d="M7 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 2zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 14zm6-8a2 2 0 1 0-.001-4.001A2 2 0 0 0 13 6zm0 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 14z" />
           </svg>
         </div>
-        
+
         {/* Content */}
-        <div className="flex-1">
-          {children}
-        </div>
+        <div className="flex-1">{children}</div>
       </div>
     </div>
   );
@@ -234,8 +238,8 @@ export const DraggableItem = ({
 /**
  * Componente: Zona de drop para listas
  */
-export const DropZone = ({ 
-  listKey, 
+export const DropZone = ({
+  listKey,
   title,
   items = [],
   children,
@@ -245,7 +249,7 @@ export const DropZone = ({
   onDrop,
   isDraggedOver = false,
   isEmpty = false,
-  className = ''
+  className = '',
 }) => {
   return (
     <div
@@ -269,8 +273,18 @@ export const DropZone = ({
 
       {isEmpty && (
         <div className="text-center text-slate-400">
-          <svg className="w-12 h-12 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+          <svg
+            className="w-12 h-12 mx-auto mb-2 opacity-50"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+            />
           </svg>
           <p className="text-sm">Arrastra items aquí</p>
         </div>
@@ -291,12 +305,20 @@ export const DragOverlay = ({ isDragging, itemName }) => {
     <div className="fixed inset-0 pointer-events-none z-[9998]">
       <div className="fixed top-4 left-1/2 transform -translate-x-1/2 glass px-6 py-3 rounded-full border border-purple-500/30 shadow-xl animate-bounce">
         <div className="flex items-center gap-2">
-          <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+          <svg
+            className="w-5 h-5 text-purple-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"
+            />
           </svg>
-          <span className="text-sm font-semibold">
-            Arrastrando: {itemName || 'Item'}
-          </span>
+          <span className="text-sm font-semibold">Arrastrando: {itemName || 'Item'}</span>
         </div>
       </div>
     </div>
@@ -312,15 +334,21 @@ export const DragModeToggle = ({ enabled, onToggle }) => {
       onClick={onToggle}
       className={`
         px-4 py-2 rounded-lg font-semibold transition-all flex items-center gap-2
-        ${enabled 
-          ? 'bg-purple-500/20 text-purple-400 border border-purple-500/30' 
-          : 'bg-slate-500/20 text-slate-400 border border-slate-500/30 hover:bg-slate-500/30'
+        ${
+          enabled
+            ? 'bg-purple-500/20 text-purple-400 border border-purple-500/30'
+            : 'bg-slate-500/20 text-slate-400 border border-slate-500/30 hover:bg-slate-500/30'
         }
       `}
       title={enabled ? 'Deshabilitar reordenamiento' : 'Habilitar reordenamiento'}
     >
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"
+        />
       </svg>
       {enabled ? 'Modo Reordenar ON' : 'Reordenar'}
     </button>
@@ -345,11 +373,11 @@ export const moveItemBetweenArrays = (sourceArray, targetArray, sourceIndex) => 
   const newTargetArray = [...targetArray];
   const [item] = newSourceArray.splice(sourceIndex, 1);
   newTargetArray.push(item);
-  
+
   return {
     source: newSourceArray,
     target: newTargetArray,
-    movedItem: item
+    movedItem: item,
   };
 };
 
@@ -364,31 +392,32 @@ export const usePersistentOrder = (key, initialItems = []) => {
         const order = JSON.parse(saved);
         // Reordenar items según orden guardado
         const orderedItems = order
-          .map(id => initialItems.find(item => item.id === id))
+          .map((id) => initialItems.find((item) => item.id === id))
           .filter(Boolean);
-        
+
         // Añadir items nuevos que no estén en el orden guardado
-        const newItems = initialItems.filter(
-          item => !order.includes(item.id)
-        );
-        
+        const newItems = initialItems.filter((item) => !order.includes(item.id));
+
         return [...orderedItems, ...newItems];
       }
     } catch (error) {
-      console.error('Error loading order from localStorage:', error);
+      // console.error('Error loading order from localStorage:', error);
     }
     return initialItems;
   });
 
-  const updateOrder = useCallback((newItems) => {
-    setItems(newItems);
-    try {
-      const order = newItems.map(item => item.id);
-      localStorage.setItem(`flowdistributor-order-${key}`, JSON.stringify(order));
-    } catch (error) {
-      console.error('Error saving order to localStorage:', error);
-    }
-  }, [key]);
+  const updateOrder = useCallback(
+    (newItems) => {
+      setItems(newItems);
+      try {
+        const order = newItems.map((item) => item.id);
+        localStorage.setItem(`flowdistributor-order-${key}`, JSON.stringify(order));
+      } catch (error) {
+        // console.error('Error saving order to localStorage:', error);
+      }
+    },
+    [key]
+  );
 
   useEffect(() => {
     setItems(initialItems);
@@ -406,5 +435,5 @@ export default {
   DragModeToggle,
   moveItem,
   moveItemBetweenArrays,
-  usePersistentOrder
+  usePersistentOrder,
 };

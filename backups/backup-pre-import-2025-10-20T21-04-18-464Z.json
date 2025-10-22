@@ -1,0 +1,15 @@
+{
+  "timestamp": "2025-10-20T21-04-18-464Z",
+  "note": "Backup automático antes de importación desde Excel",
+  "data": {
+    "ventas": [],
+    "clientes": [],
+    "ordenesCompra": [],
+    "distribuidores": [],
+    "almacen": {
+      "entradas": [],
+      "salidas": []
+    },
+    "bancos": []
+  }
+}

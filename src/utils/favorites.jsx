@@ -2,8 +2,8 @@
  * ⭐ SISTEMA DE FAVORITOS / BOOKMARKS
  * Marcar y acceder rápidamente a items importantes
  */
+import { useCallback, useEffect, useState } from 'react';
 
-import { useState, useEffect, useCallback } from 'react';
 import { Star } from 'lucide-react';
 
 /**
@@ -13,83 +13,91 @@ export const useFavorites = (storageKey = 'flowdistributor_favorites') => {
   const [favorites, setFavorites] = useState(() => {
     try {
       const stored = localStorage.getItem(storageKey);
-      return stored ? JSON.parse(stored) : {
-        clients: [],
-        products: [],
-        distributors: [],
-        sales: [],
-        orders: []
-      };
+      return stored
+        ? JSON.parse(stored)
+        : {
+            clients: [],
+            products: [],
+            distributors: [],
+            sales: [],
+            orders: [],
+          };
     } catch {
       return {
         clients: [],
         products: [],
         distributors: [],
         sales: [],
-        orders: []
+        orders: [],
       };
     }
   });
-  
+
   // Guardar en localStorage cuando cambien
   useEffect(() => {
     try {
       localStorage.setItem(storageKey, JSON.stringify(favorites));
     } catch (error) {
-      console.error('Error saving favorites:', error);
+      // console.error('Error saving favorites:', error);
     }
   }, [favorites, storageKey]);
-  
-  const isFavorite = useCallback((type, id) => {
-    return favorites[type]?.includes(id) || false;
-  }, [favorites]);
-  
+
+  const isFavorite = useCallback(
+    (type, id) => {
+      return favorites[type]?.includes(id) || false;
+    },
+    [favorites]
+  );
+
   const toggleFavorite = useCallback((type, id) => {
-    setFavorites(prev => {
+    setFavorites((prev) => {
       const current = prev[type] || [];
       const isFav = current.includes(id);
-      
+
       return {
         ...prev,
-        [type]: isFav
-          ? current.filter(fId => fId !== id)
-          : [...current, id]
+        [type]: isFav ? current.filter((fId) => fId !== id) : [...current, id],
       };
     });
   }, []);
-  
+
   const addFavorite = useCallback((type, id) => {
-    setFavorites(prev => ({
+    setFavorites((prev) => ({
       ...prev,
-      [type]: [...new Set([...(prev[type] || []), id])]
+      [type]: [...new Set([...(prev[type] || []), id])],
     }));
   }, []);
-  
+
   const removeFavorite = useCallback((type, id) => {
-    setFavorites(prev => ({
+    setFavorites((prev) => ({
       ...prev,
-      [type]: (prev[type] || []).filter(fId => fId !== id)
+      [type]: (prev[type] || []).filter((fId) => fId !== id),
     }));
   }, []);
-  
+
   const clearFavorites = useCallback((type) => {
     if (type) {
-      setFavorites(prev => ({ ...prev, [type]: [] }));
+      setFavorites((prev) => ({ ...prev, [type]: [] }));
     } else {
       setFavorites({
         clients: [],
         products: [],
         distributors: [],
         sales: [],
-        orders: []
+        orders: [],
       });
     }
   }, []);
-  
-  const getFavoriteCount = useCallback((type) => {
-    return type ? (favorites[type]?.length || 0) : Object.values(favorites).reduce((sum, arr) => sum + arr.length, 0);
-  }, [favorites]);
-  
+
+  const getFavoriteCount = useCallback(
+    (type) => {
+      return type
+        ? favorites[type]?.length || 0
+        : Object.values(favorites).reduce((sum, arr) => sum + arr.length, 0);
+    },
+    [favorites]
+  );
+
   return {
     favorites,
     isFavorite,
@@ -97,7 +105,7 @@ export const useFavorites = (storageKey = 'flowdistributor_favorites') => {
     addFavorite,
     removeFavorite,
     clearFavorites,
-    getFavoriteCount
+    getFavoriteCount,
   };
 };
 
@@ -106,14 +114,14 @@ export const useFavorites = (storageKey = 'flowdistributor_favorites') => {
  */
 export const FavoriteButton = ({ type, id, isFavorite, onToggle, className = '' }) => {
   const [isAnimating, setIsAnimating] = useState(false);
-  
+
   const handleClick = (e) => {
     e.stopPropagation();
     setIsAnimating(true);
     setTimeout(() => setIsAnimating(false), 600);
     onToggle(type, id);
   };
-  
+
   return (
     <button
       onClick={handleClick}
@@ -124,9 +132,7 @@ export const FavoriteButton = ({ type, id, isFavorite, onToggle, className = '' 
     >
       <Star
         className={`w-5 h-5 transition-all ${
-          isFavorite
-            ? 'fill-yellow-400 text-yellow-400'
-            : 'text-slate-400 hover:text-yellow-400'
+          isFavorite ? 'fill-yellow-400 text-yellow-400' : 'text-slate-400 hover:text-yellow-400'
         } ${isAnimating ? 'animate-pulse' : ''}`}
       />
     </button>

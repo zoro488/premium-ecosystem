@@ -1,15 +1,16 @@
-import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
+import { Route, BrowserRouter as Router, Routes, useNavigate } from 'react-router-dom';
+
 import { motion } from 'framer-motion';
-import { 
-  Building2, 
-  Wallet, 
-  Satellite, 
-  Brain, 
-  Network,
+import {
   ArrowLeft,
+  Brain,
+  Building2,
+  Loader2,
+  Network,
+  Satellite,
   Sparkles,
-  Loader2
+  Wallet,
 } from 'lucide-react';
 
 // Importación de prueba
@@ -23,28 +24,24 @@ const Synapse = lazy(() => import('./apps/Synapse/Synapse'));
 const Nexus = lazy(() => import('./apps/Nexus/Nexus'));
 
 // Componente de Loading
-const LoadingScreen = ({ appName }) => {
+const LoadingScreen = ({ _appName }) => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-blue-950/20 to-purple-950/20">
       <div className="text-center">
         <motion.div
-          animate={{ 
+          animate={{
             rotate: 360,
-            scale: [1, 1.1, 1]
+            scale: [1, 1.1, 1],
           }}
-          transition={{ 
+          transition={{
             duration: 2,
             repeat: Infinity,
-            ease: "linear"
+            ease: 'linear',
           }}
           className="mx-auto mb-6 w-16 h-16 border-4 border-blue-500/30 border-t-blue-500 rounded-full"
         />
-        <h2 className="text-2xl font-bold text-white mb-2">
-          Cargando {appName}...
-        </h2>
-        <p className="text-slate-400">
-          Inicializando aplicación empresarial
-        </p>
+        <h2 className="text-2xl font-bold text-white mb-2">Cargando {_appName}...</h2>
+        <p className="text-slate-400">Inicializando aplicación empresarial</p>
       </div>
     </div>
   );
@@ -63,7 +60,7 @@ const HomePage = () => {
       path: '/flowdistributor',
       color: 'from-blue-500 to-cyan-500',
       bgColor: 'from-blue-500/10 to-cyan-500/10',
-      borderColor: 'border-blue-500/30'
+      borderColor: 'border-blue-500/30',
     },
     {
       id: 'shadowprime',
@@ -73,7 +70,7 @@ const HomePage = () => {
       path: '/shadowprime',
       color: 'from-purple-500 to-pink-500',
       bgColor: 'from-purple-500/10 to-pink-500/10',
-      borderColor: 'border-purple-500/30'
+      borderColor: 'border-purple-500/30',
     },
     {
       id: 'apollo',
@@ -83,7 +80,7 @@ const HomePage = () => {
       path: '/apollo',
       color: 'from-orange-500 to-red-500',
       bgColor: 'from-orange-500/10 to-red-500/10',
-      borderColor: 'border-orange-500/30'
+      borderColor: 'border-orange-500/30',
     },
     {
       id: 'synapse',
@@ -93,7 +90,7 @@ const HomePage = () => {
       path: '/synapse',
       color: 'from-green-500 to-emerald-500',
       bgColor: 'from-green-500/10 to-emerald-500/10',
-      borderColor: 'border-green-500/30'
+      borderColor: 'border-green-500/30',
     },
     {
       id: 'nexus',
@@ -103,8 +100,8 @@ const HomePage = () => {
       path: '/nexus',
       color: 'from-indigo-500 to-blue-500',
       bgColor: 'from-indigo-500/10 to-blue-500/10',
-      borderColor: 'border-indigo-500/30'
-    }
+      borderColor: 'border-indigo-500/30',
+    },
   ];
 
   return (
@@ -126,7 +123,8 @@ const HomePage = () => {
               <Sparkles className="w-8 h-8 text-purple-400" />
             </div>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-              Suite empresarial completa con 5 aplicaciones integradas para maximizar tu productividad
+              Suite empresarial completa con 5 aplicaciones integradas para maximizar tu
+              productividad
             </p>
           </motion.div>
         </div>
@@ -141,29 +139,35 @@ const HomePage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.02,
-                y: -5
+                y: -5,
               }}
               whileTap={{ scale: 0.98 }}
               onClick={() => navigate(app.path)}
               className="group relative cursor-pointer"
             >
-              <div className={`glass border ${app.borderColor} rounded-2xl p-6 h-full transition-all duration-300 hover:border-opacity-60 hover:shadow-2xl hover:shadow-blue-500/10`}>
-                <div className={`absolute inset-0 bg-gradient-to-r ${app.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`} />
-                
-                <div className={`relative mb-6 p-4 rounded-xl ${app.bgColor} border ${app.borderColor}`}>
+              <div
+                className={`glass border ${app.borderColor} rounded-2xl p-6 h-full transition-all duration-300 hover:border-opacity-60 hover:shadow-2xl hover:shadow-blue-500/10`}
+              >
+                <div
+                  className={`absolute inset-0 bg-gradient-to-r ${app.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}
+                />
+
+                <div
+                  className={`relative mb-6 p-4 rounded-xl ${app.bgColor} border ${app.borderColor}`}
+                >
                   <app.icon className="w-12 h-12 text-white mx-auto" />
                 </div>
 
                 <div className="relative">
-                  <h3 className={`text-2xl font-bold mb-3 bg-gradient-to-r ${app.color} bg-clip-text text-transparent`}>
+                  <h3
+                    className={`text-2xl font-bold mb-3 bg-gradient-to-r ${app.color} bg-clip-text text-transparent`}
+                  >
                     {app.name}
                   </h3>
-                  
-                  <p className="text-slate-400 mb-6 leading-relaxed">
-                    {app.description}
-                  </p>
+
+                  <p className="text-slate-400 mb-6 leading-relaxed">{app.description}</p>
 
                   <div className="flex items-center text-blue-400 group-hover:text-blue-300 transition-colors">
                     <span className="font-semibold">Abrir aplicación</span>
@@ -197,45 +201,45 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/test" element={<TestApp />} />
-        <Route 
-          path="/flowdistributor" 
+        <Route
+          path="/flowdistributor"
           element={
-            <Suspense fallback={<LoadingScreen appName="FlowDistributor" />}>
+            <Suspense fallback={<LoadingScreen _appName="FlowDistributor" />}>
               <FlowDistributor />
             </Suspense>
-          } 
+          }
         />
-        <Route 
-          path="/shadowprime" 
+        <Route
+          path="/shadowprime"
           element={
-            <Suspense fallback={<LoadingScreen appName="ShadowPrime" />}>
+            <Suspense fallback={<LoadingScreen _appName="ShadowPrime" />}>
               <ShadowPrime />
             </Suspense>
-          } 
+          }
         />
-        <Route 
-          path="/apollo" 
+        <Route
+          path="/apollo"
           element={
-            <Suspense fallback={<LoadingScreen appName="Apollo" />}>
+            <Suspense fallback={<LoadingScreen _appName="Apollo" />}>
               <Apollo />
             </Suspense>
-          } 
+          }
         />
-        <Route 
-          path="/synapse" 
+        <Route
+          path="/synapse"
           element={
-            <Suspense fallback={<LoadingScreen appName="Synapse" />}>
+            <Suspense fallback={<LoadingScreen _appName="Synapse" />}>
               <Synapse />
             </Suspense>
-          } 
+          }
         />
-        <Route 
-          path="/nexus" 
+        <Route
+          path="/nexus"
           element={
-            <Suspense fallback={<LoadingScreen appName="Nexus" />}>
+            <Suspense fallback={<LoadingScreen _appName="Nexus" />}>
               <Nexus />
             </Suspense>
-          } 
+          }
         />
       </Routes>
     </Router>

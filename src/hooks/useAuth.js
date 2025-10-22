@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
 import { escucharAuthState } from '../services/authService';
 
 /**
@@ -31,7 +32,7 @@ export const useAuth = () => {
   return {
     user,
     loading,
-    isAuthenticated: user !== null
+    isAuthenticated: user !== null,
   };
 };
 

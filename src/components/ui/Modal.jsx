@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
+import { useEffect } from 'react';
+
 import { clsx } from 'clsx';
+import { AnimatePresence, motion } from 'framer-motion';
+import { X } from 'lucide-react';
 
 const Modal = ({
   isOpen,
@@ -76,13 +77,13 @@ const Modal = ({
               // Estilos base
               'relative w-full modal-premium',
               'rounded-2xl p-6',
-              
+
               // Tamaños
               sizes[size],
-              
+
               // Altura máxima
               'max-h-[90vh] overflow-y-auto',
-              
+
               // Clases adicionales
               className
             )}
@@ -93,18 +94,10 @@ const Modal = ({
             {(title || showCloseButton) && (
               <div className="flex items-start justify-between mb-6">
                 <div>
-                  {title && (
-                    <h2 className="text-xl font-bold text-white mb-1">
-                      {title}
-                    </h2>
-                  )}
-                  {description && (
-                    <p className="text-slate-400 text-sm">
-                      {description}
-                    </p>
-                  )}
+                  {title && <h2 className="text-xl font-bold text-white mb-1">{title}</h2>}
+                  {description && <p className="text-slate-400 text-sm">{description}</p>}
                 </div>
-                
+
                 {showCloseButton && (
                   <motion.button
                     whileHover={{ scale: 1.1 }}
@@ -156,7 +149,13 @@ const ModalContent = ({ children, className, ...props }) => (
 );
 
 const ModalFooter = ({ children, className, ...props }) => (
-  <div className={clsx('mt-6 pt-4 border-t border-white/10 flex items-center gap-3 justify-end', className)} {...props}>
+  <div
+    className={clsx(
+      'mt-6 pt-4 border-t border-white/10 flex items-center gap-3 justify-end',
+      className
+    )}
+    {...props}
+  >
     {children}
   </div>
 );

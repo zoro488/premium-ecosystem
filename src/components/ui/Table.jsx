@@ -1,9 +1,11 @@
-import React, { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Filter, ChevronLeft, ChevronRight, ChevronUp, ChevronDown } from 'lucide-react';
+import React, { useMemo, useState } from 'react';
+
 import { clsx } from 'clsx';
-import Input from './Input';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Filter, Search } from 'lucide-react';
+
 import Badge from './Badge';
+import Input from './Input';
 
 const Table = ({
   data = [],
@@ -25,9 +27,9 @@ const Table = ({
   // Filtrado por búsqueda
   const filteredData = useMemo(() => {
     if (!search) return data;
-    
-    return data.filter(item => 
-      columns.some(column => {
+
+    return data.filter((item) =>
+      columns.some((column) => {
         const value = item[column.key];
         return value && value.toString().toLowerCase().includes(search.toLowerCase());
       })
@@ -55,7 +57,7 @@ const Table = ({
   // Paginación
   const paginatedData = useMemo(() => {
     if (!paginated) return sortedData;
-    
+
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;
     return sortedData.slice(startIndex, endIndex);
@@ -66,10 +68,10 @@ const Table = ({
   // Manejar ordenamiento
   const handleSort = (key) => {
     if (!sortable) return;
-    
-    setSortConfig(current => ({
+
+    setSortConfig((current) => ({
       key,
-      direction: current.key === key && current.direction === 'asc' ? 'desc' : 'asc'
+      direction: current.key === key && current.direction === 'asc' ? 'desc' : 'asc',
     }));
   };
 
@@ -78,22 +80,22 @@ const Table = ({
     if (column.render) {
       return column.render(item[column.key], item);
     }
-    
+
     const value = item[column.key];
-    
+
     // Manejar diferentes tipos de datos
     if (column.type === 'badge') {
       return <Badge variant={column.variant || 'default'}>{value}</Badge>;
     }
-    
+
     if (column.type === 'currency') {
       return <span className="font-mono">${value?.toLocaleString('es-MX') || '0'}</span>;
     }
-    
+
     if (column.type === 'date') {
       return new Date(value).toLocaleDateString('es-MX');
     }
-    
+
     return value;
   };
 
@@ -208,26 +210,28 @@ const Table = ({
       {paginated && totalPages > 1 && (
         <div className="flex items-center justify-between">
           <div className="text-sm text-slate-400">
-            Mostrando {((currentPage - 1) * pageSize) + 1} a {Math.min(currentPage * pageSize, sortedData.length)} de {sortedData.length} resultados
+            Mostrando {(currentPage - 1) * pageSize + 1} a{' '}
+            {Math.min(currentPage * pageSize, sortedData.length)} de {sortedData.length} resultados
           </div>
-          
+
           <div className="flex items-center gap-2">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               disabled={currentPage === 1}
-              onClick={() => setCurrentPage(p => p - 1)}
+              onClick={() => setCurrentPage((p) => p - 1)}
               className="p-2 rounded-lg glass hover:glass-strong disabled:opacity-50 disabled:cursor-not-allowed transition-all"
             >
               <ChevronLeft className="w-4 h-4" />
             </motion.button>
-            
+
             <div className="flex items-center gap-1">
               {Array.from({ length: totalPages }, (_, i) => i + 1)
-                .filter(page => 
-                  page === 1 || 
-                  page === totalPages || 
-                  (page >= currentPage - 1 && page <= currentPage + 1)
+                .filter(
+                  (page) =>
+                    page === 1 ||
+                    page === totalPages ||
+                    (page >= currentPage - 1 && page <= currentPage + 1)
                 )
                 .map((page, index, array) => (
                   <React.Fragment key={page}>
@@ -250,12 +254,12 @@ const Table = ({
                   </React.Fragment>
                 ))}
             </div>
-            
+
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               disabled={currentPage === totalPages}
-              onClick={() => setCurrentPage(p => p + 1)}
+              onClick={() => setCurrentPage((p) => p + 1)}
               className="p-2 rounded-lg glass hover:glass-strong disabled:opacity-50 disabled:cursor-not-called transition-all"
             >
               <ChevronRight className="w-4 h-4" />

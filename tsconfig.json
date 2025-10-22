@@ -1,0 +1,83 @@
+{
+  "compilerOptions": {
+    // Language and Environment
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
+    "module": "ESNext",
+
+    // Module Resolution
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+
+    // Emit
+    "noEmit": true,
+    "sourceMap": true,
+
+    // Type Checking (preparado para migración gradual)
+    "strict": false, // Empezar desactivado, activar gradualmente
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": false,
+    "skipLibCheck": true,
+
+    // Interop Constraints
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+
+    // Path Aliases (match vite.config.js)
+    "ignoreDeprecations": "6.0",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "@apps/*": ["src/apps/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@stores/*": ["src/stores/*"],
+      "@utils/*": ["src/utils/*"],
+      "@services/*": ["src/services/*"],
+      "@config/*": ["src/config/*"],
+      "@lib/*": ["src/lib/*"],
+      "@validation/*": ["src/validation/*"],
+      "@workers/*": ["src/workers/*"]
+    },
+
+    // Type Roots
+    "types": ["vite/client", "vitest/globals", "@testing-library/jest-dom"],
+
+    // Additional Options
+    "useDefineForClassFields": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+    "vite.config.js",
+    "playwright.config.js"
+  ],
+
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    ".vscode",
+    ".github",
+    "coverage",
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ],
+
+  "references": [
+    { "path": "./tsconfig.node.json" }
+  ]
+}

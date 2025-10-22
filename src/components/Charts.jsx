@@ -1,11 +1,44 @@
-import React from 'react';
-import { 
-  PieChart, Pie, Cell, BarChart, Bar, AreaChart, Area, 
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, 
-  Legend, ResponsiveContainer 
+import {
+  Area,
+  AreaChart,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  Legend,
+  Line,
+  LineChart,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
 } from 'recharts';
 
-const ReportsCharts = ({ bancos, totalIngresos, totalEgresos }) => {
+const ReportsCharts = ({ bancos = {}, totalIngresos = 0, totalEgresos = 0 }) => {
+  // Validar que bancos no esté vacío
+  if (!bancos || Object.keys(bancos).length === 0) {
+    return (
+      <div className="glass rounded-2xl p-6 border border-white/10">
+        <p className="text-center text-slate-400">No hay datos de bancos disponibles</p>
+      </div>
+    );
+  }
+
+  // Función helper para obtener el nombre del banco de forma segura
+  const getBancoName = (key) => {
+    const nombres = {
+      bovedaMonte: 'Bóveda Monte',
+      utilidades: 'Utilidades',
+      fletes: 'Fletes',
+      azteca: 'Azteca',
+      leftie: 'Leftie',
+      profit: 'Profit',
+    };
+    return nombres[key] || key;
+  };
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {/* Gráfico de Pie - Distribución de Bancos */}
@@ -15,20 +48,13 @@ const ReportsCharts = ({ bancos, totalIngresos, totalEgresos }) => {
           <PieChart>
             <Pie
               data={Object.entries(bancos).map(([key, banco]) => ({
-                name: {
-                  bovedaMonte: 'Bóveda Monte',
-                  utilidades: 'Utilidades',
-                  fletes: 'Fletes',
-                  azteca: 'Azteca',
-                  leftie: 'Leftie',
-                  profit: 'Profit'
-                }[key],
-                value: banco.capitalActual
+                name: getBancoName(key),
+                value: banco?.capitalActual || 0,
               }))}
               cx="50%"
               cy="50%"
               labelLine={false}
-              label={({name, percent}) => `${name}: ${(percent * 100).toFixed(0)}%`}
+              label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
               outerRadius={100}
               fill="#8884d8"
               dataKey="value"
@@ -43,7 +69,7 @@ const ReportsCharts = ({ bancos, totalIngresos, totalEgresos }) => {
                 backgroundColor: 'rgba(15, 23, 42, 0.9)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
                 borderRadius: '12px',
-                color: '#fff'
+                color: '#fff',
               }}
               formatter={(value) => `$${value.toLocaleString()}`}
             />
@@ -58,15 +84,8 @@ const ReportsCharts = ({ bancos, totalIngresos, totalEgresos }) => {
         <ResponsiveContainer width="100%" height={300}>
           <BarChart
             data={Object.entries(bancos).map(([key, banco]) => ({
-              name: {
-                bovedaMonte: 'Bóveda Monte',
-                utilidades: 'Utilidades',
-                fletes: 'Fletes',
-                azteca: 'Azteca',
-                leftie: 'Leftie',
-                profit: 'Profit'
-              }[key].split(' ')[0],
-              capital: banco.capitalActual
+              name: (getBancoName(key) || '').split(' ')[0],
+              capital: banco?.capitalActual || 0,
             }))}
             margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
           >
@@ -78,7 +97,7 @@ const ReportsCharts = ({ bancos, totalIngresos, totalEgresos }) => {
                 backgroundColor: 'rgba(15, 23, 42, 0.9)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
                 borderRadius: '12px',
-                color: '#fff'
+                color: '#fff',
               }}
               formatter={(value) => `$${value.toLocaleString()}`}
             />
@@ -107,12 +126,12 @@ const ReportsCharts = ({ bancos, totalIngresos, totalEgresos }) => {
           >
             <defs>
               <linearGradient id="colorIngresos" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#10b981" stopOpacity={0.8}/>
-                <stop offset="95%" stopColor="#10b981" stopOpacity={0.1}/>
+                <stop offset="5%" stopColor="#10b981" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="#10b981" stopOpacity={0.1} />
               </linearGradient>
               <linearGradient id="colorEgresos" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#ef4444" stopOpacity={0.8}/>
-                <stop offset="95%" stopColor="#ef4444" stopOpacity={0.1}/>
+                <stop offset="5%" stopColor="#ef4444" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="#ef4444" stopOpacity={0.1} />
               </linearGradient>
             </defs>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
@@ -123,13 +142,25 @@ const ReportsCharts = ({ bancos, totalIngresos, totalEgresos }) => {
                 backgroundColor: 'rgba(15, 23, 42, 0.9)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
                 borderRadius: '12px',
-                color: '#fff'
+                color: '#fff',
               }}
               formatter={(value) => `$${value.toLocaleString()}`}
             />
             <Legend />
-            <Area type="monotone" dataKey="ingresos" stroke="#10b981" fillOpacity={1} fill="url(#colorIngresos)" />
-            <Area type="monotone" dataKey="egresos" stroke="#ef4444" fillOpacity={1} fill="url(#colorEgresos)" />
+            <Area
+              type="monotone"
+              dataKey="ingresos"
+              stroke="#10b981"
+              fillOpacity={1}
+              fill="url(#colorIngresos)"
+            />
+            <Area
+              type="monotone"
+              dataKey="egresos"
+              stroke="#ef4444"
+              fillOpacity={1}
+              fill="url(#colorEgresos)"
+            />
           </AreaChart>
         </ResponsiveContainer>
       </div>
@@ -155,7 +186,7 @@ const ReportsCharts = ({ bancos, totalIngresos, totalEgresos }) => {
                 backgroundColor: 'rgba(15, 23, 42, 0.9)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
                 borderRadius: '12px',
-                color: '#fff'
+                color: '#fff',
               }}
               formatter={(value) => `$${value.toLocaleString()}`}
             />

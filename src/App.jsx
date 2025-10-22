@@ -1,16 +1,25 @@
-import React, { Suspense, lazy, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
+import { Suspense, lazy, useEffect } from 'react';
+import {
+  Link,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
+
 import { motion } from 'framer-motion';
-import { 
-  Building2, 
-  Wallet, 
-  Satellite, 
-  Brain, 
-  Network,
+import {
   ArrowLeft,
+  Brain,
+  Building2,
+  Loader2,
+  Network,
+  Satellite,
   Sparkles,
-  Loader2
+  Wallet,
 } from 'lucide-react';
+
 import { initGA, logPageView } from './utils/analytics';
 
 // Lazy loading de las 5 aplicaciones para mejorar rendimiento
@@ -22,45 +31,43 @@ const Nexus = lazy(() => import('./apps/Nexus/Nexus'));
 const FirebaseSetup = lazy(() => import('./components/FirebaseSetup'));
 
 // Componente de Loading optimizado
-const LoadingScreen = ({ appName }) => {
+const LoadingScreen = ({ _appName }) => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-blue-950/20 to-purple-950/20">
       <div className="text-center">
         <motion.div
-          animate={{ 
+          animate={{
             rotate: 360,
-            scale: [1, 1.1, 1]
+            scale: [1, 1.1, 1],
           }}
-          transition={{ 
-            rotate: { duration: 2, repeat: Infinity, ease: "linear" },
-            scale: { duration: 1.5, repeat: Infinity }
+          transition={{
+            rotate: { duration: 2, repeat: Infinity, ease: 'linear' },
+            scale: { duration: 1.5, repeat: Infinity },
           }}
           className="mb-6 mx-auto w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center"
         >
           <Loader2 className="w-8 h-8 text-white" />
         </motion.div>
-        
+
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
           <h2 className="text-2xl font-bold text-white mb-2">
-            {appName ? `Cargando ${appName}...` : 'Cargando...'}
+            {_appName ? `Cargando ${_appName}...` : 'Cargando...'}
           </h2>
-          <p className="text-slate-400 text-sm">
-            Preparando la aplicación para ti
-          </p>
+          <p className="text-slate-400 text-sm">Preparando la aplicación para ti</p>
         </motion.div>
 
         <motion.div
-          animate={{ 
+          animate={{
             scaleX: [0, 1, 0],
           }}
-          transition={{ 
+          transition={{
             duration: 2,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: 'easeInOut',
           }}
           className="mt-6 h-1 w-48 mx-auto bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
         />
@@ -98,7 +105,7 @@ const StarField = () => {
           transition={{
             duration: star.duration,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: 'easeInOut',
           }}
         />
       ))}
@@ -182,41 +189,42 @@ const AppCard = ({ app }) => {
       `}
     >
       {/* Efecto de brillo en hover */}
-      <div className={`
+      <div
+        className={`
         absolute inset-0 bg-gradient-to-r ${app.color} 
         opacity-0 group-hover:opacity-10 transition-opacity duration-500
-      `} />
+      `}
+      />
 
       {/* Icono con gradiente */}
-      <div className={`
+      <div
+        className={`
         relative mb-6 p-4 rounded-xl ${app.bgColor}
         border ${app.borderColor}
         inline-block
-      `}>
+      `}
+      >
         <Icon className="w-8 h-8" />
       </div>
 
       {/* Título */}
-      <h3 className={`
+      <h3
+        className={`
         text-2xl font-bold mb-3
         bg-gradient-to-r ${app.color}
         text-gradient
-      `}>
+      `}
+      >
         {app.name}
       </h3>
 
       {/* Descripción */}
-      <p className="text-slate-400 text-sm leading-relaxed">
-        {app.description}
-      </p>
+      <p className="text-slate-400 text-sm leading-relaxed">{app.description}</p>
 
       {/* Indicador de "Abrir" */}
       <div className="mt-6 flex items-center gap-2 text-sm text-slate-500 group-hover:text-slate-300 transition-colors">
         <span>Abrir aplicación</span>
-        <motion.div
-          animate={{ x: [0, 5, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        >
+        <motion.div animate={{ x: [0, 5, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
           →
         </motion.div>
       </div>
@@ -250,9 +258,7 @@ const Hub = () => {
           <h1 className="text-6xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-gradient">
             Premium Ecosystem
           </h1>
-          <p className="text-xl text-slate-400">
-            5 aplicaciones empresariales de nueva generación
-          </p>
+          <p className="text-xl text-slate-400">5 aplicaciones empresariales de nueva generación</p>
         </motion.div>
 
         {/* Grid de aplicaciones */}
@@ -289,7 +295,7 @@ const Hub = () => {
 };
 
 // Componente wrapper para páginas de aplicaciones
-const AppWrapper = ({ children, appName, appColor }) => {
+const AppWrapper = ({ children, _appName, _appColor }) => {
   const navigate = useNavigate();
 
   return (
@@ -341,7 +347,7 @@ function App() {
         <Route
           path="/firebase-setup"
           element={
-            <Suspense fallback={<LoadingScreen appName="Firebase Setup" />}>
+            <Suspense fallback={<LoadingScreen _appName="Firebase Setup" />}>
               <FirebaseSetup />
             </Suspense>
           }
@@ -353,8 +359,8 @@ function App() {
             key={app.id}
             path={app.path}
             element={
-              <AppWrapper appName={app.name} appColor={app.color}>
-                <Suspense fallback={<LoadingScreen appName={app.name} />}>
+              <AppWrapper _appName={app.name} _appColor={app.color}>
+                <Suspense fallback={<LoadingScreen _appName={app.name} />}>
                   <app.component />
                 </Suspense>
               </AppWrapper>

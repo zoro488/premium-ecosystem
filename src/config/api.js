@@ -325,7 +325,7 @@ export const isAPIConfigured = (apiConfig) => {
   if (typeof apiConfig === 'string') {
     return apiConfig.length > 0;
   }
-  return Object.values(apiConfig).some(value => value && value.length > 0);
+  return Object.values(apiConfig).some((value) => value && value.length > 0);
 };
 
 /**
@@ -392,9 +392,9 @@ export const logAPIWarnings = () => {
     .map(([api]) => api);
 
   if (missingAPIs.length > 0) {
-    console.warn('⚠️ Las siguientes APIs no están configuradas:');
-    missingAPIs.forEach(api => console.warn(`  - ${api}`));
-    console.warn('Configura las API keys en el archivo .env para habilitar estas funcionalidades');
+    // console.warn('⚠️ Las siguientes APIs no están configuradas:');
+    missingAPIs.forEach((api) => console.warn(`  - ${api}`));
+    // console.warn('Configura las API keys en el archivo .env para habilitar estas funcionalidades');
   }
 };
 

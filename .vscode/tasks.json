@@ -1,0 +1,613 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "🤖 Copilot: Analyze Code",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-File",
+        ".github/scripts/copilot-automation.ps1",
+        "-Action",
+        "analyze"
+      ],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": ["$eslint-stylish"]
+    },
+    {
+      "label": "🤖 Copilot: Optimize Code",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-File",
+        ".github/scripts/copilot-automation.ps1",
+        "-Action",
+        "optimize"
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "🤖 Copilot: Generate Tests",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-File",
+        ".github/scripts/copilot-automation.ps1",
+        "-Action",
+        "test"
+      ],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "🤖 Copilot: Security Scan",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-File",
+        ".github/scripts/copilot-automation.ps1",
+        "-Action",
+        "security"
+      ],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "🤖 Copilot: Generate Docs",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-File",
+        ".github/scripts/copilot-automation.ps1",
+        "-Action",
+        "docs"
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "🚀 Copilot: Run All",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-File",
+        ".github/scripts/copilot-automation.ps1",
+        "-Action",
+        "all"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "⚡ Copilot: Quick Suggest",
+      "type": "shell",
+      "command": "gh",
+      "args": [
+        "copilot",
+        "suggest",
+        "-t",
+        "shell",
+        "${input:copilotQuery}"
+      ],
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "📖 Copilot: Explain Command",
+      "type": "shell",
+      "command": "gh",
+      "args": [
+        "copilot",
+        "explain",
+        "${input:commandToExplain}"
+      ],
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "🔍 Copilot: Review Current File",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-Command",
+        "Import-Module .github/scripts/copilot-cli-tools.ps1; Invoke-CopilotReview -FilePath '${file}'"
+      ],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "🧪 Copilot: Generate Test for Current File",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-Command",
+        "Import-Module .github/scripts/copilot-cli-tools.ps1; New-CopilotTests -SourceFile '${file}'"
+      ],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "⚡ Copilot: Optimize Current File",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-Command",
+        "Import-Module .github/scripts/copilot-cli-tools.ps1; Optimize-CodeWithCopilot -FilePath '${file}'"
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "📚 Copilot: Document Current File",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-Command",
+        "Import-Module .github/scripts/copilot-cli-tools.ps1; Add-CopilotDocumentation -FilePath '${file}'"
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "🔒 Copilot: Security Check Current File",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-Command",
+        "Import-Module .github/scripts/copilot-cli-tools.ps1; Find-SecurityIssues -FilePath '${file}'"
+      ],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "💬 Copilot: Generate Commit Message",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-Command",
+        "Import-Module .github/scripts/copilot-cli-tools.ps1; New-CopilotCommitMessage"
+      ],
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "📊 Copilot: Project Analysis",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-Command",
+        "Import-Module .github/scripts/copilot-cli-tools.ps1; Invoke-CopilotProjectAnalysis"
+      ],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "🚀 Start Dev Server",
+      "type": "npm",
+      "script": "dev",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🏗️ Build Production",
+      "type": "npm",
+      "script": "build",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": ["$tsc"]
+    },
+    {
+      "label": "🔍 ESLint",
+      "type": "npm",
+      "script": "lint",
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": ["$eslint-stylish"]
+    },
+    {
+      "label": "🔧 ESLint: Fix All",
+      "type": "npm",
+      "script": "lint:fix",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": ["$eslint-stylish"]
+    },
+    {
+      "label": "💅 Prettier: Format All",
+      "type": "npm",
+      "script": "format",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🧪 Run Unit Tests",
+      "type": "npm",
+      "script": "test",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🧪 Run Unit Tests (UI)",
+      "type": "npm",
+      "script": "test:ui",
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": [],
+      "isBackground": true
+    },
+    {
+      "label": "📊 Test Coverage",
+      "type": "npm",
+      "script": "test:coverage",
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🎭 Run E2E Tests",
+      "type": "npm",
+      "script": "test:e2e",
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🎭 E2E Tests (UI Mode)",
+      "type": "npm",
+      "script": "test:e2e:ui",
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": [],
+      "isBackground": true
+    },
+    {
+      "label": "🔥 Firebase: Deploy",
+      "type": "npm",
+      "script": "deploy",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🔥 Firebase: Deploy Preview",
+      "type": "npm",
+      "script": "deploy:preview",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🐳 Docker: Build & Start",
+      "type": "npm",
+      "script": "docker:up",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🐳 Docker: Stop",
+      "type": "npm",
+      "script": "docker:down",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🧹 Clean Build Cache",
+      "type": "npm",
+      "script": "clean",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🧹 Clean All (node_modules + cache)",
+      "type": "npm",
+      "script": "clean:all",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "⚡ Quick Deploy",
+      "type": "npm",
+      "script": "quick-deploy",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🔧 Auto Fix All Issues",
+      "type": "npm",
+      "script": "auto-fix",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🔄 Full Pipeline: Lint + Test + Build",
+      "dependsOn": [
+        "🔍 ESLint",
+        "🧪 Run Unit Tests",
+        "🏗️ Build Production"
+      ],
+      "dependsOrder": "sequence",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "✅ Pre-Commit Check",
+      "dependsOn": [
+        "🔧 ESLint: Fix All",
+        "💅 Prettier: Format All",
+        "🧪 Run Unit Tests"
+      ],
+      "dependsOrder": "sequence",
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🚀 Deploy Pipeline: Test + Build + Deploy",
+      "dependsOn": [
+        "🔍 ESLint",
+        "🧪 Run Unit Tests",
+        "🏗️ Build Production",
+        "🔥 Firebase: Deploy"
+      ],
+      "dependsOrder": "sequence",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "📦 Install Dependencies",
+      "type": "shell",
+      "command": "npm",
+      "args": ["install"],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🔄 Update Dependencies",
+      "type": "shell",
+      "command": "npm",
+      "args": ["update"],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🔍 Audit Dependencies",
+      "type": "shell",
+      "command": "npm",
+      "args": ["audit"],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🔧 Fix Vulnerabilities",
+      "type": "shell",
+      "command": "npm",
+      "args": ["audit", "fix"],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "📊 Bundle Analyzer",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "build", "--", "--analyze"],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🔍 Type Check",
+      "type": "shell",
+      "command": "tsc",
+      "args": ["--noEmit"],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": ["$tsc"]
+    },
+    {
+      "label": "📝 Generate Component",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-Command",
+        "New-Item -ItemType Directory -Force -Path \"src/components/${input:componentName}\"; New-Item -ItemType File -Path \"src/components/${input:componentName}/${input:componentName}.jsx\" -Value \"import React from 'react';`n`nexport default function ${input:componentName}() {`n  return <div>${input:componentName}</div>;`n}\""
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🔄 Restart Dev Server",
+      "dependsOn": ["🧹 Clean Build Cache"],
+      "type": "npm",
+      "script": "dev",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "copilotQuery",
+      "type": "promptString",
+      "description": "¿Qué comando necesitas?",
+      "default": "deploy to Firebase"
+    },
+    {
+      "id": "commandToExplain",
+      "type": "promptString",
+      "description": "¿Qué comando quieres que explique?",
+      "default": "npm run build"
+    },
+    {
+      "id": "testPattern",
+      "type": "promptString",
+      "description": "Test file pattern",
+      "default": "**/*.test.jsx"
+    },
+    {
+      "id": "componentName",
+      "type": "promptString",
+      "description": "Component name",
+      "default": "MyComponent"
+    }
+  ]
+}

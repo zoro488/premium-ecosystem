@@ -1,0 +1,281 @@
+name: Publish to GitHub Packages
+
+on:
+  release:
+    types: [created, published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish'
+        required: true
+        type: string
+      tag:
+        description: 'NPM dist-tag (latest, beta, next)'
+        required: true
+        default: 'latest'
+        type: choice
+        options:
+          - latest
+          - beta
+          - next
+          - canary
+
+permissions:
+  contents: read
+  packages: write
+  id-token: write
+
+env:
+  NODE_VERSION: '20'
+  REGISTRY_URL: 'https://npm.pkg.github.com'
+
+jobs:
+  # ==================================================
+  # VALIDATE & TEST
+  # ==================================================
+  validate:
+    name: Validate Package
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run linter
+        run: npm run lint
+
+      - name: Run tests
+        run: npm run test:run
+
+      - name: Build package
+        run: npm run build
+
+      - name: Validate package.json
+        run: |
+          # Verificar que package.json tenga la configuración correcta
+          if ! grep -q '"publishConfig"' package.json; then
+            echo "Error: package.json debe tener publishConfig"
+            exit 1
+          fi
+
+      - name: Pack package
+        run: npm pack
+
+      - name: Upload package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: package
+          path: '*.tgz'
+          retention-days: 7
+
+  # ==================================================
+  # PUBLISH TO GITHUB PACKAGES
+  # ==================================================
+  publish-github:
+    name: Publish to GitHub Packages
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    environment:
+      name: npm-packages
+      url: https://github.com/${{ github.repository }}/packages
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: ${{ env.REGISTRY_URL }}
+          scope: '@${{ github.repository_owner }}'
+
+      - name: Configure NPM for GitHub Packages
+        run: |
+          cat > .npmrc << EOF
+          @${{ github.repository_owner }}:registry=${{ env.REGISTRY_URL }}
+          //${{ env.REGISTRY_URL }}/:_authToken=\${NODE_AUTH_TOKEN}
+          always-auth=true
+          EOF
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Update package.json for GitHub Packages
+        run: |
+          # Actualizar nombre del paquete con scope
+          npm pkg set name="@${{ github.repository_owner }}/premium-ecosystem"
+
+          # Configurar publishConfig
+          npm pkg set publishConfig.registry="${{ env.REGISTRY_URL }}"
+          npm pkg set publishConfig.access="public"
+
+          # Actualizar repository
+          npm pkg set repository.type="git"
+          npm pkg set repository.url="git+https://github.com/${{ github.repository }}.git"
+
+      - name: Determine version
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" == "release" ]; then
+            VERSION="${{ github.event.release.tag_name }}"
+            VERSION="${VERSION#v}"
+          elif [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            VERSION="${{ inputs.version }}"
+          else
+            VERSION="$(npm pkg get version | tr -d '"')"
+          fi
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          npm version $VERSION --no-git-tag-version
+
+      - name: Publish to GitHub Packages
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            npm publish --tag ${{ inputs.tag }}
+          else
+            npm publish
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create package summary
+        run: |
+          echo "## 📦 Package Published" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Package**: @${{ github.repository_owner }}/premium-ecosystem" >> $GITHUB_STEP_SUMMARY
+          echo "- **Version**: ${{ steps.version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Registry**: GitHub Packages" >> $GITHUB_STEP_SUMMARY
+          echo "- **Tag**: ${{ inputs.tag || 'latest' }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Installation" >> $GITHUB_STEP_SUMMARY
+          echo '```bash' >> $GITHUB_STEP_SUMMARY
+          echo "npm install @${{ github.repository_owner }}/premium-ecosystem@${{ steps.version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+  # ==================================================
+  # PUBLISH TO NPM (Opcional)
+  # ==================================================
+  publish-npm:
+    name: Publish to NPM Registry
+    needs: validate
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release' && github.event.release.prerelease == false
+    timeout-minutes: 10
+
+    environment:
+      name: npm-registry
+      url: https://www.npmjs.com/package/premium-ecosystem
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Publish to NPM
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  # ==================================================
+  # CREATE PROVENANCE
+  # ==================================================
+  provenance:
+    name: Generate Provenance
+    needs: [publish-github]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release'
+
+    permissions:
+      id-token: write
+      contents: write
+      attestations: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download package
+        uses: actions/download-artifact@v4
+        with:
+          name: package
+
+      - name: Generate provenance
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-path: '*.tgz'
+
+  # ==================================================
+  # UPDATE DOCUMENTATION
+  # ==================================================
+  update-docs:
+    name: Update Package Documentation
+    needs: [publish-github]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release'
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Update README badges
+        run: |
+          VERSION="${{ github.event.release.tag_name }}"
+          VERSION="${VERSION#v}"
+
+          # Actualizar badge de versión
+          sed -i "s/version-[^-]*-blue/version-${VERSION}-blue/" README.md
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add README.md
+          git diff --quiet && git diff --staged --quiet || git commit -m "docs: update version badge to ${{ github.event.release.tag_name }}"
+          git push
+
+  # ==================================================
+  # NOTIFY STAKEHOLDERS
+  # ==================================================
+  notify:
+    name: Notify Stakeholders
+    needs: [publish-github, publish-npm]
+    if: always()
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send notification
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const status = '${{ needs.publish-github.result }}' === 'success' ? '✅ Success' : '❌ Failed';
+            const version = '${{ github.event.release.tag_name }}' || '${{ inputs.version }}';
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number || 1,
+              body: `${status} - Package version ${version} published to GitHub Packages`
+            });

@@ -1,0 +1,24 @@
+# GitHub Packages Configuration
+# Copiar este archivo a .npmrc y reemplazar YOUR_GITHUB_TOKEN
+
+# Registry para scoped packages
+@YOUR_GITHUB_USERNAME:registry=https://npm.pkg.github.com
+
+# Autenticación para GitHub Packages
+//npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN
+
+# Configuración adicional
+always-auth=true
+engine-strict=true
+save-exact=true
+
+# NPM Registry por defecto (para otros paquetes)
+registry=https://registry.npmjs.org/
+
+# Configuración de logging
+loglevel=warn
+
+# Configuración de instalación
+prefer-offline=true
+audit=true
+fund=false

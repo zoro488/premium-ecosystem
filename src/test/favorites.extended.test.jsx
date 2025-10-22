@@ -1,5 +1,6 @@
-import { describe, it, expect, beforeEach } from 'vitest';
-import { renderHook, act } from '@testing-library/react';
+import { act, renderHook } from '@testing-library/react';
+import { beforeEach, describe, expect, it } from 'vitest';
+
 import { useFavorites } from '../utils/favorites';
 
 describe('useFavorites - Extended Coverage', () => {
@@ -10,7 +11,7 @@ describe('useFavorites - Extended Coverage', () => {
   describe('custom storage key', () => {
     it('should use custom storage key', () => {
       const { result } = renderHook(() => useFavorites('custom_key'));
-      
+
       act(() => {
         result.current.addFavorite('clients', { id: 1, name: 'Test' });
       });
@@ -25,12 +26,12 @@ describe('useFavorites - Extended Coverage', () => {
         products: [],
         distributors: [],
         sales: [],
-        orders: []
+        orders: [],
       };
       localStorage.setItem('custom_favorites', JSON.stringify(savedData));
 
       const { result } = renderHook(() => useFavorites('custom_favorites'));
-      
+
       expect(result.current.favorites.clients).toHaveLength(1);
       expect(result.current.favorites.clients[0].name).toBe('Saved Client');
     });
@@ -39,7 +40,7 @@ describe('useFavorites - Extended Coverage', () => {
   describe('addFavorite', () => {
     it('should add item to favorites', () => {
       const { result } = renderHook(() => useFavorites());
-      
+
       const item = { id: 1, name: 'New Item' };
 
       act(() => {
@@ -51,7 +52,7 @@ describe('useFavorites - Extended Coverage', () => {
 
     it('should not add duplicate items', () => {
       const { result } = renderHook(() => useFavorites());
-      
+
       const item = { id: 1, name: 'Item' };
 
       act(() => {
@@ -64,7 +65,7 @@ describe('useFavorites - Extended Coverage', () => {
 
     it('should add to different types independently', () => {
       const { result } = renderHook(() => useFavorites());
-      
+
       act(() => {
         result.current.addFavorite('products', { id: 1, name: 'Product' });
         result.current.addFavorite('distributors', { id: 2, name: 'Distributor' });
@@ -80,7 +81,7 @@ describe('useFavorites - Extended Coverage', () => {
   describe('removeFavorite', () => {
     it('should remove item from favorites', () => {
       const { result } = renderHook(() => useFavorites());
-      
+
       const item = { id: 1, name: 'Item' };
 
       act(() => {
@@ -98,7 +99,7 @@ describe('useFavorites - Extended Coverage', () => {
 
     it('should not fail when removing non-existent item', () => {
       const { result } = renderHook(() => useFavorites());
-      
+
       act(() => {
         result.current.removeFavorite('clients', 999);
       });
@@ -108,7 +109,7 @@ describe('useFavorites - Extended Coverage', () => {
 
     it('should only remove from specified type', () => {
       const { result } = renderHook(() => useFavorites());
-      
+
       act(() => {
         result.current.addFavorite('clients', { id: 1 });
         result.current.addFavorite('products', { id: 1 });
@@ -124,7 +125,7 @@ describe('useFavorites - Extended Coverage', () => {
 
     it('should remove correct item by id', () => {
       const { result } = renderHook(() => useFavorites());
-      
+
       act(() => {
         result.current.addFavorite('clients', { id: 1, name: 'First' });
         result.current.addFavorite('clients', { id: 2, name: 'Second' });
@@ -136,30 +137,30 @@ describe('useFavorites - Extended Coverage', () => {
       });
 
       expect(result.current.favorites.clients).toHaveLength(2);
-      expect(result.current.favorites.clients.find(c => c.id === 2)).toBeUndefined();
-      expect(result.current.favorites.clients.find(c => c.id === 1)).toBeTruthy();
-      expect(result.current.favorites.clients.find(c => c.id === 3)).toBeTruthy();
+      expect(result.current.favorites.clients.find((c) => c.id === 2)).toBeUndefined();
+      expect(result.current.favorites.clients.find((c) => c.id === 1)).toBeTruthy();
+      expect(result.current.favorites.clients.find((c) => c.id === 3)).toBeTruthy();
     });
   });
 
   describe('localStorage persistence', () => {
     it('should save favorites to localStorage on add', () => {
       const { result } = renderHook(() => useFavorites());
-      
+
       act(() => {
         result.current.addFavorite('clients', { id: 1, name: 'Test' });
       });
 
       const stored = localStorage.getItem('flowdistributor_favorites');
       expect(stored).toBeTruthy();
-      
+
       const parsed = JSON.parse(stored);
       expect(parsed.clients).toHaveLength(1);
     });
 
     it('should save favorites to localStorage on remove', () => {
       const { result } = renderHook(() => useFavorites());
-      
+
       act(() => {
         result.current.addFavorite('clients', { id: 1 });
         result.current.addFavorite('clients', { id: 2 });
@@ -177,14 +178,14 @@ describe('useFavorites - Extended Coverage', () => {
 
     it('should persist complex objects', () => {
       const { result } = renderHook(() => useFavorites());
-      
+
       const complexItem = {
         id: 1,
         name: 'Test',
         metadata: {
           created: '2025-01-01',
-          tags: ['important', 'urgent']
-        }
+          tags: ['important', 'urgent'],
+        },
       };
 
       act(() => {
@@ -193,7 +194,7 @@ describe('useFavorites - Extended Coverage', () => {
 
       const stored = localStorage.getItem('flowdistributor_favorites');
       const parsed = JSON.parse(stored);
-      
+
       expect(parsed.clients[0]).toEqual(complexItem);
     });
   });
@@ -203,14 +204,14 @@ describe('useFavorites - Extended Coverage', () => {
       localStorage.setItem('flowdistributor_favorites', 'invalid json');
 
       const { result } = renderHook(() => useFavorites());
-      
+
       expect(result.current.favorites).toBeTruthy();
       expect(result.current.favorites.clients).toEqual([]);
     });
 
     it('should handle missing type in favorites', () => {
       const { result } = renderHook(() => useFavorites());
-      
+
       act(() => {
         result.current.addFavorite('newType', { id: 1 });
       });
@@ -222,7 +223,7 @@ describe('useFavorites - Extended Coverage', () => {
       localStorage.removeItem('flowdistributor_favorites');
 
       const { result } = renderHook(() => useFavorites());
-      
+
       expect(result.current.favorites.clients).toEqual([]);
     });
   });
@@ -230,15 +231,15 @@ describe('useFavorites - Extended Coverage', () => {
   describe('multiple items management', () => {
     it('should handle adding multiple items', () => {
       const { result } = renderHook(() => useFavorites());
-      
+
       const items = [
         { id: 1, name: 'Item 1' },
         { id: 2, name: 'Item 2' },
-        { id: 3, name: 'Item 3' }
+        { id: 3, name: 'Item 3' },
       ];
 
       act(() => {
-        items.forEach(item => {
+        items.forEach((item) => {
           result.current.addFavorite('clients', item);
         });
       });
@@ -248,7 +249,7 @@ describe('useFavorites - Extended Coverage', () => {
 
     it('should maintain order of favorites', () => {
       const { result } = renderHook(() => useFavorites());
-      
+
       act(() => {
         result.current.addFavorite('clients', { id: 1, name: 'First' });
         result.current.addFavorite('clients', { id: 2, name: 'Second' });
@@ -264,7 +265,7 @@ describe('useFavorites - Extended Coverage', () => {
   describe('type safety', () => {
     it('should handle all supported types', () => {
       const { result } = renderHook(() => useFavorites());
-      
+
       const types = ['clients', 'products', 'distributors', 'sales', 'orders'];
 
       act(() => {
@@ -273,7 +274,7 @@ describe('useFavorites - Extended Coverage', () => {
         });
       });
 
-      types.forEach(type => {
+      types.forEach((type) => {
         expect(result.current.favorites[type]).toHaveLength(1);
       });
     });

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 // 🎨 THEME SYSTEM - Sistema de Temas Personalizables
 
@@ -18,17 +18,17 @@ export const THEMES = {
       background: 'rgba(17, 24, 39, 0.95)',
       foreground: '#F9FAFB',
       border: 'rgba(255, 255, 255, 0.1)',
-      glass: 'rgba(255, 255, 255, 0.05)'
+      glass: 'rgba(255, 255, 255, 0.05)',
     },
     gradients: {
       primary: 'from-purple-500 to-pink-500',
       secondary: 'from-blue-500 to-cyan-500',
       success: 'from-green-500 to-emerald-500',
       warning: 'from-yellow-500 to-orange-500',
-      danger: 'from-red-500 to-pink-500'
-    }
+      danger: 'from-red-500 to-pink-500',
+    },
   },
-  
+
   ocean: {
     name: 'Ocean Blue',
     icon: '🌊',
@@ -43,15 +43,15 @@ export const THEMES = {
       background: 'rgba(15, 23, 42, 0.95)',
       foreground: '#F1F5F9',
       border: 'rgba(59, 130, 246, 0.2)',
-      glass: 'rgba(59, 130, 246, 0.05)'
+      glass: 'rgba(59, 130, 246, 0.05)',
     },
     gradients: {
       primary: 'from-blue-500 to-cyan-500',
       secondary: 'from-cyan-500 to-teal-500',
       success: 'from-emerald-500 to-green-500',
       warning: 'from-amber-500 to-orange-500',
-      danger: 'from-rose-500 to-red-500'
-    }
+      danger: 'from-rose-500 to-red-500',
+    },
   },
 
   sunset: {
@@ -68,15 +68,15 @@ export const THEMES = {
       background: 'rgba(30, 20, 20, 0.95)',
       foreground: '#FEF3C7',
       border: 'rgba(245, 158, 11, 0.2)',
-      glass: 'rgba(245, 158, 11, 0.05)'
+      glass: 'rgba(245, 158, 11, 0.05)',
     },
     gradients: {
       primary: 'from-orange-500 to-red-500',
       secondary: 'from-red-500 to-pink-500',
       success: 'from-green-500 to-lime-500',
       warning: 'from-yellow-500 to-orange-500',
-      danger: 'from-red-600 to-pink-600'
-    }
+      danger: 'from-red-600 to-pink-600',
+    },
   },
 
   forest: {
@@ -93,15 +93,15 @@ export const THEMES = {
       background: 'rgba(20, 30, 20, 0.95)',
       foreground: '#ECFDF5',
       border: 'rgba(16, 185, 129, 0.2)',
-      glass: 'rgba(16, 185, 129, 0.05)'
+      glass: 'rgba(16, 185, 129, 0.05)',
     },
     gradients: {
       primary: 'from-emerald-500 to-green-600',
       secondary: 'from-green-500 to-lime-500',
       success: 'from-green-400 to-emerald-500',
       warning: 'from-yellow-500 to-amber-500',
-      danger: 'from-red-500 to-orange-500'
-    }
+      danger: 'from-red-500 to-orange-500',
+    },
   },
 
   midnight: {
@@ -118,15 +118,15 @@ export const THEMES = {
       background: 'rgba(10, 10, 20, 0.98)',
       foreground: '#E0E7FF',
       border: 'rgba(99, 102, 241, 0.2)',
-      glass: 'rgba(99, 102, 241, 0.05)'
+      glass: 'rgba(99, 102, 241, 0.05)',
     },
     gradients: {
       primary: 'from-indigo-500 to-purple-600',
       secondary: 'from-purple-500 to-violet-600',
       success: 'from-emerald-500 to-teal-500',
       warning: 'from-amber-500 to-yellow-500',
-      danger: 'from-red-500 to-rose-600'
-    }
+      danger: 'from-red-500 to-rose-600',
+    },
   },
 
   candy: {
@@ -143,16 +143,16 @@ export const THEMES = {
       background: 'rgba(30, 20, 30, 0.95)',
       foreground: '#FCE7F3',
       border: 'rgba(236, 72, 153, 0.2)',
-      glass: 'rgba(236, 72, 153, 0.05)'
+      glass: 'rgba(236, 72, 153, 0.05)',
     },
     gradients: {
       primary: 'from-pink-500 to-rose-500',
       secondary: 'from-fuchsia-500 to-pink-500',
       success: 'from-green-400 to-emerald-400',
       warning: 'from-orange-400 to-amber-400',
-      danger: 'from-red-500 to-pink-500'
-    }
-  }
+      danger: 'from-red-500 to-pink-500',
+    },
+  },
 };
 
 // Tamaños de componentes
@@ -165,7 +165,7 @@ export const COMPONENT_SIZES = {
     cardPadding: 'p-4',
     buttonPadding: 'px-4 py-2',
     textSize: 'text-sm',
-    headingSize: 'text-xl'
+    headingSize: 'text-xl',
   },
   normal: {
     name: 'Normal',
@@ -175,7 +175,7 @@ export const COMPONENT_SIZES = {
     cardPadding: 'p-6',
     buttonPadding: 'px-6 py-3',
     textSize: 'text-base',
-    headingSize: 'text-2xl'
+    headingSize: 'text-2xl',
   },
   comfortable: {
     name: 'Confortable',
@@ -185,8 +185,8 @@ export const COMPONENT_SIZES = {
     cardPadding: 'p-8',
     buttonPadding: 'px-8 py-4',
     textSize: 'text-lg',
-    headingSize: 'text-3xl'
-  }
+    headingSize: 'text-3xl',
+  },
 };
 
 // 🎨 Custom Hook para gestionar temas
@@ -217,7 +217,7 @@ export const useTheme = () => {
     if (!theme) return;
 
     const root = document.documentElement;
-    
+
     // Aplicar colores CSS variables
     Object.entries(theme.colors).forEach(([key, value]) => {
       root.style.setProperty(`--color-${key}`, value);
@@ -293,7 +293,7 @@ export const useTheme = () => {
     setAccentColor,
     resetTheme,
     availableThemes: Object.keys(THEMES),
-    availableSizes: Object.keys(COMPONENT_SIZES)
+    availableSizes: Object.keys(COMPONENT_SIZES),
   };
 };
 
@@ -311,7 +311,7 @@ export const ThemeCustomizer = ({ isOpen, onClose }) => {
     setAccentColor,
     resetTheme,
     availableThemes,
-    availableSizes
+    availableSizes,
   } = useTheme();
 
   if (!isOpen) return null;
@@ -320,13 +320,8 @@ export const ThemeCustomizer = ({ isOpen, onClose }) => {
     <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[9999] p-4">
       <div className="glass rounded-2xl p-8 max-w-2xl w-full border border-white/10 max-h-[90vh] overflow-y-auto">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold flex items-center gap-2">
-            🎨 Personalizar Tema
-          </h2>
-          <button
-            onClick={onClose}
-            className="p-2 hover:bg-white/10 rounded-lg transition-colors"
-          >
+          <h2 className="text-2xl font-bold flex items-center gap-2">🎨 Personalizar Tema</h2>
+          <button onClick={onClose} className="p-2 hover:bg-white/10 rounded-lg transition-colors">
             ✕
           </button>
         </div>
@@ -440,11 +435,11 @@ export const ThemeCustomizer = ({ isOpen, onClose }) => {
         <div className="mb-6 p-4 glass rounded-xl border border-white/10">
           <h3 className="font-semibold mb-3">Vista Previa</h3>
           <div className="space-y-3">
-            <div 
+            <div
               className={`${COMPONENT_SIZES[componentSize].cardPadding} rounded-xl border border-white/10`}
-              style={{ 
+              style={{
                 background: `linear-gradient(to right, ${theme.colors.primary}, ${theme.colors.secondary})`,
-                opacity: 0.8
+                opacity: 0.8,
               }}
             >
               <p className={`${COMPONENT_SIZES[componentSize].textSize} font-semibold text-white`}>

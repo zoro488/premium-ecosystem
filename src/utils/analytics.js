@@ -4,44 +4,44 @@ let initialized = false;
 
 export const initGA = () => {
   if (initialized) return;
-  
+
   const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID;
-  
+
   if (measurementId && import.meta.env.PROD) {
     ReactGA.initialize(measurementId, {
       gtagOptions: {
-        send_page_view: false // We'll send pageviews manually
-      }
+        send_page_view: false, // We'll send pageviews manually
+      },
     });
     initialized = true;
-    console.log('Google Analytics initialized');
+    // console.log('Google Analytics initialized');
   }
 };
 
 export const logPageView = (path) => {
   if (!initialized) return;
-  
-  ReactGA.send({ 
-    hitType: 'pageview', 
+
+  ReactGA.send({
+    hitType: 'pageview',
     page: path,
-    title: document.title 
+    title: document.title,
   });
 };
 
 export const logEvent = (category, action, label = '', value = 0) => {
   if (!initialized) return;
-  
+
   ReactGA.event({
     category,
     action,
     label,
-    value
+    value,
   });
 };
 
 // Specific event tracking helpers
-export const trackAppNavigation = (appName) => {
-  logEvent('Navigation', 'app_visit', appName);
+export const trackAppNavigation = (_appName) => {
+  logEvent('Navigation', 'app_visit', _appName);
 };
 
 export const trackFeatureUse = (feature, details = '') => {
@@ -49,7 +49,11 @@ export const trackFeatureUse = (feature, details = '') => {
 };
 
 export const trackError = (error, componentStack = '') => {
-  logEvent('Error', 'exception', `${error.toString()}${componentStack ? ` - ${componentStack}` : ''}`);
+  logEvent(
+    'Error',
+    'exception',
+    `${error.toString()}${componentStack ? ` - ${componentStack}` : ''}`
+  );
 };
 
 export const trackSearch = (searchTerm, resultsCount) => {

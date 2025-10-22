@@ -1,0 +1,147 @@
+name: Reusable Deploy Workflow
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+      platform:
+        required: true
+        type: string
+        description: 'vercel, firebase, or aws'
+      artifact-name:
+        required: false
+        type: string
+        default: 'dist'
+      deployment-url:
+        required: false
+        type: string
+      smoke-tests:
+        required: false
+        type: boolean
+        default: true
+    outputs:
+      deployment-url:
+        description: "Deployed URL"
+        value: ${{ jobs.deploy.outputs.url }}
+      deployment-id:
+        description: "Deployment ID"
+        value: ${{ jobs.deploy.outputs.id }}
+    secrets:
+      VERCEL_TOKEN:
+        required: false
+      VERCEL_ORG_ID:
+        required: false
+      VERCEL_PROJECT_ID:
+        required: false
+      FIREBASE_SERVICE_ACCOUNT:
+        required: false
+      FIREBASE_PROJECT_ID:
+        required: false
+      AWS_ACCESS_KEY_ID:
+        required: false
+      AWS_SECRET_ACCESS_KEY:
+        required: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.environment }}
+      url: ${{ steps.deploy.outputs.url }}
+    outputs:
+      url: ${{ steps.deploy.outputs.url }}
+      id: ${{ steps.deploy.outputs.deployment-id }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artifact-name }}-${{ inputs.environment }}
+          path: dist/
+
+      - name: Deploy to Vercel
+        if: inputs.platform == 'vercel'
+        id: vercel-deploy
+        run: |
+          npm install -g vercel
+
+          if [ "${{ inputs.environment }}" == "production" ]; then
+            DEPLOY_URL=$(vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }} --yes)
+          else
+            DEPLOY_URL=$(vercel deploy --token=${{ secrets.VERCEL_TOKEN }} --yes)
+          fi
+
+          echo "url=$DEPLOY_URL" >> $GITHUB_OUTPUT
+          echo "deployment-id=vercel-${{ github.run_id }}" >> $GITHUB_OUTPUT
+          echo "🚀 Deployed to: $DEPLOY_URL"
+
+      - name: Deploy to Firebase
+        if: inputs.platform == 'firebase'
+        id: firebase-deploy
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: ${{ secrets.FIREBASE_PROJECT_ID }}
+          channelId: ${{ inputs.environment == 'production' && 'live' || format('pr-{0}', github.event.number) }}
+          expires: ${{ inputs.environment != 'production' && '7d' || '' }}
+
+      - name: Deploy to AWS S3
+        if: inputs.platform == 'aws'
+        id: aws-deploy
+        run: |
+          aws s3 sync dist/ s3://your-bucket-name --delete
+          echo "url=https://your-cloudfront-url.com" >> $GITHUB_OUTPUT
+          echo "deployment-id=aws-${{ github.run_id }}" >> $GITHUB_OUTPUT
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: us-east-1
+
+      - name: Set deploy output
+        id: deploy
+        run: |
+          if [ "${{ inputs.platform }}" == "vercel" ]; then
+            echo "url=${{ steps.vercel-deploy.outputs.url }}" >> $GITHUB_OUTPUT
+            echo "deployment-id=${{ steps.vercel-deploy.outputs.deployment-id }}" >> $GITHUB_OUTPUT
+          elif [ "${{ inputs.platform }}" == "firebase" ]; then
+            echo "url=${{ steps.firebase-deploy.outputs.url }}" >> $GITHUB_OUTPUT
+            echo "deployment-id=firebase-${{ github.run_id }}" >> $GITHUB_OUTPUT
+          else
+            echo "url=${{ steps.aws-deploy.outputs.url }}" >> $GITHUB_OUTPUT
+            echo "deployment-id=${{ steps.aws-deploy.outputs.deployment-id }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run smoke tests
+        if: inputs.smoke-tests
+        run: |
+          echo "Running smoke tests on ${{ steps.deploy.outputs.url }}"
+          curl -f ${{ steps.deploy.outputs.url }} || exit 1
+          echo "✅ Smoke tests passed"
+
+      - name: Create deployment summary
+        run: |
+          echo "## Deployment Summary 🚀" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Environment:** ${{ inputs.environment }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Platform:** ${{ inputs.platform }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **URL:** ${{ steps.deploy.outputs.url }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Deployment ID:** ${{ steps.deploy.outputs.deployment-id }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status:** ✅ Success" >> $GITHUB_STEP_SUMMARY
+
+      - name: Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `## 🚀 Deployment Preview\n\n**Environment:** ${{ inputs.environment }}\n**Platform:** ${{ inputs.platform }}\n**URL:** ${{ steps.deploy.outputs.url }}\n\n✅ Deployment successful!`
+            })

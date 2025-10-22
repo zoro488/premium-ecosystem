@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { isFirebaseConfigured, db, auth } from '../lib/firebase';
-import { collection, addDoc, getDocs, deleteDoc, doc } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
+
 import {
   createUserWithEmailAndPassword,
+  signOut as firebaseSignOut,
   signInWithEmailAndPassword,
-  signOut as firebaseSignOut
 } from 'firebase/auth';
+import { addDoc, collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
+import { motion } from 'framer-motion';
+
+import { auth, db, isFirebaseConfigured } from '../lib/firebase';
 
 /**
  * Componente de verificación y prueba de Firebase
@@ -19,7 +21,7 @@ export default function FirebaseSetup() {
     firestoreWorking: false,
     authWorking: false,
     testing: false,
-    error: null
+    error: null,
   });
 
   const [testResults, setTestResults] = useState([]);
@@ -31,7 +33,7 @@ export default function FirebaseSetup() {
 
   const checkFirebaseConfig = () => {
     const configured = isFirebaseConfigured();
-    setStatus(prev => ({ ...prev, configured }));
+    setStatus((prev) => ({ ...prev, configured }));
 
     if (configured) {
       addTestResult('✅ Firebase está configurado correctamente', 'success');
@@ -43,7 +45,10 @@ export default function FirebaseSetup() {
   };
 
   const addTestResult = (message, type = 'info') => {
-    setTestResults(prev => [...prev, { message, type, timestamp: new Date().toLocaleTimeString() }]);
+    setTestResults((prev) => [
+      ...prev,
+      { message, type, timestamp: new Date().toLocaleTimeString() },
+    ]);
   };
 
   const testFirestore = async () => {
@@ -52,7 +57,7 @@ export default function FirebaseSetup() {
       return;
     }
 
-    setStatus(prev => ({ ...prev, testing: true, error: null }));
+    setStatus((prev) => ({ ...prev, testing: true, error: null }));
     addTestResult('🧪 Probando Firestore...', 'info');
 
     try {
@@ -62,7 +67,7 @@ export default function FirebaseSetup() {
       const docRef = await addDoc(collection(db, 'test_firebase'), {
         message: 'Prueba de Firebase',
         timestamp: new Date().toISOString(),
-        source: 'FirebaseSetup Component'
+        source: 'FirebaseSetup Component',
       });
 
       addTestResult(`✅ Documento creado: ${docRef.id}`, 'success');
@@ -78,15 +83,16 @@ export default function FirebaseSetup() {
       addTestResult('✅ Documento eliminado', 'success');
 
       addTestResult('🎉 FIRESTORE FUNCIONA CORRECTAMENTE', 'success');
-      setStatus(prev => ({ ...prev, firestoreWorking: true, testing: false }));
-
+      setStatus((prev) => ({ ...prev, firestoreWorking: true, testing: false }));
     } catch (error) {
-      console.error('Error en Firestore:', error);
-
+      // console.error('Error en Firestore:', error);
       if (error.code === 'permission-denied') {
         addTestResult('❌ Permiso denegado en Firestore', 'error');
         addTestResult('⚠️ Debes activar Firestore en modo de prueba:', 'warning');
-        addTestResult('1. Ve a: https://console.firebase.google.com/project/premium-ecosystem-1760790572/firestore', 'info');
+        addTestResult(
+          '1. Ve a: https://console.firebase.google.com/project/premium-ecosystem-1760790572/firestore',
+          'info'
+        );
         addTestResult('2. Click en "Crear base de datos"', 'info');
         addTestResult('3. Selecciona "Iniciar en modo de prueba"', 'info');
         addTestResult('4. Ubicación: us-central1', 'info');
@@ -98,7 +104,7 @@ export default function FirebaseSetup() {
         addTestResult(`❌ Error: ${error.message}`, 'error');
       }
 
-      setStatus(prev => ({ ...prev, error: error.message, testing: false }));
+      setStatus((prev) => ({ ...prev, error: error.message, testing: false }));
     }
   };
 
@@ -108,7 +114,7 @@ export default function FirebaseSetup() {
       return;
     }
 
-    setStatus(prev => ({ ...prev, testing: true, error: null }));
+    setStatus((prev) => ({ ...prev, testing: true, error: null }));
     addTestResult('🧪 Probando Authentication...', 'info');
 
     try {
@@ -138,15 +144,16 @@ export default function FirebaseSetup() {
       setUser(null);
 
       addTestResult('🎉 AUTHENTICATION FUNCIONA CORRECTAMENTE', 'success');
-      setStatus(prev => ({ ...prev, authWorking: true, testing: false }));
-
+      setStatus((prev) => ({ ...prev, authWorking: true, testing: false }));
     } catch (error) {
-      console.error('Error en Authentication:', error);
-
+      // console.error('Error en Authentication:', error);
       if (error.code === 'auth/operation-not-allowed') {
         addTestResult('❌ Email/Password no está habilitado', 'error');
         addTestResult('⚠️ Debes activar Authentication:', 'warning');
-        addTestResult('1. Ve a: https://console.firebase.google.com/project/premium-ecosystem-1760790572/authentication', 'info');
+        addTestResult(
+          '1. Ve a: https://console.firebase.google.com/project/premium-ecosystem-1760790572/authentication',
+          'info'
+        );
         addTestResult('2. Click en "Comenzar"', 'info');
         addTestResult('3. Click en "Email/Password"', 'info');
         addTestResult('4. Habilitar y Guardar', 'info');
@@ -154,7 +161,7 @@ export default function FirebaseSetup() {
         addTestResult(`❌ Error: ${error.message}`, 'error');
       }
 
-      setStatus(prev => ({ ...prev, error: error.message, testing: false }));
+      setStatus((prev) => ({ ...prev, error: error.message, testing: false }));
     }
   };
 
@@ -162,7 +169,7 @@ export default function FirebaseSetup() {
     setTestResults([]);
     addTestResult('🚀 Iniciando pruebas completas de Firebase...', 'info');
     await testFirestore();
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     await testAuth();
     addTestResult('✅ Pruebas completadas', 'success');
   };
@@ -173,19 +180,27 @@ export default function FirebaseSetup() {
 
   const getTypeColor = (type) => {
     switch (type) {
-      case 'success': return 'text-green-400';
-      case 'error': return 'text-red-400';
-      case 'warning': return 'text-yellow-400';
-      default: return 'text-slate-300';
+      case 'success':
+        return 'text-green-400';
+      case 'error':
+        return 'text-red-400';
+      case 'warning':
+        return 'text-yellow-400';
+      default:
+        return 'text-slate-300';
     }
   };
 
   const getTypeIcon = (type) => {
     switch (type) {
-      case 'success': return '✅';
-      case 'error': return '❌';
-      case 'warning': return '⚠️';
-      default: return '📌';
+      case 'success':
+        return '✅';
+      case 'error':
+        return '❌';
+      case 'warning':
+        return '⚠️';
+      default:
+        return '📌';
     }
   };
 
@@ -198,9 +213,7 @@ export default function FirebaseSetup() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-8"
         >
-          <h1 className="text-5xl font-bold text-white mb-4">
-            🔥 Firebase Setup & Testing
-          </h1>
+          <h1 className="text-5xl font-bold text-white mb-4">🔥 Firebase Setup & Testing</h1>
           <p className="text-slate-300 text-lg">
             Verificación y pruebas de Firebase para Premium Ecosystem
           </p>
@@ -307,7 +320,7 @@ export default function FirebaseSetup() {
             <div className="space-y-2 max-h-96 overflow-y-auto">
               {testResults.map((result, index) => (
                 <motion.div
-                  key={index}
+                  key={`item-${index}`}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}

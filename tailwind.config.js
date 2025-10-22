@@ -4,6 +4,19 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  // Purge optimization for production
+  safelist: [
+    'animate-float',
+    'animate-pulse-slow',
+    'animate-shimmer',
+    'animate-glow',
+    {
+      pattern: /bg-(flow|shadow|apollo|synapse|nexus)-(50|100|200|300|400|500|600|700|800|900)/,
+    },
+    {
+      pattern: /text-(flow|shadow|apollo|synapse|nexus)-(50|100|200|300|400|500|600|700|800|900)/,
+    },
+  ],
   theme: {
     extend: {
       colors: {
@@ -179,4 +192,11 @@ export default {
     },
   },
   plugins: [],
+  // Production optimizations
+  corePlugins: {
+    preflight: true,
+  },
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
 }

@@ -1,98 +1,95 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { VitePWA } from 'vite-plugin-pwa'
-import { visualizer } from 'rollup-plugin-visualizer'
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
+// import { VitePWA } from 'vite-plugin-pwa'; // TODO: Re-enable after package installation issue is resolved
 
 export default defineConfig({
   plugins: [
-    react(),
-    VitePWA({
-      registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
-      manifest: {
-        name: 'Premium Ecosystem',
-        short_name: 'PremiumEco',
-        description: '5 aplicaciones empresariales de nueva generación',
-        theme_color: '#0f172a',
-        background_color: '#0f172a',
-        display: 'standalone',
-        orientation: 'portrait',
-        icons: [
-          {
-            src: '/pwa-192x192.svg',
-            sizes: '192x192',
-            type: 'image/svg+xml'
-          },
-          {
-            src: '/pwa-512x512.svg',
-            sizes: '512x512',
-            type: 'image/svg+xml'
-          },
-          {
-            src: '/pwa-512x512.svg',
-            sizes: '512x512',
-            type: 'image/svg+xml',
-            purpose: 'any maskable'
-          }
-        ]
+    react({
+      // Optimización de Fast Refresh
+      fastRefresh: true,
+      // Optimización de babel
+      babel: {
+        compact: false,
       },
-      workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
-        runtimeCaching: [
-          {
-            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'google-fonts-cache',
-              expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 365 // 1 year
-              },
-              cacheableResponse: {
-                statuses: [0, 200]
-              }
-            }
-          }
-        ]
-      }
     }),
-    visualizer({
-      filename: './dist/stats.html',
-      open: false,
-      gzipSize: true,
-      brotliSize: true,
-    })
+    // TODO: PWA Configuration - Will be added in Phase 3 after resolving vite-plugin-pwa installation
   ],
   server: {
-    port: 3000,
-    open: true
+    port: 3001,
+    host: true,
+    open: false,
+    strictPort: false,
+    hmr: {
+      overlay: true,
+    },
+    watch: {
+      usePolling: false,
+      ignored: ['**/node_modules/**', '**/.git/**', '**/dist/**'],
+    },
   },
   build: {
     outDir: 'dist',
-    sourcemap: true,
+    sourcemap: process.env.NODE_ENV !== 'production', // Solo dev/staging
+    minify: 'esbuild', // Using esbuild (faster, built-in with Vite)
+    esbuild: {
+      drop: process.env.NODE_ENV === 'production' ? ['console', 'debugger'] : [],
+      legalComments: 'none',
+    },
     rollupOptions: {
       output: {
         manualChunks: {
+          // React ecosystem
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'animation-vendor': ['framer-motion', 'three', '@react-three/fiber', '@react-three/drei'],
-          'icons-vendor': ['lucide-react'],
+          // State management & forms
+          'state-vendor': ['zustand', '@tanstack/react-query', 'react-hook-form', 'zod'],
+          // Animation libraries
+          'animation-vendor': ['framer-motion'],
+          // 3D libraries (heavy, separate chunk)
+          'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
+          // Charts
           'charts-vendor': ['recharts'],
-          'ui-vendor': ['class-variance-authority', 'clsx', 'tailwind-merge']
-        }
-      }
+          // Icons (tree-shakeable)
+          'icons-vendor': ['lucide-react'],
+          // UI utilities
+          'ui-vendor': ['class-variance-authority', 'clsx', 'tailwind-merge'],
+          // Firebase
+          'firebase-vendor': ['firebase/app', 'firebase/auth', 'firebase/firestore', 'firebase/storage'],
+        },
+        // Optimizar nombres de archivos
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
+        assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
+      },
     },
-    chunkSizeWarningLimit: 1000,
-    target: 'es2020'
+    chunkSizeWarningLimit: 800, // Advertir si chunk > 800KB
+    target: 'es2020',
+    cssCodeSplit: true, // Split CSS por chunks
+    assetsInlineLimit: 4096, // Inline assets < 4KB
   },
   optimizeDeps: {
     include: [
       'react',
-      'react-dom', 
+      'react-dom',
       'react-router-dom',
       'framer-motion',
       'lucide-react',
-      'recharts'
-    ]
+      'recharts',
+      'zustand',
+      'axios',
+    ],
+    exclude: ['@react-three/fiber', '@react-three/drei'], // No pre-bundle (pesados)
+  },
+  resolve: {
+    alias: {
+      '@': '/src',
+      '@components': '/src/components',
+      '@apps': '/src/apps',
+      '@hooks': '/src/hooks',
+      '@stores': '/src/stores',
+      '@utils': '/src/utils',
+      '@services': '/src/services',
+      '@config': '/src/config',
+    },
   },
   test: {
     globals: true,
@@ -101,13 +98,23 @@ export default defineConfig({
     css: true,
     coverage: {
       provider: 'v8',
-      reporter: ['text', 'json', 'html'],
+      reporter: ['text', 'json', 'html', 'lcov'],
       exclude: [
         'node_modules/',
         'src/test/',
         '**/*.config.js',
-        '**/mock*.js'
-      ]
-    }
-  }
-})
+        '**/mock*.js',
+        '**/*.test.{js,jsx}',
+        '**/*.spec.{js,jsx}',
+        '**/dist/**',
+      ],
+      all: true,
+      lines: 80,
+      functions: 80,
+      branches: 75,
+      statements: 80,
+    },
+    testTimeout: 10000,
+    hookTimeout: 10000,
+  },
+});

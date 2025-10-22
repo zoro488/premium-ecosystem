@@ -1,34 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
 import {
-  Atom,
-  Zap,
   Activity,
-  TrendingUp,
-  GitBranch,
-  Layers,
+  Atom,
+  BarChart3,
   Box,
   Cpu,
+  GitBranch,
+  Layers,
   Radio,
-  BarChart3
+  TrendingUp,
+  Zap,
 } from 'lucide-react';
 import {
-  LineChart,
-  Line,
-  AreaChart,
   Area,
-  BarChart,
+  AreaChart,
   Bar,
+  BarChart,
+  CartesianGrid,
+  Legend,
+  Line,
+  LineChart,
+  PolarAngleAxis,
+  PolarGrid,
+  PolarRadiusAxis,
+  Radar,
+  RadarChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  Radar
 } from 'recharts';
 
 const Quantum = () => {
@@ -38,7 +39,7 @@ const Quantum = () => {
     coherence: 98.5,
     entanglement: 94.2,
     fidelity: 99.1,
-    gates: 1024
+    gates: 1024,
   });
 
   // Datos de procesamiento cuántico
@@ -48,7 +49,7 @@ const Quantum = () => {
     { time: '08:00', coherence: 99, entanglement: 95, fidelity: 99, operations: 1100 },
     { time: '12:00', coherence: 98, entanglement: 94, fidelity: 99, operations: 1050 },
     { time: '16:00', coherence: 97, entanglement: 93, fidelity: 98, operations: 980 },
-    { time: '20:00', coherence: 99, entanglement: 96, fidelity: 99, operations: 1150 }
+    { time: '20:00', coherence: 99, entanglement: 96, fidelity: 99, operations: 1150 },
   ]);
 
   // Datos de estados cuánticos
@@ -57,7 +58,7 @@ const Quantum = () => {
     { state: 'Entrelazamiento', value: 94, max: 100 },
     { state: 'Coherencia', value: 98, max: 100 },
     { state: 'Fidelidad', value: 99, max: 100 },
-    { state: 'Estabilidad', value: 96, max: 100 }
+    { state: 'Estabilidad', value: 96, max: 100 },
   ];
 
   // Algoritmos cuánticos
@@ -66,7 +67,7 @@ const Quantum = () => {
     { name: 'Grover', status: 'completed', progress: 100, qubits: 16 },
     { name: 'VQE', status: 'running', progress: 45, qubits: 24 },
     { name: 'QAOA', status: 'pending', progress: 0, qubits: 20 },
-    { name: 'HHL', status: 'running', progress: 62, qubits: 28 }
+    { name: 'HHL', status: 'running', progress: 62, qubits: 28 },
   ];
 
   // Circuitos cuánticos
@@ -75,17 +76,17 @@ const Quantum = () => {
     { id: 2, name: 'Error Correction', gates: 512, depth: 24, status: 'active' },
     { id: 3, name: 'Entanglement Gen', gates: 128, depth: 8, status: 'completed' },
     { id: 4, name: 'State Preparation', gates: 64, depth: 6, status: 'active' },
-    { id: 5, name: 'Measurement Circuit', gates: 32, depth: 4, status: 'completed' }
+    { id: 5, name: 'Measurement Circuit', gates: 32, depth: 4, status: 'completed' },
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setQuantumState(prev => ({
+      setQuantumState((prev) => ({
         qubits: prev.qubits,
         coherence: Math.min(100, prev.coherence + (Math.random() - 0.5) * 0.5),
         entanglement: Math.min(100, prev.entanglement + (Math.random() - 0.5) * 0.8),
         fidelity: Math.min(100, prev.fidelity + (Math.random() - 0.5) * 0.3),
-        gates: prev.gates + Math.floor(Math.random() * 10)
+        gates: prev.gates + Math.floor(Math.random() * 10),
       }));
     }, 3000);
 
@@ -156,9 +157,27 @@ const Quantum = () => {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Line type="monotone" dataKey="coherence" stroke="#8b5cf6" strokeWidth={2} name="Coherencia %" />
-              <Line type="monotone" dataKey="entanglement" stroke="#06b6d4" strokeWidth={2} name="Entrelazamiento %" />
-              <Line type="monotone" dataKey="fidelity" stroke="#6366f1" strokeWidth={2} name="Fidelidad %" />
+              <Line
+                type="monotone"
+                dataKey="coherence"
+                stroke="#8b5cf6"
+                strokeWidth={2}
+                name="Coherencia %"
+              />
+              <Line
+                type="monotone"
+                dataKey="entanglement"
+                stroke="#06b6d4"
+                strokeWidth={2}
+                name="Entrelazamiento %"
+              />
+              <Line
+                type="monotone"
+                dataKey="fidelity"
+                stroke="#6366f1"
+                strokeWidth={2}
+                name="Fidelidad %"
+              />
             </LineChart>
           </ResponsiveContainer>
         </div>
@@ -173,7 +192,13 @@ const Quantum = () => {
               <PolarGrid />
               <PolarAngleAxis dataKey="state" />
               <PolarRadiusAxis angle={90} domain={[0, 100]} />
-              <Radar name="Nivel" dataKey="value" stroke="#8b5cf6" fill="#8b5cf6" fillOpacity={0.6} />
+              <Radar
+                name="Nivel"
+                dataKey="value"
+                stroke="#8b5cf6"
+                fill="#8b5cf6"
+                fillOpacity={0.6}
+              />
               <Tooltip />
             </RadarChart>
           </ResponsiveContainer>
@@ -192,7 +217,14 @@ const Quantum = () => {
             <XAxis dataKey="time" />
             <YAxis />
             <Tooltip />
-            <Area type="monotone" dataKey="operations" stroke="#06b6d4" fill="#06b6d4" fillOpacity={0.6} name="Operaciones" />
+            <Area
+              type="monotone"
+              dataKey="operations"
+              stroke="#06b6d4"
+              fill="#06b6d4"
+              fillOpacity={0.6}
+              name="Operaciones"
+            />
           </AreaChart>
         </ResponsiveContainer>
       </div>
@@ -203,30 +235,47 @@ const Quantum = () => {
     <div className="space-y-6">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {quantumAlgorithms.map((algo, index) => (
-          <div key={index} className="bg-white rounded-xl shadow-lg p-6">
+          <div key={`item-${index}`} className="bg-white rounded-xl shadow-lg p-6">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
-                <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
-                  algo.status === 'running' ? 'bg-blue-100' :
-                  algo.status === 'completed' ? 'bg-green-100' : 'bg-gray-100'
-                }`}>
-                  <Cpu className={`w-6 h-6 ${
-                    algo.status === 'running' ? 'text-blue-600' :
-                    algo.status === 'completed' ? 'text-green-600' : 'text-gray-600'
-                  }`} />
+                <div
+                  className={`w-12 h-12 rounded-lg flex items-center justify-center ${
+                    algo.status === 'running'
+                      ? 'bg-blue-100'
+                      : algo.status === 'completed'
+                        ? 'bg-green-100'
+                        : 'bg-gray-100'
+                  }`}
+                >
+                  <Cpu
+                    className={`w-6 h-6 ${
+                      algo.status === 'running'
+                        ? 'text-blue-600'
+                        : algo.status === 'completed'
+                          ? 'text-green-600'
+                          : 'text-gray-600'
+                    }`}
+                  />
                 </div>
                 <div>
                   <h3 className="font-bold text-lg">{algo.name}</h3>
                   <p className="text-sm text-gray-600">{algo.qubits} Qubits</p>
                 </div>
               </div>
-              <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                algo.status === 'running' ? 'bg-blue-100 text-blue-700' :
-                algo.status === 'completed' ? 'bg-green-100 text-green-700' :
-                'bg-gray-100 text-gray-700'
-              }`}>
-                {algo.status === 'running' ? 'En Ejecución' :
-                 algo.status === 'completed' ? 'Completado' : 'Pendiente'}
+              <span
+                className={`px-3 py-1 rounded-full text-sm font-medium ${
+                  algo.status === 'running'
+                    ? 'bg-blue-100 text-blue-700'
+                    : algo.status === 'completed'
+                      ? 'bg-green-100 text-green-700'
+                      : 'bg-gray-100 text-gray-700'
+                }`}
+              >
+                {algo.status === 'running'
+                  ? 'En Ejecución'
+                  : algo.status === 'completed'
+                    ? 'Completado'
+                    : 'Pendiente'}
               </span>
             </div>
 
@@ -238,8 +287,11 @@ const Quantum = () => {
               <div className="w-full bg-gray-200 rounded-full h-2">
                 <div
                   className={`h-2 rounded-full transition-all duration-500 ${
-                    algo.status === 'running' ? 'bg-blue-600' :
-                    algo.status === 'completed' ? 'bg-green-600' : 'bg-gray-400'
+                    algo.status === 'running'
+                      ? 'bg-blue-600'
+                      : algo.status === 'completed'
+                        ? 'bg-green-600'
+                        : 'bg-gray-400'
                   }`}
                   style={{ width: `${algo.progress}%` }}
                 />
@@ -248,15 +300,21 @@ const Quantum = () => {
 
             <div className="mt-4 pt-4 border-t grid grid-cols-3 gap-4 text-center">
               <div>
-                <div className="text-2xl font-bold text-purple-600">{Math.floor(algo.progress * 2.5)}</div>
+                <div className="text-2xl font-bold text-purple-600">
+                  {Math.floor(algo.progress * 2.5)}
+                </div>
                 <div className="text-xs text-gray-600">Iteraciones</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-blue-600">{(algo.progress * 0.42).toFixed(1)}s</div>
+                <div className="text-2xl font-bold text-blue-600">
+                  {(algo.progress * 0.42).toFixed(1)}s
+                </div>
                 <div className="text-xs text-gray-600">Tiempo</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-cyan-600">{(99 - algo.progress * 0.05).toFixed(1)}%</div>
+                <div className="text-2xl font-bold text-cyan-600">
+                  {(99 - algo.progress * 0.05).toFixed(1)}%
+                </div>
                 <div className="text-xs text-gray-600">Fidelidad</div>
               </div>
             </div>
@@ -292,9 +350,13 @@ const Quantum = () => {
                   <td className="px-6 py-4 text-gray-700">{circuit.gates}</td>
                   <td className="px-6 py-4 text-gray-700">{circuit.depth}</td>
                   <td className="px-6 py-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                      circuit.status === 'active' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'
-                    }`}>
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-medium ${
+                        circuit.status === 'active'
+                          ? 'bg-green-100 text-green-700'
+                          : 'bg-gray-100 text-gray-700'
+                      }`}
+                    >
                       {circuit.status === 'active' ? 'Activo' : 'Completado'}
                     </span>
                   </td>
@@ -344,7 +406,9 @@ const Quantum = () => {
               </div>
               <div>
                 <h1 className="text-3xl font-bold">Quantum</h1>
-                <p className="text-purple-100 text-sm">Sistema de Procesamiento Cuántico Avanzado</p>
+                <p className="text-purple-100 text-sm">
+                  Sistema de Procesamiento Cuántico Avanzado
+                </p>
               </div>
             </div>
             <div className="flex items-center gap-3">

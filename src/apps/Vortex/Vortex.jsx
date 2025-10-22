@@ -1,40 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
+
 import {
-  Layers,
-  GitBranch,
-  TrendingUp,
   BarChart3,
-  PieChart as PieIcon,
   Boxes,
+  Cube,
+  GitBranch,
+  Layers,
   Network,
-  Workflow,
+  PieChart as PieIcon,
   Sparkles,
-  Cube
+  TrendingUp,
+  Workflow,
 } from 'lucide-react';
 import {
-  ScatterChart,
-  Scatter,
-  LineChart,
-  Line,
-  AreaChart,
   Area,
-  BarChart,
+  AreaChart,
   Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  Legend,
+  Line,
+  LineChart,
+  Pie,
+  PieChart,
+  PolarAngleAxis,
+  PolarGrid,
+  PolarRadiusAxis,
+  Radar,
+  RadarChart,
+  ResponsiveContainer,
+  Scatter,
+  ScatterChart,
+  Tooltip,
   XAxis,
   YAxis,
   ZAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-  PieChart,
-  Pie,
-  Cell,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  Radar
 } from 'recharts';
 
 const Vortex = () => {
@@ -46,7 +47,7 @@ const Vortex = () => {
     x: Math.random() * 100,
     y: Math.random() * 100,
     z: Math.random() * 1000,
-    category: ['A', 'B', 'C', 'D'][Math.floor(Math.random() * 4)]
+    category: ['A', 'B', 'C', 'D'][Math.floor(Math.random() * 4)],
   }));
 
   // Datos de análisis temporal
@@ -56,7 +57,7 @@ const Vortex = () => {
     { time: 'Mar', dim1: 85, dim2: 48, dim3: 62, dim4: 102, dim5: 78 },
     { time: 'Apr', dim1: 95, dim2: 58, dim3: 72, dim4: 110, dim5: 88 },
     { time: 'May', dim1: 105, dim2: 68, dim3: 82, dim4: 118, dim5: 98 },
-    { time: 'Jun', dim1: 115, dim2: 78, dim3: 92, dim4: 125, dim5: 108 }
+    { time: 'Jun', dim1: 115, dim2: 78, dim3: 92, dim4: 125, dim5: 108 },
   ];
 
   // Datos de correlación
@@ -65,7 +66,7 @@ const Vortex = () => {
     { dimension: 'Precisión', value: 88, benchmark: 90 },
     { dimension: 'Eficiencia', value: 95, benchmark: 88 },
     { dimension: 'Complejidad', value: 78, benchmark: 75 },
-    { dimension: 'Escalabilidad', value: 85, benchmark: 80 }
+    { dimension: 'Escalabilidad', value: 85, benchmark: 80 },
   ];
 
   // Datos de distribución
@@ -74,7 +75,7 @@ const Vortex = () => {
     { name: 'Cluster B', value: 320, color: '#8b5cf6' },
     { name: 'Cluster C', value: 280, color: '#06b6d4' },
     { name: 'Cluster D', value: 190, color: '#10b981' },
-    { name: 'Cluster E', value: 160, color: '#f59e0b' }
+    { name: 'Cluster E', value: 160, color: '#f59e0b' },
   ];
 
   // Métricas de análisis
@@ -83,7 +84,7 @@ const Vortex = () => {
     { label: 'Correlaciones Detectadas', value: 234, trend: '+8%', color: 'purple' },
     { label: 'Patrones Identificados', value: 89, trend: '+15%', color: 'cyan' },
     { label: 'Anomalías', value: 12, trend: '-3%', color: 'red' },
-    { label: 'Precisión Global', value: '94.2%', trend: '+2%', color: 'green' }
+    { label: 'Precisión Global', value: '94.2%', trend: '+2%', color: 'green' },
   ];
 
   // Capas de datos
@@ -92,7 +93,7 @@ const Vortex = () => {
     { id: 2, name: 'Capa Espacial', records: 850000, status: 'active', dimensions: 12 },
     { id: 3, name: 'Capa Categórica', records: 620000, status: 'processing', dimensions: 6 },
     { id: 4, name: 'Capa Jerárquica', records: 340000, status: 'active', dimensions: 15 },
-    { id: 5, name: 'Capa de Red', records: 920000, status: 'active', dimensions: 10 }
+    { id: 5, name: 'Capa de Red', records: 920000, status: 'active', dimensions: 10 },
   ];
 
   const COLORS = ['#3b82f6', '#8b5cf6', '#06b6d4', '#10b981'];
@@ -102,7 +103,10 @@ const Vortex = () => {
       {/* Métricas */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
         {analysisMetrics.map((metric, index) => (
-          <div key={index} className={`bg-gradient-to-br from-${metric.color}-500 to-${metric.color}-700 rounded-xl p-6 text-white`}>
+          <div
+            key={`item-${index}`}
+            className={`bg-gradient-to-br from-${metric.color}-500 to-${metric.color}-700 rounded-xl p-6 text-white`}
+          >
             <div className="text-sm opacity-80 mb-1">{metric.label}</div>
             <div className="text-3xl font-bold mb-2">{metric.value}</div>
             <div className="text-sm flex items-center gap-1">
@@ -124,7 +128,9 @@ const Vortex = () => {
             <button
               onClick={() => setDimension('2d')}
               className={`px-4 py-2 rounded-lg transition-colors ${
-                dimension === '2d' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                dimension === '2d'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
               2D
@@ -132,7 +138,9 @@ const Vortex = () => {
             <button
               onClick={() => setDimension('3d')}
               className={`px-4 py-2 rounded-lg transition-colors ${
-                dimension === '3d' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                dimension === '3d'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
               3D
@@ -144,14 +152,16 @@ const Vortex = () => {
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis type="number" dataKey="x" name="Dimensión X" />
             <YAxis type="number" dataKey="y" name="Dimensión Y" />
-            {dimension === '3d' && <ZAxis type="number" dataKey="z" name="Dimensión Z" range={[100, 1000]} />}
+            {dimension === '3d' && (
+              <ZAxis type="number" dataKey="z" name="Dimensión Z" range={[100, 1000]} />
+            )}
             <Tooltip cursor={{ strokeDasharray: '3 3' }} />
             <Legend />
             {['A', 'B', 'C', 'D'].map((cat, index) => (
               <Scatter
                 key={cat}
                 name={`Categoría ${cat}`}
-                data={scatterData.filter(d => d.category === cat)}
+                data={scatterData.filter((d) => d.category === cat)}
                 fill={COLORS[index]}
               />
             ))}
@@ -173,10 +183,34 @@ const Vortex = () => {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Line type="monotone" dataKey="dim1" stroke="#3b82f6" strokeWidth={2} name="Dimensión 1" />
-              <Line type="monotone" dataKey="dim2" stroke="#8b5cf6" strokeWidth={2} name="Dimensión 2" />
-              <Line type="monotone" dataKey="dim3" stroke="#06b6d4" strokeWidth={2} name="Dimensión 3" />
-              <Line type="monotone" dataKey="dim4" stroke="#10b981" strokeWidth={2} name="Dimensión 4" />
+              <Line
+                type="monotone"
+                dataKey="dim1"
+                stroke="#3b82f6"
+                strokeWidth={2}
+                name="Dimensión 1"
+              />
+              <Line
+                type="monotone"
+                dataKey="dim2"
+                stroke="#8b5cf6"
+                strokeWidth={2}
+                name="Dimensión 2"
+              />
+              <Line
+                type="monotone"
+                dataKey="dim3"
+                stroke="#06b6d4"
+                strokeWidth={2}
+                name="Dimensión 3"
+              />
+              <Line
+                type="monotone"
+                dataKey="dim4"
+                stroke="#10b981"
+                strokeWidth={2}
+                name="Dimensión 4"
+              />
             </LineChart>
           </ResponsiveContainer>
         </div>
@@ -191,8 +225,20 @@ const Vortex = () => {
               <PolarGrid />
               <PolarAngleAxis dataKey="dimension" />
               <PolarRadiusAxis angle={90} domain={[0, 100]} />
-              <Radar name="Actual" dataKey="value" stroke="#3b82f6" fill="#3b82f6" fillOpacity={0.6} />
-              <Radar name="Benchmark" dataKey="benchmark" stroke="#10b981" fill="#10b981" fillOpacity={0.3} />
+              <Radar
+                name="Actual"
+                dataKey="value"
+                stroke="#3b82f6"
+                fill="#3b82f6"
+                fillOpacity={0.6}
+              />
+              <Radar
+                name="Benchmark"
+                dataKey="benchmark"
+                stroke="#10b981"
+                fill="#10b981"
+                fillOpacity={0.3}
+              />
               <Legend />
               <Tooltip />
             </RadarChart>
@@ -255,7 +301,11 @@ const Vortex = () => {
       {/* Detalles de clusters */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
         {distributionData.map((cluster, index) => (
-          <div key={index} className="bg-white rounded-xl shadow-lg p-6 border-l-4" style={{ borderColor: cluster.color }}>
+          <div
+            key={`item-${index}`}
+            className="bg-white rounded-xl shadow-lg p-6 border-l-4"
+            style={{ borderColor: cluster.color }}
+          >
             <h4 className="font-bold mb-3">{cluster.name}</h4>
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
@@ -264,7 +314,7 @@ const Vortex = () => {
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-gray-600">Densidad:</span>
-                <span className="font-medium">{(cluster.value / 1400 * 100).toFixed(1)}%</span>
+                <span className="font-medium">{((cluster.value / 1400) * 100).toFixed(1)}%</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-gray-600">Coherencia:</span>
@@ -306,9 +356,13 @@ const Vortex = () => {
                   <td className="px-6 py-4 text-gray-700">{layer.records.toLocaleString()}</td>
                   <td className="px-6 py-4 text-gray-700">{layer.dimensions}</td>
                   <td className="px-6 py-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                      layer.status === 'active' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
-                    }`}>
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-medium ${
+                        layer.status === 'active'
+                          ? 'bg-green-100 text-green-700'
+                          : 'bg-yellow-100 text-yellow-700'
+                      }`}
+                    >
                       {layer.status === 'active' ? 'Activa' : 'Procesando'}
                     </span>
                   </td>
@@ -342,7 +396,13 @@ const Vortex = () => {
               <XAxis dataKey="name" angle={-15} textAnchor="end" height={80} />
               <YAxis />
               <Tooltip />
-              <Area type="monotone" dataKey="records" stroke="#3b82f6" fill="#3b82f6" fillOpacity={0.6} />
+              <Area
+                type="monotone"
+                dataKey="records"
+                stroke="#3b82f6"
+                fill="#3b82f6"
+                fillOpacity={0.6}
+              />
             </AreaChart>
           </ResponsiveContainer>
         </div>

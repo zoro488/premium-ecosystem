@@ -1,12 +1,13 @@
-import { useState, useEffect } from 'react';
-import {
-  getDocuments,
-  createDocument,
-  updateDocument,
-  deleteDocument,
-  subscribeToCollection
-} from '../services/firebaseService';
+import { useEffect, useState } from 'react';
+
 import { isFirebaseConfigured } from '../lib/firebase';
+import {
+  createDocument,
+  deleteDocument,
+  getDocuments,
+  subscribeToCollection,
+  updateDocument,
+} from '../services/firebaseService';
 import { useLocalStorage } from '../utils/storage';
 
 /**
@@ -59,7 +60,7 @@ export const useFirestore = (collectionName, defaultValue = [], options = {}) =>
         setData(documents);
         setError(null);
       } catch (err) {
-        console.error(`Error cargando ${collectionName}:`, err);
+        // console.error(`Error cargando ${collectionName}:`, err);
         setError(err.message);
         // Fallback a localStorage en caso de error
         setData(localData);
@@ -93,7 +94,7 @@ export const useFirestore = (collectionName, defaultValue = [], options = {}) =>
       if (useFirebase) {
         const created = await createDocument(collectionName, newData);
         if (!realtime) {
-          setData(prev => [...prev, created]);
+          setData((prev) => [...prev, created]);
         }
         return created;
       } else {
@@ -101,7 +102,7 @@ export const useFirestore = (collectionName, defaultValue = [], options = {}) =>
         const created = {
           id: Date.now().toString(),
           ...newData,
-          createdAt: new Date().toISOString()
+          createdAt: new Date().toISOString(),
         };
         const updated = [...localData, created];
         setLocalData(updated);
@@ -109,7 +110,7 @@ export const useFirestore = (collectionName, defaultValue = [], options = {}) =>
         return created;
       }
     } catch (err) {
-      console.error(`Error creando en ${collectionName}:`, err);
+      // console.error(`Error creando en ${collectionName}:`, err);
       setError(err.message);
       throw err;
     }
@@ -121,12 +122,12 @@ export const useFirestore = (collectionName, defaultValue = [], options = {}) =>
       if (useFirebase) {
         const updated = await updateDocument(collectionName, id, updates);
         if (!realtime) {
-          setData(prev => prev.map(item => item.id === id ? { ...item, ...updates } : item));
+          setData((prev) => prev.map((item) => (item.id === id ? { ...item, ...updates } : item)));
         }
         return updated;
       } else {
         // localStorage
-        const updated = localData.map(item =>
+        const updated = localData.map((item) =>
           item.id === id ? { ...item, ...updates, updatedAt: new Date().toISOString() } : item
         );
         setLocalData(updated);
@@ -134,7 +135,7 @@ export const useFirestore = (collectionName, defaultValue = [], options = {}) =>
         return { id, ...updates };
       }
     } catch (err) {
-      console.error(`Error actualizando en ${collectionName}:`, err);
+      // console.error(`Error actualizando en ${collectionName}:`, err);
       setError(err.message);
       throw err;
     }
@@ -146,18 +147,18 @@ export const useFirestore = (collectionName, defaultValue = [], options = {}) =>
       if (useFirebase) {
         await deleteDocument(collectionName, id);
         if (!realtime) {
-          setData(prev => prev.filter(item => item.id !== id));
+          setData((prev) => prev.filter((item) => item.id !== id));
         }
         return id;
       } else {
         // localStorage
-        const updated = localData.filter(item => item.id !== id);
+        const updated = localData.filter((item) => item.id !== id);
         setLocalData(updated);
         setData(updated);
         return id;
       }
     } catch (err) {
-      console.error(`Error eliminando en ${collectionName}:`, err);
+      // console.error(`Error eliminando en ${collectionName}:`, err);
       setError(err.message);
       throw err;
     }
@@ -176,7 +177,7 @@ export const useFirestore = (collectionName, defaultValue = [], options = {}) =>
       setData(documents);
       setError(null);
     } catch (err) {
-      console.error(`Error refrescando ${collectionName}:`, err);
+      // console.error(`Error refrescando ${collectionName}:`, err);
       setError(err.message);
     } finally {
       setLoading(false);
@@ -191,7 +192,7 @@ export const useFirestore = (collectionName, defaultValue = [], options = {}) =>
     update,
     remove,
     refresh,
-    isUsingFirebase: useFirebase
+    isUsingFirebase: useFirebase,
   };
 };
 

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limpiar Datos - FlowDistributor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            color: #856404;
+        }
+
+        .info {
+            background: #d1ecf1;
+            border: 2px solid #17a2b8;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            color: #0c5460;
+        }
+
+        .success {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            color: #155724;
+            display: none;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .btn-danger {
+            background: #dc3545;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .data-list {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .data-item {
+            padding: 8px;
+            margin: 5px 0;
+            background: white;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .data-size {
+            color: #666;
+            font-size: 11px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .stat-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧹 Limpiar Datos FlowDistributor</h1>
+        <p class="subtitle">Utilidad para resetear el sistema</p>
+
+        <div class="info">
+            <strong>ℹ️ Información:</strong><br>
+            Esta herramienta te permite limpiar los datos de FlowDistributor almacenados en tu navegador.
+        </div>
+
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-value" id="totalItems">0</div>
+                <div class="stat-label">Items almacenados</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="totalSize">0 KB</div>
+                <div class="stat-label">Espacio usado</div>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 20px; color: #333;">Datos actuales:</h3>
+        <div class="data-list" id="dataList">
+            <p style="color: #999; text-align: center;">Cargando...</p>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ Advertencia:</strong><br>
+            Esto eliminará TODOS los datos de FlowDistributor (órdenes, ventas, clientes, distribuidores, almacén y bancos).
+            Esta acción NO se puede deshacer.
+        </div>
+
+        <div class="success" id="successMessage">
+            <strong>✅ ¡Éxito!</strong><br>
+            Todos los datos de FlowDistributor han sido eliminados.<br>
+            <small>Recarga la aplicación para ver el sistema limpio.</small>
+        </div>
+
+        <button onclick="cleanFlowData()" class="btn-danger">
+            🗑️ Limpiar Solo FlowDistributor
+        </button>
+
+        <button onclick="cleanAllData()" class="btn-danger">
+            ⚠️ Limpiar TODO localStorage
+        </button>
+
+        <button onclick="location.href='/'" class="btn-secondary">
+            ← Volver a FlowDistributor
+        </button>
+
+        <button onclick="location.reload()" style="background: #17a2b8;">
+            🔄 Actualizar Vista
+        </button>
+    </div>
+
+    <script>
+        // Cargar datos al iniciar
+        window.addEventListener('load', loadData);
+
+        function loadData() {
+            const flowKeys = [
+                'flow_bancos',
+                'flow_ordenes_compra',
+                'flow_distribuidores',
+                'flow_ventas',
+                'flow_clientes',
+                'flow_almacen'
+            ];
+
+            const dataListEl = document.getElementById('dataList');
+            dataListEl.innerHTML = '';
+
+            let totalSize = 0;
+            let itemCount = 0;
+
+            flowKeys.forEach(key => {
+                const data = localStorage.getItem(key);
+                if (data) {
+                    const size = new Blob([data]).size;
+                    totalSize += size;
+                    itemCount++;
+
+                    const item = document.createElement('div');
+                    item.className = 'data-item';
+                    item.innerHTML = `
+                        <span>${key}</span>
+                        <span class="data-size">${(size / 1024).toFixed(2)} KB</span>
+                    `;
+                    dataListEl.appendChild(item);
+                }
+            });
+
+            if (itemCount === 0) {
+                dataListEl.innerHTML = '<p style="color: #999; text-align: center;">No hay datos almacenados</p>';
+            }
+
+            document.getElementById('totalItems').textContent = itemCount;
+            document.getElementById('totalSize').textContent = (totalSize / 1024).toFixed(2) + ' KB';
+        }
+
+        function cleanFlowData() {
+            if (!confirm('¿Estás seguro de que quieres eliminar TODOS los datos de FlowDistributor?\n\nEsto incluye:\n- Órdenes de compra\n- Ventas\n- Clientes\n- Distribuidores\n- Almacén\n- Bancos\n\nEsta acción NO se puede deshacer.')) {
+                return;
+            }
+
+            const flowKeys = [
+                'flow_bancos',
+                'flow_ordenes_compra',
+                'flow_distribuidores',
+                'flow_ventas',
+                'flow_clientes',
+                'flow_almacen'
+            ];
+
+            flowKeys.forEach(key => {
+                localStorage.removeItem(key);
+            });
+
+            document.getElementById('successMessage').style.display = 'block';
+            loadData();
+
+            setTimeout(() => {
+                if (confirm('¿Quieres recargar la aplicación ahora?')) {
+                    location.href = '/';
+                }
+            }, 1500);
+        }
+
+        function cleanAllData() {
+            if (!confirm('⚠️ ADVERTENCIA CRÍTICA ⚠️\n\n¿Estás seguro de que quieres eliminar TODO el localStorage?\n\nEsto eliminará:\n- Todos los datos de FlowDistributor\n- Configuraciones de tema\n- Preferencias de usuario\n- Datos de otras aplicaciones\n\nEsta acción NO se puede deshacer.')) {
+                return;
+            }
+
+            if (!confirm('¿REALMENTE seguro? Escribe OK para confirmar')) {
+                return;
+            }
+
+            localStorage.clear();
+
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('successMessage').innerHTML = `
+                <strong>✅ ¡Completado!</strong><br>
+                TODO el localStorage ha sido eliminado.<br>
+                <small>Recargando la aplicación...</small>
+            `;
+
+            setTimeout(() => {
+                location.href = '/';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

@@ -1,3 +1,908 @@
 {
-    "chat.agent.maxRequests": 500000
+  // ============================================================================
+  // PREMIUM ECOSYSTEM - WORKSPACE SETTINGS
+  // Configuración optimizada para React 18 + Vite 5 + Firebase 12
+  // ============================================================================
+
+  // ========================================
+  // PERFORMANCE LIMITS & OPTIMIZATION
+  // ========================================
+  "chat.agent.maxRequests": 500000,
+  "files.maxMemoryForLargeFilesMB": 8192,
+  "search.maxResults": 50000,
+  "search.maintainFileSearchCache": true,
+  "search.useIgnoreFiles": true,
+  "search.useGlobalIgnoreFiles": true,
+  "search.useParentIgnoreFiles": true,
+  "search.followSymlinks": false,
+  "search.smartCase": true,
+  "search.collapseResults": "auto",
+  "workbench.editorAssociations": {
+    "*.db": "default"
+  },
+  "terminal.integrated.persistentSessionReviveProcess": "onExitAndWindowClose",
+
+  // ========================================
+  // GITHUB COPILOT - MÁXIMA CONFIGURACIÓN ENTERPRISE
+  // ========================================
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": true,
+    "scminput": true,
+    "yaml": true,
+    "javascript": true,
+    "javascriptreact": true,
+    "typescript": true,
+    "typescriptreact": true,
+    "json": true,
+    "jsonc": true,
+    "html": true,
+    "css": true,
+    "scss": true,
+    "python": true,
+    "java": true,
+    "csharp": true,
+    "go": true,
+    "rust": true,
+    "php": true,
+    "ruby": true,
+    "sql": true,
+    "shellscript": true,
+    "powershell": true,
+    "dockerfile": true,
+    "dockercompose": true,
+    "xml": true,
+    "vue": true,
+    "svelte": true
+  },
+
+  "github.copilot.advanced": {
+    "debug.overrideEngine": "gpt-4-turbo",
+    "debug.useNodeFetcher": true,
+    "inlineSuggestCount": 5,
+    "listCount": 10,
+    "enableExperimentalFeatures": true
+  },
+
+  "github.copilot.editor.enableAutoCompletions": true,
+  "github.copilot.editor.enableCodeActions": true,
+  "github.copilot.editor.iterativeFixing": true,
+
+  "github.copilot.chat.localeOverride": "es",
+  "github.copilot.chat.search.semanticTextResults": true,
+  "github.copilot.chat.terminalChatLocation": "terminal",
+  "github.copilot.chat.followUps": "on",
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+  "github.copilot.chat.scopeSelection": true,
+
+  "github.copilot.rewrite.enabled": true,
+
+  // ========================================
+  // EDITOR - PROJECT OPTIMIZATIONS
+  // ========================================
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.suggest.preview": true,
+  "editor.suggest.showInlineDetails": true,
+  "editor.suggestSelection": "first",
+  "editor.acceptSuggestionOnCommitCharacter": true,
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.quickSuggestionsDelay": 0,
+  "editor.wordBasedSuggestions": "matchingDocuments",
+  "editor.snippetSuggestions": "top",
+  "editor.tabCompletion": "on",
+  "editor.semanticHighlighting.enabled": true,
+  "editor.stickyScroll.enabled": true,
+  "editor.stickyScroll.maxLineCount": 7,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit",
+    "source.addMissingImports": "explicit",
+    "source.removeUnusedImports": "explicit"
+  },
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": true,
+
+  // ========================================
+  // JAVASCRIPT/REACT - OPTIMIZED
+  // ========================================
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript.suggest.autoImports": true,
+  "javascript.suggest.enabled": true,
+  "javascript.suggest.completeJSDocs": true,
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "javascript.preferences.quoteStyle": "single",
+  "javascript.inlayHints.parameterNames.enabled": "all",
+  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "javascript.inlayHints.enumMemberValues.enabled": true,
+  "javascript.inlayHints.parameterTypes.enabled": true,
+  "javascript.inlayHints.variableTypes.enabled": true,
+
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.suggest.autoImports": true,
+  "typescript.suggest.enabled": true,
+  "typescript.suggest.completeJSDocs": true,
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.tsserver.maxTsServerMemory": 8192,
+  "typescript.inlayHints.parameterNames.enabled": "all",
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "typescript.inlayHints.enumMemberValues.enabled": true,
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.variableTypes.enabled": true,
+
+  // ========================================
+  // ESLINT - PROJECT RULES
+  // ========================================
+  "eslint.enable": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "html"
+  ],
+  "eslint.codeActionsOnSave.mode": "all",
+  "eslint.format.enable": true,
+  "eslint.lintTask.enable": true,
+  "eslint.run": "onType",
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+
+  // ========================================
+  // FORMATTERS - BY LANGUAGE
+  // ========================================
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // ========================================
+  // FILES - PROJECT SPECIFIC
+  // ========================================
+  "files.associations": {
+    "*.jsx": "javascriptreact",
+    ".firebaserc": "json",
+    "firebase.json": "json"
+  },
+
+  "files.exclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/.vite": true,
+    "**/coverage": true,
+    "**/.firebase": false
+  },
+
+  // ========================================
+  // SEARCH - PROJECT EXCLUSIONS
+  // ========================================
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.vite": true,
+    "**/coverage": true,
+    "**/package-lock.json": true
+  },
+
+  // ========================================
+  // TERMINAL - PROJECT ENV
+  // ========================================
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.env.windows": {
+    "GITHUB_COPILOT_ENABLED": "true"
+  },
+
+  // ========================================
+  // GIT - PROJECT SETTINGS
+  // ========================================
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+  "git.autofetchPeriod": 180,
+  "git.confirmSync": false,
+  "git.suggestSmartCommit": true,
+  "git.fetchOnPull": true,
+  "git.pruneOnFetch": true,
+  "git.branchProtection": ["main", "master", "develop"],
+  "git.branchProtectionPrompt": "alwaysPrompt",
+  "git.decorations.enabled": true,
+  "git.ignoreLimitWarning": true,
+  "git.openRepositoryInParentFolders": "always",
+
+  // ========================================
+  // TAILWIND CSS - PROJECT CONFIG
+  // ========================================
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    "tw`([^`]*)",
+    "tw=\"([^\"]*)",
+    "tw={\"([^\"}]*)",
+    "tw\\.\\w+`([^`]*)",
+    "tw\\(.*?\\)`([^`]*)"
+  ],
+  "tailwindCSS.includeLanguages": {
+    "javascript": "javascript",
+    "javascriptreact": "javascriptreact",
+    "typescript": "typescript",
+    "typescriptreact": "typescriptreact"
+  },
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.suggestions": true,
+  "tailwindCSS.validate": true,
+
+  // ========================================
+  // VITE - DEVELOPMENT
+  // ========================================
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.vite/**": true,
+    "**/dist/**": true
+  },
+
+  // ========================================
+  // FIREBASE - PROJECT CONFIG
+  // ========================================
+  "firebase.hosting.site": "premium-ecosystem",
+
+  // ========================================
+  // VITEST - TESTING
+  // ========================================
+  "vitest.enable": true,
+  "vitest.commandLine": "npm run test",
+  "vitest.include": ["**/*.{test,spec}.{js,ts,jsx,tsx}"],
+  "vitest.exclude": ["**/node_modules/**", "**/dist/**"],
+
+  // ========================================
+  // PLAYWRIGHT - E2E TESTING
+  // ========================================
+  "playwright.reuseBrowser": true,
+  "playwright.showTrace": false,
+
+  // ========================================
+  // IMPORT COST - BUNDLE ANALYSIS
+  // ========================================
+  "importCost.smallPackageSize": 50,
+  "importCost.mediumPackageSize": 100,
+  "importCost.largePackageSize": 200,
+  "importCost.showCalculatingDecoration": true,
+
+  // ========================================
+  // ERROR LENS - INLINE ERRORS
+  // ========================================
+  "errorLens.enabled": true,
+  "errorLens.enabledDiagnosticLevels": ["error", "warning", "info"],
+  "errorLens.followCursor": "allLines",
+
+  // ========================================
+  // TODO TREE - TASK MANAGEMENT
+  // ========================================
+  "todo-tree.general.tags": [
+    "TODO",
+    "FIXME",
+    "HACK",
+    "NOTE",
+    "BUG",
+    "OPTIMIZE"
+  ],
+  "todo-tree.highlights.enabled": true,
+
+  // ========================================
+  // PATH INTELLISENSE
+  // ========================================
+  "path-intellisense.autoSlashAfterDirectory": true,
+  "path-intellisense.extensionOnImport": true,
+  "path-intellisense.mappings": {
+    "@": "${workspaceFolder}/src",
+    "@components": "${workspaceFolder}/src/components",
+    "@apps": "${workspaceFolder}/src/apps",
+    "@utils": "${workspaceFolder}/src/utils",
+    "@hooks": "${workspaceFolder}/src/hooks",
+    "@config": "${workspaceFolder}/src/config",
+    "@services": "${workspaceFolder}/src/services",
+    "@lib": "${workspaceFolder}/src/lib"
+  },
+
+  // ========================================
+  // EMMET - JSX SUPPORT
+  // ========================================
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.showExpandedAbbreviation": "always",
+
+  // ========================================
+  // NPM - PACKAGE MANAGEMENT
+  // ========================================
+  "npm.packageManager": "npm",
+  "npm.exclude": "**/node_modules/**",
+  "npm.enableScriptExplorer": true,
+
+  // ========================================
+  // DEBUG - CONFIGURATION
+  // ========================================
+  "debug.javascript.codelens.npmScripts": "all",
+  "debug.onTaskErrors": "showErrors",
+
+  // ========================================
+  // EXPLORER - FILE NESTING
+  // ========================================
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "package.json": "package-lock.json, .npmrc, .nvmrc",
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.test.jsx, ${capture}.spec.jsx, ${capture}.module.css",
+    "*.tsx": "${capture}.test.tsx, ${capture}.spec.tsx, ${capture}.module.css",
+    "vite.config.*": "vite.config.*.timestamp-*",
+    ".env": ".env.*, .env.local, .env.development, .env.production",
+    "firebase.json": ".firebaserc, firestore.rules, firestore.indexes.json, storage.rules",
+    "README.md": "LICENSE, CHANGELOG.md, CONTRIBUTING.md"
+  },
+
+  // ========================================
+  // CODE SPELL CHECKER - PROJECT DICTIONARY
+  // ========================================
+  "cSpell.words": [
+    "vite",
+    "vitest",
+    "firestore",
+    "framer",
+    "zustand",
+    "tanstack",
+    "lucide",
+    "tailwindcss",
+    "flowdistributor",
+    "nexus",
+    "apollo",
+    "quantum",
+    "vortex",
+    "synapse",
+    "shadowprime",
+    "postgresql",
+    "recharts",
+    "countup"
+  ],
+
+  // ========================================
+  // WORKSPACE TRUST
+  // ========================================
+  "security.workspace.trust.enabled": true,
+  "security.workspace.trust.untrustedFiles": "open",
+
+  // ========================================
+  // LIVE SERVER
+  // ========================================
+  "liveServer.settings.port": 3001,
+  "liveServer.settings.root": "/dist",
+
+  // ========================================
+  // REST CLIENT
+  // ========================================
+  "rest-client.environmentVariables": {
+    "$shared": {
+      "baseUrl": "http://localhost:5173"
+    },
+    "development": {
+      "baseUrl": "http://localhost:5173"
+    },
+    "production": {
+      "baseUrl": "https://premium-ecosystem.web.app"
+    }
+  },
+
+  // ========================================
+  // GITLENS - ADVANCED GIT VISUALIZATION
+  // ========================================
+  "gitlens.advanced.messages": {
+    "suppressGitVersionWarning": true
+  },
+  "gitlens.codeLens.enabled": true,
+  "gitlens.codeLens.authors.enabled": true,
+  "gitlens.codeLens.recentChange.enabled": true,
+  "gitlens.currentLine.enabled": true,
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.hovers.enabled": true,
+  "gitlens.statusBar.enabled": true,
+  "gitlens.ai.experimental.provider": "openai",
+
+  // ========================================
+  // BETTER COMMENTS - STYLED COMMENTS
+  // ========================================
+  "better-comments.tags": [
+    {
+      "tag": "!",
+      "color": "#FF2D00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "?",
+      "color": "#3498DB",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "//",
+      "color": "#474747",
+      "strikethrough": true,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "todo",
+      "color": "#FF8C00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "*",
+      "color": "#98C379",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    }
+  ],
+
+  // ========================================
+  // DOCKER - CONTAINER MANAGEMENT
+  // ========================================
+  "docker.showStartPage": false,
+  "docker.languageserver.diagnostics.deprecatedMaintainer": "warning",
+  "docker.languageserver.diagnostics.instructionCasing": "warning",
+  "docker.containers.description": ["Status", "ContainerName", "Image"],
+  "docker.images.description": ["CreatedTime", "FullTag", "Size"],
+
+  // ========================================
+  // MARKDOWN - ENHANCED PREVIEW
+  // ========================================
+  "markdown.preview.fontFamily": "Segoe UI, system-ui, -apple-system, sans-serif",
+  "markdown.preview.fontSize": 14,
+  "markdown.preview.lineHeight": 1.6,
+  "markdown.preview.scrollPreviewWithEditor": true,
+  "markdown.preview.scrollEditorWithPreview": true,
+  "markdown-preview-enhanced.enableScriptExecution": true,
+  "markdown-preview-enhanced.previewTheme": "github-dark.css",
+  "markdown-preview-enhanced.codeBlockTheme": "monokai.css",
+
+  // ========================================
+  // MATERIAL ICON THEME
+  // ========================================
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.productIconTheme": "material-product-icons",
+  "material-icon-theme.folders.theme": "specific",
+  "material-icon-theme.folders.color": "#42a5f5",
+  "material-icon-theme.activeIconPack": "react",
+  "material-icon-theme.files.associations": {
+    "vite.config.ts": "vite",
+    "vitest.config.ts": "test-ts",
+    ".firebaserc": "firebase",
+    "firebase.json": "firebase"
+  },
+
+  // ========================================
+  // SONARLINT - CODE QUALITY
+  // ========================================
+  "sonarlint.connectedMode.project": {
+    "projectKey": "premium-ecosystem"
+  },
+  "sonarlint.rules": {
+    "javascript:S1135": {
+      "level": "on"
+    },
+    "javascript:S3923": {
+      "level": "on"
+    }
+  },
+
+  // ========================================
+  // SNYK - SECURITY SCANNING
+  // ========================================
+  "snyk.features.openSourceSecurity": true,
+  "snyk.features.codeSecurity": true,
+  "snyk.features.iacSecurity": true,
+  "snyk.scanOnSave": true,
+
+  // ========================================
+  // INDENT RAINBOW - VISUAL GUIDES
+  // ========================================
+  "indentRainbow.colors": [
+    "rgba(255,255,64,0.07)",
+    "rgba(127,255,127,0.07)",
+    "rgba(255,127,255,0.07)",
+    "rgba(79,236,236,0.07)"
+  ],
+  "indentRainbow.indicatorStyle": "light",
+
+  // ========================================
+  // BRACKET PAIR COLORIZATION
+  // ========================================
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.guides.highlightActiveBracketPair": true,
+
+  // ========================================
+  // REMOTE DEVELOPMENT
+  // ========================================
+  "remote.autoForwardPorts": true,
+  "remote.autoForwardPortsSource": "hybrid",
+  "remote.restoreForwardedPorts": true,
+
+  // ========================================
+  // EXTENSION RECOMMENDATIONS
+  // ========================================
+  "extensions.ignoreRecommendations": false,
+  "extensions.autoCheckUpdates": true,
+  "extensions.autoUpdate": "onlyEnabledExtensions",
+
+  // ========================================
+  // WORKSPACE - PERFORMANCE
+  // ========================================
+  "workbench.editor.enablePreview": true,
+  "workbench.editor.enablePreviewFromQuickOpen": true,
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.value": 10,
+  "workbench.editor.limit.perEditorGroup": true,
+  "workbench.startupEditor": "none",
+  "workbench.colorTheme": "GitHub Dark Default",
+
+  // ========================================
+  // AUTO SAVE - PRODUCTIVITY
+  // ========================================
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+
+  // ========================================
+  // BREADCRUMBS - NAVIGATION
+  // ========================================
+  "breadcrumbs.enabled": true,
+  "breadcrumbs.filePath": "on",
+  "breadcrumbs.symbolPath": "on",
+
+  // ========================================
+  // MINIMAP - CODE OVERVIEW
+  // ========================================
+  "editor.minimap.enabled": true,
+  "editor.minimap.maxColumn": 120,
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.showSlider": "always",
+
+  // ========================================
+  // INTELLISENSE - ENHANCED
+  // ========================================
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "vsintellicode.features.python.deepLearning": "enabled",
+
+  // ========================================
+  // COVERAGE GUTTERS - TEST COVERAGE
+  // ========================================
+  "coverage-gutters.coverageFileNames": [
+    "lcov.info",
+    "coverage/lcov.info",
+    "coverage/coverage.json"
+  ],
+  "coverage-gutters.showGutterCoverage": true,
+  "coverage-gutters.showLineCoverage": true,
+  "coverage-gutters.showRulerCoverage": true,
+
+  // ========================================
+  // VERSION LENS - PACKAGE UPDATES
+  // ========================================
+  "versionlens.suggestions.showOnStartup": true,
+  "versionlens.suggestions.showPrerelease": false,
+
+  // ========================================
+  // THUNDER CLIENT - API TESTING
+  // ========================================
+  "thunder-client.saveToWorkspace": true,
+  "thunder-client.workspaceRelativePath": ".vscode/thunder-tests",
+
+  // ========================================
+  // 💻 TERMINAL - ADVANCED PROFILES
+  // ========================================
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell",
+      "args": ["-NoLogo"]
+    },
+    "Command Prompt": {
+      "path": ["${env:windir}\\System32\\cmd.exe"],
+      "icon": "terminal-cmd"
+    },
+    "Git Bash": {
+      "path": "C:\\Program Files\\Git\\bin\\bash.exe",
+      "icon": "terminal-bash"
+    }
+  },
+  "terminal.integrated.env.windows": {
+    "GITHUB_COPILOT_ENABLED": "true",
+    "VITE_HMR_OVERLAY": "false"
+  },
+  "terminal.integrated.fontSize": 13,
+  "terminal.integrated.fontFamily": "Cascadia Code, Consolas, monospace",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.rightClickBehavior": "default",
+  "terminal.integrated.smoothScrolling": true,
+  "terminal.integrated.enableMultiLinePasteWarning": "auto",
+  "terminal.integrated.shellIntegration.enabled": true,
+  "terminal.integrated.shellIntegration.decorationsEnabled": "both",
+
+  // ========================================
+  // 🔍 JAVASCRIPT/TYPESCRIPT INLAY HINTS
+  // ========================================
+  "javascript.inlayHints.enumMemberValues.enabled": true,
+  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "javascript.inlayHints.parameterNames.enabled": "all",
+  "javascript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": false,
+  "javascript.inlayHints.parameterTypes.enabled": true,
+  "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "javascript.inlayHints.variableTypes.enabled": true,
+  "javascript.inlayHints.variableTypes.suppressWhenTypeMatchesName": false,
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "javascript.preferences.quoteStyle": "single",
+  "javascript.preferences.useAliasesForRenames": true,
+  "javascript.referencesCodeLens.enabled": true,
+  "javascript.referencesCodeLens.showOnAllFunctions": true,
+  "javascript.suggest.completeJSDocs": true,
+  "javascript.suggest.names": true,
+
+  "typescript.inlayHints.enumMemberValues.enabled": true,
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "typescript.inlayHints.parameterNames.enabled": "all",
+  "typescript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": false,
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "typescript.inlayHints.variableTypes.enabled": true,
+  "typescript.inlayHints.variableTypes.suppressWhenTypeMatchesName": false,
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.preferences.useAliasesForRenames": true,
+  "typescript.referencesCodeLens.enabled": true,
+  "typescript.referencesCodeLens.showOnAllFunctions": true,
+  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+  "typescript.suggest.completeJSDocs": true,
+
+  // ========================================
+  // 🎨 TAILWIND CSS - ULTRA ADVANCED
+  // ========================================
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    "tw`([^`]*)",
+    "tw=\"([^\"]*)",
+    "tw={\"([^\"}]*)",
+    "tw\\.\\w+`([^`]*)",
+    "tw\\(.*?\\)`([^`]*)",
+    ["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    ["classnames\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ],
+  "tailwindCSS.includeLanguages": {
+    "javascript": "javascript",
+    "javascriptreact": "javascriptreact",
+    "typescript": "typescript",
+    "typescriptreact": "typescriptreact",
+    "html": "html",
+    "vue": "vue",
+    "svelte": "svelte"
+  },
+  "tailwindCSS.lint.cssConflict": "warning",
+  "tailwindCSS.lint.invalidApply": "error",
+  "tailwindCSS.lint.invalidScreen": "error",
+  "tailwindCSS.lint.invalidVariant": "error",
+  "tailwindCSS.lint.invalidConfigPath": "error",
+  "tailwindCSS.lint.invalidTailwindDirective": "error",
+  "tailwindCSS.lint.recommendedVariantOrder": "warning",
+  "tailwindCSS.showPixelEquivalents": true,
+  "tailwindCSS.colorDecorators": true,
+
+  // ========================================
+  // 🧪 TESTING - VITEST & PLAYWRIGHT
+  // ========================================
+  "vitest.enable": true,
+  "vitest.commandLine": "npm run test",
+  "vitest.include": ["**/*.{test,spec}.{js,ts,jsx,tsx}"],
+  "vitest.exclude": ["**/node_modules/**", "**/dist/**"],
+  "playwright.reuseBrowser": true,
+  "playwright.showTrace": false,
+
+  // ========================================
+  // 📊 IMPORT COST - BUNDLE ANALYSIS
+  // ========================================
+  "importCost.smallPackageSize": 50,
+  "importCost.mediumPackageSize": 100,
+  "importCost.largePackageSize": 200,
+  "importCost.showCalculatingDecoration": true,
+  "importCost.bundleSizeDecoration": "both",
+  "importCost.typescriptExtensions": ["\\.tsx?$"],
+  "importCost.javascriptExtensions": ["\\.jsx?$"],
+
+  // ========================================
+  // 🚨 ERROR LENS - INLINE ERRORS ENHANCED
+  // ========================================
+  "errorLens.followCursor": "allLines",
+  "errorLens.followCursorMore": 5,
+  "errorLens.gutterIconsEnabled": true,
+  "errorLens.messageEnabled": true,
+  "errorLens.statusBarIconsEnabled": true,
+  "errorLens.statusBarMessageEnabled": true,
+
+  // ========================================
+  // 🌳 GIT - ADVANCED CONTROL
+  // ========================================
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+  "git.autofetchPeriod": 180,
+  "git.confirmSync": false,
+  "git.suggestSmartCommit": true,
+  "git.postCommitCommand": "none",
+  "git.fetchOnPull": true,
+  "git.pruneOnFetch": true,
+  "git.rebaseWhenSync": false,
+  "git.branchProtection": ["main", "master", "develop"],
+  "git.branchProtectionPrompt": "alwaysPrompt",
+  "git.decorations.enabled": true,
+  "git.ignoreLimitWarning": true,
+  "git.openRepositoryInParentFolders": "always",
+
+  // ========================================
+  // 🎯 GITLENS - CODE LENS
+  // ========================================
+  "gitlens.codeLens.enabled": true,
+  "gitlens.codeLens.authors.enabled": true,
+  "gitlens.codeLens.recentChange.enabled": true,
+  "gitlens.currentLine.enabled": true,
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.hovers.enabled": true,
+
+  // ========================================
+  // 📝 EDITOR - ADVANCED DISPLAY
+  // ========================================
+  "editor.linkedEditing": true,
+  "editor.renderWhitespace": "boundary",
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.smoothScrolling": true,
+  "editor.mouseWheelZoom": true,
+  "editor.fontLigatures": true,
+  "editor.fontSize": 14,
+  "editor.lineHeight": 22,
+  "editor.letterSpacing": 0.5,
+  "editor.unicodeHighlight.ambiguousCharacters": true,
+  "editor.unicodeHighlight.invisibleCharacters": true,
+  "editor.accessibilitySupport": "auto",
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "editor.gotoLocation.multipleReferences": "goto",
+  "editor.hover.delay": 300,
+  "editor.hover.enabled": true,
+  "editor.hover.sticky": true,
+  "editor.parameterHints.enabled": true,
+  "editor.parameterHints.cycle": true,
+  "editor.suggest.filterGraceful": true,
+  "editor.suggest.localityBonus": true,
+  "editor.suggest.shareSuggestSelections": true,
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  "editor.suggest.showWords": true,
+  "editor.suggest.showStatusBar": true,
+  "editor.suggest.matchOnWordStartOnly": false,
+
+  // ========================================
+  // 📁 EXPLORER - ADVANCED NESTING
+  // ========================================
+  "explorer.compactFolders": false,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.sortOrder": "type",
+  "explorer.autoReveal": true,
+
+  // ========================================
+  // 🎨 BETTER COMMENTS - CUSTOM TAGS
+  // ========================================
+  "better-comments.tags": [
+    {
+      "tag": "!",
+      "color": "#FF2D00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "?",
+      "color": "#3498DB",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "//",
+      "color": "#474747",
+      "strikethrough": true,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "todo",
+      "color": "#FF8C00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "*",
+      "color": "#98C379",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    }
+  ],
+
+  // ========================================
+  // 🔧 TELEMETRY - PRIVACY
+  // ========================================
+  "telemetry.telemetryLevel": "off",
+  "redhat.telemetry.enabled": false,
+  "code-runner.enableAppInsights": false
 }

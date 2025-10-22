@@ -1,0 +1,323 @@
+name: CodeQL Advanced Security Analysis
+
+on:
+  push:
+    branches: [main, develop, 'release/**']
+  pull_request:
+    branches: [main, develop]
+  schedule:
+    # Ejecutar todos los lunes a las 6 AM UTC
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+  pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ==================================================
+  # CODEQL ANALYSIS - JAVASCRIPT/TYPESCRIPT
+  # ==================================================
+  codeql-js:
+    name: CodeQL JavaScript/TypeScript Analysis
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    permissions:
+      security-events: write
+      actions: read
+      contents: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['javascript']
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+          # Configuración personalizada de queries
+          queries: +security-and-quality,security-extended
+          # Config file para queries personalizadas
+          config-file: ./.github/codeql/codeql-config.yml
+          # Opciones avanzadas
+          setup-python-dependencies: false
+          debug: false
+          ram: 6144
+          threads: 2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: Build application
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{ matrix.language }}"
+          upload: true
+          # Añadir SARIF como artifact
+          output: sarif-results
+          wait-for-processing: true
+
+      - name: Upload SARIF as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: codeql-sarif-${{ matrix.language }}
+          path: sarif-results
+          retention-days: 30
+
+      - name: Filter SARIF for pull requests
+        if: github.event_name == 'pull_request'
+        uses: advanced-security/filter-sarif@v1
+        with:
+          patterns: |
+            -**/*.test.js
+            -**/*.spec.js
+            -**/node_modules/**
+          input: sarif-results/${{ matrix.language }}.sarif
+          output: sarif-results/${{ matrix.language }}.sarif
+
+  # ==================================================
+  # DEPENDENCY REVIEW
+  # ==================================================
+  dependency-review:
+    name: Dependency Review
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    timeout-minutes: 10
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Dependency Review
+        uses: actions/dependency-review-action@v4
+        with:
+          # Fallar si se encuentran vulnerabilidades críticas o altas
+          fail-on-severity: moderate
+          # Licencias permitidas
+          allow-licenses: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
+          # Licencias denegadas
+          deny-licenses: GPL-2.0, GPL-3.0, AGPL-3.0
+          # Comentar en el PR
+          comment-summary-in-pr: always
+          # Configuración avanzada
+          vulnerability-check: true
+          license-check: true
+          config-file: ./.github/dependency-review-config.yml
+
+  # ==================================================
+  # ADVANCED SECURITY REPORTING
+  # ==================================================
+  security-report:
+    name: Generate Security Report
+    needs: [codeql-js, dependency-review]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    permissions:
+      security-events: write
+      contents: read
+      issues: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download SARIF results
+        uses: actions/download-artifact@v4
+        with:
+          name: codeql-sarif-javascript
+          path: sarif-results/
+
+      - name: Generate security summary
+        run: |
+          echo "# Security Analysis Summary" > security-summary.md
+          echo "" >> security-summary.md
+          echo "**Date**: $(date)" >> security-summary.md
+          echo "**Branch**: ${{ github.ref_name }}" >> security-summary.md
+          echo "**Commit**: ${{ github.sha }}" >> security-summary.md
+          echo "" >> security-summary.md
+          echo "## CodeQL Analysis" >> security-summary.md
+
+          # Analizar SARIF y generar resumen
+          if [ -f sarif-results/javascript.sarif ]; then
+            echo "✅ CodeQL analysis completed" >> security-summary.md
+          else
+            echo "❌ CodeQL analysis failed" >> security-summary.md
+          fi
+
+      - name: Upload security summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-summary
+          path: security-summary.md
+          retention-days: 90
+
+      - name: Create issue if critical vulnerabilities found
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🔒 Critical Security Vulnerabilities Found',
+              body: `Security scan found critical vulnerabilities in commit ${context.sha}.
+
+              Please review the [workflow run](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}) for details.`,
+              labels: ['security', 'critical']
+            })
+
+  # ==================================================
+  # SECRET SCANNING (Si está habilitado en GitHub)
+  # ==================================================
+  secret-scanning:
+    name: Secret Scanning Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    permissions:
+      contents: read
+      security-events: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Gitleaks scan
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
+
+      - name: TruffleHog scan
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ github.event.repository.default_branch }}
+          head: HEAD
+          extra_args: --debug --only-verified
+
+  # ==================================================
+  # SBOM GENERATION (Software Bill of Materials)
+  # ==================================================
+  sbom:
+    name: Generate SBOM
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate SBOM (CycloneDX)
+        run: npx @cyclonedx/cyclonedx-npm --output-file sbom-cyclonedx.json
+
+      - name: Generate SBOM (SPDX)
+        run: npx @cyclonedx/cyclonedx-npm --spec-version 2.3 --output-format spdx --output-file sbom-spdx.json
+
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom
+          path: |
+            sbom-cyclonedx.json
+            sbom-spdx.json
+          retention-days: 90
+
+      - name: Attest SBOM
+        uses: actions/attest-sbom@v1
+        with:
+          subject-path: 'dist'
+          sbom-path: 'sbom-cyclonedx.json'
+
+  # ==================================================
+  # COMPLIANCE CHECK
+  # ==================================================
+  compliance:
+    name: Compliance & Policy Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check for required files
+        run: |
+          required_files=(
+            "LICENSE"
+            "SECURITY.md"
+            "CODE_OF_CONDUCT.md"
+            ".github/CODEOWNERS"
+            "package.json"
+          )
+
+          missing_files=()
+          for file in "${required_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              missing_files+=("$file")
+            fi
+          done
+
+          if [ ${#missing_files[@]} -gt 0 ]; then
+            echo "::warning::Missing required files: ${missing_files[*]}"
+          else
+            echo "✅ All required files present"
+          fi
+
+      - name: Check security policy
+        run: |
+          if [ -f SECURITY.md ]; then
+            echo "✅ Security policy exists"
+          else
+            echo "::error::SECURITY.md is missing"
+            exit 1
+          fi
+
+      - name: Validate GitHub Actions
+        uses: rhysd/actionlint@v1
+        with:
+          fail-on-error: true

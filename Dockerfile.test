@@ -1,0 +1,28 @@
+# 🐳 Testing Dockerfile con Vitest
+
+FROM node:20-alpine
+
+# Instalar dependencias necesarias
+RUN apk add --no-cache \
+    g++ \
+    git \
+    make \
+    python3
+
+WORKDIR /app
+
+# Copiar archivos de dependencias
+COPY package*.json ./
+
+# Instalar todas las dependencias (incluyendo dev)
+RUN npm ci --prefer-offline --no-audit
+
+# Copiar código fuente
+COPY . .
+
+# Variables de entorno para testing
+ENV NODE_ENV=test
+ENV CI=true
+
+# Ejecutar tests
+CMD ["npm", "run", "test"]

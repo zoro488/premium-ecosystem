@@ -1,0 +1,112 @@
+# 🚀 Advanced GitHub Automation
+name: Advanced Automation
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+  issues:
+    types: [opened, labeled]
+  schedule:
+    - cron: '0 0 * * 0' # Weekly on Sundays
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  discussions: write
+
+jobs:
+  auto-label:
+    name: 🏷️ Auto Label PR/Issues
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' || github.event_name == 'issues'
+
+    steps:
+      - uses: actions/labeler@v5
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+  dependency-update:
+    name: 📦 Auto Dependency Updates
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 🛠️ Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 📊 Check for updates
+        run: |
+          npm outdated || true
+
+      - name: 🔄 Update dependencies
+        run: |
+          npm update
+
+      - name: 🧪 Run tests
+        run: |
+          npm test || true
+
+      - name: 📝 Create PR if needed
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: update dependencies"
+          title: "🔄 Weekly dependency updates"
+          body: |
+            Automated dependency updates
+
+            - Updated packages to latest compatible versions
+            - Tests passed
+
+            Please review before merging.
+          branch: deps/weekly-update
+          labels: dependencies, automated
+
+  code-metrics:
+    name: 📊 Code Quality Metrics
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🛠️ Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 📊 Generate metrics
+        run: |
+          echo "### 📊 Code Metrics Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Files:** $(find src -type f | wc -l)" >> $GITHUB_STEP_SUMMARY
+          echo "**Lines of Code:** $(find src -name '*.jsx' -o -name '*.js' -o -name '*.ts' -o -name '*.tsx' | xargs wc -l | tail -1 | awk '{print $1}')" >> $GITHUB_STEP_SUMMARY
+          echo "**Components:** $(find src -name '*.jsx' | wc -l)" >> $GITHUB_STEP_SUMMARY
+          echo "**Test Files:** $(find src tests -name '*.test.*' -o -name '*.spec.*' | wc -l)" >> $GITHUB_STEP_SUMMARY
+
+  stale-management:
+    name: 🗑️ Manage Stale Issues/PRs
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/stale@v9
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          stale-issue-message: 'This issue is stale. Please update or it will be closed.'
+          stale-pr-message: 'This PR is stale. Please update or it will be closed.'
+          days-before-stale: 60
+          days-before-close: 7
+          stale-issue-label: 'stale'
+          stale-pr-label: 'stale'

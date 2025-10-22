@@ -1,20 +1,21 @@
 import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged,
-  GoogleAuthProvider,
+  EmailAuthProvider,
   FacebookAuthProvider,
   GithubAuthProvider,
-  signInWithPopup,
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  deleteUser,
+  onAuthStateChanged,
+  reauthenticateWithCredential,
   sendPasswordResetEmail,
-  updateProfile,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
   updateEmail,
   updatePassword,
-  deleteUser,
-  EmailAuthProvider,
-  reauthenticateWithCredential
+  updateProfile,
 } from 'firebase/auth';
+
 import { auth, isFirebaseConfigured } from '../lib/firebase';
 
 /**
@@ -33,13 +34,13 @@ export const registrarUsuario = async (email, password, nombre) => {
     // Actualizar perfil con nombre
     if (nombre) {
       await updateProfile(userCredential.user, {
-        displayName: nombre
+        displayName: nombre,
       });
     }
 
     return userCredential.user;
   } catch (error) {
-    console.error('Error registrando usuario:', error);
+    // console.error('Error registrando usuario:', error);
     throw error;
   }
 };
@@ -54,7 +55,7 @@ export const iniciarSesion = async (email, password) => {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     return userCredential.user;
   } catch (error) {
-    console.error('Error iniciando sesión:', error);
+    // console.error('Error iniciando sesión:', error);
     throw error;
   }
 };
@@ -68,7 +69,7 @@ export const cerrarSesion = async () => {
   try {
     await signOut(auth);
   } catch (error) {
-    console.error('Error cerrando sesión:', error);
+    // console.error('Error cerrando sesión:', error);
     throw error;
   }
 };
@@ -87,12 +88,12 @@ export const iniciarSesionConGoogle = async () => {
     const provider = new GoogleAuthProvider();
     // Configurar idioma español
     provider.setCustomParameters({
-      prompt: 'select_account'
+      prompt: 'select_account',
     });
     const result = await signInWithPopup(auth, provider);
     return result.user;
   } catch (error) {
-    console.error('Error con Google Sign-In:', error);
+    // console.error('Error con Google Sign-In:', error);
     throw error;
   }
 };
@@ -108,7 +109,7 @@ export const iniciarSesionConFacebook = async () => {
     const result = await signInWithPopup(auth, provider);
     return result.user;
   } catch (error) {
-    console.error('Error con Facebook Sign-In:', error);
+    // console.error('Error con Facebook Sign-In:', error);
     throw error;
   }
 };
@@ -124,7 +125,7 @@ export const iniciarSesionConGithub = async () => {
     const result = await signInWithPopup(auth, provider);
     return result.user;
   } catch (error) {
-    console.error('Error con GitHub Sign-In:', error);
+    // console.error('Error con GitHub Sign-In:', error);
     throw error;
   }
 };
@@ -142,10 +143,10 @@ export const recuperarContrasena = async (email) => {
   try {
     await sendPasswordResetEmail(auth, email, {
       url: window.location.origin, // URL de retorno después de resetear
-      handleCodeInApp: false
+      handleCodeInApp: false,
     });
   } catch (error) {
-    console.error('Error recuperando contraseña:', error);
+    // console.error('Error recuperando contraseña:', error);
     throw error;
   }
 };
@@ -166,11 +167,11 @@ export const actualizarNombre = async (nuevoNombre) => {
 
   try {
     await updateProfile(auth.currentUser, {
-      displayName: nuevoNombre
+      displayName: nuevoNombre,
     });
     return auth.currentUser;
   } catch (error) {
-    console.error('Error actualizando nombre:', error);
+    // console.error('Error actualizando nombre:', error);
     throw error;
   }
 };
@@ -187,11 +188,11 @@ export const actualizarFotoPerfil = async (photoURL) => {
 
   try {
     await updateProfile(auth.currentUser, {
-      photoURL: photoURL
+      photoURL: photoURL,
     });
     return auth.currentUser;
   } catch (error) {
-    console.error('Error actualizando foto:', error);
+    // console.error('Error actualizando foto:', error);
     throw error;
   }
 };
@@ -210,7 +211,7 @@ export const actualizarEmailUsuario = async (nuevoEmail) => {
     await updateEmail(auth.currentUser, nuevoEmail);
     return auth.currentUser;
   } catch (error) {
-    console.error('Error actualizando email:', error);
+    // console.error('Error actualizando email:', error);
     throw error;
   }
 };
@@ -229,7 +230,7 @@ export const actualizarContrasena = async (nuevaContrasena) => {
     await updatePassword(auth.currentUser, nuevaContrasena);
     return auth.currentUser;
   } catch (error) {
-    console.error('Error actualizando contraseña:', error);
+    // console.error('Error actualizando contraseña:', error);
     throw error;
   }
 };
@@ -245,14 +246,11 @@ export const reautenticarUsuario = async (password) => {
   }
 
   try {
-    const credential = EmailAuthProvider.credential(
-      auth.currentUser.email,
-      password
-    );
+    const credential = EmailAuthProvider.credential(auth.currentUser.email, password);
     await reauthenticateWithCredential(auth.currentUser, credential);
     return true;
   } catch (error) {
-    console.error('Error reautenticando usuario:', error);
+    // console.error('Error reautenticando usuario:', error);
     throw error;
   }
 };
@@ -270,7 +268,7 @@ export const eliminarCuenta = async () => {
   try {
     await deleteUser(auth.currentUser);
   } catch (error) {
-    console.error('Error eliminando cuenta:', error);
+    // console.error('Error eliminando cuenta:', error);
     throw error;
   }
 };
@@ -320,7 +318,7 @@ export const obtenerToken = async () => {
   try {
     return await auth.currentUser.getIdToken();
   } catch (error) {
-    console.error('Error obteniendo token:', error);
+    // console.error('Error obteniendo token:', error);
     return null;
   }
 };
@@ -344,7 +342,7 @@ export const obtenerMensajeError = (errorCode) => {
     'auth/requires-recent-login': 'Esta operación requiere reautenticación',
     'auth/popup-closed-by-user': 'Ventana de autenticación cerrada',
     'auth/cancelled-popup-request': 'Operación cancelada',
-    'auth/popup-blocked': 'Popup bloqueado por el navegador'
+    'auth/popup-blocked': 'Popup bloqueado por el navegador',
   };
 
   return errores[errorCode] || 'Error de autenticación';
@@ -379,5 +377,5 @@ export default {
   obtenerToken,
 
   // Utilidades
-  obtenerMensajeError
+  obtenerMensajeError,
 };
