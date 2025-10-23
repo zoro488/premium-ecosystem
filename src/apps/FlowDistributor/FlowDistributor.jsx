@@ -1,7 +1,7 @@
 import React, { Suspense, lazy, useCallback, useEffect, useRef, useState } from 'react';
 
 import { AnimatePresence, motion, useMotionValue, useSpring } from 'framer-motion';
-// 🔔 NOTIFICACIONES EN TIEMPO REAL (Blueprint Supreme 2025)
+//  NOTIFICACIONES EN TIEMPO REAL (Blueprint Supreme 2025)
 import {
   Activity,
   AlertCircle,
@@ -105,7 +105,17 @@ import { ThemeCustomizer, useTheme } from '../../utils/themeSystem';
 import { useActionHistory } from '../../utils/undoRedo';
 // 🎨 ANIMACIONES CSS SCROLL-DRIVEN (Blueprint Supreme 2025)
 import './animations.css';
+// 🛒 PANEL ÓRDENES DE COMPRA PREMIUM
+import PanelOrdenesCompra from './components/PanelOrdenesCompra';
 import RealtimeNotifications from './components/RealtimeNotifications';
+// � INICIALIZADORES DE DATOS
+import {
+  inicializarSistemaDistribuidores,
+  registrarPagoDistribuidor,
+  verificarEstadoDistribuidores,
+} from './data/inicializadorDistribuidores';
+// 🔄 DATA INITIALIZER - AUTO-CARGA DE DATOS DEL EXCEL
+import { inicializarTodosSiVacio } from './utils/dataInitializer';
 
 // ==================== SISTEMA DE DISEÑO PREMIUM 2025 (BLUEPRINT SUPREME) ====================
 const designSystem = {
@@ -189,6 +199,15 @@ const glassClass = (...classes) => {
 
 // Lazy loading para componentes pesados
 const ReportsCharts = lazy(() => import('../../components/Charts'));
+
+// 🚀 LAZY IMPORTS - PANELES PREMIUM
+const PanelUtilidades = lazy(() => import('./components/PanelUtilidades'));
+const PanelFletes = lazy(() => import('./components/PanelFletes'));
+const PanelBovedaMonte = lazy(() => import('./components/PanelBovedaMonte'));
+const PanelAzteca = lazy(() => import('./components/PanelAzteca'));
+const PanelLeftie = lazy(() => import('./components/PanelLeftie'));
+const PanelProfit = lazy(() => import('./components/PanelProfit'));
+const PanelClientes = lazy(() => import('./components/PanelClientes'));
 
 // Cursor glow effect component
 const CursorGlow = () => {
@@ -520,68 +539,7 @@ export default function FlowDistributor() {
     },
   ]);
 
-  const [distribuidores, setDistribuidores] = useLocalStorage(STORAGE_KEYS.FLOW_DISTRIBUIDORES, [
-    {
-      id: 'DIST-001',
-      nombre: 'PACMAN',
-      codigo: 'PCM',
-      totalCompras: 8820423,
-      adeudo: 6142500,
-      pagado: 2677923,
-      ordenes: 45,
-      estado: 'activo',
-    },
-    {
-      id: 'DIST-002',
-      nombre: 'Q-MAYA',
-      codigo: 'QMY',
-      totalCompras: 6312632,
-      adeudo: 6098400,
-      pagado: 214232,
-      ordenes: 38,
-      estado: 'activo',
-    },
-    {
-      id: 'DIST-003',
-      nombre: 'A/X🌶️🦀',
-      codigo: 'AXC',
-      totalCompras: 220533,
-      adeudo: 207900,
-      pagado: 12633,
-      ordenes: 8,
-      estado: 'activo',
-    },
-    {
-      id: 'DIST-004',
-      nombre: 'CH-MONTE',
-      codigo: 'CHM',
-      totalCompras: 3081187,
-      adeudo: 630000,
-      pagado: 2451187,
-      ordenes: 22,
-      estado: 'activo',
-    },
-    {
-      id: 'DIST-005',
-      nombre: 'VALLE-MONTE',
-      codigo: 'VLM',
-      totalCompras: 785612,
-      adeudo: 140000,
-      pagado: 645612,
-      ordenes: 15,
-      estado: 'activo',
-    },
-    {
-      id: 'DIST-006',
-      nombre: 'Q-MAYA-MP',
-      codigo: 'QMP',
-      totalCompras: 987231,
-      adeudo: 863100,
-      pagado: 124131,
-      ordenes: 12,
-      estado: 'revision',
-    },
-  ]);
+  const [distribuidores, setDistribuidores] = useLocalStorage(STORAGE_KEYS.FLOW_DISTRIBUIDORES, []);
 
   const [ventas, setVentas] = useLocalStorage(STORAGE_KEYS.FLOW_VENTAS, []);
 
@@ -1107,6 +1065,15 @@ export default function FlowDistributor() {
     CLIENTS: () => setActivePanel('clientes'),
     BANKS: () => setActivePanel('bancos'),
     REPORTS: () => setActivePanel('reportes'),
+    // 🚀 PANELES PREMIUM
+    UTILIDADES: () => setActivePanel('utilidades'),
+    FLETES: () => setActivePanel('fletes'),
+    BOVEDA_MONTE: () => setActivePanel('bovedaMonte'),
+    AZTECA: () => setActivePanel('azteca'),
+    LEFTIE: () => setActivePanel('leftie'),
+    PROFIT: () => setActivePanel('profit'),
+    CLIENTES_CARTERA: () => setActivePanel('clientesCartera'),
+    // SISTEMA
     TOGGLE_SIDEBAR: () => setIsSidebarOpen(!isSidebarOpen),
     TOGGLE_AI: () => setShowAIWidget(!showAIWidget),
     NOTIFICATIONS: () => setShowNotificationCenter(true),
@@ -1162,6 +1129,40 @@ export default function FlowDistributor() {
       return () => clearTimeout(timer);
     }
   }, [tour.completed, tour.isActive, tour.start]);
+
+  // 🔄 AUTO-INICIALIZACIÓN DE DATOS DEL EXCEL - CRÍTICO
+  useEffect(() => {
+    const count = inicializarTodosSiVacio();
+    if (count > 0) {
+      console.log(`✅ FlowDistributor: ${count} paneles inicializados con datos del Excel`);
+      // Opcional: Mostrar notificación global
+      addAdvancedNotification({
+        title: '✅ Datos Cargados',
+        message: `${count} paneles inicializados con datos del Excel`,
+        priority: NOTIFICATION_PRIORITY.NORMAL,
+        category: NOTIFICATION_CATEGORY.SYSTEM,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Solo ejecutar una vez al montar
+
+  // 📦 AUTO-INICIALIZACIÓN DE DISTRIBUIDORES
+  useEffect(() => {
+    const estado = verificarEstadoDistribuidores();
+    if (estado.totalDistribuidores === 0) {
+      const resultado = inicializarSistemaDistribuidores();
+      if (resultado.success) {
+        setDistribuidores(resultado.distribuidores);
+        console.log(
+          `✅ Distribuidores inicializados: ${resultado.distribuidores.length} distribuidores, ${resultado.ordenes.length} órdenes`
+        );
+      }
+    } else {
+      setDistribuidores(estado.distribuidores);
+      console.log(`✅ Distribuidores cargados: ${estado.totalDistribuidores} encontrados`);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // 🎨 BULK SELECTION HOOKS - Para cada entidad
   const productosSelection = useBulkSelection(almacen.stock, 'id');
@@ -3346,6 +3347,14 @@ export default function FlowDistributor() {
       },
       { id: 'separator1', separator: true },
       {
+        id: 'clientesCartera',
+        icon: Users,
+        label: '👥 Cartera Clientes',
+        badge: null,
+        color: 'indigo',
+      },
+      { id: 'separator1b', separator: true },
+      {
         id: 'banco-bovedaMonte',
         icon: Building2,
         label: 'Bóveda Monte',
@@ -4423,546 +4432,517 @@ export default function FlowDistributor() {
     </motion.div>
   );
 
-  // ORDENES DE COMPRA PANEL
-  const OrdenesPanel = () => {
-    const [showForm, setShowForm] = useState(false);
-    const [formData, setFormData] = useState({
-      distribuidor: '',
-      productos: [{ nombre: '', cantidad: 0, precioUnitario: 0 }],
-      fecha: new Date().toISOString().split('T')[0],
+  // ============================================
+  // � PANEL ÓRDENES DE COMPRA - NUEVO COMPONENTE PREMIUM
+  // ============================================
+  const OrdenesPanel = () => <PanelOrdenesCompra />;
+
+  // DISTRIBUIDORES PANEL
+  const DistribuidoresPanel = () => {
+    const [distribuidorExpandido, setDistribuidorExpandido] = useState(null);
+    const [montoPago, setMontoPago] = useState('');
+    const [mostrarModalPago, setMostrarModalPago] = useState(false);
+    const [distribuidorSeleccionado, setDistribuidorSeleccionado] = useState(null);
+    const [formPago, setFormPago] = useState({
+      monto: '',
+      fecha: new Date().toISOString().slice(0, 10),
+      banco: 'bovedaMonte',
+      referencia: '',
+      observaciones: '',
     });
 
-    const agregarProducto = () => {
-      setFormData({
-        ...formData,
-        productos: [...formData.productos, { nombre: '', cantidad: 0, precioUnitario: 0 }],
-      });
-    };
-
-    const calcularTotal = () => {
-      return (formData?.productos || []).reduce(
-        (sum, p) => sum + (p?.cantidad || 0) * (p?.precioUnitario || 0),
-        0
+    // Calcular totales
+    const totales = React.useMemo(() => {
+      const total = distribuidores.reduce(
+        (acc, d) => ({
+          compras: acc.compras + (d.totalCompras || 0),
+          adeudo: acc.adeudo + (d.adeudo || 0),
+          pagado: acc.pagado + (d.pagado || 0),
+          ordenes: acc.ordenes + (d.ordenes?.length || 0),
+        }),
+        { compras: 0, adeudo: 0, pagado: 0, ordenes: 0 }
       );
-    };
+      return total;
+    }, [distribuidores]);
 
-    const crearOrden = () => {
-      const total = calcularTotal();
-      const nuevaOrden = {
-        id: Date.now(),
-        ...formData,
-        total,
-        tipo: 'compra',
-        fecha: new Date().toLocaleString(),
-      };
+    const handleRegistrarPago = useCallback(
+      (e) => {
+        e.preventDefault();
 
-      setOrdenesCompra([...ordenesCompra, nuevaOrden]);
+        if (!distribuidorSeleccionado || !formPago.monto) {
+          showNotification('❌ Por favor completa todos los campos requeridos', 'error');
+          return;
+        }
 
-      // Actualizar o crear distribuidor
-      const distExistente = distribuidores.find((d) => d.nombre === formData.distribuidor);
-      if (distExistente) {
-        setDistribuidores(
-          distribuidores.map((d) =>
-            d.nombre === formData.distribuidor
-              ? { ...d, adeudo: d.adeudo + total, ordenes: [...d.ordenes, nuevaOrden] }
-              : d
-          )
-        );
-      } else {
-        setDistribuidores([
-          ...distribuidores,
-          {
-            nombre: formData.distribuidor,
-            adeudo: total,
-            ordenes: [nuevaOrden],
-            pagos: [],
-          },
-        ]);
-      }
+        const monto = parseFloat(formPago.monto);
+        if (monto <= 0 || monto > distribuidorSeleccionado.adeudo) {
+          showNotification('❌ Monto inválido', 'error');
+          return;
+        }
 
-      // Actualizar almacén
-      const nuevasEntradas = [];
-      const nuevoStock = [...almacen.stock];
-
-      formData.productos.forEach((producto) => {
-        const stockIndex = nuevoStock.findIndex((s) => s.nombre === producto.nombre);
-
-        // Agregar entrada
-        nuevasEntradas.push({
-          ...producto,
-          fecha: new Date().toLocaleString(),
-          id: `ENT-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+        const resultado = registrarPagoDistribuidor({
+          distribuidorId: distribuidorSeleccionado.id,
+          monto,
+          fecha: formPago.fecha,
+          banco: formPago.banco,
+          referencia: formPago.referencia,
+          observaciones: formPago.observaciones,
         });
 
-        // Actualizar o agregar al stock
-        if (stockIndex !== -1) {
-          nuevoStock[stockIndex] = {
-            ...nuevoStock[stockIndex],
-            cantidad: nuevoStock[stockIndex].cantidad + producto.cantidad,
-          };
-        } else {
-          nuevoStock.push({
-            id: `PROD-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-            nombre: producto.nombre,
-            cantidad: producto.cantidad,
-            costoUnitario: producto.precioUnitario,
-            precioVenta: producto.precioUnitario * 1.3, // Margen del 30%
-            estado: 'Activo',
+        if (resultado.success) {
+          // Actualizar estado local
+          const estado = verificarEstadoDistribuidores();
+          setDistribuidores(estado.distribuidores);
+
+          showNotification(
+            `✅ Pago registrado: ${distribuidorSeleccionado.nombre} - $${monto.toLocaleString()}`,
+            'success'
+          );
+
+          // Resetear formulario
+          setFormPago({
+            monto: '',
+            fecha: new Date().toISOString().slice(0, 10),
+            banco: 'bovedaMonte',
+            referencia: '',
+            observaciones: '',
           });
+          setMostrarModalPago(false);
+          setDistribuidorSeleccionado(null);
+        } else {
+          showNotification(`❌ ${resultado.message}`, 'error');
         }
-      });
-
-      setAlmacen({
-        ...almacen,
-        stock: nuevoStock,
-        entradas: [...(almacen.entradas || []), ...nuevasEntradas],
-      });
-
-      showNotification('Orden de compra creada exitosamente', 'success');
-      setShowForm(false);
-      setFormData({
-        distribuidor: '',
-        productos: [{ nombre: '', cantidad: 0, precioUnitario: 0 }],
-        fecha: new Date().toISOString().split('T')[0],
-      });
-    };
+      },
+      [distribuidorSeleccionado, formPago, setDistribuidores, showNotification]
+    );
 
     return (
       <div className="space-y-6">
+        {/* Header */}
         <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-bold">Órdenes de Compra</h1>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setShowForm(!showForm)}
-            className="px-6 py-3 rounded-xl bg-gradient-to-r from-green-500 to-emerald-500 font-semibold flex items-center gap-2"
-          >
-            <Plus className="w-5 h-5" />
-            Nueva Orden
-          </motion.button>
+          <div>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              📦 Distribuidores
+            </h1>
+            <p className="text-sm text-slate-400 mt-1">
+              Gestión de proveedores y órdenes de compra
+            </p>
+          </div>
         </div>
 
-        {showForm && (
+        {/* KPIs Resumen */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="glass rounded-2xl p-6 border border-white/10"
+            className="glass rounded-xl p-4 border border-white/10"
           >
-            <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-              📦 Crear Orden de Compra
-            </h2>
-            <div className="space-y-4">
+            <div className="flex items-center justify-between">
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
-                  🏢 Distribuidor / Proveedor
-                </label>
-                <input
-                  type="text"
-                  value={formData.distribuidor}
-                  onChange={(e) => setFormData({ ...formData, distribuidor: e.target.value })}
-                  className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 text-white"
-                  placeholder="Ej: TechSupply México, Distribuidora del Norte, etc."
-                />
-                <p className="text-xs text-slate-400 mt-1 ml-1">
-                  💡 Escribe el nombre de la empresa proveedora de los productos
-                </p>
+                <p className="text-sm text-slate-400">Total Compras</p>
+                <p className="text-2xl font-bold text-white">${totales.compras.toLocaleString()}</p>
               </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
-                  📋 Productos a Comprar
-                </label>
-                {formData.productos.map((producto, _idx) => (
-                  <div
-                    key={_idx}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-3 p-4 glass rounded-lg border border-green-500/20"
-                  >
-                    <div>
-                      <label className="text-xs text-slate-400 mb-1 block">
-                        Nombre del Producto
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="Ej: Laptop Dell XPS 15, Mouse Logitech"
-                        value={producto.nombre}
-                        onChange={(e) => {
-                          const newProductos = [...formData.productos];
-                          newProductos[_idx].nombre = e.target.value;
-                          setFormData({ ...formData, productos: newProductos });
-                        }}
-                        className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 text-white"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-xs text-slate-400 mb-1 block">
-                        Cantidad a Comprar
-                      </label>
-                      <input
-                        type="number"
-                        placeholder="Ej: 10"
-                        value={producto.cantidad}
-                        onChange={(e) => {
-                          const newProductos = [...formData.productos];
-                          newProductos[_idx].cantidad = parseFloat(e.target.value) || 0;
-                          setFormData({ ...formData, productos: newProductos });
-                        }}
-                        className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 text-white"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-xs text-slate-400 mb-1 block">
-                        Precio Unitario ($)
-                      </label>
-                      <input
-                        type="number"
-                        placeholder="Ej: 12000"
-                        value={producto.precioUnitario}
-                        onChange={(e) => {
-                          const newProductos = [...formData.productos];
-                          newProductos[_idx].precioUnitario = parseFloat(e.target.value) || 0;
-                          setFormData({ ...formData, productos: newProductos });
-                        }}
-                        className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 text-white"
-                      />
-                    </div>
-                    {producto.cantidad > 0 && producto.precioUnitario > 0 && (
-                      <div className="col-span-3 text-right">
-                        <span className="text-xs text-slate-400">Subtotal: </span>
-                        <span className="text-sm font-bold text-green-400">
-                          ${(producto.cantidad * producto.precioUnitario).toLocaleString()}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                ))}
-                <button
-                  onClick={agregarProducto}
-                  className="text-green-400 hover:text-green-300 font-semibold flex items-center gap-2 mt-2"
-                >
-                  <Plus className="w-4 h-4" />
-                  Agregar producto
-                </button>
-              </div>
-
-              <div className="flex justify-between items-center pt-4 border-t border-white/10">
-                <div className="text-xl font-bold">Total: ${calcularTotal().toLocaleString()}</div>
-                <div className="flex gap-3">
-                  <button
-                    onClick={() => setShowForm(false)}
-                    className="px-6 py-2 border border-white/10 rounded-xl hover:bg-white/5"
-                  >
-                    Cancelar
-                  </button>
-                  <button
-                    onClick={crearOrden}
-                    className="px-6 py-2 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl hover:shadow-lg"
-                  >
-                    Crear Orden
-                  </button>
-                </div>
-              </div>
+              <DollarSign className="w-8 h-8 text-blue-400" />
             </div>
           </motion.div>
-        )}
 
-        <div className="glass rounded-2xl p-6 border border-white/10">
-          <h2 className="text-xl font-bold mb-4">Historial de Órdenes</h2>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="glass rounded-xl p-4 border border-white/10"
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-slate-400">Adeudo Pendiente</p>
+                <p className="text-2xl font-bold text-red-400">
+                  ${totales.adeudo.toLocaleString()}
+                </p>
+              </div>
+              <AlertCircle className="w-8 h-8 text-red-400" />
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="glass rounded-xl p-4 border border-white/10"
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-slate-400">Pagado</p>
+                <p className="text-2xl font-bold text-green-400">
+                  ${totales.pagado.toLocaleString()}
+                </p>
+              </div>
+              <CheckCircle2 className="w-8 h-8 text-green-400" />
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="glass rounded-xl p-4 border border-white/10"
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-slate-400">Órdenes Totales</p>
+                <p className="text-2xl font-bold text-purple-400">{totales.ordenes}</p>
+              </div>
+              <Package className="w-8 h-8 text-purple-400" />
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Tabla de Distribuidores */}
+        <div className="glass rounded-2xl border border-white/10 overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead className="bg-white/5">
                 <tr>
-                  <th className="px-4 py-3 text-left text-sm font-semibold">Fecha</th>
-                  <th className="px-4 py-3 text-left text-sm font-semibold">Distribuidor</th>
-                  <th className="px-4 py-3 text-left text-sm font-semibold">Productos</th>
-                  <th className="px-4 py-3 text-right text-sm font-semibold">Total</th>
+                  <th className="text-left py-4 px-6 text-sm font-semibold text-slate-300"></th>
+                  <th className="text-left py-4 px-6 text-sm font-semibold text-slate-300">
+                    Distribuidor
+                  </th>
+                  <th className="text-right py-4 px-6 text-sm font-semibold text-slate-300">
+                    Total Compras
+                  </th>
+                  <th className="text-right py-4 px-6 text-sm font-semibold text-slate-300">
+                    Adeudo
+                  </th>
+                  <th className="text-right py-4 px-6 text-sm font-semibold text-slate-300">
+                    Pagado
+                  </th>
+                  <th className="text-center py-4 px-6 text-sm font-semibold text-slate-300">
+                    Órdenes
+                  </th>
+                  <th className="text-center py-4 px-6 text-sm font-semibold text-slate-300">
+                    Acciones
+                  </th>
                 </tr>
               </thead>
               <tbody>
-                {(ordenesCompra || []).map((orden) => (
-                  <tr
-                    key={orden?.id}
-                    className="border-t border-white/5 hover:bg-white/5 cursor-context-menu transition-colors"
-                    onContextMenu={(e) => {
-                      e.preventDefault();
-                      setContextMenu({
-                        x: e.clientX,
-                        y: e.clientY,
-                        items: [
-                          {
-                            label: 'Ver detalles',
-                            icon: Eye,
-                            onClick: () => {
-                              showNotification(
-                                `Orden: ${orden?.distribuidor} - $${orden?.total?.toLocaleString()}`,
-                                'info'
-                              );
-                            },
-                          },
-                          {
-                            label: 'Copiar ID',
-                            icon: Copy,
-                            onClick: () => {
-                              navigator.clipboard.writeText(orden?.id);
-                              showNotification('ID copiado al portapapeles', 'success');
-                            },
-                          },
-                          { divider: true },
-                          {
-                            label: 'Eliminar orden',
-                            icon: Trash2,
-                            danger: true,
-                            onClick: () => deleteOrdenCompra(orden?.id),
-                          },
-                        ],
-                      });
-                    }}
-                  >
-                    <td className="px-4 py-3 text-sm">{orden?.fecha}</td>
-                    <td className="px-4 py-3 text-sm font-semibold">{orden?.distribuidor}</td>
-                    <td className="px-4 py-3 text-sm">
-                      {(orden?.productos || []).length} productos
-                    </td>
-                    <td className="px-4 py-3 text-sm text-right font-bold">
-                      ${(orden?.total || 0).toLocaleString()}
-                    </td>
-                  </tr>
+                {distribuidores.map((dist, idx) => (
+                  <React.Fragment key={dist.id}>
+                    <motion.tr
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: idx * 0.05 }}
+                      className="border-t border-white/5 hover:bg-white/5 transition-colors"
+                    >
+                      <td className="py-4 px-6">
+                        <motion.button
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                          onClick={() =>
+                            setDistribuidorExpandido(
+                              distribuidorExpandido === dist.id ? null : dist.id
+                            )
+                          }
+                          className="text-slate-400 hover:text-white transition-colors"
+                        >
+                          {distribuidorExpandido === dist.id ? '▼' : '▶'}
+                        </motion.button>
+                      </td>
+                      <td className="py-4 px-6">
+                        <div>
+                          <p className="font-semibold text-white">{dist.nombre}</p>
+                          <p className="text-xs text-slate-400">{dist.codigo}</p>
+                        </div>
+                      </td>
+                      <td className="py-4 px-6 text-right">
+                        <span className="text-blue-400 font-semibold">
+                          ${(dist.totalCompras || 0).toLocaleString()}
+                        </span>
+                      </td>
+                      <td className="py-4 px-6 text-right">
+                        <span
+                          className={`font-semibold ${
+                            dist.adeudo > 0 ? 'text-red-400' : 'text-green-400'
+                          }`}
+                        >
+                          ${(dist.adeudo || 0).toLocaleString()}
+                        </span>
+                      </td>
+                      <td className="py-4 px-6 text-right">
+                        <span className="text-green-400 font-semibold">
+                          ${(dist.pagado || 0).toLocaleString()}
+                        </span>
+                      </td>
+                      <td className="py-4 px-6 text-center">
+                        <span className="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm font-semibold">
+                          {dist.ordenes?.length || 0}
+                        </span>
+                      </td>
+                      <td className="py-4 px-6 text-center">
+                        {dist.adeudo > 0 && (
+                          <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => {
+                              setDistribuidorSeleccionado(dist);
+                              setMostrarModalPago(true);
+                            }}
+                            className="bg-gradient-to-r from-emerald-600 to-teal-600 px-4 py-2 rounded-lg text-sm font-medium hover:shadow-lg transition-shadow"
+                          >
+                            💰 Registrar Pago
+                          </motion.button>
+                        )}
+                      </td>
+                    </motion.tr>
+
+                    {/* Tabla Expandible de Órdenes */}
+                    <AnimatePresence>
+                      {distribuidorExpandido === dist.id && (
+                        <motion.tr
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <td colSpan={7} className="bg-white/5 p-6">
+                            <div className="space-y-3">
+                              <h4 className="font-semibold text-lg text-white mb-4">
+                                📋 Órdenes de Compra - {dist.nombre}
+                              </h4>
+                              {dist.ordenes && dist.ordenes.length > 0 ? (
+                                <div className="glass rounded-lg overflow-hidden">
+                                  <table className="w-full">
+                                    <thead className="bg-white/10">
+                                      <tr>
+                                        <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">
+                                          OC
+                                        </th>
+                                        <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">
+                                          Fecha
+                                        </th>
+                                        <th className="text-right py-3 px-4 text-sm font-semibold text-slate-300">
+                                          Cantidad
+                                        </th>
+                                        <th className="text-right py-3 px-4 text-sm font-semibold text-slate-300">
+                                          Costo/Unidad
+                                        </th>
+                                        <th className="text-right py-3 px-4 text-sm font-semibold text-slate-300">
+                                          Costo Dist.
+                                        </th>
+                                        <th className="text-right py-3 px-4 text-sm font-semibold text-slate-300">
+                                          Flete
+                                        </th>
+                                        <th className="text-right py-3 px-4 text-sm font-semibold text-slate-300">
+                                          Total
+                                        </th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      {dist.ordenes.map((orden, oidx) => (
+                                        <tr
+                                          key={oidx}
+                                          className="border-t border-white/5 hover:bg-white/5"
+                                        >
+                                          <td className="py-3 px-4">
+                                            <span className="text-purple-400 font-mono text-sm">
+                                              {orden.oc}
+                                            </span>
+                                          </td>
+                                          <td className="py-3 px-4">
+                                            <span className="text-slate-300 text-sm">
+                                              {orden.fecha}
+                                            </span>
+                                          </td>
+                                          <td className="py-3 px-4 text-right">
+                                            <span className="text-blue-400 font-semibold">
+                                              {orden.cantidad}
+                                            </span>
+                                          </td>
+                                          <td className="py-3 px-4 text-right">
+                                            <span className="text-slate-300">
+                                              ${orden.costoPorUnidad.toLocaleString()}
+                                            </span>
+                                          </td>
+                                          <td className="py-3 px-4 text-right">
+                                            <span className="text-slate-300">
+                                              ${orden.costoDistribuidor.toLocaleString()}
+                                            </span>
+                                          </td>
+                                          <td className="py-3 px-4 text-right">
+                                            <span className="text-slate-300">
+                                              ${orden.costoTransporte.toLocaleString()}
+                                            </span>
+                                          </td>
+                                          <td className="py-3 px-4 text-right">
+                                            <span className="text-green-400 font-bold">
+                                              ${orden.total.toLocaleString()}
+                                            </span>
+                                          </td>
+                                        </tr>
+                                      ))}
+                                    </tbody>
+                                  </table>
+                                </div>
+                              ) : (
+                                <p className="text-slate-400 text-center py-4">
+                                  No hay órdenes registradas
+                                </p>
+                              )}
+                            </div>
+                          </td>
+                        </motion.tr>
+                      )}
+                    </AnimatePresence>
+                  </React.Fragment>
                 ))}
               </tbody>
             </table>
-            {ordenesCompra.length === 0 && (
-              <div className="text-center text-slate-400 py-8">
-                <Package className="w-12 h-12 mx-auto mb-2 opacity-50" />
-                <p>No hay órdenes registradas</p>
-              </div>
-            )}
           </div>
-        </div>
-      </div>
-    );
-  };
-
-  // DISTRIBUIDORES PANEL
-  const DistribuidoresPanel = () => {
-    const [selectedDistribuidor, setSelectedDistribuidor] = useState(null);
-    const [montoPago, setMontoPago] = useState(0);
-    const [bancoOrigen, setBancoOrigen] = useState('bovedaMonte');
-
-    const realizarPago = (distribuidor, monto) => {
-      if (monto <= 0 || monto > distribuidor.adeudo) {
-        showNotification('Monto inválido', 'error');
-        return;
-      }
-
-      setDistribuidores(
-        distribuidores.map((d) =>
-          d.nombre === distribuidor.nombre
-            ? {
-                ...d,
-                adeudo: d.adeudo - monto,
-                pagos: [
-                  ...d.pagos,
-                  { monto, fecha: new Date().toLocaleString(), banco: bancoOrigen },
-                ],
-              }
-            : d
-        )
-      );
-
-      // Registrar gasto en banco
-      setBancos({
-        ...bancos,
-        [bancoOrigen]: {
-          ...bancos[bancoOrigen],
-          capitalActual: bancos[bancoOrigen].capitalActual - monto,
-          gastos: [
-            ...bancos[bancoOrigen].gastos,
-            {
-              concepto: `Pago a distribuidor ${distribuidor.nombre}`,
-              monto,
-              fecha: new Date().toLocaleString(),
-            },
-          ],
-        },
-      });
-
-      showNotification('Pago realizado exitosamente', 'success');
-      setMontoPago(0);
-      setSelectedDistribuidor(null);
-    };
-
-    return (
-      <div className="space-y-6">
-        <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-bold">Distribuidores</h1>
-          {/* Botón de limpieza */}
-          {distribuidores.filter(
-            (d) => (d.adeudo === 0 || !d.adeudo) && (!d.ordenes || d.ordenes.length === 0)
-          ).length > 0 && (
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={cleanupDistribuidores}
-              className="px-4 py-2 bg-gradient-to-r from-red-500 to-pink-500 rounded-lg font-semibold flex items-center gap-2 text-sm"
-            >
-              <Trash2 className="w-4 h-4" />
-              Limpiar sin actividad
-            </motion.button>
-          )}
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {distribuidores.map((distribuidor, _idx) => (
-            <motion.div
-              key={_idx}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: _idx * 0.1 }}
-              className="glass rounded-2xl p-6 border border-white/10 cursor-context-menu"
-              onContextMenu={(e) => {
-                e.preventDefault();
-                setContextMenu({
-                  x: e.clientX,
-                  y: e.clientY,
-                  items: [
-                    {
-                      label: 'Ver detalles',
-                      icon: Eye,
-                      onClick: () => {
-                        showNotification(
-                          `Distribuidor: ${distribuidor.nombre} - Adeudo: $${distribuidor.adeudo?.toLocaleString()}`,
-                          'info'
-                        );
-                      },
-                    },
-                    {
-                      label: 'Copiar ID',
-                      icon: Copy,
-                      onClick: () => {
-                        navigator.clipboard.writeText(distribuidor.id);
-                        showNotification('ID copiado al portapapeles', 'success');
-                      },
-                    },
-                    { divider: true },
-                    {
-                      label: 'Eliminar distribuidor',
-                      icon: Trash2,
-                      danger: true,
-                      onClick: () => deleteDistribuidor(distribuidor.id),
-                    },
-                  ],
-                });
-              }}
-            >
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h3 className="text-xl font-bold">{distribuidor.nombre}</h3>
-                  <p className="text-sm text-slate-400">
-                    {distribuidor.ordenes?.length || 0} órdenes
-                  </p>
-                </div>
-                <div
-                  className={`px-4 py-2 rounded-full font-semibold ${
-                    (distribuidor.adeudo || 0) > 0
-                      ? 'bg-red-500/20 text-red-400'
-                      : 'bg-green-500/20 text-green-400'
-                  }`}
-                >
-                  ${(distribuidor.adeudo || 0).toLocaleString()}
-                </div>
-              </div>
-
-              <div className="space-y-3">
-                <div className="glass rounded-lg p-3">
-                  <p className="text-sm text-slate-400 mb-2">Órdenes registradas:</p>
-                  <div className="max-h-40 overflow-y-auto space-y-1">
-                    {(distribuidor?.ordenes || []).map((orden, oidx) => (
-                      <div key={oidx} className="text-sm flex justify-between">
-                        <span className="text-slate-300">{orden?.fecha}</span>
-                        <span className="font-semibold text-green-400">
-                          ${(orden?.total || 0).toLocaleString()}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {distribuidor.adeudo > 0 && (
-                  <div className="space-y-3 pt-3 border-t border-white/10">
-                    <div className="mb-2 p-2 bg-purple-500/10 border border-purple-500/30 rounded-lg">
-                      <p className="text-xs text-purple-300">
-                        💡 Pagarle al distribuidor por productos que compraste
-                      </p>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
-                        🏦 Banco de Origen (¿De dónde sale el dinero?)
-                      </label>
-                      <select
-                        value={bancoOrigen}
-                        onChange={(e) => setBancoOrigen(e.target.value)}
-                        className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 text-white"
-                      >
-                        <option value="bovedaMonte">💎 Bóveda Monte</option>
-                        <option value="utilidades">📈 Utilidades</option>
-                        <option value="fletes">🚚 Fletes</option>
-                        <option value="azteca">🏦 Azteca</option>
-                        <option value="leftie">💳 Leftie</option>
-                        <option value="profit">💵 Profit</option>
-                      </select>
-                      <p className="text-xs text-slate-400 mt-1 ml-1">
-                        Selecciona el banco del cual sacarás el dinero para pagar
-                      </p>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
-                        💵 Monto a Pagar al Distribuidor ($)
-                      </label>
-                      <input
-                        type="number"
-                        value={montoPago}
-                        onChange={(e) => setMontoPago(parseFloat(e.target.value) || 0)}
-                        className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 text-white"
-                        placeholder="Ej: 50000"
-                      />
-                      <p className="text-xs text-slate-400 mt-1 ml-1">
-                        Adeudo actual:{' '}
-                        <span className="font-bold text-red-400">
-                          ${(distribuidor.adeudo || 0).toLocaleString()}
-                        </span>
-                      </p>
-                    </div>
-
-                    <div className="flex gap-2">
-                      <button
-                        onClick={() => realizarPago(distribuidor, montoPago)}
-                        className="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 py-2 rounded-lg hover:shadow-lg font-semibold"
-                      >
-                        Abonar
-                      </button>
-                      <button
-                        onClick={() => realizarPago(distribuidor, distribuidor.adeudo)}
-                        className="flex-1 bg-gradient-to-r from-green-500 to-green-600 py-2 rounded-lg hover:shadow-lg font-semibold"
-                      >
-                        Saldar
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </motion.div>
-          ))}
         </div>
 
         {distribuidores.length === 0 && (
           <div className="text-center text-slate-400 py-20">
             <Users className="w-16 h-16 mx-auto mb-4 opacity-50" />
             <p>No hay distribuidores registrados</p>
-            <p className="text-sm mt-2">
-              Los distribuidores se crean automáticamente al registrar órdenes de compra
-            </p>
+            <p className="text-sm mt-2">Los distribuidores se cargarán automáticamente</p>
           </div>
         )}
+
+        {/* Modal de Pago */}
+        <AnimatePresence>
+          {mostrarModalPago && distribuidorSeleccionado && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+              onClick={() => setMostrarModalPago(false)}
+            >
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                onClick={(e) => e.stopPropagation()}
+                className="glass rounded-2xl p-6 max-w-md w-full border border-white/10"
+              >
+                <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
+                  💰 Registrar Pago
+                </h3>
+
+                {/* Info del Distribuidor */}
+                <div className="mb-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                  <p className="text-sm text-blue-300 mb-1">Distribuidor:</p>
+                  <p className="font-bold text-white">{distribuidorSeleccionado.nombre}</p>
+                  <p className="text-sm text-blue-300 mt-2">Adeudo pendiente:</p>
+                  <p className="text-2xl font-bold text-red-400">
+                    ${distribuidorSeleccionado.adeudo.toLocaleString()}
+                  </p>
+                </div>
+
+                <form onSubmit={handleRegistrarPago} className="space-y-4">
+                  {/* Monto */}
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-300 mb-2">
+                      Monto a Pagar *
+                    </label>
+                    <input
+                      type="number"
+                      step="0.01"
+                      required
+                      value={formPago.monto}
+                      onChange={(e) => setFormPago({ ...formPago, monto: e.target.value })}
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all text-white"
+                      placeholder="0.00"
+                    />
+                  </div>
+
+                  {/* Fecha */}
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-300 mb-2">
+                      Fecha *
+                    </label>
+                    <input
+                      type="date"
+                      required
+                      value={formPago.fecha}
+                      onChange={(e) => setFormPago({ ...formPago, fecha: e.target.value })}
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all text-white"
+                    />
+                  </div>
+
+                  {/* Banco */}
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-300 mb-2">
+                      Banco de Origen
+                    </label>
+                    <select
+                      value={formPago.banco}
+                      onChange={(e) => setFormPago({ ...formPago, banco: e.target.value })}
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all text-white"
+                    >
+                      <option value="bovedaMonte">💎 Bóveda Monte</option>
+                      <option value="utilidades">📈 Utilidades</option>
+                      <option value="fletes">🚚 Fletes</option>
+                      <option value="azteca">🏦 Azteca</option>
+                      <option value="leftie">💳 Leftie</option>
+                      <option value="profit">💵 Profit</option>
+                    </select>
+                  </div>
+
+                  {/* Referencia */}
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-300 mb-2">
+                      Referencia
+                    </label>
+                    <input
+                      type="text"
+                      value={formPago.referencia}
+                      onChange={(e) => setFormPago({ ...formPago, referencia: e.target.value })}
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all text-white"
+                      placeholder="Núm. transacción"
+                    />
+                  </div>
+
+                  {/* Observaciones */}
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-300 mb-2">
+                      Observaciones
+                    </label>
+                    <textarea
+                      rows={3}
+                      value={formPago.observaciones}
+                      onChange={(e) => setFormPago({ ...formPago, observaciones: e.target.value })}
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all text-white resize-none"
+                      placeholder="Notas adicionales..."
+                    />
+                  </div>
+
+                  {/* Botones */}
+                  <div className="flex gap-3 pt-4">
+                    <motion.button
+                      type="button"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => {
+                        setMostrarModalPago(false);
+                        setDistribuidorSeleccionado(null);
+                      }}
+                      className="flex-1 px-4 py-3 bg-slate-700 hover:bg-slate-600 rounded-xl font-semibold transition-colors"
+                    >
+                      Cancelar
+                    </motion.button>
+                    <motion.button
+                      type="submit"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="flex-1 px-4 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 rounded-xl font-semibold transition-all"
+                    >
+                      Registrar Pago
+                    </motion.button>
+                  </div>
+                </form>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     );
   };
@@ -9463,7 +9443,24 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
       // Verificar si es un panel de banco individual
       if (activePanel.startsWith('banco-')) {
         const bancoKey = activePanel.replace('banco-', '');
-        return <BancoPanelIndividual nombreBanco={bancoKey} />;
+
+        // 🚀 PANELES PREMIUM - Usar componentes especializados
+        switch (bancoKey) {
+          case 'utilidades':
+            return <PanelUtilidades />;
+          case 'fletes':
+            return <PanelFletes />;
+          case 'bovedaMonte':
+            return <PanelBovedaMonte />;
+          case 'azteca':
+            return <PanelAzteca />;
+          case 'leftie':
+            return <PanelLeftie />;
+          case 'profit':
+            return <PanelProfit />;
+          default:
+            return <BancoPanelIndividual nombreBanco={bancoKey} />;
+        }
       }
 
       switch (activePanel) {
@@ -9483,6 +9480,23 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
           return <GastosAbonosPanel />;
         case 'reportes':
           return <ReportesPanel />;
+
+        // 🚀 PANELES PREMIUM (acceso directo)
+        case 'utilidades':
+          return <PanelUtilidades />;
+        case 'fletes':
+          return <PanelFletes />;
+        case 'bovedaMonte':
+          return <PanelBovedaMonte />;
+        case 'azteca':
+          return <PanelAzteca />;
+        case 'leftie':
+          return <PanelLeftie />;
+        case 'profit':
+          return <PanelProfit />;
+        case 'clientesCartera':
+          return <PanelClientes />;
+
         default:
           return <Dashboard />;
       }

@@ -904,5 +904,7 @@
   // ========================================
   "telemetry.telemetryLevel": "off",
   "redhat.telemetry.enabled": false,
-  "code-runner.enableAppInsights": false
+  "code-runner.enableAppInsights": false,
+  "chat.mcp.autostart": "onlyNew",
+  "dataWrangler.defaultViewingFilterOptions": "advanced"
 }
