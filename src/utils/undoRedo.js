@@ -78,39 +78,43 @@ export const useUndoRedo = (initialState, maxHistory = 50) => {
  * Hook para acciones reversibles con descripción
  */
 export const useActionHistory = (maxHistory = 30) => {
-  const [history, setHistory] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(-1);
+  const [state, setState] = useState({
+    history: [],
+    currentIndex: -1,
+  });
 
+  const { history, currentIndex } = state;
   const canUndo = currentIndex >= 0;
   const canRedo = currentIndex < history.length - 1;
 
   // Método simple para agregar una acción al historial
   const addAction = useCallback(
     (description, data = {}) => {
-      const action = {
-        description,
-        data,
-        timestamp: new Date().toISOString(),
-      };
+      setState((prevState) => {
+        const action = {
+          description,
+          data,
+          timestamp: new Date().toISOString(),
+        };
 
-      // Eliminar acciones futuras si estamos en medio del historial
-      const newHistory =
-        currentIndex < history.length - 1 ? history.slice(0, currentIndex + 1) : [...history];
+        // Eliminar acciones futuras si estamos en medio del historial
+        const newHistory =
+          prevState.currentIndex < prevState.history.length - 1
+            ? prevState.history.slice(0, prevState.currentIndex + 1)
+            : [...prevState.history];
 
-      // Agregar nueva acción
-      newHistory.push(action);
+        // Agregar nueva acción
+        newHistory.push(action);
 
-      // Limitar tamaño
-      if (newHistory.length > maxHistory) {
-        newHistory.shift();
-        setCurrentIndex(newHistory.length - 1);
-      } else {
-        setCurrentIndex(newHistory.length - 1);
-      }
-
-      setHistory(newHistory);
+        // Limitar tamaño
+        if (newHistory.length > maxHistory) {
+          newHistory.shift();
+          return { history: newHistory, currentIndex: maxHistory - 1 };
+        }
+        return { history: newHistory, currentIndex: newHistory.length - 1 };
+      });
     },
-    [history, currentIndex, maxHistory]
+    [maxHistory]
   );
 
   const executeAction = useCallback(
@@ -120,56 +124,63 @@ export const useActionHistory = (maxHistory = 30) => {
       // Ejecutar acción
       const result = execute();
 
-      // Eliminar acciones futuras si estamos en medio del historial
-      const newHistory =
-        currentIndex < history.length - 1 ? history.slice(0, currentIndex + 1) : [...history];
+      setState((prevState) => {
+        const actionEntry = {
+          description,
+          undo: undoFn,
+          result,
+          timestamp: new Date().toISOString(),
+        };
 
-      // Agregar nueva acción
-      newHistory.push({
-        description,
-        undo: undoFn,
-        result,
-        timestamp: new Date().toISOString(),
+        // Eliminar acciones futuras si estamos en medio del historial
+        const newHistory =
+          prevState.currentIndex < prevState.history.length - 1
+            ? prevState.history.slice(0, prevState.currentIndex + 1)
+            : [...prevState.history];
+
+        // Agregar nueva acción
+        newHistory.push(actionEntry);
+
+        // Limitar tamaño
+        if (newHistory.length > maxHistory) {
+          newHistory.shift();
+          return { history: newHistory, currentIndex: maxHistory - 1 };
+        }
+        return { history: newHistory, currentIndex: newHistory.length - 1 };
       });
 
-      // Limitar tamaño
-      if (newHistory.length > maxHistory) {
-        newHistory.shift();
-        setCurrentIndex(newHistory.length - 1);
-      } else {
-        setCurrentIndex(newHistory.length - 1);
-      }
-
-      setHistory(newHistory);
       return result;
     },
-    [history, currentIndex, maxHistory]
+    [maxHistory]
   );
 
   const undo = useCallback(() => {
-    if (!canUndo) return;
+    setState((prevState) => {
+      if (prevState.currentIndex < 0) return prevState;
 
-    const action = history[currentIndex];
-    if (action.undo) {
-      action.undo(action.result);
-    }
-    setCurrentIndex(currentIndex - 1);
-  }, [canUndo, history, currentIndex]);
+      const action = prevState.history[prevState.currentIndex];
+      if (action && action.undo) {
+        action.undo(action.result);
+      }
+      return { ...prevState, currentIndex: prevState.currentIndex - 1 };
+    });
+  }, []);
 
   const redo = useCallback(() => {
-    if (!canRedo) return;
+    setState((prevState) => {
+      if (prevState.currentIndex >= prevState.history.length - 1) return prevState;
 
-    const nextIndex = currentIndex + 1;
-    const action = history[nextIndex];
-    if (action.execute) {
-      action.execute();
-    }
-    setCurrentIndex(nextIndex);
-  }, [canRedo, history, currentIndex]);
+      const nextIndex = prevState.currentIndex + 1;
+      const action = prevState.history[nextIndex];
+      if (action && action.execute) {
+        action.execute();
+      }
+      return { ...prevState, currentIndex: nextIndex };
+    });
+  }, []);
 
   const clearHistory = useCallback(() => {
-    setHistory([]);
-    setCurrentIndex(-1);
+    setState({ history: [], currentIndex: -1 });
   }, []);
 
   const getLastAction = useCallback(() => {

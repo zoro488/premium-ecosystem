@@ -32,6 +32,7 @@ describe('ExcelImportValidator', () => {
         ],
         clientes: [
           {
+            id: 'C001',
             nombre: 'Cliente Test',
             adeudo: 0,
             totalComprado: 1000,
@@ -46,6 +47,11 @@ describe('ExcelImportValidator', () => {
       };
 
       const result = await validator.validateAll(validData);
+
+      // Debug: log errors if any
+      if (!result.success) {
+        console.log('Validation errors:', result.errors);
+      }
 
       expect(result.success).toBe(true);
       expect(result.errors).toHaveLength(0);

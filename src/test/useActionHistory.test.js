@@ -364,9 +364,11 @@ describe('useActionHistory', () => {
       const after = new Date();
       const lastAction = result.current.getLastAction();
 
-      expect(lastAction.timestamp).toBeInstanceOf(Date);
-      expect(lastAction.timestamp.getTime()).toBeGreaterThanOrEqual(before.getTime());
-      expect(lastAction.timestamp.getTime()).toBeLessThanOrEqual(after.getTime());
+      expect(lastAction.timestamp).toBeDefined();
+      expect(typeof lastAction.timestamp).toBe('string');
+      const actionTime = new Date(lastAction.timestamp).getTime();
+      expect(actionTime).toBeGreaterThanOrEqual(before.getTime());
+      expect(actionTime).toBeLessThanOrEqual(after.getTime());
     });
   });
 });
