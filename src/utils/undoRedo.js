@@ -103,9 +103,9 @@ export const useActionHistory = (maxHistory = 30) => {
       // Limitar tamaño
       if (newHistory.length > maxHistory) {
         newHistory.shift();
-        setCurrentIndex(Math.max(0, currentIndex));
+        setCurrentIndex(newHistory.length - 1);
       } else {
-        setCurrentIndex(currentIndex + 1);
+        setCurrentIndex(newHistory.length - 1);
       }
 
       setHistory(newHistory);
@@ -135,9 +135,9 @@ export const useActionHistory = (maxHistory = 30) => {
       // Limitar tamaño
       if (newHistory.length > maxHistory) {
         newHistory.shift();
-        setCurrentIndex(currentIndex);
+        setCurrentIndex(newHistory.length - 1);
       } else {
-        setCurrentIndex(currentIndex + 1);
+        setCurrentIndex(newHistory.length - 1);
       }
 
       setHistory(newHistory);

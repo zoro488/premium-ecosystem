@@ -44,7 +44,9 @@ export const useFavorites = (storageKey = 'flowdistributor_favorites') => {
 
   const isFavorite = useCallback(
     (type, id) => {
-      return favorites[type]?.includes(id) || false;
+      const items = favorites[type] || [];
+      // Support both ID-based and object-based storage
+      return items.some((item) => (typeof item === 'object' ? item.id === id : item === id));
     },
     [favorites]
   );
@@ -52,26 +54,44 @@ export const useFavorites = (storageKey = 'flowdistributor_favorites') => {
   const toggleFavorite = useCallback((type, id) => {
     setFavorites((prev) => {
       const current = prev[type] || [];
-      const isFav = current.includes(id);
+      const isFav = current.some((item) => (typeof item === 'object' ? item.id === id : item === id));
 
       return {
         ...prev,
-        [type]: isFav ? current.filter((fId) => fId !== id) : [...current, id],
+        [type]: isFav
+          ? current.filter((item) => (typeof item === 'object' ? item.id !== id : item !== id))
+          : [...current, id],
       };
     });
   }, []);
 
-  const addFavorite = useCallback((type, id) => {
-    setFavorites((prev) => ({
-      ...prev,
-      [type]: [...new Set([...(prev[type] || []), id])],
-    }));
+  const addFavorite = useCallback((type, itemOrId) => {
+    setFavorites((prev) => {
+      const current = prev[type] || [];
+      const id = typeof itemOrId === 'object' ? itemOrId.id : itemOrId;
+      
+      // Check if already exists
+      const exists = current.some((item) => 
+        (typeof item === 'object' ? item.id === id : item === id)
+      );
+      
+      if (exists) {
+        return prev;
+      }
+      
+      return {
+        ...prev,
+        [type]: [...current, itemOrId],
+      };
+    });
   }, []);
 
   const removeFavorite = useCallback((type, id) => {
     setFavorites((prev) => ({
       ...prev,
-      [type]: (prev[type] || []).filter((fId) => fId !== id),
+      [type]: (prev[type] || []).filter((item) => 
+        (typeof item === 'object' ? item.id !== id : item !== id)
+      ),
     }));
   }, []);
 

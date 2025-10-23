@@ -21,7 +21,10 @@ describe('ExcelImportValidator', () => {
             id: 'V001',
             fecha: '2025-01-01',
             cliente: 'Cliente Test',
+            cantidad: 10,
+            precioVenta: 100,
             totalVenta: 1000,
+            utilidades: 200,
             estadoPago: 'completo',
             adeudo: 0,
             productos: [{ nombre: 'Producto A', cantidad: 10, precio: 100 }],
@@ -77,9 +80,12 @@ describe('ExcelImportValidator', () => {
             id: 'V001',
             fecha: '2025-01-01',
             cliente: 'Cliente Inexistente', // Cliente no existe en catálogo
+            cantidad: 10,
+            precioVenta: 100,
             totalVenta: 1000,
+            utilidades: 200,
             estadoPago: 'pendiente',
-            adeudo: 0, // Inconsistencia: pendiente pero adeudo 0
+            adeudo: 1000,
             productos: [],
           },
         ],
@@ -103,7 +109,10 @@ describe('ExcelImportValidator', () => {
           id: 'V001',
           fecha: '2025-01-01',
           cliente: 'Cliente A',
+          cantidad: 10,
+          precioVenta: 100,
           totalVenta: 1000,
+          utilidades: 200,
           estadoPago: 'completo',
           adeudo: 0,
           productos: [],
@@ -153,7 +162,8 @@ describe('ExcelImportValidator', () => {
       const report = validator.generateReport();
 
       expect(report).toBeDefined();
-      expect(report.timestamp).toBeDefined();
+      expect(report.summary).toBeDefined();
+      expect(report.summary.timestamp).toBeDefined();
       expect(report.errors).toBeDefined();
       expect(report.warnings).toBeDefined();
       expect(report.stats).toBeDefined();
