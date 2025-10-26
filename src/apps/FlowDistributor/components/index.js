@@ -57,6 +57,9 @@ export {
 // 📊 Tablas virtualizadas
 export { VirtualizedTable } from './VirtualizedTable';
 
+// 🛒 Panel Órdenes de Compra
+export { default as PanelOrdenesCompra } from './PanelOrdenesCompra';
+
 /**
  * 🎯 GUÍA DE USO RÁPIDO
  *
