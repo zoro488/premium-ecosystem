@@ -45,7 +45,7 @@
     "axios": "^1.12.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "2.1",
-    "date-fns": "^3.6.0",
+    "date-fns": "^4.1.0",
     "firebase": "^12.4.0",
     "framer-motion": "11.11",
     "idb-keyval": "^6.2.2",
