@@ -47,7 +47,7 @@
     "clsx": "2.1",
     "date-fns": "^3.6.0",
     "firebase": "^12.4.0",
-    "framer-motion": "11.11",
+    "framer-motion": "12.23",
     "idb-keyval": "^6.2.2",
     "lucide-react": "^0.441.0",
     "million": "3.0",
