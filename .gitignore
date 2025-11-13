@@ -93,6 +93,10 @@ desktop.ini
 .temp/
 .tmp/
 
+# Diagnostic results
+diagnostic-result.json
+test.log
+
 # Vercel
 .vercel
 
