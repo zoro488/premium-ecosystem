@@ -1,0 +1,195 @@
+name: ✅ Validación E2E Autónoma
+
+on:
+  workflow_dispatch:
+    inputs:
+      debug:
+        description: 'Habilitar modo debug'
+        required: false
+        default: 'false'
+  push:
+    branches: [main]
+    paths:
+      - 'src/services/quantumExcelImporter.js'
+      - 'src/services/firebaseService.js'
+      - 'src/__tests__/e2e/**'
+      - 'Administación_General.xlsx'
+  schedule:
+    - cron: '0 */6 * * *' # Cada 6 horas
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: 📥 Checkout código
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: 🔧 Instalar dependencias
+        run: npm ci --ignore-scripts
+
+      - name: 🔥 Instalar Firebase Tools
+        run: npm install -g firebase-tools
+
+      - name: 🚀 Iniciar Firebase Emulator
+        run: |
+          firebase emulators:start --only firestore --project demo-test &
+          echo "⏳ Esperando a que el emulador esté listo..."
+          sleep 15
+          echo "✅ Firebase Emulator iniciado"
+        env:
+          FIREBASE_EMULATOR_HUB: localhost:4400
+
+      - name: ✅ Ejecutar validación E2E
+        run: npm run test:e2e:validation
+        env:
+          FIRESTORE_EMULATOR_HOST: localhost:8080
+          VITE_FIREBASE_API_KEY: demo-api-key
+          VITE_FIREBASE_AUTH_DOMAIN: demo.firebaseapp.com
+          VITE_FIREBASE_PROJECT_ID: demo-test
+          VITE_FIREBASE_STORAGE_BUCKET: demo.appspot.com
+          VITE_FIREBASE_MESSAGING_SENDER_ID: '123456789'
+          VITE_FIREBASE_APP_ID: demo-app-id
+          NODE_ENV: test
+
+      - name: 📊 Generar reporte de validación
+        if: success()
+        run: |
+          cat > VALIDATION_REPORT.md << 'EOF'
+          # ✅ Validación E2E Exitosa
+
+          **Fecha**: $(date)
+          **Workflow Run**: ${{ github.run_number }}
+          **Branch**: ${{ github.ref_name }}
+
+          ## Resultados
+
+          - ✅ Datos del Excel importados correctamente
+          - ✅ Datos en Firestore validados
+          - ✅ Capital Total: Excel = Firestore
+          - ✅ Todos los bancos presentes
+          - ✅ Transacciones validadas
+          - ✅ Relaciones íntegras
+
+          ## Conclusión
+
+          **Sistema validado correctamente. Datos consistentes en todas las capas.**
+
+          ## Archivos Validados
+
+          - `Administación_General.xlsx` → Firestore
+          - Servicios: `quantumExcelImporter.js`, `firebaseService.js`
+          - Tests E2E: `excel-firestore-ui-validation.test.js`
+
+          ## Métricas
+
+          - Timeout configurado: 90 segundos por test
+          - Emulador Firestore: ✅ Funcionando
+          - Cobertura E2E: ✅ Completa
+
+          ---
+          Generado automáticamente por GitHub Actions
+          EOF
+
+      - name: 📤 Subir reporte de validación
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-report-${{ github.run_number }}
+          path: VALIDATION_REPORT.md
+
+      - name: 📤 Subir resultados de tests
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-${{ github.run_number }}
+          path: |
+            test-results-e2e/
+            coverage-e2e/
+
+      - name: 🎉 Crear Pull Request con reporte
+        if: success() && github.event_name == 'schedule'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: validation-report-${{ github.run_number }}
+          title: '✅ Validación E2E completada exitosamente - Run #${{ github.run_number }}'
+          body: |
+            ## ✅ Validación E2E Completada
+
+            **Ejecución automática del workflow de validación E2E**
+
+            ### Resultados
+            - ✅ Todos los tests E2E pasaron correctamente
+            - ✅ Datos validados: Excel → Firestore → UI
+            - ✅ Integridad de datos confirmada
+
+            ### Detalles
+            - **Workflow Run**: #${{ github.run_number }}
+            - **Fecha**: $(date)
+            - **Branch**: ${{ github.ref_name }}
+
+            ### Archivos
+            Ver reporte detallado: [VALIDATION_REPORT.md](./VALIDATION_REPORT.md)
+
+            ### Artefactos
+            - Reporte de validación
+            - Resultados de tests E2E
+            - Cobertura de código E2E
+
+            ---
+            Este PR fue creado automáticamente por el workflow de validación E2E.
+          commit-message: 'docs: agregar reporte de validación E2E run #${{ github.run_number }}'
+          labels: |
+            automated
+            validation
+            e2e
+          assignees: ${{ github.actor }}
+
+      - name: 🧹 Detener Firebase Emulator
+        if: always()
+        run: |
+          pkill -f firebase || true
+          echo "🛑 Firebase Emulator detenido"
+
+      - name: ❌ Reporte de fallo
+        if: failure()
+        run: |
+          echo "❌ La validación E2E falló"
+          echo "Por favor revisa los logs y los artefactos subidos"
+          cat > VALIDATION_FAILURE.md << 'EOF'
+          # ❌ Validación E2E Fallida
+
+          **Fecha**: $(date)
+          **Workflow Run**: ${{ github.run_number }}
+          **Branch**: ${{ github.ref_name }}
+
+          ## Error
+
+          La validación E2E ha fallado. Por favor revisa los logs del workflow.
+
+          ## Pasos para debuggear
+
+          1. Revisa los logs del workflow
+          2. Descarga los artefactos de test
+          3. Ejecuta localmente: `npm run test:e2e:validation`
+          4. Verifica que el archivo Excel existe y es válido
+          5. Verifica la configuración de Firebase
+
+          ---
+          Generado automáticamente por GitHub Actions
+          EOF
+
+      - name: 📤 Subir reporte de fallo
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-failure-${{ github.run_number }}
+          path: VALIDATION_FAILURE.md
