@@ -1,0 +1,206 @@
+name: ✅ Validación E2E Autónoma
+
+on:
+  workflow_dispatch:
+    inputs:
+      skip_emulator:
+        description: 'Skip Firebase emulator (use mocked data)'
+        required: false
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+  push:
+    branches: [main, develop]
+    paths:
+      - 'src/services/**'
+      - 'src/components/**'
+      - 'src/__tests__/e2e/**'
+      - 'vitest.e2e.config.js'
+  schedule:
+    # Ejecutar cada 6 horas
+    - cron: '0 */6 * * *'
+
+# Permisos necesarios
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  validate:
+    name: 🔥 Excel → Firestore → UI
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 🔧 Install dependencies
+        run: npm ci --legacy-peer-deps --ignore-scripts
+
+      - name: 🔍 Check files
+        run: |
+          echo "=== Verificando archivos de test ==="
+          ls -la src/__tests__/e2e/ || echo "Directorio e2e no encontrado"
+          echo ""
+          echo "=== Verificando Excel ==="
+          ls -la *.xlsx || echo "Sin archivos Excel en root"
+          echo ""
+          echo "=== Verificando configuración ==="
+          ls -la vitest.e2e.config.js || echo "Config E2E no encontrada"
+
+      - name: 🔥 Setup Firebase Emulator (Optional)
+        if: ${{ github.event.inputs.skip_emulator != 'true' }}
+        run: |
+          npm install -g firebase-tools
+          echo "Configurando Firebase Emulator..."
+          # No iniciar aún, solo preparar
+
+      - name: 🚀 Start Firebase Emulator (Optional)
+        if: ${{ github.event.inputs.skip_emulator != 'true' }}
+        run: |
+          echo "Iniciando Firebase Emulator en background..."
+          firebase emulators:start --only firestore --project demo-test &
+          echo "Esperando a que el emulator esté listo..."
+          sleep 20
+          echo "Emulator listo ✅"
+
+      - name: 🧪 Ejecutar validación E2E
+        run: |
+          echo "=== Ejecutando tests E2E ==="
+          npm run test:e2e:run
+        env:
+          CI: true
+          VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY || 'test-api-key' }}
+          VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN || 'test.firebaseapp.com' }}
+          VITE_FIREBASE_PROJECT_ID: ${{ secrets.VITE_FIREBASE_PROJECT_ID || 'test-project' }}
+          VITE_FIREBASE_STORAGE_BUCKET: ${{ secrets.VITE_FIREBASE_STORAGE_BUCKET || 'test.appspot.com' }}
+          VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID || '123456789' }}
+          VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID || 'test-app-id' }}
+
+      - name: 📊 Generar reporte de validación
+        if: success()
+        run: |
+          echo "# ✅ Validación E2E Exitosa" > VALIDATION_REPORT.md
+          echo "" >> VALIDATION_REPORT.md
+          echo "**Fecha:** $(date '+%Y-%m-%d %H:%M:%S UTC')" >> VALIDATION_REPORT.md
+          echo "**Commit:** ${{ github.sha }}" >> VALIDATION_REPORT.md
+          echo "**Branch:** ${{ github.ref_name }}" >> VALIDATION_REPORT.md
+          echo "**Triggered by:** ${{ github.event_name }}" >> VALIDATION_REPORT.md
+          echo "" >> VALIDATION_REPORT.md
+          echo "## 📋 Validaciones Completadas" >> VALIDATION_REPORT.md
+          echo "" >> VALIDATION_REPORT.md
+          echo "- ✅ Importación de Excel exitosa" >> VALIDATION_REPORT.md
+          echo "- ✅ Datos en Firestore validados" >> VALIDATION_REPORT.md
+          echo "- ✅ Componentes UI renderizan correctamente" >> VALIDATION_REPORT.md
+          echo "- ✅ Capital total coincide en Excel, Firestore y UI" >> VALIDATION_REPORT.md
+          echo "- ✅ Todos los bancos del Excel están en Firestore" >> VALIDATION_REPORT.md
+          echo "- ✅ Estructura de datos es consistente" >> VALIDATION_REPORT.md
+          echo "" >> VALIDATION_REPORT.md
+          echo "## 🎯 Estado" >> VALIDATION_REPORT.md
+          echo "" >> VALIDATION_REPORT.md
+          echo "**Estado:** ✅ EXITOSO" >> VALIDATION_REPORT.md
+          echo "" >> VALIDATION_REPORT.md
+          echo "---" >> VALIDATION_REPORT.md
+          echo "" >> VALIDATION_REPORT.md
+          echo "_Este reporte fue generado automáticamente por el workflow de validación E2E._" >> VALIDATION_REPORT.md
+
+      - name: 📤 Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-report
+          path: VALIDATION_REPORT.md
+          retention-days: 30
+
+      - name: 🔍 Check if PR is needed
+        id: check_pr
+        if: success() && github.event_name == 'schedule'
+        run: |
+          # Solo crear PR si fue trigger automático (schedule)
+          echo "should_create_pr=true" >> $GITHUB_OUTPUT
+
+      - name: 📝 Crear PR si validación exitosa
+        if: success() && steps.check_pr.outputs.should_create_pr == 'true'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: '✅ Validación E2E completada exitosamente'
+          title: '✅ Validación E2E completada - $(date +%Y-%m-%d)'
+          body: |
+            ## ✅ Validación E2E Completada Exitosamente
+
+            Este PR fue generado automáticamente después de una validación E2E exitosa.
+
+            ### 📊 Resultados
+
+            - ✅ **Capital Total:** Excel = Firestore = UI
+            - ✅ **Bancos:** Todos los datos del Excel están en Firestore
+            - ✅ **UI Components:** Renderización correcta de KPICards
+            - ✅ **Estructura:** Datos consistentes y validados
+
+            ### 🔍 Detalles
+
+            - **Fecha:** $(date '+%Y-%m-%d %H:%M:%S UTC')
+            - **Commit:** ${{ github.sha }}
+            - **Workflow:** ${{ github.run_id }}
+
+            ### 📝 Siguiente paso
+
+            Revisar el reporte de validación adjunto en los artifacts del workflow.
+
+            ---
+            
+            _Este PR fue creado automáticamente por el workflow de validación E2E._
+          branch: validation/e2e-success-${{ github.run_number }}
+          base: main
+          labels: |
+            automated
+            validation
+            e2e
+          assignees: ${{ github.actor }}
+
+      - name: 💬 Comentar en PR si es push
+        if: success() && github.event_name == 'push' && github.event.pull_request
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '✅ **Validación E2E exitosa**\n\nTodos los tests E2E pasaron correctamente. Los datos del Excel se reflejan correctamente en Firestore y en la UI.'
+            })
+
+      - name: ❌ Reportar fallo
+        if: failure()
+        run: |
+          echo "# ❌ Validación E2E Fallida" > VALIDATION_REPORT.md
+          echo "" >> VALIDATION_REPORT.md
+          echo "**Fecha:** $(date '+%Y-%m-%d %H:%M:%S UTC')" >> VALIDATION_REPORT.md
+          echo "**Commit:** ${{ github.sha }}" >> VALIDATION_REPORT.md
+          echo "**Branch:** ${{ github.ref_name }}" >> VALIDATION_REPORT.md
+          echo "" >> VALIDATION_REPORT.md
+          echo "## ❌ Error" >> VALIDATION_REPORT.md
+          echo "" >> VALIDATION_REPORT.md
+          echo "La validación E2E ha fallado. Por favor, revisa los logs del workflow para más detalles." >> VALIDATION_REPORT.md
+          echo "" >> VALIDATION_REPORT.md
+          echo "**Estado:** ❌ FALLIDO" >> VALIDATION_REPORT.md
+
+      - name: 🧹 Cleanup
+        if: always()
+        run: |
+          echo "Limpiando procesos del emulator..."
+          pkill -f firebase || true
+          echo "Cleanup completado"

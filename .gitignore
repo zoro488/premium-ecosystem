@@ -147,3 +147,6 @@ nul
 
 # Vscode AI rules (si no quieres que se suban)
 .github/instructions/codacy.instructions.md
+
+# E2E Validation Reports (generados automáticamente)
+VALIDATION_REPORT.md
