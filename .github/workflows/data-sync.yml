@@ -1,0 +1,307 @@
+name: 🔄 Sync Excel ↔ Firestore
+
+on:
+  workflow_dispatch:
+    inputs:
+      sync_direction:
+        description: 'Dirección de sincronización'
+        required: true
+        type: choice
+        options:
+          - excel_to_firestore
+          - firestore_to_excel
+          - bidirectional
+        default: 'excel_to_firestore'
+      force_sync:
+        description: 'Forzar sincronización completa'
+        required: false
+        type: boolean
+        default: false
+      dry_run:
+        description: 'Modo simulación (no aplicar cambios)'
+        required: false
+        type: boolean
+        default: false
+
+  schedule:
+    # Sincronización diaria a medianoche (horario UTC)
+    - cron: '0 0 * * *'
+    # Sincronización de respaldo a las 12:00 UTC
+    - cron: '0 12 * * *'
+
+env:
+  NODE_VERSION: '20.x'
+  EXCEL_PATH: 'data/source'
+  REPORTS_PATH: 'reports/sync'
+
+jobs:
+  prepare:
+    name: 🔧 Preparar Sincronización
+    runs-on: ubuntu-latest
+    outputs:
+      sync_id: ${{ steps.generate.outputs.sync_id }}
+      timestamp: ${{ steps.generate.outputs.timestamp }}
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🔑 Generate sync ID
+        id: generate
+        run: |
+          SYNC_ID="sync_$(date +%Y%m%d_%H%M%S)_${{ github.run_number }}"
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          echo "sync_id=$SYNC_ID" >> $GITHUB_OUTPUT
+          echo "timestamp=$TIMESTAMP" >> $GITHUB_OUTPUT
+          echo "🔑 Sync ID: $SYNC_ID"
+
+  validate-excel:
+    name: ✅ Validar Archivos Excel
+    runs-on: ubuntu-latest
+    needs: prepare
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: 🔍 Validar estructura Excel
+        run: |
+          npm run validate:excel -- --path="${{ env.EXCEL_PATH }}" --strict
+
+      - name: 📊 Generar estadísticas
+        run: |
+          npm run excel:stats -- --output="reports/excel-stats.json"
+
+      - name: 📤 Upload Excel stats
+        uses: actions/upload-artifact@v4
+        with:
+          name: excel-stats
+          path: reports/excel-stats.json
+
+  sync-excel-to-firestore:
+    name: 📤 Excel → Firestore
+    runs-on: ubuntu-latest
+    needs: [prepare, validate-excel]
+    if: |
+      github.event_name == 'schedule' ||
+      (github.event_name == 'workflow_dispatch' &&
+       (github.event.inputs.sync_direction == 'excel_to_firestore' ||
+        github.event.inputs.sync_direction == 'bidirectional'))
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: 🔐 Setup Firebase credentials
+        run: |
+          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > firebase-credentials.json
+          echo "GOOGLE_APPLICATION_CREDENTIALS=firebase-credentials.json" >> $GITHUB_ENV
+
+      - name: 📤 Import Excel to Firestore
+        id: import
+        run: |
+          FLAGS=""
+          if [[ "${{ github.event.inputs.dry_run }}" == "true" ]]; then
+            FLAGS="$FLAGS --dry-run"
+          fi
+          if [[ "${{ github.event.inputs.force_sync }}" == "true" ]]; then
+            FLAGS="$FLAGS --force"
+          fi
+
+          npm run import:excel -- \
+            --sync-id="${{ needs.prepare.outputs.sync_id }}" \
+            --timestamp="${{ needs.prepare.outputs.timestamp }}" \
+            $FLAGS | tee import.log
+
+          # Extraer métricas
+          RECORDS_IMPORTED=$(grep -oP 'Imported: \K\d+' import.log || echo "0")
+          RECORDS_UPDATED=$(grep -oP 'Updated: \K\d+' import.log || echo "0")
+          RECORDS_FAILED=$(grep -oP 'Failed: \K\d+' import.log || echo "0")
+
+          echo "records_imported=$RECORDS_IMPORTED" >> $GITHUB_OUTPUT
+          echo "records_updated=$RECORDS_UPDATED" >> $GITHUB_OUTPUT
+          echo "records_failed=$RECORDS_FAILED" >> $GITHUB_OUTPUT
+
+      - name: ✅ Validar sincronización
+        run: npm run validate:sync -- --sync-id="${{ needs.prepare.outputs.sync_id }}"
+
+      - name: 📊 Generar reporte
+        run: |
+          mkdir -p ${{ env.REPORTS_PATH }}
+          npm run report:sync -- \
+            --sync-id="${{ needs.prepare.outputs.sync_id }}" \
+            --output="${{ env.REPORTS_PATH }}/import-report.json"
+
+      - name: 📤 Upload import report
+        uses: actions/upload-artifact@v4
+        with:
+          name: import-report
+          path: ${{ env.REPORTS_PATH }}/import-report.json
+
+  sync-firestore-to-excel:
+    name: 📥 Firestore → Excel
+    runs-on: ubuntu-latest
+    needs: [prepare, validate-excel]
+    if: |
+      github.event_name == 'workflow_dispatch' &&
+      (github.event.inputs.sync_direction == 'firestore_to_excel' ||
+       github.event.inputs.sync_direction == 'bidirectional')
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: 🔐 Setup Firebase credentials
+        run: |
+          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > firebase-credentials.json
+          echo "GOOGLE_APPLICATION_CREDENTIALS=firebase-credentials.json" >> $GITHUB_ENV
+
+      - name: 📥 Export Firestore to Excel
+        run: |
+          FLAGS=""
+          if [[ "${{ github.event.inputs.dry_run }}" == "true" ]]; then
+            FLAGS="$FLAGS --dry-run"
+          fi
+
+          npm run export:excel -- \
+            --sync-id="${{ needs.prepare.outputs.sync_id }}" \
+            --timestamp="${{ needs.prepare.outputs.timestamp }}" \
+            $FLAGS
+
+      - name: 📤 Upload exported Excel
+        if: github.event.inputs.dry_run != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: exported-excel-${{ needs.prepare.outputs.sync_id }}
+          path: ${{ env.EXCEL_PATH }}/export_*.xlsx
+          retention-days: 30
+
+  commit-reports:
+    name: 💾 Commit Reportes
+    runs-on: ubuntu-latest
+    needs: [prepare, sync-excel-to-firestore]
+    if: |
+      always() &&
+      needs.sync-excel-to-firestore.result == 'success' &&
+      github.event.inputs.dry_run != 'true'
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 📥 Download reports
+        uses: actions/download-artifact@v4
+        with:
+          name: import-report
+          path: ${{ env.REPORTS_PATH }}
+
+      - name: 💾 Commit y push reportes
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+
+          git add reports/
+
+          if git diff --staged --quiet; then
+            echo "No hay cambios en reportes"
+          else
+            git commit -m "📊 Sync report ${{ needs.prepare.outputs.sync_id }} - $(date +'%Y-%m-%d %H:%M:%S')"
+            git push
+          fi
+
+  notify-success:
+    name: ✅ Notificar Éxito
+    runs-on: ubuntu-latest
+    needs: [prepare, sync-excel-to-firestore, commit-reports]
+    if: |
+      always() &&
+      needs.sync-excel-to-firestore.result == 'success'
+
+    steps:
+      - name: 📊 Resumen de sincronización
+        run: |
+          echo "✅ Sincronización completada exitosamente"
+          echo "🔑 Sync ID: ${{ needs.prepare.outputs.sync_id }}"
+          echo "📤 Registros importados: ${{ needs.sync-excel-to-firestore.outputs.records_imported }}"
+          echo "🔄 Registros actualizados: ${{ needs.sync-excel-to-firestore.outputs.records_updated }}"
+          echo "❌ Registros fallidos: ${{ needs.sync-excel-to-firestore.outputs.records_failed }}"
+
+      - name: 💬 Create issue comment (if PR)
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `✅ **Sincronización Excel ↔ Firestore Completada**\n\n` +
+                    `🔑 Sync ID: \`${{ needs.prepare.outputs.sync_id }}\`\n` +
+                    `📤 Importados: ${{ needs.sync-excel-to-firestore.outputs.records_imported }}\n` +
+                    `🔄 Actualizados: ${{ needs.sync-excel-to-firestore.outputs.records_updated }}\n` +
+                    `❌ Fallidos: ${{ needs.sync-excel-to-firestore.outputs.records_failed }}`
+            });
+
+  notify-failure:
+    name: 🚨 Notificar Fallo
+    runs-on: ubuntu-latest
+    needs: [prepare, sync-excel-to-firestore]
+    if: |
+      always() &&
+      needs.sync-excel-to-firestore.result == 'failure'
+
+    steps:
+      - name: 📧 Send failure email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: '🚨 Sincronización Excel-Firestore Falló'
+          body: |
+            ❌ La sincronización programada ha fallado.
+
+            🔑 Sync ID: ${{ needs.prepare.outputs.sync_id }}
+            📅 Timestamp: ${{ needs.prepare.outputs.timestamp }}
+            🔗 Detalles: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+            Por favor, revisa los logs para más información.
+          to: ${{ secrets.NOTIFICATION_EMAIL }}
+          from: GitHub Actions
+
+      - name: 🐛 Create issue on failure
+        if: github.event_name == 'schedule'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🚨 Sincronización Automática Falló - ${{ needs.prepare.outputs.sync_id }}`,
+              body: `La sincronización programada ha fallado.\n\n` +
+                    `**Sync ID:** \`${{ needs.prepare.outputs.sync_id }}\`\n` +
+                    `**Timestamp:** ${{ needs.prepare.outputs.timestamp }}\n` +
+                    `**Run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\n\n` +
+                    `Por favor, investiga y resuelve el problema.`,
+              labels: ['bug', 'automated-sync', 'high-priority']
+            });

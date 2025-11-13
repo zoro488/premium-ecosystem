@@ -1,0 +1,480 @@
+name: 💾 Automated Backup System
+
+on:
+  schedule:
+    # Backup diario a las 02:00 UTC
+    - cron: '0 2 * * *'
+    # Backup semanal completo los domingos a las 03:00 UTC
+    - cron: '0 3 * * 0'
+
+  workflow_dispatch:
+    inputs:
+      backup_type:
+        description: 'Tipo de backup'
+        required: true
+        type: choice
+        options:
+          - incremental
+          - full
+          - collections-only
+          - auth-only
+          - storage-only
+        default: 'full'
+      include_storage:
+        description: 'Incluir archivos de Storage'
+        required: false
+        type: boolean
+        default: true
+      retention_days:
+        description: 'Días de retención'
+        required: false
+        type: number
+        default: 30
+
+env:
+  NODE_VERSION: '20.x'
+  BACKUP_BUCKET: 'premium-ecosystem-backups'
+  BACKUP_PATH: 'backups'
+
+jobs:
+  prepare-backup:
+    name: 🔧 Preparar Backup
+    runs-on: ubuntu-latest
+    outputs:
+      backup_id: ${{ steps.generate.outputs.backup_id }}
+      backup_date: ${{ steps.generate.outputs.backup_date }}
+      backup_type: ${{ steps.determine.outputs.backup_type }}
+
+    steps:
+      - name: 🔑 Generate backup ID
+        id: generate
+        run: |
+          BACKUP_ID="backup_$(date +%Y%m%d_%H%M%S)_${{ github.run_number }}"
+          BACKUP_DATE=$(date -u +"%Y-%m-%d")
+          echo "backup_id=$BACKUP_ID" >> $GITHUB_OUTPUT
+          echo "backup_date=$BACKUP_DATE" >> $GITHUB_OUTPUT
+          echo "🔑 Backup ID: $BACKUP_ID"
+
+      - name: 🎯 Determine backup type
+        id: determine
+        run: |
+          if [ "${{ github.event_name }}" == "schedule" ]; then
+            if [ "$(date +%u)" == "7" ]; then
+              echo "backup_type=full" >> $GITHUB_OUTPUT
+            else
+              echo "backup_type=incremental" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "backup_type=${{ github.event.inputs.backup_type }}" >> $GITHUB_OUTPUT
+          fi
+
+  backup-firestore:
+    name: 🔥 Backup Firestore
+    runs-on: ubuntu-latest
+    needs: prepare-backup
+    if: |
+      needs.prepare-backup.outputs.backup_type == 'full' ||
+      needs.prepare-backup.outputs.backup_type == 'incremental' ||
+      needs.prepare-backup.outputs.backup_type == 'collections-only'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: 🔐 Setup Firebase credentials
+        run: |
+          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > firebase-credentials.json
+          echo "GOOGLE_APPLICATION_CREDENTIALS=firebase-credentials.json" >> $GITHUB_ENV
+
+      - name: 📊 List collections
+        run: |
+          npm run firestore:list-collections > collections.txt
+          echo "📋 Collections to backup:"
+          cat collections.txt
+
+      - name: 💾 Backup Firestore collections
+        run: |
+          mkdir -p ${{ env.BACKUP_PATH }}/firestore
+
+          COLLECTIONS=(
+            "usuarios"
+            "empresas"
+            "clientes"
+            "ventas"
+            "proyectos"
+            "tareas"
+            "bancos"
+            "cuentas"
+            "tarjetas"
+            "transacciones"
+            "kpis"
+            "configuraciones"
+            "notificaciones"
+            "auditoria"
+          )
+
+          for collection in "${COLLECTIONS[@]}"; do
+            echo "📦 Backing up collection: $collection"
+            npm run firestore:export -- \
+              --collection="$collection" \
+              --output="${{ env.BACKUP_PATH }}/firestore/${collection}.json" \
+              --backup-id="${{ needs.prepare-backup.outputs.backup_id }}"
+          done
+
+      - name: 🗜️ Compress Firestore backup
+        run: |
+          cd ${{ env.BACKUP_PATH }}
+          tar -czf firestore-${{ needs.prepare-backup.outputs.backup_id }}.tar.gz firestore/
+          rm -rf firestore/
+
+      - name: 📤 Upload Firestore backup
+        uses: actions/upload-artifact@v4
+        with:
+          name: firestore-backup-${{ needs.prepare-backup.outputs.backup_id }}
+          path: ${{ env.BACKUP_PATH }}/firestore-*.tar.gz
+          retention-days: ${{ github.event.inputs.retention_days || 30 }}
+
+  backup-auth:
+    name: 🔐 Backup Authentication
+    runs-on: ubuntu-latest
+    needs: prepare-backup
+    if: |
+      needs.prepare-backup.outputs.backup_type == 'full' ||
+      needs.prepare-backup.outputs.backup_type == 'auth-only'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: 🔐 Setup credentials
+        run: |
+          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > firebase-credentials.json
+          echo "GOOGLE_APPLICATION_CREDENTIALS=firebase-credentials.json" >> $GITHUB_ENV
+
+      - name: 👥 Export users
+        run: |
+          mkdir -p ${{ env.BACKUP_PATH }}/auth
+          npm run auth:export-users -- \
+            --output="${{ env.BACKUP_PATH }}/auth/users.json" \
+            --backup-id="${{ needs.prepare-backup.outputs.backup_id }}"
+
+      - name: 🗜️ Compress auth backup
+        run: |
+          cd ${{ env.BACKUP_PATH }}
+          tar -czf auth-${{ needs.prepare-backup.outputs.backup_id }}.tar.gz auth/
+          rm -rf auth/
+
+      - name: 📤 Upload auth backup
+        uses: actions/upload-artifact@v4
+        with:
+          name: auth-backup-${{ needs.prepare-backup.outputs.backup_id }}
+          path: ${{ env.BACKUP_PATH }}/auth-*.tar.gz
+          retention-days: ${{ github.event.inputs.retention_days || 30 }}
+
+  backup-storage:
+    name: 📦 Backup Storage
+    runs-on: ubuntu-latest
+    needs: prepare-backup
+    if: |
+      (needs.prepare-backup.outputs.backup_type == 'full' ||
+       needs.prepare-backup.outputs.backup_type == 'storage-only') &&
+      (github.event.inputs.include_storage == 'true' || github.event_name == 'schedule')
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: 🔐 Setup credentials
+        run: |
+          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > firebase-credentials.json
+          echo "GOOGLE_APPLICATION_CREDENTIALS=firebase-credentials.json" >> $GITHUB_ENV
+
+      - name: 📦 List storage files
+        run: |
+          npm run storage:list -- --output=storage-manifest.json
+
+      - name: 💾 Download critical files
+        run: |
+          mkdir -p ${{ env.BACKUP_PATH }}/storage
+
+          # Backup crítico: documentos, configuraciones, assets
+          CRITICAL_PATHS=(
+            "documents/"
+            "configs/"
+            "assets/"
+            "uploads/"
+          )
+
+          for path in "${CRITICAL_PATHS[@]}"; do
+            echo "📥 Downloading: $path"
+            npm run storage:download -- \
+              --path="$path" \
+              --destination="${{ env.BACKUP_PATH }}/storage/" \
+              --recursive
+          done
+
+      - name: 🗜️ Compress storage backup
+        run: |
+          cd ${{ env.BACKUP_PATH }}
+          tar -czf storage-${{ needs.prepare-backup.outputs.backup_id }}.tar.gz storage/
+          rm -rf storage/
+
+      - name: 📤 Upload storage backup
+        uses: actions/upload-artifact@v4
+        with:
+          name: storage-backup-${{ needs.prepare-backup.outputs.backup_id }}
+          path: ${{ env.BACKUP_PATH }}/storage-*.tar.gz
+          retention-days: ${{ github.event.inputs.retention_days || 30 }}
+
+  backup-configurations:
+    name: ⚙️ Backup Configurations
+    runs-on: ubuntu-latest
+    needs: prepare-backup
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 📋 Collect configuration files
+        run: |
+          mkdir -p ${{ env.BACKUP_PATH }}/configs
+
+          # Copiar archivos de configuración
+          cp -r .github ${{ env.BACKUP_PATH }}/configs/
+          cp firebase.json ${{ env.BACKUP_PATH }}/configs/ || true
+          cp firestore.rules ${{ env.BACKUP_PATH }}/configs/ || true
+          cp firestore.indexes.json ${{ env.BACKUP_PATH }}/configs/ || true
+          cp storage.rules ${{ env.BACKUP_PATH }}/configs/ || true
+          cp package.json ${{ env.BACKUP_PATH }}/configs/
+          cp package-lock.json ${{ env.BACKUP_PATH }}/configs/
+          cp vite.config.js ${{ env.BACKUP_PATH }}/configs/ || true
+          cp tsconfig.json ${{ env.BACKUP_PATH }}/configs/ || true
+          cp .env.example ${{ env.BACKUP_PATH }}/configs/ || true
+
+      - name: 📊 Generate config report
+        run: |
+          cat > ${{ env.BACKUP_PATH }}/configs/backup-metadata.json <<EOF
+          {
+            "backup_id": "${{ needs.prepare-backup.outputs.backup_id }}",
+            "backup_date": "${{ needs.prepare-backup.outputs.backup_date }}",
+            "backup_type": "${{ needs.prepare-backup.outputs.backup_type }}",
+            "repository": "${{ github.repository }}",
+            "commit_sha": "${{ github.sha }}",
+            "branch": "${{ github.ref_name }}",
+            "triggered_by": "${{ github.actor }}",
+            "workflow_run": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          }
+          EOF
+
+      - name: 🗜️ Compress config backup
+        run: |
+          cd ${{ env.BACKUP_PATH }}
+          tar -czf configs-${{ needs.prepare-backup.outputs.backup_id }}.tar.gz configs/
+          rm -rf configs/
+
+      - name: 📤 Upload config backup
+        uses: actions/upload-artifact@v4
+        with:
+          name: config-backup-${{ needs.prepare-backup.outputs.backup_id }}
+          path: ${{ env.BACKUP_PATH }}/configs-*.tar.gz
+          retention-days: ${{ github.event.inputs.retention_days || 30 }}
+
+  consolidate-backup:
+    name: 📦 Consolidar Backup
+    runs-on: ubuntu-latest
+    needs: [prepare-backup, backup-firestore, backup-auth, backup-storage, backup-configurations]
+    if: always()
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 📥 Download all backups
+        uses: actions/download-artifact@v4
+        with:
+          path: all-backups/
+
+      - name: 📦 Create consolidated backup
+        run: |
+          mkdir -p consolidated
+
+          # Mover todos los archivos al directorio consolidado
+          find all-backups/ -name "*.tar.gz" -exec mv {} consolidated/ \;
+
+          # Crear archivo consolidado
+          cd consolidated
+          tar -czf ../backup-full-${{ needs.prepare-backup.outputs.backup_id }}.tar.gz .
+
+      - name: 📊 Generate backup report
+        run: |
+          SIZE=$(du -h backup-full-${{ needs.prepare-backup.outputs.backup_id }}.tar.gz | cut -f1)
+          FILES=$(tar -tzf backup-full-${{ needs.prepare-backup.outputs.backup_id }}.tar.gz | wc -l)
+
+          cat > backup-report.md <<EOF
+          # 📊 Backup Report
+
+          **Backup ID:** \`${{ needs.prepare-backup.outputs.backup_id }}\`
+          **Date:** ${{ needs.prepare-backup.outputs.backup_date }}
+          **Type:** ${{ needs.prepare-backup.outputs.backup_type }}
+          **Size:** $SIZE
+          **Files:** $FILES
+
+          ## Components
+          - ✅ Firestore: ${{ needs.backup-firestore.result }}
+          - ✅ Authentication: ${{ needs.backup-auth.result }}
+          - ✅ Storage: ${{ needs.backup-storage.result }}
+          - ✅ Configurations: ${{ needs.backup-configurations.result }}
+
+          ## Metadata
+          - Repository: ${{ github.repository }}
+          - Branch: ${{ github.ref_name }}
+          - Commit: ${{ github.sha }}
+          - Triggered by: ${{ github.actor }}
+          EOF
+
+          cat backup-report.md
+
+      - name: 📤 Upload consolidated backup
+        uses: actions/upload-artifact@v4
+        with:
+          name: consolidated-backup-${{ needs.prepare-backup.outputs.backup_id }}
+          path: |
+            backup-full-*.tar.gz
+            backup-report.md
+          retention-days: ${{ github.event.inputs.retention_days || 30 }}
+
+  upload-to-cloud:
+    name: ☁️ Upload to Cloud Storage
+    runs-on: ubuntu-latest
+    needs: [prepare-backup, consolidate-backup]
+    if: success()
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 📥 Download consolidated backup
+        uses: actions/download-artifact@v4
+        with:
+          name: consolidated-backup-${{ needs.prepare-backup.outputs.backup_id }}
+
+      - name: 🔐 Setup credentials
+        run: |
+          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > firebase-credentials.json
+          echo "GOOGLE_APPLICATION_CREDENTIALS=firebase-credentials.json" >> $GITHUB_ENV
+
+      - name: ☁️ Upload to Cloud Storage
+        run: |
+          gsutil cp backup-full-${{ needs.prepare-backup.outputs.backup_id }}.tar.gz \
+            gs://${{ env.BACKUP_BUCKET }}/${{ needs.prepare-backup.outputs.backup_date }}/
+
+      - name: 🗑️ Cleanup old backups
+        run: |
+          # Mantener solo los últimos 30 días de backups
+          CUTOFF_DATE=$(date -d "30 days ago" +%Y-%m-%d)
+          gsutil -m rm -r gs://${{ env.BACKUP_BUCKET }}/*/ \
+            | grep -v "$CUTOFF_DATE" || true
+
+  verify-backup:
+    name: ✅ Verificar Backup
+    runs-on: ubuntu-latest
+    needs: [prepare-backup, upload-to-cloud]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 🔐 Setup credentials
+        run: |
+          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > firebase-credentials.json
+          echo "GOOGLE_APPLICATION_CREDENTIALS=firebase-credentials.json" >> $GITHUB_ENV
+
+      - name: 🔍 Verify backup integrity
+        run: |
+          # Verificar que el backup existe en Cloud Storage
+          gsutil ls gs://${{ env.BACKUP_BUCKET }}/${{ needs.prepare-backup.outputs.backup_date }}/backup-full-${{ needs.prepare-backup.outputs.backup_id }}.tar.gz
+
+          # Descargar y verificar checksum
+          gsutil cp gs://${{ env.BACKUP_BUCKET }}/${{ needs.prepare-backup.outputs.backup_date }}/backup-full-${{ needs.prepare-backup.outputs.backup_id }}.tar.gz .
+
+          # Verificar que el archivo no está corrupto
+          tar -tzf backup-full-${{ needs.prepare-backup.outputs.backup_id }}.tar.gz > /dev/null
+
+          echo "✅ Backup verified successfully"
+
+  notify-success:
+    name: ✅ Notificar Éxito
+    runs-on: ubuntu-latest
+    needs: [prepare-backup, verify-backup]
+    if: success()
+
+    steps:
+      - name: 💬 Create success comment
+        run: |
+          echo "✅ Backup completado exitosamente"
+          echo "🔑 Backup ID: ${{ needs.prepare-backup.outputs.backup_id }}"
+          echo "📅 Date: ${{ needs.prepare-backup.outputs.backup_date }}"
+          echo "📦 Type: ${{ needs.prepare-backup.outputs.backup_type }}"
+
+  notify-failure:
+    name: 🚨 Notificar Fallo
+    runs-on: ubuntu-latest
+    needs: [prepare-backup, consolidate-backup, upload-to-cloud, verify-backup]
+    if: failure()
+
+    steps:
+      - name: 📧 Send failure notification
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: '🚨 CRITICAL: Automated Backup Failed'
+          body: |
+            ❌ El backup automático ha fallado.
+
+            🔑 Backup ID: ${{ needs.prepare-backup.outputs.backup_id }}
+            📅 Date: ${{ needs.prepare-backup.outputs.backup_date }}
+            📦 Type: ${{ needs.prepare-backup.outputs.backup_type }}
+            🔗 Details: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+            ACCIÓN REQUERIDA: Por favor, investiga y realiza un backup manual.
+          to: ${{ secrets.NOTIFICATION_EMAIL }}
+          from: Backup System
+
+      - name: 🐛 Create critical issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🚨 CRITICAL: Backup Failed - ${{ needs.prepare-backup.outputs.backup_id }}`,
+              body: `❌ El backup automático ha fallado.\n\n` +
+                    `**Backup ID:** \`${{ needs.prepare-backup.outputs.backup_id }}\`\n` +
+                    `**Date:** ${{ needs.prepare-backup.outputs.backup_date }}\n` +
+                    `**Type:** ${{ needs.prepare-backup.outputs.backup_type }}\n` +
+                    `**Run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\n\n` +
+                    `## ⚠️ ACCIÓN REQUERIDA\n` +
+                    `- [ ] Investigar causa del fallo\n` +
+                    `- [ ] Realizar backup manual\n` +
+                    `- [ ] Verificar integridad del sistema\n` +
+                    `- [ ] Notificar al equipo`,
+              labels: ['critical', 'backup', 'incident', 'high-priority'],
+              assignees: ['zoro488']
+            });

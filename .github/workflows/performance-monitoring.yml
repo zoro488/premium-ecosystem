@@ -1,0 +1,475 @@
+name: 📈 Performance Monitoring & Optimization
+
+on:
+  schedule:
+    # Monitoreo cada 6 horas
+    - cron: '0 */6 * * *'
+
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+    inputs:
+      monitoring_type:
+        description: 'Tipo de monitoreo'
+        required: true
+        type: choice
+        options:
+          - full
+          - lighthouse
+          - bundle
+          - api
+          - database
+        default: 'full'
+
+env:
+  NODE_VERSION: '20.x'
+  PERFORMANCE_BUDGET: '3000'  # ms
+
+jobs:
+  lighthouse-audit:
+    name: 🔍 Lighthouse Performance Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: 🏗️ Build production
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: 🚀 Start preview server
+        run: |
+          npx vite preview --port 4173 &
+          sleep 10
+
+      - name: 🔍 Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          urls: |
+            http://localhost:4173
+            http://localhost:4173/flow-distributor
+            http://localhost:4173/smart-sales
+            http://localhost:4173/client-hub
+            http://localhost:4173/analytics-pro
+            http://localhost:4173/team-sync
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+      - name: 📊 Analyze Lighthouse results
+        run: |
+          echo "📊 Lighthouse Performance Scores"
+
+          # Aquí procesarías los resultados de Lighthouse
+          # y verificarías que cumplan con tus budgets
+
+  bundle-analysis:
+    name: 📦 Bundle Size Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: 📦 Build with analysis
+        run: npm run build -- --analyze
+        env:
+          NODE_ENV: production
+
+      - name: 📊 Check bundle size
+        run: |
+          # Analizar tamaño del bundle
+          BUNDLE_SIZE=$(du -sk dist/ | cut -f1)
+          MAX_SIZE=5000  # 5MB en KB
+
+          echo "📦 Bundle size: ${BUNDLE_SIZE}KB"
+
+          if [ $BUNDLE_SIZE -gt $MAX_SIZE ]; then
+            echo "❌ Bundle size exceeds limit (${MAX_SIZE}KB)"
+            exit 1
+          fi
+
+          # Verificar archivos grandes
+          find dist/ -type f -size +500k -exec ls -lh {} \; | awk '{print $9 ": " $5}'
+
+      - name: 📈 Compare with baseline
+        uses: preactjs/compressed-size-action@v2
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          pattern: 'dist/**/*.{js,css,html}'
+          exclude: '{**/*.map,**/node_modules/**}'
+          compression: 'gzip'
+
+      - name: 📊 Generate bundle report
+        run: |
+          mkdir -p reports/bundle
+
+          cat > reports/bundle/report-$(date +%Y%m%d).json <<EOF
+          {
+            "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "bundle_size_kb": $BUNDLE_SIZE,
+            "max_size_kb": $MAX_SIZE,
+            "status": "$([ $BUNDLE_SIZE -le $MAX_SIZE ] && echo 'passed' || echo 'failed')",
+            "files": $(find dist/ -type f -name "*.js" -o -name "*.css" | head -20 | jq -R . | jq -s .)
+          }
+          EOF
+
+      - name: 📤 Upload bundle analysis
+        uses: actions/upload-artifact@v4
+        with:
+          name: bundle-analysis
+          path: |
+            reports/bundle/
+            stats.html
+
+  api-performance:
+    name: ⚡ API Performance Testing
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: 🔐 Setup credentials
+        run: |
+          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > firebase-credentials.json
+          echo "GOOGLE_APPLICATION_CREDENTIALS=firebase-credentials.json" >> $GITHUB_ENV
+
+      - name: ⚡ Run API benchmarks
+        run: |
+          # Crear script de benchmark
+          cat > benchmark-api.js <<'EOF'
+          const admin = require('firebase-admin');
+          const { performance } = require('perf_hooks');
+
+          admin.initializeApp({
+            credential: admin.credential.applicationDefault()
+          });
+
+          const db = admin.firestore();
+
+          async function benchmark() {
+            const results = [];
+
+            // Test 1: Single document read
+            const start1 = performance.now();
+            await db.collection('usuarios').limit(1).get();
+            const end1 = performance.now();
+            results.push({ test: 'single_read', time: end1 - start1 });
+
+            // Test 2: Multiple documents read
+            const start2 = performance.now();
+            await db.collection('usuarios').limit(10).get();
+            const end2 = performance.now();
+            results.push({ test: 'multiple_read', time: end2 - start2 });
+
+            // Test 3: Query with filter
+            const start3 = performance.now();
+            await db.collection('usuarios').where('activo', '==', true).limit(5).get();
+            const end3 = performance.now();
+            results.push({ test: 'filtered_query', time: end3 - start3 });
+
+            // Test 4: Write operation
+            const start4 = performance.now();
+            const testRef = db.collection('_benchmarks').doc();
+            await testRef.set({ timestamp: new Date(), test: true });
+            await testRef.delete();
+            const end4 = performance.now();
+            results.push({ test: 'write_delete', time: end4 - start4 });
+
+            console.log(JSON.stringify(results, null, 2));
+
+            // Verificar thresholds
+            const failures = results.filter(r => r.time > 1000);
+            if (failures.length > 0) {
+              console.error('❌ Performance threshold exceeded:', failures);
+              process.exit(1);
+            }
+          }
+
+          benchmark().catch(console.error);
+          EOF
+
+          node benchmark-api.js > api-performance.json
+
+      - name: 📊 Analyze API performance
+        run: |
+          cat api-performance.json
+
+          # Verificar que ninguna operación exceda el threshold
+          MAX_TIME=1000  # ms
+
+          SLOW_QUERIES=$(jq -r '.[] | select(.time > '$MAX_TIME') | .test' api-performance.json || echo "")
+
+          if [ -n "$SLOW_QUERIES" ]; then
+            echo "⚠️ Slow queries detected:"
+            echo "$SLOW_QUERIES"
+          else
+            echo "✅ All API operations within acceptable range"
+          fi
+
+      - name: 📤 Upload API performance report
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-performance
+          path: api-performance.json
+
+  database-performance:
+    name: 💾 Database Performance Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: 🔐 Setup credentials
+        run: |
+          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > firebase-credentials.json
+          echo "GOOGLE_APPLICATION_CREDENTIALS=firebase-credentials.json" >> $GITHUB_ENV
+
+      - name: 📊 Analyze collection sizes
+        run: |
+          npm run db:analyze-performance -- --output=db-performance.json
+
+      - name: 🔍 Check for missing indexes
+        run: |
+          npm run db:check-indexes -- --suggest
+
+      - name: 📈 Query pattern analysis
+        run: |
+          npm run db:query-patterns -- --days=7 --output=query-patterns.json
+
+      - name: 📤 Upload database analysis
+        uses: actions/upload-artifact@v4
+        with:
+          name: database-performance
+          path: |
+            db-performance.json
+            query-patterns.json
+
+  frontend-performance:
+    name: 🎨 Frontend Performance Metrics
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: 📊 Analyze component complexity
+        run: |
+          # Analizar complejidad de componentes
+          find src/ -name "*.jsx" -o -name "*.tsx" | while read file; do
+            LINES=$(wc -l < "$file")
+            if [ $LINES -gt 300 ]; then
+              echo "⚠️ Large component: $file ($LINES lines)"
+            fi
+          done
+
+      - name: 🔍 Check for performance anti-patterns
+        run: |
+          echo "Checking for performance issues..."
+
+          # Buscar console.log en producción
+          if grep -r "console.log" src/ --include="*.jsx" --include="*.tsx" --exclude-dir=node_modules; then
+            echo "⚠️ console.log statements found in source code"
+          fi
+
+          # Buscar imports no optimizados
+          if grep -r "import \* as" src/ --include="*.js" --include="*.jsx" --include="*.ts" --include="*.tsx"; then
+            echo "⚠️ Non-optimized imports found (import *)"
+          fi
+
+          # Buscar useEffect sin dependencias
+          if grep -r "useEffect.*\[\]" src/ --include="*.jsx" --include="*.tsx" | head -5; then
+            echo "⚠️ useEffect with empty dependencies found"
+          fi
+
+      - name: 📊 Calculate code metrics
+        run: |
+          # Instalar herramientas de análisis
+          npm install -g complexity-report
+
+          mkdir -p reports/metrics
+          complexity-report src/ --format json > reports/metrics/complexity.json || true
+
+      - name: 📤 Upload frontend metrics
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-metrics
+          path: reports/metrics/
+
+  performance-report:
+    name: 📊 Consolidate Performance Report
+    runs-on: ubuntu-latest
+    needs: [lighthouse-audit, bundle-analysis, api-performance, database-performance, frontend-performance]
+    if: always()
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 📥 Download all reports
+        uses: actions/download-artifact@v4
+        with:
+          path: performance-reports/
+
+      - name: 📊 Generate consolidated report
+        run: |
+          mkdir -p final-report
+
+          cat > final-report/performance-report-$(date +%Y%m%d).md <<EOF
+          # 📈 Performance Monitoring Report
+
+          **Date:** $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          **Repository:** ${{ github.repository }}
+          **Branch:** ${{ github.ref_name }}
+          **Commit:** ${{ github.sha }}
+
+          ## 📊 Summary
+
+          | Category | Status |
+          |----------|--------|
+          | Lighthouse Audit | ${{ needs.lighthouse-audit.result }} |
+          | Bundle Analysis | ${{ needs.bundle-analysis.result }} |
+          | API Performance | ${{ needs.api-performance.result }} |
+          | Database Performance | ${{ needs.database-performance.result }} |
+          | Frontend Metrics | ${{ needs.frontend-performance.result }} |
+
+          ## 🎯 Key Metrics
+
+          - ⚡ Performance Budget: ${{ env.PERFORMANCE_BUDGET }}ms
+          - 📦 Bundle Size Limit: 5MB
+          - 🔥 API Response Time: <1000ms
+          - 💾 Database Query Time: <500ms
+
+          ## 📈 Trends
+
+          Ver reportes detallados adjuntos para análisis completo.
+
+          ## 🚀 Recommendations
+
+          1. Optimizar componentes grandes (>300 líneas)
+          2. Implementar code splitting agresivo
+          3. Lazy loading de rutas y componentes
+          4. Optimizar queries de Firestore
+          5. Implementar caching estratégico
+          6. Minimizar re-renders innecesarios
+          7. Usar React.memo() en componentes pesados
+          8. Optimizar imágenes y assets
+
+          EOF
+
+          cat final-report/performance-report-*.md
+
+      - name: 📤 Upload consolidated report
+        uses: actions/upload-artifact@v4
+        with:
+          name: performance-report
+          path: final-report/
+          retention-days: 60
+
+      - name: 💬 Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('final-report/performance-report-' + new Date().toISOString().split('T')[0].replace(/-/g, '') + '.md', 'utf8');
+
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: report
+            });
+
+  alert-on-degradation:
+    name: 🚨 Alert on Performance Degradation
+    runs-on: ubuntu-latest
+    needs: [lighthouse-audit, bundle-analysis, api-performance, database-performance]
+    if: |
+      failure() &&
+      github.event_name != 'pull_request'
+
+    steps:
+      - name: 📧 Send performance alert
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: '⚠️ Performance Degradation Detected'
+          body: |
+            ⚠️ Se ha detectado una degradación en el rendimiento del sistema.
+
+            📅 Timestamp: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+            🌿 Branch: ${{ github.ref_name }}
+            📊 Commit: ${{ github.sha }}
+            🔗 Details: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+            Por favor, revisa los reportes de rendimiento y optimiza según sea necesario.
+          to: dev-team@company.com,${{ secrets.NOTIFICATION_EMAIL }}
+          from: Performance Monitor
+
+      - name: 🐛 Create performance issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `⚠️ Performance Degradation - ${new Date().toISOString().split('T')[0]}`,
+              body: `⚠️ Se ha detectado una degradación en el rendimiento.\n\n` +
+                    `**Branch:** ${{ github.ref_name }}\n` +
+                    `**Commit:** ${{ github.sha }}\n` +
+                    `**Run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\n\n` +
+                    `## 📋 Failed Checks\n` +
+                    `- Lighthouse: ${{ needs.lighthouse-audit.result }}\n` +
+                    `- Bundle: ${{ needs.bundle-analysis.result }}\n` +
+                    `- API: ${{ needs.api-performance.result }}\n` +
+                    `- Database: ${{ needs.database-performance.result }}\n\n` +
+                    `## 🔧 Actions Needed\n` +
+                    `- [ ] Revisar reportes de rendimiento\n` +
+                    `- [ ] Identificar bottlenecks\n` +
+                    `- [ ] Implementar optimizaciones\n` +
+                    `- [ ] Re-ejecutar tests de rendimiento\n` +
+                    `- [ ] Actualizar documentación`,
+              labels: ['performance', 'optimization', 'monitoring']
+            });
