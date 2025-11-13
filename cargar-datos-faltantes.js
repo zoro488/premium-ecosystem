@@ -182,14 +182,6 @@ async function main() {
           panelNombre: panel.nombre,
           tipo: 'gasto',
           fuente: panel.archivo
-        })) || []),
-        ...(p.gastos?.map(g => ({
-          id: `${panel.key}_gasto2_${generarId()}`,
-          ...g,
-          panel: panel.key,
-          panelNombre: panel.nombre,
-          tipo: 'gasto',
-          fuente: panel.archivo
         })) || [])
       ];
       

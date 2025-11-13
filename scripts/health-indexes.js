@@ -1,14 +1,16 @@
 #!/usr/bin/env node
-
 /**
  * Health Check - Firestore Indexes
  * Verifica el estado de los índices de Firestore
  */
-
 import admin from 'firebase-admin';
 import { readFileSync } from 'fs';
-import { join, dirname } from 'path';
+import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
+
+
+
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
