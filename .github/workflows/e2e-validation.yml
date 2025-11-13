@@ -1,0 +1,74 @@
+name: 🔥 Validación E2E Autónoma
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  validate-e2e:
+    name: Validación Excel → Firestore → UI
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+      
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: 📦 Install dependencies
+        run: npm ci --no-scripts
+        env:
+          HUSKY: 0
+      
+      - name: 🔧 Setup Firebase Emulators
+        run: |
+          npm install -g firebase-tools
+          firebase --version
+      
+      - name: 🔥 Start Firebase Emulators
+        run: |
+          firebase emulators:start --only firestore --project demo-test &
+          echo "Waiting for emulators to start..."
+          sleep 15
+          echo "Emulators should be ready"
+        env:
+          FIREBASE_EMULATOR_HUB: localhost:4400
+      
+      - name: ✅ Run E2E Validation Tests
+        run: npm test -- src/__tests__/e2e/excel-to-ui-validation.test.js --run
+        env:
+          FIRESTORE_EMULATOR_HOST: localhost:8080
+          NODE_ENV: test
+      
+      - name: 📊 Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-test-results
+          path: |
+            test-results/
+            coverage/
+          retention-days: 30
+      
+      - name: 🎉 Success notification
+        if: success()
+        run: |
+          echo "✅ E2E Validation Tests PASSED"
+          echo "All data validated correctly: Excel → Firestore → UI"
+      
+      - name: ❌ Failure notification
+        if: failure()
+        run: |
+          echo "❌ E2E Validation Tests FAILED"
+          echo "Check the test results for details"
+          exit 1
