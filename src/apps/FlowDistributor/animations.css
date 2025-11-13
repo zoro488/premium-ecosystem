@@ -4,7 +4,8 @@
 @layer animations {
   /* ==================== AURORA BACKGROUNDS ==================== */
   @keyframes aurora-slow {
-    0%, 100% {
+    0%,
+    100% {
       background-position: 0% 50%;
     }
     50% {
@@ -13,7 +14,8 @@
   }
 
   @keyframes aurora-fast {
-    0%, 100% {
+    0%,
+    100% {
       background-position: 100% 0%;
     }
     50% {
@@ -24,11 +26,11 @@
   .aurora-bg {
     background: linear-gradient(
       135deg,
-      #0F2027 0%,
-      #203A43 25%,
-      #2C5364 50%,
-      #141E30 75%,
-      #243B55 100%
+      #0f2027 0%,
+      #203a43 25%,
+      #2c5364 50%,
+      #141e30 75%,
+      #243b55 100%
     );
     background-size: 400% 400%;
     animation: aurora-slow 15s ease infinite;
@@ -64,18 +66,30 @@
     }
 
     @keyframes parallax-slow {
-      from { transform: translateY(0); }
-      to { transform: translateY(-100px); }
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-100px);
+      }
     }
 
     @keyframes parallax-medium {
-      from { transform: translateY(0); }
-      to { transform: translateY(-200px); }
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-200px);
+      }
     }
 
     @keyframes parallax-fast {
-      from { transform: translateY(0); }
-      to { transform: translateY(-400px); }
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-400px);
+      }
     }
   }
 
@@ -162,10 +176,8 @@
   }
 
   .magnetic-button:hover {
-    transform: translate(
-      calc((var(--mouse-x) - 50%) * 0.3),
-      calc((var(--mouse-y) - 50%) * 0.3)
-    ) scale(1.05);
+    transform: translate(calc((var(--mouse-x) - 50%) * 0.3), calc((var(--mouse-y) - 50%) * 0.3))
+      scale(1.05);
   }
 
   .magnetic-button::before {
@@ -189,7 +201,8 @@
 
   /* ==================== FLOAT & PULSE ==================== */
   @keyframes float {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0px);
     }
     50% {
@@ -202,7 +215,8 @@
   }
 
   @keyframes pulse-glow {
-    0%, 100% {
+    0%,
+    100% {
       box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
     }
     50% {
@@ -237,7 +251,8 @@
 
   /* ==================== GRADIENT TEXT ==================== */
   @keyframes gradient-shift {
-    0%, 100% {
+    0%,
+    100% {
       background-position: 0% 50%;
     }
     50% {
@@ -246,14 +261,7 @@
   }
 
   .gradient-text {
-    background: linear-gradient(
-      90deg,
-      #8B5CF6,
-      #06B6D4,
-      #10B981,
-      #F59E0B,
-      #EF4444
-    );
+    background: linear-gradient(90deg, #8b5cf6, #06b6d4, #10b981, #f59e0b, #ef4444);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -278,7 +286,8 @@
 
   /* ==================== SCALE PULSE ==================== */
   @keyframes scale-pulse {
-    0%, 100% {
+    0%,
+    100% {
       transform: scale(1);
     }
     50% {
@@ -296,20 +305,20 @@
       0 0 7px #fff,
       0 0 10px #fff,
       0 0 21px #fff,
-      0 0 42px #8B5CF6,
-      0 0 82px #8B5CF6,
-      0 0 92px #8B5CF6,
-      0 0 102px #8B5CF6,
-      0 0 151px #8B5CF6;
+      0 0 42px #8b5cf6,
+      0 0 82px #8b5cf6,
+      0 0 92px #8b5cf6,
+      0 0 102px #8b5cf6,
+      0 0 151px #8b5cf6;
   }
 
   .neon-border {
-    border: 2px solid #8B5CF6;
+    border: 2px solid #8b5cf6;
     box-shadow:
-      0 0 5px #8B5CF6,
-      0 0 10px #8B5CF6,
-      0 0 15px #8B5CF6,
-      0 0 20px #8B5CF6;
+      0 0 5px #8b5cf6,
+      0 0 10px #8b5cf6,
+      0 0 15px #8b5cf6,
+      0 0 20px #8b5cf6;
   }
 
   /* ==================== GLASSMORPHISM HOVER ==================== */

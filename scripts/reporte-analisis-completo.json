@@ -1,0 +1,255 @@
+{
+  "timestamp": "2025-10-26T09:44:28.169Z",
+  "estructuraExcel": {
+    "distribuidores": {
+      "totalFilas": 2,
+      "columnas": [
+        "nombre",
+        "costoTotal",
+        "abonos",
+        "deuda"
+      ],
+      "primeraFila": {
+        "nombre": "PACMAN",
+        "costoTotal": 6142500,
+        "abonos": 0,
+        "deuda": 6142500
+      }
+    },
+    "ordenesCompra": {
+      "totalFilas": 9,
+      "columnas": [
+        "oc",
+        "fecha",
+        "origen",
+        "cantidad",
+        "costoDistribuidor",
+        "costoTransporte",
+        "costoPorUnidad",
+        "costoTotal"
+      ],
+      "primeraFila": {
+        "oc": "OC0001",
+        "fecha": "2025-08-25",
+        "origen": "Q-MAYA",
+        "cantidad": 423,
+        "costoDistribuidor": 6100,
+        "costoTransporte": 200,
+        "costoPorUnidad": 6300,
+        "costoTotal": 2664900
+      }
+    },
+    "clientes": {
+      "totalFilas": 30,
+      "columnas": [
+        "nombre",
+        "actual",
+        "deuda",
+        "abonos",
+        "pendiente",
+        "observaciones"
+      ],
+      "primeraFila": {
+        "nombre": "Tavo",
+        "actual": "Pendiente",
+        "deuda": 0,
+        "abonos": 0,
+        "pendiente": 0,
+        "observaciones": "(33 panaderia)"
+      }
+    },
+    "ventas": {
+      "totalFilas": 96,
+      "columnas": [
+        "fecha",
+        "ocRelacionada",
+        "cantidad",
+        "cliente",
+        "bovedaMonte",
+        "precioVenta",
+        "ingreso",
+        "flete",
+        "fleteUtilidad",
+        "utilidad",
+        "estatus"
+      ],
+      "primeraFila": {
+        "fecha": "2025-08-23",
+        "ocRelacionada": "OC0001",
+        "cantidad": 150,
+        "cliente": "Bódega M-P",
+        "bovedaMonte": 945000,
+        "precioVenta": 6300,
+        "ingreso": 945000,
+        "flete": "Aplica",
+        "fleteUtilidad": 75000,
+        "utilidad": 0,
+        "estatus": "Pendiente"
+      }
+    }
+  },
+  "analisisPaneles": {
+    "PanelAlmacen": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "usaHook": "State",
+      "fuenteDatos": "{(() => {\n            const ingresos = ORDENES_COM"
+    },
+    "PanelAzteca": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "usaHook": "Memo",
+      "fuenteDatos": "No detectado"
+    },
+    "PanelBovedaMonte": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "usaHook": "Memo",
+      "fuenteDatos": "No detectado"
+    },
+    "PanelBovedaUSA": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "usaHook": "FlowStore",
+      "fuenteDatos": "No detectado"
+    },
+    "PanelBovedaUSASupremo": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "usaHook": "Particles",
+      "fuenteDatos": "No detectado"
+    },
+    "PanelDistribuidores": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "usaHook": "LocalStorage",
+      "fuenteDatos": "No detectado"
+    },
+    "PanelFleteSur": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "usaHook": "Memo",
+      "fuenteDatos": "No detectado"
+    },
+    "PanelGYA": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "usaHook": "Memo",
+      "fuenteDatos": "No detectado"
+    },
+    "PanelLeftie": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "usaHook": "Memo",
+      "fuenteDatos": "No detectado"
+    },
+    "PanelOrdenesCompra": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "usaHook": "LocalStorage",
+      "fuenteDatos": "{datosGraficos.comprasPorDistribuidor}\n          d"
+    },
+    "PanelProfit": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "usaHook": "Memo",
+      "fuenteDatos": "No detectado"
+    },
+    "PanelUtilidades": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "usaHook": "Memo",
+      "fuenteDatos": "No detectado"
+    },
+    "PanelVentaLocal": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "usaHook": "State",
+      "fuenteDatos": "No detectado"
+    },
+    "PanelVentas": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "usaHook": "LocalStorage",
+      "fuenteDatos": "{datosGraficos.tendenciaIngresos}\n          dataKe"
+    }
+  },
+  "reporteFaltantes": [
+    {
+      "panel": "PanelAzteca",
+      "error": "Hoja \"Banco Azteca\" no existe en Excel",
+      "gravedad": "CRÍTICA"
+    },
+    {
+      "panel": "PanelLeftie",
+      "error": "Hoja \"Banco LeftieÉ\" no existe en Excel",
+      "gravedad": "CRÍTICA"
+    },
+    {
+      "panel": "PanelAlmacen",
+      "error": "Hoja \"ALMACEN\" no existe en Excel",
+      "gravedad": "CRÍTICA"
+    },
+    {
+      "panel": "PanelBovedaUSA",
+      "error": "Hoja \"Boveda USA\" no existe en Excel",
+      "gravedad": "CRÍTICA"
+    },
+    {
+      "panel": "PanelBovedaMonte",
+      "error": "Hoja \"Boveda Monte\" no existe en Excel",
+      "gravedad": "CRÍTICA"
+    },
+    {
+      "panel": "PanelBovedaUSASupremo",
+      "error": "Hoja \"Boveda USA Supremo\" no existe en Excel",
+      "gravedad": "CRÍTICA"
+    },
+    {
+      "panel": "PanelDistribuidores",
+      "error": "Hoja \"Distribuidores\" no existe en Excel",
+      "gravedad": "CRÍTICA"
+    },
+    {
+      "panel": "PanelFleteSur",
+      "error": "Hoja \"Flete Sur\" no existe en Excel",
+      "gravedad": "CRÍTICA"
+    },
+    {
+      "panel": "PanelGYA",
+      "error": "Hoja \"Ganancia y Ahorro\" no existe en Excel",
+      "gravedad": "CRÍTICA"
+    },
+    {
+      "panel": "PanelProfit",
+      "error": "Hoja \"Profit\" no existe en Excel",
+      "gravedad": "CRÍTICA"
+    },
+    {
+      "panel": "PanelUtilidades",
+      "error": "Hoja \"Utilidades\" no existe en Excel",
+      "gravedad": "CRÍTICA"
+    },
+    {
+      "panel": "PanelOrdenesCompra",
+      "error": "Hoja \"Ordenes de compra\" no existe en Excel",
+      "gravedad": "CRÍTICA"
+    },
+    {
+      "panel": "PanelVentas",
+      "error": "Hoja \"Ventas\" no existe en Excel",
+      "gravedad": "CRÍTICA"
+    },
+    {
+      "panel": "PanelVentaLocal",
+      "error": "Hoja \"Venta Local\" no existe en Excel",
+      "gravedad": "CRÍTICA"
+    }
+  ],
+  "resumen": {
+    "totalHojasExcel": 6,
+    "totalPanelesImplementados": 14,
+    "panelesConProblemas": 14,
+    "panelesCompletos": 0
+  }
+}

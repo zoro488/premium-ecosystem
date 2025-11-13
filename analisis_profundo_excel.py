@@ -5,10 +5,19 @@ ANÁLISIS ULTRA PROFUNDO DEL EXCEL
 Extrae TODA la estructura, datos y lógica de negocio
 """
 
+import io
 import json
+import sys
 from datetime import datetime
+from typing import Any, Dict
 
 import openpyxl
+
+# Configurar encoding
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+elif hasattr(sys.stdout, 'buffer'):
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 
 def analizar_excel_completo():
@@ -45,13 +54,13 @@ def analizar_excel_completo():
         # Leer TODOS los clientes
         print(f'\nExtrayendo {ws.max_row - 1} clientes...')
         for row in range(2, ws.max_row + 1):
-            cliente = {}
+            cliente: Dict[str, Any] = {}
             for idx, header in enumerate(headers, 1):
                 cell = ws.cell(row, idx)
                 if cell.data_type == 'f':
-                    cliente[header] = {'formula': cell.value, 'valor': cell.value}
+                    cliente[header] = {'formula': str(cell.value), 'valor': str(cell.value)}
                 else:
-                    cliente[header] = cell.value
+                    cliente[header] = str(cell.value) if cell.value is not None else ''
 
             if any(cliente.values()):  # Solo agregar si tiene datos
                 resultado['clientes'].append(cliente)
@@ -80,13 +89,13 @@ def analizar_excel_completo():
             # Leer TODAS las ventas
             print(f'\nExtrayendo ventas de {sheet_name}...')
             for row in range(2, min(ws_ventas.max_row + 1, 100)):  # Primeras 100
-                venta = {'sheet': sheet_name}
+                venta: Dict[str, Any] = {'sheet': sheet_name}
                 for idx, header in enumerate(headers_ventas, 1):
                     cell = ws_ventas.cell(row, idx)
                     if cell.data_type == 'f':
-                        venta[header] = {'formula': cell.value, 'tipo': 'formula'}
+                        venta[header] = {'formula': str(cell.value), 'tipo': 'formula'}
                     else:
-                        venta[header] = cell.value
+                        venta[header] = str(cell.value) if cell.value is not None else ''
 
                 if any(v for k, v in venta.items() if k != 'sheet'):
                     resultado['ventas'].append(venta)
@@ -113,13 +122,13 @@ def analizar_excel_completo():
             # Leer TODOS los gastos/abonos
             print(f'\nExtrayendo gastos/abonos de {sheet_name}...')
             for row in range(2, min(ws_gastos.max_row + 1, 100)):  # Primeras 100
-                gasto = {'sheet': sheet_name}
+                gasto: Dict[str, Any] = {'sheet': sheet_name}
                 for idx, header in enumerate(headers_gastos, 1):
                     cell = ws_gastos.cell(row, idx)
                     if cell.data_type == 'f':
-                        gasto[header] = {'formula': cell.value, 'tipo': 'formula'}
+                        gasto[header] = {'formula': str(cell.value), 'tipo': 'formula'}
                     else:
-                        gasto[header] = cell.value
+                        gasto[header] = str(cell.value) if cell.value is not None else ''
 
                 if any(v for k, v in gasto.items() if k != 'sheet'):
                     resultado['gastos_abonos'].append(gasto)
@@ -232,7 +241,7 @@ def analizar_excel_completo():
     print('\n' + '=' * 80)
     print('✅ ANÁLISIS ULTRA PROFUNDO COMPLETADO')
     print('=' * 80)
-    print(f'\n📊 RESUMEN:')
+    print('\n📊 RESUMEN:')
     print(f'  - Clientes: {len(resultado["clientes"])}')
     print(f'  - Ventas: {len(resultado["ventas"])}')
     print(f'  - Gastos/Abonos: {len(resultado["gastos_abonos"])}')

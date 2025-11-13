@@ -1,5 +1,6 @@
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+
+import { AnimatePresence, motion } from 'framer-motion';
 import { X } from 'lucide-react';
 
 /**
@@ -166,11 +167,7 @@ export const Drawer = ({
               ${position === 'top' ? 'top-0 left-0 right-0 border-b' : ''}
               ${position === 'bottom' ? 'bottom-0 left-0 right-0 border-t' : ''}
             `}
-            style={
-              isHorizontal
-                ? { width }
-                : { height: width }
-            }
+            style={isHorizontal ? { width } : { height: width }}
             initial={positions[position].initial}
             animate={positions[position].animate}
             exit={positions[position].initial}
@@ -194,9 +191,7 @@ export const Drawer = ({
             </div>
 
             {/* Content */}
-            <div className="p-6 overflow-y-auto h-full">
-              {children}
-            </div>
+            <div className="p-6 overflow-y-auto h-full">{children}</div>
           </motion.div>
         </>
       )}
@@ -207,12 +202,7 @@ export const Drawer = ({
 /**
  * 💬 TOOLTIP - Tooltip animado premium
  */
-export const Tooltip = ({
-  children,
-  content,
-  position = 'top',
-  delay = 0,
-}) => {
+export const Tooltip = ({ children, content, position = 'top', delay = 0 }) => {
   const [isVisible, setIsVisible] = React.useState(false);
 
   const positions = {
@@ -271,12 +261,7 @@ export const Tooltip = ({
 /**
  * 🎪 POPOVER - Ventana emergente contextual
  */
-export const Popover = ({
-  trigger,
-  content,
-  position = 'bottom',
-  closeOnClick = true,
-}) => {
+export const Popover = ({ trigger, content, position = 'bottom', closeOnClick = true }) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   const positions = {
@@ -288,19 +273,14 @@ export const Popover = ({
 
   return (
     <div className="relative inline-block">
-      <div onClick={() => setIsOpen(!isOpen)}>
-        {trigger}
-      </div>
+      <div onClick={() => setIsOpen(!isOpen)}>{trigger}</div>
 
       <AnimatePresence>
         {isOpen && (
           <>
             {/* Backdrop invisible para cerrar */}
             {closeOnClick && (
-              <div
-                className="fixed inset-0 z-40"
-                onClick={() => setIsOpen(false)}
-              />
+              <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} />
             )}
 
             <motion.div

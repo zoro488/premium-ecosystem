@@ -1,0 +1,74 @@
+{
+  "total": 11,
+  "passed": 10,
+  "failed": 0,
+  "warnings": 1,
+  "issues": [
+    {
+      "component": "PanelVentas",
+      "severity": "success",
+      "description": "Todos los campos esperados están presentes",
+      "fix": null
+    },
+    {
+      "component": "PanelVentas",
+      "severity": "success",
+      "description": "VENTAS_LOCALES correctamente exportado",
+      "fix": null
+    },
+    {
+      "component": "PanelDistribuidores",
+      "severity": "warning",
+      "description": "Campos faltantes en OC: origen, costoPorUnidad, stockActual, pagoDistribuidor, deuda",
+      "fix": null
+    },
+    {
+      "component": "PanelClientes",
+      "severity": "success",
+      "description": "Todos los campos presentes",
+      "fix": null
+    },
+    {
+      "component": "PanelbovedaMonte",
+      "severity": "success",
+      "description": "Datos encontrados: 69 ingresos, 26 gastos",
+      "fix": null
+    },
+    {
+      "component": "Panelazteca",
+      "severity": "success",
+      "description": "Datos encontrados: 6 ingresos, 24 gastos",
+      "fix": null
+    },
+    {
+      "component": "Panelleftie",
+      "severity": "success",
+      "description": "Datos encontrados: 9 ingresos, 4 gastos",
+      "fix": null
+    },
+    {
+      "component": "Panelprofit",
+      "severity": "success",
+      "description": "Datos encontrados: 55 ingresos, 0 gastos",
+      "fix": null
+    },
+    {
+      "component": "PanelbovedaUsa",
+      "severity": "success",
+      "description": "Datos encontrados: 17 ingresos, 49 gastos",
+      "fix": null
+    },
+    {
+      "component": "PanelFletes",
+      "severity": "success",
+      "description": "FLETE_SUR correctamente exportado",
+      "fix": null
+    },
+    {
+      "component": "Excel Import",
+      "severity": "success",
+      "description": "Datos sin headers",
+      "fix": null
+    }
+  ]
+}

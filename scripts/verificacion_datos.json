@@ -1,0 +1,75 @@
+{
+  "Distribuidores": {
+    "excel_rows": 10,
+    "json_counts": {
+      "distribuidores": 997
+    }
+  },
+  "Control_Maestro": {
+    "excel_rows": 1000,
+    "json_counts": {
+      "controlMaestro": 96,
+      "tablaGYA": 303
+    }
+  },
+  "Almacen_Monte": {
+    "excel_rows": 99,
+    "json_counts": {
+      "almacenmonte": 96
+    }
+  },
+  "Bóveda_Monte": {
+    "excel_rows": 72,
+    "json_counts": {
+      "bovedamonte": 69
+    }
+  },
+  "Bóveda_USA": {
+    "excel_rows": 52,
+    "json_counts": {
+      "bovedausa": 49
+    }
+  },
+  "Azteca": {
+    "excel_rows": 27,
+    "json_counts": {
+      "azteca": 24
+    }
+  },
+  "Utilidades": {
+    "excel_rows": 55,
+    "json_counts": {
+      "utilidades": 52
+    }
+  },
+  "Flete_Sur": {
+    "excel_rows": 106,
+    "json_counts": {
+      "fletesur": 103
+    }
+  },
+  "Leftie": {
+    "excel_rows": 12,
+    "json_counts": {
+      "leftie": 9
+    }
+  },
+  "Profit": {
+    "excel_rows": 58,
+    "json_counts": {
+      "profit": 55
+    }
+  },
+  "Clientes": {
+    "excel_rows": 198,
+    "json_counts": {
+      "clientes": 197
+    }
+  },
+  "DATA": {
+    "excel_rows": 79,
+    "json_counts": {
+      "data": 83
+    }
+  }
+}

@@ -1,4 +1,5 @@
 # 🎯 PROMPT MAESTRO: VERIFICACIÓN E IMPLEMENTACIÓN COMPLETA
+
 ## FlowDistributor - Sistema de Gestión Operacional y Financiera
 
 ---
@@ -6,6 +7,7 @@
 ## 📌 OBJETIVO FINAL
 
 Implementar y verificar **al 100%** el sistema FlowDistributor con:
+
 - ✅ **0 errores** en compilación, linting y tests
 - ✅ **Lógica operacional perfecta** según especificaciones
 - ✅ **UI/UX responsiva** con actualizaciones automáticas en tiempo real
@@ -18,6 +20,7 @@ Implementar y verificar **al 100%** el sistema FlowDistributor con:
 ## 🧮 REGLAS DE NEGOCIO FUNDAMENTALES
 
 ### **FÓRMULA MAESTRA (INVARIANTE)**
+
 ```
 PV = FL + BM + UT
 
@@ -36,11 +39,13 @@ CASOS EDGE:
 ### **HISTÓRICO vs CAPITAL (CRÍTICO)**
 
 **HISTÓRICO (Acumulativo Fijo):**
+
 - ✅ Se registra **AL GENERAR LA VENTA** (independiente del pago)
 - ✅ Siempre va **SUBIENDO** (nunca disminuye)
 - ✅ Muestra el total de operaciones registradas
 
 **CAPITAL (Variable):**
+
 - ✅ Se actualiza **AL COBRAR/ABONAR**
 - ✅ Varía según: +Ingresos +Transferencias_IN -Gastos -Transferencias_OUT
 - ✅ Representa el dinero **disponible** en cada banco
@@ -52,6 +57,7 @@ CASOS EDGE:
 ### **MÓDULOS PRINCIPALES**
 
 #### **1. ÓRDENES DE COMPRA (OC)**
+
 ```
 FLUJO:
 1. Usuario llena OCForm → Proveedor + Items (producto, cantidad, costo_unitario)
@@ -64,11 +70,13 @@ FLUJO:
 ```
 
 **COMPONENTES:**
+
 - ✅ `OCForm`: Formulario registro OC
 - ✅ `DistribuidorList`: Panel con perfiles + adeudos
 - ✅ `PagoDistribuidorDialog`: Abono/Saldar + Selección banco origen
 
 **VALIDACIONES:**
+
 - ❌ No permitir cantidad ≤ 0
 - ❌ No permitir costo unitario < 0
 - ✅ Crear distribuidor si no existe
@@ -76,6 +84,7 @@ FLUJO:
 ---
 
 #### **2. VENTAS**
+
 ```
 FLUJO:
 1. Usuario llena VentaForm:
@@ -117,6 +126,7 @@ FLUJO:
 ```
 
 **COMPONENTES:**
+
 - ✅ `VentaForm`: Formulario registro venta
   - ✅ Input Cliente
   - ✅ Select Estado (COMPLETO/PARCIAL/NADA)
@@ -128,6 +138,7 @@ FLUJO:
 - ✅ `AbonoClienteDialog`: Abono/Saldar + Selección banco destino
 
 **VALIDACIONES:**
+
 - ❌ No permitir cantidad ≤ 0
 - ❌ No permitir precio_venta < 0
 - ❌ No permitir flete < 0
@@ -138,6 +149,7 @@ FLUJO:
 ---
 
 #### **3. ALMACÉN**
+
 ```
 ESTRUCTURA:
 - Stock Actual: Cantidad disponible (Entradas - Salidas)
@@ -146,6 +158,7 @@ ESTRUCTURA:
 ```
 
 **COMPONENTES:**
+
 - ✅ `AlmacenPanel`:
   - ✅ Tabla Stock Actual (producto, cantidad)
   - ✅ Tabla Histórico Entradas (OC, producto, cantidad, fecha)
@@ -153,6 +166,7 @@ ESTRUCTURA:
   - ✅ Indicador visual: Entradas (verde), Salidas (rojo)
 
 **REGLAS:**
+
 - ✅ Stock NUNCA puede ser negativo
 - ✅ Entradas/Salidas son **inmutables** (WORM: Write Once Read Many)
 
@@ -161,6 +175,7 @@ ESTRUCTURA:
 #### **4. BANCOS (6 TOTALES)**
 
 **BANCOS CON REGISTRO AUTOMÁTICO POR VENTAS:**
+
 1. **Bóveda Monte** (BM)
 2. **Fletes** (FL)
 3. **Utilidades** (UT)
@@ -171,6 +186,7 @@ ESTRUCTURA:
 6. **Profit**
 
 **ESTRUCTURA DE CADA BANCO:**
+
 ```javascript
 {
   nombre: string,
@@ -208,6 +224,7 @@ ESTRUCTURA:
 ```
 
 **COMPONENTES POR BANCO:**
+
 - ✅ Card **Histórico** (solo lectura, badge verde)
 - ✅ Card **Capital** (editable vía operaciones, badge azul)
 - ✅ Card **Total Gastos** (histórico acumulativo, badge rojo)
@@ -235,6 +252,7 @@ ESTRUCTURA:
 **OPERACIONES:**
 
 **A. TRANSFERENCIA (Banco → Banco):**
+
 ```
 1. Usuario selecciona Banco Origen (ej: BM)
 2. Llena TransferenciaForm:
@@ -252,7 +270,7 @@ ESTRUCTURA:
    Banco Origen (BM):
    - capital: -5000
    - transferencias: +{ tipo:'salida', hacia:'Azteca', monto:5000, ... }
-   
+
    Banco Destino (Azteca):
    - historico: +5000
    - capital: +5000
@@ -262,6 +280,7 @@ ESTRUCTURA:
 ```
 
 **B. GASTO (Banco → Egreso):**
+
 ```
 1. Usuario selecciona Banco (ej: Azteca)
 2. Llena GastoForm:
@@ -282,6 +301,7 @@ ESTRUCTURA:
 ```
 
 **C. INGRESO (Solo Azteca/Leftie/Profit):**
+
 ```
 1. Usuario selecciona Banco (ej: Profit)
 2. Llena IngresoForm:
@@ -320,7 +340,7 @@ FLUJO ABONO:
 
 5. DISTRIBUCIÓN PROPORCIONAL (opcional avanzada):
    Si se implementa distribución FL→BM→UT:
-   
+
    Ejemplo: Venta de $10,000 con FL=$4,000, BM=$3,000, UT=$3,000
    Abono de $5,000 se distribuye:
    - FL: $5,000 × (4,000/10,000) = $2,000 → Banco Fletes capital +$2,000
@@ -331,6 +351,7 @@ FLUJO ABONO:
 ```
 
 **COMPONENTES:**
+
 - ✅ `ClientesList`: Panel clientes
   - ✅ Cards por cliente (nombre, total ventas, adeudo)
   - ✅ Badge rojo si adeudo > 0, verde si = 0
@@ -374,6 +395,7 @@ FLUJO PAGO:
 ```
 
 **COMPONENTES:**
+
 - ✅ `DistribuidorList`: Panel distribuidores
   - ✅ Cards por distribuidor (nombre, total OCs, adeudo)
   - ✅ Badge rojo si adeudo > 0, verde si = 0
@@ -392,6 +414,7 @@ FLUJO PAGO:
 ## 🧪 CHECKLIST DE VERIFICACIÓN (100+ PUNTOS)
 
 ### **A. ÓRDENES DE COMPRA**
+
 - [ ] 1. OCForm valida campos obligatorios (proveedor, productos)
 - [ ] 2. OCForm valida cantidad > 0
 - [ ] 3. OCForm valida costo_unitario ≥ 0
@@ -406,6 +429,7 @@ FLUJO PAGO:
 - [ ] 12. UI se actualiza en tiempo real (sin refresh manual)
 
 ### **B. VENTAS**
+
 - [ ] 13. VentaForm muestra todos los campos requeridos
 - [ ] 14. Campo "Monto Abonado" solo visible si Estado = PARCIAL
 - [ ] 15. VentaForm valida cantidad > 0
@@ -425,6 +449,7 @@ FLUJO PAGO:
 - [ ] 29. Adeudo cliente = PV - Monto Abonado
 
 ### **C. REGISTROS AUTOMÁTICOS (BÓVEDA MONTE)**
+
 - [ ] 30. BM.historico aumenta en +PV (siempre, sin importar estado)
 - [ ] 31. Si Estado = COMPLETO: BM.capital aumenta en +PV
 - [ ] 32. Si Estado = PARCIAL: BM.capital aumenta en +Monto Abonado
@@ -433,6 +458,7 @@ FLUJO PAGO:
 - [ ] 35. Registro muestra badge según estado (verde/amarillo/rojo)
 
 ### **D. REGISTROS AUTOMÁTICOS (FLETES)**
+
 - [ ] 36. FL.historico aumenta en +FL (siempre)
 - [ ] 37. Si Estado = COMPLETO: FL.capital aumenta en +FL
 - [ ] 38. Si Estado = PARCIAL: FL.capital aumenta proporcional
@@ -440,6 +466,7 @@ FLUJO PAGO:
 - [ ] 40. Registro en FL incluye: venta_id, FL, estado
 
 ### **E. REGISTROS AUTOMÁTICOS (UTILIDADES)**
+
 - [ ] 41. UT.historico aumenta en +UT (siempre)
 - [ ] 42. Si Estado = COMPLETO: UT.capital aumenta en +UT
 - [ ] 43. Si Estado = PARCIAL: UT.capital aumenta proporcional
@@ -447,6 +474,7 @@ FLUJO PAGO:
 - [ ] 45. Registro en UT incluye: venta_id, UT, estado
 
 ### **F. ALMACÉN (SALIDAS POR VENTA)**
+
 - [ ] 46. Stock Actual se decrementa correctamente
 - [ ] 47. Stock NUNCA puede ser < 0
 - [ ] 48. Histórico Salidas se incrementa correctamente
@@ -454,6 +482,7 @@ FLUJO PAGO:
 - [ ] 50. Salida incluye: venta_id, producto, cantidad, fecha
 
 ### **G. ABONOS DE CLIENTES**
+
 - [ ] 51. ClientesList muestra todos los clientes con ventas
 - [ ] 52. Badge rojo si adeudo > 0, verde si = 0
 - [ ] 53. AbonoClienteDialog valida monto > 0
@@ -465,6 +494,7 @@ FLUJO PAGO:
 - [ ] 59. UI se actualiza en tiempo real
 
 ### **H. PAGOS A DISTRIBUIDORES**
+
 - [ ] 60. DistribuidorList muestra todos los distribuidores
 - [ ] 61. Badge rojo si adeudo > 0, verde si = 0
 - [ ] 62. PagoDistribuidorDialog muestra select de bancos
@@ -479,6 +509,7 @@ FLUJO PAGO:
 - [ ] 71. UI se actualiza en tiempo real
 
 ### **I. TRANSFERENCIAS (BANCO → BANCO)**
+
 - [ ] 72. TransferenciaForm valida monto > 0
 - [ ] 73. TransferenciaForm valida monto ≤ capital banco origen
 - [ ] 74. TransferenciaForm valida banco_destino ≠ banco_origen
@@ -491,6 +522,7 @@ FLUJO PAGO:
 - [ ] 81. UI se actualiza en tiempo real
 
 ### **J. GASTOS**
+
 - [ ] 82. GastoForm valida monto > 0
 - [ ] 83. GastoForm valida monto ≤ capital banco
 - [ ] 84. GastoForm valida concepto no vacío
@@ -501,6 +533,7 @@ FLUJO PAGO:
 - [ ] 89. UI se actualiza en tiempo real
 
 ### **K. INGRESOS (AZTECA/LEFTIE/PROFIT)**
+
 - [ ] 90. IngresoForm solo visible en Azteca/Leftie/Profit
 - [ ] 91. IngresoForm valida monto > 0
 - [ ] 92. IngresoForm valida concepto no vacío
@@ -510,6 +543,7 @@ FLUJO PAGO:
 - [ ] 96. UI se actualiza en tiempo real
 
 ### **L. VISUALIZACIÓN DE DATOS**
+
 - [ ] 97. Todos los paneles muestran datos actualizados sin refresh
 - [ ] 98. Cards Histórico muestran valores acumulativos
 - [ ] 99. Cards Capital muestran valores actuales
@@ -520,6 +554,7 @@ FLUJO PAGO:
 - [ ] 104. Gráficos se actualizan en tiempo real
 
 ### **M. VALIDACIONES GENERALES**
+
 - [ ] 105. No se permiten valores negativos en montos
 - [ ] 106. No se permiten campos vacíos en formularios obligatorios
 - [ ] 107. Notificaciones se muestran en cada operación
@@ -529,6 +564,7 @@ FLUJO PAGO:
 - [ ] 111. Adeudos nunca pueden ser negativos
 
 ### **N. PERFORMANCE**
+
 - [ ] 112. LCP (Largest Contentful Paint) < 2.0s
 - [ ] 113. INP (Interaction to Next Paint) < 200ms
 - [ ] 114. CLS (Cumulative Layout Shift) < 0.1
@@ -536,6 +572,7 @@ FLUJO PAGO:
 - [ ] 116. Animaciones smooth (60 FPS)
 
 ### **O. ACCESIBILIDAD (A11Y)**
+
 - [ ] 117. axe-core: 0 errores críticos
 - [ ] 118. Todos los botones tienen focus-visible
 - [ ] 119. Formularios tienen labels correctos
@@ -548,6 +585,7 @@ FLUJO PAGO:
 ## 🔍 PROCEDIMIENTO DE VERIFICACIÓN
 
 ### **PASO 1: ANÁLISIS ESTÁTICO**
+
 ```bash
 # TypeScript
 pnpm dlx tsc --noEmit
@@ -560,6 +598,7 @@ pnpm dlx prettier --check "src/**/*.{js,jsx,ts,tsx,json,css,md}"
 ```
 
 ### **PASO 2: TESTS UNITARIOS**
+
 ```bash
 # Vitest
 pnpm test:unit
@@ -571,6 +610,7 @@ pnpm test:unit
 ```
 
 ### **PASO 3: TESTS DE INTEGRACIÓN**
+
 ```bash
 # Con Firebase/LocalStorage
 pnpm test:integration
@@ -583,6 +623,7 @@ pnpm test:integration
 ```
 
 ### **PASO 4: TESTS E2E (PLAYWRIGHT)**
+
 ```bash
 pnpm test:e2e
 
@@ -596,6 +637,7 @@ pnpm test:e2e
 ```
 
 ### **PASO 5: TESTS A11Y**
+
 ```bash
 pnpm test:a11y
 
@@ -609,6 +651,7 @@ pnpm test:a11y
 ```
 
 ### **PASO 6: TESTS PERFORMANCE**
+
 ```bash
 # Lighthouse CI
 pnpm test:perf
@@ -627,6 +670,7 @@ pnpm test:perf
 ### **SI UNA VERIFICACIÓN FALLA:**
 
 1. **Imprime error detallado:**
+
    ```
    ❌ FALLO: [Archivo:Línea]
    Razón: [Descripción del error]
@@ -635,6 +679,7 @@ pnpm test:perf
    ```
 
 2. **Genera diff/patch sugerido:**
+
    ```diff
    - código_actual
    + código_corregido

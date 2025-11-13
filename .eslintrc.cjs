@@ -6,49 +6,47 @@ module.exports = {
     node: true,
   },
   extends: [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:react/jsx-runtime",
-    "plugin:react-hooks/recommended",
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+    'prettier', // Desactiva reglas que conflictúan con Prettier
   ],
-  ignorePatterns: ["dist", ".eslintrc.cjs"],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'node_modules', 'coverage', 'build', '.vite'],
   parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
+    ecmaVersion: 'latest',
+    sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
     },
   },
   settings: {
-    react: { version: "18.2" },
+    react: { version: '18.3' },
   },
-  plugins: ["react-refresh"],
+  plugins: ['react-refresh'],
   rules: {
-    "react/jsx-no-target-blank": "off",
-    "react-refresh/only-export-components": [
-      "warn",
-      { allowConstantExport: true },
-    ],
-    "react/prop-types": "off",
-    "no-unused-vars": [
-      "warn",
+    'react/jsx-no-target-blank': 'off',
+    'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+    'react/prop-types': 'off',
+    'no-unused-vars': [
+      'warn',
       {
-        argsIgnorePattern: "^_",
-        varsIgnorePattern: "^_",
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
       },
     ],
     // Performance optimizations
-    "no-console": ["warn", { allow: ["warn", "error"] }],
-    "no-debugger": "warn",
-    "prefer-const": "warn",
-    "no-var": "error",
+    'no-console': ['warn', { allow: ['warn', 'error'] }],
+    'no-debugger': 'warn',
+    'prefer-const': 'warn',
+    'no-var': 'error',
     // React performance
-    "react-hooks/exhaustive-deps": "warn",
-    "react/jsx-no-constructed-context-values": "warn",
-    "react/no-array-index-key": "warn",
+    'react-hooks/exhaustive-deps': 'warn',
+    'react/jsx-no-constructed-context-values': 'warn',
+    'react/no-array-index-key': 'warn',
     // Code quality
-    "eqeqeq": ["error", "always", { null: "ignore" }],
-    "no-duplicate-imports": "error",
-    "no-template-curly-in-string": "warn",
+    eqeqeq: ['error', 'always', { null: 'ignore' }],
+    'no-duplicate-imports': 'error',
+    'no-template-curly-in-string': 'warn',
   },
 };

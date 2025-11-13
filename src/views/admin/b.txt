@@ -1,0 +1,53 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+
+interface ChronosCardProps {
+    children: React.ReactNode;
+    className?: string;
+    title?: string;
+    icon?: React.ElementType;
+    glowColor?: 'blue' | 'green' | 'purple' | 'red' | 'amber';
+    delay?: number;
+    hoverEffect?: boolean;
+}
+
+export const ChronosCard = ({
+    children,
+    className = '',
+    title,
+    icon: Icon,
+    glowColor = 'blue',
+    delay = 0,
+    hoverEffect = false
+}: ChronosCardProps) => {
+    const glows = {
+        blue: 'group-hover:shadow-neon-blue/30 group-hover:border-neon-blue/40',
+        green: 'group-hover:shadow-neon-green/30 group-hover:border-neon-green/40',
+        purple: 'group-hover:shadow-neon-purple/30 group-hover:border-neon-purple/40',
+        red: 'group-hover:shadow-neon-red/30 group-hover:border-neon-red/40',
+        amber: 'group-hover:shadow-neon-amber/30 group-hover:border-neon-amber/40',
+    };
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay }}
+            className={`relative group overflow-hidden rounded-3xl bg-chronos-glass backdrop-blur-xl border border-chronos-border shadow-glass transition-all duration-500 ${hoverEffect ? glows[glowColor] : ''} ${className}`}
+        >
+            {hoverEffect && (
+                <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700 bg-[radial-gradient(circle_at_50%_0%,_${glowColor === 'blue' ? '#0ea5e9' : glowColor === 'purple' ? '#8b5cf6' : '#10b981'},_transparent_70%)]`} />
+            )}
+
+            <div className="relative z-10 p-6 h-full flex flex-col">
+                {title && (
+                    <div className="flex items-center space-x-3 mb-6 opacity-70 group-hover:opacity-100 transition-opacity">
+                        {Icon && <div className={`p-2 rounded-lg bg-white/5 text-neon-${glowColor}`}><Icon size={18} /></div>}
+                        <h3 className="font-orbitron text-xs tracking-[0.2em] text-white uppercase">{title}</h3>
+                    </div>
+                )}
+                {children}
+            </div>
+        </motion.div>
+    );
+};

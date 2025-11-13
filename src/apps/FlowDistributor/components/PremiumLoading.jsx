@@ -95,7 +95,12 @@ export const PremiumLoader = ({ size = 'md', variant = 'spinner' }) => {
 /**
  * 💀 SKELETON - Skeleton screen animado
  */
-export const Skeleton = ({ width = '100%', height = '20px', className = '', variant = 'default' }) => {
+export const Skeleton = ({
+  width = '100%',
+  height = '20px',
+  className = '',
+  variant = 'default',
+}) => {
   const variants = {
     default: 'bg-gray-700/50',
     card: 'bg-gray-800/50',
@@ -128,9 +133,7 @@ export const Skeleton = ({ width = '100%', height = '20px', className = '', vari
 export const SkeletonCard = ({ showImage = false, lines = 3 }) => {
   return (
     <div className="bg-gray-800/50 backdrop-blur-lg rounded-2xl p-6 border border-gray-700/50">
-      {showImage && (
-        <Skeleton width="100%" height="200px" className="mb-4" variant="card" />
-      )}
+      {showImage && <Skeleton width="100%" height="200px" className="mb-4" variant="card" />}
 
       <Skeleton width="60%" height="24px" className="mb-4" variant="text" />
 

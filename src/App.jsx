@@ -1,12 +1,5 @@
-import { Suspense, lazy, useEffect } from 'react';
-import {
-  Link,
-  Route,
-  BrowserRouter as Router,
-  Routes,
-  useLocation,
-  useNavigate,
-} from 'react-router-dom';
+import { Suspense, lazy, useEffect, useState } from 'react';
+import { Route, BrowserRouter as Router, Routes, useLocation, useNavigate } from 'react-router-dom';
 
 import { motion } from 'framer-motion';
 import {
@@ -20,15 +13,64 @@ import {
   Wallet,
 } from 'lucide-react';
 
+import { ChronosToastContainer } from './apps/FlowDistributor/chronos-system/components/chronos-ui/ChronosToast';
+// 🌟 NEW PREMIUM ROUTES SYSTEM
+import { SplashScreen } from './components/premium/brand/SplashScreen';
+import { ToastProvider } from './components/premium/ui/UltraToastSystem';
+import { AppRoutes } from './routes/AppRoutes';
 import { initGA, logPageView } from './utils/analytics';
 
 // Lazy loading de las 5 aplicaciones para mejorar rendimiento
-const FlowDistributor = lazy(() => import('./apps/FlowDistributor/FlowDistributor'));
+// ✅ ACTIVADO - FlowDistributor nuevo sistema completo integrado
+const FlowDistributorPage = lazy(
+  () => import('./apps/FlowDistributor/chronos-system/pages/FlowDistributorPage')
+);
 const ShadowPrime = lazy(() => import('./apps/ShadowPrime/ShadowPrime'));
 const Apollo = lazy(() => import('./apps/Apollo/Apollo'));
 const Synapse = lazy(() => import('./apps/Synapse/Synapse'));
 const Nexus = lazy(() => import('./apps/Nexus/Nexus'));
 const FirebaseSetup = lazy(() => import('./components/FirebaseSetup'));
+
+// 🔐 AUTH - Login Screen
+const LoginScreen = lazy(() => import('./pages/auth/LoginScreen'));
+
+// ❌ DESACTIVADO - Test viejo
+// const TestBovedaMonte = lazy(() => import('./apps/FlowDistributor/TestBovedaMonte'));
+
+// 🏦 BANCOS - Sistema Completo de Gestión Bancaria
+// const BancosPageComplete = lazy(() => import('./apps/FlowDistributor/chronos-system/pages/BancosPageComplete'));
+const BancosTransacciones = lazy(
+  () => import('./apps/FlowDistributor/chronos-system/pages/BancosTransacciones')
+);
+const BancosAnalytics = lazy(
+  () => import('./apps/FlowDistributor/chronos-system/pages/BancosAnalytics')
+);
+
+// 🏦 BANCOS INDIVIDUALES - Los 7 Paneles
+const BovedaMontePage = lazy(
+  () => import('./apps/FlowDistributor/chronos-system/pages/bancos/BovedaMontePage')
+);
+const BovedaUSAPage = lazy(
+  () => import('./apps/FlowDistributor/chronos-system/pages/bancos/BovedaUSAPage')
+);
+const UtilidadesPage = lazy(
+  () => import('./apps/FlowDistributor/chronos-system/pages/bancos/UtilidadesPage')
+);
+const FletesPage = lazy(
+  () => import('./apps/FlowDistributor/chronos-system/pages/bancos/FletesPage')
+);
+const AztecaPage = lazy(
+  () => import('./apps/FlowDistributor/chronos-system/pages/bancos/AztecaPage')
+);
+const LeftiePage = lazy(
+  () => import('./apps/FlowDistributor/chronos-system/pages/bancos/LeftiePage')
+);
+const ProfitPage = lazy(
+  () => import('./apps/FlowDistributor/chronos-system/pages/bancos/ProfitPage')
+);
+const BanorteePage = lazy(
+  () => import('./apps/FlowDistributor/chronos-system/pages/bancos/BanorteePage')
+);
 
 // Componente de Loading optimizado
 const LoadingScreen = ({ _appName }) => {
@@ -113,19 +155,31 @@ const StarField = () => {
   );
 };
 
-// Configuración de las 5 aplicaciones
+// Configuración de las 5 aplicaciones + Chronos
 const apps = [
+  // ✅ CHRONOS - Sistema integral de gestión empresarial (antes FlowDistributor)
   {
-    id: 'flow',
-    name: 'FlowDistributor',
-    description: 'Sistema de gestión empresarial y distribución',
+    id: 'chronos',
+    name: 'Chronos System',
+    description: 'Sistema integral de gestión empresarial con 7 módulos',
     icon: Building2,
     color: 'from-blue-500 to-cyan-500',
     bgColor: 'bg-blue-500/10',
     borderColor: 'border-blue-500/20',
-    path: '/flow',
-    component: FlowDistributor,
+    path: '/chronos',
+    component: FlowDistributorPage,
   },
+  // {
+  //   id: 'bancos',
+  //   name: 'Bancos',
+  //   description: 'Gestión completa de cuentas bancarias',
+  //   icon: Wallet,
+  //   color: 'from-emerald-500 to-teal-500',
+  //   bgColor: 'bg-emerald-500/10',
+  //   borderColor: 'border-emerald-500/20',
+  //   path: '/bancos',
+  //   component: BancosPageComplete,
+  // },
   {
     id: 'shadow',
     name: 'ShadowPrime',
@@ -191,7 +245,7 @@ const AppCard = ({ app }) => {
       {/* Efecto de brillo en hover */}
       <div
         className={`
-        absolute inset-0 bg-gradient-to-r ${app.color} 
+        absolute inset-0 bg-gradient-to-r ${app.color}
         opacity-0 group-hover:opacity-10 transition-opacity duration-500
       `}
       />
@@ -258,7 +312,7 @@ const Hub = () => {
           <h1 className="text-6xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-gradient">
             Premium Ecosystem
           </h1>
-          <p className="text-xl text-slate-400">5 aplicaciones empresariales de nueva generación</p>
+          <p className="text-xl text-slate-400">6 aplicaciones empresariales de nueva generación</p>
         </motion.div>
 
         {/* Grid de aplicaciones */}
@@ -332,42 +386,231 @@ const AnalyticsTracker = () => {
 
 // Componente principal con routing
 function App() {
+  // State para controlar splash screen
+  const [showSplash, setShowSplash] = useState(true);
+  const [user, setUser] = useState(null);
+
   useEffect(() => {
     initGA();
+
+    // Show splash screen for 3 seconds
+    const timer = setTimeout(() => {
+      setShowSplash(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
   }, []);
+
+  const handleLogin = (userData) => {
+    setUser(userData);
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+  };
+
+  // Show splash screen
+  if (showSplash) {
+    return <SplashScreen />;
+  }
 
   return (
     <Router>
-      <AnalyticsTracker />
-      <Routes>
-        {/* Página principal - Hub */}
-        <Route path="/" element={<Hub />} />
+      <ToastProvider position="top-right" maxToasts={5}>
+        <AnalyticsTracker />
+        <Routes>
+          {/* ==========================================
+              🌟 NEW PREMIUM SYSTEM ROUTES
+              ========================================== */}
+          <Route
+            path="/premium/*"
+            element={<AppRoutes user={user} onLogin={handleLogin} onLogout={handleLogout} />}
+          />
 
-        {/* Ruta de Firebase Setup */}
-        <Route
-          path="/firebase-setup"
+          {/* ==========================================
+              🏠 LEGACY ECOSYSTEM ROUTES
+              ========================================== */}
+          {/* Página principal - Hub */}
+          <Route path="/" element={<Hub />} />
+
+          {/* 🔐 Login Screen */}
+          <Route
+            path="/login"
+            element={
+              <Suspense fallback={<LoadingScreen _appName="Login" />}>
+                <LoginScreen />
+              </Suspense>
+            }
+          />
+
+          {/* Ruta de Firebase Setup */}
+          <Route
+            path="/firebase-setup"
+            element={
+              <Suspense fallback={<LoadingScreen _appName="Firebase Setup" />}>
+                <FirebaseSetup />
+              </Suspense>
+            }
+          />
+
+          {/* ❌ DESACTIVADO - Test viejo */}
+          {/* <Route
+          path="/test-boveda-monte"
           element={
-            <Suspense fallback={<LoadingScreen _appName="Firebase Setup" />}>
-              <FirebaseSetup />
+            <Suspense fallback={<LoadingScreen _appName="Test Bóveda Monte" />}>
+              <TestBovedaMonte />
             </Suspense>
           }
-        />
+        /> */}
 
-        {/* Rutas de las 5 aplicaciones con Suspense para lazy loading */}
-        {apps.map((app) => (
+          {/* � CHRONOS - Sistema Integral de Gestión Empresarial */}
           <Route
-            key={app.id}
-            path={app.path}
+            path="/chronos/*"
             element={
-              <AppWrapper _appName={app.name} _appColor={app.color}>
-                <Suspense fallback={<LoadingScreen _appName={app.name} />}>
-                  <app.component />
+              <AppWrapper _appName="Chronos System" _appColor="blue">
+                <Suspense fallback={<LoadingScreen _appName="Chronos" />}>
+                  <FlowDistributorPage />
                 </Suspense>
               </AppWrapper>
             }
           />
-        ))}
-      </Routes>
+
+          {/* <Route
+          path="/bancos"
+          element={
+            <AppWrapper _appName="Bancos" _appColor="blue">
+              <Suspense fallback={<LoadingScreen _appName="Gestión Bancaria" />}>
+                <BancosPageComplete />
+              </Suspense>
+            </AppWrapper>
+          }
+        /> */}
+
+          {/* 📊 BANCOS - Transacciones */}
+          <Route
+            path="/bancos/transacciones"
+            element={
+              <AppWrapper _appName="Bancos - Transacciones" _appColor="blue">
+                <Suspense fallback={<LoadingScreen _appName="Transacciones" />}>
+                  <BancosTransacciones />
+                </Suspense>
+              </AppWrapper>
+            }
+          />
+
+          {/* 📈 BANCOS - Analytics */}
+          <Route
+            path="/bancos/analytics"
+            element={
+              <AppWrapper _appName="Bancos - Analytics" _appColor="blue">
+                <Suspense fallback={<LoadingScreen _appName="Analytics" />}>
+                  <BancosAnalytics />
+                </Suspense>
+              </AppWrapper>
+            }
+          />
+
+          {/* 🏦 BANCOS INDIVIDUALES - Los 7 Paneles de Bancos */}
+          <Route
+            path="/bancos/boveda-monte"
+            element={
+              <AppWrapper _appName="Bóveda Monte" _appColor="purple">
+                <Suspense fallback={<LoadingScreen _appName="Bóveda Monte" />}>
+                  <BovedaMontePage />
+                </Suspense>
+              </AppWrapper>
+            }
+          />
+          <Route
+            path="/bancos/boveda-usa"
+            element={
+              <AppWrapper _appName="Bóveda USA" _appColor="blue">
+                <Suspense fallback={<LoadingScreen _appName="Bóveda USA" />}>
+                  <BovedaUSAPage />
+                </Suspense>
+              </AppWrapper>
+            }
+          />
+          <Route
+            path="/bancos/utilidades"
+            element={
+              <AppWrapper _appName="Utilidades" _appColor="green">
+                <Suspense fallback={<LoadingScreen _appName="Utilidades" />}>
+                  <UtilidadesPage />
+                </Suspense>
+              </AppWrapper>
+            }
+          />
+          <Route
+            path="/bancos/fletes"
+            element={
+              <AppWrapper _appName="Fletes" _appColor="orange">
+                <Suspense fallback={<LoadingScreen _appName="Fletes" />}>
+                  <FletesPage />
+                </Suspense>
+              </AppWrapper>
+            }
+          />
+          <Route
+            path="/bancos/azteca"
+            element={
+              <AppWrapper _appName="Azteca" _appColor="red">
+                <Suspense fallback={<LoadingScreen _appName="Azteca" />}>
+                  <AztecaPage />
+                </Suspense>
+              </AppWrapper>
+            }
+          />
+          <Route
+            path="/bancos/leftie"
+            element={
+              <AppWrapper _appName="Leftie" _appColor="cyan">
+                <Suspense fallback={<LoadingScreen _appName="Leftie" />}>
+                  <LeftiePage />
+                </Suspense>
+              </AppWrapper>
+            }
+          />
+          <Route
+            path="/bancos/profit"
+            element={
+              <AppWrapper _appName="Profit" _appColor="indigo">
+                <Suspense fallback={<LoadingScreen _appName="Profit" />}>
+                  <ProfitPage />
+                </Suspense>
+              </AppWrapper>
+            }
+          />
+          <Route
+            path="/bancos/banorte"
+            element={
+              <AppWrapper _appName="Banorte" _appColor="red">
+                <Suspense fallback={<LoadingScreen _appName="Banorte" />}>
+                  <BanorteePage />
+                </Suspense>
+              </AppWrapper>
+            }
+          />
+
+          {/* Rutas de las 5 aplicaciones con Suspense para lazy loading */}
+          {apps.map((app) => (
+            <Route
+              key={app.id}
+              path={`${app.path}/*`}
+              element={
+                <AppWrapper _appName={app.name} _appColor={app.color}>
+                  <Suspense fallback={<LoadingScreen _appName={app.name} />}>
+                    <app.component />
+                  </Suspense>
+                </AppWrapper>
+              }
+            />
+          ))}
+        </Routes>
+
+        {/* Toast Container - Sistema de notificaciones premium */}
+        <ChronosToastContainer />
+      </ToastProvider>
     </Router>
   );
 }

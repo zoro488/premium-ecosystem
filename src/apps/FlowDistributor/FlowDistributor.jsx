@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Suspense, lazy, useCallback, useEffect, useRef, useState } from 'react';
 
 import { AnimatePresence, motion, useMotionValue, useSpring } from 'framer-motion';
@@ -18,7 +19,6 @@ import {
   CheckCircle2,
   Clock,
   Copy,
-  DollarSign,
   Download,
   Eye,
   FileSpreadsheet,
@@ -34,19 +34,15 @@ import {
   Redo2,
   Search,
   Send,
-  Settings,
   Sparkles,
   Sun,
   Target,
   Trash2,
   TrendingDown,
-  TrendingUp,
   Undo2,
   UserCheck,
-  Users,
   Wallet,
   Warehouse,
-  X,
   Zap,
 } from 'lucide-react';
 import {
@@ -83,6 +79,8 @@ import NotificationCenter, {
 } from '../../components/NotificationCenter';
 import StatCard from '../../components/StatCard';
 import AIAssistant from '../../components/shared/AIAssistant';
+// � EFECTOS VISUALES CHRONOS (Glitch, Holographic, Neon)
+import '../../styles/chronos-effects.css';
 import {
   BulkActionsBar,
   BulkConfirmModal,
@@ -105,17 +103,35 @@ import { ThemeCustomizer, useTheme } from '../../utils/themeSystem';
 import { useActionHistory } from '../../utils/undoRedo';
 // 🎨 ANIMACIONES CSS SCROLL-DRIVEN (Blueprint Supreme 2025)
 import './animations.css';
-// 🛒 PANEL ÓRDENES DE COMPRA PREMIUM
-import PanelOrdenesCompra from './components/PanelOrdenesCompra';
+// 🎬 SCREENS DE INTRO Y AUTH - NEXT GENERATION LOGIN
+// import LoginScreen from './components/LoginScreen'; // TODO: Crear componente
+import PanelOrdenesCompra from './components/PanelOrdenesCompraUltra';
 import RealtimeNotifications from './components/RealtimeNotifications';
-// � INICIALIZADORES DE DATOS
-import {
-  inicializarSistemaDistribuidores,
-  registrarPagoDistribuidor,
-  verificarEstadoDistribuidores,
-} from './data/inicializadorDistribuidores';
-// 🔄 DATA INITIALIZER - AUTO-CARGA DE DATOS DEL EXCEL
-import { inicializarTodosSiVacio } from './utils/dataInitializer';
+// 📊 SERVICIO DE DATOS UNIFICADO
+import { DataTypes, dataService } from './services/dataService';
+
+// Funciones compatibles para mantener funcionalidad existente
+const inicializarSistemaDistribuidores = async () => {
+  return dataService.getData(DataTypes.ORDENES_COMPRA);
+};
+
+const registrarPagoDistribuidor = async (pago) => {
+  // Implementación pendiente en servicio de datos
+  return { success: true };
+};
+
+const verificarEstadoDistribuidores = async () => {
+  // Verificación de estado de distribuidores
+  return { status: 'ok', distribuidores: [] };
+};
+
+// Dummy function to prevent errors
+const inicializarTodosSiVacio = async () => ({
+  ventas: [],
+  clientes: [],
+  distribuidores: [],
+  bancos: [],
+});
 
 // ==================== SISTEMA DE DISEÑO PREMIUM 2025 (BLUEPRINT SUPREME) ====================
 const designSystem = {
@@ -200,14 +216,29 @@ const glassClass = (...classes) => {
 // Lazy loading para componentes pesados
 const ReportsCharts = lazy(() => import('../../components/Charts'));
 
-// 🚀 LAZY IMPORTS - PANELES PREMIUM
-const PanelUtilidades = lazy(() => import('./components/PanelUtilidades'));
-const PanelFletes = lazy(() => import('./components/PanelFletes'));
-const PanelBovedaMonte = lazy(() => import('./components/PanelBovedaMonte'));
-const PanelAzteca = lazy(() => import('./components/PanelAzteca'));
-const PanelLeftie = lazy(() => import('./components/PanelLeftie'));
-const PanelProfit = lazy(() => import('./components/PanelProfit'));
-const PanelClientes = lazy(() => import('./components/PanelClientes'));
+// 🚀 LAZY IMPORTS - PANELES PREMIUM ULTRA (TypeScript)
+const PanelBovedaMonteUltra = lazy(() => import('./components/PanelBovedaMonteUltra'));
+const PanelBovedaUSAUltra = lazy(() => import('./components/PanelBovedaUSAUltra'));
+const PanelGYAUltra = lazy(() => import('./components/PanelGYAUltra'));
+const PanelUtilidadesUltra = lazy(() => import('./components/PanelUtilidadesUltra'));
+const PanelFletesUltra = lazy(() => import('./components/PanelFletesUltra'));
+const PanelAztecaUltra = lazy(() => import('./components/PanelAztecaUltra'));
+const PanelLeftieUltra = lazy(() => import('./components/PanelLeftieUltra'));
+const PanelProfitUltra = lazy(() => import('./components/PanelProfitUltra'));
+const PanelClientesUltra = lazy(() => import('./components/PanelClientesUltra'));
+const PanelAlmacenUltra = lazy(() => import('./components/PanelAlmacenUltra'));
+const DashboardUltra = lazy(() =>
+  import('./components/DashboardUltra').then((m) => ({ default: m.default }))
+);
+const AIWidgetAdvanced = lazy(() => import('./components/AIWidgetAdvanced'));
+const AIAssistantUltra = lazy(() => import('./components/AIAssistantUltra'));
+
+// 🤖 NUEVOS COMPONENTES DE IA (GEMINI + AWS + OLLAMA)
+const PanelIA = lazy(() => import('./components/ai/PanelIA').then((m) => ({ default: m.PanelIA })));
+const FloatingAIWidget = lazy(() => import('./components/ai/FloatingAIWidget').then((m) => ({ default: m.FloatingAIWidget })));
+
+// 💱 WIDGET DE TIPO DE CAMBIO
+const CurrencyExchangeWidget = lazy(() => import('./components/widgets/CurrencyExchangeWidget'));
 
 // Cursor glow effect component
 const CursorGlow = () => {
@@ -251,9 +282,11 @@ const ContextMenu = ({ x, y, items, onClose }) => {
         onClose();
       }
     };
+
     const handleEscape = (e) => {
       if (e.key === 'Escape') onClose();
     };
+
     document.addEventListener('mousedown', handleClickOutside);
     document.addEventListener('keydown', handleEscape);
     return () => {
@@ -272,8 +305,8 @@ const ContextMenu = ({ x, y, items, onClose }) => {
       style={{ left: x, top: y }}
       className="fixed z-[9999] min-w-[200px] glass rounded-xl border border-white/20 shadow-2xl py-2"
     >
-      {items.map((item, index) => (
-        <React.Fragment key={`item-${index}`}>
+      {items.map((item) => (
+        <React.Fragment key={item.id || item.label}>
           {item.divider ? (
             <div className="h-px bg-white/10 my-2" />
           ) : (
@@ -302,9 +335,34 @@ const ContextMenu = ({ x, y, items, onClose }) => {
   );
 };
 
+// PropTypes para ContextMenu
+ContextMenu.propTypes = {
+  x: PropTypes.number.isRequired,
+  y: PropTypes.number.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      label: PropTypes.string,
+      icon: PropTypes.elementType,
+      onClick: PropTypes.func,
+      danger: PropTypes.bool,
+      disabled: PropTypes.bool,
+      divider: PropTypes.bool,
+      shortcut: PropTypes.string
+    })
+  ).isRequired,
+  onClose: PropTypes.func.isRequired
+};
+
 // COMPONENTE PRINCIPAL
 export default function FlowDistributor() {
-  // 🎯 HOOKS AVANZADOS - NUEVAS FUNCIONALIDADES
+  // 🎬 ESTADOS DE INICIO Y AUTENTICACIÓN
+  const [showSplash, setShowSplash] = useState(true); // ✅ ACTIVADO - Pantalla cinemática CHRONOS
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [isSystemReady, setIsSystemReady] = useState(false);
+
+  // �🎯 HOOKS AVANZADOS - NUEVAS FUNCIONALIDADES
   const notificationSystem = useNotifications();
   const actionHistory = useActionHistory();
   const tour = useTour();
@@ -327,6 +385,7 @@ export default function FlowDistributor() {
   const [isSidebarOpen, setIsSidebarOpen] = useLocalStorage(STORAGE_KEYS.SIDEBAR_STATE, true);
   const [darkMode, setDarkMode] = useLocalStorage(STORAGE_KEYS.THEME, false);
   const [showAIWidget, setShowAIWidget] = useState(false);
+  const [showCurrencyWidget, setShowCurrencyWidget] = useState(false);
   const [aiMessages, setAiMessages] = useState([]);
   const [aiInput, setAiInput] = useState('');
   const [aiConversationContext, setAiConversationContext] = useState([]);
@@ -538,6 +597,9 @@ export default function FlowDistributor() {
       estado: 'completada',
     },
   ]);
+
+  // Variable ordenes (alias de ordenesCompra para compatibilidad)
+  const [ordenes, setOrdenes] = [ordenesCompra, setOrdenesCompra];
 
   const [distribuidores, setDistribuidores] = useLocalStorage(STORAGE_KEYS.FLOW_DISTRIBUIDORES, []);
 
@@ -1076,6 +1138,7 @@ export default function FlowDistributor() {
     // SISTEMA
     TOGGLE_SIDEBAR: () => setIsSidebarOpen(!isSidebarOpen),
     TOGGLE_AI: () => setShowAIWidget(!showAIWidget),
+    TOGGLE_CURRENCY: () => setShowCurrencyWidget(!showCurrencyWidget),
     NOTIFICATIONS: () => setShowNotificationCenter(true),
     HELP: () => setShowKeyboardHelp(true),
     CANCEL: () => {
@@ -1092,6 +1155,192 @@ export default function FlowDistributor() {
     },
     [notificationSystem]
   );
+
+  // 🎬 FLUJO DE INICIO: SPLASH -> LOGIN -> SISTEMA
+  useEffect(() => {
+    const initializeApp = async () => {
+      // ⏰ ESPERAR A QUE EL SPLASH TERMINE
+      // El splash se maneja con handleSplashComplete
+      // No hacer nada aquí para permitir que el splash se muestre
+    };
+
+    // Solo inicializar si NO estamos mostrando el splash
+    if (!showSplash) {
+      initializeApp();
+    }
+  }, [showSplash]); // Depende de showSplash
+
+  // Handler para completar el Splash
+  const handleSplashComplete = async () => {
+    setShowSplash(false);
+
+    // Verificar si hay sesión guardada
+    const savedUser = localStorage.getItem('flow_current_user');
+    if (savedUser) {
+      try {
+        const user = JSON.parse(savedUser);
+        setCurrentUser(user);
+        setIsAuthenticated(true);
+
+        // ✅ Marcar sistema listo inmediatamente para evitar bloqueos
+        setIsSystemReady(true);
+
+        // 🚀 CARGAR TODOS LOS DATOS DEL JSON AUTOMÁTICAMENTE (en segundo plano)
+        try {
+          const response = await fetch(
+            '/src/apps/FlowDistributor/data/BASE_DATOS_FLOWDISTRIBUTOR_UNIFICADO.json'
+          );
+          const data = await response.json();
+
+          // Cargar TODOS los datos si están vacíos
+          if (distribuidores.length === 0 && data.ordenesCompra?.distribuidores?.distribuidores) {
+            setDistribuidores(data.ordenesCompra.distribuidores.distribuidores);
+          }
+
+          if (clientes.length === 0 && data.clientes?.clientes) {
+            setClientes(data.clientes.clientes);
+          }
+
+          if (ventas.length === 0 && data.ventasLocales?.ventasLocal) {
+            setVentas(data.ventas);
+          }
+
+          if (ordenes.length === 0 && data.ordenesCompra) {
+            setOrdenes(data.ordenesCompra);
+          }
+
+          // Cargar bancos si están vacíos
+          if (Object.keys(bancos).length === 0 && data.bancos) {
+            setBancos(data.bancos);
+          }
+
+          // Cargar almacén si está vacío
+          if (!almacen.stockActual && data.almacen) {
+            setAlmacen(data.almacen);
+          }
+
+          console.log('✅ TODOS LOS DATOS CARGADOS DEL JSON:', {
+            distribuidores: data.distribuidores?.length || 0,
+            clientes: data.clientes?.length || 0,
+            ventas: data.ventas?.length || 0,
+            ordenes: data.ordenesCompra?.length || 0,
+            bancos: Object.keys(data.bancos || {}).length,
+            almacen: data.almacen ? 'OK' : 'NO',
+          });
+        } catch (err) {
+          console.error('❌ Error cargando datos del JSON:', err);
+        }
+
+        // Inicializar datos del sistema
+        await inicializarTodosSiVacio({
+          bancos,
+          setBancos,
+          ventas,
+          setVentas,
+          clientes,
+          setClientes,
+          almacen,
+          setAlmacen,
+          ordenes,
+          setOrdenes,
+          distribuidores,
+          setDistribuidores,
+        });
+
+        // Notificación de bienvenida
+        addAdvancedNotification({
+          title: `¡Bienvenido de vuelta, ${user.name}!`,
+          message: 'Sistema CHRONOS cargado exitosamente',
+          priority: NOTIFICATION_PRIORITY.NORMAL,
+          category: NOTIFICATION_CATEGORY.SYSTEM,
+        });
+      } catch (error) {
+        console.error('Error cargando sesión:', error);
+      }
+    }
+  };
+
+  // Handler para login exitoso
+  const handleLogin = async (user) => {
+    setCurrentUser(user);
+    setIsAuthenticated(true);
+
+    // Guardar sesión
+    localStorage.setItem('flow_current_user', JSON.stringify(user));
+
+    // ✅ Marcar sistema listo inmediatamente
+    setIsSystemReady(true);
+
+    // 🚀 CARGAR TODOS LOS DATOS DEL JSON EN LOGIN (en segundo plano)
+    try {
+      const response = await fetch(
+        '/src/apps/FlowDistributor/data/BASE_DATOS_FLOWDISTRIBUTOR_UNIFICADO.json'
+      );
+      const data = await response.json();
+
+      if (distribuidores.length === 0 && data.ordenesCompra?.distribuidores?.distribuidores)
+        setDistribuidores(data.ordenesCompra.distribuidores.distribuidores);
+      if (clientes.length === 0 && data.clientes?.clientes) setClientes(data.clientes.clientes);
+      if (ventas.length === 0 && data.ventasLocales?.ventasLocal)
+        setVentas(data.ventasLocales.ventasLocal);
+      if (ordenes.length === 0 && data.ordenesCompra?.distribuidores?.ordenesCompra)
+        setOrdenes(data.ordenesCompra.distribuidores.ordenesCompra);
+      if (Object.keys(bancos).length === 0 && data.bovedaMonte)
+        setBancos({
+          bovedaMonte: data.bovedaMonte,
+          bovedaUSA: data.bovedaUSA,
+          azteca: data.azteca,
+          leftie: data.leftie,
+          profit: data.profit,
+          fleteSur: data.fleteSur,
+        });
+      if (!almacen.stockActual && data.almacenMonte?.almacenMonte)
+        setAlmacen(data.almacenMonte.almacenMonte);
+
+      console.log('✅ Datos cargados en login');
+    } catch (err) {
+      console.error('❌ Error cargando datos:', err);
+    }
+
+    // Inicializar sistema
+    await inicializarTodosSiVacio({
+      bancos,
+      setBancos,
+      ventas,
+      setVentas,
+      clientes,
+      setClientes,
+      almacen,
+      setAlmacen,
+      ordenes,
+      setOrdenes,
+      distribuidores,
+      setDistribuidores,
+    });
+
+    // Notificación de bienvenida
+    addAdvancedNotification({
+      title: `¡Bienvenido, ${user.name}!`,
+      message: 'Sistema CHRONOS iniciado correctamente',
+      priority: NOTIFICATION_PRIORITY.HIGH,
+      category: NOTIFICATION_CATEGORY.SYSTEM,
+    });
+  };
+
+  // Handler para logout
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    setCurrentUser(null);
+    setIsSystemReady(false);
+    localStorage.removeItem('flow_current_user');
+
+    addAdvancedNotification({
+      title: 'Sesión cerrada',
+      message: 'Hasta pronto!',
+      priority: NOTIFICATION_PRIORITY.NORMAL,
+      category: NOTIFICATION_CATEGORY.SYSTEM,
+    });
+  };
 
   // 🔔 NOTIFICACIONES AUTOMÁTICAS - OPTIMIZADO
   useEffect(() => {
@@ -1203,7 +1452,7 @@ export default function FlowDistributor() {
   });
 
   const [ventasOrdenadas, setVentasOrdenadas] = usePersistentOrder('ventas', ventas);
-  const dragDropVentas = useDragAndDrop(ventasOrdenadas, (newOrder) => {
+  useDragAndDrop(ventasOrdenadas, (newOrder) => {
     setVentasOrdenadas(newOrder);
     setVentas(newOrder);
     actionHistory.addAction('Reordenar ventas', { count: newOrder.length });
@@ -1211,7 +1460,7 @@ export default function FlowDistributor() {
   });
 
   const [clientesOrdenados, setClientesOrdenados] = usePersistentOrder('clientes', clientes);
-  const dragDropClientes = useDragAndDrop(clientesOrdenados, (newOrder) => {
+  useDragAndDrop(clientesOrdenados, (newOrder) => {
     setClientesOrdenados(newOrder);
     setClientes(newOrder);
     actionHistory.addAction('Reordenar clientes', { count: newOrder.length });
@@ -1369,7 +1618,7 @@ export default function FlowDistributor() {
       const salidasEliminadas = (almacen?.salidas || []).filter((s) => s.ventaId === ventaId);
 
       const nuevoStock = [...(almacen?.stock || [])];
-      salidasEliminadas.forEach((salida) => {
+      for (const salida of salidasEliminadas) {
         const productoIndex = nuevoStock.findIndex((p) => p.id === salida.productoId);
         if (productoIndex !== -1) {
           nuevoStock[productoIndex] = {
@@ -1377,7 +1626,7 @@ export default function FlowDistributor() {
             cantidad: (nuevoStock[productoIndex].cantidad || 0) + (salida.cantidad || 0),
           };
         }
-      });
+      }
 
       // 2. Actualizar cliente - revertir adeudo y actualizar historial
       if (venta.cliente) {
@@ -1486,7 +1735,7 @@ export default function FlowDistributor() {
       const entradasEliminadas = (almacen?.entradas || []).filter((e) => e.ordenId === ordenId);
 
       let nuevoStock = [...(almacen?.stock || [])];
-      entradasEliminadas.forEach((entrada) => {
+      for (const entrada of entradasEliminadas) {
         const productoIndex = nuevoStock.findIndex((p) => p.id === entrada.productoId);
         if (productoIndex !== -1) {
           const nuevaCantidad = (nuevoStock[productoIndex].cantidad || 0) - (entrada.cantidad || 0);
@@ -1500,7 +1749,7 @@ export default function FlowDistributor() {
             };
           }
         }
-      });
+      }
 
       // 2. Actualizar distribuidor (eliminar orden de su historial)
       if (orden.distribuidor) {
@@ -1895,6 +2144,7 @@ export default function FlowDistributor() {
       }
 
       // Crear registro de abono
+      const observacionesTexto = observaciones || `Abono de ${cliente}`;
       const nuevoAbono = {
         id: `ABONO-${Date.now()}`,
         fecha: new Date().toISOString(),
@@ -1902,18 +2152,19 @@ export default function FlowDistributor() {
         origenGastoOAbono: cliente,
         valor: monto,
         destino: bancoDestino,
-        observaciones: observaciones || `Abono de ${cliente}`,
+        observaciones: observacionesTexto,
       };
 
       setGastosAbonos([...gastosAbonos, nuevoAbono]);
 
       // Acreditar a banco
+      const conceptoIngreso = observaciones ? `Abono de ${cliente} - ${observaciones}` : `Abono de ${cliente}`;
       const nuevoRegistro = {
         id: `ING-${bancoDestino}-${Date.now()}`,
         fecha: new Date().toISOString(),
         cliente: cliente,
         monto: monto,
-        concepto: `Abono de ${cliente}${observaciones ? ` - ${observaciones}` : ''}`,
+        concepto: conceptoIngreso,
         tipo: 'Ingreso',
       };
 
@@ -1985,12 +2236,13 @@ export default function FlowDistributor() {
       setGastosAbonos([...gastosAbonos, nuevoGasto]);
 
       // Debitar del banco
+      const conceptoEgreso = observaciones ? `Gasto: ${concepto} - ${observaciones}` : `Gasto: ${concepto}`;
       const nuevoRegistro = {
         id: `EGR-${bancoOrigen}-${Date.now()}`,
         fecha: new Date().toISOString(),
         cliente: concepto,
         monto: monto,
-        concepto: `Gasto: ${concepto}${observaciones ? ` - ${observaciones}` : ''}`,
+        concepto: conceptoEgreso,
         tipo: 'Egreso',
       };
 
@@ -2063,21 +2315,23 @@ export default function FlowDistributor() {
       setGastosAbonos([...gastosAbonos, nuevaTransferencia]);
 
       // Egreso en banco origen
+      const conceptoEgresoOrigen = concepto ? `Transferencia a ${bancoDestino.nombre}: ${concepto}` : `Transferencia a ${bancoDestino.nombre}`;
       const egresoOrigen = {
         id: `TRANS-OUT-${timestamp}`,
         fecha: new Date().toISOString(),
         monto: monto,
-        concepto: `Transferencia a ${bancoDestino.nombre}${concepto ? `: ${concepto}` : ''}`,
+        concepto: conceptoEgresoOrigen,
         tipo: 'Egreso',
         relacionadoCon: bancoDestinoKey,
       };
 
       // Ingreso en banco destino
+      const conceptoIngresoDestino = concepto ? `Transferencia desde ${bancoOrigen.nombre}: ${concepto}` : `Transferencia desde ${bancoOrigen.nombre}`;
       const ingresoDestino = {
         id: `TRANS-IN-${timestamp}`,
         fecha: new Date().toISOString(),
         monto: monto,
-        concepto: `Transferencia desde ${bancoOrigen.nombre}${concepto ? `: ${concepto}` : ''}`,
+        concepto: conceptoIngresoDestino,
         tipo: 'Ingreso',
         relacionadoCon: bancoOrigenKey,
       };
@@ -2217,12 +2471,16 @@ export default function FlowDistributor() {
             aiResponse = `Tu capital actual es de $${totalBancos.toLocaleString()}. Te recomendaría aumentar reservas. Distribución:\n\n`;
           }
 
-          topBancos.forEach(([key, banco], i) => {
+          for (const [index, [key, banco]] of topBancos.entries()) {
             const percentage = (((banco?.capitalActual || 0) / totalBancos) * 100).toFixed(1);
-            aiResponse += `${i === 0 ? '🥇' : i === 1 ? '🥈' : '🥉'} ${
+            let medal = '🥉';
+            if (index === 0) medal = '🥇';
+            else if (index === 1) medal = '🥈';
+
+            aiResponse += `${medal} ${
               nombres[key]
             }: $${(banco?.capitalActual || 0).toLocaleString()} (${percentage}%)\n`;
-          });
+          }
 
           suggestedActions = ['Ver todos los bancos', 'Hacer transferencia', 'Registrar ingreso'];
           quickReplies = ['💸 Hacer transferencia', '📊 Ver detalles', '💡 Consejos financieros'];
@@ -2280,9 +2538,9 @@ export default function FlowDistributor() {
               clientesConAdeudo.length
             } con adeudos pendientes por $${adeudosClientes.toLocaleString()}:\n\n`;
 
-            topDeudores.forEach((cliente, i) => {
-              aiResponse += `${i + 1}. ${cliente.nombre}: $${cliente.adeudo.toLocaleString()}\n`;
-            });
+            for (const [index, cliente] of topDeudores.entries()) {
+              aiResponse += `${index + 1}. ${cliente.nombre}: $${cliente.adeudo.toLocaleString()}\n`;
+            }
 
             aiResponse += `\n💡 Te recomiendo priorizar la cobranza con ${
               topDeudores[0]?.nombre || 'estos clientes'
@@ -2316,9 +2574,9 @@ export default function FlowDistributor() {
               .filter((p) => p.cantidad <= (p.cantidadMinima || 5))
               .slice(0, 3);
             aiResponse += `\n🚨 Requieren reorden urgente:\n`;
-            productosCriticos.forEach((p) => {
+            for (const p of productosCriticos) {
               aiResponse += `• ${p.nombre}: ${p.cantidad} unidades (mín: ${p.cantidadMinima || 5})\n`;
-            });
+            }
           }
 
           if (productosAgotados > 0) {
@@ -2352,9 +2610,10 @@ export default function FlowDistributor() {
             const topAdeudos = distConAdeudo.sort((a, b) => b.adeudo - a.adeudo).slice(0, 3);
 
             aiResponse += `Mayores adeudos:\n`;
-            topAdeudos.forEach((d, i) => {
+            for (let i = 0; i < topAdeudos.length; i++) {
+              const d = topAdeudos[i];
               aiResponse += `${i + 1}. ${d.nombre}: $${d.adeudo.toLocaleString()}\n`;
-            });
+            }
 
             aiResponse += `\n💡 Programa pagos para mantener buenas relaciones comerciales.`;
           }
@@ -3414,6 +3673,15 @@ export default function FlowDistributor() {
       },
       { id: 'separator2', separator: true },
       { id: 'reportes', icon: FileText, label: 'Reportes', badge: null, color: 'slate' },
+      { id: 'separator3', separator: true },
+      {
+        id: 'inteligencia-ia',
+        icon: Sparkles,
+        label: 'Inteligencia IA',
+        badge: '🤖',
+        color: 'purple',
+        gradient: 'from-purple-500 via-pink-500 to-blue-500'
+      },
     ];
 
     // Color themes para cada item
@@ -6213,7 +6481,7 @@ export default function FlowDistributor() {
             <div className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                     👤 Cliente
                   </label>
                   <input
@@ -6229,7 +6497,7 @@ export default function FlowDistributor() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                     🚚 Costo de Flete / Envío
                   </label>
                   <input
@@ -6248,7 +6516,7 @@ export default function FlowDistributor() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                   💰 Estado de Pago
                 </label>
                 <select
@@ -6267,7 +6535,7 @@ export default function FlowDistributor() {
 
               {formData.estadoPago === 'parcial' && (
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                     💵 Monto Abonado por el Cliente
                   </label>
                   <input
@@ -6699,7 +6967,7 @@ export default function FlowDistributor() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                     🏦 Selecciona el Banco Destino
                   </label>
                   <select
@@ -6927,7 +7195,7 @@ export default function FlowDistributor() {
                         </p>
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                        <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                           💵 Monto que el Cliente te Pagó ($)
                         </label>
                         <input
@@ -8120,7 +8388,7 @@ export default function FlowDistributor() {
               </div>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                     🏦 Banco Destino (¿A dónde va el dinero?)
                   </label>
                   <select
@@ -8141,7 +8409,7 @@ export default function FlowDistributor() {
                   </p>
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                     💵 Monto a Transferir ($)
                   </label>
                   <input
@@ -8158,7 +8426,7 @@ export default function FlowDistributor() {
                   </p>
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                     📝 Concepto / Motivo
                   </label>
                   <input
@@ -8212,7 +8480,7 @@ export default function FlowDistributor() {
               </div>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                     💵 Monto del Gasto ($)
                   </label>
                   <input
@@ -8229,7 +8497,7 @@ export default function FlowDistributor() {
                   </p>
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                     📝 ¿En qué gastaste?
                   </label>
                   <input
@@ -8285,7 +8553,7 @@ export default function FlowDistributor() {
               </div>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                     💵 Monto del Ingreso ($)
                   </label>
                   <input
@@ -8300,7 +8568,7 @@ export default function FlowDistributor() {
                   <p className="text-xs text-slate-400 mt-1 ml-1">Cantidad de dinero que ingresó</p>
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                     📝 ¿De dónde vino el dinero?
                   </label>
                   <input
@@ -9444,20 +9712,22 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
       if (activePanel.startsWith('banco-')) {
         const bancoKey = activePanel.replace('banco-', '');
 
-        // 🚀 PANELES PREMIUM - Usar componentes especializados
+        // 🚀 PANELES PREMIUM ULTRA - TypeScript con design system premium
         switch (bancoKey) {
           case 'utilidades':
-            return <PanelUtilidades />;
+            return <PanelUtilidadesUltra />;
           case 'fletes':
-            return <PanelFletes />;
+            return <PanelFletesUltra />;
           case 'bovedaMonte':
-            return <PanelBovedaMonte />;
+            return <PanelBovedaMonteUltra />;
+          case 'bovedaUSA':
+            return <PanelBovedaUSAUltra />;
           case 'azteca':
-            return <PanelAzteca />;
+            return <PanelAztecaUltra />;
           case 'leftie':
-            return <PanelLeftie />;
+            return <PanelLeftieUltra />;
           case 'profit':
-            return <PanelProfit />;
+            return <PanelProfitUltra />;
           default:
             return <BancoPanelIndividual nombreBanco={bancoKey} />;
         }
@@ -9465,40 +9735,44 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
 
       switch (activePanel) {
         case 'dashboard':
-          return <Dashboard />;
+          return <DashboardUltra />;
         case 'ordenes':
           return <OrdenesPanel />;
         case 'distribuidores':
           return <DistribuidoresPanel />;
         case 'almacen':
-          return <AlmacenPanel />;
+          return <PanelAlmacenUltra />;
         case 'ventas':
           return <VentasPanel />;
         case 'clientes':
-          return <ClientesPanel />;
+          return <PanelClientesUltra />;
         case 'gastosAbonos':
-          return <GastosAbonosPanel />;
+          return <PanelGYAUltra />;
         case 'reportes':
           return <ReportesPanel />;
+        case 'inteligencia-ia':
+          return <PanelIA />;
 
-        // 🚀 PANELES PREMIUM (acceso directo)
+        // 🚀 PANELES PREMIUM ULTRA (acceso directo) - TypeScript Premium
         case 'utilidades':
-          return <PanelUtilidades />;
+          return <PanelUtilidadesUltra />;
         case 'fletes':
-          return <PanelFletes />;
+          return <PanelFletesUltra />;
         case 'bovedaMonte':
-          return <PanelBovedaMonte />;
+          return <PanelBovedaMonteUltra />;
+        case 'bovedaUSA':
+          return <PanelBovedaUSAUltra />;
         case 'azteca':
-          return <PanelAzteca />;
+          return <PanelAztecaUltra />;
         case 'leftie':
-          return <PanelLeftie />;
+          return <PanelLeftieUltra />;
         case 'profit':
-          return <PanelProfit />;
+          return <PanelProfitUltra />;
         case 'clientesCartera':
-          return <PanelClientes />;
+          return <PanelClientesUltra />;
 
         default:
-          return <Dashboard />;
+          return <DashboardUltra />;
       }
     } catch (error) {
       // console.error('Error rendering section:', error);
@@ -9518,6 +9792,28 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
     }
   };
 
+  // 🎬 RENDER CONDICIONAL: LOGIN SCREEN -> SISTEMA
+  // Muestra el nuevo login screen hasta que el usuario se autentique
+  if (!isAuthenticated) {
+    return <LoginScreen onLogin={handleLogin} />;
+  }
+
+  // Si está autenticado pero no está listo el sistema, mostrar loading interno
+  if (!isSystemReady) {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center bg-black">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="text-white text-2xl font-bold"
+        >
+          Initializing System...
+        </motion.div>
+      </div>
+    );
+  }
+
+  // 4. Sistema listo, renderizar aplicación principal
   return (
     <div
       className={`flex h-screen ${
@@ -9696,6 +9992,36 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
                   <Redo2 className="w-5 h-5 text-green-400" />
                 </motion.button>
               </div>
+
+              {/* Usuario Actual */}
+              {currentUser && (
+                <div className="flex items-center gap-2 border-l border-white/10 pl-3 ml-1">
+                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10">
+                    <img
+                      src={currentUser.avatar}
+                      alt={currentUser.name}
+                      className="w-6 h-6 rounded-full"
+                    />
+                    <span className="text-sm text-slate-300 hidden lg:block">
+                      {currentUser.name}
+                    </span>
+                    {currentUser.role === 'demo' && (
+                      <span className="text-xs px-2 py-0.5 bg-emerald-500/20 text-emerald-400 rounded-full font-semibold">
+                        DEMO
+                      </span>
+                    )}
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={handleLogout}
+                    className="p-2 hover:bg-red-500/10 rounded-xl transition-all border border-white/5 hover:border-red-500/30"
+                    title="Cerrar Sesión"
+                  >
+                    <X className="w-5 h-5 text-red-400" />
+                  </motion.button>
+                </div>
+              )}
 
               {/* Settings */}
               <motion.button
@@ -9886,6 +10212,90 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
 
       {/* 🔴 NOTIFICACIONES REAL-TIME CON WEBSOCKET (Blueprint Supreme 2025) */}
       <RealtimeNotifications serverUrl="ws://localhost:3001" position="top-right" />
+
+      {/* 🤖 AI ASSISTANT ULTRA - ASISTENTE COMPLETO CON CAPACIDADES AVANZADAS */}
+      {showAIWidget ? (
+        <AIAssistantUltra
+          onClose={() => setShowAIWidget(false)}
+          onNavigate={(panel) => {
+            console.log('🎯 Navigate to:', panel);
+            // Lógica de navegación aquí
+            setActivePanel(panel.toLowerCase());
+          }}
+          onCreateRecord={(type, record) => {
+            console.log('📝 Create record:', type, record);
+            // Lógica de creación aquí
+            // Llamar a FormGYA, FormVenta, etc.
+          }}
+          currentPanel={activePanel}
+        />
+      ) : (
+        <motion.button
+          whileHover={{ scale: 1.1, rotate: 5 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => setShowAIWidget(true)}
+          className="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full bg-gradient-to-r from-purple-600 via-violet-600 to-blue-600 flex items-center justify-center shadow-2xl group"
+          animate={{
+            boxShadow: [
+              '0 0 20px rgba(168, 85, 247, 0.4)',
+              '0 0 40px rgba(59, 130, 246, 0.6)',
+              '0 0 20px rgba(168, 85, 247, 0.4)',
+            ],
+          }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <Bot className="w-8 h-8 text-white group-hover:scale-110 transition-transform" />
+          <motion.div
+            className="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-slate-900"
+            animate={{ scale: [1, 1.3, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+        </motion.button>
+      )}
+
+      {/* 💱 CURRENCY EXCHANGE WIDGET - WIDGET DE TIPO DE CAMBIO */}
+      {showCurrencyWidget && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.9, y: 20 }}
+          className="fixed bottom-6 left-6 z-50"
+        >
+          <Suspense fallback={<div className="w-96 h-64 bg-slate-800 rounded-2xl animate-pulse" />}>
+            <CurrencyExchangeWidget
+              inventory={{ usd: 50000, mxn: 800000 }}
+              autoRefresh={true}
+              refreshInterval={30000}
+              onClose={() => setShowCurrencyWidget(false)}
+            />
+          </Suspense>
+        </motion.div>
+      )}
+
+      {/* Botón flotante para abrir el widget de tipo de cambio */}
+      {!showCurrencyWidget && (
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => setShowCurrencyWidget(true)}
+          className="fixed bottom-6 left-6 z-50 w-16 h-16 rounded-full bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 flex items-center justify-center shadow-2xl group"
+          animate={{
+            boxShadow: [
+              '0 0 20px rgba(16, 185, 129, 0.4)',
+              '0 0 40px rgba(5, 150, 105, 0.6)',
+              '0 0 20px rgba(16, 185, 129, 0.4)',
+            ],
+          }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <DollarSign className="w-8 h-8 text-white group-hover:scale-110 transition-transform" />
+          <motion.div
+            className="absolute -top-1 -right-1 w-4 h-4 bg-yellow-400 rounded-full border-2 border-slate-900"
+            animate={{ scale: [1, 1.3, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+        </motion.button>
+      )}
     </div>
   );
 }

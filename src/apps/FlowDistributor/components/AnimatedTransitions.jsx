@@ -1,5 +1,6 @@
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+
+import { AnimatePresence, motion } from 'framer-motion';
 
 /**
  * 🎬 PAGE TRANSITION - Transiciones suaves entre páginas/paneles
@@ -66,12 +67,7 @@ export const StaggerContainer = ({ children, staggerDelay = 0.1, className = '' 
   };
 
   return (
-    <motion.div
-      variants={container}
-      initial="hidden"
-      animate="show"
-      className={className}
-    >
+    <motion.div variants={container} initial="hidden" animate="show" className={className}>
       {children}
     </motion.div>
   );
@@ -156,10 +152,7 @@ export const FlipCard = ({ front, back, className = '' }) => {
         style={{ transformStyle: 'preserve-3d' }}
       >
         {/* Front */}
-        <div
-          className="absolute inset-0"
-          style={{ backfaceVisibility: 'hidden' }}
-        >
+        <div className="absolute inset-0" style={{ backfaceVisibility: 'hidden' }}>
           {front}
         </div>
 
@@ -308,12 +301,7 @@ export const MorphShape = ({ children, morphed = false, className = '' }) => {
 /**
  * 🎪 SLIDE REVEAL - Revelación con deslizamiento
  */
-export const SlideReveal = ({
-  children,
-  direction = 'left',
-  delay = 0,
-  className = '',
-}) => {
+export const SlideReveal = ({ children, direction = 'left', delay = 0, className = '' }) => {
   const variants = {
     hidden: {
       left: { x: '-100%' },
