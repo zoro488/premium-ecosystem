@@ -144,6 +144,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: validate
     if: failure()
+    
+    permissions:
+      contents: read
+    
     steps:
       - name: 🚨 Notify failure
         run: |
