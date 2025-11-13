@@ -27,6 +27,11 @@
     "docker:logs": "docker-compose logs -f",
     "quick-deploy": "pwsh -File deploy-quick.ps1",
     "auto-fix": "pwsh -File auto-fix.ps1",
+    "diagnose": "node scripts/diagnose-tests.cjs",
+    "fix:connection": "pkill -f firebase; firebase emulators:start --only firestore",
+    "fix:types": "npm install -D @types/node@latest @types/react@latest",
+    "fix:cache": "npm cache clean --force && rm -rf node_modules && npm install",
+    "fix:all": "npm run fix:cache && npm run fix:types",
     "prepare": "husky"
   },
   "dependencies": {
