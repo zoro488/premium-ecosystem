@@ -82,7 +82,7 @@ describe('🔥 Validación E2E: Excel → Firestore → UI', () => {
     expect(capitalFirestore).toBe(capitalExcel);
 
     // Validar en UI
-    const { container } = render(<KPICard label="Capital Total" value={capitalFirestore} />);
+    render(<KPICard label="Capital Total" value={capitalFirestore} />);
 
     // Verificar que el valor se renderiza correctamente
     const valueElement = screen.getByText(capitalFirestore.toLocaleString());
@@ -141,7 +141,7 @@ describe('🔥 Validación E2E: Excel → Firestore → UI', () => {
   it('✅ KPICard renderiza correctamente con datos reales', () => {
     const testValue = 1234567;
 
-    const { container } = render(
+    render(
       <KPICard
         label="Test KPI"
         value={testValue}
