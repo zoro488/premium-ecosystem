@@ -12,6 +12,8 @@ jobs:
     name: Validación Excel → Firestore → UI
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    permissions:
+      contents: read
     
     steps:
       - name: 📥 Checkout code
