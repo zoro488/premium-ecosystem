@@ -1,0 +1,184 @@
+{
+  "tabla_ordenes_compra": {
+    "headers": [
+      "OC",
+      "Fecha",
+      "Origen",
+      "Cantidad",
+      "Costo Distribuidor",
+      "Costo Transporte",
+      "Costo Por Unidad",
+      "Stock Actual",
+      "Costo Total",
+      "Pago a Distribuidor",
+      "Deuda"
+    ],
+    "total_registros": 9,
+    "registros": [
+      {
+        "OC": "OC0001",
+        "Fecha": "2025-08-25",
+        "Origen": "Q-MAYA",
+        "Cantidad": 423.0,
+        "Costo Distribuidor": 6100.0,
+        "Costo Transporte": 200.0,
+        "Costo Por Unidad": 6300,
+        "Stock Actual": null,
+        "Costo Total": 2664900,
+        "Pago a Distribuidor": null,
+        "Deuda": null
+      },
+      {
+        "OC": "OC0002",
+        "Fecha": "2025-08-25",
+        "Origen": "Q-MAYA",
+        "Cantidad": 32.0,
+        "Costo Distribuidor": 6100.0,
+        "Costo Transporte": 200.0,
+        "Costo Por Unidad": 6300,
+        "Stock Actual": null,
+        "Costo Total": 201600,
+        "Pago a Distribuidor": null,
+        "Deuda": null
+      },
+      {
+        "OC": "OC0003",
+        "Fecha": "2025-08-25",
+        "Origen": "A/X🌶️🦀",
+        "Cantidad": 33.0,
+        "Costo Distribuidor": 6100.0,
+        "Costo Transporte": 200.0,
+        "Costo Por Unidad": 6300,
+        "Stock Actual": null,
+        "Costo Total": 207900,
+        "Pago a Distribuidor": null,
+        "Deuda": null
+      },
+      {
+        "OC": "OC0004",
+        "Fecha": "2025-08-30",
+        "Origen": "PACMAN",
+        "Cantidad": 487.0,
+        "Costo Distribuidor": 6100.0,
+        "Costo Transporte": 200.0,
+        "Costo Por Unidad": 6300,
+        "Stock Actual": null,
+        "Costo Total": 3068100,
+        "Pago a Distribuidor": null,
+        "Deuda": null
+      },
+      {
+        "OC": "OC0005",
+        "Fecha": "2025-09-06",
+        "Origen": "Q-MAYA",
+        "Cantidad": 513.0,
+        "Costo Distribuidor": 6100.0,
+        "Costo Transporte": 200.0,
+        "Costo Por Unidad": 6300,
+        "Stock Actual": null,
+        "Costo Total": 3231900,
+        "Pago a Distribuidor": null,
+        "Deuda": null
+      },
+      {
+        "OC": "OC0006",
+        "Fecha": "2025-09-09",
+        "Origen": "CH-MONTE",
+        "Cantidad": 100.0,
+        "Costo Distribuidor": 6300.0,
+        "Costo Transporte": 0.0,
+        "Costo Por Unidad": 6300,
+        "Stock Actual": null,
+        "Costo Total": 630000,
+        "Pago a Distribuidor": 953100.0,
+        "Deuda": null
+      },
+      {
+        "OC": "OC0007",
+        "Fecha": "2025-09-29",
+        "Origen": "VALLE-MONTE",
+        "Cantidad": 20.0,
+        "Costo Distribuidor": 7000.0,
+        "Costo Transporte": 0.0,
+        "Costo Por Unidad": 7000,
+        "Stock Actual": null,
+        "Costo Total": 140000,
+        "Pago a Distribuidor": null,
+        "Deuda": null
+      },
+      {
+        "OC": "OC0008",
+        "Fecha": "2025-10-05",
+        "Origen": "PACMAN",
+        "Cantidad": 488.0,
+        "Costo Distribuidor": 6100.0,
+        "Costo Transporte": 200.0,
+        "Costo Por Unidad": 6300,
+        "Stock Actual": null,
+        "Costo Total": 3074400,
+        "Pago a Distribuidor": null,
+        "Deuda": null
+      },
+      {
+        "OC": "OC0009",
+        "Fecha": "2025-10-05",
+        "Origen": "Q-MAYA-MP",
+        "Cantidad": 200.0,
+        "Costo Distribuidor": 6100.0,
+        "Costo Transporte": 200.0,
+        "Costo Por Unidad": 6300,
+        "Stock Actual": null,
+        "Costo Total": 1260000,
+        "Pago a Distribuidor": null,
+        "Deuda": null
+      }
+    ],
+    "campos_usados": [
+      "OC",
+      "Fecha",
+      "Origen",
+      "Cantidad",
+      "Costo Distribuidor",
+      "Costo Transporte",
+      "Costo Por Unidad",
+      "Costo Total",
+      "Deuda"
+    ],
+    "campos_no_usados": [
+      "Stock Actual",
+      "Pago a Distribuidor"
+    ],
+    "porcentaje_uso": 82
+  },
+  "tabla_distribuidores": {
+    "headers": [
+      "Distribuidores",
+      "Costo total",
+      "Abonos",
+      "Pendiente"
+    ],
+    "total_registros": 2,
+    "registros": [
+      {
+        "Distribuidores": "PACMAN",
+        "Costo total": 6142500,
+        "Abonos": null,
+        "Pendiente": null
+      },
+      {
+        "Distribuidores": "Q-MAYA",
+        "Costo total": 6098400,
+        "Abonos": null,
+        "Pendiente": null
+      }
+    ],
+    "campos_usados": [
+      "Distribuidores",
+      "Costo total",
+      "Abonos",
+      "Pendiente"
+    ],
+    "campos_no_usados": [],
+    "porcentaje_uso": 100
+  }
+}

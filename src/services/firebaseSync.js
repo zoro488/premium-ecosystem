@@ -44,7 +44,7 @@ export class FirebaseSyncService {
     try {
       this.syncing = true;
       this.notifyCallbacks('sync_start', { direction: 'json_to_firebase' });
-       // console.log('🚀 Iniciando importación a Firebase...');
+      // console.log('🚀 Iniciando importación a Firebase...');
       // Estadísticas
       const stats = {
         ventas: 0,
@@ -156,7 +156,7 @@ export class FirebaseSyncService {
         ),
         errors: stats.errores.length,
       });
-       // console.log('✅ Importación completada:', stats);
+      // console.log('✅ Importación completada:', stats);
       return stats;
     } catch (error) {
       this.notifyCallbacks('sync_error', { error: error.message });
@@ -178,7 +178,7 @@ export class FirebaseSyncService {
     try {
       this.syncing = true;
       this.notifyCallbacks('sync_start', { direction: 'firebase_to_json' });
-       // console.log('📥 Iniciando exportación desde Firebase...');
+      // console.log('📥 Iniciando exportación desde Firebase...');
       const data = {
         ventas: await firestoreManager.ventas.getAll(),
         compras: await firestoreManager.compras.getAll(),
@@ -198,7 +198,7 @@ export class FirebaseSyncService {
 
       this.lastSync = new Date();
       this.notifyCallbacks('sync_complete', { direction: 'firebase_to_json' });
-       // console.log('✅ Exportación completada');
+      // console.log('✅ Exportación completada');
       return data;
     } catch (error) {
       this.notifyCallbacks('sync_error', { error: error.message });

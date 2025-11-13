@@ -1,167 +1,38 @@
 {
   "recommendations": [
-    // ========================================
-    // AI CODING ASSISTANTS - ESSENTIAL
-    // ========================================
     "github.copilot",
     "github.copilot-chat",
-    "anthropic.claude-code",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "christian-kohler.path-intellisense",
+    "dsznajder.es7-react-js-snippets",
+    "formulahendry.auto-rename-tag",
+    "bradlc.vscode-tailwindcss",
+    "toba.vsfire",
+    "vitest.explorer",
+    "ms-playwright.playwright",
+    "github.vscode-pull-request-github",
+    "mhutchie.git-graph",
+    "usernamehw.errorlens",
+    "gruntfuggly.todo-tree",
+    "oderwat.indent-rainbow",
+    "pkief.material-icon-theme",
+    "github.github-vscode-theme"
+  ],
+  "unwantedRecommendations": [
+    "hookyqr.beautify",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "formulahendry.auto-close-tag",
+    "ritwickdey.liveserver",
+    "donjayamanne.githistory",
     "tabnine.tabnine-vscode",
     "codeium.codeium",
     "continue.continue",
     "sourcegraph.cody-ai",
-    "visualstudioexptteam.vscodeintellicode",
-
-    // ========================================
-    // JAVASCRIPT/TYPESCRIPT - CORE
-    // ========================================
-    "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode",
-    "ms-vscode.vscode-typescript-next",
-    "christian-kohler.npm-intellisense",
-    "christian-kohler.path-intellisense",
-
-    // ========================================
-    // REACT & FRONTEND
-    // ========================================
-    "dsznajder.es7-react-js-snippets",
-    "xabikos.javascriptsnippets",
-    "formulahendry.auto-rename-tag",
-    "formulahendry.auto-close-tag",
-    "burkeholland.simple-react-snippets",
-    "msjsdiag.vscode-react-native",
-
-    // ========================================
-    // TAILWIND CSS
-    // ========================================
-    "bradlc.vscode-tailwindcss",
-    "csstools.postcss",
-
-    // ========================================
-    // FIREBASE
-    // ========================================
-    "toba.vsfire",
-
-    // ========================================
-    // TESTING
-    // ========================================
-    "orta.vscode-jest",
-    "ms-playwright.playwright",
-    "vitest.explorer",
-    "ryanluker.vscode-coverage-gutters",
-
-    // ========================================
-    // GIT & GITHUB
-    // ========================================
-    "eamodio.gitlens",
-    "github.vscode-pull-request-github",
-    "github.vscode-github-actions",
-    "donjayamanne.githistory",
-    "mhutchie.git-graph",
-    "waderyan.gitblame",
-    "github.remotehub",
-
-    // ========================================
-    // CODE QUALITY & SECURITY
-    // ========================================
+    "anthropic.claude-code",
     "sonarsource.sonarlint-vscode",
     "snyk-security.snyk-vulnerability-scanner",
-    "streetsidesoftware.code-spell-checker",
-    "streetsidesoftware.code-spell-checker-spanish",
-
-    // ========================================
-    // PRODUCTIVITY
-    // ========================================
-    "usernamehw.errorlens",
-    "gruntfuggly.todo-tree",
-    "alefragnani.bookmarks",
-    "alefragnani.project-manager",
-    "oderwat.indent-rainbow",
-    "naumovs.color-highlight",
-
-    // ========================================
-    // DEBUGGING & PROFILING
-    // ========================================
-    "ms-vscode.vscode-js-profile-flame",
-    "firefox-devtools.vscode-firefox-debug",
-    "ms-edgedevtools.vscode-edge-devtools",
-
-    // ========================================
-    // DOCUMENTATION
-    // ========================================
-    "yzane.markdown-pdf",
-    "yzhang.markdown-all-in-one",
-    "shd101wyy.markdown-preview-enhanced",
-    "bierner.markdown-mermaid",
-
-    // ========================================
-    // BUNDLE ANALYSIS & PERFORMANCE
-    // ========================================
     "wix.vscode-import-cost",
-    "pflannery.vscode-versionlens",
-
-    // ========================================
-    // DOCKER & CONTAINERS
-    // ========================================
-    "ms-azuretools.vscode-docker",
-    "ms-vscode-remote.remote-containers",
-
-    // ========================================
-    // DATABASE
-    // ========================================
-    "cweijan.vscode-database-client2",
-    "mtxr.sqltools",
-
-    // ========================================
-    // REST API
-    // ========================================
-    "humao.rest-client",
-    "rangav.vscode-thunder-client",
-
-    // ========================================
-    // LIVE PREVIEW
-    // ========================================
-    "ms-vscode.live-server",
-    "ritwickdey.liveserver",
-
-    // ========================================
-    // THEMES & ICONS
-    // ========================================
-    "pkief.material-icon-theme",
-    "pkief.material-product-icons",
-    "github.github-vscode-theme",
-
-    // ========================================
-    // REMOTE DEVELOPMENT
-    // ========================================
-    "ms-vscode-remote.vscode-remote-extensionpack",
-    "ms-vscode-remote.remote-ssh",
-    "ms-vscode-remote.remote-wsl",
-
-    // ========================================
-    // AZURE (OPTIONAL)
-    // ========================================
-    "ms-azuretools.vscode-azurefunctions",
-    "ms-azuretools.vscode-azurestaticwebapps",
-
-    // ========================================
-    // PYTHON (OPTIONAL)
-    // ========================================
-    "ms-python.python",
-    "ms-python.vscode-pylance",
-
-    // ========================================
-    // UTILITIES
-    // ========================================
-    "editorconfig.editorconfig",
-    "wayou.vscode-todo-highlight",
-    "aaron-bond.better-comments",
-    "vincaslt.highlight-matching-tag"
-  ],
-
-  "unwantedRecommendations": [
-    // Avoid conflicting or redundant extensions
-    "hookyqr.beautify",
-    "ms-vscode.vscode-typescript-tslint-plugin"
+    "eamodio.gitlens"
   ]
 }

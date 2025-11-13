@@ -1,0 +1,17 @@
+{
+  "timestamp": "2025-10-23T21:31:23.310Z",
+  "mode": "DRY_RUN",
+  "excelPath": "C:\\Users\\xpovo\\Downloads\\Copia de Administación_General.xlsx",
+  "balanceTotal": 12861332.12,
+  "stats": {
+    "clientes": 31,
+    "ordenesCompra": 9,
+    "ventas": 72,
+    "gastos": 96,
+    "movimientosInventario": 9,
+    "transaccionesBoveda": 298,
+    "transaccionesBanco": 70,
+    "datosAuxiliares": 83
+  },
+  "totalRegistros": 668
+}

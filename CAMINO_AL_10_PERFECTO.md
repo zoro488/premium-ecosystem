@@ -7,11 +7,13 @@
 ## 🔥 ESTRATEGIA DE ATAQUE
 
 ### Fase 1: Análisis Completo (5 min)
+
 - ✅ Identificar TODOS los warnings (277 problemas detectados)
 - ✅ Clasificar por tipo y prioridad
 - ✅ Crear plan de eliminación sistemático
 
 ### Fase 2: Eliminación de Warnings (20 min)
+
 1. **Imports no usados** (estimado: ~150 warnings)
    - Lucide-react icons sin usar
    - Variables importadas no utilizadas
@@ -32,11 +34,13 @@
    - Otras funciones complejas
 
 ### Fase 3: Refactorización Critical (15 min)
+
 - [ ] Simplificar handleAISend usando aiResponses.js
 - [ ] Eliminar componentes internos no usados
 - [ ] Limpiar funciones bulk no conectadas
 
 ### Fase 4: Validación Final (10 min)
+
 - [ ] npm run lint → 0 warnings
 - [ ] npm run build → Success
 - [ ] Test manual de funcionalidades
@@ -59,6 +63,7 @@
 ## 🎯 PLAN DE EJECUCIÓN DETALLADO
 
 ### PASO 1: Fix de Errores Críticos (3 errors)
+
 ```javascript
 // Error 1: ZeroForceAI.jsx línea 429
 // Problema: Unexpected constant condition
@@ -74,7 +79,9 @@
 ```
 
 ### PASO 2: Eliminación Masiva de Imports No Usados
+
 **FlowDistributor.jsx - Icons de lucide-react:**
+
 ```javascript
 // A ELIMINAR (estimado 20-30 icons):
 - ArrowDownCircle (si no se usa)
@@ -86,6 +93,7 @@
 ```
 
 ### PASO 3: Remover Variables y Funciones No Usadas
+
 ```javascript
 // FlowDistributor.jsx - Variables declaradas sin usar:
 - handleBulkDeleteVentas (línea 562)
@@ -102,6 +110,7 @@
 ```
 
 ### PASO 4: Refactorizar handleAISend
+
 ```javascript
 // ANTES: 462 líneas, complejidad 68
 const handleAISend = () => {
@@ -113,7 +122,7 @@ const handleAISend = () => {
 // DESPUÉS: 50 líneas, complejidad 8
 const handleAISend = () => {
   if (!aiInput.trim()) return;
-  
+
   const userMessage = aiInput;
   const messageTime = new Date().toLocaleTimeString('es-MX', {
     hour: '2-digit',
@@ -150,6 +159,7 @@ const handleAISend = () => {
 ```
 
 ### PASO 5: Fix React Hook Dependencies
+
 ```javascript
 // Problema: Dependencies innecesarias en arrays
 // Fix: Remover o usar refs
@@ -168,18 +178,21 @@ const stats = useMemo(() => calculateStats(), []);
 ## 🔧 SCRIPTS DE AUTOMATIZACIÓN
 
 ### Script 1: Remover Imports No Usados
+
 ```powershell
 # auto-fix-imports.ps1
 npm run lint -- --fix
 ```
 
 ### Script 2: Encontrar Variables No Usadas
+
 ```powershell
 # find-unused.ps1
 npm run lint 2>&1 | Select-String "is assigned a value but never used"
 ```
 
 ### Script 3: Verificar Complejidad
+
 ```powershell
 # check-complexity.ps1
 npm run lint 2>&1 | Select-String "complexity of"
@@ -189,7 +202,8 @@ npm run lint 2>&1 | Select-String "complexity of"
 
 ## ✅ CHECKLIST DE VALIDACIÓN
 
-### Pre-Deploy Checks:
+### Pre-Deploy Checks
+
 - [ ] ESLint: 0 errors, 0 warnings
 - [ ] Build: Success sin warnings
 - [ ] Tests: Todos pasan (si existen)
@@ -197,7 +211,8 @@ npm run lint 2>&1 | Select-String "complexity of"
 - [ ] Bundle Size: <500KB gzipped
 - [ ] Lighthouse Accessibility: 100
 
-### Functional Checks:
+### Functional Checks
+
 - [ ] Dashboard carga correctamente
 - [ ] Todas las secciones navegables
 - [ ] AI Assistant responde correctamente
@@ -209,7 +224,8 @@ npm run lint 2>&1 | Select-String "complexity of"
 - [ ] Notifications se muestran
 - [ ] Undo/Redo funciona
 
-### Code Quality Checks:
+### Code Quality Checks
+
 - [ ] No código duplicado (DRY)
 - [ ] Funciones <50 líneas
 - [ ] Complejidad <15 todas las funciones
@@ -230,7 +246,8 @@ TIEMPO ESTIMADO: 50 minutos
 TIEMPO MÁXIMO: SIN LÍMITE (hasta 10/10)
 ```
 
-### Criterios para 10/10:
+### Criterios para 10/10
+
 1. ✅ ESLint: 0 warnings, 0 errors
 2. ✅ Build: Success sin warnings
 3. ✅ Complejidad: Todas las funciones <15
@@ -242,7 +259,7 @@ TIEMPO MÁXIMO: SIN LÍMITE (hasta 10/10)
 
 ---
 
-## 🚀 EJECUCIÓN EN PROGRESO...
+## 🚀 EJECUCIÓN EN PROGRESO
 
 **Status:** 🔴 INICIANDO ELIMINACIÓN MASIVA DE WARNINGS
 **Objetivo:** 277 problems → 0 problems

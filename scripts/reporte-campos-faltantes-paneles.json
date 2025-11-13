@@ -1,0 +1,82 @@
+{
+  "panelVentas": {
+    "camposExcel": [
+      "Fecha",
+      "OC Relacionada",
+      "Cantidad",
+      "Cliente",
+      "Bóveda Monte",
+      "Precio De Venta",
+      "Ingreso",
+      "Flete",
+      "Flete Utilidad",
+      "Utilidad",
+      "Estatus",
+      "Concepto"
+    ],
+    "camposPanelVentas": [
+      "cantidadVenta",
+      "cliente",
+      "producto",
+      "precioDeVenta",
+      "costoTotal",
+      "fechaVenta",
+      "fleteVenta",
+      "fleteCosto",
+      "estatus"
+    ],
+    "faltantes": [
+      {
+        "excel": "OC Relacionada",
+        "camelCase": "ocRelacionada"
+      },
+      {
+        "excel": "Flete Utilidad",
+        "camelCase": "fleteUtilidad"
+      },
+      {
+        "excel": "Concepto",
+        "camelCase": "concepto"
+      }
+    ],
+    "implementados": [
+      {
+        "excel": "Fecha",
+        "camelCase": "fecha"
+      },
+      {
+        "excel": "Cantidad",
+        "camelCase": "cantidad"
+      },
+      {
+        "excel": "Cliente",
+        "camelCase": "cliente"
+      },
+      {
+        "excel": "Bóveda Monte",
+        "camelCase": "bovedaMonte"
+      },
+      {
+        "excel": "Precio De Venta",
+        "camelCase": "precioDeVenta"
+      },
+      {
+        "excel": "Ingreso",
+        "camelCase": "ingreso"
+      },
+      {
+        "excel": "Flete",
+        "camelCase": "flete"
+      },
+      {
+        "excel": "Utilidad",
+        "camelCase": "utilidad"
+      },
+      {
+        "excel": "Estatus",
+        "camelCase": "estatus"
+      }
+    ],
+    "porcentaje": 75
+  }
+}

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limpiar LocalStorage - FlowDistributor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 30px;
+            color: #856404;
+        }
+
+        .warning strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 20px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            margin: 10px;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .button:active {
+            transform: translateY(0);
+        }
+
+        .button.success {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+
+        .button.cancel {
+            background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+        }
+
+        .status {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            display: none;
+        }
+
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+            display: block;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+            display: block;
+        }
+
+        .instructions {
+            background: #e7f3ff;
+            border: 2px solid #2196F3;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .instructions h3 {
+            color: #1976D2;
+            margin-bottom: 15px;
+        }
+
+        .instructions ol {
+            margin-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .code {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">🧹</div>
+        <h1>Limpiar LocalStorage</h1>
+        <p>Esta herramienta eliminará todos los datos guardados localmente y cargará los datos frescos del Excel.</p>
+
+        <div class="warning">
+            <strong>⚠️ IMPORTANTE:</strong>
+            Después de limpiar, se recargarán automáticamente los datos correctos del Excel con todos los valores actualizados.
+        </div>
+
+        <button class="button" onclick="limpiarLocalStorage()">
+            🗑️ Limpiar LocalStorage
+        </button>
+
+        <button class="button cancel" onclick="cerrarVentana()">
+            ❌ Cancelar
+        </button>
+
+        <div id="status" class="status"></div>
+
+        <div class="instructions">
+            <h3>📋 Qué se va a limpiar:</h3>
+            <ol>
+                <li>✅ Datos de <strong>Almacén</strong> (se actualizará Stock a 17 RF)</li>
+                <li>✅ Datos de <strong>Ventas</strong> (se cargarán todos los montos correctos)</li>
+                <li>✅ Datos de <strong>Órdenes de Compra</strong> (se mostrarán cantidades reales)</li>
+                <li>✅ Datos de <strong>Clientes</strong> (se calcularán adeudos correctos)</li>
+                <li>✅ Datos de <strong>Distribuidores</strong> (se mostrarán totales correctos)</li>
+            </ol>
+
+            <h3 style="margin-top: 20px;">🔄 Después de limpiar:</h3>
+            <p>La página se recargará automáticamente y verás:</p>
+            <ul style="margin-left: 20px;">
+                <li>🟢 Almacén con <strong>17 RF</strong> en stock</li>
+                <li>🟢 Ventas con <strong>montos correctos</strong></li>
+                <li>🟢 Órdenes mostrando <strong>cantidades reales</strong> (423, 32, 33...)</li>
+                <li>🟢 Clientes con <strong>adeudos calculados</strong></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function limpiarLocalStorage() {
+            const statusDiv = document.getElementById('status');
+
+            try {
+                // Limpiar todo el localStorage
+                localStorage.clear();
+
+                // Mostrar mensaje de éxito
+                statusDiv.className = 'status success';
+                statusDiv.innerHTML = '✅ ¡LocalStorage limpiado exitosamente!<br><br>Recargando la página en 2 segundos...';
+
+                // Recargar la página después de 2 segundos
+                setTimeout(() => {
+                    window.location.href = 'http://localhost:3003';
+                }, 2000);
+
+            } catch (error) {
+                // Mostrar mensaje de error
+                statusDiv.className = 'status error';
+                statusDiv.innerHTML = '❌ Error al limpiar LocalStorage: ' + error.message;
+            }
+        }
+
+        function cerrarVentana() {
+            window.close();
+            // Si no se puede cerrar (no abierta desde script), redirigir
+            setTimeout(() => {
+                window.location.href = 'http://localhost:3003';
+            }, 100);
+        }
+
+        // Mostrar información de lo que hay en localStorage
+        window.onload = function() {
+            const items = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key && key.includes('flow')) {
+                    items.push(key);
+                }
+            }
+
+            if (items.length > 0) {
+                console.log('🔍 Items de FlowDistributor en localStorage:', items);
+            }
+        };
+    </script>
+</body>
+</html>

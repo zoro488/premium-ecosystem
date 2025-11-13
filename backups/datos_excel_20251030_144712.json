@@ -1,0 +1,5129 @@
+{
+  "bancos": {
+    "bovedaMonte": {
+      "nombre": "bovedaMonte",
+      "saldoActual": 0,
+      "ingresos": [
+        {
+          "fecha": "2025-08-23",
+          "cliente": "Ax",
+          "concepto": "",
+          "ingreso": 315000
+        },
+        {
+          "fecha": "2025-08-23",
+          "cliente": "Negrito",
+          "concepto": "",
+          "ingreso": 157500
+        },
+        {
+          "fecha": "2025-08-23",
+          "cliente": "Valle",
+          "concepto": "",
+          "ingreso": 189000
+        },
+        {
+          "fecha": "2025-08-25",
+          "cliente": "Galvan",
+          "concepto": "",
+          "ingreso": 18900
+        },
+        {
+          "fecha": "2025-08-25",
+          "cliente": "Valle Local",
+          "concepto": "",
+          "ingreso": 12600
+        },
+        {
+          "fecha": "2025-08-25",
+          "cliente": "Tocayo",
+          "concepto": "",
+          "ingreso": 126000
+        },
+        {
+          "fecha": "2025-08-25",
+          "cliente": "Sierra47",
+          "concepto": "",
+          "ingreso": 94500
+        },
+        {
+          "fecha": "2025-08-29",
+          "cliente": "Robalo",
+          "concepto": "robalo #30 gaviota",
+          "ingreso": 198000
+        },
+        {
+          "fecha": "2025-08-30",
+          "cliente": "Chucho",
+          "concepto": "venta local monte#15",
+          "ingreso": 94500
+        },
+        {
+          "fecha": "2025-09-01",
+          "cliente": "Ax",
+          "concepto": "venta local monte #14",
+          "ingreso": 88200
+        },
+        {
+          "fecha": "2025-09-02",
+          "cliente": "Galvan",
+          "concepto": "venta local monte rafa#1",
+          "ingreso": 6300
+        },
+        {
+          "fecha": "2025-09-02",
+          "cliente": "Galvan",
+          "concepto": "venta local galvan #1",
+          "ingreso": 6300
+        },
+        {
+          "fecha": "2025-09-02",
+          "cliente": "Sierra47",
+          "concepto": "venta local monte #8",
+          "ingreso": 50400
+        },
+        {
+          "fecha": "2025-09-03",
+          "cliente": "470",
+          "concepto": "venta local monte #1",
+          "ingreso": 6300
+        },
+        {
+          "fecha": "2025-09-03",
+          "cliente": "Valle Local",
+          "concepto": "venta local monte#5",
+          "ingreso": 31500
+        },
+        {
+          "fecha": "2025-09-04",
+          "cliente": "Chucho",
+          "concepto": "venta local monte#22",
+          "ingreso": 138600
+        },
+        {
+          "fecha": "2025-09-05",
+          "cliente": "Galvan",
+          "concepto": "venta local monte#1",
+          "ingreso": 6300
+        },
+        {
+          "fecha": "2025-09-05",
+          "cliente": "Negrito",
+          "concepto": "venta local monte#10",
+          "ingreso": 63000
+        },
+        {
+          "fecha": "2025-09-05",
+          "cliente": "Robalo",
+          "concepto": "robalo#20 gaviota",
+          "ingreso": 132000
+        },
+        {
+          "fecha": "2025-09-05",
+          "cliente": "Primo",
+          "concepto": "abono primo resta (1,872dlls)",
+          "ingreso": 3000
+        },
+        {
+          "fecha": "2025-09-05",
+          "cliente": "Ax",
+          "concepto": "DANY1 SERVICIO",
+          "ingreso": 210000
+        },
+        {
+          "fecha": "2025-09-08",
+          "cliente": "Ax",
+          "concepto": "DANY1 SERVICIO",
+          "ingreso": 266280
+        },
+        {
+          "fecha": "2025-09-08",
+          "cliente": "Gasto Bóveda Usa",
+          "concepto": "pagamos boveda usa-boveda monte",
+          "ingreso": 345100
+        },
+        {
+          "fecha": "2025-09-09",
+          "cliente": "Sierra47",
+          "concepto": "venta local monte #5",
+          "ingreso": 31500
+        },
+        {
+          "fecha": "2025-09-10",
+          "cliente": "Chucho",
+          "concepto": "venta local monte #9",
+          "ingreso": 56700
+        },
+        {
+          "fecha": "2025-09-10",
+          "cliente": "Galvan",
+          "concepto": "venta local monte#1",
+          "ingreso": 6300
+        },
+        {
+          "fecha": "2025-09-11",
+          "cliente": "Chucho",
+          "concepto": "venta local monte#16",
+          "ingreso": 100800
+        },
+        {
+          "fecha": "2025-09-11",
+          "cliente": "Negrito",
+          "concepto": "venta local monte#10",
+          "ingreso": 63000
+        },
+        {
+          "fecha": "2025-09-11",
+          "cliente": "Robalo",
+          "concepto": "resto venta monte #60 (gaviota)",
+          "ingreso": 66000
+        },
+        {
+          "fecha": "2025-09-12",
+          "cliente": "Galvan",
+          "concepto": "venta local monte#1 rafa",
+          "ingreso": 6300
+        },
+        {
+          "fecha": "2025-09-12",
+          "cliente": "Abono",
+          "concepto": "abono a/x cta vieja",
+          "ingreso": 200000
+        },
+        {
+          "fecha": "2025-09-12",
+          "cliente": "Ax",
+          "concepto": "pago a/x (33x5,500) y flete (25x500) pacman",
+          "ingreso": 194000
+        },
+        {
+          "fecha": "2025-09-13",
+          "cliente": "tx8",
+          "concepto": "venta local monte#5",
+          "ingreso": 31500
+        },
+        {
+          "fecha": "2025-09-16",
+          "cliente": "Galvan",
+          "concepto": "venta local monte#1",
+          "ingreso": 6300
+        },
+        {
+          "fecha": "2025-09-16",
+          "cliente": "Tocayo",
+          "concepto": "venta local monte#3",
+          "ingreso": 18900
+        },
+        {
+          "fecha": "2025-09-16",
+          "cliente": "Abono",
+          "concepto": "venta local lamas #23",
+          "ingreso": 60000
+        },
+        {
+          "fecha": "2025-09-17",
+          "cliente": "Galvan",
+          "concepto": "venta local monte#1",
+          "ingreso": 6300
+        },
+        {
+          "fecha": "2025-09-17",
+          "cliente": "Valle",
+          "concepto": "monte local #30 gaviota",
+          "ingreso": 189000
+        },
+        {
+          "fecha": "2025-09-18",
+          "cliente": "Tocayo",
+          "concepto": "venta local monte#20",
+          "ingreso": 126000
+        },
+        {
+          "fecha": "2025-09-18",
+          "cliente": "Ax",
+          "concepto": "venta local monte#1 (psico bunny)",
+          "ingreso": 6300
+        },
+        {
+          "fecha": "2025-09-19",
+          "cliente": "Negrito",
+          "concepto": "venta local monte#5",
+          "ingreso": 31500
+        },
+        {
+          "fecha": "2025-09-19",
+          "cliente": "Don Rafa",
+          "concepto": "venta local monte#1",
+          "ingreso": 6300
+        },
+        {
+          "fecha": "2025-09-20",
+          "cliente": "Sierra47",
+          "concepto": "venta local monte#12",
+          "ingreso": 75600
+        },
+        {
+          "fecha": "2025-09-20",
+          "cliente": "Rojo",
+          "concepto": "venta local monte#2",
+          "ingreso": 12600
+        },
+        {
+          "fecha": "2025-09-20",
+          "cliente": "Ax",
+          "concepto": "venta local monte#3",
+          "ingreso": 18900
+        },
+        {
+          "fecha": "2025-09-20",
+          "cliente": "Galvan",
+          "concepto": "venta local monte#1",
+          "ingreso": 6300
+        },
+        {
+          "fecha": "2025-09-25",
+          "cliente": "Ax",
+          "concepto": "psico bunny (wero a/x)",
+          "ingreso": 6300
+        },
+        {
+          "fecha": "2025-09-29",
+          "cliente": "Sierra47",
+          "concepto": "venta local monte#20",
+          "ingreso": 140000
+        },
+        {
+          "fecha": "2025-10-06",
+          "cliente": "Valle Local",
+          "concepto": "venta local monte valle#2",
+          "ingreso": 12600
+        },
+        {
+          "fecha": "2025-10-06",
+          "cliente": "Abono",
+          "concepto": "a/x pacman #25",
+          "ingreso": 137500
+        },
+        {
+          "fecha": "2025-10-06",
+          "cliente": "Abono",
+          "concepto": "tocallo#50 pacman ( 4,725 x 50)",
+          "ingreso": 236250
+        },
+        {
+          "fecha": "2025-10-07",
+          "cliente": "tx8",
+          "concepto": "venta local monte#10",
+          "ingreso": 63000
+        },
+        {
+          "fecha": "2025-10-07",
+          "cliente": "Valle Local",
+          "concepto": "venta local monte#30",
+          "ingreso": 189000
+        },
+        {
+          "fecha": "2025-10-07",
+          "cliente": "Sierra47",
+          "concepto": "venta local monte#3",
+          "ingreso": 18900
+        },
+        {
+          "fecha": "2025-10-07",
+          "cliente": "Tocayo",
+          "concepto": "venta local monte#3",
+          "ingreso": 18900
+        },
+        {
+          "fecha": "2025-10-07",
+          "cliente": "Abono",
+          "concepto": "robalo #40 gaviota",
+          "ingreso": 264000
+        },
+        {
+          "fecha": "2025-10-07",
+          "cliente": "Abono",
+          "concepto": "liquido cuenta primo",
+          "ingreso": 1880
+        },
+        {
+          "fecha": "2025-10-09",
+          "cliente": "cabo",
+          "concepto": "venta local monte#1",
+          "ingreso": 6300
+        },
+        {
+          "fecha": "2025-10-09",
+          "cliente": "Ax",
+          "concepto": "venta local monte psico bunny #1",
+          "ingreso": 6300
+        },
+        {
+          "fecha": "2025-10-09",
+          "cliente": "Galvan",
+          "concepto": "venta local monte#1 (tito)",
+          "ingreso": 6300
+        },
+        {
+          "fecha": "2025-10-11",
+          "cliente": "Galvan",
+          "concepto": "venta local monte #1 (rafa)",
+          "ingreso": 6300
+        },
+        {
+          "fecha": "2025-10-14",
+          "cliente": "tx8",
+          "concepto": "venta local monte#1",
+          "ingreso": 6300
+        },
+        {
+          "fecha": "2025-10-15",
+          "cliente": "Rojo",
+          "concepto": "venta local monte#1",
+          "ingreso": 6300
+        },
+        {
+          "fecha": "2025-10-16",
+          "cliente": "compa",
+          "concepto": "venta local monte#2 psico bunny",
+          "ingreso": 12600
+        },
+        {
+          "fecha": "2025-10-17",
+          "cliente": "Sierra47",
+          "concepto": "venta local monte#10",
+          "ingreso": 63000
+        },
+        {
+          "fecha": "2025-10-17",
+          "cliente": "Galvan",
+          "concepto": "venta local monte#1👁️",
+          "ingreso": 6300
+        },
+        {
+          "fecha": "2025-10-17",
+          "cliente": "Valle",
+          "concepto": "valle #40 pacman (5,500x40)",
+          "ingreso": 220000
+        },
+        {
+          "fecha": "2025-10-19",
+          "cliente": "Valle",
+          "concepto": "valle#30 gaviota (6,000x30)",
+          "ingreso": 180000
+        },
+        {
+          "fecha": "2025-10-20",
+          "cliente": "Gasto Bóveda Usa",
+          "concepto": "transpaso boveda usa-boveda monte",
+          "ingreso": 234870
+        }
+      ],
+      "gastos": [
+        {
+          "fecha": "2025-08-22",
+          "concepto": "",
+          "gasto": 189000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-08-22",
+          "concepto": "",
+          "gasto": 136000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-08-25",
+          "concepto": "",
+          "gasto": 350000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-08-25",
+          "concepto": "",
+          "gasto": 50000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-08-26",
+          "concepto": "corporativo-boveda valle",
+          "gasto": 400000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-08-29",
+          "concepto": "corporativo-boveda valle",
+          "gasto": 198000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-09-04",
+          "concepto": "corporativo-boveda valle",
+          "gasto": 500000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-09-04",
+          "concepto": "corporativo-boveda valle",
+          "gasto": 260000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-09-05",
+          "concepto": "corporativo-boveda valle (servicio a/x)",
+          "gasto": 210000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-09-08",
+          "concepto": "dany1 corporativo servicio a/x",
+          "gasto": 266280,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-09-09",
+          "concepto": "abono cuenta chavis #100",
+          "gasto": 40000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-09-11",
+          "concepto": "corporativo- boveda valle",
+          "gasto": 250000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-09-15",
+          "concepto": "corporativo-boveda valle",
+          "gasto": 550000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-09-17",
+          "concepto": "corporativo-boveda valle",
+          "gasto": 100000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-09-17",
+          "concepto": "corporativo-boveda valle",
+          "gasto": 189000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-09-18",
+          "concepto": "corporativo-boveda valle",
+          "gasto": 30000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-09-18",
+          "concepto": "corporativo-boveda valle",
+          "gasto": 55000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-09-22",
+          "concepto": "GASTOS GALVAN SEPTIEMBRE",
+          "gasto": 14000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-09-30",
+          "concepto": "corporativo-boveda valle",
+          "gasto": 140000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-10-06",
+          "concepto": "corporativo-boveda valle✅",
+          "gasto": 250000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-10-09",
+          "concepto": "corporativo-boveda valle",
+          "gasto": 500000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-10-13",
+          "concepto": "corporativo-boveda valle",
+          "gasto": 300000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-10-15",
+          "concepto": "corporativo-boveda valle",
+          "gasto": 260000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-10-16",
+          "concepto": "corporativo-boveda valle",
+          "gasto": 250000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-10-17",
+          "concepto": "corporativo- valle #40 pacman",
+          "gasto": 220000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        },
+        {
+          "fecha": "2025-10-20",
+          "concepto": "corporativo-boveda valle",
+          "gasto": 15000,
+          "origenDelGastoOAbono": "Gasto Bóveda Monte"
+        }
+      ],
+      "totalIngresos": 5722280,
+      "totalGastos": 5722280
+    },
+    "bovedaUsa": {
+      "nombre": "bovedaUsa",
+      "saldoActual": 128005,
+      "ingresos": [
+        {
+          "fecha": "2025-08-18",
+          "cliente": "NA",
+          "concepto": "",
+          "ingreso": 65919
+        },
+        {
+          "fecha": "2025-08-23",
+          "cliente": "NA",
+          "concepto": "",
+          "ingreso": 216400
+        },
+        {
+          "fecha": "2025-08-25",
+          "cliente": "NA",
+          "concepto": "",
+          "ingreso": 10000
+        },
+        {
+          "fecha": "2025-08-29",
+          "cliente": "Gasto Leftie",
+          "concepto": "monte F20792585K",
+          "ingreso": 650000
+        },
+        {
+          "fecha": "2025-08-30",
+          "cliente": "Gasto Azteca",
+          "concepto": "prestamo sra karla-a/x playa azul",
+          "ingreso": 1500
+        },
+        {
+          "fecha": "2025-09-11",
+          "cliente": "Abono",
+          "concepto": "roberto monte (deposito mc)",
+          "ingreso": 19000
+        },
+        {
+          "fecha": "2025-09-16",
+          "cliente": "Abono",
+          "concepto": "pago flete valle#20 silla-planta",
+          "ingreso": 34000
+        },
+        {
+          "fecha": "2025-09-16",
+          "cliente": "Abono",
+          "concepto": "abono galleta f0lio00011 (robalo,valle,alpha)",
+          "ingreso": 5200
+        },
+        {
+          "fecha": "2025-09-16",
+          "cliente": "Abono",
+          "concepto": "abono amigo yates. (tocallo)",
+          "ingreso": 10000
+        },
+        {
+          "fecha": "2025-09-18",
+          "cliente": "Abono",
+          "concepto": "roberto monte (deposito mc)",
+          "ingreso": 8000
+        },
+        {
+          "fecha": "2025-09-25",
+          "cliente": "Abono",
+          "concepto": "gordito planta (jr)",
+          "ingreso": 200000
+        },
+        {
+          "fecha": "2025-09-26",
+          "cliente": "Abono",
+          "concepto": "atlas#16 a/x",
+          "ingreso": 200000
+        },
+        {
+          "fecha": "2025-10-03",
+          "cliente": "Abono",
+          "concepto": "abono gallete folio00011 (valle)",
+          "ingreso": 5000
+        },
+        {
+          "fecha": "2025-10-03",
+          "cliente": "Abono",
+          "concepto": "atlas#15 a/x",
+          "ingreso": 187500
+        },
+        {
+          "fecha": "2025-10-04",
+          "cliente": "Abono",
+          "concepto": "abono valle cta vieja",
+          "ingreso": 10000
+        },
+        {
+          "fecha": "2025-10-13",
+          "cliente": "Gasto Leftie",
+          "concepto": "monte CN9082979",
+          "ingreso": 165756
+        },
+        {
+          "fecha": "2025-10-18",
+          "cliente": "Abono",
+          "concepto": "atlas a/x #24",
+          "ingreso": 100000
+        }
+      ],
+      "gastos": [
+        {
+          "fecha": "2025-08-20",
+          "concepto": "",
+          "gasto": 8800,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-08-23",
+          "concepto": "pago gaby R3",
+          "gasto": 6490,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-08-24",
+          "concepto": "pago flete a/x#35",
+          "gasto": 28000,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-08-24",
+          "concepto": "pago flete a/x#32",
+          "gasto": 22400,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-08-26",
+          "concepto": "pago inge guate #488",
+          "gasto": 36500,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-08-26",
+          "concepto": "pago mp (7x7,000 venta local lamas)",
+          "gasto": 49000,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-08-26",
+          "concepto": "pago carlos playa azul#50 (wero b, lamas)",
+          "gasto": 2000,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-08-30",
+          "concepto": "pago chucho flete#48 silla-mc chavis",
+          "gasto": 43200,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-08-30",
+          "concepto": "pago chucho flete#48 silla-mc jr",
+          "gasto": 43200,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-08-31",
+          "concepto": "pago alemanes flete playa azul#22 lamas",
+          "gasto": 2200,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-09-06",
+          "concepto": "pago chucho flete#32 silla-mc (chavis)",
+          "gasto": 28800,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-09-06",
+          "concepto": "pago chucho flete#16 silla-mc",
+          "gasto": 14400,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-09-08",
+          "concepto": "pago flete playa azul#1 psico bunny",
+          "gasto": 900,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-09-08",
+          "concepto": "pagamos boveda usa-boveda monte",
+          "gasto": 345100,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-09-08",
+          "concepto": "venta local chucho#22 - sra karla playa azul",
+          "gasto": 73200,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-09-09",
+          "concepto": "papel tocallo mc (entregue 144,880) servicio",
+          "gasto": 151680,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-09-13",
+          "concepto": "pago chucho flete#32 silla-mc",
+          "gasto": 28800,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-09-13",
+          "concepto": "pago playa azul flete#20 silla-mc (compadre)",
+          "gasto": 18000,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-09-14",
+          "concepto": "pago a/x flete#20 mc-planta (compadre)",
+          "gasto": 14000,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-09-14",
+          "concepto": "pago a/x flete#32 mc-planta (chavis)",
+          "gasto": 22400,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-09-14",
+          "concepto": "pago a/x flete#48 mc-planta",
+          "gasto": 33600,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-09-15",
+          "concepto": "compra 5.56 rojo (tocallo)",
+          "gasto": 38000,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-09-16",
+          "concepto": "com werito flete#144 silla-planta",
+          "gasto": 14400,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-09-20",
+          "concepto": "pago carlos flete playa azul#34 (weroB-MG)",
+          "gasto": 3400,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-09-20",
+          "concepto": "pago flete chucho#16 silla-mc",
+          "gasto": 14400,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-09-21",
+          "concepto": "pago flete gaby atlas #16",
+          "gasto": 4480,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-09-22",
+          "concepto": "pago gordo pacman#480",
+          "gasto": 60000,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-09-27",
+          "concepto": "pago gaby papel atlas 200k x %4",
+          "gasto": 8000,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-09-27",
+          "concepto": "pago oficina atlas#16",
+          "gasto": 4000,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-09-27",
+          "concepto": "pago flete chucho#17 silla-mc",
+          "gasto": 15300,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-09-27",
+          "concepto": "pago flete chucho#32 silla-mc (chavis)",
+          "gasto": 28800,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-09-28",
+          "concepto": "pago flete a/x#33 mc-planta",
+          "gasto": 23100,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-09-28",
+          "concepto": "pago flete a/x#30 mc-planta (chavis)",
+          "gasto": 21000,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-09-30",
+          "concepto": "mochila guate inge",
+          "gasto": 20000,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-10-03",
+          "concepto": "bajada papel atlas 187,500 x %4",
+          "gasto": 7500,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-10-03",
+          "concepto": "pago oficina atlas#15",
+          "gasto": 3750,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-10-04",
+          "concepto": "inge guate (werito)",
+          "gasto": 40000,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-10-04",
+          "concepto": "pago flete atlas#15",
+          "gasto": 4500,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-10-07",
+          "concepto": "pago gordo pacman#495",
+          "gasto": 60000,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-10-11",
+          "concepto": "pago chucho flete#48 silla-mc",
+          "gasto": 43200,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-10-11",
+          "concepto": "pago playa azul flete#20 silla-mc",
+          "gasto": 18000,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-10-12",
+          "concepto": "pago flete a/x #48 mc-planta",
+          "gasto": 33600,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-10-12",
+          "concepto": "pago carlos flete playa azul#15 MG",
+          "gasto": 1500,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-10-18",
+          "concepto": "pago chucho flete#48 silla-mc",
+          "gasto": 43200,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-10-18",
+          "concepto": "pago carlos flete playa azul#20 lamas",
+          "gasto": 2000,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-10-18",
+          "concepto": "papel atlas 100k x%4 silla",
+          "gasto": 4000,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-10-19",
+          "concepto": "pago flete  a/x #48 silla-planta",
+          "gasto": 33600,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-10-19",
+          "concepto": "papel atlas 150k x %2 mc",
+          "gasto": 3000,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        },
+        {
+          "fecha": "2025-10-20",
+          "concepto": "transpaso boveda usa-boveda monte",
+          "gasto": 234870,
+          "origenDelGastoOAbono": "Gasto Bóveda Usa"
+        }
+      ],
+      "totalIngresos": 1888275,
+      "totalGastos": 1760270
+    },
+    "utilidades": {
+      "nombre": "utilidades",
+      "saldoActual": 102658,
+      "ingresos": [
+        {
+          "fecha": "2025-08-18",
+          "cliente": null,
+          "concepto": "Corte",
+          "ingreso": 205658
+        },
+        {
+          "fecha": "2025-08-23",
+          "cliente": "Ax",
+          "concepto": "",
+          "ingreso": 10000
+        },
+        {
+          "fecha": "2025-08-23",
+          "cliente": "Negrito",
+          "concepto": "",
+          "ingreso": 5000
+        },
+        {
+          "fecha": "2025-08-25",
+          "cliente": "Galvan",
+          "concepto": "",
+          "ingreso": 1800
+        },
+        {
+          "fecha": "2025-08-25",
+          "cliente": "Valle Local",
+          "concepto": "",
+          "ingreso": 400
+        },
+        {
+          "fecha": "2025-08-25",
+          "cliente": "Tocayo",
+          "concepto": "",
+          "ingreso": 4000
+        },
+        {
+          "fecha": "2025-08-25",
+          "cliente": "Sierra47",
+          "concepto": "",
+          "ingreso": 3000
+        },
+        {
+          "fecha": "2025-08-30",
+          "cliente": "Chucho",
+          "concepto": "venta local monte#15",
+          "ingreso": 3000
+        },
+        {
+          "fecha": "2025-09-01",
+          "cliente": "Ax",
+          "concepto": "venta local monte #14",
+          "ingreso": 2800
+        },
+        {
+          "fecha": "2025-09-02",
+          "cliente": "Galvan",
+          "concepto": "venta local monte rafa#1",
+          "ingreso": 600
+        },
+        {
+          "fecha": "2025-09-02",
+          "cliente": "Galvan",
+          "concepto": "venta local galvan #1",
+          "ingreso": 200
+        },
+        {
+          "fecha": "2025-09-02",
+          "cliente": "Sierra47",
+          "concepto": "venta local monte #8",
+          "ingreso": 1600
+        },
+        {
+          "fecha": "2025-09-03",
+          "cliente": "470",
+          "concepto": "venta local monte #1",
+          "ingreso": 200
+        },
+        {
+          "fecha": "2025-09-03",
+          "cliente": "Valle Local",
+          "concepto": "venta local monte#5",
+          "ingreso": 1000
+        },
+        {
+          "fecha": "2025-09-04",
+          "cliente": "Chucho",
+          "concepto": "venta local monte#22",
+          "ingreso": 4400
+        },
+        {
+          "fecha": "2025-09-05",
+          "cliente": "Galvan",
+          "concepto": "venta local monte#1",
+          "ingreso": 200
+        },
+        {
+          "fecha": "2025-09-05",
+          "cliente": "Negrito",
+          "concepto": "venta local monte#10",
+          "ingreso": 2000
+        },
+        {
+          "fecha": "2025-09-09",
+          "cliente": "Sierra47",
+          "concepto": "venta local monte #5",
+          "ingreso": 1000
+        },
+        {
+          "fecha": "2025-09-10",
+          "cliente": "Chucho",
+          "concepto": "venta local monte #9",
+          "ingreso": 1800
+        },
+        {
+          "fecha": "2025-09-10",
+          "cliente": "Galvan",
+          "concepto": "venta local monte#1",
+          "ingreso": 200
+        },
+        {
+          "fecha": "2025-09-11",
+          "cliente": "Chucho",
+          "concepto": "venta local monte#16",
+          "ingreso": 3200
+        },
+        {
+          "fecha": "2025-09-11",
+          "cliente": "Negrito",
+          "concepto": "venta local monte#10",
+          "ingreso": 2000
+        },
+        {
+          "fecha": "2025-09-12",
+          "cliente": "Galvan",
+          "concepto": "venta local monte#1 rafa",
+          "ingreso": 600
+        },
+        {
+          "fecha": "2025-09-13",
+          "cliente": "tx8",
+          "concepto": "venta local monte#5",
+          "ingreso": 1000
+        },
+        {
+          "fecha": "2025-09-16",
+          "cliente": "Galvan",
+          "concepto": "venta local monte#1",
+          "ingreso": 200
+        },
+        {
+          "fecha": "2025-09-16",
+          "cliente": "Tocayo",
+          "concepto": "venta local monte#3",
+          "ingreso": 900
+        },
+        {
+          "fecha": "2025-09-17",
+          "cliente": "Galvan",
+          "concepto": "venta local monte#1",
+          "ingreso": 200
+        },
+        {
+          "fecha": "2025-09-18",
+          "cliente": "Tocayo",
+          "concepto": "venta local monte#20",
+          "ingreso": 4000
+        },
+        {
+          "fecha": "2025-09-18",
+          "cliente": "Ax",
+          "concepto": "venta local monte#1 (psico bunny)",
+          "ingreso": 200
+        },
+        {
+          "fecha": "2025-09-19",
+          "cliente": "Negrito",
+          "concepto": "venta local monte#5",
+          "ingreso": 1000
+        },
+        {
+          "fecha": "2025-09-19",
+          "cliente": "Don Rafa",
+          "concepto": "venta local monte#1",
+          "ingreso": 600
+        },
+        {
+          "fecha": "2025-09-20",
+          "cliente": "Sierra47",
+          "concepto": "venta local monte#12",
+          "ingreso": 2400
+        },
+        {
+          "fecha": "2025-09-20",
+          "cliente": "Rojo",
+          "concepto": "venta local monte#2",
+          "ingreso": 400
+        },
+        {
+          "fecha": "2025-09-20",
+          "cliente": "Ax",
+          "concepto": "venta local monte#3",
+          "ingreso": 600
+        },
+        {
+          "fecha": "2025-09-20",
+          "cliente": "Galvan",
+          "concepto": "venta local monte#1",
+          "ingreso": 200
+        },
+        {
+          "fecha": "2025-09-25",
+          "cliente": "Ax",
+          "concepto": "psico bunny (wero a/x)",
+          "ingreso": 200
+        },
+        {
+          "fecha": "2025-10-06",
+          "cliente": "Valle Local",
+          "concepto": "venta local monte valle#2",
+          "ingreso": 400
+        },
+        {
+          "fecha": "2025-10-07",
+          "cliente": "tx8",
+          "concepto": "venta local monte#10",
+          "ingreso": 2000
+        },
+        {
+          "fecha": "2025-10-07",
+          "cliente": "Valle Local",
+          "concepto": "venta local monte#30",
+          "ingreso": 6000
+        },
+        {
+          "fecha": "2025-10-07",
+          "cliente": "Sierra47",
+          "concepto": "venta local monte#3",
+          "ingreso": 600
+        },
+        {
+          "fecha": "2025-10-07",
+          "cliente": "Tocayo",
+          "concepto": "venta local monte#3",
+          "ingreso": 600
+        },
+        {
+          "fecha": "2025-10-09",
+          "cliente": "cabo",
+          "concepto": "venta local monte#1",
+          "ingreso": 200
+        },
+        {
+          "fecha": "2025-10-09",
+          "cliente": "Ax",
+          "concepto": "venta local monte psico bunny #1",
+          "ingreso": 200
+        },
+        {
+          "fecha": "2025-10-09",
+          "cliente": "Galvan",
+          "concepto": "venta local monte#1 (tito)",
+          "ingreso": 600
+        },
+        {
+          "fecha": "2025-10-11",
+          "cliente": "Galvan",
+          "concepto": "venta local monte #1 (rafa)",
+          "ingreso": 600
+        },
+        {
+          "fecha": "2025-10-14",
+          "cliente": "tx8",
+          "concepto": "venta local monte#1",
+          "ingreso": 200
+        },
+        {
+          "fecha": "2025-10-15",
+          "cliente": "Rojo",
+          "concepto": "venta local monte#1",
+          "ingreso": 200
+        },
+        {
+          "fecha": "2025-10-16",
+          "cliente": "compa",
+          "concepto": "venta local monte#2 psico bunny",
+          "ingreso": 400
+        },
+        {
+          "fecha": "2025-10-17",
+          "cliente": "Sierra47",
+          "concepto": "venta local monte#10",
+          "ingreso": 2000
+        },
+        {
+          "fecha": "2025-10-17",
+          "cliente": "Galvan",
+          "concepto": "venta local monte#1👁️",
+          "ingreso": 200
+        }
+      ],
+      "gastos": [
+        {
+          "fecha": "2025-08-18",
+          "concepto": "NA",
+          "gasto": 5000,
+          "origenDelGastoOAbono": "Gasto Utilidades"
+        },
+        {
+          "fecha": "2025-08-25",
+          "concepto": "NA",
+          "gasto": 10000,
+          "origenDelGastoOAbono": "Gasto Utilidades"
+        },
+        {
+          "fecha": "2025-08-30",
+          "concepto": "NA",
+          "gasto": 5000,
+          "origenDelGastoOAbono": "Gasto Utilidades"
+        },
+        {
+          "fecha": "2025-09-01",
+          "concepto": "NA",
+          "gasto": 50100,
+          "origenDelGastoOAbono": "Gasto Utilidades"
+        },
+        {
+          "fecha": "2025-09-01",
+          "concepto": "NA",
+          "gasto": 10000,
+          "origenDelGastoOAbono": "Gasto Utilidades"
+        },
+        {
+          "fecha": "2025-09-08",
+          "concepto": "NA",
+          "gasto": 10000,
+          "origenDelGastoOAbono": "Gasto Utilidades"
+        },
+        {
+          "fecha": "2025-09-15",
+          "concepto": "NA",
+          "gasto": 10000,
+          "origenDelGastoOAbono": "Gasto Utilidades"
+        },
+        {
+          "fecha": "2025-09-22",
+          "concepto": "NA",
+          "gasto": 10000,
+          "origenDelGastoOAbono": "Gasto Utilidades"
+        },
+        {
+          "fecha": "2025-09-29",
+          "concepto": "NA",
+          "gasto": 10000,
+          "origenDelGastoOAbono": "Gasto Utilidades"
+        },
+        {
+          "fecha": "2025-10-01",
+          "concepto": "NA",
+          "gasto": 28000,
+          "origenDelGastoOAbono": "Gasto Utilidades"
+        },
+        {
+          "fecha": "2025-10-02",
+          "concepto": "NA",
+          "gasto": 10000,
+          "origenDelGastoOAbono": "Gasto Utilidades"
+        },
+        {
+          "fecha": "2025-10-06",
+          "concepto": "NA",
+          "gasto": 10000,
+          "origenDelGastoOAbono": "Gasto Utilidades"
+        },
+        {
+          "fecha": "2025-10-13",
+          "concepto": "NA",
+          "gasto": 10000,
+          "origenDelGastoOAbono": "Gasto Utilidades"
+        }
+      ],
+      "totalIngresos": 280758,
+      "totalGastos": 178100
+    },
+    "fleteSur": {
+      "nombre": "fleteSur",
+      "saldoActual": 185792,
+      "ingresos": [
+        {
+          "fecha": "2025-08-18",
+          "cliente": "Corte",
+          "concepto": "Corte",
+          "ingreso": 230112
+        },
+        {
+          "fecha": "2025-08-23",
+          "cliente": "Ax",
+          "concepto": "",
+          "ingreso": 25000
+        },
+        {
+          "fecha": "2025-08-23",
+          "cliente": "Negrito",
+          "concepto": "",
+          "ingreso": 12500
+        },
+        {
+          "fecha": "2025-08-23",
+          "cliente": "Valle",
+          "concepto": "",
+          "ingreso": 30000
+        },
+        {
+          "fecha": "2025-08-25",
+          "cliente": "Galvan",
+          "concepto": "",
+          "ingreso": 1500
+        },
+        {
+          "fecha": "2025-08-25",
+          "cliente": "Valle Local",
+          "concepto": "",
+          "ingreso": 1000
+        },
+        {
+          "fecha": "2025-08-25",
+          "cliente": "Tocayo",
+          "concepto": "",
+          "ingreso": 10000
+        },
+        {
+          "fecha": "2025-08-25",
+          "cliente": "Sierra47",
+          "concepto": "",
+          "ingreso": 7500
+        },
+        {
+          "fecha": "2025-08-30",
+          "cliente": "Chucho",
+          "concepto": "venta local monte#15",
+          "ingreso": 7500
+        },
+        {
+          "fecha": "2025-09-01",
+          "cliente": "Ax",
+          "concepto": "venta local monte #14",
+          "ingreso": 7000
+        },
+        {
+          "fecha": "2025-09-01",
+          "cliente": "Valle",
+          "concepto": "flete valle#75 panaderia",
+          "ingreso": 37500
+        },
+        {
+          "fecha": "2025-09-02",
+          "cliente": "Galvan",
+          "concepto": "venta local monte rafa#1",
+          "ingreso": 500
+        },
+        {
+          "fecha": "2025-09-02",
+          "cliente": "Galvan",
+          "concepto": "venta local galvan #1",
+          "ingreso": 500
+        },
+        {
+          "fecha": "2025-09-02",
+          "cliente": "Sierra47",
+          "concepto": "venta local monte #8",
+          "ingreso": 4000
+        },
+        {
+          "fecha": "2025-09-03",
+          "cliente": "470",
+          "concepto": "venta local monte #1",
+          "ingreso": 500
+        },
+        {
+          "fecha": "2025-09-03",
+          "cliente": "Valle Local",
+          "concepto": "venta local monte#5",
+          "ingreso": 2500
+        },
+        {
+          "fecha": "2025-09-04",
+          "cliente": "Chucho",
+          "concepto": "venta local monte#22",
+          "ingreso": 11000
+        },
+        {
+          "fecha": "2025-09-05",
+          "cliente": "Galvan",
+          "concepto": "venta local monte#1",
+          "ingreso": 500
+        },
+        {
+          "fecha": "2025-09-05",
+          "cliente": "Negrito",
+          "concepto": "venta local monte#10",
+          "ingreso": 5000
+        },
+        {
+          "fecha": "2025-09-06",
+          "cliente": "Robalo",
+          "concepto": "flete#60 robalo-gaviota",
+          "ingreso": 30000
+        },
+        {
+          "fecha": "2025-09-08",
+          "cliente": "Ax",
+          "concepto": "pago flete #25 a/x panaderia",
+          "ingreso": 12500
+        },
+        {
+          "fecha": "2025-09-08",
+          "cliente": "Tocayo",
+          "concepto": "pago flete tocallo #44",
+          "ingreso": 22000
+        },
+        {
+          "fecha": "2025-09-09",
+          "cliente": "Sierra47",
+          "concepto": "venta local monte #5",
+          "ingreso": 2500
+        },
+        {
+          "fecha": "2025-09-10",
+          "cliente": "Chucho",
+          "concepto": "venta local monte #9",
+          "ingreso": 4500
+        },
+        {
+          "fecha": "2025-09-10",
+          "cliente": "Galvan",
+          "concepto": "venta local monte#1",
+          "ingreso": 500
+        },
+        {
+          "fecha": "2025-09-11",
+          "cliente": "Chucho",
+          "concepto": "venta local monte#16",
+          "ingreso": 8000
+        },
+        {
+          "fecha": "2025-09-11",
+          "cliente": "Negrito",
+          "concepto": "venta local monte#10",
+          "ingreso": 5000
+        },
+        {
+          "fecha": "2025-09-12",
+          "cliente": "Galvan",
+          "concepto": "venta local monte#1 rafa",
+          "ingreso": 500
+        },
+        {
+          "fecha": "2025-09-13",
+          "cliente": "tx8",
+          "concepto": "venta local monte#5",
+          "ingreso": 2500
+        },
+        {
+          "fecha": "2025-09-16",
+          "cliente": "Galvan",
+          "concepto": "venta local monte#1",
+          "ingreso": 500
+        },
+        {
+          "fecha": "2025-09-16",
+          "cliente": "Tocayo",
+          "concepto": "venta local monte#3",
+          "ingreso": 1500
+        },
+        {
+          "fecha": "2025-09-17",
+          "cliente": "Galvan",
+          "concepto": "venta local monte#1",
+          "ingreso": 500
+        },
+        {
+          "fecha": "2025-09-18",
+          "cliente": "Tocayo",
+          "concepto": "venta local monte#20",
+          "ingreso": 10000
+        },
+        {
+          "fecha": "2025-09-19",
+          "cliente": "Negrito",
+          "concepto": "venta local monte#5",
+          "ingreso": 2500
+        },
+        {
+          "fecha": "2025-09-19",
+          "cliente": "Don Rafa",
+          "concepto": "venta local monte#1",
+          "ingreso": 500
+        },
+        {
+          "fecha": "2025-09-20",
+          "cliente": "Sierra47",
+          "concepto": "venta local monte#12",
+          "ingreso": 6000
+        },
+        {
+          "fecha": "2025-09-20",
+          "cliente": "Rojo",
+          "concepto": "venta local monte#2",
+          "ingreso": 1000
+        },
+        {
+          "fecha": "2025-09-20",
+          "cliente": "Ax",
+          "concepto": "venta local monte#3",
+          "ingreso": 1500
+        },
+        {
+          "fecha": "2025-09-20",
+          "cliente": "Galvan",
+          "concepto": "venta local monte#1",
+          "ingreso": 500
+        },
+        {
+          "fecha": "2025-09-23",
+          "cliente": "Abono",
+          "concepto": "flete paqueteria #72 a/x",
+          "ingreso": 7200
+        },
+        {
+          "fecha": "2025-10-04",
+          "cliente": "Abono",
+          "concepto": "flete paqueteria#42 a/x",
+          "ingreso": 4200
+        },
+        {
+          "fecha": "2025-10-05",
+          "cliente": "Abono",
+          "concepto": "flete valle#60 gaviota",
+          "ingreso": 30000
+        },
+        {
+          "fecha": "2025-10-05",
+          "cliente": "Abono",
+          "concepto": "flete valle#30 pacman",
+          "ingreso": 15000
+        },
+        {
+          "fecha": "2025-10-06",
+          "cliente": "Valle Local",
+          "concepto": "venta local monte valle#2",
+          "ingreso": 1000
+        },
+        {
+          "fecha": "2025-10-06",
+          "cliente": "Abono",
+          "concepto": "flete a/x#25 pacman",
+          "ingreso": 12500
+        },
+        {
+          "fecha": "2025-10-06",
+          "cliente": "Abono",
+          "concepto": "flete tocallo#50 pacman",
+          "ingreso": 25000
+        },
+        {
+          "fecha": "2025-10-07",
+          "cliente": "tx8",
+          "concepto": "venta local monte#10",
+          "ingreso": 5000
+        },
+        {
+          "fecha": "2025-10-07",
+          "cliente": "Valle Local",
+          "concepto": "venta local monte#30",
+          "ingreso": 15000
+        },
+        {
+          "fecha": "2025-10-07",
+          "cliente": "Sierra47",
+          "concepto": "venta local monte#3",
+          "ingreso": 1500
+        },
+        {
+          "fecha": "2025-10-07",
+          "cliente": "Tocayo",
+          "concepto": "venta local monte#3",
+          "ingreso": 1500
+        },
+        {
+          "fecha": "2025-10-07",
+          "cliente": "Abono",
+          "concepto": "flete  robalo #40 gaviota",
+          "ingreso": 20000
+        },
+        {
+          "fecha": "2025-10-09",
+          "cliente": "cabo",
+          "concepto": "venta local monte#1",
+          "ingreso": 500
+        },
+        {
+          "fecha": "2025-10-09",
+          "cliente": "Galvan",
+          "concepto": "venta local monte#1 (tito)",
+          "ingreso": 500
+        },
+        {
+          "fecha": "2025-10-11",
+          "cliente": "Galvan",
+          "concepto": "venta local monte #1 (rafa)",
+          "ingreso": 500
+        },
+        {
+          "fecha": "2025-10-14",
+          "cliente": "tx8",
+          "concepto": "venta local monte#1",
+          "ingreso": 500
+        },
+        {
+          "fecha": "2025-10-15",
+          "cliente": "Rojo",
+          "concepto": "venta local monte#1",
+          "ingreso": 500
+        },
+        {
+          "fecha": "2025-10-17",
+          "cliente": "Sierra47",
+          "concepto": "venta local monte#10",
+          "ingreso": 5000
+        },
+        {
+          "fecha": "2025-10-17",
+          "cliente": "Galvan",
+          "concepto": "venta local monte#1👁️",
+          "ingreso": 500
+        }
+      ],
+      "gastos": [
+        {
+          "fecha": "2025-08-18",
+          "concepto": "gasto franco werito",
+          "gasto": 2724,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-08-18",
+          "concepto": "gasolina brayan",
+          "gasto": 136,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-08-18",
+          "concepto": "servicio nissan frontier",
+          "gasto": 321,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-08-18",
+          "concepto": "renta equipo corte",
+          "gasto": 215,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-08-18",
+          "concepto": "cfe gaviota",
+          "gasto": 126,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-08-18",
+          "concepto": "placas veracruz",
+          "gasto": 299,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-08-18",
+          "concepto": "bateria camion werito",
+          "gasto": 948,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-08-20",
+          "concepto": "celular werito",
+          "gasto": 1089,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-08-20",
+          "concepto": "fierros chavis",
+          "gasto": 13400,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-08-22",
+          "concepto": "equipos gallos",
+          "gasto": 819,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-08-22",
+          "concepto": "gastos franco",
+          "gasto": 273,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-08-23",
+          "concepto": "gastos flete#423 gaviota",
+          "gasto": 16052,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-08-23",
+          "concepto": "brinco salsa,jaiba#423",
+          "gasto": 25000,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-08-23",
+          "concepto": "gastos jr",
+          "gasto": 1089,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-08-25",
+          "concepto": "factura playa azul #50",
+          "gasto": 874,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-08-25",
+          "concepto": "pago fito (werito)",
+          "gasto": 437,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-08-25",
+          "concepto": "gasolina brayan",
+          "gasto": 136,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-08-26",
+          "concepto": "material pistones (werito)",
+          "gasto": 382,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-08-28",
+          "concepto": "pago vuelta playa azul#50",
+          "gasto": 3835,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-08-28",
+          "concepto": "gastos franco (werito)",
+          "gasto": 81,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-08-28",
+          "concepto": "cel jr (werito)",
+          "gasto": 1366,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-08-28",
+          "concepto": "2 cuentas radio (werito)",
+          "gasto": 273,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-08-30",
+          "concepto": "deposito material pistones (werito)",
+          "gasto": 2465,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-08-30",
+          "concepto": "gastos flete#487 gabiota",
+          "gasto": 17368,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-08-30",
+          "concepto": "brinco salsa,jaiba#487",
+          "gasto": 25000,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-01",
+          "concepto": "RENTA LIC SEPTIEMBRE",
+          "gasto": 50000,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-01",
+          "concepto": "RENTA SIERRA ALPHA,SANTI",
+          "gasto": 13223,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-01",
+          "concepto": "CAJA TRAMITES USA SEPTIEMBRE",
+          "gasto": 2500,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-01",
+          "concepto": "RENTA GUARDIA SEPTIEMBRE (JR,CHAVIS)",
+          "gasto": 2500,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-01",
+          "concepto": "gasolina brayan",
+          "gasto": 138,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-01",
+          "concepto": "mes gaviota (werito)",
+          "gasto": 2209,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-02",
+          "concepto": "renta bodega atongo",
+          "gasto": 3591,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-02",
+          "concepto": "renta bodega gabiota (werito)",
+          "gasto": 4000,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-05",
+          "concepto": "material hector",
+          "gasto": 848,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-06",
+          "concepto": "gastos flete gaviota#513",
+          "gasto": 18333,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-06",
+          "concepto": "brincos salsa,jaiba #513",
+          "gasto": 25000,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-06",
+          "concepto": "reparacion camion (werito)",
+          "gasto": 2876,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-06",
+          "concepto": "renta oficina atongo (werito)",
+          "gasto": 583,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-06",
+          "concepto": "deposito werito",
+          "gasto": 83,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-08",
+          "concepto": "factura playa azul (werito)",
+          "gasto": 888,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-09",
+          "concepto": "facura frontier (werito)",
+          "gasto": 250,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-09",
+          "concepto": "placas y tarjeta ram (werito)",
+          "gasto": 2083,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-10",
+          "concepto": "flete tocallo 500x44",
+          "gasto": 22000,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-12",
+          "concepto": "pago carlos 2 vueltas playa azul (12-50)",
+          "gasto": 2000,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-12",
+          "concepto": "gasolina franco",
+          "gasto": 111,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-12",
+          "concepto": "pago werito vuelta playa #232",
+          "gasto": 3888,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-13",
+          "concepto": "internet atongo y gaviota (werito)",
+          "gasto": 312,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-13",
+          "concepto": "deposito werito",
+          "gasto": 555,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-16",
+          "concepto": "gasolina brayan",
+          "gasto": 138,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-16",
+          "concepto": "remolque (werito)",
+          "gasto": 1638,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-16",
+          "concepto": "gastos franco",
+          "gasto": 2777,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-16",
+          "concepto": "brinco 4 cortas playa azul",
+          "gasto": 600,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-19",
+          "concepto": "winche rebanada (werito)",
+          "gasto": 1658,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-19",
+          "concepto": "liquidacion rebanada (werito)",
+          "gasto": 2927,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-19",
+          "concepto": "pintura camion 6x6 (werito)",
+          "gasto": 1111,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-19",
+          "concepto": "pistones  (werito)",
+          "gasto": 2006,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-19",
+          "concepto": "gastos carlos vueltas playa roja-azul (papel dany1)",
+          "gasto": 1000,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-20",
+          "concepto": "llantas mercedez (werito)",
+          "gasto": 833,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-20",
+          "concepto": "publicacion montacargas (werito)",
+          "gasto": 500,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-20",
+          "concepto": "bateria y amortiguadores ram (werito)",
+          "gasto": 650,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-20",
+          "concepto": "reposision gastos werito",
+          "gasto": 722,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-20",
+          "concepto": "vuelos muchachos mexico",
+          "gasto": 555,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-20",
+          "concepto": "reparacion ram dany (werito)",
+          "gasto": 527,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-23",
+          "concepto": "gastos boletos ranchero y gastos tarimas werito",
+          "gasto": 3660,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-23",
+          "concepto": "gasolina brayan",
+          "gasto": 138,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-23",
+          "concepto": "gastos muchachos mexico (werito)",
+          "gasto": 388,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-25",
+          "concepto": "gastos gallos (470)",
+          "gasto": 833,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-25",
+          "concepto": "pago fito (werito)",
+          "gasto": 444,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-27",
+          "concepto": "cargadores y tiros (werito)",
+          "gasto": 1288,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-27",
+          "concepto": "llevada camion gaviota (werito)",
+          "gasto": 2777,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-30",
+          "concepto": "gasolina brayan",
+          "gasto": 138,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-09-30",
+          "concepto": "renta,porton,vuelos y gastos panaderia",
+          "gasto": 9800,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-01",
+          "concepto": "RENTA LIC OCTUBRE",
+          "gasto": 50000,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-01",
+          "concepto": "RENTA ALPHA,SANTI",
+          "gasto": 13333,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-01",
+          "concepto": "gastos mes gaviota",
+          "gasto": 2222,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-01",
+          "concepto": "renta bodega gaviota",
+          "gasto": 4022,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-02",
+          "concepto": "RENTA GUARDIA OCTUBRE (JR,CHAVIS)",
+          "gasto": 3000,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-02",
+          "concepto": "GASTOS CAJA USA OCTUBRE",
+          "gasto": 2500,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-02",
+          "concepto": "renta bodega atongo (werito)",
+          "gasto": 3611,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-02",
+          "concepto": "renta bodega allende (470)",
+          "gasto": 1666,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-04",
+          "concepto": "gastos paquteria #42 a/x",
+          "gasto": 2061,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-04",
+          "concepto": "gastos flete gaviota#688",
+          "gasto": 16111,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-04",
+          "concepto": "brincos salsa,jaiba #688",
+          "gasto": 25000,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-06",
+          "concepto": "gasolina brayan",
+          "gasto": 139,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-07",
+          "concepto": "boleto avion compa",
+          "gasto": 949,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-07",
+          "concepto": "gastos compa guate",
+          "gasto": 1000,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-11",
+          "concepto": "Carpinteria cruces (werito)",
+          "gasto": 7262,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-11",
+          "concepto": "llevada grua gaviota (werito)",
+          "gasto": 2793,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-11",
+          "concepto": "factura playa (werito)",
+          "gasto": 1787,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-11",
+          "concepto": "gps camion (werito)",
+          "gasto": 418,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-13",
+          "concepto": "renta oficina  (a/x)",
+          "gasto": 6703,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-13",
+          "concepto": "pago vuelta playa azul (werito)",
+          "gasto": 3910,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-13",
+          "concepto": "gasolina brayan",
+          "gasto": 139,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-13",
+          "concepto": "gasolina camion hector",
+          "gasto": 167,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-14",
+          "concepto": "llanta panadera (werito)",
+          "gasto": 64,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-14",
+          "concepto": "pila montacargas (werito)",
+          "gasto": 178,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-14",
+          "concepto": "mtto correctivo np300 (werito)",
+          "gasto": 751,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-14",
+          "concepto": "placas np300 chiapas (werito)",
+          "gasto": 614,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-16",
+          "concepto": "camaras cabo (hector)",
+          "gasto": 2709,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-18",
+          "concepto": "vuelta llevadas cajas a laredo (werito)",
+          "gasto": 1675,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-18",
+          "concepto": "traida trocas playa azul (werito)",
+          "gasto": 1117,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-18",
+          "concepto": "revisada trocas gps (werito)",
+          "gasto": 446,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        },
+        {
+          "fecha": "2025-10-18",
+          "concepto": "renta bodega atongo (werito)",
+          "gasto": 586,
+          "origenDelGastoOAbono": "Gasto Flete Sur"
+        }
+      ],
+      "totalIngresos": 652512,
+      "totalGastos": 466720
+    },
+    "azteca": {
+      "nombre": "azteca",
+      "saldoActual": -178714.88,
+      "ingresos": [
+        {
+          "fecha": "2025-09-08",
+          "cliente": "Gasto Bóveda Usa",
+          "concepto": "venta local chucho#22 - sra karla playa azul",
+          "ingreso": 73200
+        },
+        {
+          "fecha": "2025-09-11",
+          "cliente": "Abono",
+          "concepto": "trajo blin blin",
+          "ingreso": 1400000
+        },
+        {
+          "fecha": "2025-09-11",
+          "cliente": "Abono",
+          "concepto": "dejo inspector playa",
+          "ingreso": 164370
+        },
+        {
+          "fecha": "2025-09-12",
+          "cliente": "Abono",
+          "concepto": "dejaron inspector",
+          "ingreso": 142000
+        },
+        {
+          "fecha": "2025-09-12",
+          "cliente": "Abono",
+          "concepto": "dejaron inspector",
+          "ingreso": 100000
+        },
+        {
+          "fecha": "2025-09-13",
+          "cliente": "Abono",
+          "concepto": "dejaron inspector",
+          "ingreso": 1400
+        }
+      ],
+      "gastos": [
+        {
+          "fecha": "2025-08-29",
+          "concepto": "Retiro inspector",
+          "gasto": 1666.67,
+          "origenDelGastoOAbono": "Gasto Azteca"
+        },
+        {
+          "fecha": "2025-08-30",
+          "concepto": "prestamo sra karla-a/x playa azul",
+          "gasto": 1500,
+          "origenDelGastoOAbono": "Gasto Azteca"
+        },
+        {
+          "fecha": "2025-08-30",
+          "concepto": "Retiro Inspector",
+          "gasto": 8000,
+          "origenDelGastoOAbono": "Gasto Azteca"
+        },
+        {
+          "fecha": "2025-08-30",
+          "concepto": "Retiro inspector",
+          "gasto": 2777.78,
+          "origenDelGastoOAbono": "Gasto Azteca"
+        },
+        {
+          "fecha": "2025-08-31",
+          "concepto": "Retiro inspector",
+          "gasto": 3300,
+          "origenDelGastoOAbono": "Gasto Azteca"
+        },
+        {
+          "fecha": "2025-09-05",
+          "concepto": "Retiro inspector",
+          "gasto": 20000,
+          "origenDelGastoOAbono": "Gasto Azteca"
+        },
+        {
+          "fecha": "2025-09-05",
+          "concepto": "Retiro inspector",
+          "gasto": 3180,
+          "origenDelGastoOAbono": "Gasto Azteca"
+        },
+        {
+          "fecha": "2025-09-05",
+          "concepto": "Retiro inspector (750/18.10)",
+          "gasto": 41436.46,
+          "origenDelGastoOAbono": "Gasto Azteca"
+        },
+        {
+          "fecha": "2025-09-06",
+          "concepto": "Retiro inspector",
+          "gasto": 3300,
+          "origenDelGastoOAbono": "Gasto Azteca"
+        },
+        {
+          "fecha": "2025-09-06",
+          "concepto": "Retiro inspector (50,000/18)",
+          "gasto": 2777.78,
+          "origenDelGastoOAbono": "Gasto Azteca"
+        },
+        {
+          "fecha": "2025-09-12",
+          "concepto": "retiro inspector (80,000 tc-18.10)",
+          "gasto": 4419,
+          "origenDelGastoOAbono": "Gasto Azteca"
+        },
+        {
+          "fecha": "2025-09-12",
+          "concepto": "retiro inspecor",
+          "gasto": 20000,
+          "origenDelGastoOAbono": "Gasto Azteca"
+        },
+        {
+          "fecha": "2025-09-12",
+          "concepto": "retiro inspector",
+          "gasto": 3300,
+          "origenDelGastoOAbono": "Gasto Azteca"
+        },
+        {
+          "fecha": "2025-09-13",
+          "concepto": "retiro inspector dany1-rojo",
+          "gasto": 100000,
+          "origenDelGastoOAbono": "Gasto Azteca"
+        },
+        {
+          "fecha": "2025-09-13",
+          "concepto": "retiro inspector dany1-letty",
+          "gasto": 500000,
+          "origenDelGastoOAbono": "Gasto Azteca"
+        },
+        {
+          "fecha": "2025-09-13",
+          "concepto": "retiro inspector dany1-letty",
+          "gasto": 500000,
+          "origenDelGastoOAbono": "Gasto Azteca"
+        },
+        {
+          "fecha": "2025-09-22",
+          "concepto": "Retiro inspector",
+          "gasto": 3300,
+          "origenDelGastoOAbono": "Gasto Azteca"
+        },
+        {
+          "fecha": "2025-09-23",
+          "concepto": "Retiro Inspector",
+          "gasto": 30000,
+          "origenDelGastoOAbono": "Gasto Azteca"
+        },
+        {
+          "fecha": "2025-09-24",
+          "concepto": "Retiro Inspector (28000/18)",
+          "gasto": 1555,
+          "origenDelGastoOAbono": "Gasto Azteca"
+        },
+        {
+          "fecha": "2025-09-25",
+          "concepto": "Retiro Inspector",
+          "gasto": 83370,
+          "origenDelGastoOAbono": "Gasto Azteca"
+        },
+        {
+          "fecha": "2025-09-26",
+          "concepto": "Retiro inspector",
+          "gasto": 8000,
+          "origenDelGastoOAbono": "Gasto Azteca"
+        },
+        {
+          "fecha": "2025-09-26",
+          "concepto": "Retiro inspector",
+          "gasto": 100000,
+          "origenDelGastoOAbono": "Gasto Azteca"
+        },
+        {
+          "fecha": "2025-10-06",
+          "concepto": "Retiro inspector (50,000/17.80)",
+          "gasto": 2808.99,
+          "origenDelGastoOAbono": "Gasto Azteca"
+        },
+        {
+          "fecha": "2025-10-09",
+          "concepto": "Retiro inspector 1era",
+          "gasto": 400000,
+          "origenDelGastoOAbono": "Gasto Azteca"
+        }
+      ],
+      "totalIngresos": 1880970,
+      "totalGastos": 1844691.68
+    },
+    "leftie": {
+      "nombre": "leftie",
+      "saldoActual": 45844,
+      "ingresos": [
+        {
+          "fecha": "2025-08-25",
+          "cliente": "Lamas",
+          "concepto": "playa azul#30 (7,100x30)",
+          "ingreso": 213000
+        },
+        {
+          "fecha": "2025-08-26",
+          "cliente": "Lamas",
+          "concepto": "monte (7,000x40)",
+          "ingreso": 280000
+        },
+        {
+          "fecha": "2025-09-04",
+          "cliente": "Lamas",
+          "concepto": "venta playa azul,monte #44 (lamas)",
+          "ingreso": 236000
+        },
+        {
+          "fecha": "2025-09-08",
+          "cliente": "Abono",
+          "concepto": "venta monte lamas resto #44",
+          "ingreso": 74200
+        },
+        {
+          "fecha": "2025-09-16",
+          "cliente": "Lamas",
+          "concepto": "abono lamas playa azul (venta local monte#23)",
+          "ingreso": 70000
+        },
+        {
+          "fecha": "2025-09-20",
+          "cliente": "Abono",
+          "concepto": "playa azul mg#14",
+          "ingreso": 99400
+        },
+        {
+          "fecha": "2025-09-27",
+          "cliente": "Abono",
+          "concepto": "lamas playa azul",
+          "ingreso": 31000
+        },
+        {
+          "fecha": "2025-10-09",
+          "cliente": "Abono",
+          "concepto": "venta playa azul mg #15",
+          "ingreso": 106500
+        },
+        {
+          "fecha": "2025-10-20",
+          "cliente": "Lamas",
+          "concepto": "venta playa azul lamas#20",
+          "ingreso": 142000
+        }
+      ],
+      "gastos": [
+        {
+          "fecha": "2025-08-25",
+          "concepto": "",
+          "gasto": 225500,
+          "origenDelGastoOAbono": null
+        },
+        {
+          "fecha": "2025-08-29",
+          "concepto": "monte F20792585K",
+          "gasto": 650000,
+          "origenDelGastoOAbono": "Gasto Leftie"
+        },
+        {
+          "fecha": "2025-09-19",
+          "concepto": "sra letty-sra karla. (dany1)",
+          "gasto": 165000,
+          "origenDelGastoOAbono": "Gasto Leftie"
+        },
+        {
+          "fecha": "2025-10-13",
+          "concepto": "monte CN9082979",
+          "gasto": 165756,
+          "origenDelGastoOAbono": "Gasto Leftie"
+        }
+      ],
+      "totalIngresos": 1252100,
+      "totalGastos": 1206256
+    },
+    "profit": {
+      "nombre": "profit",
+      "saldoActual": 12577748,
+      "ingresos": [
+        {
+          "fecha": "2025-08-22",
+          "cliente": "Gasto Bóveda Monte",
+          "concepto": "",
+          "ingreso": 189000
+        },
+        {
+          "fecha": "2025-08-22",
+          "cliente": "Gasto Bóveda Monte",
+          "concepto": "",
+          "ingreso": 136000
+        },
+        {
+          "fecha": "2025-08-25",
+          "cliente": "Gasto Bóveda Monte",
+          "concepto": "",
+          "ingreso": 350000
+        },
+        {
+          "fecha": "2025-08-25",
+          "cliente": "Gasto Bóveda Monte",
+          "concepto": "",
+          "ingreso": 50000
+        },
+        {
+          "fecha": "2025-08-26",
+          "cliente": "Gasto Bóveda Monte",
+          "concepto": "corporativo-boveda valle",
+          "ingreso": 400000
+        },
+        {
+          "fecha": "2025-08-29",
+          "cliente": "Gasto Bóveda Monte",
+          "concepto": "corporativo-boveda valle",
+          "ingreso": 198000
+        },
+        {
+          "fecha": "2025-09-04",
+          "cliente": "Abono",
+          "concepto": "A68155635A",
+          "ingreso": 60000
+        },
+        {
+          "fecha": "2025-09-04",
+          "cliente": "Gasto Bóveda Monte",
+          "concepto": "corporativo-boveda valle",
+          "ingreso": 500000
+        },
+        {
+          "fecha": "2025-09-04",
+          "cliente": "Gasto Bóveda Monte",
+          "concepto": "corporativo-boveda valle",
+          "ingreso": 260000
+        },
+        {
+          "fecha": "2025-09-05",
+          "cliente": "Gasto Bóveda Monte",
+          "concepto": "corporativo-boveda valle (servicio a/x)",
+          "ingreso": 210000
+        },
+        {
+          "fecha": "2025-09-08",
+          "cliente": "Abono",
+          "concepto": "G46552985A",
+          "ingreso": 330000
+        },
+        {
+          "fecha": "2025-09-08",
+          "cliente": "Abono",
+          "concepto": "NOTA",
+          "ingreso": 20000
+        },
+        {
+          "fecha": "2025-09-08",
+          "cliente": "Gasto Bóveda Monte",
+          "concepto": "dany1 corporativo servicio a/x",
+          "ingreso": 266280
+        },
+        {
+          "fecha": "2025-09-09",
+          "cliente": "Gasto Bóveda Usa",
+          "concepto": "papel tocallo mc (entregue 144,880) servicio",
+          "ingreso": 151680
+        },
+        {
+          "fecha": "2025-09-09",
+          "cliente": "Abono",
+          "concepto": "transferencia manolo1 pesos (20,000 tc 18.50)",
+          "ingreso": 390000
+        },
+        {
+          "fecha": "2025-09-10",
+          "cliente": "Gasto Flete Sur",
+          "concepto": "flete tocallo 500x44",
+          "ingreso": 22000
+        },
+        {
+          "fecha": "2025-09-11",
+          "cliente": "Gasto Bóveda Monte",
+          "concepto": "corporativo- boveda valle",
+          "ingreso": 250000
+        },
+        {
+          "fecha": "2025-09-11",
+          "cliente": "Abono",
+          "concepto": "G67435842A planta",
+          "ingreso": 33000
+        },
+        {
+          "fecha": "2025-09-11",
+          "cliente": "Abono",
+          "concepto": "amigo playa #50 monte",
+          "ingreso": 190630
+        },
+        {
+          "fecha": "2025-09-15",
+          "cliente": "Gasto Bóveda Monte",
+          "concepto": "corporativo-boveda valle",
+          "ingreso": 550000
+        },
+        {
+          "fecha": "2025-09-17",
+          "cliente": "Gasto Bóveda Monte",
+          "concepto": "corporativo-boveda valle",
+          "ingreso": 100000
+        },
+        {
+          "fecha": "2025-09-17",
+          "cliente": "Gasto Bóveda Monte",
+          "concepto": "corporativo-boveda valle",
+          "ingreso": 189000
+        },
+        {
+          "fecha": "2025-09-17",
+          "cliente": "Abono",
+          "concepto": "D87329810F",
+          "ingreso": 150000
+        },
+        {
+          "fecha": "2025-09-18",
+          "cliente": "Gasto Bóveda Monte",
+          "concepto": "corporativo-boveda valle",
+          "ingreso": 30000
+        },
+        {
+          "fecha": "2025-09-18",
+          "cliente": "Gasto Bóveda Monte",
+          "concepto": "corporativo-boveda valle",
+          "ingreso": 55000
+        },
+        {
+          "fecha": "2025-09-19",
+          "cliente": "Abono",
+          "concepto": "sra karla-rojo  894753",
+          "ingreso": 100000
+        },
+        {
+          "fecha": "2025-09-19",
+          "cliente": "Abono",
+          "concepto": "sra letty",
+          "ingreso": 165000
+        },
+        {
+          "fecha": "2025-09-19",
+          "cliente": "Abono",
+          "concepto": "sra karla-sra letty ✅",
+          "ingreso": 1000000
+        },
+        {
+          "fecha": "2025-09-23",
+          "cliente": "Abono",
+          "concepto": "corporativo- servicio a/x",
+          "ingreso": 275184
+        },
+        {
+          "fecha": "2025-09-24",
+          "cliente": "Abono",
+          "concepto": "transferencia manolo1 pesos (30,000 tc 18.30)",
+          "ingreso": 490000
+        },
+        {
+          "fecha": "2025-09-24",
+          "cliente": "Abono",
+          "concepto": "transferencia manolo1 pesos (30,000 tc 18.30)",
+          "ingreso": 50000
+        },
+        {
+          "fecha": "2025-09-25",
+          "cliente": "Abono",
+          "concepto": "G 62649439 A",
+          "ingreso": 100000
+        },
+        {
+          "fecha": "2025-09-26",
+          "cliente": "Abono",
+          "concepto": "sra karla-rojo  074296",
+          "ingreso": 100000
+        },
+        {
+          "fecha": "2025-09-30",
+          "cliente": "Gasto Bóveda Monte",
+          "concepto": "corporativo-boveda valle",
+          "ingreso": 140000
+        },
+        {
+          "fecha": "2025-10-02",
+          "cliente": "Abono",
+          "concepto": "D90614655B  h",
+          "ingreso": 100000
+        },
+        {
+          "fecha": "2025-10-04",
+          "cliente": "Abono",
+          "concepto": "H56824927B  h",
+          "ingreso": 15000
+        },
+        {
+          "fecha": "2025-10-06",
+          "cliente": "Gasto Bóveda Monte",
+          "concepto": "corporativo-boveda valle✅",
+          "ingreso": 250000
+        },
+        {
+          "fecha": "2025-10-08",
+          "cliente": "Abono",
+          "concepto": "sevicio cliente a/x",
+          "ingreso": 66974
+        },
+        {
+          "fecha": "2025-10-09",
+          "cliente": "Abono",
+          "concepto": "servicio cliente a/x",
+          "ingreso": 295000
+        },
+        {
+          "fecha": "2025-10-09",
+          "cliente": "Gasto Bóveda Monte",
+          "concepto": "corporativo-boveda valle",
+          "ingreso": 500000
+        },
+        {
+          "fecha": "2025-10-09",
+          "cliente": "Abono",
+          "concepto": "transferencia manolo1 pesos (40,000 tc18.20)",
+          "ingreso": 30000
+        },
+        {
+          "fecha": "2025-10-09",
+          "cliente": "Abono",
+          "concepto": "transferencia manolo1 pesos (40,000 tc18.20)",
+          "ingreso": 100000
+        },
+        {
+          "fecha": "2025-10-09",
+          "cliente": "Abono",
+          "concepto": "transferencia manolo1 pesos (40,000 tc18.20)",
+          "ingreso": 305000
+        },
+        {
+          "fecha": "2025-10-09",
+          "cliente": "Abono",
+          "concepto": "transferencia manolo1 pesos (40,000 tc18.20)",
+          "ingreso": 20000
+        },
+        {
+          "fecha": "2025-10-09",
+          "cliente": "Abono",
+          "concepto": "sra karla-sra letty k64279552A",
+          "ingreso": 400000
+        },
+        {
+          "fecha": "2025-10-11",
+          "cliente": "Abono",
+          "concepto": "L13436421B.  h",
+          "ingreso": 55000
+        },
+        {
+          "fecha": "2025-10-13",
+          "cliente": "Gasto Bóveda Monte",
+          "concepto": "corporativo-boveda valle",
+          "ingreso": 300000
+        },
+        {
+          "fecha": "2025-10-13",
+          "cliente": "Abono",
+          "concepto": "sra lety-dany1 rojo R7378331 PESOS",
+          "ingreso": 1500000
+        },
+        {
+          "fecha": "2025-10-14",
+          "cliente": "Abono",
+          "concepto": "transferencia manolo1 pesos (40,000 tc18.20)",
+          "ingreso": 200000
+        },
+        {
+          "fecha": "2025-10-15",
+          "cliente": "Abono",
+          "concepto": "D09957831A. h",
+          "ingreso": 180000
+        },
+        {
+          "fecha": "2025-10-15",
+          "cliente": "Gasto Bóveda Monte",
+          "concepto": "corporativo-boveda valle",
+          "ingreso": 260000
+        },
+        {
+          "fecha": "2025-10-16",
+          "cliente": "Gasto Bóveda Monte",
+          "concepto": "corporativo-boveda valle",
+          "ingreso": 250000
+        },
+        {
+          "fecha": "2025-10-16",
+          "cliente": "Abono",
+          "concepto": "F62907587D. h",
+          "ingreso": 15000
+        },
+        {
+          "fecha": "2025-10-17",
+          "cliente": "Gasto Bóveda Monte",
+          "concepto": "corporativo- valle #40 pacman",
+          "ingreso": 220000
+        },
+        {
+          "fecha": "2025-10-20",
+          "cliente": "Gasto Bóveda Monte",
+          "concepto": "corporativo-boveda valle",
+          "ingreso": 15000
+        }
+      ],
+      "gastos": [],
+      "totalIngresos": 12577748,
+      "totalGastos": 0
+    }
+  },
+  "almacen": {
+    "stockActual": 17,
+    "entradas": [
+      {
+        "oc": "OC0001",
+        "fecha": "2025-08-25",
+        "distribuidor": "Q-MAYA",
+        "cantidad": 423
+      },
+      {
+        "oc": "OC0002",
+        "fecha": "2025-08-25",
+        "distribuidor": "Q-MAYA",
+        "cantidad": 32
+      },
+      {
+        "oc": "OC0003",
+        "fecha": "2025-08-25",
+        "distribuidor": "A/X🌶️🦀",
+        "cantidad": 33
+      },
+      {
+        "oc": "OC0004",
+        "fecha": "2025-08-30",
+        "distribuidor": "PACMAN",
+        "cantidad": 487
+      },
+      {
+        "oc": "OC0005",
+        "fecha": "2025-09-06",
+        "distribuidor": "Q-MAYA",
+        "cantidad": 513
+      },
+      {
+        "oc": "OC0006",
+        "fecha": "2025-09-09",
+        "distribuidor": "CH-MONTE",
+        "cantidad": 100
+      },
+      {
+        "oc": "OC0007",
+        "fecha": "2025-09-29",
+        "distribuidor": "VALLE-MONTE",
+        "cantidad": 20
+      },
+      {
+        "oc": "OC0008",
+        "fecha": "2025-10-05",
+        "distribuidor": "PACMAN",
+        "cantidad": 488
+      },
+      {
+        "oc": "OC0009",
+        "fecha": "2025-10-05",
+        "distribuidor": "Q-MAYA-MP",
+        "cantidad": 200
+      }
+    ],
+    "salidas": [
+      {
+        "fecha": "2025-08-23",
+        "cliente": "Bódega M-P",
+        "cantidad": 150
+      },
+      {
+        "fecha": "2025-08-23",
+        "cliente": "Valle",
+        "cantidad": 60
+      },
+      {
+        "fecha": "2025-08-23",
+        "cliente": "Ax",
+        "cantidad": 50
+      },
+      {
+        "fecha": "2025-08-23",
+        "cliente": "Negrito",
+        "cantidad": 25
+      },
+      {
+        "fecha": "2025-08-23",
+        "cliente": "Wero Benavides",
+        "cantidad": 20
+      },
+      {
+        "fecha": "2025-08-23",
+        "cliente": "Lamas",
+        "cantidad": 30
+      },
+      {
+        "fecha": "2025-08-25",
+        "cliente": "Trámite Chucho",
+        "cantidad": 48
+      },
+      {
+        "fecha": "2025-08-25",
+        "cliente": "Galvan",
+        "cantidad": 3
+      },
+      {
+        "fecha": "2025-08-25",
+        "cliente": "Valle Local",
+        "cantidad": 2
+      },
+      {
+        "fecha": "2025-08-25",
+        "cliente": "Tocayo",
+        "cantidad": 20
+      },
+      {
+        "fecha": "2025-08-25",
+        "cliente": "Sierra47",
+        "cantidad": 15
+      },
+      {
+        "fecha": "2025-08-26",
+        "cliente": "Lamas",
+        "cantidad": 33
+      },
+      {
+        "fecha": "2025-08-30",
+        "cliente": "Ax",
+        "cantidad": 33
+      },
+      {
+        "fecha": "2025-08-30",
+        "cliente": "Valle",
+        "cantidad": 75
+      },
+      {
+        "fecha": "2025-08-30",
+        "cliente": "Ax",
+        "cantidad": 25
+      },
+      {
+        "fecha": "2025-08-30",
+        "cliente": "Tocayo",
+        "cantidad": 44
+      },
+      {
+        "fecha": "2025-08-30",
+        "cliente": "Tio Tocayo",
+        "cantidad": 50
+      },
+      {
+        "fecha": "2025-08-30",
+        "cliente": "Chucho",
+        "cantidad": 15
+      },
+      {
+        "fecha": "2025-08-31",
+        "cliente": "Lamas",
+        "cantidad": 22
+      },
+      {
+        "fecha": "2025-08-31",
+        "cliente": "Lamas",
+        "cantidad": 22
+      },
+      {
+        "fecha": "2025-09-01",
+        "cliente": "Ax",
+        "cantidad": 14
+      },
+      {
+        "fecha": "2025-09-02",
+        "cliente": "Trámite Güerito",
+        "cantidad": 24
+      },
+      {
+        "fecha": "2025-09-02",
+        "cliente": "Galvan",
+        "cantidad": 1
+      },
+      {
+        "fecha": "2025-09-02",
+        "cliente": "Galvan",
+        "cantidad": 1
+      },
+      {
+        "fecha": "2025-09-02",
+        "cliente": "Sierra47",
+        "cantidad": 8
+      },
+      {
+        "fecha": "2025-09-03",
+        "cliente": "470",
+        "cantidad": 1
+      },
+      {
+        "fecha": "2025-09-03",
+        "cliente": "Trámite Playa Azul",
+        "cantidad": 1
+      },
+      {
+        "fecha": "2025-09-03",
+        "cliente": "Valle Local",
+        "cantidad": 5
+      },
+      {
+        "fecha": "2025-09-04",
+        "cliente": "Chucho",
+        "cantidad": 22
+      },
+      {
+        "fecha": "2025-09-04",
+        "cliente": "Trámite Chucho",
+        "cantidad": 16
+      },
+      {
+        "fecha": "2025-09-05",
+        "cliente": "Galvan",
+        "cantidad": 1
+      },
+      {
+        "fecha": "2025-09-05",
+        "cliente": "Negrito",
+        "cantidad": 10
+      },
+      {
+        "fecha": "2025-09-06",
+        "cliente": "Robalo",
+        "cantidad": 60
+      },
+      {
+        "fecha": "2025-09-06",
+        "cliente": "Bódega M-P",
+        "cantidad": 230
+      },
+      {
+        "fecha": "2025-09-08",
+        "cliente": "Trámite Chucho",
+        "cantidad": 16
+      },
+      {
+        "fecha": "2025-09-08",
+        "cliente": "Tavo",
+        "cantidad": 100
+      },
+      {
+        "fecha": "2025-09-08",
+        "cliente": "mg",
+        "cantidad": 12
+      },
+      {
+        "fecha": "2025-09-09",
+        "cliente": "Trámite Chucho",
+        "cantidad": 16
+      },
+      {
+        "fecha": "2025-09-09",
+        "cliente": "Sierra47",
+        "cantidad": 5
+      },
+      {
+        "fecha": "2025-09-10",
+        "cliente": "Chucho",
+        "cantidad": 9
+      },
+      {
+        "fecha": "2025-09-10",
+        "cliente": "Galvan",
+        "cantidad": 1
+      },
+      {
+        "fecha": "2025-09-11",
+        "cliente": "Chucho",
+        "cantidad": 16
+      },
+      {
+        "fecha": "2025-09-11",
+        "cliente": "Negrito",
+        "cantidad": 10
+      },
+      {
+        "fecha": "2025-09-12",
+        "cliente": "Galvan",
+        "cantidad": 1
+      },
+      {
+        "fecha": "2025-09-13",
+        "cliente": "tx8",
+        "cantidad": 5
+      },
+      {
+        "fecha": "2025-09-13",
+        "cliente": "amigo playa azul",
+        "cantidad": 50
+      },
+      {
+        "fecha": "2025-09-13",
+        "cliente": "flama",
+        "cantidad": 50
+      },
+      {
+        "fecha": "2025-09-15",
+        "cliente": "Trámite Chucho",
+        "cantidad": 16
+      },
+      {
+        "fecha": "2025-09-16",
+        "cliente": "Lamas",
+        "cantidad": 23
+      },
+      {
+        "fecha": "2025-09-16",
+        "cliente": "Galvan",
+        "cantidad": 1
+      },
+      {
+        "fecha": "2025-09-16",
+        "cliente": "Tocayo",
+        "cantidad": 3
+      },
+      {
+        "fecha": "2025-09-17",
+        "cliente": "Wero Benavides",
+        "cantidad": 20
+      },
+      {
+        "fecha": "2025-09-17",
+        "cliente": "Galvan",
+        "cantidad": 1
+      },
+      {
+        "fecha": "2025-09-18",
+        "cliente": "Trámite Chucho",
+        "cantidad": 16
+      },
+      {
+        "fecha": "2025-09-18",
+        "cliente": "Tocayo",
+        "cantidad": 20
+      },
+      {
+        "fecha": "2025-09-18",
+        "cliente": "Ax",
+        "cantidad": 1
+      },
+      {
+        "fecha": "2025-09-19",
+        "cliente": "Negrito",
+        "cantidad": 5
+      },
+      {
+        "fecha": "2025-09-19",
+        "cliente": "Don Rafa",
+        "cantidad": 1
+      },
+      {
+        "fecha": "2025-09-20",
+        "cliente": "mg",
+        "cantidad": 14
+      },
+      {
+        "fecha": "2025-09-20",
+        "cliente": "Sierra47",
+        "cantidad": 12
+      },
+      {
+        "fecha": "2025-09-20",
+        "cliente": "Rojo",
+        "cantidad": 2
+      },
+      {
+        "fecha": "2025-09-20",
+        "cliente": "Ax",
+        "cantidad": 3
+      },
+      {
+        "fecha": "2025-09-20",
+        "cliente": "Galvan",
+        "cantidad": 1
+      },
+      {
+        "fecha": "2025-09-23",
+        "cliente": "Trámite Chucho",
+        "cantidad": 1
+      },
+      {
+        "fecha": "2025-09-25",
+        "cliente": "Ax",
+        "cantidad": 1
+      },
+      {
+        "fecha": "2025-09-29",
+        "cliente": "Sierra47",
+        "cantidad": 20
+      },
+      {
+        "fecha": "2025-10-03",
+        "cliente": "Galvan",
+        "cantidad": 2
+      },
+      {
+        "fecha": "2025-10-05",
+        "cliente": "Valle",
+        "cantidad": 60
+      },
+      {
+        "fecha": "2025-10-05",
+        "cliente": "Valle",
+        "cantidad": 20
+      },
+      {
+        "fecha": "2025-10-05",
+        "cliente": "Valle",
+        "cantidad": 30
+      },
+      {
+        "fecha": "2025-10-05",
+        "cliente": "Bódega M-P",
+        "cantidad": 100
+      },
+      {
+        "fecha": "2025-10-06",
+        "cliente": "Ax",
+        "cantidad": 25
+      },
+      {
+        "fecha": "2025-10-06",
+        "cliente": "Ax",
+        "cantidad": 24
+      },
+      {
+        "fecha": "2025-10-06",
+        "cliente": "Robalo",
+        "cantidad": 40
+      },
+      {
+        "fecha": "2025-10-06",
+        "cliente": "Valle Local",
+        "cantidad": 2
+      },
+      {
+        "fecha": "2025-10-06",
+        "cliente": "Trámite Playa Azul",
+        "cantidad": 20
+      },
+      {
+        "fecha": "2025-10-06",
+        "cliente": "Trámite Chucho",
+        "cantidad": 48
+      },
+      {
+        "fecha": "2025-10-06",
+        "cliente": "Trámite Chucho",
+        "cantidad": 48
+      },
+      {
+        "fecha": "2025-10-06",
+        "cliente": "Tocayo",
+        "cantidad": 50
+      },
+      {
+        "fecha": "2025-10-06",
+        "cliente": "Tio Tocayo",
+        "cantidad": 74
+      },
+      {
+        "fecha": "2025-10-07",
+        "cliente": "tx8",
+        "cantidad": 10
+      },
+      {
+        "fecha": "2025-10-07",
+        "cliente": "Valle Local",
+        "cantidad": 30
+      },
+      {
+        "fecha": "2025-10-07",
+        "cliente": "Sierra47",
+        "cantidad": 3
+      },
+      {
+        "fecha": "2025-10-07",
+        "cliente": "Tocayo",
+        "cantidad": 3
+      },
+      {
+        "fecha": "2025-10-09",
+        "cliente": "mg",
+        "cantidad": 15
+      },
+      {
+        "fecha": "2025-10-09",
+        "cliente": "cabo",
+        "cantidad": 1
+      },
+      {
+        "fecha": "2025-10-09",
+        "cliente": "Ax",
+        "cantidad": 1
+      },
+      {
+        "fecha": "2025-10-09",
+        "cliente": "Galvan",
+        "cantidad": 1
+      },
+      {
+        "fecha": "2025-10-11",
+        "cliente": "Galvan",
+        "cantidad": 1
+      },
+      {
+        "fecha": "2025-10-14",
+        "cliente": "tx8",
+        "cantidad": 1
+      },
+      {
+        "fecha": "2025-10-15",
+        "cliente": "Rojo",
+        "cantidad": 1
+      },
+      {
+        "fecha": "2025-10-16",
+        "cliente": "compa",
+        "cantidad": 2
+      },
+      {
+        "fecha": "2025-10-17",
+        "cliente": "Sierra47",
+        "cantidad": 10
+      },
+      {
+        "fecha": "2025-10-17",
+        "cliente": "Galvan",
+        "cantidad": 1
+      },
+      {
+        "fecha": "2025-10-18",
+        "cliente": "Lamas",
+        "cantidad": 20
+      },
+      {
+        "fecha": "2025-10-20",
+        "cliente": "Trámite Chucho",
+        "cantidad": 48
+      }
+    ],
+    "totalEntradas": 2296,
+    "totalSalidas": 2279
+  },
+  "distribuidores": [
+    {
+      "nombre": "PACMAN",
+      "costoTotal": 6142500,
+      "abonos": 0,
+      "deuda": 6142500
+    },
+    {
+      "nombre": "Q-MAYA",
+      "costoTotal": 6098400,
+      "abonos": 0,
+      "deuda": 6098400
+    }
+  ],
+  "ordenesCompra": [
+    {
+      "oc": "OC0001",
+      "fecha": "2025-08-25",
+      "origen": "Q-MAYA",
+      "cantidad": 423,
+      "costoDistribuidor": 6100,
+      "costoTransporte": 200,
+      "costoPorUnidad": 6300,
+      "costoTotal": 2664900,
+      "id": "OC0001"
+    },
+    {
+      "oc": "OC0002",
+      "fecha": "2025-08-25",
+      "origen": "Q-MAYA",
+      "cantidad": 32,
+      "costoDistribuidor": 6100,
+      "costoTransporte": 200,
+      "costoPorUnidad": 6300,
+      "costoTotal": 201600,
+      "id": "OC0002"
+    },
+    {
+      "oc": "OC0003",
+      "fecha": "2025-08-25",
+      "origen": "A/X🌶️🦀",
+      "cantidad": 33,
+      "costoDistribuidor": 6100,
+      "costoTransporte": 200,
+      "costoPorUnidad": 6300,
+      "costoTotal": 207900,
+      "id": "OC0003"
+    },
+    {
+      "oc": "OC0004",
+      "fecha": "2025-08-30",
+      "origen": "PACMAN",
+      "cantidad": 487,
+      "costoDistribuidor": 6100,
+      "costoTransporte": 200,
+      "costoPorUnidad": 6300,
+      "costoTotal": 3068100,
+      "id": "OC0004"
+    },
+    {
+      "oc": "OC0005",
+      "fecha": "2025-09-06",
+      "origen": "Q-MAYA",
+      "cantidad": 513,
+      "costoDistribuidor": 6100,
+      "costoTransporte": 200,
+      "costoPorUnidad": 6300,
+      "costoTotal": 3231900,
+      "id": "OC0005"
+    },
+    {
+      "oc": "OC0006",
+      "fecha": "2025-09-09",
+      "origen": "CH-MONTE",
+      "cantidad": 100,
+      "costoDistribuidor": 6300,
+      "costoTransporte": 0,
+      "costoPorUnidad": 6300,
+      "costoTotal": 630000,
+      "id": "OC0006"
+    },
+    {
+      "oc": "OC0007",
+      "fecha": "2025-09-29",
+      "origen": "VALLE-MONTE",
+      "cantidad": 20,
+      "costoDistribuidor": 7000,
+      "costoTransporte": 0,
+      "costoPorUnidad": 7000,
+      "costoTotal": 140000,
+      "id": "OC0007"
+    },
+    {
+      "oc": "OC0008",
+      "fecha": "2025-10-05",
+      "origen": "PACMAN",
+      "cantidad": 488,
+      "costoDistribuidor": 6100,
+      "costoTransporte": 200,
+      "costoPorUnidad": 6300,
+      "costoTotal": 3074400,
+      "id": "OC0008"
+    },
+    {
+      "oc": "OC0009",
+      "fecha": "2025-10-05",
+      "origen": "Q-MAYA-MP",
+      "cantidad": 200,
+      "costoDistribuidor": 6100,
+      "costoTransporte": 200,
+      "costoPorUnidad": 6300,
+      "costoTotal": 1260000,
+      "id": "OC0009"
+    }
+  ],
+  "clientes": [
+    {
+      "nombre": "Tavo",
+      "actual": "Pendiente",
+      "deuda": 0,
+      "abonos": 0,
+      "pendiente": 0,
+      "observaciones": "(33 panaderia)"
+    },
+    {
+      "nombre": "Ax",
+      "actual": 0,
+      "deuda": 365400,
+      "abonos": 682780,
+      "pendiente": -317380,
+      "observaciones": ""
+    },
+    {
+      "nombre": "Robalo",
+      "actual": 0,
+      "deuda": 660000,
+      "abonos": 426000,
+      "pendiente": 234000,
+      "observaciones": ""
+    },
+    {
+      "nombre": "Valle",
+      "actual": 0,
+      "deuda": 880500,
+      "abonos": 845500,
+      "pendiente": 35000,
+      "observaciones": ""
+    },
+    {
+      "nombre": "Tio Tocayo",
+      "actual": "Pendiente",
+      "deuda": 315000,
+      "abonos": 0,
+      "pendiente": 315000,
+      "observaciones": ""
+    },
+    {
+      "nombre": "Lamas",
+      "actual": 0,
+      "deuda": 1057200,
+      "abonos": 941000,
+      "pendiente": 116200,
+      "observaciones": ""
+    },
+    {
+      "nombre": "Chendo",
+      "actual": 0,
+      "deuda": 0,
+      "abonos": 0,
+      "pendiente": 0,
+      "observaciones": ""
+    },
+    {
+      "nombre": "Galvan",
+      "actual": 0,
+      "deuda": 14000,
+      "abonos": 0,
+      "pendiente": 14000,
+      "observaciones": ""
+    },
+    {
+      "nombre": "Trámite",
+      "actual": null,
+      "deuda": 0,
+      "abonos": 0,
+      "pendiente": 0,
+      "observaciones": ""
+    },
+    {
+      "nombre": "Valle Local",
+      "actual": 0,
+      "deuda": 0,
+      "abonos": 0,
+      "pendiente": 0,
+      "observaciones": ""
+    },
+    {
+      "nombre": "Don Rafa",
+      "actual": 0,
+      "deuda": 0,
+      "abonos": 0,
+      "pendiente": 0,
+      "observaciones": ""
+    },
+    {
+      "nombre": "Don Alex",
+      "actual": 0,
+      "deuda": 0,
+      "abonos": 0,
+      "pendiente": 0,
+      "observaciones": ""
+    },
+    {
+      "nombre": "Primo Tocayo",
+      "actual": 0,
+      "deuda": 0,
+      "abonos": 0,
+      "pendiente": 0,
+      "observaciones": ""
+    },
+    {
+      "nombre": "Rojo",
+      "actual": 0,
+      "deuda": 0,
+      "abonos": 0,
+      "pendiente": 0,
+      "observaciones": ""
+    },
+    {
+      "nombre": "Sierra47",
+      "actual": 0,
+      "deuda": 0,
+      "abonos": 0,
+      "pendiente": 0,
+      "observaciones": ""
+    },
+    {
+      "nombre": "Arabe",
+      "actual": 0,
+      "deuda": 0,
+      "abonos": 0,
+      "pendiente": 0,
+      "observaciones": ""
+    },
+    {
+      "nombre": "Tocayo",
+      "actual": 0,
+      "deuda": 277200,
+      "abonos": 22000,
+      "pendiente": 255200,
+      "observaciones": ""
+    },
+    {
+      "nombre": "Bódega M-P",
+      "actual": "Pendiente",
+      "deuda": 945000,
+      "abonos": 0,
+      "pendiente": 945000,
+      "observaciones": ""
+    },
+    {
+      "nombre": "Negrito",
+      "actual": 0,
+      "deuda": 0,
+      "abonos": 0,
+      "pendiente": 0,
+      "observaciones": ""
+    },
+    {
+      "nombre": "Wero Benavides",
+      "actual": "Pendiente",
+      "deuda": 142000,
+      "abonos": 0,
+      "pendiente": 142000,
+      "observaciones": ""
+    },
+    {
+      "nombre": "Chucho",
+      "actual": 0,
+      "deuda": 0,
+      "abonos": 0,
+      "pendiente": 0,
+      "observaciones": ""
+    },
+    {
+      "nombre": "Trámite Güerito",
+      "actual": 0,
+      "deuda": 0,
+      "abonos": 0,
+      "pendiente": 0,
+      "observaciones": ""
+    },
+    {
+      "nombre": "Trámite Playa Azul",
+      "actual": 0,
+      "deuda": 0,
+      "abonos": 0,
+      "pendiente": 0,
+      "observaciones": ""
+    },
+    {
+      "nombre": 470,
+      "actual": 7000,
+      "deuda": 0,
+      "abonos": 0,
+      "pendiente": 0,
+      "observaciones": ""
+    },
+    {
+      "nombre": "mg",
+      "actual": "Pendiente",
+      "deuda": 205900,
+      "abonos": 0,
+      "pendiente": 205900,
+      "observaciones": ""
+    },
+    {
+      "nombre": "tx8",
+      "actual": 0,
+      "deuda": 0,
+      "abonos": 0,
+      "pendiente": 0,
+      "observaciones": ""
+    },
+    {
+      "nombre": "amigo playa azul",
+      "actual": "Pendiente",
+      "deuda": 355000,
+      "abonos": 0,
+      "pendiente": 355000,
+      "observaciones": ""
+    },
+    {
+      "nombre": "flama",
+      "actual": "Pendiente",
+      "deuda": 335000,
+      "abonos": 0,
+      "pendiente": 335000,
+      "observaciones": ""
+    },
+    {
+      "nombre": "cabo",
+      "actual": null,
+      "deuda": 0,
+      "abonos": 0,
+      "pendiente": 0,
+      "observaciones": ""
+    },
+    {
+      "nombre": "compa",
+      "actual": null,
+      "deuda": 0,
+      "abonos": 0,
+      "pendiente": 0,
+      "observaciones": ""
+    },
+    {
+      "nombre": "Primo",
+      "actual": 0,
+      "deuda": 0.0,
+      "abonos": 3000.0,
+      "pendiente": -3000.0,
+      "observaciones": null
+    }
+  ],
+  "ventas": [
+    {
+      "fecha": "2025-08-23",
+      "ocRelacionada": "OC0001",
+      "cantidad": 150,
+      "cliente": "Bódega M-P",
+      "bovedaMonte": 945000,
+      "precioVenta": 6300,
+      "ingreso": 945000,
+      "flete": "Aplica",
+      "fleteUtilidad": 75000,
+      "utilidad": 0,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-08-23",
+      "ocRelacionada": "OC0001",
+      "cantidad": 60,
+      "cliente": "Valle",
+      "bovedaMonte": 378000,
+      "precioVenta": 6800,
+      "ingreso": 408000,
+      "flete": "Aplica",
+      "fleteUtilidad": 30000,
+      "utilidad": 0,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-08-23",
+      "ocRelacionada": "OC0001",
+      "cantidad": 50,
+      "cliente": "Ax",
+      "bovedaMonte": 315000,
+      "precioVenta": 7000,
+      "ingreso": 350000,
+      "flete": "Aplica",
+      "fleteUtilidad": 25000,
+      "utilidad": 10000,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-08-23",
+      "ocRelacionada": "OC0001",
+      "cantidad": 25,
+      "cliente": "Negrito",
+      "bovedaMonte": 157500,
+      "precioVenta": 7000,
+      "ingreso": 175000,
+      "flete": "Aplica",
+      "fleteUtilidad": 12500,
+      "utilidad": 5000,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-08-23",
+      "ocRelacionada": "OC0001",
+      "cantidad": 20,
+      "cliente": "Wero Benavides",
+      "bovedaMonte": 126000,
+      "precioVenta": 7100,
+      "ingreso": 142000,
+      "flete": "Aplica",
+      "fleteUtilidad": 10000,
+      "utilidad": 6000,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-08-23",
+      "ocRelacionada": "OC0001",
+      "cantidad": 30,
+      "cliente": "Lamas",
+      "bovedaMonte": 189000,
+      "precioVenta": 7100,
+      "ingreso": 213000,
+      "flete": "Aplica",
+      "fleteUtilidad": 15000,
+      "utilidad": 9000,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-08-25",
+      "ocRelacionada": "OC0001",
+      "cantidad": 48,
+      "cliente": "Trámite Chucho",
+      "bovedaMonte": 302400,
+      "precioVenta": 6300,
+      "ingreso": 302400,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": 0,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-08-25",
+      "ocRelacionada": "OC0001",
+      "cantidad": 3,
+      "cliente": "Galvan",
+      "bovedaMonte": 18900,
+      "precioVenta": 7400,
+      "ingreso": 22200,
+      "flete": "Aplica",
+      "fleteUtilidad": 1500,
+      "utilidad": 1800,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-08-25",
+      "ocRelacionada": "OC0001",
+      "cantidad": 2,
+      "cliente": "Valle Local",
+      "bovedaMonte": 12600,
+      "precioVenta": 7000,
+      "ingreso": 14000,
+      "flete": "Aplica",
+      "fleteUtilidad": 1000,
+      "utilidad": 400,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-08-25",
+      "ocRelacionada": "OC0001",
+      "cantidad": 20,
+      "cliente": "Tocayo",
+      "bovedaMonte": 126000,
+      "precioVenta": 7000,
+      "ingreso": 140000,
+      "flete": "Aplica",
+      "fleteUtilidad": 10000,
+      "utilidad": 4000,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-08-25",
+      "ocRelacionada": "OC0001",
+      "cantidad": 15,
+      "cliente": "Sierra47",
+      "bovedaMonte": 94500,
+      "precioVenta": 7000,
+      "ingreso": 105000,
+      "flete": "Aplica",
+      "fleteUtilidad": 7500,
+      "utilidad": 3000,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-08-26",
+      "ocRelacionada": "OC0003",
+      "cantidad": 33,
+      "cliente": "Lamas",
+      "bovedaMonte": 207900,
+      "precioVenta": 7000,
+      "ingreso": 231000,
+      "flete": "Aplica",
+      "fleteUtilidad": 16500,
+      "utilidad": 6600,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-08-30",
+      "ocRelacionada": "OC0004",
+      "cantidad": 33,
+      "cliente": "Ax",
+      "bovedaMonte": 207900,
+      "precioVenta": 6300,
+      "ingreso": 207900,
+      "flete": "Aplica",
+      "fleteUtilidad": 16500,
+      "utilidad": 0,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-08-30",
+      "ocRelacionada": "OC0004",
+      "cantidad": 75,
+      "cliente": "Valle",
+      "bovedaMonte": 472500,
+      "precioVenta": 6300,
+      "ingreso": 472500,
+      "flete": "Aplica",
+      "fleteUtilidad": 37500,
+      "utilidad": 0,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-08-30",
+      "ocRelacionada": "OC0004",
+      "cantidad": 25,
+      "cliente": "Ax",
+      "bovedaMonte": 157500,
+      "precioVenta": 6300,
+      "ingreso": 157500,
+      "flete": "Aplica",
+      "fleteUtilidad": 12500,
+      "utilidad": 0,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-08-30",
+      "ocRelacionada": "OC0004",
+      "cantidad": 44,
+      "cliente": "Tocayo",
+      "bovedaMonte": 277200,
+      "precioVenta": 6300,
+      "ingreso": 277200,
+      "flete": "Aplica",
+      "fleteUtilidad": 22000,
+      "utilidad": 0,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-08-30",
+      "ocRelacionada": "OC0004",
+      "cantidad": 50,
+      "cliente": "Tio Tocayo",
+      "bovedaMonte": 315000,
+      "precioVenta": 6300,
+      "ingreso": 315000,
+      "flete": "Aplica",
+      "fleteUtilidad": 25000,
+      "utilidad": 0,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-08-30",
+      "ocRelacionada": "OC0004",
+      "cantidad": 15,
+      "cliente": "Chucho",
+      "bovedaMonte": 94500,
+      "precioVenta": 7000,
+      "ingreso": 105000,
+      "flete": "Aplica",
+      "fleteUtilidad": 7500,
+      "utilidad": 3000,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-08-31",
+      "ocRelacionada": "OC0004",
+      "cantidad": 22,
+      "cliente": "Lamas",
+      "bovedaMonte": 138600,
+      "precioVenta": 7100,
+      "ingreso": 156200,
+      "flete": "Aplica",
+      "fleteUtilidad": 11000,
+      "utilidad": 6600,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-08-31",
+      "ocRelacionada": "OC0004",
+      "cantidad": 22,
+      "cliente": "Lamas",
+      "bovedaMonte": 138600,
+      "precioVenta": 7000,
+      "ingreso": 154000,
+      "flete": "Aplica",
+      "fleteUtilidad": 11000,
+      "utilidad": 4400,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-09-01",
+      "ocRelacionada": "OC0004",
+      "cantidad": 14,
+      "cliente": "Ax",
+      "bovedaMonte": 88200,
+      "precioVenta": 7000,
+      "ingreso": 98000,
+      "flete": "Aplica",
+      "fleteUtilidad": 7000,
+      "utilidad": 2800,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-02",
+      "ocRelacionada": "OC0004",
+      "cantidad": 24,
+      "cliente": "Trámite Güerito",
+      "bovedaMonte": 151200,
+      "precioVenta": 0,
+      "ingreso": 0,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": -151200,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-09-02",
+      "ocRelacionada": "OC0004",
+      "cantidad": 1,
+      "cliente": "Galvan",
+      "bovedaMonte": 6300,
+      "precioVenta": 7400,
+      "ingreso": 7400,
+      "flete": "Aplica",
+      "fleteUtilidad": 500,
+      "utilidad": 600,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-02",
+      "ocRelacionada": "OC0004",
+      "cantidad": 1,
+      "cliente": "Galvan",
+      "bovedaMonte": 6300,
+      "precioVenta": 7000,
+      "ingreso": 7000,
+      "flete": "Aplica",
+      "fleteUtilidad": 500,
+      "utilidad": 200,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-02",
+      "ocRelacionada": "OC0004",
+      "cantidad": 8,
+      "cliente": "Sierra47",
+      "bovedaMonte": 50400,
+      "precioVenta": 7000,
+      "ingreso": 56000,
+      "flete": "Aplica",
+      "fleteUtilidad": 4000,
+      "utilidad": 1600,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-03",
+      "ocRelacionada": "OC0003",
+      "cantidad": 1,
+      "cliente": 470,
+      "bovedaMonte": 6300,
+      "precioVenta": 7000,
+      "ingreso": 7000,
+      "flete": "Aplica",
+      "fleteUtilidad": 500,
+      "utilidad": 200,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-03",
+      "ocRelacionada": "OC0001",
+      "cantidad": 1,
+      "cliente": "Trámite Playa Azul",
+      "bovedaMonte": 6300,
+      "precioVenta": 0,
+      "ingreso": 0,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": -6300,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-09-03",
+      "ocRelacionada": "OC0004",
+      "cantidad": 5,
+      "cliente": "Valle Local",
+      "bovedaMonte": 31500,
+      "precioVenta": 7000,
+      "ingreso": 35000,
+      "flete": "Aplica",
+      "fleteUtilidad": 2500,
+      "utilidad": 1000,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-04",
+      "ocRelacionada": "OC0004",
+      "cantidad": 22,
+      "cliente": "Chucho",
+      "bovedaMonte": 138600,
+      "precioVenta": 7000,
+      "ingreso": 154000,
+      "flete": "Aplica",
+      "fleteUtilidad": 11000,
+      "utilidad": 4400,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-04",
+      "ocRelacionada": "OC0004",
+      "cantidad": 16,
+      "cliente": "Trámite Chucho",
+      "bovedaMonte": 100800,
+      "precioVenta": 0,
+      "ingreso": 0,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": -100800,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-09-05",
+      "ocRelacionada": "OC0004",
+      "cantidad": 1,
+      "cliente": "Galvan",
+      "bovedaMonte": 6300,
+      "precioVenta": 7000,
+      "ingreso": 7000,
+      "flete": "Aplica",
+      "fleteUtilidad": 500,
+      "utilidad": 200,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-05",
+      "ocRelacionada": "OC0004",
+      "cantidad": 10,
+      "cliente": "Negrito",
+      "bovedaMonte": 63000,
+      "precioVenta": 7000,
+      "ingreso": 70000,
+      "flete": "Aplica",
+      "fleteUtilidad": 5000,
+      "utilidad": 2000,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-06",
+      "ocRelacionada": "OC0005",
+      "cantidad": 60,
+      "cliente": "Robalo",
+      "bovedaMonte": 378000,
+      "precioVenta": 6600,
+      "ingreso": 396000,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": 18000,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-09-06",
+      "ocRelacionada": "OC0005",
+      "cantidad": 230,
+      "cliente": "Bódega M-P",
+      "bovedaMonte": 1449000,
+      "precioVenta": 0,
+      "ingreso": 0,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": -1449000,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-09-08",
+      "ocRelacionada": "OC0004",
+      "cantidad": 16,
+      "cliente": "Trámite Chucho",
+      "bovedaMonte": 100800,
+      "precioVenta": 0,
+      "ingreso": 0,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": -100800,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-09-08",
+      "ocRelacionada": "OC0005",
+      "cantidad": 100,
+      "cliente": "Tavo",
+      "bovedaMonte": 630000,
+      "precioVenta": 0,
+      "ingreso": 0,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": -630000,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-09-08",
+      "ocRelacionada": "OC0005",
+      "cantidad": 12,
+      "cliente": "mg",
+      "bovedaMonte": 75600,
+      "precioVenta": 0,
+      "ingreso": 0,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": -75600,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-09-09",
+      "ocRelacionada": "OC0005",
+      "cantidad": 16,
+      "cliente": "Trámite Chucho",
+      "bovedaMonte": 100800,
+      "precioVenta": 0,
+      "ingreso": 0,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": -100800,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-09-09",
+      "ocRelacionada": "OC0005",
+      "cantidad": 5,
+      "cliente": "Sierra47",
+      "bovedaMonte": 31500,
+      "precioVenta": 7000,
+      "ingreso": 35000,
+      "flete": "Aplica",
+      "fleteUtilidad": 2500,
+      "utilidad": 1000,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-10",
+      "ocRelacionada": "OC0005",
+      "cantidad": 9,
+      "cliente": "Chucho",
+      "bovedaMonte": 56700,
+      "precioVenta": 7000,
+      "ingreso": 63000,
+      "flete": "Aplica",
+      "fleteUtilidad": 4500,
+      "utilidad": 1800,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-10",
+      "ocRelacionada": "OC0004",
+      "cantidad": 1,
+      "cliente": "Galvan",
+      "bovedaMonte": 6300,
+      "precioVenta": 7000,
+      "ingreso": 7000,
+      "flete": "Aplica",
+      "fleteUtilidad": 500,
+      "utilidad": 200,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-11",
+      "ocRelacionada": "OC0005",
+      "cantidad": 16,
+      "cliente": "Chucho",
+      "bovedaMonte": 100800,
+      "precioVenta": 7000,
+      "ingreso": 112000,
+      "flete": "Aplica",
+      "fleteUtilidad": 8000,
+      "utilidad": 3200,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-11",
+      "ocRelacionada": "OC0005",
+      "cantidad": 10,
+      "cliente": "Negrito",
+      "bovedaMonte": 63000,
+      "precioVenta": 7000,
+      "ingreso": 70000,
+      "flete": "Aplica",
+      "fleteUtilidad": 5000,
+      "utilidad": 2000,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-12",
+      "ocRelacionada": "OC0004",
+      "cantidad": 1,
+      "cliente": "Galvan",
+      "bovedaMonte": 6300,
+      "precioVenta": 7400,
+      "ingreso": 7400,
+      "flete": "Aplica",
+      "fleteUtilidad": 500,
+      "utilidad": 600,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-13",
+      "ocRelacionada": "OC0005",
+      "cantidad": 5,
+      "cliente": "tx8",
+      "bovedaMonte": 31500,
+      "precioVenta": 7000,
+      "ingreso": 35000,
+      "flete": "Aplica",
+      "fleteUtilidad": 2500,
+      "utilidad": 1000,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-13",
+      "ocRelacionada": "OC0005",
+      "cantidad": 50,
+      "cliente": "amigo playa azul",
+      "bovedaMonte": 315000,
+      "precioVenta": 7100,
+      "ingreso": 355000,
+      "flete": "Aplica",
+      "fleteUtilidad": 25000,
+      "utilidad": 15000,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-09-13",
+      "ocRelacionada": "OC0005",
+      "cantidad": 50,
+      "cliente": "flama",
+      "bovedaMonte": 315000,
+      "precioVenta": 6700,
+      "ingreso": 335000,
+      "flete": "Aplica",
+      "fleteUtilidad": 25000,
+      "utilidad": -5000,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-09-15",
+      "ocRelacionada": "OC0005",
+      "cantidad": 16,
+      "cliente": "Trámite Chucho",
+      "bovedaMonte": 100800,
+      "precioVenta": 0,
+      "ingreso": 0,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": -100800,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-09-16",
+      "ocRelacionada": "OC0005",
+      "cantidad": 23,
+      "cliente": "Lamas",
+      "bovedaMonte": 144900,
+      "precioVenta": 7000,
+      "ingreso": 161000,
+      "flete": "Aplica",
+      "fleteUtilidad": 11500,
+      "utilidad": 4600,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-09-16",
+      "ocRelacionada": "OC0004",
+      "cantidad": 1,
+      "cliente": "Galvan",
+      "bovedaMonte": 6300,
+      "precioVenta": 7000,
+      "ingreso": 7000,
+      "flete": "Aplica",
+      "fleteUtilidad": 500,
+      "utilidad": 200,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-16",
+      "ocRelacionada": "OC0004",
+      "cantidad": 3,
+      "cliente": "Tocayo",
+      "bovedaMonte": 18900,
+      "precioVenta": 7100,
+      "ingreso": 21300,
+      "flete": "Aplica",
+      "fleteUtilidad": 1500,
+      "utilidad": 900,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-17",
+      "ocRelacionada": "OC0006",
+      "cantidad": 20,
+      "cliente": "Wero Benavides",
+      "bovedaMonte": 126000,
+      "precioVenta": 7100,
+      "ingreso": 0,
+      "flete": "Aplica",
+      "fleteUtilidad": 10000,
+      "utilidad": 6000,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-09-17",
+      "ocRelacionada": "OC0006",
+      "cantidad": 1,
+      "cliente": "Galvan",
+      "bovedaMonte": 6300,
+      "precioVenta": 7000,
+      "ingreso": 7000,
+      "flete": "Aplica",
+      "fleteUtilidad": 500,
+      "utilidad": 200,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-18",
+      "ocRelacionada": "OC0006",
+      "cantidad": 16,
+      "cliente": "Trámite Chucho",
+      "bovedaMonte": 100800,
+      "precioVenta": 0,
+      "ingreso": 0,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": -100800,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-09-18",
+      "ocRelacionada": "OC0006",
+      "cantidad": 20,
+      "cliente": "Tocayo",
+      "bovedaMonte": 126000,
+      "precioVenta": 7000,
+      "ingreso": 140000,
+      "flete": "Aplica",
+      "fleteUtilidad": 10000,
+      "utilidad": 4000,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-18",
+      "ocRelacionada": "OC0001",
+      "cantidad": 1,
+      "cliente": "Ax",
+      "bovedaMonte": 6300,
+      "precioVenta": 6500,
+      "ingreso": 6500,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": 200,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-19",
+      "ocRelacionada": "OC0006",
+      "cantidad": 5,
+      "cliente": "Negrito",
+      "bovedaMonte": 31500,
+      "precioVenta": 7000,
+      "ingreso": 35000,
+      "flete": "Aplica",
+      "fleteUtilidad": 2500,
+      "utilidad": 1000,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-19",
+      "ocRelacionada": "OC0006",
+      "cantidad": 1,
+      "cliente": "Don Rafa",
+      "bovedaMonte": 6300,
+      "precioVenta": 7400,
+      "ingreso": 7400,
+      "flete": "Aplica",
+      "fleteUtilidad": 500,
+      "utilidad": 600,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-20",
+      "ocRelacionada": "OC0006",
+      "cantidad": 14,
+      "cliente": "mg",
+      "bovedaMonte": 88200,
+      "precioVenta": 7100,
+      "ingreso": 99400,
+      "flete": "Aplica",
+      "fleteUtilidad": 7000,
+      "utilidad": 4200,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-09-20",
+      "ocRelacionada": "OC0006",
+      "cantidad": 12,
+      "cliente": "Sierra47",
+      "bovedaMonte": 75600,
+      "precioVenta": 7000,
+      "ingreso": 84000,
+      "flete": "Aplica",
+      "fleteUtilidad": 6000,
+      "utilidad": 2400,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-20",
+      "ocRelacionada": "OC0006",
+      "cantidad": 2,
+      "cliente": "Rojo",
+      "bovedaMonte": 12600,
+      "precioVenta": 7000,
+      "ingreso": 14000,
+      "flete": "Aplica",
+      "fleteUtilidad": 1000,
+      "utilidad": 400,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-20",
+      "ocRelacionada": "OC0006",
+      "cantidad": 3,
+      "cliente": "Ax",
+      "bovedaMonte": 18900,
+      "precioVenta": 7000,
+      "ingreso": 21000,
+      "flete": "Aplica",
+      "fleteUtilidad": 1500,
+      "utilidad": 600,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-20",
+      "ocRelacionada": "OC0006",
+      "cantidad": 1,
+      "cliente": "Galvan",
+      "bovedaMonte": 6300,
+      "precioVenta": 7000,
+      "ingreso": 7000,
+      "flete": "Aplica",
+      "fleteUtilidad": 500,
+      "utilidad": 200,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-23",
+      "ocRelacionada": "OC0006",
+      "cantidad": 1,
+      "cliente": "Trámite Chucho",
+      "bovedaMonte": 6300,
+      "precioVenta": 0,
+      "ingreso": 0,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": -6300,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-09-25",
+      "ocRelacionada": "OC0001",
+      "cantidad": 1,
+      "cliente": "Ax",
+      "bovedaMonte": 6300,
+      "precioVenta": 6500,
+      "ingreso": 6500,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": 200,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-09-29",
+      "ocRelacionada": "OC0007",
+      "cantidad": 20,
+      "cliente": "Sierra47",
+      "bovedaMonte": 140000,
+      "precioVenta": 7000,
+      "ingreso": 140000,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": 0,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-10-03",
+      "ocRelacionada": "OC0001",
+      "cantidad": 2,
+      "cliente": "Galvan",
+      "bovedaMonte": 12600,
+      "precioVenta": 7000,
+      "ingreso": 14000,
+      "flete": "Aplica",
+      "fleteUtilidad": 1000,
+      "utilidad": 400,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-10-05",
+      "ocRelacionada": "OC0008",
+      "cantidad": 60,
+      "cliente": "Valle",
+      "bovedaMonte": 378000,
+      "precioVenta": 0,
+      "ingreso": 0,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": -378000,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-10-05",
+      "ocRelacionada": "OC0008",
+      "cantidad": 20,
+      "cliente": "Valle",
+      "bovedaMonte": 126000,
+      "precioVenta": 0,
+      "ingreso": 0,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": -126000,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-10-05",
+      "ocRelacionada": "OC0008",
+      "cantidad": 30,
+      "cliente": "Valle",
+      "bovedaMonte": 189000,
+      "precioVenta": 0,
+      "ingreso": 0,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": -189000,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-10-05",
+      "ocRelacionada": "OC0009",
+      "cantidad": 100,
+      "cliente": "Bódega M-P",
+      "bovedaMonte": 630000,
+      "precioVenta": 0,
+      "ingreso": 0,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": -630000,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-10-06",
+      "ocRelacionada": "OC0008",
+      "cantidad": 25,
+      "cliente": "Ax",
+      "bovedaMonte": 157500,
+      "precioVenta": 0,
+      "ingreso": 0,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": -157500,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-10-06",
+      "ocRelacionada": "OC0008",
+      "cantidad": 24,
+      "cliente": "Ax",
+      "bovedaMonte": 151200,
+      "precioVenta": 0,
+      "ingreso": 0,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": -151200,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-10-06",
+      "ocRelacionada": "OC0008",
+      "cantidad": 40,
+      "cliente": "Robalo",
+      "bovedaMonte": 252000,
+      "precioVenta": 6600,
+      "ingreso": 264000,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": 12000,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-10-06",
+      "ocRelacionada": "OC0008",
+      "cantidad": 2,
+      "cliente": "Valle Local",
+      "bovedaMonte": 12600,
+      "precioVenta": 7000,
+      "ingreso": 14000,
+      "flete": "Aplica",
+      "fleteUtilidad": 1000,
+      "utilidad": 400,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-10-06",
+      "ocRelacionada": "OC0008",
+      "cantidad": 20,
+      "cliente": "Trámite Playa Azul",
+      "bovedaMonte": 126000,
+      "precioVenta": 0,
+      "ingreso": 0,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": -126000,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-10-06",
+      "ocRelacionada": "OC0008",
+      "cantidad": 48,
+      "cliente": "Trámite Chucho",
+      "bovedaMonte": 302400,
+      "precioVenta": 0,
+      "ingreso": 0,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": -302400,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-10-06",
+      "ocRelacionada": "OC0008",
+      "cantidad": 48,
+      "cliente": "Trámite Chucho",
+      "bovedaMonte": 302400,
+      "precioVenta": 0,
+      "ingreso": 0,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": -302400,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-10-06",
+      "ocRelacionada": "OC0008",
+      "cantidad": 50,
+      "cliente": "Tocayo",
+      "bovedaMonte": 315000,
+      "precioVenta": 0,
+      "ingreso": 0,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": -315000,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-10-06",
+      "ocRelacionada": "OC0008",
+      "cantidad": 74,
+      "cliente": "Tio Tocayo",
+      "bovedaMonte": 466200,
+      "precioVenta": 0,
+      "ingreso": 0,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": -466200,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-10-07",
+      "ocRelacionada": "OC0008",
+      "cantidad": 10,
+      "cliente": "tx8",
+      "bovedaMonte": 63000,
+      "precioVenta": 7000,
+      "ingreso": 70000,
+      "flete": "Aplica",
+      "fleteUtilidad": 5000,
+      "utilidad": 2000,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-10-07",
+      "ocRelacionada": "OC0008",
+      "cantidad": 30,
+      "cliente": "Valle Local",
+      "bovedaMonte": 189000,
+      "precioVenta": 7000,
+      "ingreso": 210000,
+      "flete": "Aplica",
+      "fleteUtilidad": 15000,
+      "utilidad": 6000,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-10-07",
+      "ocRelacionada": "OC0008",
+      "cantidad": 3,
+      "cliente": "Sierra47",
+      "bovedaMonte": 18900,
+      "precioVenta": 7000,
+      "ingreso": 21000,
+      "flete": "Aplica",
+      "fleteUtilidad": 1500,
+      "utilidad": 600,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-10-07",
+      "ocRelacionada": "OC0008",
+      "cantidad": 3,
+      "cliente": "Tocayo",
+      "bovedaMonte": 18900,
+      "precioVenta": 7000,
+      "ingreso": 21000,
+      "flete": "Aplica",
+      "fleteUtilidad": 1500,
+      "utilidad": 600,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-10-09",
+      "ocRelacionada": "OC0009",
+      "cantidad": 15,
+      "cliente": "mg",
+      "bovedaMonte": 94500,
+      "precioVenta": 7100,
+      "ingreso": 106500,
+      "flete": "Aplica",
+      "fleteUtilidad": 7500,
+      "utilidad": 4500,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-10-09",
+      "ocRelacionada": "OC0009",
+      "cantidad": 1,
+      "cliente": "cabo",
+      "bovedaMonte": 6300,
+      "precioVenta": 7000,
+      "ingreso": 7000,
+      "flete": "Aplica",
+      "fleteUtilidad": 500,
+      "utilidad": 200,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-10-09",
+      "ocRelacionada": "OC0001",
+      "cantidad": 1,
+      "cliente": "Ax",
+      "bovedaMonte": 6300,
+      "precioVenta": 6500,
+      "ingreso": 6500,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": 200,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-10-09",
+      "ocRelacionada": "OC0008",
+      "cantidad": 1,
+      "cliente": "Galvan",
+      "bovedaMonte": 6300,
+      "precioVenta": 7400,
+      "ingreso": 7400,
+      "flete": "Aplica",
+      "fleteUtilidad": 500,
+      "utilidad": 600,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-10-11",
+      "ocRelacionada": "OC0001",
+      "cantidad": 1,
+      "cliente": "Galvan",
+      "bovedaMonte": 6300,
+      "precioVenta": 7400,
+      "ingreso": 7400,
+      "flete": "Aplica",
+      "fleteUtilidad": 500,
+      "utilidad": 600,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-10-14",
+      "ocRelacionada": "OC0008",
+      "cantidad": 1,
+      "cliente": "tx8",
+      "bovedaMonte": 6300,
+      "precioVenta": 7000,
+      "ingreso": 7000,
+      "flete": "Aplica",
+      "fleteUtilidad": 500,
+      "utilidad": 200,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-10-15",
+      "ocRelacionada": "OC0008",
+      "cantidad": 1,
+      "cliente": "Rojo",
+      "bovedaMonte": 6300,
+      "precioVenta": 7000,
+      "ingreso": 7000,
+      "flete": "Aplica",
+      "fleteUtilidad": 500,
+      "utilidad": 200,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-10-16",
+      "ocRelacionada": "OC0001",
+      "cantidad": 2,
+      "cliente": "compa",
+      "bovedaMonte": 12600,
+      "precioVenta": 6500,
+      "ingreso": 13000,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": 400,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-10-17",
+      "ocRelacionada": "OC0009",
+      "cantidad": 10,
+      "cliente": "Sierra47",
+      "bovedaMonte": 63000,
+      "precioVenta": 7000,
+      "ingreso": 70000,
+      "flete": "Aplica",
+      "fleteUtilidad": 5000,
+      "utilidad": 2000,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-10-17",
+      "ocRelacionada": "OC0008",
+      "cantidad": 1,
+      "cliente": "Galvan",
+      "bovedaMonte": 6300,
+      "precioVenta": 7000,
+      "ingreso": 7000,
+      "flete": "Aplica",
+      "fleteUtilidad": 500,
+      "utilidad": 200,
+      "estatus": "Pagado"
+    },
+    {
+      "fecha": "2025-10-18",
+      "ocRelacionada": "OC0009",
+      "cantidad": 20,
+      "cliente": "Lamas",
+      "bovedaMonte": 126000,
+      "precioVenta": 7100,
+      "ingreso": 142000,
+      "flete": "Aplica",
+      "fleteUtilidad": 10000,
+      "utilidad": 6000,
+      "estatus": "Pendiente"
+    },
+    {
+      "fecha": "2025-10-20",
+      "ocRelacionada": "OC0009",
+      "cantidad": 48,
+      "cliente": "Trámite Chucho",
+      "bovedaMonte": 302400,
+      "precioVenta": 0,
+      "ingreso": 0,
+      "flete": "No Aplica",
+      "fleteUtilidad": 0,
+      "utilidad": -302400,
+      "estatus": "Pendiente"
+    }
+  ]
+}

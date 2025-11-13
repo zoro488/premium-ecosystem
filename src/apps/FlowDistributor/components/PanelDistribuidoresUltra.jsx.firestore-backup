@@ -1,0 +1,1228 @@
+/**/**
+
+ * 🤝 CHRONOS - PANEL DISTRIBUIDORES ULTRA PREMIUM * 🚚 PANEL DISTRIBUIDORES ULTRA - SISTEMA PREMIUM
+
+ *  * ===============================================
+
+ * Panel de distribuidores con 4 tablas principales: * Theme: Blue/Indigo (#3b82f6, #6366f1)
+
+ * 1. PACMAN Distribuidor - Análisis completo distribuidor PACMAN * Chart: AdvancedBarChart + AdvancedPieChart
+
+ * 2. Q-MAYA Distribuidor - Gestión distribuidor Q-MAYA   * Data: Excel BASE_DATOS completo (distribuidores reales)
+
+ * 3. Análisis de Performance - Comparativa de rendimiento * CRUD: Formularios para gestión de distribuidores
+
+ * 4. Gestión de Comisiones - Sistema de comisiones y pagos */
+
+ * import { memo, useCallback, useMemo, useState } from 'react';
+
+ * Características Ultra Premium:
+
+ * - Glassmorphism con efectos naranja/ámbar para distribuidoresimport {
+
+ * - Animaciones 3D con parallax y mouse tracking  ArrowTrendingUpIcon,
+
+ * - Sistema dual de distribuidores (PACMAN & Q-MAYA únicamente)  ChartBarIcon,
+
+ * - Analytics avanzado de performance y comisiones  CurrencyDollarIcon,
+
+ * - Real-time data con métricas de distribución  DocumentTextIcon,
+
+ * - Responsive design optimizado para tablets  ExclamationTriangleIcon,
+
+ * - Machine Learning para predicción de ventas  MagnifyingGlassIcon,
+
+ * - Sistema de recompensas y bonificaciones  MapPinIcon,
+
+ * - Comparative dashboard con KPIs específicos  PlusIcon,
+
+ *   TruckIcon,
+
+ * @version 1.0.0 - DISTRIBUIDORES DUAL SYSTEM  UserGroupIcon,
+
+ */} from '@heroicons/react/24/outline';
+
+import { AnimatePresence, motion } from 'framer-motion';
+
+import { memo, useState, useRef, useMemo, useCallback } from 'react';
+
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';// Importar datos completos del Excel
+
+import { import excelData from '../../../BASE_DATOS_excel_data_COMPLETO_FINAL.json';
+
+  Users, import { CreativeParticles, KpiCard3D, PremiumLoadingScreen } from '../shared';
+
+  Building2, import { AdvancedBarChart } from '../shared/AdvancedBarChart';
+
+  TrendingUp,import { AdvancedPieChart } from '../shared/AdvancedPieChart';
+
+  TrendingDown,
+
+  DollarSign, // Animaciones premium
+
+  BarChart3, const animations = {
+
+  Package,   container: {
+
+  Star,    initial: { opacity: 0, y: 30 },
+
+  Award,    animate: { opacity: 1, y: 0 },
+
+  Target,    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+
+  Zap,  },
+
+  Eye,  card: {
+
+  EyeOff,    initial: { opacity: 0, scale: 0.95, y: 20 },
+
+  Crown,    animate: { opacity: 1, scale: 1, y: 0 },
+
+  Trophy,    whileHover: { scale: 1.02, y: -5 },
+
+  ArrowUpRight,    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+
+  ArrowDownRight,  },
+
+  Filter,   stagger: {
+
+  Search,     animate: {
+
+  Download,       transition: {
+
+  RefreshCw,        staggerChildren: 0.1,
+
+  Clock,      },
+
+  CheckCircle,    },
+
+  AlertCircle,  },
+
+  Settings};
+
+} from 'lucide-react';
+
+import PropTypes from 'prop-types';const PanelDistribuidoresUltra = memo(() => {
+
+  // Estados principales
+
+// Datos completos de distribuidores (solo PACMAN y Q-MAYA)  const [tabActiva, setTabActiva] = useState('overview');
+
+const INITIAL_DATA = {  const [searchTerm, setSearchTerm] = useState('');
+
+  summary: {  const [selectedDistribuidor, setSelectedDistribuidor] = useState(null);
+
+    totalDistribuidores: 2,  const [showFormDistribuidor, setShowFormDistribuidor] = useState(false);
+
+    ventasConjuntas: 2847600,  const [loading] = useState(false);
+
+    comisionesTotales: 284760,
+
+    metaCumplimiento: 94.7,  // Procesar datos de distribuidores del Excel
+
+    crecimientoMensual: 15.3,  const datosDistribuidores = useMemo(() => {
+
+    pedidosActivos: 47,    const distribuidoresExcel = excelData.datos.distribuidores.registros;
+
+    ultimaActualizacion: new Date().toISOString()    const ordenesCompra = excelData.datos.ordenes_de_compra.registros;
+
+  },    const ventaLocal = excelData.datos.venta_local.registros;
+
+
+
+  // Tabla 1: PACMAN Distribuidor    // Procesar datos de cada distribuidor
+
+  pacmanDistribuidor: {    const distribuidoresProcesados = distribuidoresExcel.map((dist, index) => {
+
+    id: 'DIST-PACMAN',      // Calcular ventas relacionadas
+
+    nombre: 'PACMAN Distribuidor',      const ventasRelacionadas = ventaLocal.filter(
+
+    codigo: 'PAC-001',        (venta) =>
+
+    region: 'Norte y Centro',          venta.Cliente?.includes(dist.Distribuidores) || venta['OC Relacionada']?.includes('OC')
+
+    fechaContrato: '2023-05-15',      );
+
+    estado: 'activo',
+
+    ranking: 1,      // Calcular órdenes de compra relacionadas
+
+    ventasAcumuladas: 1847600,      const ordenesRelacionadas = ordenesCompra.filter(
+
+    ventasMes: 284700,        (orden) => orden.Origen === dist.Distribuidores
+
+    comisionRate: 12.5,      );
+
+    comisionesPagadas: 184760,
+
+    comisionesPendientes: 35587,      const totalVentas = ventasRelacionadas.reduce((sum, venta) => sum + (venta.Ingreso || 0), 0);
+
+    metaMensual: 300000,
+
+    cumplimientoMeta: 94.9,      const totalOrdenes = ordenesRelacionadas.reduce(
+
+    clientesAsignados: 18,        (sum, orden) => sum + (orden['Costo Total'] || 0),
+
+    productosVendidos: 156,        0
+
+    territorios: ['Guadalajara', 'Monterrey', 'León', 'Querétaro'],      );
+
+    especialidades: ['Productos Premium', 'Electrodomésticos', 'Tecnología'],
+
+    rating: 4.8,      const rentabilidad = totalVentas - totalOrdenes;
+
+    bonificacionAcumulada: 25600,      const margenRentabilidad = totalVentas > 0 ? (rentabilidad / totalVentas) * 100 : 0;
+
+    ultimaVenta: '2025-11-05T09:30:00Z'
+
+  }      return {
+
+};        id: `dist-${index}`,
+
+        nombre: dist.Distribuidores,
+
+const PanelDistribuidoresUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {        costoTotal: dist['Costo total'] || 0,
+
+  const [localData, setLocalData] = useState(data);        abonos: dist.Abonos || 0,
+
+  const [activeTable, setActiveTable] = useState('pacman');        pendiente: dist.Pendiente || dist['Costo total'] || 0,
+
+  const [searchTerm, setSearchTerm] = useState('');        totalVentas,
+
+  const [showValues, setShowValues] = useState(true);        totalOrdenes,
+
+  const [comparativaActiva, setComparativaActiva] = useState(false);        rentabilidad,
+
+        margenRentabilidad,
+
+  const containerRef = useRef(null);        cantidadVentas: ventasRelacionadas.length,
+
+  const mouseX = useMotionValue(0);        cantidadOrdenes: ordenesRelacionadas.length,
+
+  const mouseY = useMotionValue(0);        estado: dist.Pendiente > 0 ? 'Pendiente' : 'Al día',
+
+        rating: Math.random() * 2 + 3, // Simulado entre 3-5
+
+  // Smooth spring animations        region: dist.Distribuidores === 'Q-MAYA' ? 'Sur' : 'Norte',
+
+  const springConfig = { damping: 25, stiffness: 300 };        ventasRelacionadas,
+
+  const smoothMouseX = useSpring(mouseX, springConfig);        ordenesRelacionadas,
+
+  const smoothMouseY = useSpring(mouseY, springConfig);      };
+
+    });
+
+  // 3D transform calculations
+
+  const rotateX = useTransform(smoothMouseY, [0, 400], [8, -8]);    // Calcular totales generales
+
+  const rotateY = useTransform(smoothMouseX, [0, 400], [-8, 8]);    const totales = {
+
+  const scale = useTransform(smoothMouseX, [0, 400], [0.98, 1.02]);      distribuidores: distribuidoresProcesados.length,
+
+      costoTotal: distribuidoresProcesados.reduce((sum, d) => sum + d.costoTotal, 0),
+
+  // Mouse tracking      totalVentas: distribuidoresProcesados.reduce((sum, d) => sum + d.totalVentas, 0),
+
+  const handleMouseMove = useCallback((e) => {      totalOrdenes: distribuidoresProcesados.reduce((sum, d) => sum + d.totalOrdenes, 0),
+
+    if (!containerRef.current) return;      pendiente: distribuidoresProcesados.reduce((sum, d) => sum + d.pendiente, 0),
+
+          rentabilidad: distribuidoresProcesados.reduce((sum, d) => sum + d.rentabilidad, 0),
+
+    const rect = containerRef.current.getBoundingClientRect();    };
+
+    const centerX = rect.left + rect.width / 2;
+
+    const centerY = rect.top + rect.height / 2;    return {
+
+          distribuidores: distribuidoresProcesados,
+
+    mouseX.set(e.clientX - centerX);      totales,
+
+    mouseY.set(e.clientY - centerY);    };
+
+  }, [mouseX, mouseY]);  }, []);
+
+
+
+  const handleMouseLeave = useCallback(() => {  // Filtros y búsquedas
+
+    mouseX.set(0);  const distribuidoresFiltrados = useMemo(() => {
+
+    mouseY.set(0);    let distribuidores = datosDistribuidores.distribuidores;
+
+  }, [mouseX, mouseY]);
+
+    if (searchTerm) {
+
+  // Format currency      distribuidores = distribuidores.filter(
+
+  const formatCurrency = useCallback((amount) => {        (dist) =>
+
+    return new Intl.NumberFormat('es-MX', {          dist.nombre?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+
+      style: 'currency',          dist.region?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+
+      currency: 'MXN',          dist.estado?.toLowerCase().includes(searchTerm.toLowerCase())
+
+      minimumFractionDigits: 0,      );
+
+      maximumFractionDigits: 0    }
+
+    }).format(amount);
+
+  }, []);    return distribuidores.sort((a, b) => b.costoTotal - a.costoTotal);
+
+  }, [datosDistribuidores.distribuidores, searchTerm]);
+
+  // Animation variants
+
+  const containerVariants = {  // Datos para gráficos
+
+    hidden: { opacity: 0, scale: 0.95 },  const chartData = useMemo(() => {
+
+    visible: {     const distribuidores = datosDistribuidores.distribuidores;
+
+      opacity: 1,
+
+      scale: 1,    // Datos por distribuidor
+
+      transition: {    const porDistribuidor = distribuidores.map((dist) => ({
+
+        duration: 0.6,      nombre: dist.nombre,
+
+        ease: "easeOut",      ventas: dist.totalVentas,
+
+        staggerChildren: 0.1      ordenes: dist.totalOrdenes,
+
+      }      rentabilidad: dist.rentabilidad,
+
+    }      pendiente: dist.pendiente,
+
+  };    }));
+
+
+
+  const itemVariants = {    // Datos por región
+
+    hidden: { opacity: 0, y: 20 },    const porRegion = {};
+
+    visible: {     distribuidores.forEach((dist) => {
+
+      opacity: 1,       if (!porRegion[dist.region]) {
+
+      y: 0,        porRegion[dist.region] = {
+
+      transition: { duration: 0.4, ease: "easeOut" }          region: dist.region,
+
+    }          ventas: 0,
+
+  };          ordenes: 0,
+
+          distribuidores: 0,
+
+  const tableVariants = {        };
+
+    hidden: { opacity: 0, x: -20 },      }
+
+    visible: {       porRegion[dist.region].ventas += dist.totalVentas;
+
+      opacity: 1,       porRegion[dist.region].ordenes += dist.totalOrdenes;
+
+      x: 0,      porRegion[dist.region].distribuidores += 1;
+
+      transition: { duration: 0.5, ease: "easeOut" }    });
+
+    },
+
+    exit: {     const regionData = Object.values(porRegion);
+
+      opacity: 0,
+
+      x: 20,    // Datos por estado
+
+      transition: { duration: 0.3 }    const porEstado = {};
+
+    }    distribuidores.forEach((dist) => {
+
+  };      if (!porEstado[dist.estado]) {
+
+        porEstado[dist.estado] = {
+
+  return (          estado: dist.estado,
+
+    <motion.div          cantidad: 0,
+
+      ref={containerRef}          valor: 0,
+
+      className="h-full bg-black/95 backdrop-blur-3xl border border-white/10 rounded-2xl overflow-hidden"        };
+
+      style={{      }
+
+        perspective: 1000,      porEstado[dist.estado].cantidad += 1;
+
+        rotateX,      porEstado[dist.estado].valor += dist.pendiente;
+
+        rotateY,    });
+
+        scale
+
+      }}    const estadoData = Object.values(porEstado);
+
+      onMouseMove={handleMouseMove}
+
+      onMouseLeave={handleMouseLeave}    return {
+
+      variants={containerVariants}      porDistribuidor,
+
+      initial="hidden"      porRegion: regionData,
+
+      animate="visible"      porEstado: estadoData,
+
+    >    };
+
+      {/* Header Section */}  }, [datosDistribuidores.distribuidores]);
+
+      <motion.div
+
+        className="relative p-6 bg-gradient-to-r from-orange-900/20 via-amber-900/20 to-yellow-900/20 border-b border-white/10"  // Handlers
+
+        variants={itemVariants}  const handleTabChange = useCallback((tab) => {
+
+      >    setTabActiva(tab);
+
+        {/* Background Effects */}  }, []);
+
+        <div className="absolute inset-0">
+
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 via-amber-500/5 to-yellow-500/5" />  const handleSearchChange = useCallback((e) => {
+
+          <div className="absolute top-0 left-1/4 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl" />    setSearchTerm(e.target.value);
+
+          <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-amber-500/10 rounded-full blur-2xl" />  }, []);
+
+
+
+          {/* Floating distributor particles */}  const handleShowForm = useCallback(() => {
+
+          {[...Array(6)].map((_, i) => (    setShowFormDistribuidor(true);
+
+            <motion.div  }, []);
+
+              key={`dist-particle-${i + 1}`}
+
+              className="absolute w-3 h-3 bg-orange-400/40 rounded-full"  const handleCloseForm = useCallback(() => {
+
+              style={{    setShowFormDistribuidor(false);
+
+                left: `${15 + i * 12}%`,    setSelectedDistribuidor(null);
+
+                top: `${25 + (i % 2) * 30}%`,  }, []);
+
+              }}
+
+              animate={{  const handleVerDetalles = useCallback((distribuidor) => {
+
+                y: [-8, 8, -8],    setSelectedDistribuidor(distribuidor);
+
+                opacity: [0.4, 1, 0.4],    setShowFormDistribuidor(true);
+
+                scale: [1, 1.3, 1],  }, []);
+
+              }}
+
+              transition={{  if (loading) {
+
+                duration: 2.8 + i * 0.4,    return <PremiumLoadingScreen message="Cargando sistema de distribuidores..." />;
+
+                repeat: Infinity,  }
+
+                ease: "easeInOut"
+
+              }}  return (
+
+            />    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 relative overflow-hidden">
+
+          ))}      {/* Partículas animadas */}
+
+        </div>      <CreativeParticles color="#3b82f6" count={50} speed={0.5} size={2} />
+
+
+
+        <div className="relative z-10">      {/* Header principal */}
+
+          {/* Title and Summary */}      <motion.div
+
+          <div className="flex items-center justify-between mb-6">        className="relative z-10 p-6 border-b border-blue-500/20"
+
+            <div className="flex items-center space-x-4">        {...animations.container}
+
+              <motion.div      >
+
+                className="p-3 bg-gradient-to-br from-orange-500/20 to-amber-500/20 rounded-xl backdrop-blur-sm border border-white/10"        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+
+                whileHover={{ scale: 1.05, rotate: 5 }}          <div className="flex items-center gap-4">
+
+                transition={{ duration: 0.3 }}            <div className="p-3 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl shadow-lg shadow-blue-500/25">
+
+              >              <TruckIcon className="w-8 h-8 text-white" />
+
+                <Users className="w-8 h-8 text-orange-400" />            </div>
+
+              </motion.div>            <div>
+
+                            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+
+              <div>                Distribuidores Ultra
+
+                <h2 className="text-2xl font-bold text-white mb-1">              </h1>
+
+                  Distribuidores Ultra              <p className="text-slate-400 text-lg">Sistema Premium de Gestión de Distribuidores</p>
+
+                </h2>            </div>
+
+                <p className="text-slate-400 text-sm">          </div>
+
+                  PACMAN & Q-MAYA - Sistema dual de distribución
+
+                </p>          <div className="flex items-center gap-4">
+
+              </div>            {/* Buscador */}
+
+            </div>            <div className="relative">
+
+              <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
+
+            {/* Summary Cards */}              <input
+
+            <div className="grid grid-cols-3 gap-4">                type="text"
+
+              <motion.div                placeholder="Buscar distribuidores..."
+
+                className="text-right p-3 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm"                value={searchTerm}
+
+                whileHover={{ scale: 1.02 }}                onChange={handleSearchChange}
+
+              >                className="pl-10 pr-4 py-2 bg-slate-800/50 border border-blue-500/30 rounded-lg text-white placeholder-slate-400 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all"
+
+                <div className="text-slate-400 text-sm mb-1">Distribuidores</div>              />
+
+                <div className="text-2xl font-bold text-white">            </div>
+
+                  {localData.summary.totalDistribuidores}
+
+                </div>            {/* Botón nuevo distribuidor */}
+
+                <div className="flex items-center text-orange-400 text-sm mt-1">            <motion.button
+
+                  <Building2 className="w-3 h-3 mr-1" />              onClick={handleShowForm}
+
+                  PACMAN & Q-MAYA              whileHover={{ scale: 1.05 }}
+
+                </div>              whileTap={{ scale: 0.95 }}
+
+              </motion.div>              className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg font-semibold shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all"
+
+            >
+
+              <motion.div              <PlusIcon className="w-5 h-5" />
+
+                className="text-right p-3 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm"              Nuevo Distribuidor
+
+                whileHover={{ scale: 1.02 }}            </motion.button>
+
+              >          </div>
+
+                <div className="text-slate-400 text-sm mb-1">Ventas Conjuntas</div>        </div>
+
+                <div className="text-2xl font-bold text-white">      </motion.div>
+
+                  {showValues ? formatCurrency(localData.summary.ventasConjuntas) : '••••••••'}
+
+                </div>      {/* KPIs principales */}
+
+                <div className="flex items-center text-green-400 text-sm mt-1">      <motion.div
+
+                  <TrendingUp className="w-3 h-3 mr-1" />        className="relative z-10 p-6"
+
+                  +{localData.summary.crecimientoMensual}% mensual        variants={animations.stagger}
+
+                </div>        initial="initial"
+
+              </motion.div>        animate="animate"
+
+      >
+
+              <motion.div        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+
+                className="text-right p-3 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm"          <motion.div variants={animations.card}>
+
+                whileHover={{ scale: 1.02 }}            <KpiCard3D
+
+              >              title="Total Distribuidores"
+
+                <div className="flex items-center justify-between mb-1">              value={datosDistribuidores.totales.distribuidores.toString()}
+
+                  <span className="text-slate-400 text-sm">Meta Cumplimiento</span>              change="Red activa"
+
+                  <motion.button              isPositive={true}
+
+                    onClick={() => setShowValues(!showValues)}              icon={UserGroupIcon}
+
+                    className="text-slate-400 hover:text-white transition-colors"              color="blue"
+
+                    whileHover={{ scale: 1.1 }}            />
+
+                    whileTap={{ scale: 0.9 }}          </motion.div>
+
+                  >
+
+                    {showValues ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}          <motion.div variants={animations.card}>
+
+                  </motion.button>            <KpiCard3D
+
+                </div>              title="Costo Total"
+
+                <div className="text-2xl font-bold text-white">              value={`$${datosDistribuidores.totales.costoTotal.toLocaleString('es-MX', { minimumFractionDigits: 2 })}`}
+
+                  {localData.summary.metaCumplimiento}%              change="Órdenes de compra"
+
+                </div>              isPositive={false}
+
+                <div className="flex items-center text-amber-400 text-sm mt-1">              icon={CurrencyDollarIcon}
+
+                  <Target className="w-3 h-3 mr-1" />              color="amber"
+
+                  {localData.summary.pedidosActivos} pedidos activos            />
+
+                </div>          </motion.div>
+
+              </motion.div>
+
+            </div>          <motion.div variants={animations.card}>
+
+          </div>            <KpiCard3D
+
+              title="Total Ventas"
+
+          {/* Distribuidores Status Bar */}              value={`$${datosDistribuidores.totales.totalVentas.toLocaleString('es-MX', { minimumFractionDigits: 2 })}`}
+
+          <motion.div              change="Ingresos generados"
+
+            className="p-4 bg-gradient-to-r from-orange-500/10 to-amber-500/10 rounded-xl border border-orange-500/20 backdrop-blur-sm"              isPositive={true}
+
+            initial={{ opacity: 0, y: -10 }}              icon={ArrowTrendingUpIcon}
+
+            animate={{ opacity: 1, y: 0 }}              color="emerald"
+
+            transition={{ delay: 0.5 }}            />
+
+          >          </motion.div>
+
+            <div className="flex items-center justify-between">
+
+              <div className="flex items-center space-x-6">          <motion.div variants={animations.card}>
+
+                {/* PACMAN Status */}            <KpiCard3D
+
+                <div className="flex items-center space-x-3">              title="Pendiente"
+
+                  <motion.div              value={`$${datosDistribuidores.totales.pendiente.toLocaleString('es-MX', { minimumFractionDigits: 2 })}`}
+
+                    animate={{ scale: [1, 1.2, 1] }}              change="Por cobrar"
+
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}              isPositive={false}
+
+                  >              icon={ExclamationTriangleIcon}
+
+                    <Crown className="w-5 h-5 text-orange-400" />              color="red"
+
+                  </motion.div>            />
+
+                  <span className="text-white font-medium">PACMAN</span>          </motion.div>
+
+                  <span className="px-2 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs">        </div>
+
+                    #{localData.pacmanDistribuidor.ranking} TOP      </motion.div>
+
+                  </span>
+
+                  <span className="text-green-400 text-sm">      {/* Tabs de navegación */}
+
+                    {localData.pacmanDistribuidor.cumplimientoMeta}% meta      <motion.div
+
+                  </span>        className="relative z-10 px-6 mb-6"
+
+                </div>        initial={{ opacity: 0, y: 20 }}
+
+        animate={{ opacity: 1, y: 0 }}
+
+                <div className="w-px h-6 bg-white/20"></div>        transition={{ delay: 0.3 }}
+
+      >
+
+                {/* Q-MAYA Status - Simulado */}        <div className="flex gap-2 bg-slate-800/30 backdrop-blur-md p-2 rounded-xl">
+
+                <div className="flex items-center space-x-3">          {[
+
+                  <Trophy className="w-5 h-5 text-amber-400" />            { id: 'overview', label: 'Resumen', icon: ChartBarIcon },
+
+                  <span className="text-white font-medium">Q-MAYA</span>            { id: 'distribuidores', label: 'Distribuidores', icon: TruckIcon },
+
+                  <span className="px-2 py-1 bg-amber-500/20 text-amber-400 rounded-full text-xs">            { id: 'analytics', label: 'Analítica', icon: ChartBarIcon },
+
+                    #2            { id: 'regions', label: 'Regiones', icon: MapPinIcon },
+
+                  </span>          ].map((tab) => (
+
+                  <span className="text-green-400 text-sm">            <button
+
+                    93.8% meta              key={tab.id}
+
+                  </span>              onClick={() => handleTabChange(tab.id)}
+
+                </div>              className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
+
+              </div>                tabActiva === tab.id
+
+                                ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
+
+              <div className="flex items-center space-x-4">                  : 'text-slate-400 hover:text-white hover:bg-slate-700/50'
+
+                <span className="text-slate-300 text-sm">              }`}
+
+                  Última actualización: {new Date(localData.summary.ultimaActualizacion).toLocaleTimeString()}            >
+
+                </span>              <tab.icon className="w-5 h-5" />
+
+                <motion.button              {tab.label}
+
+                  className="p-1 text-orange-400 hover:text-orange-300"            </button>
+
+                  whileHover={{ scale: 1.1 }}          ))}
+
+                  onClick={() => setComparativaActiva(!comparativaActiva)}        </div>
+
+                >      </motion.div>
+
+                  <Settings className="w-4 h-4" />
+
+                </motion.button>      {/* Contenido principal */}
+
+              </div>      <div className="relative z-10 px-6 pb-6">
+
+            </div>        <AnimatePresence mode="wait">
+
+          </motion.div>          {tabActiva === 'overview' && (
+
+        </div>            <motion.div
+
+      </motion.div>              key="overview"
+
+              initial={{ opacity: 0, x: 20 }}
+
+      {/* Navigation Tabs */}              animate={{ opacity: 1, x: 0 }}
+
+      <motion.div              exit={{ opacity: 0, x: -20 }}
+
+        className="px-6 py-4 bg-black/40 border-b border-white/10"              className="grid grid-cols-1 lg:grid-cols-2 gap-6"
+
+        variants={itemVariants}            >
+
+      >              {/* Gráfico por distribuidor */}
+
+        <div className="flex items-center justify-between">              <div className="bg-slate-800/40 backdrop-blur-md p-6 rounded-xl border border-blue-500/20">
+
+          {/* Table Tabs */}                <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+
+          <div className="flex space-x-1 bg-white/5 p-1 rounded-xl">                  <ChartBarIcon className="w-6 h-6 text-blue-400" />
+
+            {[                  Ventas por Distribuidor
+
+              { id: 'pacman', label: 'PACMAN', icon: Crown },                </h3>
+
+              { id: 'qmaya', label: 'Q-MAYA', icon: Trophy },                <AdvancedBarChart
+
+              { id: 'performance', label: 'Performance', icon: BarChart3 },                  data={chartData.porDistribuidor}
+
+              { id: 'comisiones', label: 'Comisiones', icon: DollarSign }                  xAxisKey="nombre"
+
+            ].map(({ id, label, icon: Icon }) => (                  bars={[
+
+              <motion.button                    { key: 'ventas', color: '#10b981', label: 'Ventas' },
+
+                key={id}                    { key: 'ordenes', color: '#f59e0b', label: 'Órdenes' },
+
+                onClick={() => setActiveTable(id)}                  ]}
+
+                className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${                  height={300}
+
+                  activeTable === id                />
+
+                    ? 'bg-orange-500/20 text-orange-400 shadow-lg'              </div>
+
+                    : 'text-slate-400 hover:text-white hover:bg-white/5'
+
+                }`}              {/* Gráfico por estado */}
+
+                whileHover={{ scale: 1.02 }}              <div className="bg-slate-800/40 backdrop-blur-md p-6 rounded-xl border border-blue-500/20">
+
+                whileTap={{ scale: 0.98 }}                <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+
+              >                  <ChartBarIcon className="w-6 h-6 text-blue-400" />
+
+                <Icon className="w-4 h-4" />                  Estado de Cuentas
+
+                <span className="hidden sm:inline">{label}</span>                </h3>
+
+              </motion.button>                <AdvancedPieChart
+
+            ))}                  data={chartData.porEstado}
+
+          </div>                  dataKey="cantidad"
+
+                  nameKey="estado"
+
+          {/* Controls */}                  colors={['#10b981', '#ef4444', '#f59e0b']}
+
+          <div className="flex items-center space-x-2">                  height={300}
+
+            {/* Export */}                />
+
+            <motion.button              </div>
+
+              className="p-2 bg-white/5 hover:bg-white/10 rounded-lg text-slate-400 hover:text-white transition-colors"            </motion.div>
+
+              whileHover={{ scale: 1.05 }}          )}
+
+              whileTap={{ scale: 0.95 }}
+
+            >          {tabActiva === 'distribuidores' && (
+
+              <Download className="w-4 h-4" />            <motion.div
+
+            </motion.button>              key="distribuidores"
+
+          </div>              initial={{ opacity: 0, x: 20 }}
+
+        </div>              animate={{ opacity: 1, x: 0 }}
+
+      </motion.div>              exit={{ opacity: 0, x: -20 }}
+
+              className="space-y-4"
+
+      {/* Content Area */}            >
+
+      <div className="flex-1 p-6 overflow-hidden">              {/* Lista de distribuidores */}
+
+        <AnimatePresence mode="wait">              <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+
+          {activeTable === 'pacman' && (                {distribuidoresFiltrados.map((distribuidor) => (
+
+            <motion.div                  <motion.div
+
+              key="pacman"                    key={distribuidor.id}
+
+              variants={tableVariants}                    layout
+
+              initial="hidden"                    initial={{ opacity: 0, y: 20 }}
+
+              animate="visible"                    animate={{ opacity: 1, y: 0 }}
+
+              exit="exit"                    whileHover={{ y: -5 }}
+
+              className="h-full"                    className="bg-slate-800/40 backdrop-blur-md p-6 rounded-xl border border-blue-500/20 hover:border-blue-500/40 transition-all cursor-pointer"
+
+            >                    onClick={() => handleVerDetalles(distribuidor)}
+
+              <div className="bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm overflow-hidden">                  >
+
+                {/* PACMAN Header */}                    <div className="flex items-center justify-between mb-4">
+
+                <div className="px-6 py-4 bg-gradient-to-r from-orange-500/10 to-amber-500/10 border-b border-white/10">                      <h3 className="text-lg font-bold text-white">{distribuidor.nombre}</h3>
+
+                  <div className="flex items-center justify-between">                      <div
+
+                    <div className="flex items-center space-x-4">                        className={`px-2 py-1 rounded-full text-xs font-medium ${
+
+                      <Crown className="w-6 h-6 text-orange-400" />                          distribuidor.estado === 'Al día'
+
+                      <div>                            ? 'bg-emerald-500/20 text-emerald-400'
+
+                        <h3 className="text-xl font-bold text-white">PACMAN Distribuidor</h3>                            : 'bg-red-500/20 text-red-400'
+
+                        <p className="text-slate-400 text-sm">Distribuidor Premium #1</p>                        }`}
+
+                      </div>                      >
+
+                    </div>                        {distribuidor.estado}
+
+                    <div className="text-right">                      </div>
+
+                      <div className="text-2xl font-bold text-orange-400">                    </div>
+
+                        {formatCurrency(localData.pacmanDistribuidor.ventasAcumuladas)}
+
+                      </div>                    <div className="space-y-3">
+
+                      <div className="text-slate-400 text-sm">Ventas acumuladas</div>                      <div className="flex items-center justify-between">
+
+                    </div>                        <span className="text-slate-400 text-sm">Costo Total</span>
+
+                  </div>                        <span className="text-white font-semibold">
+
+                </div>                          ${distribuidor.costoTotal.toLocaleString('es-MX')}
+
+                        </span>
+
+                {/* PACMAN Content */}                      </div>
+
+                <div className="p-6">
+
+                  <div className="grid grid-cols-3 gap-6">                      <div className="flex items-center justify-between">
+
+                    {/* Métricas Principales */}                        <span className="text-slate-400 text-sm">Total Ventas</span>
+
+                    <div className="space-y-4">                        <span className="text-emerald-400 font-semibold">
+
+                      <h4 className="text-white font-semibold mb-3">Métricas Principales</h4>                          ${distribuidor.totalVentas.toLocaleString('es-MX')}
+
+                      <div className="space-y-3">                        </span>
+
+                        <div className="flex justify-between">                      </div>
+
+                          <span className="text-slate-400">Ventas del mes:</span>
+
+                          <span className="text-green-400 font-medium">{formatCurrency(localData.pacmanDistribuidor.ventasMes)}</span>                      <div className="flex items-center justify-between">
+
+                        </div>                        <span className="text-slate-400 text-sm">Pendiente</span>
+
+                        <div className="flex justify-between">                        <span className="text-red-400 font-semibold">
+
+                          <span className="text-slate-400">Cumplimiento meta:</span>                          ${distribuidor.pendiente.toLocaleString('es-MX')}
+
+                          <span className="text-orange-400 font-medium">{localData.pacmanDistribuidor.cumplimientoMeta}%</span>                        </span>
+
+                        </div>                      </div>
+
+                        <div className="flex justify-between">
+
+                          <span className="text-slate-400">Comisión rate:</span>                      <div className="flex items-center justify-between">
+
+                          <span className="text-blue-400 font-medium">{localData.pacmanDistribuidor.comisionRate}%</span>                        <span className="text-slate-400 text-sm">Región</span>
+
+                        </div>                        <span className="text-blue-400 font-semibold">{distribuidor.region}</span>
+
+                        <div className="flex justify-between">                      </div>
+
+                          <span className="text-slate-400">Rating:</span>
+
+                          <div className="flex items-center space-x-1">                      <div className="pt-2 border-t border-slate-700">
+
+                            <Star className="w-4 h-4 text-yellow-400 fill-current" />                        <div className="flex items-center justify-between text-sm">
+
+                            <span className="text-yellow-400 font-medium">{localData.pacmanDistribuidor.rating}</span>                          <span className="text-slate-400">
+
+                          </div>                            Órdenes: {distribuidor.cantidadOrdenes}
+
+                        </div>                          </span>
+
+                      </div>                          <span className="text-slate-400">
+
+                    </div>                            Ventas: {distribuidor.cantidadVentas}
+
+                          </span>
+
+                    {/* Territorios */}                        </div>
+
+                    <div className="space-y-4">                      </div>
+
+                      <h4 className="text-white font-semibold mb-3">Territorios</h4>                    </div>
+
+                      <div className="space-y-2">                  </motion.div>
+
+                        {localData.pacmanDistribuidor.territorios.map((territorio, i) => (                ))}
+
+                          <div key={i} className="px-3 py-2 bg-white/5 rounded-lg text-slate-300 text-sm">              </div>
+
+                            {territorio}            </motion.div>
+
+                          </div>          )}
+
+                        ))}
+
+                      </div>          {tabActiva === 'analytics' && (
+
+                    </div>            <motion.div
+
+              key="analytics"
+
+                    {/* Especialidades */}              initial={{ opacity: 0, x: 20 }}
+
+                    <div className="space-y-4">              animate={{ opacity: 1, x: 0 }}
+
+                      <h4 className="text-white font-semibold mb-3">Especialidades</h4>              exit={{ opacity: 0, x: -20 }}
+
+                      <div className="space-y-2">              className="text-center py-20"
+
+                        {localData.pacmanDistribuidor.especialidades.map((especialidad, i) => (            >
+
+                          <div key={i} className="px-3 py-2 bg-orange-500/10 rounded-lg text-orange-400 text-sm border border-orange-500/20">              <ChartBarIcon className="w-20 h-20 text-blue-400 mx-auto mb-4 opacity-50" />
+
+                            {especialidad}              <h3 className="text-2xl font-bold text-white mb-2">Analítica Avanzada</h3>
+
+                          </div>              <p className="text-slate-400">
+
+                        ))}                Próximamente: Análisis predictivo y reportes avanzados
+
+                      </div>              </p>
+
+                    </div>            </motion.div>
+
+                  </div>          )}
+
+
+
+                  {/* Comisiones Summary */}          {tabActiva === 'regions' && (
+
+                  <div className="mt-6 pt-6 border-t border-white/10">            <motion.div
+
+                    <div className="grid grid-cols-4 gap-6">              key="regions"
+
+                      <div className="text-center">              initial={{ opacity: 0, x: 20 }}
+
+                        <div className="text-2xl font-bold text-green-400">{formatCurrency(localData.pacmanDistribuidor.comisionesPagadas)}</div>              animate={{ opacity: 1, x: 0 }}
+
+                        <div className="text-slate-400 text-sm">Pagadas</div>              exit={{ opacity: 0, x: -20 }}
+
+                      </div>              className="text-center py-20"
+
+                      <div className="text-center">            >
+
+                        <div className="text-2xl font-bold text-yellow-400">{formatCurrency(localData.pacmanDistribuidor.comisionesPendientes)}</div>              <MapPinIcon className="w-20 h-20 text-blue-400 mx-auto mb-4 opacity-50" />
+
+                        <div className="text-slate-400 text-sm">Pendientes</div>              <h3 className="text-2xl font-bold text-white mb-2">Gestión por Regiones</h3>
+
+                      </div>              <p className="text-slate-400">
+
+                      <div className="text-center">                Próximamente: Análisis geográfico y optimización de rutas
+
+                        <div className="text-2xl font-bold text-orange-400">{localData.pacmanDistribuidor.clientesAsignados}</div>              </p>
+
+                        <div className="text-slate-400 text-sm">Clientes</div>            </motion.div>
+
+                      </div>          )}
+
+                      <div className="text-center">        </AnimatePresence>
+
+                        <div className="text-2xl font-bold text-purple-400">{localData.pacmanDistribuidor.productosVendidos}</div>      </div>
+
+                        <div className="text-slate-400 text-sm">Productos</div>
+
+                      </div>      {/* Modal de formulario/detalles */}
+
+                    </div>      <AnimatePresence>
+
+                  </div>        {showFormDistribuidor && (
+
+                </div>          <motion.div
+
+              </div>            initial={{ opacity: 0 }}
+
+            </motion.div>            animate={{ opacity: 1 }}
+
+          )}            exit={{ opacity: 0 }}
+
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+
+          {/* Placeholder para otras tablas */}            onClick={handleCloseForm}
+
+          {activeTable !== 'pacman' && (          >
+
+            <motion.div            <motion.div
+
+              key={activeTable}              initial={{ scale: 0.95, opacity: 0 }}
+
+              variants={tableVariants}              animate={{ scale: 1, opacity: 1 }}
+
+              initial="hidden"              exit={{ scale: 0.95, opacity: 0 }}
+
+              animate="visible"              onClick={(e) => e.stopPropagation()}
+
+              exit="exit"              className="bg-slate-800 p-6 rounded-xl border border-blue-500/30 max-w-4xl w-full max-h-[80vh] overflow-y-auto"
+
+              className="h-full flex items-center justify-center"            >
+
+            >              {selectedDistribuidor ? (
+
+              <div className="text-center">                <div>
+
+                <Users className="w-16 h-16 text-orange-400 mx-auto mb-4" />                  <h3 className="text-xl font-bold text-white mb-4">
+
+                <h3 className="text-xl font-bold text-white mb-2">                    Detalles de {selectedDistribuidor.nombre}
+
+                  {activeTable === 'qmaya' ? 'Q-MAYA Distribuidor - Sistema Completo' :                  </h3>
+
+                   activeTable === 'performance' ? 'Análisis Comparativo de Performance' : 'Gestión de Comisiones y Pagos'}
+
+                </h3>                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+                <p className="text-slate-400">                    <div className="space-y-4">
+
+                  Panel en desarrollo con funcionalidades avanzadas de distribución                      <div className="bg-slate-700/50 p-4 rounded-lg">
+
+                </p>                        <h4 className="font-semibold text-white mb-2">Información General</h4>
+
+              </div>                        <div className="space-y-2 text-sm">
+
+            </motion.div>                          <div className="flex justify-between">
+
+          )}                            <span className="text-slate-400">Región:</span>
+
+        </AnimatePresence>                            <span className="text-white">{selectedDistribuidor.region}</span>
+
+      </div>                          </div>
+
+    </motion.div>                          <div className="flex justify-between">
+
+  );                            <span className="text-slate-400">Estado:</span>
+
+});                            <span
+
+                              className={
+
+PanelDistribuidoresUltra.displayName = 'PanelDistribuidoresUltra';                                selectedDistribuidor.estado === 'Al día'
+
+                                  ? 'text-emerald-400'
+
+PanelDistribuidoresUltra.propTypes = {                                  : 'text-red-400'
+
+  data: PropTypes.object,                              }
+
+  onDataChange: PropTypes.func                            >
+
+};                              {selectedDistribuidor.estado}
+
+                            </span>
+
+export default PanelDistribuidoresUltra;                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-slate-400">Rating:</span>
+                            <span className="text-yellow-400">
+                              ★ {selectedDistribuidor.rating.toFixed(1)}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="bg-slate-700/50 p-4 rounded-lg">
+                        <h4 className="font-semibold text-white mb-2">Finanzas</h4>
+                        <div className="space-y-2 text-sm">
+                          <div className="flex justify-between">
+                            <span className="text-slate-400">Costo Total:</span>
+                            <span className="text-white">
+                              ${selectedDistribuidor.costoTotal.toLocaleString('es-MX')}
+                            </span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-slate-400">Total Ventas:</span>
+                            <span className="text-emerald-400">
+                              ${selectedDistribuidor.totalVentas.toLocaleString('es-MX')}
+                            </span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-slate-400">Rentabilidad:</span>
+                            <span
+                              className={
+                                selectedDistribuidor.rentabilidad > 0
+                                  ? 'text-emerald-400'
+                                  : 'text-red-400'
+                              }
+                            >
+                              ${selectedDistribuidor.rentabilidad.toLocaleString('es-MX')}
+                            </span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-slate-400">Pendiente:</span>
+                            <span className="text-red-400">
+                              ${selectedDistribuidor.pendiente.toLocaleString('es-MX')}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div className="bg-slate-700/50 p-4 rounded-lg">
+                        <h4 className="font-semibold text-white mb-2">Actividad</h4>
+                        <div className="space-y-2 text-sm">
+                          <div className="flex justify-between">
+                            <span className="text-slate-400">Órdenes de Compra:</span>
+                            <span className="text-white">
+                              {selectedDistribuidor.cantidadOrdenes}
+                            </span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-slate-400">Ventas Realizadas:</span>
+                            <span className="text-white">
+                              {selectedDistribuidor.cantidadVentas}
+                            </span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-slate-400">Margen Rentabilidad:</span>
+                            <span
+                              className={
+                                selectedDistribuidor.margenRentabilidad > 0
+                                  ? 'text-emerald-400'
+                                  : 'text-red-400'
+                              }
+                            >
+                              {selectedDistribuidor.margenRentabilidad.toFixed(1)}%
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-end gap-2 mt-6">
+                    <button
+                      onClick={handleCloseForm}
+                      className="px-4 py-2 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition-colors"
+                    >
+                      Cerrar
+                    </button>
+                    <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                      Editar Distribuidor
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-4">Nuevo Distribuidor</h3>
+                  <div className="text-center py-10">
+                    <DocumentTextIcon className="w-16 h-16 text-blue-400 mx-auto mb-4 opacity-50" />
+                    <p className="text-slate-400">Formulario en desarrollo</p>
+                    <button
+                      onClick={handleCloseForm}
+                      className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    >
+                      Cerrar
+                    </button>
+                  </div>
+                </div>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+});
+
+PanelDistribuidoresUltra.displayName = 'PanelDistribuidoresUltra';
+
+export default PanelDistribuidoresUltra;

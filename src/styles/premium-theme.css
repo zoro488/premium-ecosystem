@@ -1,0 +1,359 @@
+/**
+ * 🎨 PREMIUM THEME - ULTRA SOPHISTICATED DARK
+ * Sistema de tema oscuro de máxima calidad con efectos avanzados
+ */
+
+/* ============================================
+   VARIABLES TEMÁTICAS PREMIUM
+   ============================================ */
+:root {
+  /* Paleta Oscura Premium */
+  --dark-900: #030712;
+  --dark-850: #0a0f1e;
+  --dark-800: #0f1729;
+  --dark-750: #151e35;
+  --dark-700: #1a2640;
+
+  /* Overlays & Glassmorphism */
+  --overlay-dark: rgba(3, 7, 18, 0.85);
+  --overlay-medium: rgba(15, 23, 41, 0.75);
+  --overlay-light: rgba(26, 38, 64, 0.65);
+
+  /* Efectos de Luz */
+  --light-accent: rgba(255, 255, 255, 0.1);
+  --light-subtle: rgba(255, 255, 255, 0.05);
+  --light-strong: rgba(255, 255, 255, 0.15);
+
+  /* Gradientes de Acento */
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-tertiary: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --gradient-success: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  --gradient-danger: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  --gradient-warning: linear-gradient(135deg, #fdeb71 0%, #f8d800 100%);
+
+  /* Gradientes de Fondo */
+  --bg-gradient-1: radial-gradient(
+    circle at 20% 50%,
+    rgba(102, 126, 234, 0.08) 0%,
+    transparent 50%
+  );
+  --bg-gradient-2: radial-gradient(circle at 80% 50%, rgba(118, 75, 162, 0.08) 0%, transparent 50%);
+  --bg-gradient-3: radial-gradient(
+    circle at 50% 100%,
+    rgba(79, 172, 254, 0.08) 0%,
+    transparent 50%
+  );
+
+  /* Sombras Premium con Profundidad */
+  --shadow-premium-sm: 0 2px 8px rgba(0, 0, 0, 0.25), 0 1px 3px rgba(0, 0, 0, 0.15);
+  --shadow-premium-md: 0 4px 16px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.2);
+  --shadow-premium-lg: 0 8px 32px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow-premium-xl: 0 16px 64px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.3);
+  --shadow-premium-2xl: 0 24px 96px rgba(0, 0, 0, 0.45), 0 12px 36px rgba(0, 0, 0, 0.35);
+
+  /* Bordes con Glow */
+  --border-glow-subtle: 1px solid rgba(102, 126, 234, 0.2);
+  --border-glow-medium: 1px solid rgba(102, 126, 234, 0.35);
+  --border-glow-strong: 1px solid rgba(102, 126, 234, 0.5);
+}
+
+/* ============================================
+   ESTILOS BASE PREMIUM
+   ============================================ */
+.theme-premium {
+  --bg-app: var(--dark-900);
+  --bg-surface: var(--dark-800);
+  --bg-surface-elevated: var(--dark-750);
+  --bg-interactive: var(--dark-700);
+}
+
+/* ============================================
+   COMPONENTES GLASSMORPHISM ULTRA
+   ============================================ */
+.glass-ultra {
+  background: var(--overlay-dark);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--light-accent);
+  box-shadow:
+    var(--shadow-premium-lg),
+    inset 0 1px 0 var(--light-subtle);
+}
+
+.glass-elevated {
+  background: var(--overlay-medium);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  border: 1px solid var(--light-strong);
+  box-shadow:
+    var(--shadow-premium-xl),
+    inset 0 1px 0 var(--light-accent),
+    0 0 80px rgba(102, 126, 234, 0.15);
+}
+
+.glass-supreme {
+  background: linear-gradient(
+    135deg,
+    var(--overlay-dark) 0%,
+    var(--overlay-medium) 50%,
+    var(--overlay-light) 100%
+  );
+  backdrop-filter: blur(40px) saturate(220%);
+  -webkit-backdrop-filter: blur(40px) saturate(220%);
+  border: 2px solid var(--light-strong);
+  box-shadow:
+    var(--shadow-premium-2xl),
+    inset 0 2px 0 var(--light-strong),
+    0 0 120px rgba(102, 126, 234, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================
+   CARDS PREMIUM CON HOVER
+   ============================================ */
+.card-ultra {
+  background: var(--overlay-dark);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--light-accent);
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-premium-md);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-ultra::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.card-ultra:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow:
+    var(--shadow-premium-xl),
+    0 0 60px rgba(102, 126, 234, 0.25);
+  border-color: var(--light-strong);
+}
+
+.card-ultra:hover::before {
+  opacity: 1;
+}
+
+/* ============================================
+   BOTONES PREMIUM AVANZADOS
+   ============================================ */
+.btn-ultra-primary {
+  background: var(--gradient-primary);
+  color: white;
+  font-weight: 600;
+  padding: 0.875rem 2rem;
+  border-radius: 0.875rem;
+  border: none;
+  box-shadow:
+    var(--shadow-premium-md),
+    0 0 40px rgba(102, 126, 234, 0.3);
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ultra-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn-ultra-primary:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow:
+    var(--shadow-premium-lg),
+    0 0 60px rgba(102, 126, 234, 0.5);
+}
+
+.btn-ultra-primary:hover::before {
+  opacity: 1;
+}
+
+.btn-ultra-primary:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* ============================================
+   INPUTS PREMIUM
+   ============================================ */
+.input-ultra {
+  background: var(--overlay-dark);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--light-accent);
+  border-radius: 0.75rem;
+  padding: 0.875rem 1.25rem;
+  color: white;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: var(--shadow-premium-sm);
+}
+
+.input-ultra:focus {
+  outline: none;
+  border-color: rgba(102, 126, 234, 0.6);
+  box-shadow:
+    var(--shadow-premium-md),
+    0 0 0 4px rgba(102, 126, 234, 0.15),
+    0 0 40px rgba(102, 126, 234, 0.2);
+  background: var(--overlay-medium);
+}
+
+.input-ultra::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ============================================
+   BADGES & TAGS PREMIUM
+   ============================================ */
+.badge-ultra {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.875rem;
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  background: var(--overlay-medium);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--light-accent);
+  box-shadow: var(--shadow-premium-sm);
+  transition: all 0.3s;
+}
+
+.badge-ultra-primary {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+  border-color: rgba(102, 126, 234, 0.4);
+  color: #a78bfa;
+}
+
+.badge-ultra-success {
+  background: linear-gradient(135deg, rgba(67, 233, 123, 0.2) 0%, rgba(56, 249, 215, 0.2) 100%);
+  border-color: rgba(67, 233, 123, 0.4);
+  color: #6ee7b7;
+}
+
+.badge-ultra-danger {
+  background: linear-gradient(135deg, rgba(250, 112, 154, 0.2) 0%, rgba(254, 225, 64, 0.2) 100%);
+  border-color: rgba(250, 112, 154, 0.4);
+  color: #fca5a5;
+}
+
+/* ============================================
+   SCROLLBAR ULTRA PREMIUM
+   ============================================ */
+.scrollbar-ultra::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.scrollbar-ultra::-webkit-scrollbar-track {
+  background: var(--dark-800);
+  border-radius: 5px;
+}
+
+.scrollbar-ultra::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: 5px;
+  border: 2px solid var(--dark-800);
+}
+
+.scrollbar-ultra::-webkit-scrollbar-thumb:hover {
+  background: var(--gradient-tertiary);
+}
+
+/* ============================================
+   TOOLTIPS PREMIUM
+   ============================================ */
+.tooltip-ultra {
+  position: relative;
+}
+
+.tooltip-ultra::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  padding: 0.5rem 1rem;
+  background: var(--overlay-dark);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--light-strong);
+  border-radius: 0.625rem;
+  color: white;
+  font-size: 0.8125rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: var(--shadow-premium-lg);
+  z-index: 1000;
+}
+
+.tooltip-ultra:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* ============================================
+   LOADING STATES PREMIUM
+   ============================================ */
+.loading-ultra {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-ultra::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  animation: shimmerUltra 2s infinite;
+}
+
+@keyframes shimmerUltra {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ============================================
+   SEPARADORES PREMIUM
+   ============================================ */
+.divider-ultra {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--light-accent) 50%, transparent 100%);
+  margin: 2rem 0;
+}
+
+.divider-glow {
+  height: 2px;
+  background: var(--gradient-primary);
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+  margin: 2rem 0;
+}

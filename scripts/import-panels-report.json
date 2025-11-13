@@ -1,0 +1,24 @@
+{
+  "timestamp": "2025-10-23T21:48:15.527Z",
+  "mode": "PRODUCTION",
+  "excelPath": "C:\\Users\\xpovo\\Downloads\\Copia de Administación_General.xlsx",
+  "balanceTotal": 12861332.12,
+  "stats": {
+    "clientes": 31,
+    "distribuidores": 2,
+    "ordenesCompra": 9,
+    "ventas": 72,
+    "capitalesBancos": 1,
+    "gastosAbonos": 96,
+    "inventario": 9,
+    "bovedaMonte": 95,
+    "bovedaUSA": 20,
+    "utilidades": 62,
+    "fleteSur": 121,
+    "bancoAzteca": 6,
+    "bancoLeftie": 9,
+    "bancoProfit": 55,
+    "datosAuxiliares": 83
+  },
+  "totalRegistros": 671
+}

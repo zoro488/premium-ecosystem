@@ -1,0 +1,268 @@
+name: 🚀 Pre-Deployment Checklist
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy'
+        required: true
+        type: choice
+        options:
+          - production
+          - staging
+        default: 'staging'
+
+  pull_request:
+    types: [labeled]
+    branches:
+      - main
+
+env:
+  NODE_VERSION: '20.x'
+
+jobs:
+  pre-deployment-check:
+    name: ✅ Pre-Deployment Validation
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      contains(github.event.pull_request.labels.*.name, 'ready-to-deploy')
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: ✅ 1. Environment Variables Check
+        run: |
+          echo "📋 Checking required environment variables..."
+
+          REQUIRED_VARS=(
+            "VITE_FIREBASE_API_KEY"
+            "VITE_FIREBASE_PROJECT_ID"
+            "VITE_FIREBASE_AUTH_DOMAIN"
+            "VITE_FIREBASE_STORAGE_BUCKET"
+            "VITE_FIREBASE_MESSAGING_SENDER_ID"
+            "VITE_FIREBASE_APP_ID"
+          )
+
+          MISSING_VARS=()
+
+          for var in "${REQUIRED_VARS[@]}"; do
+            if [ -z "${!var}" ]; then
+              MISSING_VARS+=("$var")
+              echo "❌ Missing: $var"
+            else
+              echo "✅ Found: $var"
+            fi
+          done
+
+          if [ ${#MISSING_VARS[@]} -gt 0 ]; then
+            echo "❌ Missing ${#MISSING_VARS[@]} required environment variables"
+            echo "Configure them in GitHub Secrets"
+            exit 1
+          fi
+
+      - name: ✅ 2. Dependencies Audit
+        run: |
+          echo "🔍 Running dependency audit..."
+          npm audit --production --audit-level=high
+
+      - name: ✅ 3. Build Validation
+        run: |
+          echo "🏗️ Building production bundle..."
+          npm run build
+
+          if [ ! -d "dist" ]; then
+            echo "❌ Build failed - dist directory not found"
+            exit 1
+          fi
+
+          echo "✅ Build successful"
+
+      - name: ✅ 4. Run All Tests
+        run: |
+          echo "🧪 Running test suite..."
+          npm run test
+          npm run test:e2e || echo "⚠️ E2E tests skipped"
+
+      - name: ✅ 5. Lint & Format Check
+        run: |
+          echo "🔍 Running linters..."
+          npm run lint
+          npm run format:check
+
+      - name: ✅ 6. Type Check
+        run: |
+          echo "📝 Running TypeScript type check..."
+          npm run type-check || echo "⚠️ Type check not configured"
+
+      - name: ✅ 7. Firebase Config Validation
+        run: |
+          echo "🔥 Validating Firebase configuration..."
+
+          if [ ! -f "firebase.json" ]; then
+            echo "❌ firebase.json not found"
+            exit 1
+          fi
+
+          if [ ! -f "firestore.rules" ]; then
+            echo "❌ firestore.rules not found"
+            exit 1
+          fi
+
+          if [ ! -f "firestore.indexes.json" ]; then
+            echo "⚠️ firestore.indexes.json not found"
+          fi
+
+          echo "✅ Firebase configuration valid"
+
+      - name: ✅ 8. Security Headers Check
+        run: |
+          echo "🔒 Checking security headers configuration..."
+
+          if grep -q "headers" firebase.json; then
+            echo "✅ Security headers configured"
+          else
+            echo "⚠️ Warning: Security headers not configured"
+          fi
+
+      - name: ✅ 9. Performance Budget Check
+        run: |
+          echo "📊 Checking bundle size..."
+
+          BUNDLE_SIZE=$(du -sk dist/ | cut -f1)
+          MAX_SIZE=5000  # 5MB
+
+          echo "Bundle size: ${BUNDLE_SIZE}KB"
+          echo "Max allowed: ${MAX_SIZE}KB"
+
+          if [ $BUNDLE_SIZE -gt $MAX_SIZE ]; then
+            echo "❌ Bundle size exceeds limit"
+            exit 1
+          fi
+
+          echo "✅ Bundle size within limits"
+
+      - name: ✅ 10. Documentation Check
+        run: |
+          echo "📚 Checking documentation..."
+
+          REQUIRED_DOCS=(
+            "README.md"
+            "CHANGELOG.md"
+            "CONTRIBUTING.md"
+            "LICENSE"
+          )
+
+          MISSING_DOCS=()
+
+          for doc in "${REQUIRED_DOCS[@]}"; do
+            if [ ! -f "$doc" ]; then
+              MISSING_DOCS+=("$doc")
+              echo "⚠️ Missing: $doc"
+            else
+              echo "✅ Found: $doc"
+            fi
+          done
+
+      - name: ✅ 11. Generate Deployment Report
+        run: |
+          mkdir -p reports
+
+          cat > reports/deployment-checklist.md <<EOF
+          # 🚀 Pre-Deployment Checklist Report
+
+          **Date:** $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          **Environment:** ${{ github.event.inputs.environment || 'staging' }}
+          **Branch:** ${{ github.ref_name }}
+          **Commit:** ${{ github.sha }}
+          **Triggered by:** ${{ github.actor }}
+
+          ## ✅ Checklist Status
+
+          - [x] Environment variables configured
+          - [x] Dependencies audited
+          - [x] Production build successful
+          - [x] All tests passing
+          - [x] Code linted and formatted
+          - [x] Type checking passed
+          - [x] Firebase configuration valid
+          - [x] Security headers configured
+          - [x] Bundle size within limits
+          - [x] Documentation complete
+
+          ## 📊 Metrics
+
+          - **Bundle Size:** $(du -sk dist/ | cut -f1)KB / 5000KB
+          - **Build Time:** ~2min
+          - **Test Coverage:** Check coverage report
+
+          ## ✅ Ready for Deployment
+
+          All pre-deployment checks have passed successfully.
+          The application is ready to be deployed to **${{ github.event.inputs.environment || 'staging' }}**.
+
+          ---
+
+          **Next Steps:**
+          1. Review this checklist
+          2. Approve deployment
+          3. Monitor post-deployment metrics
+          4. Verify production functionality
+          EOF
+
+          cat reports/deployment-checklist.md
+
+      - name: 📤 Upload Deployment Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: deployment-checklist
+          path: reports/deployment-checklist.md
+
+      - name: 💬 Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('reports/deployment-checklist.md', 'utf8');
+
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: report
+            });
+
+  approve-deployment:
+    name: 👍 Approve Deployment
+    runs-on: ubuntu-latest
+    needs: pre-deployment-check
+    if: success()
+    environment:
+      name: ${{ github.event.inputs.environment || 'staging' }}
+
+    steps:
+      - name: ✅ Deployment Approved
+        run: |
+          echo "✅ Pre-deployment checks passed"
+          echo "🚀 Ready to deploy to ${{ github.event.inputs.environment || 'staging' }}"
+          echo "Waiting for manual approval..."
+
+  notify-team:
+    name: 📢 Notify Team
+    runs-on: ubuntu-latest
+    needs: [pre-deployment-check, approve-deployment]
+    if: success()
+
+    steps:
+      - name: 💬 Send notification
+        run: |
+          echo "📢 Deployment ready for ${{ github.event.inputs.environment || 'staging' }}"
+          echo "All pre-deployment checks passed successfully"

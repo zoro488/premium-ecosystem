@@ -1,0 +1,3214 @@
+{
+  "distribuidores_oc": {
+    "headers": [
+      "OC",
+      "Fecha",
+      "Origen",
+      "Cantidad",
+      "Costo Distribuidor",
+      "Costo Transporte",
+      "Costo Por Unidad",
+      "Stock Actual",
+      "Costo Total",
+      "Pago a Distribuidor",
+      "Deuda"
+    ],
+    "registros": [
+      {
+        "OC": "OC0001",
+        "Fecha": "2025-08-25 00:00:00",
+        "Origen": "Q-MAYA",
+        "Cantidad": 423.0,
+        "Costo Distribuidor": 6100.0,
+        "Costo Transporte": 200.0,
+        "Costo Por Unidad": 6300,
+        "Stock Actual": null,
+        "Costo Total": 2664900,
+        "Pago a Distribuidor": null,
+        "Deuda": null
+      },
+      {
+        "OC": "OC0002",
+        "Fecha": "2025-08-25 00:00:00",
+        "Origen": "Q-MAYA",
+        "Cantidad": 32.0,
+        "Costo Distribuidor": 6100.0,
+        "Costo Transporte": 200.0,
+        "Costo Por Unidad": 6300,
+        "Stock Actual": null,
+        "Costo Total": 201600,
+        "Pago a Distribuidor": null,
+        "Deuda": null
+      },
+      {
+        "OC": "OC0003",
+        "Fecha": "2025-08-25 00:00:00",
+        "Origen": "A/X🌶️🦀",
+        "Cantidad": 33.0,
+        "Costo Distribuidor": 6100.0,
+        "Costo Transporte": 200.0,
+        "Costo Por Unidad": 6300,
+        "Stock Actual": null,
+        "Costo Total": 207900,
+        "Pago a Distribuidor": null,
+        "Deuda": null
+      },
+      {
+        "OC": "OC0004",
+        "Fecha": "2025-08-30 00:00:00",
+        "Origen": "PACMAN",
+        "Cantidad": 487.0,
+        "Costo Distribuidor": 6100.0,
+        "Costo Transporte": 200.0,
+        "Costo Por Unidad": 6300,
+        "Stock Actual": null,
+        "Costo Total": 3068100,
+        "Pago a Distribuidor": null,
+        "Deuda": null
+      },
+      {
+        "OC": "OC0005",
+        "Fecha": "2025-09-06 00:00:00",
+        "Origen": "Q-MAYA",
+        "Cantidad": 513.0,
+        "Costo Distribuidor": 6100.0,
+        "Costo Transporte": 200.0,
+        "Costo Por Unidad": 6300,
+        "Stock Actual": null,
+        "Costo Total": 3231900,
+        "Pago a Distribuidor": null,
+        "Deuda": null
+      },
+      {
+        "OC": "OC0006",
+        "Fecha": "2025-09-09 00:00:00",
+        "Origen": "CH-MONTE",
+        "Cantidad": 100.0,
+        "Costo Distribuidor": 6300.0,
+        "Costo Transporte": 0.0,
+        "Costo Por Unidad": 6300,
+        "Stock Actual": null,
+        "Costo Total": 630000,
+        "Pago a Distribuidor": 953100.0,
+        "Deuda": null
+      },
+      {
+        "OC": "OC0007",
+        "Fecha": "2025-09-29 00:00:00",
+        "Origen": "VALLE-MONTE",
+        "Cantidad": 20.0,
+        "Costo Distribuidor": 7000.0,
+        "Costo Transporte": 0.0,
+        "Costo Por Unidad": 7000,
+        "Stock Actual": null,
+        "Costo Total": 140000,
+        "Pago a Distribuidor": null,
+        "Deuda": null
+      },
+      {
+        "OC": "OC0008",
+        "Fecha": "2025-10-05 00:00:00",
+        "Origen": "PACMAN",
+        "Cantidad": 488.0,
+        "Costo Distribuidor": 6100.0,
+        "Costo Transporte": 200.0,
+        "Costo Por Unidad": 6300,
+        "Stock Actual": null,
+        "Costo Total": 3074400,
+        "Pago a Distribuidor": null,
+        "Deuda": null
+      },
+      {
+        "OC": "OC0009",
+        "Fecha": "2025-10-05 00:00:00",
+        "Origen": "Q-MAYA-MP",
+        "Cantidad": 200.0,
+        "Costo Distribuidor": 6100.0,
+        "Costo Transporte": 200.0,
+        "Costo Por Unidad": 6300,
+        "Stock Actual": null,
+        "Costo Total": 1260000,
+        "Pago a Distribuidor": null,
+        "Deuda": null
+      }
+    ],
+    "total": 9
+  },
+  "control_maestro_ventas": {
+    "headers": [
+      "Fecha",
+      "OC Relacionada",
+      "Cantidad",
+      "Cliente",
+      "Bóveda Monte",
+      "Precio De Venta",
+      "Ingreso",
+      "Flete",
+      "Flete Utilidad",
+      "Utilidad",
+      "Estatus",
+      "Concepto"
+    ],
+    "registros": [
+      {
+        "Fecha": "2025-08-23 00:00:00",
+        "OC Relacionada": "OC0001",
+        "Cantidad": 150.0,
+        "Cliente": "Bódega M-P",
+        "Bóveda Monte": 945000,
+        "Precio De Venta": 6300.0,
+        "Ingreso": 945000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 75000,
+        "Utilidad": 0,
+        "Estatus": "Pendiente",
+        "Concepto": null
+      },
+      {
+        "Fecha": "2025-08-23 00:00:00",
+        "OC Relacionada": "OC0001",
+        "Cantidad": 60.0,
+        "Cliente": "Valle",
+        "Bóveda Monte": 378000,
+        "Precio De Venta": 6800.0,
+        "Ingreso": 408000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 30000,
+        "Utilidad": 0,
+        "Estatus": "Pendiente",
+        "Concepto": null
+      },
+      {
+        "Fecha": "2025-08-23 00:00:00",
+        "OC Relacionada": "OC0001",
+        "Cantidad": 50.0,
+        "Cliente": "Ax",
+        "Bóveda Monte": 315000,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 350000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 25000,
+        "Utilidad": 10000,
+        "Estatus": "Pagado",
+        "Concepto": null
+      },
+      {
+        "Fecha": "2025-08-23 00:00:00",
+        "OC Relacionada": "OC0001",
+        "Cantidad": 25.0,
+        "Cliente": "Negrito",
+        "Bóveda Monte": 157500,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 175000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 12500,
+        "Utilidad": 5000,
+        "Estatus": "Pagado",
+        "Concepto": null
+      },
+      {
+        "Fecha": "2025-08-23 00:00:00",
+        "OC Relacionada": "OC0001",
+        "Cantidad": 20.0,
+        "Cliente": "Wero Benavides",
+        "Bóveda Monte": 126000,
+        "Precio De Venta": 7100.0,
+        "Ingreso": 142000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 10000,
+        "Utilidad": 6000,
+        "Estatus": "Pendiente",
+        "Concepto": null
+      },
+      {
+        "Fecha": "2025-08-23 00:00:00",
+        "OC Relacionada": "OC0001",
+        "Cantidad": 30.0,
+        "Cliente": "Lamas",
+        "Bóveda Monte": 189000,
+        "Precio De Venta": 7100.0,
+        "Ingreso": 213000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 15000,
+        "Utilidad": 9000,
+        "Estatus": "Pendiente",
+        "Concepto": null
+      },
+      {
+        "Fecha": "2025-08-25 00:00:00",
+        "OC Relacionada": "OC0001",
+        "Cantidad": 48.0,
+        "Cliente": "Trámite Chucho",
+        "Bóveda Monte": 302400,
+        "Precio De Venta": 6300.0,
+        "Ingreso": 302400,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": 0,
+        "Estatus": "Pendiente",
+        "Concepto": null
+      },
+      {
+        "Fecha": "2025-08-25 00:00:00",
+        "OC Relacionada": "OC0001",
+        "Cantidad": 3.0,
+        "Cliente": "Galvan",
+        "Bóveda Monte": 18900,
+        "Precio De Venta": 7400.0,
+        "Ingreso": 22200,
+        "Flete": "Aplica",
+        "Flete Utilidad": 1500,
+        "Utilidad": 1800,
+        "Estatus": "Pagado",
+        "Concepto": null
+      },
+      {
+        "Fecha": "2025-08-25 00:00:00",
+        "OC Relacionada": "OC0001",
+        "Cantidad": 2.0,
+        "Cliente": "Valle Local",
+        "Bóveda Monte": 12600,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 14000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 1000,
+        "Utilidad": 400,
+        "Estatus": "Pagado",
+        "Concepto": null
+      },
+      {
+        "Fecha": "2025-08-25 00:00:00",
+        "OC Relacionada": "OC0001",
+        "Cantidad": 20.0,
+        "Cliente": "Tocayo",
+        "Bóveda Monte": 126000,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 140000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 10000,
+        "Utilidad": 4000,
+        "Estatus": "Pagado",
+        "Concepto": null
+      },
+      {
+        "Fecha": "2025-08-25 00:00:00",
+        "OC Relacionada": "OC0001",
+        "Cantidad": 15.0,
+        "Cliente": "Sierra47",
+        "Bóveda Monte": 94500,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 105000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 7500,
+        "Utilidad": 3000,
+        "Estatus": "Pagado",
+        "Concepto": null
+      },
+      {
+        "Fecha": "2025-08-26 00:00:00",
+        "OC Relacionada": "OC0003",
+        "Cantidad": 33.0,
+        "Cliente": "Lamas",
+        "Bóveda Monte": 207900,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 231000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 16500,
+        "Utilidad": 6600,
+        "Estatus": "Pendiente",
+        "Concepto": null
+      },
+      {
+        "Fecha": "2025-08-30 00:00:00",
+        "OC Relacionada": "OC0004",
+        "Cantidad": 33.0,
+        "Cliente": "Ax",
+        "Bóveda Monte": 207900,
+        "Precio De Venta": 6300.0,
+        "Ingreso": 207900,
+        "Flete": "Aplica",
+        "Flete Utilidad": 16500,
+        "Utilidad": 0,
+        "Estatus": "Pendiente",
+        "Concepto": "debiamos prestadas a/x"
+      },
+      {
+        "Fecha": "2025-08-30 00:00:00",
+        "OC Relacionada": "OC0004",
+        "Cantidad": 75.0,
+        "Cliente": "Valle",
+        "Bóveda Monte": 472500,
+        "Precio De Venta": 6300.0,
+        "Ingreso": 472500,
+        "Flete": "Aplica",
+        "Flete Utilidad": 37500,
+        "Utilidad": 0,
+        "Estatus": "Pendiente",
+        "Concepto": "gaviota,panaderia"
+      },
+      {
+        "Fecha": "2025-08-30 00:00:00",
+        "OC Relacionada": "OC0004",
+        "Cantidad": 25.0,
+        "Cliente": "Ax",
+        "Bóveda Monte": 157500,
+        "Precio De Venta": 6300.0,
+        "Ingreso": 157500,
+        "Flete": "Aplica",
+        "Flete Utilidad": 12500,
+        "Utilidad": 0,
+        "Estatus": "Pendiente",
+        "Concepto": "panaderia"
+      },
+      {
+        "Fecha": "2025-08-30 00:00:00",
+        "OC Relacionada": "OC0004",
+        "Cantidad": 44.0,
+        "Cliente": "Tocayo",
+        "Bóveda Monte": 277200,
+        "Precio De Venta": 6300.0,
+        "Ingreso": 277200,
+        "Flete": "Aplica",
+        "Flete Utilidad": 22000,
+        "Utilidad": 0,
+        "Estatus": "Pendiente",
+        "Concepto": "panaderia"
+      },
+      {
+        "Fecha": "2025-08-30 00:00:00",
+        "OC Relacionada": "OC0004",
+        "Cantidad": 50.0,
+        "Cliente": "Tio Tocayo",
+        "Bóveda Monte": 315000,
+        "Precio De Venta": 6300.0,
+        "Ingreso": 315000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 25000,
+        "Utilidad": 0,
+        "Estatus": "Pendiente",
+        "Concepto": "panaderia"
+      },
+      {
+        "Fecha": "2025-08-30 00:00:00",
+        "OC Relacionada": "OC0004",
+        "Cantidad": 15.0,
+        "Cliente": "Chucho",
+        "Bóveda Monte": 94500,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 105000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 7500,
+        "Utilidad": 3000,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#15"
+      },
+      {
+        "Fecha": "2025-08-31 00:00:00",
+        "OC Relacionada": "OC0004",
+        "Cantidad": 22.0,
+        "Cliente": "Lamas",
+        "Bóveda Monte": 138600,
+        "Precio De Venta": 7100.0,
+        "Ingreso": 156200,
+        "Flete": "Aplica",
+        "Flete Utilidad": 11000,
+        "Utilidad": 6600,
+        "Estatus": "Pendiente",
+        "Concepto": "playa azul#22"
+      },
+      {
+        "Fecha": "2025-08-31 00:00:00",
+        "OC Relacionada": "OC0004",
+        "Cantidad": 22.0,
+        "Cliente": "Lamas",
+        "Bóveda Monte": 138600,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 154000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 11000,
+        "Utilidad": 4400,
+        "Estatus": "Pendiente",
+        "Concepto": "venta local monte#22"
+      },
+      {
+        "Fecha": "2025-09-01 00:00:00",
+        "OC Relacionada": "OC0004",
+        "Cantidad": 14.0,
+        "Cliente": "Ax",
+        "Bóveda Monte": 88200,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 98000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 7000,
+        "Utilidad": 2800,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte #14"
+      },
+      {
+        "Fecha": "2025-09-02 00:00:00",
+        "OC Relacionada": "OC0004",
+        "Cantidad": 24.0,
+        "Cliente": "Trámite Güerito",
+        "Bóveda Monte": 151200,
+        "Precio De Venta": 0.0,
+        "Ingreso": 0,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": -151200,
+        "Estatus": "Pendiente",
+        "Concepto": "silla-planta 🚚#24"
+      },
+      {
+        "Fecha": "2025-09-02 00:00:00",
+        "OC Relacionada": "OC0004",
+        "Cantidad": 1.0,
+        "Cliente": "Galvan",
+        "Bóveda Monte": 6300,
+        "Precio De Venta": 7400.0,
+        "Ingreso": 7400,
+        "Flete": "Aplica",
+        "Flete Utilidad": 500,
+        "Utilidad": 600,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte rafa#1"
+      },
+      {
+        "Fecha": "2025-09-02 00:00:00",
+        "OC Relacionada": "OC0004",
+        "Cantidad": 1.0,
+        "Cliente": "Galvan",
+        "Bóveda Monte": 6300,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 7000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 500,
+        "Utilidad": 200,
+        "Estatus": "Pagado",
+        "Concepto": "venta local galvan #1"
+      },
+      {
+        "Fecha": "2025-09-02 00:00:00",
+        "OC Relacionada": "OC0004",
+        "Cantidad": 8.0,
+        "Cliente": "Sierra47",
+        "Bóveda Monte": 50400,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 56000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 4000,
+        "Utilidad": 1600,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte #8"
+      },
+      {
+        "Fecha": "2025-09-03 00:00:00",
+        "OC Relacionada": "OC0003",
+        "Cantidad": 1.0,
+        "Cliente": 470.0,
+        "Bóveda Monte": 6300,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 7000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 500,
+        "Utilidad": 200,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte #1"
+      },
+      {
+        "Fecha": "2025-09-03 00:00:00",
+        "OC Relacionada": "OC0001",
+        "Cantidad": 1.0,
+        "Cliente": "Trámite Playa Azul",
+        "Bóveda Monte": 6300,
+        "Precio De Venta": 0.0,
+        "Ingreso": 0,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": -6300,
+        "Estatus": "Pendiente",
+        "Concepto": "entregamos tocallo mc#1"
+      },
+      {
+        "Fecha": "2025-09-03 00:00:00",
+        "OC Relacionada": "OC0004",
+        "Cantidad": 5.0,
+        "Cliente": "Valle Local",
+        "Bóveda Monte": 31500,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 35000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 2500,
+        "Utilidad": 1000,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#5"
+      },
+      {
+        "Fecha": "2025-09-04 00:00:00",
+        "OC Relacionada": "OC0004",
+        "Cantidad": 22.0,
+        "Cliente": "Chucho",
+        "Bóveda Monte": 138600,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 154000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 11000,
+        "Utilidad": 4400,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#22"
+      },
+      {
+        "Fecha": "2025-09-04 00:00:00",
+        "OC Relacionada": "OC0004",
+        "Cantidad": 16.0,
+        "Cliente": "Trámite Chucho",
+        "Bóveda Monte": 100800,
+        "Precio De Venta": 0.0,
+        "Ingreso": 0,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": -100800,
+        "Estatus": "Pendiente",
+        "Concepto": "silla-mc🙏🏻#16"
+      },
+      {
+        "Fecha": "2025-09-05 00:00:00",
+        "OC Relacionada": "OC0004",
+        "Cantidad": 1.0,
+        "Cliente": "Galvan",
+        "Bóveda Monte": 6300,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 7000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 500,
+        "Utilidad": 200,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#1"
+      },
+      {
+        "Fecha": "2025-09-05 00:00:00",
+        "OC Relacionada": "OC0004",
+        "Cantidad": 10.0,
+        "Cliente": "Negrito",
+        "Bóveda Monte": 63000,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 70000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 5000,
+        "Utilidad": 2000,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#10"
+      },
+      {
+        "Fecha": "2025-09-06 00:00:00",
+        "OC Relacionada": "OC0005",
+        "Cantidad": 60.0,
+        "Cliente": "Robalo",
+        "Bóveda Monte": 378000,
+        "Precio De Venta": 6600.0,
+        "Ingreso": 396000,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": 18000,
+        "Estatus": "Pendiente",
+        "Concepto": "venta local monte#60"
+      },
+      {
+        "Fecha": "2025-09-06 00:00:00",
+        "OC Relacionada": "OC0005",
+        "Cantidad": 230.0,
+        "Cliente": "Bódega M-P",
+        "Bóveda Monte": 1449000,
+        "Precio De Venta": 0.0,
+        "Ingreso": 0,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": -1449000,
+        "Estatus": "Pendiente",
+        "Concepto": null
+      },
+      {
+        "Fecha": "2025-09-08 00:00:00",
+        "OC Relacionada": "OC0004",
+        "Cantidad": 16.0,
+        "Cliente": "Trámite Chucho",
+        "Bóveda Monte": 100800,
+        "Precio De Venta": 0.0,
+        "Ingreso": 0,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": -100800,
+        "Estatus": "Pendiente",
+        "Concepto": "silla-mc#16🙏🏻"
+      },
+      {
+        "Fecha": "2025-09-08 00:00:00",
+        "OC Relacionada": "OC0005",
+        "Cantidad": 100.0,
+        "Cliente": "Tavo",
+        "Bóveda Monte": 630000,
+        "Precio De Venta": 0.0,
+        "Ingreso": 0,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": -630000,
+        "Estatus": "Pendiente",
+        "Concepto": "playa azul#200 (tavo)"
+      },
+      {
+        "Fecha": "2025-09-08 00:00:00",
+        "OC Relacionada": "OC0005",
+        "Cantidad": 12.0,
+        "Cliente": "mg",
+        "Bóveda Monte": 75600,
+        "Precio De Venta": 0.0,
+        "Ingreso": 0,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": -75600,
+        "Estatus": "Pendiente",
+        "Concepto": "playa azul#12 mg"
+      },
+      {
+        "Fecha": "2025-09-09 00:00:00",
+        "OC Relacionada": "OC0005",
+        "Cantidad": 16.0,
+        "Cliente": "Trámite Chucho",
+        "Bóveda Monte": 100800,
+        "Precio De Venta": 0.0,
+        "Ingreso": 0,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": -100800,
+        "Estatus": "Pendiente",
+        "Concepto": "silla-mc#16🙏🏻"
+      },
+      {
+        "Fecha": "2025-09-09 00:00:00",
+        "OC Relacionada": "OC0005",
+        "Cantidad": 5.0,
+        "Cliente": "Sierra47",
+        "Bóveda Monte": 31500,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 35000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 2500,
+        "Utilidad": 1000,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte #5"
+      },
+      {
+        "Fecha": "2025-09-10 00:00:00",
+        "OC Relacionada": "OC0005",
+        "Cantidad": 9.0,
+        "Cliente": "Chucho",
+        "Bóveda Monte": 56700,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 63000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 4500,
+        "Utilidad": 1800,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte #9"
+      },
+      {
+        "Fecha": "2025-09-10 00:00:00",
+        "OC Relacionada": "OC0004",
+        "Cantidad": 1.0,
+        "Cliente": "Galvan",
+        "Bóveda Monte": 6300,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 7000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 500,
+        "Utilidad": 200,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#1"
+      },
+      {
+        "Fecha": "2025-09-11 00:00:00",
+        "OC Relacionada": "OC0005",
+        "Cantidad": 16.0,
+        "Cliente": "Chucho",
+        "Bóveda Monte": 100800,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 112000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 8000,
+        "Utilidad": 3200,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#16"
+      },
+      {
+        "Fecha": "2025-09-11 00:00:00",
+        "OC Relacionada": "OC0005",
+        "Cantidad": 10.0,
+        "Cliente": "Negrito",
+        "Bóveda Monte": 63000,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 70000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 5000,
+        "Utilidad": 2000,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#10"
+      },
+      {
+        "Fecha": "2025-09-12 00:00:00",
+        "OC Relacionada": "OC0004",
+        "Cantidad": 1.0,
+        "Cliente": "Galvan",
+        "Bóveda Monte": 6300,
+        "Precio De Venta": 7400.0,
+        "Ingreso": 7400,
+        "Flete": "Aplica",
+        "Flete Utilidad": 500,
+        "Utilidad": 600,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#1 rafa"
+      },
+      {
+        "Fecha": "2025-09-13 00:00:00",
+        "OC Relacionada": "OC0005",
+        "Cantidad": 5.0,
+        "Cliente": "tx8",
+        "Bóveda Monte": 31500,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 35000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 2500,
+        "Utilidad": 1000,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#5"
+      },
+      {
+        "Fecha": "2025-09-13 00:00:00",
+        "OC Relacionada": "OC0005",
+        "Cantidad": 50.0,
+        "Cliente": "amigo playa azul",
+        "Bóveda Monte": 315000,
+        "Precio De Venta": 7100.0,
+        "Ingreso": 355000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 25000,
+        "Utilidad": 15000,
+        "Estatus": "Pendiente",
+        "Concepto": "venta local playa azul#50"
+      },
+      {
+        "Fecha": "2025-09-13 00:00:00",
+        "OC Relacionada": "OC0005",
+        "Cantidad": 50.0,
+        "Cliente": "flama",
+        "Bóveda Monte": 315000,
+        "Precio De Venta": 6700.0,
+        "Ingreso": 335000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 25000,
+        "Utilidad": -5000,
+        "Estatus": "Pendiente",
+        "Concepto": "venta local monte#50"
+      },
+      {
+        "Fecha": "2025-09-15 00:00:00",
+        "OC Relacionada": "OC0005",
+        "Cantidad": 16.0,
+        "Cliente": "Trámite Chucho",
+        "Bóveda Monte": 100800,
+        "Precio De Venta": 0.0,
+        "Ingreso": 0,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": -100800,
+        "Estatus": "Pendiente",
+        "Concepto": "tramite silla-mc🙏🏻"
+      },
+      {
+        "Fecha": "2025-09-16 00:00:00",
+        "OC Relacionada": "OC0005",
+        "Cantidad": 23.0,
+        "Cliente": "Lamas",
+        "Bóveda Monte": 144900,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 161000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 11500,
+        "Utilidad": 4600,
+        "Estatus": "Pendiente",
+        "Concepto": "venta local monte#23"
+      },
+      {
+        "Fecha": "2025-09-16 00:00:00",
+        "OC Relacionada": "OC0004",
+        "Cantidad": 1.0,
+        "Cliente": "Galvan",
+        "Bóveda Monte": 6300,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 7000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 500,
+        "Utilidad": 200,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#1"
+      },
+      {
+        "Fecha": "2025-09-16 00:00:00",
+        "OC Relacionada": "OC0004",
+        "Cantidad": 3.0,
+        "Cliente": "Tocayo",
+        "Bóveda Monte": 18900,
+        "Precio De Venta": 7100.0,
+        "Ingreso": 21300,
+        "Flete": "Aplica",
+        "Flete Utilidad": 1500,
+        "Utilidad": 900,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#3"
+      },
+      {
+        "Fecha": "2025-09-17 00:00:00",
+        "OC Relacionada": "OC0006",
+        "Cantidad": 20.0,
+        "Cliente": "Wero Benavides",
+        "Bóveda Monte": 126000,
+        "Precio De Venta": 7100.0,
+        "Ingreso": 0.0,
+        "Flete": "Aplica",
+        "Flete Utilidad": 10000,
+        "Utilidad": 6000,
+        "Estatus": "Pendiente",
+        "Concepto": "venta playa azul #20"
+      },
+      {
+        "Fecha": "2025-09-17 00:00:00",
+        "OC Relacionada": "OC0006",
+        "Cantidad": 1.0,
+        "Cliente": "Galvan",
+        "Bóveda Monte": 6300,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 7000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 500,
+        "Utilidad": 200,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#1"
+      },
+      {
+        "Fecha": "2025-09-18 00:00:00",
+        "OC Relacionada": "OC0006",
+        "Cantidad": 16.0,
+        "Cliente": "Trámite Chucho",
+        "Bóveda Monte": 100800,
+        "Precio De Venta": 0.0,
+        "Ingreso": 0,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": -100800,
+        "Estatus": "Pendiente",
+        "Concepto": "tramite silla-mc🙏🏻"
+      },
+      {
+        "Fecha": "2025-09-18 00:00:00",
+        "OC Relacionada": "OC0006",
+        "Cantidad": 20.0,
+        "Cliente": "Tocayo",
+        "Bóveda Monte": 126000,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 140000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 10000,
+        "Utilidad": 4000,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#20"
+      },
+      {
+        "Fecha": "2025-09-18 00:00:00",
+        "OC Relacionada": "OC0001",
+        "Cantidad": 1.0,
+        "Cliente": "Ax",
+        "Bóveda Monte": 6300,
+        "Precio De Venta": 6500.0,
+        "Ingreso": 6500,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": 200,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#1 (psico bunny)"
+      },
+      {
+        "Fecha": "2025-09-19 00:00:00",
+        "OC Relacionada": "OC0006",
+        "Cantidad": 5.0,
+        "Cliente": "Negrito",
+        "Bóveda Monte": 31500,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 35000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 2500,
+        "Utilidad": 1000,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#5"
+      },
+      {
+        "Fecha": "2025-09-19 00:00:00",
+        "OC Relacionada": "OC0006",
+        "Cantidad": 1.0,
+        "Cliente": "Don Rafa",
+        "Bóveda Monte": 6300,
+        "Precio De Venta": 7400.0,
+        "Ingreso": 7400,
+        "Flete": "Aplica",
+        "Flete Utilidad": 500,
+        "Utilidad": 600,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#1"
+      },
+      {
+        "Fecha": "2025-09-20 00:00:00",
+        "OC Relacionada": "OC0006",
+        "Cantidad": 14.0,
+        "Cliente": "mg",
+        "Bóveda Monte": 88200,
+        "Precio De Venta": 7100.0,
+        "Ingreso": 99400,
+        "Flete": "Aplica",
+        "Flete Utilidad": 7000,
+        "Utilidad": 4200,
+        "Estatus": "Pendiente",
+        "Concepto": "venta playa azul #14"
+      },
+      {
+        "Fecha": "2025-09-20 00:00:00",
+        "OC Relacionada": "OC0006",
+        "Cantidad": 12.0,
+        "Cliente": "Sierra47",
+        "Bóveda Monte": 75600,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 84000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 6000,
+        "Utilidad": 2400,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#12"
+      },
+      {
+        "Fecha": "2025-09-20 00:00:00",
+        "OC Relacionada": "OC0006",
+        "Cantidad": 2.0,
+        "Cliente": "Rojo",
+        "Bóveda Monte": 12600,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 14000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 1000,
+        "Utilidad": 400,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#2"
+      },
+      {
+        "Fecha": "2025-09-20 00:00:00",
+        "OC Relacionada": "OC0006",
+        "Cantidad": 3.0,
+        "Cliente": "Ax",
+        "Bóveda Monte": 18900,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 21000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 1500,
+        "Utilidad": 600,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#3"
+      },
+      {
+        "Fecha": "2025-09-20 00:00:00",
+        "OC Relacionada": "OC0006",
+        "Cantidad": 1.0,
+        "Cliente": "Galvan",
+        "Bóveda Monte": 6300,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 7000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 500,
+        "Utilidad": 200,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#1"
+      },
+      {
+        "Fecha": "2025-09-23 00:00:00",
+        "OC Relacionada": "OC0006",
+        "Cantidad": 1.0,
+        "Cliente": "Trámite Chucho",
+        "Bóveda Monte": 6300,
+        "Precio De Venta": 0.0,
+        "Ingreso": 0,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": -6300,
+        "Estatus": "Pendiente",
+        "Concepto": "tramite silla-mc🚚"
+      },
+      {
+        "Fecha": "2025-09-25 00:00:00",
+        "OC Relacionada": "OC0001",
+        "Cantidad": 1.0,
+        "Cliente": "Ax",
+        "Bóveda Monte": 6300,
+        "Precio De Venta": 6500.0,
+        "Ingreso": 6500,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": 200,
+        "Estatus": "Pagado",
+        "Concepto": "psico bunny (wero a/x)"
+      },
+      {
+        "Fecha": "2025-09-29 00:00:00",
+        "OC Relacionada": "OC0007",
+        "Cantidad": 20.0,
+        "Cliente": "Sierra47",
+        "Bóveda Monte": 140000,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 140000,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": 0,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#20"
+      },
+      {
+        "Fecha": "2025-10-03 00:00:00",
+        "OC Relacionada": "OC0001",
+        "Cantidad": 2.0,
+        "Cliente": "Galvan",
+        "Bóveda Monte": 12600,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 14000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 1000,
+        "Utilidad": 400,
+        "Estatus": "Pendiente",
+        "Concepto": "gastos galvan octubre"
+      },
+      {
+        "Fecha": "2025-10-05 00:00:00",
+        "OC Relacionada": "OC0008",
+        "Cantidad": 60.0,
+        "Cliente": "Valle",
+        "Bóveda Monte": 378000,
+        "Precio De Venta": 0.0,
+        "Ingreso": 0,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": -378000,
+        "Estatus": "Pendiente",
+        "Concepto": "valle gaviota#60"
+      },
+      {
+        "Fecha": "2025-10-05 00:00:00",
+        "OC Relacionada": "OC0008",
+        "Cantidad": 20.0,
+        "Cliente": "Valle",
+        "Bóveda Monte": 126000,
+        "Precio De Venta": 0.0,
+        "Ingreso": 0,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": -126000,
+        "Estatus": "Pendiente",
+        "Concepto": "valle gaviota#20 (vendimos sierra47)"
+      },
+      {
+        "Fecha": "2025-10-05 00:00:00",
+        "OC Relacionada": "OC0008",
+        "Cantidad": 30.0,
+        "Cliente": "Valle",
+        "Bóveda Monte": 189000,
+        "Precio De Venta": 0.0,
+        "Ingreso": 0,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": -189000,
+        "Estatus": "Pendiente",
+        "Concepto": "valle pacman#30"
+      },
+      {
+        "Fecha": "2025-10-05 00:00:00",
+        "OC Relacionada": "OC0009",
+        "Cantidad": 100.0,
+        "Cliente": "Bódega M-P",
+        "Bóveda Monte": 630000,
+        "Precio De Venta": 0.0,
+        "Ingreso": 0,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": -630000,
+        "Estatus": "Pendiente",
+        "Concepto": "bodega mp #100 gaviota"
+      },
+      {
+        "Fecha": "2025-10-06 00:00:00",
+        "OC Relacionada": "OC0008",
+        "Cantidad": 25.0,
+        "Cliente": "Ax",
+        "Bóveda Monte": 157500,
+        "Precio De Venta": 0.0,
+        "Ingreso": 0,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": -157500,
+        "Estatus": "Pendiente",
+        "Concepto": "a/x pacman#25"
+      },
+      {
+        "Fecha": "2025-10-06 00:00:00",
+        "OC Relacionada": "OC0008",
+        "Cantidad": 24.0,
+        "Cliente": "Ax",
+        "Bóveda Monte": 151200,
+        "Precio De Venta": 0.0,
+        "Ingreso": 0,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": -151200,
+        "Estatus": "Pendiente",
+        "Concepto": "a/x debiamos flete werito silla-planta"
+      },
+      {
+        "Fecha": "2025-10-06 00:00:00",
+        "OC Relacionada": "OC0008",
+        "Cantidad": 40.0,
+        "Cliente": "Robalo",
+        "Bóveda Monte": 252000,
+        "Precio De Venta": 6600.0,
+        "Ingreso": 264000,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": 12000,
+        "Estatus": "Pendiente",
+        "Concepto": "robalo#40 gaviota"
+      },
+      {
+        "Fecha": "2025-10-06 00:00:00",
+        "OC Relacionada": "OC0008",
+        "Cantidad": 2.0,
+        "Cliente": "Valle Local",
+        "Bóveda Monte": 12600,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 14000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 1000,
+        "Utilidad": 400,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte valle#2"
+      },
+      {
+        "Fecha": "2025-10-06 00:00:00",
+        "OC Relacionada": "OC0008",
+        "Cantidad": 20.0,
+        "Cliente": "Trámite Playa Azul",
+        "Bóveda Monte": 126000,
+        "Precio De Venta": 0.0,
+        "Ingreso": 0,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": -126000,
+        "Estatus": "Pendiente",
+        "Concepto": "tramite playa azul silla-mc"
+      },
+      {
+        "Fecha": "2025-10-06 00:00:00",
+        "OC Relacionada": "OC0008",
+        "Cantidad": 48.0,
+        "Cliente": "Trámite Chucho",
+        "Bóveda Monte": 302400,
+        "Precio De Venta": 0.0,
+        "Ingreso": 0,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": -302400,
+        "Estatus": "Pendiente",
+        "Concepto": "tramite chucho silla-mc"
+      },
+      {
+        "Fecha": "2025-10-06 00:00:00",
+        "OC Relacionada": "OC0008",
+        "Cantidad": 48.0,
+        "Cliente": "Trámite Chucho",
+        "Bóveda Monte": 302400,
+        "Precio De Venta": 0.0,
+        "Ingreso": 0,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": -302400,
+        "Estatus": "Pendiente",
+        "Concepto": "tramite chucho silla-mc"
+      },
+      {
+        "Fecha": "2025-10-06 00:00:00",
+        "OC Relacionada": "OC0008",
+        "Cantidad": 50.0,
+        "Cliente": "Tocayo",
+        "Bóveda Monte": 315000,
+        "Precio De Venta": 0.0,
+        "Ingreso": 0,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": -315000,
+        "Estatus": "Pendiente",
+        "Concepto": "tocallo#50 pacman"
+      },
+      {
+        "Fecha": "2025-10-06 00:00:00",
+        "OC Relacionada": "OC0008",
+        "Cantidad": 74.0,
+        "Cliente": "Tio Tocayo",
+        "Bóveda Monte": 466200,
+        "Precio De Venta": 0.0,
+        "Ingreso": 0,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": -466200,
+        "Estatus": "Pendiente",
+        "Concepto": "tio tocallo#74 pacman"
+      },
+      {
+        "Fecha": "2025-10-07 00:00:00",
+        "OC Relacionada": "OC0008",
+        "Cantidad": 10.0,
+        "Cliente": "tx8",
+        "Bóveda Monte": 63000,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 70000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 5000,
+        "Utilidad": 2000,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#10"
+      },
+      {
+        "Fecha": "2025-10-07 00:00:00",
+        "OC Relacionada": "OC0008",
+        "Cantidad": 30.0,
+        "Cliente": "Valle Local",
+        "Bóveda Monte": 189000,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 210000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 15000,
+        "Utilidad": 6000,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#30"
+      },
+      {
+        "Fecha": "2025-10-07 00:00:00",
+        "OC Relacionada": "OC0008",
+        "Cantidad": 3.0,
+        "Cliente": "Sierra47",
+        "Bóveda Monte": 18900,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 21000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 1500,
+        "Utilidad": 600,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#3"
+      },
+      {
+        "Fecha": "2025-10-07 00:00:00",
+        "OC Relacionada": "OC0008",
+        "Cantidad": 3.0,
+        "Cliente": "Tocayo",
+        "Bóveda Monte": 18900,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 21000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 1500,
+        "Utilidad": 600,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#3"
+      },
+      {
+        "Fecha": "2025-10-09 00:00:00",
+        "OC Relacionada": "OC0009",
+        "Cantidad": 15.0,
+        "Cliente": "mg",
+        "Bóveda Monte": 94500,
+        "Precio De Venta": 7100.0,
+        "Ingreso": 106500,
+        "Flete": "Aplica",
+        "Flete Utilidad": 7500,
+        "Utilidad": 4500,
+        "Estatus": "Pendiente",
+        "Concepto": "venta playa azul#15"
+      },
+      {
+        "Fecha": "2025-10-09 00:00:00",
+        "OC Relacionada": "OC0009",
+        "Cantidad": 1.0,
+        "Cliente": "cabo",
+        "Bóveda Monte": 6300,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 7000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 500,
+        "Utilidad": 200,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#1"
+      },
+      {
+        "Fecha": "2025-10-09 00:00:00",
+        "OC Relacionada": "OC0001",
+        "Cantidad": 1.0,
+        "Cliente": "Ax",
+        "Bóveda Monte": 6300,
+        "Precio De Venta": 6500.0,
+        "Ingreso": 6500,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": 200,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte psico bunny #1"
+      },
+      {
+        "Fecha": "2025-10-09 00:00:00",
+        "OC Relacionada": "OC0008",
+        "Cantidad": 1.0,
+        "Cliente": "Galvan",
+        "Bóveda Monte": 6300,
+        "Precio De Venta": 7400.0,
+        "Ingreso": 7400,
+        "Flete": "Aplica",
+        "Flete Utilidad": 500,
+        "Utilidad": 600,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#1 (tito)"
+      },
+      {
+        "Fecha": "2025-10-11 00:00:00",
+        "OC Relacionada": "OC0001",
+        "Cantidad": 1.0,
+        "Cliente": "Galvan",
+        "Bóveda Monte": 6300,
+        "Precio De Venta": 7400.0,
+        "Ingreso": 7400,
+        "Flete": "Aplica",
+        "Flete Utilidad": 500,
+        "Utilidad": 600,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte #1 (rafa)"
+      },
+      {
+        "Fecha": "2025-10-14 00:00:00",
+        "OC Relacionada": "OC0008",
+        "Cantidad": 1.0,
+        "Cliente": "tx8",
+        "Bóveda Monte": 6300,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 7000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 500,
+        "Utilidad": 200,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#1"
+      },
+      {
+        "Fecha": "2025-10-15 00:00:00",
+        "OC Relacionada": "OC0008",
+        "Cantidad": 1.0,
+        "Cliente": "Rojo",
+        "Bóveda Monte": 6300,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 7000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 500,
+        "Utilidad": 200,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#1"
+      },
+      {
+        "Fecha": "2025-10-16 00:00:00",
+        "OC Relacionada": "OC0001",
+        "Cantidad": 2.0,
+        "Cliente": "compa",
+        "Bóveda Monte": 12600,
+        "Precio De Venta": 6500.0,
+        "Ingreso": 13000,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": 400,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#2 psico bunny"
+      },
+      {
+        "Fecha": "2025-10-17 00:00:00",
+        "OC Relacionada": "OC0009",
+        "Cantidad": 10.0,
+        "Cliente": "Sierra47",
+        "Bóveda Monte": 63000,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 70000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 5000,
+        "Utilidad": 2000,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#10"
+      },
+      {
+        "Fecha": "2025-10-17 00:00:00",
+        "OC Relacionada": "OC0008",
+        "Cantidad": 1.0,
+        "Cliente": "Galvan",
+        "Bóveda Monte": 6300,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 7000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 500,
+        "Utilidad": 200,
+        "Estatus": "Pagado",
+        "Concepto": "venta local monte#1👁️"
+      },
+      {
+        "Fecha": "2025-10-18 00:00:00",
+        "OC Relacionada": "OC0009",
+        "Cantidad": 20.0,
+        "Cliente": "Lamas",
+        "Bóveda Monte": 126000,
+        "Precio De Venta": 7100.0,
+        "Ingreso": 142000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 10000,
+        "Utilidad": 6000,
+        "Estatus": "Pendiente",
+        "Concepto": "venta playa azul#20👁️"
+      },
+      {
+        "Fecha": "2025-10-20 00:00:00",
+        "OC Relacionada": "OC0009",
+        "Cantidad": 48.0,
+        "Cliente": "Trámite Chucho",
+        "Bóveda Monte": 302400,
+        "Precio De Venta": 0.0,
+        "Ingreso": 0,
+        "Flete": "No Aplica",
+        "Flete Utilidad": 0,
+        "Utilidad": -302400,
+        "Estatus": "Pendiente",
+        "Concepto": "tramite chucho silla-mc 🚚"
+      }
+    ],
+    "total": 96
+  },
+  "almacen_monte": {
+    "ingresos": {
+      "headers": [
+        "OC",
+        "Cliente",
+        "Distribuidor",
+        "Cantidad"
+      ],
+      "registros": [
+        {
+          "OC": "OC0001",
+          "Cliente": "2025-08-25 00:00:00",
+          "Distribuidor": "Q-MAYA",
+          "Cantidad": 423
+        },
+        {
+          "OC": "OC0002",
+          "Cliente": "2025-08-25 00:00:00",
+          "Distribuidor": "Q-MAYA",
+          "Cantidad": 32
+        },
+        {
+          "OC": "OC0003",
+          "Cliente": "2025-08-25 00:00:00",
+          "Distribuidor": "A/X🌶️🦀",
+          "Cantidad": 33
+        },
+        {
+          "OC": "OC0004",
+          "Cliente": "2025-08-30 00:00:00",
+          "Distribuidor": "PACMAN",
+          "Cantidad": 487
+        },
+        {
+          "OC": "OC0005",
+          "Cliente": "2025-09-06 00:00:00",
+          "Distribuidor": "Q-MAYA",
+          "Cantidad": 513
+        },
+        {
+          "OC": "OC0006",
+          "Cliente": "2025-09-09 00:00:00",
+          "Distribuidor": "CH-MONTE",
+          "Cantidad": 100
+        },
+        {
+          "OC": "OC0007",
+          "Cliente": "2025-09-29 00:00:00",
+          "Distribuidor": "VALLE-MONTE",
+          "Cantidad": 20
+        },
+        {
+          "OC": "OC0008",
+          "Cliente": "2025-10-05 00:00:00",
+          "Distribuidor": "PACMAN",
+          "Cantidad": 488
+        },
+        {
+          "OC": "OC0009",
+          "Cliente": "2025-10-05 00:00:00",
+          "Distribuidor": "Q-MAYA-MP",
+          "Cantidad": 200
+        }
+      ],
+      "total": 9
+    },
+    "salidas": {
+      "headers": [
+        "Corte",
+        "Fecha",
+        "Cliente",
+        "Cantidad",
+        "Concepto"
+      ],
+      "registros": [
+        {
+          "Corte": 32.0,
+          "Fecha": "2025-08-23 00:00:00",
+          "Cliente": "Bódega M-P",
+          "Cantidad": 150,
+          "Concepto": null
+        },
+        {
+          "Corte": 124.0,
+          "Fecha": "2025-08-23 00:00:00",
+          "Cliente": "Valle",
+          "Cantidad": 60,
+          "Concepto": null
+        },
+        {
+          "Corte": 22.0,
+          "Fecha": "2025-08-23 00:00:00",
+          "Cliente": "Ax",
+          "Cantidad": 50,
+          "Concepto": null
+        },
+        {
+          "Corte": 165.0,
+          "Fecha": "2025-08-23 00:00:00",
+          "Cliente": "Negrito",
+          "Cantidad": 25,
+          "Concepto": null
+        },
+        {
+          "Corte": 17.0,
+          "Fecha": "2025-08-23 00:00:00",
+          "Cliente": "Wero Benavides",
+          "Cantidad": 20,
+          "Concepto": null
+        }
+      ],
+      "total": 5
+    },
+    "rf_cortes": {
+      "headers": [
+        "Col12",
+        "Col13"
+      ],
+      "registros": [],
+      "total": 0
+    }
+  },
+  "boveda_monte": {
+    "ingresos": {
+      "headers": [
+        "Fecha",
+        "Cliente",
+        "Ingreso",
+        "Concepto"
+      ],
+      "registros": [
+        {
+          "Fecha": "2025-08-23 00:00:00",
+          "Cliente": "Ax",
+          "Ingreso": 315000,
+          "Concepto": null
+        },
+        {
+          "Fecha": "2025-08-23 00:00:00",
+          "Cliente": "Negrito",
+          "Ingreso": 157500,
+          "Concepto": null
+        },
+        {
+          "Fecha": "2025-08-23 00:00:00",
+          "Cliente": "Valle",
+          "Ingreso": 189000,
+          "Concepto": null
+        },
+        {
+          "Fecha": "2025-08-25 00:00:00",
+          "Cliente": "Galvan",
+          "Ingreso": 18900,
+          "Concepto": null
+        },
+        {
+          "Fecha": "2025-08-25 00:00:00",
+          "Cliente": "Valle Local",
+          "Ingreso": 12600,
+          "Concepto": null
+        },
+        {
+          "Fecha": "2025-08-25 00:00:00",
+          "Cliente": "Tocayo",
+          "Ingreso": 126000,
+          "Concepto": null
+        },
+        {
+          "Fecha": "2025-08-25 00:00:00",
+          "Cliente": "Sierra47",
+          "Ingreso": 94500,
+          "Concepto": null
+        },
+        {
+          "Fecha": "2025-08-29 00:00:00",
+          "Cliente": "Robalo",
+          "Ingreso": 198000,
+          "Concepto": "robalo #30 gaviota"
+        },
+        {
+          "Fecha": "2025-08-30 00:00:00",
+          "Cliente": "Chucho",
+          "Ingreso": 94500,
+          "Concepto": "venta local monte#15"
+        },
+        {
+          "Fecha": "2025-09-01 00:00:00",
+          "Cliente": "Ax",
+          "Ingreso": 88200,
+          "Concepto": "venta local monte #14"
+        },
+        {
+          "Fecha": "2025-09-02 00:00:00",
+          "Cliente": "Galvan",
+          "Ingreso": 6300,
+          "Concepto": "venta local monte rafa#1"
+        },
+        {
+          "Fecha": "2025-09-02 00:00:00",
+          "Cliente": "Galvan",
+          "Ingreso": 6300,
+          "Concepto": "venta local galvan #1"
+        },
+        {
+          "Fecha": "2025-09-02 00:00:00",
+          "Cliente": "Sierra47",
+          "Ingreso": 50400,
+          "Concepto": "venta local monte #8"
+        },
+        {
+          "Fecha": "2025-09-03 00:00:00",
+          "Cliente": "470",
+          "Ingreso": 6300,
+          "Concepto": "venta local monte #1"
+        },
+        {
+          "Fecha": "2025-09-03 00:00:00",
+          "Cliente": "Valle Local",
+          "Ingreso": 31500,
+          "Concepto": "venta local monte#5"
+        },
+        {
+          "Fecha": "2025-09-04 00:00:00",
+          "Cliente": "Chucho",
+          "Ingreso": 138600,
+          "Concepto": "venta local monte#22"
+        },
+        {
+          "Fecha": "2025-09-05 00:00:00",
+          "Cliente": "Galvan",
+          "Ingreso": 6300,
+          "Concepto": "venta local monte#1"
+        },
+        {
+          "Fecha": "2025-09-05 00:00:00",
+          "Cliente": "Negrito",
+          "Ingreso": 63000,
+          "Concepto": "venta local monte#10"
+        },
+        {
+          "Fecha": "2025-09-05 00:00:00",
+          "Cliente": "Robalo",
+          "Ingreso": 132000,
+          "Concepto": "robalo#20 gaviota"
+        },
+        {
+          "Fecha": "2025-09-05 00:00:00",
+          "Cliente": "Primo",
+          "Ingreso": 3000,
+          "Concepto": "abono primo resta (1,872dlls)"
+        },
+        {
+          "Fecha": "2025-09-05 00:00:00",
+          "Cliente": "Ax",
+          "Ingreso": 210000,
+          "Concepto": "DANY1 SERVICIO"
+        },
+        {
+          "Fecha": "2025-09-08 00:00:00",
+          "Cliente": "Ax",
+          "Ingreso": 266280,
+          "Concepto": "DANY1 SERVICIO"
+        },
+        {
+          "Fecha": "2025-09-08 00:00:00",
+          "Cliente": "Gasto Bóveda Usa",
+          "Ingreso": 345100,
+          "Concepto": " pagamos boveda usa-boveda monte"
+        },
+        {
+          "Fecha": "2025-09-09 00:00:00",
+          "Cliente": "Sierra47",
+          "Ingreso": 31500,
+          "Concepto": "venta local monte #5"
+        },
+        {
+          "Fecha": "2025-09-10 00:00:00",
+          "Cliente": "Chucho",
+          "Ingreso": 56700,
+          "Concepto": "venta local monte #9"
+        },
+        {
+          "Fecha": "2025-09-10 00:00:00",
+          "Cliente": "Galvan",
+          "Ingreso": 6300,
+          "Concepto": "venta local monte#1"
+        },
+        {
+          "Fecha": "2025-09-11 00:00:00",
+          "Cliente": "Chucho",
+          "Ingreso": 100800,
+          "Concepto": "venta local monte#16"
+        },
+        {
+          "Fecha": "2025-09-11 00:00:00",
+          "Cliente": "Negrito",
+          "Ingreso": 63000,
+          "Concepto": "venta local monte#10"
+        },
+        {
+          "Fecha": "2025-09-11 00:00:00",
+          "Cliente": "Robalo",
+          "Ingreso": 66000,
+          "Concepto": "resto venta monte #60 (gaviota)"
+        },
+        {
+          "Fecha": "2025-09-12 00:00:00",
+          "Cliente": "Galvan",
+          "Ingreso": 6300,
+          "Concepto": "venta local monte#1 rafa"
+        },
+        {
+          "Fecha": "2025-09-12 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 200000,
+          "Concepto": "abono a/x cta vieja"
+        },
+        {
+          "Fecha": "2025-09-12 00:00:00",
+          "Cliente": "Ax",
+          "Ingreso": 194000,
+          "Concepto": "pago a/x (33x5,500) y flete (25x500) pacman"
+        },
+        {
+          "Fecha": "2025-09-13 00:00:00",
+          "Cliente": "tx8",
+          "Ingreso": 31500,
+          "Concepto": "venta local monte#5"
+        },
+        {
+          "Fecha": "2025-09-16 00:00:00",
+          "Cliente": "Galvan",
+          "Ingreso": 6300,
+          "Concepto": "venta local monte#1"
+        },
+        {
+          "Fecha": "2025-09-16 00:00:00",
+          "Cliente": "Tocayo",
+          "Ingreso": 18900,
+          "Concepto": "venta local monte#3"
+        },
+        {
+          "Fecha": "2025-09-16 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 60000,
+          "Concepto": "venta local lamas #23"
+        },
+        {
+          "Fecha": "2025-09-17 00:00:00",
+          "Cliente": "Galvan",
+          "Ingreso": 6300,
+          "Concepto": "venta local monte#1"
+        },
+        {
+          "Fecha": "2025-09-17 00:00:00",
+          "Cliente": "Valle",
+          "Ingreso": 189000,
+          "Concepto": "monte local #30 gaviota "
+        },
+        {
+          "Fecha": "2025-09-18 00:00:00",
+          "Cliente": "Tocayo",
+          "Ingreso": 126000,
+          "Concepto": "venta local monte#20"
+        },
+        {
+          "Fecha": "2025-09-18 00:00:00",
+          "Cliente": "Ax",
+          "Ingreso": 6300,
+          "Concepto": "venta local monte#1 (psico bunny)"
+        },
+        {
+          "Fecha": "2025-09-19 00:00:00",
+          "Cliente": "Negrito",
+          "Ingreso": 31500,
+          "Concepto": "venta local monte#5"
+        },
+        {
+          "Fecha": "2025-09-19 00:00:00",
+          "Cliente": "Don Rafa",
+          "Ingreso": 6300,
+          "Concepto": "venta local monte#1"
+        },
+        {
+          "Fecha": "2025-09-20 00:00:00",
+          "Cliente": "Sierra47",
+          "Ingreso": 75600,
+          "Concepto": "venta local monte#12"
+        },
+        {
+          "Fecha": "2025-09-20 00:00:00",
+          "Cliente": "Rojo",
+          "Ingreso": 12600,
+          "Concepto": "venta local monte#2"
+        },
+        {
+          "Fecha": "2025-09-20 00:00:00",
+          "Cliente": "Ax",
+          "Ingreso": 18900,
+          "Concepto": "venta local monte#3"
+        },
+        {
+          "Fecha": "2025-09-20 00:00:00",
+          "Cliente": "Galvan",
+          "Ingreso": 6300,
+          "Concepto": "venta local monte#1"
+        },
+        {
+          "Fecha": "2025-09-25 00:00:00",
+          "Cliente": "Ax",
+          "Ingreso": 6300,
+          "Concepto": "psico bunny (wero a/x)"
+        },
+        {
+          "Fecha": "2025-09-29 00:00:00",
+          "Cliente": "Sierra47",
+          "Ingreso": 140000,
+          "Concepto": "venta local monte#20"
+        },
+        {
+          "Fecha": "2025-10-06 00:00:00",
+          "Cliente": "Valle Local",
+          "Ingreso": 12600,
+          "Concepto": "venta local monte valle#2"
+        },
+        {
+          "Fecha": "2025-10-06 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 137500,
+          "Concepto": "a/x pacman #25"
+        },
+        {
+          "Fecha": "2025-10-06 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 236250,
+          "Concepto": "tocallo#50 pacman ( 4,725 x 50)"
+        },
+        {
+          "Fecha": "2025-10-07 00:00:00",
+          "Cliente": "tx8",
+          "Ingreso": 63000,
+          "Concepto": "venta local monte#10"
+        },
+        {
+          "Fecha": "2025-10-07 00:00:00",
+          "Cliente": "Valle Local",
+          "Ingreso": 189000,
+          "Concepto": "venta local monte#30"
+        },
+        {
+          "Fecha": "2025-10-07 00:00:00",
+          "Cliente": "Sierra47",
+          "Ingreso": 18900,
+          "Concepto": "venta local monte#3"
+        },
+        {
+          "Fecha": "2025-10-07 00:00:00",
+          "Cliente": "Tocayo",
+          "Ingreso": 18900,
+          "Concepto": "venta local monte#3"
+        },
+        {
+          "Fecha": "2025-10-07 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 264000,
+          "Concepto": "robalo #40 gaviota"
+        },
+        {
+          "Fecha": "2025-10-07 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 1880,
+          "Concepto": "liquido cuenta primo"
+        },
+        {
+          "Fecha": "2025-10-09 00:00:00",
+          "Cliente": "cabo",
+          "Ingreso": 6300,
+          "Concepto": "venta local monte#1"
+        },
+        {
+          "Fecha": "2025-10-09 00:00:00",
+          "Cliente": "Ax",
+          "Ingreso": 6300,
+          "Concepto": "venta local monte psico bunny #1"
+        },
+        {
+          "Fecha": "2025-10-09 00:00:00",
+          "Cliente": "Galvan",
+          "Ingreso": 6300,
+          "Concepto": "venta local monte#1 (tito)"
+        },
+        {
+          "Fecha": "2025-10-11 00:00:00",
+          "Cliente": "Galvan",
+          "Ingreso": 6300,
+          "Concepto": "venta local monte #1 (rafa)"
+        },
+        {
+          "Fecha": "2025-10-14 00:00:00",
+          "Cliente": "tx8",
+          "Ingreso": 6300,
+          "Concepto": "venta local monte#1"
+        },
+        {
+          "Fecha": "2025-10-15 00:00:00",
+          "Cliente": "Rojo",
+          "Ingreso": 6300,
+          "Concepto": "venta local monte#1"
+        },
+        {
+          "Fecha": "2025-10-16 00:00:00",
+          "Cliente": "compa",
+          "Ingreso": 12600,
+          "Concepto": "venta local monte#2 psico bunny"
+        },
+        {
+          "Fecha": "2025-10-17 00:00:00",
+          "Cliente": "Sierra47",
+          "Ingreso": 63000,
+          "Concepto": "venta local monte#10"
+        },
+        {
+          "Fecha": "2025-10-17 00:00:00",
+          "Cliente": "Galvan",
+          "Ingreso": 6300,
+          "Concepto": "venta local monte#1👁️"
+        },
+        {
+          "Fecha": "2025-10-17 00:00:00",
+          "Cliente": "Valle",
+          "Ingreso": 220000,
+          "Concepto": "valle #40 pacman (5,500x40)"
+        },
+        {
+          "Fecha": "2025-10-19 00:00:00",
+          "Cliente": "Valle",
+          "Ingreso": 180000,
+          "Concepto": "valle#30 gaviota (6,000x30)"
+        },
+        {
+          "Fecha": "2025-10-20 00:00:00",
+          "Cliente": "Gasto Bóveda Usa",
+          "Ingreso": 234870,
+          "Concepto": "transpaso boveda usa-boveda monte"
+        }
+      ],
+      "total": 69
+    },
+    "gastos": {
+      "headers": [
+        "Corte",
+        "Fecha",
+        "Origen del Gastos o Abono",
+        "Gasto"
+      ],
+      "registros": [
+        {
+          "Corte": 188500.0,
+          "Fecha": "2025-08-22 00:00:00",
+          "Origen del Gastos o Abono": "Gasto Bóveda Monte",
+          "Gasto": 189000
+        }
+      ],
+      "total": 1
+    }
+  },
+  "boveda_usa": {
+    "ingresos": {
+      "headers": [
+        "Fecha",
+        "Cliente",
+        "Ingreso",
+        "TC"
+      ],
+      "registros": [
+        {
+          "Fecha": "2025-08-18 00:00:00",
+          "Cliente": "NA",
+          "Ingreso": 65919,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-08-23 00:00:00",
+          "Cliente": "NA",
+          "Ingreso": 216400,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-08-25 00:00:00",
+          "Cliente": "NA",
+          "Ingreso": 10000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-08-29 00:00:00",
+          "Cliente": "Gasto Leftie",
+          "Ingreso": 650000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-08-30 00:00:00",
+          "Cliente": "Gasto Azteca",
+          "Ingreso": 1500,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-11 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 19000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-16 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 34000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-16 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 5200,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-16 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 10000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-18 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 8000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-25 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 200000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-26 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 200000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-03 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 5000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-03 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 187500,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-04 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 10000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-13 00:00:00",
+          "Cliente": "Gasto Leftie",
+          "Ingreso": 165756,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-18 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 100000,
+          "TC": 0
+        }
+      ],
+      "total": 17
+    },
+    "gastos": {
+      "headers": [
+        "Destino",
+        "Concepto",
+        "Observaciones",
+        "Fecha"
+      ],
+      "registros": [
+        {
+          "Destino": "Bóveda USA",
+          "Concepto": null,
+          "Observaciones": null,
+          "Fecha": "2025-08-25 00:00:00"
+        },
+        {
+          "Destino": "Bóveda USA",
+          "Concepto": null,
+          "Observaciones": "Gordito planta H-GabyR3",
+          "Fecha": "2025-09-08 00:00:00"
+        },
+        {
+          "Destino": "Bóveda USA",
+          "Concepto": null,
+          "Observaciones": "apoyo sierra alpha valle",
+          "Fecha": "2025-09-22 00:00:00"
+        },
+        {
+          "Destino": "Bóveda USA",
+          "Concepto": "monte F20792585K",
+          "Observaciones": null,
+          "Fecha": "2025-10-06 00:00:00"
+        },
+        {
+          "Destino": "Bóveda USA",
+          "Concepto": "prestamo sra karla-a/x playa azul",
+          "Observaciones": null,
+          "Fecha": "2025-10-20 00:00:00"
+        },
+        {
+          "Destino": "Bóveda USA",
+          "Concepto": "roberto monte (deposito mc)",
+          "Observaciones": null,
+          "Fecha": null
+        },
+        {
+          "Destino": "Bóveda USA",
+          "Concepto": "pago flete valle#20 silla-planta",
+          "Observaciones": null,
+          "Fecha": null
+        },
+        {
+          "Destino": "Bóveda USA",
+          "Concepto": "abono galleta f0lio00011 (robalo,valle,alpha)",
+          "Observaciones": null,
+          "Fecha": null
+        },
+        {
+          "Destino": "Bóveda USA",
+          "Concepto": "abono amigo yates. (tocallo)",
+          "Observaciones": null,
+          "Fecha": null
+        },
+        {
+          "Destino": "Bóveda USA",
+          "Concepto": "roberto monte (deposito mc)",
+          "Observaciones": null,
+          "Fecha": null
+        },
+        {
+          "Destino": "Bóveda USA",
+          "Concepto": "gordito planta (jr)",
+          "Observaciones": null,
+          "Fecha": null
+        },
+        {
+          "Destino": "Bóveda USA",
+          "Concepto": "atlas#16 a/x",
+          "Observaciones": null,
+          "Fecha": null
+        },
+        {
+          "Destino": "Bóveda USA",
+          "Concepto": "abono gallete folio00011 (valle)",
+          "Observaciones": null,
+          "Fecha": null
+        },
+        {
+          "Destino": "Bóveda USA",
+          "Concepto": "atlas#15 a/x",
+          "Observaciones": null,
+          "Fecha": null
+        },
+        {
+          "Destino": "Bóveda USA",
+          "Concepto": "abono valle cta vieja",
+          "Observaciones": null,
+          "Fecha": null
+        },
+        {
+          "Destino": "Bóveda USA",
+          "Concepto": "monte CN9082979",
+          "Observaciones": null,
+          "Fecha": null
+        },
+        {
+          "Destino": "Bóveda USA",
+          "Concepto": "atlas a/x #24",
+          "Observaciones": null,
+          "Fecha": null
+        }
+      ],
+      "total": 17
+    }
+  },
+  "flete_sur": {
+    "ingresos": {
+      "headers": [
+        "Fecha",
+        "Cliente",
+        "Ingreso",
+        "Concepto"
+      ],
+      "registros": [
+        {
+          "Fecha": "2025-08-18 00:00:00",
+          "Cliente": "Corte",
+          "Ingreso": 230112.0,
+          "Concepto": "Corte"
+        },
+        {
+          "Fecha": "2025-08-23 00:00:00",
+          "Cliente": "Ax",
+          "Ingreso": 25000,
+          "Concepto": null
+        },
+        {
+          "Fecha": "2025-08-23 00:00:00",
+          "Cliente": "Negrito",
+          "Ingreso": 12500,
+          "Concepto": null
+        },
+        {
+          "Fecha": "2025-08-23 00:00:00",
+          "Cliente": "Valle",
+          "Ingreso": 30000,
+          "Concepto": null
+        },
+        {
+          "Fecha": "2025-08-25 00:00:00",
+          "Cliente": "Galvan",
+          "Ingreso": 1500,
+          "Concepto": null
+        },
+        {
+          "Fecha": "2025-08-25 00:00:00",
+          "Cliente": "Valle Local",
+          "Ingreso": 1000,
+          "Concepto": null
+        },
+        {
+          "Fecha": "2025-08-25 00:00:00",
+          "Cliente": "Tocayo",
+          "Ingreso": 10000,
+          "Concepto": null
+        },
+        {
+          "Fecha": "2025-08-25 00:00:00",
+          "Cliente": "Sierra47",
+          "Ingreso": 7500,
+          "Concepto": null
+        },
+        {
+          "Fecha": "2025-08-30 00:00:00",
+          "Cliente": "Chucho",
+          "Ingreso": 7500,
+          "Concepto": "venta local monte#15"
+        },
+        {
+          "Fecha": "2025-09-01 00:00:00",
+          "Cliente": "Ax",
+          "Ingreso": 7000,
+          "Concepto": "venta local monte #14"
+        },
+        {
+          "Fecha": "2025-09-01 00:00:00",
+          "Cliente": "Valle",
+          "Ingreso": 37500,
+          "Concepto": "flete valle#75 panaderia"
+        },
+        {
+          "Fecha": "2025-09-02 00:00:00",
+          "Cliente": "Galvan",
+          "Ingreso": 500,
+          "Concepto": "venta local monte rafa#1"
+        },
+        {
+          "Fecha": "2025-09-02 00:00:00",
+          "Cliente": "Galvan",
+          "Ingreso": 500,
+          "Concepto": "venta local galvan #1"
+        },
+        {
+          "Fecha": "2025-09-02 00:00:00",
+          "Cliente": "Sierra47",
+          "Ingreso": 4000,
+          "Concepto": "venta local monte #8"
+        },
+        {
+          "Fecha": "2025-09-03 00:00:00",
+          "Cliente": "470",
+          "Ingreso": 500,
+          "Concepto": "venta local monte #1"
+        },
+        {
+          "Fecha": "2025-09-03 00:00:00",
+          "Cliente": "Valle Local",
+          "Ingreso": 2500,
+          "Concepto": "venta local monte#5"
+        },
+        {
+          "Fecha": "2025-09-04 00:00:00",
+          "Cliente": "Chucho",
+          "Ingreso": 11000,
+          "Concepto": "venta local monte#22"
+        },
+        {
+          "Fecha": "2025-09-05 00:00:00",
+          "Cliente": "Galvan",
+          "Ingreso": 500,
+          "Concepto": "venta local monte#1"
+        },
+        {
+          "Fecha": "2025-09-05 00:00:00",
+          "Cliente": "Negrito",
+          "Ingreso": 5000,
+          "Concepto": "venta local monte#10"
+        },
+        {
+          "Fecha": "2025-09-06 00:00:00",
+          "Cliente": "Robalo",
+          "Ingreso": 30000,
+          "Concepto": "flete#60 robalo-gaviota"
+        },
+        {
+          "Fecha": "2025-09-08 00:00:00",
+          "Cliente": "Ax",
+          "Ingreso": 12500,
+          "Concepto": "pago flete #25 a/x panaderia"
+        },
+        {
+          "Fecha": "2025-09-08 00:00:00",
+          "Cliente": "Tocayo",
+          "Ingreso": 22000,
+          "Concepto": "pago flete tocallo #44"
+        },
+        {
+          "Fecha": "2025-09-09 00:00:00",
+          "Cliente": "Sierra47",
+          "Ingreso": 2500,
+          "Concepto": "venta local monte #5"
+        },
+        {
+          "Fecha": "2025-09-10 00:00:00",
+          "Cliente": "Chucho",
+          "Ingreso": 4500,
+          "Concepto": "venta local monte #9"
+        },
+        {
+          "Fecha": "2025-09-10 00:00:00",
+          "Cliente": "Galvan",
+          "Ingreso": 500,
+          "Concepto": "venta local monte#1"
+        },
+        {
+          "Fecha": "2025-09-11 00:00:00",
+          "Cliente": "Chucho",
+          "Ingreso": 8000,
+          "Concepto": "venta local monte#16"
+        },
+        {
+          "Fecha": "2025-09-11 00:00:00",
+          "Cliente": "Negrito",
+          "Ingreso": 5000,
+          "Concepto": "venta local monte#10"
+        },
+        {
+          "Fecha": "2025-09-12 00:00:00",
+          "Cliente": "Galvan",
+          "Ingreso": 500,
+          "Concepto": "venta local monte#1 rafa"
+        },
+        {
+          "Fecha": "2025-09-13 00:00:00",
+          "Cliente": "tx8",
+          "Ingreso": 2500,
+          "Concepto": "venta local monte#5"
+        },
+        {
+          "Fecha": "2025-09-16 00:00:00",
+          "Cliente": "Galvan",
+          "Ingreso": 500,
+          "Concepto": "venta local monte#1"
+        },
+        {
+          "Fecha": "2025-09-16 00:00:00",
+          "Cliente": "Tocayo",
+          "Ingreso": 1500,
+          "Concepto": "venta local monte#3"
+        },
+        {
+          "Fecha": "2025-09-17 00:00:00",
+          "Cliente": "Galvan",
+          "Ingreso": 500,
+          "Concepto": "venta local monte#1"
+        },
+        {
+          "Fecha": "2025-09-18 00:00:00",
+          "Cliente": "Tocayo",
+          "Ingreso": 10000,
+          "Concepto": "venta local monte#20"
+        },
+        {
+          "Fecha": "2025-09-18 00:00:00",
+          "Cliente": "Ax",
+          "Ingreso": 0,
+          "Concepto": "venta local monte#1 (psico bunny)"
+        },
+        {
+          "Fecha": "2025-09-19 00:00:00",
+          "Cliente": "Negrito",
+          "Ingreso": 2500,
+          "Concepto": "venta local monte#5"
+        },
+        {
+          "Fecha": "2025-09-19 00:00:00",
+          "Cliente": "Don Rafa",
+          "Ingreso": 500,
+          "Concepto": "venta local monte#1"
+        },
+        {
+          "Fecha": "2025-09-20 00:00:00",
+          "Cliente": "Sierra47",
+          "Ingreso": 6000,
+          "Concepto": "venta local monte#12"
+        },
+        {
+          "Fecha": "2025-09-20 00:00:00",
+          "Cliente": "Rojo",
+          "Ingreso": 1000,
+          "Concepto": "venta local monte#2"
+        },
+        {
+          "Fecha": "2025-09-20 00:00:00",
+          "Cliente": "Ax",
+          "Ingreso": 1500,
+          "Concepto": "venta local monte#3"
+        },
+        {
+          "Fecha": "2025-09-20 00:00:00",
+          "Cliente": "Galvan",
+          "Ingreso": 500,
+          "Concepto": "venta local monte#1"
+        },
+        {
+          "Fecha": "2025-09-23 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 7200,
+          "Concepto": "flete paqueteria #72 a/x"
+        },
+        {
+          "Fecha": "2025-09-25 00:00:00",
+          "Cliente": "Ax",
+          "Ingreso": 0,
+          "Concepto": "psico bunny (wero a/x)"
+        },
+        {
+          "Fecha": "2025-09-29 00:00:00",
+          "Cliente": "Sierra47",
+          "Ingreso": 0,
+          "Concepto": "venta local monte#20"
+        },
+        {
+          "Fecha": "2025-10-04 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 4200,
+          "Concepto": "flete paqueteria#42 a/x"
+        },
+        {
+          "Fecha": "2025-10-05 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 30000,
+          "Concepto": "flete valle#60 gaviota"
+        },
+        {
+          "Fecha": "2025-10-05 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 15000,
+          "Concepto": "flete valle#30 pacman"
+        },
+        {
+          "Fecha": "2025-10-06 00:00:00",
+          "Cliente": "Valle Local",
+          "Ingreso": 1000,
+          "Concepto": "venta local monte valle#2"
+        },
+        {
+          "Fecha": "2025-10-06 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 12500,
+          "Concepto": "flete a/x#25 pacman"
+        },
+        {
+          "Fecha": "2025-10-06 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 25000,
+          "Concepto": "flete tocallo#50 pacman"
+        },
+        {
+          "Fecha": "2025-10-07 00:00:00",
+          "Cliente": "tx8",
+          "Ingreso": 5000,
+          "Concepto": "venta local monte#10"
+        },
+        {
+          "Fecha": "2025-10-07 00:00:00",
+          "Cliente": "Valle Local",
+          "Ingreso": 15000,
+          "Concepto": "venta local monte#30"
+        },
+        {
+          "Fecha": "2025-10-07 00:00:00",
+          "Cliente": "Sierra47",
+          "Ingreso": 1500,
+          "Concepto": "venta local monte#3"
+        },
+        {
+          "Fecha": "2025-10-07 00:00:00",
+          "Cliente": "Tocayo",
+          "Ingreso": 1500,
+          "Concepto": "venta local monte#3"
+        },
+        {
+          "Fecha": "2025-10-07 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 20000,
+          "Concepto": "flete  robalo #40 gaviota"
+        },
+        {
+          "Fecha": "2025-10-09 00:00:00",
+          "Cliente": "cabo",
+          "Ingreso": 500,
+          "Concepto": "venta local monte#1"
+        },
+        {
+          "Fecha": "2025-10-09 00:00:00",
+          "Cliente": "Ax",
+          "Ingreso": 0,
+          "Concepto": "venta local monte psico bunny #1"
+        },
+        {
+          "Fecha": "2025-10-09 00:00:00",
+          "Cliente": "Galvan",
+          "Ingreso": 500,
+          "Concepto": "venta local monte#1 (tito)"
+        },
+        {
+          "Fecha": "2025-10-11 00:00:00",
+          "Cliente": "Galvan",
+          "Ingreso": 500,
+          "Concepto": "venta local monte #1 (rafa)"
+        },
+        {
+          "Fecha": "2025-10-14 00:00:00",
+          "Cliente": "tx8",
+          "Ingreso": 500,
+          "Concepto": "venta local monte#1"
+        },
+        {
+          "Fecha": "2025-10-15 00:00:00",
+          "Cliente": "Rojo",
+          "Ingreso": 500,
+          "Concepto": "venta local monte#1"
+        },
+        {
+          "Fecha": "2025-10-16 00:00:00",
+          "Cliente": "compa",
+          "Ingreso": 0,
+          "Concepto": "venta local monte#2 psico bunny"
+        },
+        {
+          "Fecha": "2025-10-17 00:00:00",
+          "Cliente": "Sierra47",
+          "Ingreso": 5000,
+          "Concepto": "venta local monte#10"
+        },
+        {
+          "Fecha": "2025-10-17 00:00:00",
+          "Cliente": "Galvan",
+          "Ingreso": 500,
+          "Concepto": "venta local monte#1👁️"
+        }
+      ],
+      "total": 63
+    }
+  },
+  "azteca": {
+    "ingresos": {
+      "headers": [
+        "Fecha",
+        "Cliente",
+        "Ingreso",
+        "TC"
+      ],
+      "registros": [],
+      "total": 0
+    },
+    "gastos": {
+      "headers": [
+        "Observaciones",
+        "Concepto",
+        "Fecha",
+        "Corte"
+      ],
+      "registros": [],
+      "total": 0
+    }
+  },
+  "leftie": {
+    "ingresos": {
+      "headers": [
+        "Fecha",
+        "Cliente",
+        "Ingreso",
+        "TC"
+      ],
+      "registros": [
+        {
+          "Fecha": "2025-08-25 00:00:00",
+          "Cliente": "Lamas",
+          "Ingreso": 213000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-08-26 00:00:00",
+          "Cliente": "Lamas",
+          "Ingreso": 280000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-04 00:00:00",
+          "Cliente": "Lamas",
+          "Ingreso": 236000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-08 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 74200,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-16 00:00:00",
+          "Cliente": "Lamas",
+          "Ingreso": 70000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-20 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 99400,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-27 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 31000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-09 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 106500,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-20 00:00:00",
+          "Cliente": "Lamas",
+          "Ingreso": 142000,
+          "TC": 0
+        }
+      ],
+      "total": 9
+    },
+    "gastos": {
+      "headers": [
+        "Destino",
+        "Concepto",
+        "Observaciones",
+        "Fecha"
+      ],
+      "registros": [
+        {
+          "Destino": "Leftie",
+          "Concepto": " playa azul#30 (7,100x30)",
+          "Observaciones": "lamas #30 playa azul",
+          "Fecha": "2025-08-25 00:00:00"
+        },
+        {
+          "Destino": "Leftie",
+          "Concepto": "monte (7,000x40)",
+          "Observaciones": "lamas #40 monte",
+          "Fecha": "2025-09-08 00:00:00"
+        },
+        {
+          "Destino": "Leftie",
+          "Concepto": "venta playa azul,monte #44 (lamas)",
+          "Observaciones": null,
+          "Fecha": "2025-09-22 00:00:00"
+        },
+        {
+          "Destino": "Leftie",
+          "Concepto": " venta monte lamas resto #44",
+          "Observaciones": null,
+          "Fecha": "2025-10-06 00:00:00"
+        },
+        {
+          "Destino": "Leftie",
+          "Concepto": "abono lamas playa azul (venta local monte#23)",
+          "Observaciones": null,
+          "Fecha": "2025-10-20 00:00:00"
+        },
+        {
+          "Destino": "Leftie",
+          "Concepto": "playa azul mg#14",
+          "Observaciones": null,
+          "Fecha": null
+        },
+        {
+          "Destino": "Leftie",
+          "Concepto": "lamas playa azul",
+          "Observaciones": null,
+          "Fecha": null
+        },
+        {
+          "Destino": "Leftie",
+          "Concepto": "venta playa azul mg #15",
+          "Observaciones": null,
+          "Fecha": null
+        },
+        {
+          "Destino": "Leftie",
+          "Concepto": "venta playa azul lamas#20",
+          "Observaciones": null,
+          "Fecha": null
+        }
+      ],
+      "total": 9
+    }
+  },
+  "profit": {
+    "ingresos": {
+      "headers": [
+        "Fecha",
+        "Cliente",
+        "Ingreso",
+        "TC"
+      ],
+      "registros": [
+        {
+          "Fecha": "2025-08-22 00:00:00",
+          "Cliente": "Gasto Bóveda Monte",
+          "Ingreso": 189000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-08-22 00:00:00",
+          "Cliente": "Gasto Bóveda Monte",
+          "Ingreso": 136000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-08-25 00:00:00",
+          "Cliente": "Gasto Bóveda Monte",
+          "Ingreso": 350000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-08-25 00:00:00",
+          "Cliente": "Gasto Bóveda Monte",
+          "Ingreso": 50000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-08-26 00:00:00",
+          "Cliente": "Gasto Bóveda Monte",
+          "Ingreso": 400000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-08-29 00:00:00",
+          "Cliente": "Gasto Bóveda Monte",
+          "Ingreso": 198000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-04 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 60000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-04 00:00:00",
+          "Cliente": "Gasto Bóveda Monte",
+          "Ingreso": 500000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-04 00:00:00",
+          "Cliente": "Gasto Bóveda Monte",
+          "Ingreso": 260000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-05 00:00:00",
+          "Cliente": "Gasto Bóveda Monte",
+          "Ingreso": 210000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-08 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 330000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-08 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 20000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-08 00:00:00",
+          "Cliente": "Gasto Bóveda Monte",
+          "Ingreso": 266280,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-09 00:00:00",
+          "Cliente": "Gasto Bóveda Usa",
+          "Ingreso": 151680,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-09 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 390000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-10 00:00:00",
+          "Cliente": "Gasto Flete Sur",
+          "Ingreso": 22000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-11 00:00:00",
+          "Cliente": "Gasto Bóveda Monte",
+          "Ingreso": 250000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-11 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 33000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-11 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 190630,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-15 00:00:00",
+          "Cliente": "Gasto Bóveda Monte",
+          "Ingreso": 550000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-17 00:00:00",
+          "Cliente": "Gasto Bóveda Monte",
+          "Ingreso": 100000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-17 00:00:00",
+          "Cliente": "Gasto Bóveda Monte",
+          "Ingreso": 189000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-17 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 150000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-18 00:00:00",
+          "Cliente": "Gasto Bóveda Monte",
+          "Ingreso": 30000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-18 00:00:00",
+          "Cliente": "Gasto Bóveda Monte",
+          "Ingreso": 55000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-19 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 100000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-19 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 165000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-19 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 1000000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-23 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 275184,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-24 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 490000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-24 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 50000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-25 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 100000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-26 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 100000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-09-30 00:00:00",
+          "Cliente": "Gasto Bóveda Monte",
+          "Ingreso": 140000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-02 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 100000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-04 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 15000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-06 00:00:00",
+          "Cliente": "Gasto Bóveda Monte",
+          "Ingreso": 250000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-08 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 66974,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-09 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 295000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-09 00:00:00",
+          "Cliente": "Gasto Bóveda Monte",
+          "Ingreso": 500000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-09 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 30000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-09 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 100000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-09 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 305000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-09 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 20000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-09 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 400000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-11 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 55000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-13 00:00:00",
+          "Cliente": "Gasto Bóveda Monte",
+          "Ingreso": 300000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-13 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 1500000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-14 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 200000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-15 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 180000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-15 00:00:00",
+          "Cliente": "Gasto Bóveda Monte",
+          "Ingreso": 260000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-16 00:00:00",
+          "Cliente": "Gasto Bóveda Monte",
+          "Ingreso": 250000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-16 00:00:00",
+          "Cliente": "Abono",
+          "Ingreso": 15000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-17 00:00:00",
+          "Cliente": "Gasto Bóveda Monte",
+          "Ingreso": 220000,
+          "TC": 0
+        },
+        {
+          "Fecha": "2025-10-20 00:00:00",
+          "Cliente": "Gasto Bóveda Monte",
+          "Ingreso": 15000,
+          "TC": 0
+        }
+      ],
+      "total": 55
+    }
+  },
+  "clientes": {
+    "headers": [
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4",
+      "Cliente",
+      "Actual",
+      "Deuda"
+    ],
+    "registros": [],
+    "total": 0
+  },
+  "utilidades": {
+    "ingresos": {
+      "headers": [
+        "Fecha",
+        "Cliente",
+        "Ingreso",
+        "Concepto"
+      ],
+      "registros": [
+        {
+          "Fecha": "2025-08-18 00:00:00",
+          "Cliente": null,
+          "Ingreso": 205658.0,
+          "Concepto": "Corte"
+        }
+      ],
+      "total": 1
+    }
+  }
+}

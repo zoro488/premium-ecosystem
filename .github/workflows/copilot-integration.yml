@@ -1,264 +1,40 @@
-name: GitHub Copilot Enterprise Integration
+name: Autonomous Agent
 
 on:
   push:
-    branches: [ main, develop ]
-  pull_request:
-    branches: [ main, develop ]
-  workflow_dispatch:
-
-env:
-  NODE_VERSION: '18.x'
+    branches:
+      - main
 
 jobs:
-  # Copilot Code Review
-  copilot-review:
-    name: 🤖 Copilot Code Review
+  run-agent:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
-      issues: write
-    
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          fetch-depth: 0
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-      
+          node-version: '18'
+
       - name: Install dependencies
-        run: npm ci
-      
-      - name: Run ESLint Analysis
-        run: npm run lint
-        continue-on-error: true
-      
-      - name: Generate Review Summary
-        if: github.event_name == 'pull_request'
-        run: |
-          gh pr review ${{ github.event.pull_request.number }} \
-            --comment --body "🤖 Copilot automated review completed"
+        run: npm install
+
+      - name: Run Trivy vulnerability scanner
+        id: trivy
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'json'
+          output: 'trivy-results.json'
+          exit-code: '0'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+
+      - name: Run autonomous agent
+        run: pwsh -File ./.github/scripts/autonomous-agent.ps1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  # Copilot Documentation
-  copilot-docs:
-    name: 📚 Auto-Generate Documentation
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-      
-      - name: Generate API Documentation
-        run: |
-          npx typedoc --out docs/api src/
-          npx jsdoc -c .jsdoc.json
-      
-      - name: Commit Documentation
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "📚 Auto-update documentation [skip ci]"
-          file_pattern: "docs/**"
-
-  # Copilot Security Scan
-  copilot-security:
-    name: 🔒 Security & Dependency Scan
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      security-events: write
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3
-        with:
-          languages: javascript
-          queries: security-and-quality
-      
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3
-      
-      - name: Dependency Review
-        uses: actions/dependency-review-action@v4
-        with:
-          fail-on-severity: moderate
-      
-      - name: npm audit
-        run: npm audit --audit-level=moderate
-        continue-on-error: true
-
-  # Copilot Test Generation
-  copilot-tests:
-    name: 🧪 Auto-Generate Tests
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-      
-      - name: Install dependencies
-        run: npm ci
-      
-      - name: Run tests
-        run: npm run test:run
-      
-      - name: Generate coverage
-        run: npm run test:coverage
-      
-      - name: Upload coverage
-        uses: codecov/codecov-action@v4
-        if: env.CODECOV_TOKEN != ''
-        with:
-          token: ${{ secrets.CODECOV_TOKEN || '' }}
-          files: ./coverage/coverage-final.json
-          flags: unittests
-          name: copilot-coverage
-        continue-on-error: true
-
-  # Copilot Performance Analysis
-  copilot-performance:
-    name: ⚡ Performance Analysis
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-      
-      - name: Install dependencies
-        run: npm ci
-      
-      - name: Build project
-        run: npm run build
-      
-      - name: Analyze bundle size
-        run: |
-          npx vite-bundle-visualizer
-          du -sh dist/* | sort -h
-      
-      - name: Lighthouse CI
-        uses: treosh/lighthouse-ci-action@v11
-        with:
-          urls: |
-            http://localhost:4173
-          uploadArtifacts: true
-          temporaryPublicStorage: true
-
-  # Copilot Auto-Fix
-  copilot-autofix:
-    name: 🔧 Auto-Fix Issues
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-      
-      - name: Install dependencies
-        run: npm ci
-      
-      - name: Run ESLint with auto-fix
-        run: npm run lint -- --fix
-        continue-on-error: true
-      
-      - name: Format code with Prettier
-        run: npx prettier --write "src/**/*.{js,jsx,ts,tsx,json,css,md}"
-      
-      - name: Commit fixes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "🤖 Auto-fix: Copilot code improvements [skip ci]"
-          file_pattern: "src/**"
-
-  # Copilot Deployment Preview
-  copilot-deploy-preview:
-    name: 🚀 Deploy Preview
-    runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-      
-      - name: Install dependencies
-        run: npm ci
-      
-      - name: Build
-        run: npm run build
-        env:
-          VITE_PREVIEW_MODE: true
-      
-      - name: Deploy to Firebase Preview
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        if: env.FIREBASE_SERVICE_ACCOUNT != '' && env.FIREBASE_PROJECT_ID != ''
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT || '' }}
-          projectId: ${{ secrets.FIREBASE_PROJECT_ID || 'premium-ecosystem-1760790572' }}
-          channelId: pr-${{ github.event.pull_request.number }}
-        continue-on-error: true
-
-  # Copilot Metrics & Analytics
-  copilot-metrics:
-    name: 📊 Collect Metrics
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Code Complexity Analysis
-        run: |
-          npx eslint src --format json --output-file complexity-report.json
-          cat complexity-report.json
-      
-      - name: Upload metrics
-        uses: actions/upload-artifact@v4
-        with:
-          name: code-metrics
-          path: complexity-report.json
-          retention-days: 30
+          GITHUB_REPOSITORY: ${{ github.repository }}

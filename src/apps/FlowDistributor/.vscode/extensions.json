@@ -1,0 +1,117 @@
+{
+  "recommendations": [
+    // 🤖 AI AGENTS
+    "github.copilot",
+    "github.copilot-chat",
+    "amazonwebservices.amazon-q-vscode",
+    "googlecloudtools.cloudcode",
+    "continue.continue",
+
+    // ⚛️ REACT & NEXT.JS
+    "dsznajder.es7-react-js-snippets",
+    "rodrigovallades.es7-react-js-snippets",
+    "burkeholland.simple-react-snippets",
+    "xabikos.reactsnippets",
+
+    // 🎨 TAILWIND CSS
+    "bradlc.vscode-tailwindcss",
+    "austenc.tailwind-docs",
+    "bourhaouta.tailwindshades",
+
+    // 🔥 FIREBASE
+    "toba.vsfire",
+
+    // 🎯 TYPESCRIPT
+    "pmneo.tsimporter",
+    "yoavbls.pretty-ts-errors",
+    "mike-co.import-sorter",
+
+    // 🎨 FORMATTERS & LINTERS
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "stylelint.vscode-stylelint",
+
+    // 🎨 UI ENHANCEMENT
+    "pkief.material-icon-theme",
+    "miguelsolorio.fluent-icons",
+    "github.github-vscode-theme",
+    "zhuangtongfa.material-theme",
+    "sdras.night-owl",
+
+    // 📊 PRODUCTIVITY
+    "usernamehw.errorlens",
+    "wix.vscode-import-cost",
+    "christian-kohler.path-intellisense",
+    "christian-kohler.npm-intellisense",
+    "gruntfuggly.todo-tree",
+    "wayou.vscode-todo-highlight",
+
+    // 🎨 CODE QUALITY
+    "oderwat.indent-rainbow",
+    "coenraads.bracket-pair-colorizer-2",
+    "streetsidesoftware.code-spell-checker",
+    "shardulm94.trailing-spaces",
+
+    // 🔧 GIT
+    "eamodio.gitlens",
+    "mhutchie.git-graph",
+    "donjayamanne.githistory",
+
+    // 📝 SNIPPETS
+    "formulahendry.auto-rename-tag",
+    "formulahendry.auto-close-tag",
+    "steoates.autoimport",
+
+    // 🎯 UTILITIES
+    "rifi2k.format-html-in-php",
+    "vincaslt.highlight-matching-tag",
+    "pranaygp.vscode-css-peek",
+    "zignd.html-css-class-completion",
+
+    // 🚀 PERFORMANCE
+    "aaron-bond.better-comments",
+    "mikestead.dotenv",
+    "editorconfig.editorconfig",
+
+    // 📊 CHARTS & VISUALIZATION
+    "hediet.vscode-drawio",
+    "jock.svg",
+
+    // 🎨 FRAMER MOTION
+    "antfu.iconify",
+
+    // 🔍 SEARCH & NAVIGATION
+    "lucax88x.codeacejumper",
+    "alefragnani.bookmarks",
+
+    // 📦 PACKAGE MANAGERS
+    "christian-kohler.npm-intellisense",
+    "mskelton.npm-outdated",
+
+    // 🎯 TESTING
+    "orta.vscode-jest",
+    "firsttris.vscode-jest-runner",
+
+    // 🌐 REST API
+    "humao.rest-client",
+    "rangav.vscode-thunder-client",
+
+    // 🎨 COLOR PICKER
+    "anseki.vscode-color",
+    "naumovs.color-highlight",
+
+    // 📸 SCREENSHOT
+    "pnp.polacode",
+
+    // 🎯 MARKDOWN
+    "yzhang.markdown-all-in-one",
+    "davidanson.vscode-markdownlint",
+
+    // 🚀 LIVE SERVER
+    "ritwickdey.liveserver",
+
+    // 🎨 SVG
+    "jock.svg",
+    "cssho.vscode-svgviewer"
+  ]
+}

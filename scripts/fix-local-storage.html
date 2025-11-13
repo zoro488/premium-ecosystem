@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fix LocalStorage - FlowDistributor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            color: #667eea;
+            margin-top: 0;
+            font-size: 2em;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin: 10px 5px;
+        }
+        button:hover {
+            transform: translateY(-2px);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+        .success {
+            background: #10b981;
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+            margin-top: 20px;
+            display: none;
+        }
+        .info {
+            background: #f3f4f6;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Fix LocalStorage</h1>
+        <p>Esta herramienta limpia el localStorage de FlowDistributor para forzar la recarga de datos actualizados.</p>
+
+        <div class="info">
+            <strong>📊 Estado actual:</strong>
+            <div id="status">Cargando...</div>
+        </div>
+
+        <button onclick="clearFlowDistributor()">🗑️ Limpiar FlowDistributor</button>
+        <button onclick="clearAll()">💣 Limpiar Todo LocalStorage</button>
+        <button onclick="checkStatus()">🔍 Verificar Estado</button>
+
+        <div class="success" id="successMsg"></div>
+    </div>
+
+    <script>
+        function checkStatus() {
+            const keys = Object.keys(localStorage);
+            const flowKeys = keys.filter(k => k.includes('flow') || k.includes('FLOW'));
+
+            document.getElementById('status').innerHTML = `
+                <ul style="margin: 10px 0; padding-left: 20px;">
+                    <li>Total keys: ${keys.length}</li>
+                    <li>FlowDistributor keys: ${flowKeys.length}</li>
+                    <li>${flowKeys.length > 0 ? 'Keys encontradas: ' + flowKeys.join(', ') : 'No hay keys de FlowDistributor'}</li>
+                </ul>
+            `;
+        }
+
+        function clearFlowDistributor() {
+            const keys = Object.keys(localStorage);
+            const flowKeys = keys.filter(k => k.includes('flow') || k.includes('FLOW'));
+
+            flowKeys.forEach(key => localStorage.removeItem(key));
+
+            showSuccess(`✅ ${flowKeys.length} keys de FlowDistributor eliminadas`);
+            checkStatus();
+        }
+
+        function clearAll() {
+            const count = localStorage.length;
+            localStorage.clear();
+            showSuccess(`✅ ${count} keys eliminadas. LocalStorage limpio!`);
+            checkStatus();
+        }
+
+        function showSuccess(msg) {
+            const el = document.getElementById('successMsg');
+            el.textContent = msg;
+            el.style.display = 'block';
+            setTimeout(() => {
+                el.style.display = 'none';
+            }, 3000);
+        }
+
+        // Check status on load
+        checkStatus();
+    </script>
+</body>
+</html>

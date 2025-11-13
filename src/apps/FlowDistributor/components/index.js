@@ -5,18 +5,10 @@
  */
 
 // 🎨 Fondos y efectos visuales
-export {
-  AnimatedBackground,
-  CursorGlow,
-  FloatingElements,
-} from './AnimatedBackground';
+export { AnimatedBackground, CursorGlow, FloatingElements } from './AnimatedBackground';
 
 // 💎 Cards y contenedores glassmorphism
-export {
-  GlassCard,
-  StatCard,
-  MetricCard,
-} from './GlassCard';
+export { GlassCard, StatCard, MetricCard } from './GlassCard';
 
 // 🎬 Transiciones y animaciones
 export {
@@ -35,12 +27,7 @@ export {
 } from './AnimatedTransitions';
 
 // 🎭 Modales y overlays
-export {
-  PremiumModal,
-  Drawer,
-  Tooltip,
-  Popover,
-} from './PremiumModal';
+export { PremiumModal, Drawer, Tooltip, Popover } from './PremiumModal';
 
 // ⏳ Loading y skeleton states
 export {

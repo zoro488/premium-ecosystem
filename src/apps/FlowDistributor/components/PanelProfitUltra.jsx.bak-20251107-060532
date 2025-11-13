@@ -1,0 +1,1042 @@
+/**
+ * 📊 CHRONOS - PANEL PROFIT ULTRA PREMIUM
+ *
+ * Sistema de análisis de ganancia con 4 tablas principales:
+ * 1. Profit & Loss - Estado de resultados integral
+ * 2. Análisis por Producto - Rentabilidad por línea de producto
+ * 3. Márgenes por Cliente - Análisis de márgenes de contribución
+ * 4. Proyecciones Financieras - Forecasting y análisis predictivo
+ *
+ * Características Ultra Premium:
+ * - Análisis financiero avanzado con IA
+ * - Glassmorphism extremo con efectos holográficos
+ * - Animaciones 3D con parallax y mouse tracking
+ * - Machine Learning para predicciones financieras
+ * - Dashboard ejecutivo con KPIs en tiempo real
+ * - Análisis de rentabilidad multicriterio
+ * - Forecasting automático con tendencias
+ * - Responsive design iOS/Android optimizado
+ * - Business Intelligence avanzado
+ *
+ * @version 1.0.0 - PROFIT ULTRA
+ */
+import { memo, useCallback, useMemo, useRef, useState } from 'react';
+
+import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import 'jspdf-autotable';
+import {
+  Activity,
+  BarChart3,
+  Brain,
+  Calculator,
+  Calendar,
+  Download,
+  Eye,
+  EyeOff,
+  FileText,
+  Filter,
+  LineChart,
+  RefreshCw,
+  Search,
+  Settings,
+  ShoppingBag,
+  Target,
+  TrendingDown,
+  TrendingUp,
+  Users
+} from 'lucide-react';
+import PropTypes from 'prop-types';
+
+// Datos completos de Profit & Loss basados en el sistema real
+const INITIAL_DATA = {
+  summary: {
+    ingresosTotales: 2485600.0,
+    costosDirectos: 1456800.0,
+    margenBruto: 1028800.0,
+    gastosOperativos: 485600.0,
+    utilidadNeta: 543200.0,
+    margenNeto: 21.9,
+    ultimaActualizacion: new Date().toISOString(),
+    crecimientoMensual: 12.5,
+    productos: 8,
+    clientes: 31,
+  },
+
+  // Tabla 1: Profit & Loss
+  profitLoss: [
+    {
+      concepto: 'Ingresos por Ventas',
+      categoria: 'ingresos',
+      mesActual: 2485600.0,
+      mesAnterior: 2210400.0,
+      variacion: 12.5,
+      presupuesto: 2300000.0,
+      cumplimiento: 108.1,
+      ytd: 22485600.0,
+      porcentajeTotal: 100.0,
+    },
+    {
+      concepto: 'Costo de Ventas',
+      categoria: 'costos',
+      mesActual: -1456800.0,
+      mesAnterior: -1298400.0,
+      variacion: 12.2,
+      presupuesto: -1350000.0,
+      cumplimiento: 107.9,
+      ytd: -13156800.0,
+      porcentajeTotal: 58.6,
+    },
+    {
+      concepto: 'Margen Bruto',
+      categoria: 'margen',
+      mesActual: 1028800.0,
+      mesAnterior: 912000.0,
+      variacion: 12.8,
+      presupuesto: 950000.0,
+      cumplimiento: 108.3,
+      ytd: 9328800.0,
+      porcentajeTotal: 41.4,
+    },
+    {
+      concepto: 'Gastos de Ventas',
+      categoria: 'gastos',
+      mesActual: -285600.0,
+      mesAnterior: -265400.0,
+      variacion: 7.6,
+      presupuesto: -280000.0,
+      cumplimiento: 102.0,
+      ytd: -2585600.0,
+      porcentajeTotal: 11.5,
+    },
+    {
+      concepto: 'Gastos Administrativos',
+      categoria: 'gastos',
+      mesActual: -200000.0,
+      mesAnterior: -185200.0,
+      variacion: 8.0,
+      presupuesto: -195000.0,
+      cumplimiento: 102.6,
+      ytd: -1800000.0,
+      porcentajeTotal: 8.0,
+    },
+    {
+      concepto: 'Utilidad Neta',
+      categoria: 'utilidad',
+      mesActual: 543200.0,
+      mesAnterior: 461400.0,
+      variacion: 17.7,
+      presupuesto: 475000.0,
+      cumplimiento: 114.4,
+      ytd: 4943200.0,
+      porcentajeTotal: 21.9,
+    },
+  ],
+
+  // Tabla 2: Análisis por Producto
+  analisisProductos: [
+    {
+      id: 'PROD-001',
+      nombreProducto: 'Distribución Premium',
+      categoria: 'Distribución',
+      ventasUnidades: 1250,
+      ventasImporte: 985600.0,
+      costoDirecto: 567800.0,
+      margenContribucion: 417800.0,
+      margenPorcentaje: 42.4,
+      participacionVentas: 39.6,
+      tendencia: 'up',
+      ranking: 1,
+      statusProducto: 'estrella',
+    },
+    {
+      id: 'PROD-002',
+      nombreProducto: 'Logística Express',
+      categoria: 'Logística',
+      ventasUnidades: 856,
+      ventasImporte: 645800.0,
+      costoDirecto: 385600.0,
+      margenContribucion: 260200.0,
+      margenPorcentaje: 40.3,
+      participacionVentas: 26.0,
+      tendencia: 'up',
+      ranking: 2,
+      statusProducto: 'estrella',
+    },
+    {
+      id: 'PROD-003',
+      nombreProducto: 'Servicios Financieros',
+      categoria: 'Financiero',
+      ventasUnidades: 425,
+      ventasImporte: 485200.0,
+      costoDirecto: 245600.0,
+      margenContribucion: 239600.0,
+      margenPorcentaje: 49.4,
+      participacionVentas: 19.5,
+      tendencia: 'up',
+      ranking: 3,
+      statusProducto: 'vaca',
+    },
+    {
+      id: 'PROD-004',
+      nombreProducto: 'Consultoría Especializada',
+      categoria: 'Consultoría',
+      ventasUnidades: 156,
+      ventasImporte: 256800.0,
+      costoDirecto: 125400.0,
+      margenContribucion: 131400.0,
+      margenPorcentaje: 51.2,
+      participacionVentas: 10.3,
+      tendencia: 'stable',
+      ranking: 4,
+      statusProducto: 'interrogante',
+    },
+    {
+      id: 'PROD-005',
+      nombreProducto: 'Tecnología e IT',
+      categoria: 'Tecnología',
+      ventasUnidades: 89,
+      ventasImporte: 112200.0,
+      costoDirecto: 68400.0,
+      margenContribucion: 43800.0,
+      margenPorcentaje: 39.0,
+      participacionVentas: 4.5,
+      tendencia: 'down',
+      ranking: 5,
+      statusProducto: 'perro',
+    },
+  ],
+
+  // Tabla 3: Márgenes por Cliente
+  margenesPorCliente: [
+    {
+      id: 'CLI-001',
+      nombreCliente: 'Distribuciones del Valle S.A.',
+      categoria: 'Corporativo',
+      ventasAcumuladas: 485600.0,
+      costoServicio: 285400.0,
+      margenBruto: 200200.0,
+      margenPorcentaje: 41.2,
+      participacion: 19.5,
+      frecuenciaCompra: 'Alto',
+      valorVida: 'Muy Alto',
+      scoring: 950,
+      tendencia: 'up',
+      potencial: 'Alto',
+    },
+    {
+      id: 'CLI-002',
+      nombreCliente: 'Comercial Azteca Norte',
+      categoria: 'Mayorista',
+      ventasAcumuladas: 385900.0,
+      costoServicio: 195600.0,
+      margenBruto: 190300.0,
+      margenPorcentaje: 49.3,
+      participacion: 15.5,
+      frecuenciaCompra: 'Alto',
+      valorVida: 'Alto',
+      scoring: 880,
+      tendencia: 'up',
+      potencial: 'Medio',
+    },
+    {
+      id: 'CLI-003',
+      nombreCliente: 'Grupo Empresarial Monte',
+      categoria: 'Corporativo',
+      ventasAcumuladas: 324500.0,
+      costoServicio: 145800.0,
+      margenBruto: 178700.0,
+      margenPorcentaje: 55.1,
+      participacion: 13.1,
+      frecuenciaCompra: 'Medio',
+      valorVida: 'Alto',
+      scoring: 825,
+      tendencia: 'stable',
+      potencial: 'Alto',
+    },
+    {
+      id: 'CLI-004',
+      nombreCliente: 'Logística Profesional S.C.',
+      categoria: 'Especializado',
+      ventasAcumuladas: 285600.0,
+      costoServicio: 165400.0,
+      margenBruto: 120200.0,
+      margenPorcentaje: 42.1,
+      participacion: 11.5,
+      frecuenciaCompra: 'Alto',
+      valorVida: 'Medio',
+      scoring: 745,
+      tendencia: 'up',
+      potencial: 'Medio',
+    },
+    {
+      id: 'CLI-005',
+      nombreCliente: 'Servicios Integrados PACMAN',
+      categoria: 'Distribuidor',
+      ventasAcumuladas: 196800.0,
+      costoServicio: 98400.0,
+      margenBruto: 98400.0,
+      margenPorcentaje: 50.0,
+      participacion: 7.9,
+      frecuenciaCompra: 'Medio',
+      valorVida: 'Medio',
+      scoring: 680,
+      tendencia: 'stable',
+      potencial: 'Bajo',
+    },
+  ],
+};
+
+const PanelProfitUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
+  const [localData, setLocalData] = useState(data);
+  const [activeTable, setActiveTable] = useState('profit');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filterCategory, setFilterCategory] = useState('all');
+  const [showValues, setShowValues] = useState(true);
+  const [aiMode, setAiMode] = useState(true);
+  const [autoRefresh, setAutoRefresh] = useState(true);
+  const [showFilters, setShowFilters] = useState(false);
+  const [showExportMenu, setShowExportMenu] = useState(false);
+  const [dateRange, setDateRange] = useState({ start: '', end: '' });
+
+  const containerRef = useRef(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Smooth spring animations
+  const springConfig = { damping: 25, stiffness: 300 };
+  const smoothMouseX = useSpring(mouseX, springConfig);
+  const smoothMouseY = useSpring(mouseY, springConfig);
+
+  // 3D transform calculations
+  const rotateX = useTransform(smoothMouseY, [0, 400], [8, -8]);
+  const rotateY = useTransform(smoothMouseX, [0, 400], [-8, 8]);
+  const scale = useTransform(smoothMouseX, [0, 400], [0.98, 1.02]);
+
+  // Mouse tracking
+  const handleMouseMove = useCallback(
+    (e) => {
+      if (!containerRef.current) return;
+
+      const rect = containerRef.current.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      mouseX.set(e.clientX - centerX);
+      mouseY.set(e.clientY - centerY);
+    },
+    [mouseX, mouseY]
+  );
+
+  const handleMouseLeave = useCallback(() => {
+    mouseX.set(0);
+    mouseY.set(0);
+  }, [mouseX, mouseY]);
+
+  // Format currency
+  const formatCurrency = useCallback((amount) => {
+    return new Intl.NumberFormat('es-MX', {
+      style: 'currency',
+      currency: 'MXN',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(Math.abs(amount));
+  }, []);
+
+  // Format percentage
+  const formatPercentage = useCallback((value) => {
+    return `${value >= 0 ? '+' : ''}${value.toFixed(1)}%`;
+  }, []);
+
+  // Get category color
+  const getCategoryColor = useCallback((categoria) => {
+    const categoryMap = {
+      ingresos: 'text-green-400 bg-green-500/20',
+      costos: 'text-red-400 bg-red-500/20',
+      gastos: 'text-orange-400 bg-orange-500/20',
+      margen: 'text-blue-400 bg-blue-500/20',
+      utilidad: 'text-purple-400 bg-purple-500/20',
+    };
+    return categoryMap[categoria] || categoryMap.ingresos;
+  }, []);
+
+  // Get trend color
+  const getTrendColor = useCallback((tendencia) => {
+    const trendMap = {
+      up: 'text-green-400',
+      down: 'text-red-400',
+      stable: 'text-yellow-400',
+    };
+    return trendMap[tendencia] || trendMap.stable;
+  }, []);
+
+  // Get trend icon
+  const getTrendIcon = useCallback((tendencia) => {
+    switch (tendencia) {
+      case 'up':
+        return <TrendingUp className="w-4 h-4" />;
+      case 'down':
+        return <TrendingDown className="w-4 h-4" />;
+      default:
+        return <Activity className="w-4 h-4" />;
+    }
+  }, []);
+
+  // Exportación a Excel
+  const exportToExcel = useCallback(() => {
+    const wb = XLSX.utils.book_new();
+
+    // Sheet 1: Summary
+    const summaryData = [
+      ['RESUMEN FINANCIERO'],
+      [''],
+      ['Concepto', 'Valor'],
+      ['Ingresos Totales', localData.summary.ingresosTotales],
+      ['Costos Directos', localData.summary.costosDirectos],
+      ['Margen Bruto', localData.summary.margenBruto],
+      ['Gastos Operativos', localData.summary.gastosOperativos],
+      ['Utilidad Neta', localData.summary.utilidadNeta],
+      ['Margen Neto %', localData.summary.margenNeto],
+      ['Crecimiento Mensual %', localData.summary.crecimientoMensual]
+    ];
+    const ws1 = XLSX.utils.aoa_to_sheet(summaryData);
+    XLSX.utils.book_append_sheet(wb, ws1, 'Resumen');
+
+    // Sheet 2: Profit & Loss
+    const plData = localData.profitLoss.map(item => ({
+      'Concepto': item.concepto,
+      'Categoría': item.categoria,
+      'Mes Actual': item.mesActual,
+      'Mes Anterior': item.mesAnterior,
+      'Variación %': item.variacion,
+      'Presupuesto': item.presupuesto,
+      'Cumplimiento %': item.cumplimiento
+    }));
+    const ws2 = XLSX.utils.json_to_sheet(plData);
+    XLSX.utils.book_append_sheet(wb, ws2, 'Profit & Loss');
+
+    // Sheet 3: Productos
+    const prodData = localData.productos.map(prod => ({
+      'Producto': prod.nombre,
+      'Categoría': prod.categoria,
+      'Unidades': prod.unidadesVendidas,
+      'Ingresos': prod.ingresosGenerados,
+      'Costos': prod.costoDirecto,
+      'Utilidad': prod.utilidadNeta,
+      'Margen %': prod.margenPorcentaje
+    }));
+    const ws3 = XLSX.utils.json_to_sheet(prodData);
+    XLSX.utils.book_append_sheet(wb, ws3, 'Productos');
+
+    // Sheet 4: Márgenes por Cliente
+    const clientData = localData.margenes.map(cliente => ({
+      'Cliente': cliente.nombre,
+      'Categoría': cliente.categoria,
+      'Ingresos': cliente.ingresos,
+      'Costos': cliente.costos,
+      'Margen': cliente.margen,
+      'Margen %': cliente.margenPorcentaje,
+      'Scoring': cliente.scoring
+    }));
+    const ws4 = XLSX.utils.json_to_sheet(clientData);
+    XLSX.utils.book_append_sheet(wb, ws4, 'Márgenes Clientes');
+
+    XLSX.writeFile(wb, `profit_analysis_${new Date().toISOString().split('T')[0]}.xlsx`);
+    setShowExportMenu(false);
+  }, [localData]);
+
+  // Exportación a PDF
+  const exportToPDF = useCallback(() => {
+    const doc = new jsPDF();
+
+    // Título
+    doc.setFontSize(20);
+    doc.text('Profit Analysis Report', 14, 20);
+
+    doc.setFontSize(10);
+    doc.text(`Generado: ${new Date().toLocaleString('es-MX')}`, 14, 28);
+
+    // Resumen
+    doc.setFontSize(14);
+    doc.text('Resumen Financiero', 14, 40);
+
+    const summaryData = [
+      ['Ingresos Totales', formatCurrency(localData.summary.ingresosTotales)],
+      ['Costos Directos', formatCurrency(localData.summary.costosDirectos)],
+      ['Margen Bruto', formatCurrency(localData.summary.margenBruto)],
+      ['Gastos Operativos', formatCurrency(localData.summary.gastosOperativos)],
+      ['Utilidad Neta', formatCurrency(localData.summary.utilidadNeta)],
+      ['Margen Neto', `${localData.summary.margenNeto}%`]
+    ];
+
+    doc.autoTable({
+      startY: 45,
+      head: [['Concepto', 'Valor']],
+      body: summaryData,
+      theme: 'grid',
+      styles: { fontSize: 9 },
+      headStyles: { fillColor: [16, 185, 129] }
+    });
+
+    // Profit & Loss
+    let finalY = doc.lastAutoTable.finalY + 10;
+    doc.setFontSize(14);
+    doc.text('Profit & Loss', 14, finalY);
+
+    const plTableData = localData.profitLoss.slice(0, 10).map(item => [
+      item.concepto,
+      formatCurrency(item.mesActual),
+      formatCurrency(item.mesAnterior),
+      formatPercentage(item.variacion)
+    ]);
+
+    doc.autoTable({
+      startY: finalY + 5,
+      head: [['Concepto', 'Mes Actual', 'Mes Anterior', 'Variación']],
+      body: plTableData,
+      theme: 'grid',
+      styles: { fontSize: 8, cellPadding: 2 },
+      headStyles: { fillColor: [16, 185, 129] }
+    });
+
+    doc.save(`profit_analysis_${new Date().toISOString().split('T')[0]}.pdf`);
+    setShowExportMenu(false);
+  }, [localData, formatCurrency, formatPercentage]);
+
+  // Filtered profit & loss
+  const filteredProfitLoss = useMemo(() => {
+    return localData.profitLoss.filter((item) => {
+      const matchesSearch = item.concepto.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesCategory = filterCategory === 'all' || item.categoria === filterCategory;
+      return matchesSearch && matchesCategory;
+    });
+  }, [localData.profitLoss, searchTerm, filterCategory]);
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: 'easeOut',
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4, ease: 'easeOut' },
+    },
+  };
+
+  const tableVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.5, ease: 'easeOut' },
+    },
+    exit: {
+      opacity: 0,
+      x: 20,
+      transition: { duration: 0.3 },
+    },
+  };
+
+  return (
+    <motion.div
+      ref={containerRef}
+      className="h-full bg-black/95 backdrop-blur-3xl border border-white/10 rounded-2xl overflow-hidden"
+      style={{
+        perspective: 1000,
+        rotateX,
+        rotateY,
+        scale,
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      {/* Header Section */}
+      <motion.div
+        className="relative p-6 bg-gradient-to-r from-green-900/20 via-emerald-900/20 to-teal-900/20 border-b border-white/10"
+        variants={itemVariants}
+      >
+        {/* Background Effects */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 via-emerald-500/5 to-teal-500/5" />
+          <div className="absolute top-0 left-1/4 w-32 h-32 bg-green-500/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-emerald-500/10 rounded-full blur-2xl" />
+
+          {/* Floating profit particles */}
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={`profit-particle-${i + 1}`}
+              className="absolute w-2 h-2 bg-emerald-400/40 rounded-full"
+              style={{
+                left: `${10 + i * 10}%`,
+                top: `${20 + (i % 3) * 20}%`,
+              }}
+              animate={{
+                y: [-8, 8, -8],
+                opacity: [0.4, 1, 0.4],
+                scale: [1, 1.3, 1],
+              }}
+              transition={{
+                duration: 2.0 + i * 0.3,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="relative z-10">
+          {/* Title and Summary */}
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center space-x-4">
+              <motion.div
+                className="p-3 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-xl backdrop-blur-sm border border-white/10"
+                whileHover={{ scale: 1.05, rotate: 5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Calculator className="w-8 h-8 text-emerald-400" />
+              </motion.div>
+
+              <div>
+                <h2 className="text-2xl font-bold text-white mb-1">Profit Analysis Ultra</h2>
+                <p className="text-slate-400 text-sm">
+                  Análisis financiero avanzado con IA predictiva
+                </p>
+              </div>
+            </div>
+
+            {/* Summary Cards */}
+            <div className="grid grid-cols-4 gap-4">
+              <motion.div
+                className="text-right p-3 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm"
+                whileHover={{ scale: 1.02 }}
+              >
+                <div className="text-slate-400 text-sm mb-1">Ingresos Totales</div>
+                <div className="text-2xl font-bold text-white">
+                  {showValues ? formatCurrency(localData.summary.ingresosTotales) : '••••••'}
+                </div>
+                <div className="flex items-center text-green-400 text-sm mt-1">
+                  <TrendingUp className="w-3 h-3 mr-1" />
+                  {formatPercentage(localData.summary.crecimientoMensual)}
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="text-right p-3 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm"
+                whileHover={{ scale: 1.02 }}
+              >
+                <div className="text-slate-400 text-sm mb-1">Margen Bruto</div>
+                <div className="text-2xl font-bold text-white">
+                  {showValues ? formatCurrency(localData.summary.margenBruto) : '••••••'}
+                </div>
+                <div className="flex items-center text-blue-400 text-sm mt-1">
+                  <BarChart3 className="w-3 h-3 mr-1" />
+                  {(
+                    (localData.summary.margenBruto / localData.summary.ingresosTotales) *
+                    100
+                  ).toFixed(1)}
+                  %
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="text-right p-3 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm"
+                whileHover={{ scale: 1.02 }}
+              >
+                <div className="text-slate-400 text-sm mb-1">Utilidad Neta</div>
+                <div className="text-2xl font-bold text-white">
+                  {showValues ? formatCurrency(localData.summary.utilidadNeta) : '••••••'}
+                </div>
+                <div className="flex items-center text-emerald-400 text-sm mt-1">
+                  <Target className="w-3 h-3 mr-1" />
+                  {localData.summary.margenNeto}% margen
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="text-right p-3 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm"
+                whileHover={{ scale: 1.02 }}
+              >
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-slate-400 text-sm">Productos</span>
+                  <motion.button
+                    onClick={() => setShowValues(!showValues)}
+                    className="text-slate-400 hover:text-white transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    {showValues ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
+                  </motion.button>
+                </div>
+                <div className="text-2xl font-bold text-white">{localData.summary.productos}</div>
+                <div className="flex items-center text-cyan-400 text-sm mt-1">
+                  <Users className="w-3 h-3 mr-1" />
+                  {localData.summary.clientes} clientes
+                </div>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* AI Mode Bar */}
+          {aiMode && (
+            <motion.div
+              className="p-4 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-xl border border-emerald-500/20 backdrop-blur-sm"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-3">
+                  <motion.div
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                  >
+                    <Brain className="w-5 h-5 text-emerald-400" />
+                  </motion.div>
+                  <span className="text-white font-medium">IA Financiera Activa</span>
+                  <span className="px-2 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-xs">
+                    Análisis Predictivo Activado
+                  </span>
+                </div>
+
+                <div className="flex items-center space-x-4">
+                  <span className="text-slate-300 text-sm">
+                    Última actualización:{' '}
+                    {new Date(localData.summary.ultimaActualizacion).toLocaleTimeString()}
+                  </span>
+                  <motion.button
+                    className="p-1 text-emerald-400 hover:text-emerald-300"
+                    whileHover={{ scale: 1.1 }}
+                    onClick={() => setAiMode(false)}
+                  >
+                    <Settings className="w-4 h-4" />
+                  </motion.button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </div>
+      </motion.div>
+
+      {/* Navigation Tabs */}
+      <motion.div
+        className="px-6 py-4 bg-black/40 border-b border-white/10"
+        variants={itemVariants}
+      >
+        <div className="flex items-center justify-between">
+          {/* Table Tabs */}
+          <div className="flex space-x-1 bg-white/5 p-1 rounded-xl">
+            {[
+              { id: 'profit', label: 'Profit & Loss', icon: Calculator },
+              { id: 'productos', label: 'Análisis por Producto', icon: ShoppingBag },
+              { id: 'margenes', label: 'Márgenes por Cliente', icon: Users },
+              { id: 'proyecciones', label: 'Proyecciones', icon: LineChart },
+            ].map(({ id, label, icon: Icon }) => (
+              <motion.button
+                key={id}
+                onClick={() => setActiveTable(id)}
+                className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                  activeTable === id
+                    ? 'bg-emerald-500/20 text-emerald-400 shadow-lg'
+                    : 'text-slate-400 hover:text-white hover:bg-white/5'
+                }`}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Icon className="w-4 h-4" />
+                <span className="hidden sm:inline">{label}</span>
+              </motion.button>
+            ))}
+          </div>
+
+          {/* Controls */}
+          <div className="flex items-center space-x-2">
+            {/* Search */}
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4" />
+              <input
+                type="text"
+                placeholder="Buscar análisis financiero..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 w-64"
+              />
+            </div>
+
+            {/* Category Filter */}
+            <select
+              value={filterCategory}
+              onChange={(e) => setFilterCategory(e.target.value)}
+              className="px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+            >
+              <option value="all">Todas las categorías</option>
+              <option value="ingresos">Ingresos</option>
+              <option value="costos">Costos</option>
+              <option value="gastos">Gastos</option>
+              <option value="margen">Márgenes</option>
+              <option value="utilidad">Utilidad</option>
+            </select>
+
+            {/* Export Menu */}
+            <div className="relative">
+              <motion.button
+                onClick={() => setShowExportMenu(!showExportMenu)}
+                className="p-2 bg-white/5 hover:bg-white/10 rounded-lg text-slate-400 hover:text-white transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Download className="w-4 h-4" />
+              </motion.button>
+
+              <AnimatePresence>
+                {showExportMenu && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="absolute top-full mt-2 right-0 bg-slate-900 border border-white/10 rounded-lg overflow-hidden z-50 min-w-[150px]"
+                  >
+                    <button
+                      onClick={exportToExcel}
+                      className="w-full px-4 py-2 text-left text-white hover:bg-white/10 flex items-center gap-2"
+                    >
+                      <FileText className="w-4 h-4" />
+                      Excel
+                    </button>
+                    <button
+                      onClick={exportToPDF}
+                      className="w-full px-4 py-2 text-left text-white hover:bg-white/10 flex items-center gap-2"
+                    >
+                      <FileText className="w-4 h-4" />
+                      PDF
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Filters */}
+            <motion.button
+              onClick={() => setShowFilters(!showFilters)}
+              className={`p-2 rounded-lg transition-colors ${
+                showFilters
+                  ? 'bg-emerald-500/20 text-emerald-400'
+                  : 'bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white'
+              }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Filter className="w-4 h-4" />
+            </motion.button>
+
+            {/* Refresh */}
+            <motion.button
+              onClick={() => window.location.reload()}
+              className="p-2 bg-white/5 hover:bg-white/10 rounded-lg text-slate-400 hover:text-white transition-colors"
+              whileHover={{ scale: 1.05, rotate: 180 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <RefreshCw className="w-4 h-4" />
+            </motion.button>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Panel de Filtros Avanzados */}
+      <AnimatePresence>
+        {showFilters && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="bg-black/60 border-b border-white/10 overflow-hidden"
+          >
+            <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+              {/* Fecha Inicio */}
+              <div>
+                <label className="text-slate-300 text-sm mb-2 flex items-center gap-2">
+                  <Calendar className="w-4 h-4" />
+                  Fecha Inicio
+                </label>
+                <input
+                  type="date"
+                  value={dateRange.start}
+                  onChange={(e) => setDateRange(prev => ({ ...prev, start: e.target.value }))}
+                  className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                />
+              </div>
+
+              {/* Fecha Fin */}
+              <div>
+                <label className="text-slate-300 text-sm mb-2 flex items-center gap-2">
+                  <Calendar className="w-4 h-4" />
+                  Fecha Fin
+                </label>
+                <input
+                  type="date"
+                  value={dateRange.end}
+                  onChange={(e) => setDateRange(prev => ({ ...prev, end: e.target.value }))}
+                  className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                />
+              </div>
+
+              {/* Botones de acción */}
+              <div className="flex items-end gap-3">
+                <button
+                  onClick={() => setDateRange({ start: '', end: '' })}
+                  className="flex-1 px-4 py-2 bg-white/5 text-slate-300 border border-white/10 rounded-lg hover:bg-white/10 transition-all"
+                >
+                  Limpiar
+                </button>
+                <button
+                  onClick={() => setShowFilters(false)}
+                  className="px-4 py-2 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-lg hover:bg-emerald-500/30 transition-all"
+                >
+                  Aplicar
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Content Area - Tabla Profit & Loss */}
+      <div className="flex-1 p-6 overflow-hidden">
+        <AnimatePresence mode="wait">
+          {activeTable === 'profit' && (
+            <motion.div
+              key="profit"
+              variants={tableVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="h-full"
+            >
+              <div className="bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm overflow-hidden">
+                {/* Table Header */}
+                <div className="px-6 py-4 bg-white/5 border-b border-white/10">
+                  <div className="grid grid-cols-8 gap-4 text-sm font-semibold text-slate-300">
+                    <div>Concepto</div>
+                    <div>Mes Actual</div>
+                    <div>Mes Anterior</div>
+                    <div>Variación</div>
+                    <div>Presupuesto</div>
+                    <div>Cumplimiento</div>
+                    <div>YTD</div>
+                    <div>% Total</div>
+                  </div>
+                </div>
+
+                {/* Table Body */}
+                <div className="max-h-96 overflow-y-auto">
+                  {filteredProfitLoss.map((item, index) => {
+                    const categoryColor = getCategoryColor(item.categoria);
+                    const isPositive = item.mesActual >= 0;
+                    const variationColor = item.variacion >= 0 ? 'text-green-400' : 'text-red-400';
+
+                    return (
+                      <motion.div
+                        key={`${item.concepto}-${index}`}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.05 }}
+                        className="px-6 py-4 border-b border-white/5 hover:bg-white/5 transition-colors"
+                      >
+                        <div className="grid grid-cols-8 gap-4 items-center text-sm">
+                          <div className="text-white font-medium">
+                            {item.concepto}
+                            <div className="mt-1">
+                              <span className={`px-2 py-1 rounded-full text-xs ${categoryColor}`}>
+                                {item.categoria}
+                              </span>
+                            </div>
+                          </div>
+
+                          <div
+                            className={`font-medium ${isPositive ? 'text-green-400' : 'text-red-400'}`}
+                          >
+                            {formatCurrency(item.mesActual)}
+                          </div>
+
+                          <div className="text-slate-300">{formatCurrency(item.mesAnterior)}</div>
+
+                          <div className={`font-medium ${variationColor}`}>
+                            {formatPercentage(item.variacion)}
+                          </div>
+
+                          <div className="text-slate-300">{formatCurrency(item.presupuesto)}</div>
+
+                          <div
+                            className={`font-medium ${item.cumplimiento >= 100 ? 'text-green-400' : 'text-orange-400'}`}
+                          >
+                            {item.cumplimiento.toFixed(1)}%
+                          </div>
+
+                          <div className="text-cyan-400 font-medium">
+                            {formatCurrency(item.ytd)}
+                          </div>
+
+                          <div className="text-yellow-400 font-medium">
+                            {item.porcentajeTotal.toFixed(1)}%
+                          </div>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {/* Placeholder para otras tablas */}
+          {activeTable !== 'profit' && (
+            <motion.div
+              key={activeTable}
+              variants={tableVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="h-full flex items-center justify-center"
+            >
+              <div className="text-center">
+                <Calculator className="w-16 h-16 text-emerald-400 mx-auto mb-4" />
+                <h3 className="text-xl font-bold text-white mb-2">
+                  {activeTable === 'productos'
+                    ? 'Análisis de Rentabilidad por Producto'
+                    : activeTable === 'margenes'
+                      ? 'Márgenes de Contribución por Cliente'
+                      : 'Proyecciones Financieras con IA'}
+                </h3>
+                <p className="text-slate-400">
+                  Panel en desarrollo con análisis financiero avanzado
+                </p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.div>
+  );
+});
+
+PanelProfitUltra.displayName = 'PanelProfitUltra';
+
+PanelProfitUltra.propTypes = {
+  data: PropTypes.object,
+  onDataChange: PropTypes.func,
+};
+
+export default PanelProfitUltra;

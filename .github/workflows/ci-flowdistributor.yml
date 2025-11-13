@@ -1,0 +1,61 @@
+name: CI - FlowDistributor
+
+on:
+  push:
+    branches: [main, bb, develop]
+    paths:
+      - 'apps/FlowDistributor/**'
+      - 'src/components/**'
+      - 'src/hooks/**'
+      - 'package.json'
+  pull_request:
+    branches: [main, bb, develop]
+    paths:
+      - 'apps/FlowDistributor/**'
+      - 'src/components/**'
+      - 'src/hooks/**'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run lint
+      - run: npx tsc --noEmit
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run test:coverage
+      - uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage/coverage-final.json
+          flags: flowdistributor
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [lint, test]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: dist/
+          retention-days: 7

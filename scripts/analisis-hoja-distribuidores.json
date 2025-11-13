@@ -1,0 +1,28 @@
+{
+  "hoja": "Distribuidores",
+  "tablas": [
+    {
+      "nombre": "Tabla_1",
+      "fila_inicio": 3,
+      "encabezados": [
+        "OC",
+        "Fecha",
+        "Origen",
+        "Cantidad",
+        "Costo Distribuidor",
+        "Costo Transporte",
+        "Costo Por Unidad",
+        "Stock Actual",
+        "Costo Total",
+        "Pago a Distribuidor",
+        "Deuda",
+        "Distribuidores",
+        "Costo total",
+        "Abonos",
+        "Pendiente"
+      ],
+      "total_registros": 99,
+      "registros": [
+        {
+          "OC": "OC0001",
+          "Fecha": 

@@ -34,7 +34,7 @@ self.addEventListener('message', (e) => {
     }
 
     default:
-      // console.warn('Worker: Tipo de mensaje desconocido', type);
+    // console.warn('Worker: Tipo de mensaje desconocido', type);
   }
 });
 

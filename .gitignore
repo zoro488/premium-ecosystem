@@ -24,13 +24,27 @@ playwright-report/
 playwright/.cache/
 
 # Logs
-logs/
+logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+
+# Large video files
+*.mov
+*.mp4
+*.avi
+*.7z
+*.jar
+*.gif
+Zoom\ Glitch\ Logo\ -\ Square/
+public/videos/
+public/chronos-*.mp4
+public/chronos-*.mov
+src/apps/FlowDistributor/*.gif
+codacy-cli.jar
 
 # Environment variables (CRÍTICO: Nunca commitear)
 .env
@@ -98,6 +112,90 @@ desktop.ini
 
 # Netlify
 .netlify
+
+# ====================================
+# ARCHIVOS DE DOCUMENTACIÓN MASIVA (OPTIMIZACIÓN)
+# ====================================
+ANALISIS_*.md
+REPORTE_*.md
+AUDITORIA_*.md
+VERIFICACION_*.md
+RESUMEN_*.md
+INFORME_*.md
+CONFIRMACION_*.md
+CORRECCION*.md
+IMPLEMENTACION_*.md
+SESION_*.md
+PLAN_*.md
+PROGRESO_*.md
+STATUS_*.md
+ESTADO_*.md
+ESTRATEGIA_*.md
+MIGRACION_*.md
+MEJORAS_*.md
+TRANSFORMACION_*.md
+INTEGRACION_*.md
+DEPLOYMENT_*.md
+SINCRONIZACION_*.md
+OPTIMIZACION_*.md
+
+# Archivos Excel de análisis
+Copia\ de\ *.xlsx
+*_export_*.json
+*_data_*.json
+datos_*.json
+analisis_*.json
+tablas_*.json
+clientes_*.json
+gastos_*.json
+panel-*.json
+
+# Scripts Python de análisis
+analizar_*.py
+extraer_*.py
+inspeccionar_*.py
+transformar_*.py
+consolidar_*.py
+mapear_*.py
+insertar_*.py
+aplicar_*.py
+
+# Scripts PowerShell de utilidad
+actualizar-*.ps1
+verificar-*.ps1
+cargar-*.ps1
+limpiar-*.ps1
+resumen-*.ps1
+fix-*.ps1
+add-*.ps1
+
+# Scripts Batch
+*.bat
+ABRIR-*.bat
+INICIAR-*.bat
+IMPORTAR-*.bat
+REINICIAR-*.bat
+LIMPIAR-*.bat
+
+# Scripts Shell
+activate-*.sh
+setup-*.sh
+
+# Backups
+.backup-*/
+backups/
+Nueva\ carpeta/
+
+# Videos y assets pesados
+*.mp4
+*.mov
+*.avi
+
+# Archivos temporales de análisis
+nul
+output/
+reports/
+test-output-manual/
 
 # Turbo
 .turbo

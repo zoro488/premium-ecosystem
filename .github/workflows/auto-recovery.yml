@@ -1,0 +1,25 @@
+name: Auto-Recovery
+
+on:
+  schedule:
+    - cron: '*/30 * * * *' # Cada 30 minutos
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Production
+        run: |
+          STATUS=$(curl -o /dev/null -s -w "%{http_code}" https://chronos-prod.web.app)
+          if [ $STATUS -ne 200 ]; then
+            echo "❌ Site is down! Status: $STATUS"
+            exit 1
+          fi
+          echo "✅ Site is healthy"
+
+      - name: Trigger Rollback
+        if: failure()
+        run: |
+          curl -X POST https://api.github.com/repos/${{ github.repository }}/dispatches \
+            -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
+            -d '{"event_type":"rollback"}'

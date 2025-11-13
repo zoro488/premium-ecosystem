@@ -1,0 +1,363 @@
+{
+  "timestamp": "2025-10-26T09:46:59.501Z",
+  "resumen": {
+    "totalPaneles": 14,
+    "panelesCompletos": 0,
+    "panelesConProblemas": 14,
+    "porcentajeCompletitud": 0
+  },
+  "estructuraExcel": {
+    "distribuidores_oc": {
+      "headers": [
+        "OC",
+        "Fecha",
+        "Origen",
+        "Cantidad",
+        "Costo Distribuidor",
+        "Costo Transporte",
+        "Costo Por Unidad",
+        "Stock Actual",
+        "Costo Total",
+        "Pago a Distribuidor",
+        "Deuda"
+      ],
+      "totalRegistros": 9,
+      "ejemplo": {
+        "OC": "OC0001",
+        "Fecha": "2025-08-25 00:00:00",
+        "Origen": "Q-MAYA",
+        "Cantidad": 423,
+        "Costo Distribuidor": 6100,
+        "Costo Transporte": 200,
+        "Costo Por Unidad": 6300,
+        "Stock Actual": null,
+        "Costo Total": 2664900,
+        "Pago a Distribuidor": null,
+        "Deuda": null
+      }
+    },
+    "control_maestro_ventas": {
+      "headers": [
+        "Fecha",
+        "OC Relacionada",
+        "Cantidad",
+        "Cliente",
+        "Bóveda Monte",
+        "Precio De Venta",
+        "Ingreso",
+        "Flete",
+        "Flete Utilidad",
+        "Utilidad",
+        "Estatus",
+        "Concepto"
+      ],
+      "totalRegistros": 96,
+      "ejemplo": {
+        "Fecha": "2025-08-23 00:00:00",
+        "OC Relacionada": "OC0001",
+        "Cantidad": 150,
+        "Cliente": "Bódega M-P",
+        "Bóveda Monte": 945000,
+        "Precio De Venta": 6300,
+        "Ingreso": 945000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 75000,
+        "Utilidad": 0,
+        "Estatus": "Pendiente",
+        "Concepto": null
+      }
+    },
+    "clientes": {
+      "headers": [
+        "Col1",
+        "Col2",
+        "Col3",
+        "Col4",
+        "Cliente",
+        "Actual",
+        "Deuda"
+      ],
+      "totalRegistros": 0,
+      "ejemplo": {}
+    }
+  },
+  "analisisPaneles": {
+    "PanelAlmacen": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "fuenteDatos": "No detectada",
+      "tieneGraficos": true,
+      "tieneFormularios": false,
+      "lineasCodigo": 656
+    },
+    "PanelAzteca": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "fuenteDatos": "No detectada",
+      "tieneGraficos": true,
+      "tieneFormularios": true,
+      "lineasCodigo": 1007
+    },
+    "PanelBovedaMonte": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "fuenteDatos": "No detectada",
+      "tieneGraficos": true,
+      "tieneFormularios": true,
+      "lineasCodigo": 744
+    },
+    "PanelBovedaUSA": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "fuenteDatos": "No detectada",
+      "tieneGraficos": true,
+      "tieneFormularios": true,
+      "lineasCodigo": 616
+    },
+    "PanelBovedaUSASupremo": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "fuenteDatos": "No detectada",
+      "tieneGraficos": true,
+      "tieneFormularios": true,
+      "lineasCodigo": 1125
+    },
+    "PanelDistribuidores": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "fuenteDatos": "No detectada",
+      "tieneGraficos": true,
+      "tieneFormularios": true,
+      "lineasCodigo": 927
+    },
+    "PanelFleteSur": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "fuenteDatos": "No detectada",
+      "tieneGraficos": true,
+      "tieneFormularios": true,
+      "lineasCodigo": 966
+    },
+    "PanelGYA": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "fuenteDatos": "No detectada",
+      "tieneGraficos": true,
+      "tieneFormularios": false,
+      "lineasCodigo": 693
+    },
+    "PanelLeftie": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "fuenteDatos": "No detectada",
+      "tieneGraficos": true,
+      "tieneFormularios": true,
+      "lineasCodigo": 986
+    },
+    "PanelOrdenesCompra": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "fuenteDatos": "No detectada",
+      "tieneGraficos": true,
+      "tieneFormularios": true,
+      "lineasCodigo": 1677
+    },
+    "PanelProfit": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "fuenteDatos": "No detectada",
+      "tieneGraficos": true,
+      "tieneFormularios": true,
+      "lineasCodigo": 929
+    },
+    "PanelUtilidades": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "fuenteDatos": "No detectada",
+      "tieneGraficos": true,
+      "tieneFormularios": true,
+      "lineasCodigo": 923
+    },
+    "PanelVentaLocal": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "fuenteDatos": "No detectada",
+      "tieneGraficos": true,
+      "tieneFormularios": false,
+      "lineasCodigo": 387
+    },
+    "PanelVentas": {
+      "columnas": [],
+      "totalColumnas": 0,
+      "fuenteDatos": "No detectada",
+      "tieneGraficos": true,
+      "tieneFormularios": true,
+      "lineasCodigo": 1220
+    }
+  },
+  "reporteCompleto": [
+    {
+      "panel": "PanelDistribuidores",
+      "problemas": [
+        {
+          "tipo": "ALTA",
+          "mensaje": "Faltan 11 columnas esperadas",
+          "columnas": [
+            "OC",
+            "Fecha",
+            "Origen",
+            "Cantidad",
+            "Costo Distribuidor",
+            "Costo Transporte",
+            "Costo Por Unidad",
+            "Stock Actual",
+            "Costo Total",
+            "Pago a Distribuidor",
+            "Deuda"
+          ]
+        }
+      ],
+      "gravedad": "ALTA"
+    },
+    {
+      "panel": "PanelOrdenesCompra",
+      "problemas": [
+        {
+          "tipo": "ALTA",
+          "mensaje": "Faltan 8 columnas esperadas",
+          "columnas": [
+            "OC",
+            "Fecha",
+            "Origen",
+            "Cantidad",
+            "Costo Distribuidor",
+            "Costo Transporte",
+            "Costo Por Unidad",
+            "Costo Total"
+          ]
+        }
+      ],
+      "gravedad": "ALTA"
+    },
+    {
+      "panel": "PanelVentas",
+      "problemas": [
+        {
+          "tipo": "CRÍTICO",
+          "mensaje": "La hoja \"ventas\" no existe en el Excel"
+        }
+      ],
+      "gravedad": "CRÍTICA"
+    },
+    {
+      "panel": "PanelBovedaMonte",
+      "problemas": [
+        {
+          "tipo": "CRÍTICO",
+          "mensaje": "La hoja \"boveda_monte\" no existe en el Excel"
+        }
+      ],
+      "gravedad": "CRÍTICA"
+    },
+    {
+      "panel": "PanelBovedaUSA",
+      "problemas": [
+        {
+          "tipo": "CRÍTICO",
+          "mensaje": "La hoja \"boveda_usa\" no existe en el Excel"
+        }
+      ],
+      "gravedad": "CRÍTICA"
+    },
+    {
+      "panel": "PanelBovedaUSASupremo",
+      "problemas": [
+        {
+          "tipo": "CRÍTICO",
+          "mensaje": "La hoja \"boveda_usa_supremo\" no existe en el Excel"
+        }
+      ],
+      "gravedad": "CRÍTICA"
+    },
+    {
+      "panel": "PanelAlmacen",
+      "problemas": [
+        {
+          "tipo": "CRÍTICO",
+          "mensaje": "La hoja \"almacen\" no existe en el Excel"
+        }
+      ],
+      "gravedad": "CRÍTICA"
+    },
+    {
+      "panel": "PanelAzteca",
+      "problemas": [
+        {
+          "tipo": "CRÍTICO",
+          "mensaje": "La hoja \"banco_azteca\" no existe en el Excel"
+        }
+      ],
+      "gravedad": "CRÍTICA"
+    },
+    {
+      "panel": "PanelLeftie",
+      "problemas": [
+        {
+          "tipo": "CRÍTICO",
+          "mensaje": "La hoja \"banco_leftie\" no existe en el Excel"
+        }
+      ],
+      "gravedad": "CRÍTICA"
+    },
+    {
+      "panel": "PanelFleteSur",
+      "problemas": [
+        {
+          "tipo": "CRÍTICO",
+          "mensaje": "La hoja \"flete_sur\" no existe en el Excel"
+        }
+      ],
+      "gravedad": "CRÍTICA"
+    },
+    {
+      "panel": "PanelGYA",
+      "problemas": [
+        {
+          "tipo": "CRÍTICO",
+          "mensaje": "La hoja \"gastos_abonos\" no existe en el Excel"
+        }
+      ],
+      "gravedad": "CRÍTICA"
+    },
+    {
+      "panel": "PanelUtilidades",
+      "problemas": [
+        {
+          "tipo": "CRÍTICO",
+          "mensaje": "La hoja \"ventas\" no existe en el Excel"
+        }
+      ],
+      "gravedad": "CRÍTICA"
+    },
+    {
+      "panel": "PanelProfit",
+      "problemas": [
+        {
+          "tipo": "CRÍTICO",
+          "mensaje": "La hoja \"ventas\" no existe en el Excel"
+        }
+      ],
+      "gravedad": "CRÍTICA"
+    },
+    {
+      "panel": "PanelVentaLocal",
+      "problemas": [
+        {
+          "tipo": "CRÍTICO",
+          "mensaje": "La hoja \"venta_local\" no existe en el Excel"
+        }
+      ],
+      "gravedad": "CRÍTICA"
+    }
+  ]
+}

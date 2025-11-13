@@ -119,11 +119,7 @@ export const StatCard = ({
   const colors = colorClasses[color] || colorClasses.blue;
 
   return (
-    <GlassCard
-      className={`p-6 bg-gradient-to-br ${colors.bg} border ${colors.border}`}
-      hover
-      glow
-    >
+    <GlassCard className={`p-6 bg-gradient-to-br ${colors.bg} border ${colors.border}`} hover glow>
       <div className="flex items-center justify-between mb-4">
         <motion.div
           className={`p-3 rounded-xl ${colors.icon}`}
@@ -141,14 +137,24 @@ export const StatCard = ({
             {trend === 'up' ? (
               <div className="flex items-center gap-1 text-green-400">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 10l7-7m0 0l7 7m-7-7v18"
+                  />
                 </svg>
                 <span className="text-xs font-medium">{trendValue}</span>
               </div>
             ) : (
               <div className="flex items-center gap-1 text-red-400">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                  />
                 </svg>
                 <span className="text-xs font-medium">{trendValue}</span>
               </div>

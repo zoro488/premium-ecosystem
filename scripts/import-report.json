@@ -1,0 +1,49 @@
+{
+  "timestamp": "2025-10-23T20:38:48.543Z",
+  "excelFile": "C:\\Users\\xpovo\\Downloads\\Copia de Administación_General.xlsx",
+  "mode": "DRY_RUN",
+  "results": {
+    "clientes": {
+      "count": 31,
+      "sample": {
+        "nombre": "Primo",
+        "rfc": "",
+        "empresa": "Primo",
+        "telefono": "",
+        "email": "",
+        "direccion": "",
+        "ciudad": "",
+        "estado": "",
+        "codigoPostal": "",
+        "creditoAutorizado": 1872,
+        "creditoDisponible": 1872,
+        "deuda": 0,
+        "abonos": 3000,
+        "pendiente": -3000,
+        "bloqueado": false,
+        "motivoBloqueo": "",
+        "observaciones": "",
+        "createdAt": "2025-10-23T20:38:48.538Z",
+        "updatedAt": "2025-10-23T20:38:48.538Z"
+      }
+    },
+    "distribuidores": {
+      "count": 2,
+      "sample": {
+        "nombre": "PACMAN",
+        "contacto": "OC0001",
+        "telefono": "",
+        "email": "",
+        "pais": "Q-MAYA",
+        "productos": "",
+        "costoTotal": 0,
+        "abonos": 6142500,
+        "pendiente": 0,
+        "activo": true,
+        "createdAt": "2025-10-23T20:38:48.543Z",
+        "updatedAt": "2025-10-23T20:38:48.543Z"
+      }
+    }
+  },
+  "total": 33
+}

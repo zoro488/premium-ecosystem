@@ -6,7 +6,22 @@
  */
 import '@testing-library/jest-dom';
 import { cleanup } from '@testing-library/react';
-import { afterAll, afterEach, beforeAll, vi } from 'vitest';
+import { afterAll, afterEach, beforeAll, expect, vi } from 'vitest';
+
+// Setup file for Vitest
+// - apply global mocks for tests
+// Cargamos el mock de Adobe si existe
+try {
+  // Use an axios mocker to intercept network calls to Adobe services
+  const applyMock = require('../../test-setup/mock-adobe-axios');
+  applyMock();
+} catch (err) {
+  // fall back silently if mock-setup is missing
+  // console.warn('No test mock applied:', err.message)
+}
+
+// Any global test helpers can be attached to globalThis here
+globalThis.__TEST_SETUP__ = true;
 
 // ========================================
 // CLEANUP AFTER EACH TEST

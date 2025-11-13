@@ -1353,7 +1353,7 @@ Responde con máxima precisión, análisis profundo y formato ultra-estructurado
         )}
       </AnimatePresence>
 
-      <style jsx>{`
+      <style>{`
         .custom-scrollbar::-webkit-scrollbar {
           width: 6px;
         }

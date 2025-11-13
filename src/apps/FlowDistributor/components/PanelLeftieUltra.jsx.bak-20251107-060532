@@ -1,0 +1,1294 @@
+/**import { useMemo, useState } from 'react';
+
+ * 🏛️ CHRONOS - PANEL LEFTIE ULTRA PREMIUM
+
+ * import {
+
+ * Panel bancario digital con 4 tablas principales:  ArrowDownIcon,
+
+ * 1. Cuentas Leftie - Gestión de cuentas digitales  ArrowUpIcon,
+
+ * 2. Transferencias Digitales - Movimientos en tiempo real  BuildingOfficeIcon,
+
+ * 3. Productos Fintech - Innovación financiera  ChartBarIcon,
+
+ * 4. Dashboard Digital - Métricas modernas  CurrencyDollarIcon,
+
+ *   MagnifyingGlassIcon,
+
+ * Características Ultra Premium:  ShoppingBagIcon,
+
+ * - Glassmorphism moderno con efectos violeta/morado  UserIcon,
+
+ * - Animaciones 3D con parallax y mouse tracking} from '@heroicons/react/24/outline';
+
+ * - UI Fintech ultra moderna con microinteraccionesimport { AnimatePresence, motion } from 'framer-motion';
+
+ * - Banking digital con biometría y seguridad avanzada
+
+ * - API real-time con WebSocket connections// Datos completos basados en panel-leftie-manual.json
+
+ * - Responsive design optimizado para mobile-firstconst leftieData = {
+
+ * - Machine Learning para análisis de patrones  leftie: {
+
+ * - Blockchain integration para seguridad    ingresos: 1252100.0,
+
+ * - Dark mode nativo con purple/violet theme    ingresosList: [
+
+ *       {
+
+ * @version 1.0.0 - LEFTIE DIGITAL BANKING        fecha: '25/08/2025',
+
+ */        cliente: 'Lamas',
+
+        ingreso: 213000.0,
+
+import { memo, useState, useRef, useMemo, useCallback, useEffect } from 'react';        tc: 0.0,
+
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';        pesos: 0.0,
+
+import {         destino: 'Leftie',
+
+  CreditCard,         concepto: '',
+
+  Smartphone,         observaciones: 'playa azul#30 (7,100x30)',
+
+  Zap,       },
+
+  Shield,       {
+
+  TrendingUp,        fecha: '25/08/2025',
+
+  TrendingDown,        cliente: 'Lamas',
+
+  Send,         ingreso: 213000.0,
+
+  Download,         tc: 0.0,
+
+  Upload,        pesos: 0.0,
+
+  Wifi,        destino: 'Leftie',
+
+  Lock,        concepto: '',
+
+  Eye,        observaciones: 'lamas #30 playa azul',
+
+  EyeOff,      },
+
+  Brain,      {
+
+  Sparkles,        fecha: '26/08/2025',
+
+  ArrowUpRight,        cliente: 'Lamas',
+
+  ArrowDownRight,        ingreso: 280000.0,
+
+  BarChart3,        tc: 0.0,
+
+  Filter,         pesos: 0.0,
+
+  Search,         destino: 'Leftie',
+
+  RefreshCw,        concepto: '',
+
+  DollarSign,        observaciones: 'monte (7,000x40)',
+
+  Users,      },
+
+  Clock,      {
+
+  Bell,        fecha: '26/08/2025',
+
+  Settings,        cliente: 'Lamas',
+
+  Star,        ingreso: 280000.0,
+
+  CheckCircle2,        tc: 0.0,
+
+  AlertCircle        pesos: 0.0,
+
+} from 'lucide-react';        destino: 'Leftie',
+
+import PropTypes from 'prop-types';        concepto: '',
+
+        observaciones: 'lamas #40 monte',
+
+// Datos completos de Leftie Digital Banking      },
+
+const INITIAL_DATA = {      {
+
+  summary: {        fecha: '04/09/2025',
+
+    totalCuentas: 847,        cliente: 'Lamas',
+
+    saldoTotal: 12847600.0,        ingreso: 236000.0,
+
+    transferenciasHoy: 156,        tc: 0.0,
+
+    productosActivos: 23,        pesos: 0.0,
+
+    crecimientoMensual: 18.7,        destino: 'Leftie',
+
+    usuariosOnline: 234,        concepto: '',
+
+    transaccionesUltima24h: 1247,        observaciones: 'venta playa azul,monte #44 (lamas)',
+
+    ultimaActualizacion: new Date().toISOString()      },
+
+  },      {
+
+          fecha: '08/09/2025',
+
+  // Tabla 1: Cuentas Leftie        cliente: 'Abono',
+
+  cuentasLeftie: [        ingreso: 74200.0,
+
+    {        tc: 0.0,
+
+      id: 'LFT-001',        pesos: 0.0,
+
+      nombreTitular: 'Ana García Méndez',        destino: 'Leftie',
+
+      tipoCuenta: 'Leftie Premium',        concepto: '',
+
+      saldo: 485600.0,        observaciones: 'venta monte lamas resto #44',
+
+      numCuenta: '**** **** **** 2847',      },
+
+      fechaApertura: '2024-03-15',      {
+
+      estado: 'activa',        fecha: '16/09/2025',
+
+      nivelVip: 'platinum',        cliente: 'Lamas',
+
+      cashback: 2847.50,        ingreso: 70000.0,
+
+      puntosRecompensa: 15680,        tc: 0.0,
+
+      limiteTransferencia: 500000.0,        pesos: 0.0,
+
+      ultimaActividad: '2025-11-05T08:30:00Z',        destino: 'Leftie',
+
+      dispositivos: ['iPhone 15', 'MacBook Pro'],        concepto: '',
+
+      seguridadNivel: 'biometrica',        observaciones: 'abono lamas playa azul (venta local monte#23)',
+
+      notificaciones: 'push'      },
+
+    },      {
+
+    {        fecha: '20/09/2025',
+
+      id: 'LFT-002',        cliente: 'Abono',
+
+      nombreTitular: 'Carlos Rodríguez Silva',        ingreso: 99400.0,
+
+      tipoCuenta: 'Leftie Business',        tc: 0.0,
+
+      saldo: 1247800.0,        pesos: 0.0,
+
+      numCuenta: '**** **** **** 5692',        destino: 'Leftie',
+
+      fechaApertura: '2024-01-22',        concepto: '',
+
+      estado: 'activa',        observaciones: 'playa azul mg#14',
+
+      nivelVip: 'gold',      },
+
+      cashback: 6847.25,      {
+
+      puntosRecompensa: 28950,        fecha: '27/09/2025',
+
+      limiteTransferencia: 1000000.0,        cliente: 'Abono',
+
+      ultimaActividad: '2025-11-05T10:15:00Z',        ingreso: 31000.0,
+
+      dispositivos: ['Samsung Galaxy S24', 'Surface Pro'],        tc: 0.0,
+
+      seguridadNivel: 'biometrica',        pesos: 0.0,
+
+      notificaciones: 'sms+push'        destino: 'Leftie',
+
+    },        concepto: '',
+
+    {        observaciones: 'lamas playa azul',
+
+      id: 'LFT-003',      },
+
+      nombreTitular: 'María Elena Torres',      {
+
+      tipoCuenta: 'Leftie Joven',        fecha: '09/10/2025',
+
+      saldo: 85400.0,        cliente: 'Abono',
+
+      numCuenta: '**** **** **** 9381',        ingreso: 106500.0,
+
+      fechaApertura: '2024-06-10',        tc: 0.0,
+
+      estado: 'activa',        pesos: 0.0,
+
+      nivelVip: 'silver',        destino: 'Leftie',
+
+      cashback: 847.30,        concepto: '',
+
+      puntosRecompensa: 4250,        observaciones: 'venta playa azul mg #15',
+
+      limiteTransferencia: 100000.0,      },
+
+      ultimaActividad: '2025-11-05T07:45:00Z',      {
+
+      dispositivos: ['iPhone 14'],        fecha: '20/10/2025',
+
+      seguridadNivel: 'pin+biometrica',        cliente: 'Lamas',
+
+      notificaciones: 'push'        ingreso: 142000.0,
+
+    }        tc: 0.0,
+
+  ]        pesos: 0.0,
+
+};        destino: 'Leftie',
+
+        concepto: '',
+
+const PanelLeftieUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {        observaciones: 'venta playa azul lamas#20',
+
+  const [localData, setLocalData] = useState(data);      },
+
+  const [activeTable, setActiveTable] = useState('cuentas');    ],
+
+  const [searchTerm, setSearchTerm] = useState('');    rfActual: 45844.0,
+
+  const [filterStatus, setFilterStatus] = useState('all');    rfCortes: [
+
+  const [showValues, setShowValues] = useState(true);      { fecha: '25/08/2025', corte: -12500.0 },
+
+  const [modoSeguro, setModoSeguro] = useState(false);      { fecha: '08/09/2025', corte: -72300.0 },
+
+  const [notificacionesActivas, setNotificacionesActivas] = useState(true);      { fecha: '22/09/2025', corte: -67900.0 },
+
+      { fecha: '06/10/2025', corte: -36900.0 },
+
+  const containerRef = useRef(null);      { fecha: '20/10/2025', corte: 45844.0 },
+
+  const mouseX = useMotionValue(0);    ],
+
+  const mouseY = useMotionValue(0);    gastos: 1206256.0,
+
+    gastosList: [
+
+  // Smooth spring animations      {
+
+  const springConfig = { damping: 25, stiffness: 300 };        fecha: '25/08/2025',
+
+  const smoothMouseX = useSpring(mouseX, springConfig);        origen: '',
+
+  const smoothMouseY = useSpring(mouseY, springConfig);        gasto: 225500.0,
+
+        tc: 0.0,
+
+  // 3D transform calculations        dolares: 0.0,
+
+  const rotateX = useTransform(smoothMouseY, [0, 400], [8, -8]);        destino: '',
+
+  const rotateY = useTransform(smoothMouseX, [0, 400], [-8, 8]);        concepto: '',
+
+  const scale = useTransform(smoothMouseX, [0, 400], [0.98, 1.02]);        observaciones: '',
+
+      },
+
+  // Mouse tracking      {
+
+  const handleMouseMove = useCallback((e) => {        fecha: '29/08/2025',
+
+    if (!containerRef.current) return;        origen: 'Gasto Leftie',
+
+            gasto: 650000.0,
+
+    const rect = containerRef.current.getBoundingClientRect();        tc: 0.0,
+
+    const centerX = rect.left + rect.width / 2;        dolares: 0.0,
+
+    const centerY = rect.top + rect.height / 2;        destino: 'Bóveda USA',
+
+            concepto: '',
+
+    mouseX.set(e.clientX - centerX);        observaciones: 'monte F20792585K',
+
+    mouseY.set(e.clientY - centerY);      },
+
+  }, [mouseX, mouseY]);      {
+
+        fecha: '19/09/2025',
+
+  const handleMouseLeave = useCallback(() => {        origen: 'Gasto Leftie',
+
+    mouseX.set(0);        gasto: 165000.0,
+
+    mouseY.set(0);        tc: 0.0,
+
+  }, [mouseX, mouseY]);        dolares: 0.0,
+
+        destino: 'NA',
+
+  // Format currency        concepto: '',
+
+  const formatCurrency = useCallback((amount) => {        observaciones: 'sra letty-sra karla. (dany1)',
+
+    return new Intl.NumberFormat('es-MX', {      },
+
+      style: 'currency',      {
+
+      currency: 'MXN',        fecha: '13/10/2025',
+
+      minimumFractionDigits: 0,        origen: 'Gasto Leftie',
+
+      maximumFractionDigits: 0        gasto: 165756.0,
+
+    }).format(amount);        tc: 0.0,
+
+  }, []);        dolares: 0.0,
+
+        destino: 'Bóveda USA',
+
+  // Get VIP color        concepto: '',
+
+  const getVipColor = useCallback((nivel) => {        observaciones: 'monte CN9082979',
+
+    const vipMap = {      },
+
+      'platinum': 'text-purple-300 bg-purple-500/20 border-purple-500/30',    ],
+
+      'gold': 'text-yellow-300 bg-yellow-500/20 border-yellow-500/30',  },
+
+      'silver': 'text-slate-300 bg-slate-500/20 border-slate-500/30'};
+
+    };
+
+    return vipMap[nivel] || vipMap.silver;const PanelLeftieUltra = () => {
+
+  }, []);  const [searchTerm, setSearchTerm] = useState('');
+
+  const [selectedFilter, setSelectedFilter] = useState('all');
+
+  // Filtered data  const [activeTab, setActiveTab] = useState('overview');
+
+  const filteredCuentas = useMemo(() => {
+
+    return localData.cuentasLeftie.filter(cuenta => {  const data = leftieData.leftie;
+
+      const matchesSearch = cuenta.nombreTitular.toLowerCase().includes(searchTerm.toLowerCase()) ||
+
+                          cuenta.tipoCuenta.toLowerCase().includes(searchTerm.toLowerCase());  // Estadísticas calculadas
+
+      const matchesStatus = filterStatus === 'all' || cuenta.estado === filterStatus;  const stats = useMemo(() => {
+
+      return matchesSearch && matchesStatus;    const utilidadNeta = data.ingresos - data.gastos;
+
+    });    const margenUtilidad = ((utilidadNeta / data.ingresos) * 100).toFixed(1);
+
+  }, [localData.cuentasLeftie, searchTerm, filterStatus]);    const promedioIngresos = data.ingresos / data.ingresosList.length;
+
+    const promedioGastos = data.gastos / data.gastosList.length;
+
+  // Animation variants
+
+  const containerVariants = {    // Análisis de clientes
+
+    hidden: { opacity: 0, scale: 0.95 },    const clientesUnicos = [...new Set(data.ingresosList.map((item) => item.cliente))];
+
+    visible: {     const ingresosPorCliente = data.ingresosList.reduce((acc, item) => {
+
+      opacity: 1,       acc[item.cliente] = (acc[item.cliente] || 0) + item.ingreso;
+
+      scale: 1,      return acc;
+
+      transition: {    }, {});
+
+        duration: 0.6,
+
+        ease: "easeOut",    // Análisis temporal
+
+        staggerChildren: 0.1    const mejorMes = data.rfCortes.reduce(
+
+      }      (max, corte) => (corte.corte > max.corte ? corte : max),
+
+    }      data.rfCortes[0]
+
+  };    );
+
+
+
+  const itemVariants = {    const peorMes = data.rfCortes.reduce(
+
+    hidden: { opacity: 0, y: 20 },      (min, corte) => (corte.corte < min.corte ? corte : min),
+
+    visible: {       data.rfCortes[0]
+
+      opacity: 1,     );
+
+      y: 0,
+
+      transition: { duration: 0.4, ease: "easeOut" }    // Tendencia RF
+
+    }    const tendenciaRF =
+
+  };      data.rfCortes.length > 1
+
+        ? data.rfCortes[data.rfCortes.length - 1].corte -
+
+  const tableVariants = {          data.rfCortes[data.rfCortes.length - 2].corte
+
+    hidden: { opacity: 0, x: -20 },        : 0;
+
+    visible: {
+
+      opacity: 1,     return {
+
+      x: 0,      utilidadNeta,
+
+      transition: { duration: 0.5, ease: "easeOut" }      margenUtilidad,
+
+    },      promedioIngresos: promedioIngresos.toFixed(0),
+
+    exit: {       promedioGastos: promedioGastos.toFixed(0),
+
+      opacity: 0,       clientesUnicos: clientesUnicos.length,
+
+      x: 20,      ingresosPorCliente,
+
+      transition: { duration: 0.3 }      mejorMes,
+
+    }      peorMes,
+
+  };      tendenciaRF,
+
+      rotacionInventario: ((data.gastos / data.ingresos) * 100).toFixed(1),
+
+  return (    };
+
+    <motion.div  }, [data]);
+
+      ref={containerRef}
+
+      className="h-full bg-black/95 backdrop-blur-3xl border border-white/10 rounded-2xl overflow-hidden"  // Filtros de datos
+
+      style={{  const filteredIngresos = useMemo(() => {
+
+        perspective: 1000,    return data.ingresosList.filter((item) => {
+
+        rotateX,      const matchesSearch =
+
+        rotateY,        item.cliente.toLowerCase().includes(searchTerm.toLowerCase()) ||
+
+        scale        item.observaciones.toLowerCase().includes(searchTerm.toLowerCase());
+
+      }}      const matchesFilter =
+
+      onMouseMove={handleMouseMove}        selectedFilter === 'all' ||
+
+      onMouseLeave={handleMouseLeave}        (selectedFilter === 'high' && item.ingreso > 200000) ||
+
+      variants={containerVariants}        (selectedFilter === 'medium' && item.ingreso >= 100000 && item.ingreso <= 200000) ||
+
+      initial="hidden"        (selectedFilter === 'low' && item.ingreso < 100000);
+
+      animate="visible"      return matchesSearch && matchesFilter;
+
+    >    });
+
+      {/* Header Section */}  }, [data.ingresosList, searchTerm, selectedFilter]);
+
+      <motion.div
+
+        className="relative p-6 bg-gradient-to-r from-purple-900/20 via-violet-900/20 to-indigo-900/20 border-b border-white/10"  const filteredGastos = useMemo(() => {
+
+        variants={itemVariants}    return data.gastosList.filter((item) => {
+
+      >      const matchesSearch =
+
+        {/* Background Effects */}        item.observaciones.toLowerCase().includes(searchTerm.toLowerCase()) ||
+
+        <div className="absolute inset-0">        item.destino.toLowerCase().includes(searchTerm.toLowerCase());
+
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-violet-500/5 to-indigo-500/5" />      return matchesSearch;
+
+          <div className="absolute top-0 left-1/4 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl" />    });
+
+          <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-violet-500/10 rounded-full blur-2xl" />  }, [data.gastosList, searchTerm]);
+
+
+
+          {/* Floating fintech particles */}  // Animaciones
+
+          {[...Array(8)].map((_, i) => (  const containerVariants = {
+
+            <motion.div    hidden: { opacity: 0 },
+
+              key={`fintech-particle-${i + 1}`}    visible: {
+
+              className="absolute w-2 h-2 bg-purple-400/40 rounded-full"      opacity: 1,
+
+              style={{      transition: {
+
+                left: `${10 + i * 10}%`,        duration: 0.6,
+
+                top: `${20 + (i % 3) * 20}%`,        staggerChildren: 0.1,
+
+              }}      },
+
+              animate={{    },
+
+                y: [-10, 10, -10],  };
+
+                opacity: [0.3, 1, 0.3],
+
+                scale: [1, 1.4, 1],  const itemVariants = {
+
+              }}    hidden: { y: 20, opacity: 0 },
+
+              transition={{    visible: {
+
+                duration: 3 + i * 0.3,      y: 0,
+
+                repeat: Infinity,      opacity: 1,
+
+                ease: "easeInOut"      transition: { duration: 0.5 },
+
+              }}    },
+
+            />  };
+
+          ))}
+
+        </div>  const floatingAnimation = {
+
+    y: [0, -10, 0],
+
+        <div className="relative z-10">    transition: {
+
+          {/* Title and Summary */}      duration: 3,
+
+          <div className="flex items-center justify-between mb-6">      repeat: Infinity,
+
+            <div className="flex items-center space-x-4">      ease: 'easeInOut',
+
+              <motion.div    },
+
+                className="p-3 bg-gradient-to-br from-purple-500/20 to-violet-500/20 rounded-xl backdrop-blur-sm border border-white/10"  };
+
+                whileHover={{ scale: 1.05, rotate: 5 }}
+
+                transition={{ duration: 0.3 }}  return (
+
+              >    <motion.div
+
+                <Smartphone className="w-8 h-8 text-purple-400" />      className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 p-6"
+
+              </motion.div>      variants={containerVariants}
+
+                    initial="hidden"
+
+              <div>      animate="visible"
+
+                <h2 className="text-2xl font-bold text-white mb-1">    >
+
+                  Leftie Digital Banking      {/* Header Premium */}
+
+                </h2>      <motion.div className="mb-8" variants={itemVariants}>
+
+                <p className="text-slate-400 text-sm">        <div className="bg-white/80 backdrop-blur-lg rounded-3xl p-8 shadow-2xl border border-white/20">
+
+                  Fintech avanzado con IA y blockchain          <div className="flex items-center justify-between">
+
+                </p>            <div className="flex items-center space-x-4">
+
+              </div>              <motion.div
+
+            </div>                className="bg-gradient-to-r from-purple-500 to-pink-600 p-4 rounded-2xl"
+
+                animate={floatingAnimation}
+
+            {/* Summary Cards */}              >
+
+            <div className="grid grid-cols-3 gap-4">                <ShoppingBagIcon className="w-8 h-8 text-white" />
+
+              <motion.div              </motion.div>
+
+                className="text-right p-3 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm"              <div>
+
+                whileHover={{ scale: 1.02 }}                <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+
+              >                  Leftie Ultra
+
+                <div className="text-slate-400 text-sm mb-1">Cuentas Activas</div>                </h1>
+
+                <div className="text-2xl font-bold text-white">                <p className="text-gray-600 text-lg">Operaciones comerciales especializadas</p>
+
+                  {localData.summary.totalCuentas.toLocaleString()}              </div>
+
+                </div>            </div>
+
+                <div className="flex items-center text-purple-400 text-sm mt-1">            <div className="flex items-center space-x-4">
+
+                  <Users className="w-3 h-3 mr-1" />              <motion.div className="text-right" whileHover={{ scale: 1.05 }}>
+
+                  {localData.summary.usuariosOnline} online                <div
+
+                </div>                  className={`text-3xl font-bold ${data.rfActual >= 0 ? 'text-green-600' : 'text-red-600'}`}
+
+              </motion.div>                >
+
+                  ${data.rfActual.toLocaleString()}
+
+              <motion.div                </div>
+
+                className="text-right p-3 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm"                <div className="text-sm text-gray-500">RF Actual</div>
+
+                whileHover={{ scale: 1.02 }}              </motion.div>
+
+              >            </div>
+
+                <div className="text-slate-400 text-sm mb-1">Saldo Total</div>          </div>
+
+                <div className="text-2xl font-bold text-white">        </div>
+
+                  {showValues ? formatCurrency(localData.summary.saldoTotal) : '••••••••'}      </motion.div>
+
+                </div>
+
+                <div className="flex items-center text-green-400 text-sm mt-1">      {/* Métricas Principales */}
+
+                  <TrendingUp className="w-3 h-3 mr-1" />      <motion.div
+
+                  +{localData.summary.crecimientoMensual}% mensual        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
+
+                </div>        variants={itemVariants}
+
+              </motion.div>      >
+
+        {[
+
+              <motion.div          {
+
+                className="text-right p-3 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm"            title: 'Ingresos Totales',
+
+                whileHover={{ scale: 1.02 }}            value: `$${data.ingresos.toLocaleString()}`,
+
+              >            icon: ArrowUpIcon,
+
+                <div className="flex items-center justify-between mb-1">            color: 'from-green-500 to-emerald-600',
+
+                  <span className="text-slate-400 text-sm">Transacciones 24h</span>            bgColor: 'from-green-50 to-emerald-50',
+
+                  <motion.button          },
+
+                    onClick={() => setShowValues(!showValues)}          {
+
+                    className="text-slate-400 hover:text-white transition-colors"            title: 'Gastos Totales',
+
+                    whileHover={{ scale: 1.1 }}            value: `$${data.gastos.toLocaleString()}`,
+
+                    whileTap={{ scale: 0.9 }}            icon: ArrowDownIcon,
+
+                  >            color: 'from-red-500 to-rose-600',
+
+                    {showValues ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}            bgColor: 'from-red-50 to-rose-50',
+
+                  </motion.button>          },
+
+                </div>          {
+
+                <div className="text-2xl font-bold text-white">            title: 'Utilidad Neta',
+
+                  {localData.summary.transaccionesUltima24h.toLocaleString()}            value: `$${stats.utilidadNeta.toLocaleString()}`,
+
+                </div>            icon: CurrencyDollarIcon,
+
+                <div className="flex items-center text-violet-400 text-sm mt-1">            color:
+
+                  <Zap className="w-3 h-3 mr-1" />              stats.utilidadNeta >= 0 ? 'from-blue-500 to-indigo-600' : 'from-red-500 to-rose-600',
+
+                  {localData.summary.transferenciasHoy} hoy            bgColor:
+
+                </div>              stats.utilidadNeta >= 0 ? 'from-blue-50 to-indigo-50' : 'from-red-50 to-rose-50',
+
+              </motion.div>          },
+
+            </div>          {
+
+          </div>            title: 'Margen Utilidad',
+
+            value: `${stats.margenUtilidad}%`,
+
+          {/* Security Bar */}            icon: ChartBarIcon,
+
+          <motion.div            color: 'from-purple-500 to-violet-600',
+
+            className="p-4 bg-gradient-to-r from-purple-500/10 to-violet-500/10 rounded-xl border border-purple-500/20 backdrop-blur-sm"            bgColor: 'from-purple-50 to-violet-50',
+
+            initial={{ opacity: 0, y: -10 }}          },
+
+            animate={{ opacity: 1, y: 0 }}        ].map((metric) => {
+
+            transition={{ delay: 0.5 }}          const Icon = metric.icon;
+
+          >          return (
+
+            <div className="flex items-center justify-between">            <motion.div
+
+              <div className="flex items-center space-x-3">              key={metric.title}
+
+                <motion.div              className={`bg-gradient-to-br ${metric.bgColor} rounded-2xl p-6 shadow-lg border border-white/20`}
+
+                  animate={{ scale: [1, 1.2, 1] }}              whileHover={{ scale: 1.02, y: -5 }}
+
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}              transition={{ duration: 0.2 }}
+
+                >            >
+
+                  <Shield className="w-5 h-5 text-purple-400" />              <div className="flex items-center justify-between">
+
+                </motion.div>                <div>
+
+                <span className="text-white font-medium">Seguridad Biométrica Activa</span>                  <p className="text-gray-600 text-sm font-medium">{metric.title}</p>
+
+                <span className="px-2 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs">                  <p className="text-2xl font-bold text-gray-800 mt-2">{metric.value}</p>
+
+                  99.8% secure                </div>
+
+                </span>                <motion.div
+
+              </div>                  className={`bg-gradient-to-r ${metric.color} p-3 rounded-xl`}
+
+                                animate={floatingAnimation}
+
+              <div className="flex items-center space-x-4">                >
+
+                <div className="flex items-center space-x-2">                  <Icon className="w-6 h-6 text-white" />
+
+                  <Bell className={`w-4 h-4 ${notificacionesActivas ? 'text-green-400' : 'text-slate-400'}`} />                </motion.div>
+
+                  <span className="text-slate-300 text-sm">              </div>
+
+                    Notificaciones {notificacionesActivas ? 'ON' : 'OFF'}            </motion.div>
+
+                  </span>          );
+
+                </div>        })}
+
+                <motion.button      </motion.div>
+
+                  className="p-1 text-purple-400 hover:text-purple-300"
+
+                  whileHover={{ scale: 1.1 }}      {/* Controles */}
+
+                  onClick={() => setModoSeguro(!modoSeguro)}      <motion.div
+
+                >        className="bg-white/80 backdrop-blur-lg rounded-2xl p-6 mb-8 shadow-xl border border-white/20"
+
+                  <Lock className="w-4 h-4" />        variants={itemVariants}
+
+                </motion.button>      >
+
+              </div>        <div className="flex flex-wrap items-center justify-between gap-4">
+
+            </div>          <div className="flex items-center space-x-4">
+
+          </motion.div>            <div className="relative">
+
+        </div>              <MagnifyingGlassIcon className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+
+      </motion.div>              <input
+
+                type="text"
+
+      {/* Navigation Tabs */}                placeholder="Buscar transacciones..."
+
+      <motion.div                className="pl-10 pr-4 py-2 bg-white rounded-lg border border-gray-200 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+
+        className="px-6 py-4 bg-black/40 border-b border-white/10"                value={searchTerm}
+
+        variants={itemVariants}                onChange={(e) => setSearchTerm(e.target.value)}
+
+      >              />
+
+        <div className="flex items-center justify-between">            </div>
+
+          {/* Table Tabs */}            <select
+
+          <div className="flex space-x-1 bg-white/5 p-1 rounded-xl">              className="px-4 py-2 bg-white rounded-lg border border-gray-200 focus:ring-2 focus:ring-purple-500"
+
+            {[              value={selectedFilter}
+
+              { id: 'cuentas', label: 'Cuentas Leftie', icon: CreditCard },              onChange={(e) => setSelectedFilter(e.target.value)}
+
+              { id: 'transferencias', label: 'Transferencias', icon: Send },            >
+
+              { id: 'productos', label: 'Productos Fintech', icon: Sparkles },              <option value="all">Todos los montos</option>
+
+              { id: 'dashboard', label: 'Dashboard Digital', icon: BarChart3 }              <option value="high">Alto (&gt;$200,000)</option>
+
+            ].map(({ id, label, icon: Icon }) => (              <option value="medium">Medio ($100,000-$200,000)</option>
+
+              <motion.button              <option value="low">Bajo (&lt;$100,000)</option>
+
+                key={id}            </select>
+
+                onClick={() => setActiveTable(id)}          </div>
+
+                className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${          <div className="flex items-center space-x-2">
+
+                  activeTable === id            {['overview', 'ingresos', 'gastos', 'analytics'].map((tab) => (
+
+                    ? 'bg-purple-500/20 text-purple-400 shadow-lg'              <motion.button
+
+                    : 'text-slate-400 hover:text-white hover:bg-white/5'                key={tab}
+
+                }`}                className={`px-4 py-2 rounded-lg font-medium transition-all ${
+
+                whileHover={{ scale: 1.02 }}                  activeTab === tab
+
+                whileTap={{ scale: 0.98 }}                    ? 'bg-purple-500 text-white shadow-lg'
+
+              >                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+
+                <Icon className="w-4 h-4" />                }`}
+
+                <span className="hidden sm:inline">{label}</span>                onClick={() => setActiveTab(tab)}
+
+              </motion.button>                whileHover={{ scale: 1.05 }}
+
+            ))}                whileTap={{ scale: 0.95 }}
+
+          </div>              >
+
+                {tab.charAt(0).toUpperCase() + tab.slice(1)}
+
+          {/* Controls */}              </motion.button>
+
+          <div className="flex items-center space-x-2">            ))}
+
+            {/* Search */}          </div>
+
+            <div className="relative">        </div>
+
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4" />      </motion.div>
+
+              <input
+
+                type="text"      {/* Contenido Principal */}
+
+                placeholder="Buscar cuentas..."      <AnimatePresence mode="wait">
+
+                value={searchTerm}        {activeTab === 'overview' && (
+
+                onChange={(e) => setSearchTerm(e.target.value)}          <motion.div
+
+                className="pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500/50 w-64"            key="overview"
+
+              />            initial={{ opacity: 0, y: 20 }}
+
+            </div>            animate={{ opacity: 1, y: 0 }}
+
+            exit={{ opacity: 0, y: -20 }}
+
+            {/* Export */}            className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+
+            <motion.button          >
+
+              className="p-2 bg-white/5 hover:bg-white/10 rounded-lg text-slate-400 hover:text-white transition-colors"            {/* RF Histórico */}
+
+              whileHover={{ scale: 1.05 }}            <div className="bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-white/20">
+
+              whileTap={{ scale: 0.95 }}              <h3 className="text-xl font-bold text-gray-800 mb-4">RF Histórico</h3>
+
+            >              <div className="space-y-3">
+
+              <Download className="w-4 h-4" />                {data.rfCortes.map((corte, index) => (
+
+            </motion.button>                  <motion.div
+
+          </div>                    key={corte.fecha}
+
+        </div>                    className={`flex items-center justify-between p-3 rounded-lg ${
+
+      </motion.div>                      corte.corte >= 0 ? 'bg-green-50' : 'bg-red-50'
+
+                    }`}
+
+      {/* Content Area - Tabla de Cuentas Leftie */}                    initial={{ opacity: 0, x: -20 }}
+
+      <div className="flex-1 p-6 overflow-hidden">                    animate={{ opacity: 1, x: 0 }}
+
+        <AnimatePresence mode="wait">                    transition={{ delay: index * 0.1 }}
+
+          {activeTable === 'cuentas' && (                  >
+
+            <motion.div                    <span className="text-gray-600">{corte.fecha}</span>
+
+              key="cuentas"                    <span
+
+              variants={tableVariants}                      className={`font-bold ${corte.corte >= 0 ? 'text-green-600' : 'text-red-600'}`}
+
+              initial="hidden"                    >
+
+              animate="visible"                      ${corte.corte.toLocaleString()}
+
+              exit="exit"                    </span>
+
+              className="h-full"                  </motion.div>
+
+            >                ))}
+
+              <div className="bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm overflow-hidden">              </div>
+
+                {/* Table Header */}            </div>
+
+                <div className="px-6 py-4 bg-white/5 border-b border-white/10">
+
+                  <div className="grid grid-cols-9 gap-4 text-sm font-semibold text-slate-300">            {/* Distribución por Cliente */}
+
+                    <div>Titular</div>            <div className="bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-white/20">
+
+                    <div>Tipo de Cuenta</div>              <h3 className="text-xl font-bold text-gray-800 mb-4">Ingresos por Cliente</h3>
+
+                    <div>Saldo</div>              <div className="space-y-4">
+
+                    <div>Nivel VIP</div>                {Object.entries(stats.ingresosPorCliente).map(([cliente, monto]) => (
+
+                    <div>Cashback</div>                  <motion.div
+
+                    <div>Puntos</div>                    key={cliente}
+
+                    <div>Dispositivos</div>                    className="flex items-center justify-between p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg"
+
+                    <div>Seguridad</div>                    initial={{ opacity: 0, x: 20 }}
+
+                    <div>Actividad</div>                    animate={{ opacity: 1, x: 0 }}
+
+                  </div>                  >
+
+                </div>                    <div className="flex items-center space-x-3">
+
+                      <div className="bg-purple-500 p-2 rounded-lg">
+
+                {/* Table Body */}                        {cliente === 'Lamas' ? (
+
+                <div className="max-h-96 overflow-y-auto">                          <BuildingOfficeIcon className="w-5 h-5 text-white" />
+
+                  {filteredCuentas.map((cuenta, index) => {                        ) : (
+
+                    const vipColor = getVipColor(cuenta.nivelVip);                          <UserIcon className="w-5 h-5 text-white" />
+
+                                            )}
+
+                    return (                      </div>
+
+                      <motion.div                      <span className="font-medium text-gray-800">{cliente}</span>
+
+                        key={cuenta.id}                    </div>
+
+                        initial={{ opacity: 0, x: -20 }}                    <span className="font-bold text-purple-600">${monto.toLocaleString()}</span>
+
+                        animate={{ opacity: 1, x: 0 }}                  </motion.div>
+
+                        transition={{ delay: index * 0.05 }}                ))}
+
+                        className="px-6 py-4 border-b border-white/5 hover:bg-white/5 transition-colors"              </div>
+
+                      >            </div>
+
+                        <div className="grid grid-cols-9 gap-4 items-center text-sm">          </motion.div>
+
+                          <div className="text-white font-medium">        )}
+
+                            {cuenta.nombreTitular}
+
+                            <div className="text-xs text-slate-400 mt-1 font-mono">        {activeTab === 'ingresos' && (
+
+                              {cuenta.numCuenta}          <motion.div
+
+                            </div>            key="ingresos"
+
+                          </div>            initial={{ opacity: 0, y: 20 }}
+
+                                      animate={{ opacity: 1, y: 0 }}
+
+                          <div className="text-purple-400 font-semibold">            exit={{ opacity: 0, y: -20 }}
+
+                            {cuenta.tipoCuenta}          >
+
+                            <div className="text-xs text-slate-400 mt-1">            <div className="bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-white/20">
+
+                              Desde {new Date(cuenta.fechaApertura).toLocaleDateString()}              <h3 className="text-xl font-bold text-gray-800 mb-4">Detalle de Ingresos</h3>
+
+                            </div>              <div className="overflow-x-auto">
+
+                          </div>                <table className="w-full">
+
+                                            <thead>
+
+                          <div className="text-green-400 font-bold">                    <tr className="border-b border-gray-200">
+
+                            {showValues ? formatCurrency(cuenta.saldo) : '••••••'}                      <th className="text-left py-3 px-4 font-semibold text-gray-700">Fecha</th>
+
+                            <div className="text-xs text-slate-400 mt-1">                      <th className="text-left py-3 px-4 font-semibold text-gray-700">Cliente</th>
+
+                              Límite: {formatCurrency(cuenta.limiteTransferencia)}                      <th className="text-left py-3 px-4 font-semibold text-gray-700">Ingreso</th>
+
+                            </div>                      <th className="text-left py-3 px-4 font-semibold text-gray-700">
+
+                          </div>                        Observaciones
+
+                                                </th>
+
+                          <div>                    </tr>
+
+                            <span className={`px-2 py-1 rounded-full text-xs border ${vipColor}`}>                  </thead>
+
+                              {cuenta.nivelVip.toUpperCase()}                  <tbody>
+
+                            </span>                    {filteredIngresos.map((ingreso, index) => (
+
+                          </div>                      <motion.tr
+
+                                                  key={`${ingreso.fecha}-${index}`}
+
+                          <div className="text-yellow-400 font-medium">                        className="border-b border-gray-100 hover:bg-gray-50"
+
+                            {formatCurrency(cuenta.cashback)}                        initial={{ opacity: 0, y: 10 }}
+
+                            <div className="text-xs text-slate-400 mt-1">                        animate={{ opacity: 1, y: 0 }}
+
+                              Acumulado                        transition={{ delay: index * 0.05 }}
+
+                            </div>                      >
+
+                          </div>                        <td className="py-3 px-4 text-gray-600">{ingreso.fecha}</td>
+
+                                                  <td className="py-3 px-4 font-medium text-gray-800">{ingreso.cliente}</td>
+
+                          <div className="text-orange-400 font-medium">                        <td className="py-3 px-4 text-green-600 font-bold">
+
+                            {cuenta.puntosRecompensa.toLocaleString()}                          ${ingreso.ingreso.toLocaleString()}
+
+                            <div className="text-xs text-slate-400 mt-1 flex items-center">                        </td>
+
+                              <Star className="w-3 h-3 mr-1" />                        <td className="py-3 px-4 text-gray-600 text-sm">{ingreso.observaciones}</td>
+
+                              Puntos                      </motion.tr>
+
+                            </div>                    ))}
+
+                          </div>                  </tbody>
+
+                                          </table>
+
+                          <div className="text-slate-300">              </div>
+
+                            {cuenta.dispositivos.length} dispositivos            </div>
+
+                            <div className="text-xs text-slate-400 mt-1">          </motion.div>
+
+                              {cuenta.dispositivos[0]}        )}
+
+                            </div>
+
+                          </div>        {activeTab === 'gastos' && (
+
+                                    <motion.div
+
+                          <div>            key="gastos"
+
+                            <div className="flex items-center space-x-1">            initial={{ opacity: 0, y: 20 }}
+
+                              <Shield className="w-3 h-3 text-green-400" />            animate={{ opacity: 1, y: 0 }}
+
+                              <span className="text-green-400 text-xs">            exit={{ opacity: 0, y: -20 }}
+
+                                {cuenta.seguridadNivel}          >
+
+                              </span>            <div className="bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-white/20">
+
+                            </div>              <h3 className="text-xl font-bold text-gray-800 mb-4">Detalle de Gastos</h3>
+
+                          </div>              <div className="overflow-x-auto">
+
+                                          <table className="w-full">
+
+                          <div className="text-slate-300">                  <thead>
+
+                            <div className="text-xs">                    <tr className="border-b border-gray-200">
+
+                              {new Date(cuenta.ultimaActividad).toLocaleTimeString()}                      <th className="text-left py-3 px-4 font-semibold text-gray-700">Fecha</th>
+
+                            </div>                      <th className="text-left py-3 px-4 font-semibold text-gray-700">Origen</th>
+
+                            <div className="text-xs text-slate-400 mt-1 flex items-center">                      <th className="text-left py-3 px-4 font-semibold text-gray-700">Gasto</th>
+
+                              <Wifi className="w-3 h-3 mr-1" />                      <th className="text-left py-3 px-4 font-semibold text-gray-700">Destino</th>
+
+                              Online                      <th className="text-left py-3 px-4 font-semibold text-gray-700">
+
+                            </div>                        Observaciones
+
+                          </div>                      </th>
+
+                        </div>                    </tr>
+
+                      </motion.div>                  </thead>
+
+                    );                  <tbody>
+
+                  })}                    {filteredGastos.map((gasto, index) => (
+
+                </div>                      <motion.tr
+
+              </div>                        key={`${gasto.fecha}-${index}`}
+
+            </motion.div>                        className="border-b border-gray-100 hover:bg-gray-50"
+
+          )}                        initial={{ opacity: 0, y: 10 }}
+
+                        animate={{ opacity: 1, y: 0 }}
+
+          {/* Placeholder para otras tablas */}                        transition={{ delay: index * 0.05 }}
+
+          {activeTable !== 'cuentas' && (                      >
+
+            <motion.div                        <td className="py-3 px-4 text-gray-600">{gasto.fecha}</td>
+
+              key={activeTable}                        <td className="py-3 px-4 font-medium text-gray-800">{gasto.origen}</td>
+
+              variants={tableVariants}                        <td className="py-3 px-4 text-red-600 font-bold">
+
+              initial="hidden"                          ${gasto.gasto.toLocaleString()}
+
+              animate="visible"                        </td>
+
+              exit="exit"                        <td className="py-3 px-4 text-gray-600">{gasto.destino}</td>
+
+              className="h-full flex items-center justify-center"                        <td className="py-3 px-4 text-gray-600 text-sm">{gasto.observaciones}</td>
+
+            >                      </motion.tr>
+
+              <div className="text-center">                    ))}
+
+                <Smartphone className="w-16 h-16 text-purple-400 mx-auto mb-4" />                  </tbody>
+
+                <h3 className="text-xl font-bold text-white mb-2">                </table>
+
+                  {activeTable === 'transferencias' ? 'Transferencias Digitales en Tiempo Real' :              </div>
+
+                   activeTable === 'productos' ? 'Productos Fintech Avanzados' : 'Dashboard Digital Ejecutivo'}            </div>
+
+                </h3>          </motion.div>
+
+                <p className="text-slate-400">        )}
+
+                  Panel fintech con funcionalidades de banca digital moderna
+
+                </p>        {activeTab === 'analytics' && (
+
+              </div>          <motion.div
+
+            </motion.div>            key="analytics"
+
+          )}            initial={{ opacity: 0, y: 20 }}
+
+        </AnimatePresence>            animate={{ opacity: 1, y: 0 }}
+
+      </div>            exit={{ opacity: 0, y: -20 }}
+
+    </motion.div>            className="grid grid-cols-1 lg:grid-cols-3 gap-8"
+
+  );          >
+
+});            <div className="bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-white/20">
+
+              <h3 className="text-xl font-bold text-gray-800 mb-4">Análisis de Rendimiento</h3>
+
+PanelLeftieUltra.displayName = 'PanelLeftieUltra';              <div className="space-y-4">
+
+                <div className="flex justify-between">
+
+PanelLeftieUltra.propTypes = {                  <span className="text-gray-600">Clientes Únicos</span>
+
+  data: PropTypes.object,                  <span className="font-bold text-purple-600">{stats.clientesUnicos}</span>
+
+  onDataChange: PropTypes.func                </div>
+
+};                <div className="flex justify-between">
+
+                  <span className="text-gray-600">Promedio Ingresos</span>
+
+export default PanelLeftieUltra;                  <span className="font-bold text-green-600">${stats.promedioIngresos}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Promedio Gastos</span>
+                  <span className="font-bold text-red-600">${stats.promedioGastos}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Rotación</span>
+                  <span className="font-bold text-blue-600">{stats.rotacionInventario}%</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-white/20">
+              <h3 className="text-xl font-bold text-gray-800 mb-4">Tendencias</h3>
+              <div className="space-y-4">
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Mejor Mes</span>
+                  <span className="font-bold text-green-600">
+                    ${stats.mejorMes?.corte.toLocaleString()}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Peor Mes</span>
+                  <span className="font-bold text-red-600">
+                    ${stats.peorMes?.corte.toLocaleString()}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Tendencia RF</span>
+                  <span
+                    className={`font-bold ${stats.tendenciaRF >= 0 ? 'text-green-600' : 'text-red-600'}`}
+                  >
+                    {stats.tendenciaRF >= 0 ? '+' : ''}${stats.tendenciaRF.toLocaleString()}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-white/20">
+              <h3 className="text-xl font-bold text-gray-800 mb-4">Estado Operativo</h3>
+              <div className="space-y-4">
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Margen Utilidad</span>
+                  <span
+                    className={`font-bold ${parseFloat(stats.margenUtilidad) >= 0 ? 'text-green-600' : 'text-red-600'}`}
+                  >
+                    {stats.margenUtilidad}%
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Estado</span>
+                  <span
+                    className={`font-bold ${data.rfActual >= 0 ? 'text-green-600' : 'text-orange-600'}`}
+                  >
+                    {data.rfActual >= 0 ? 'Positivo' : 'Recuperación'}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+};
+
+export default PanelLeftieUltra;

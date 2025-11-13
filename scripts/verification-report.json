@@ -1,0 +1,89 @@
+{
+  "timestamp": "2025-10-23T21:51:24.518Z",
+  "totalErrors": 11,
+  "status": "FAIL",
+  "details": [
+    {
+      "description": "Distribuidores únicos",
+      "sheetName": "Distribuidores",
+      "excelCount": 6,
+      "reportCount": 2,
+      "difference": -4
+    },
+    {
+      "description": "Ventas (cols 0-11)",
+      "sheetName": "Control_Maestro",
+      "excelCount": 998,
+      "reportCount": 72,
+      "difference": -926
+    },
+    {
+      "description": "Gastos y Abonos (cols 14-21)",
+      "sheetName": "Control_Maestro",
+      "excelCount": 994,
+      "reportCount": 96,
+      "difference": -898
+    },
+    {
+      "description": "Movimientos de Almacén",
+      "sheetName": "Almacen_Monte",
+      "excelCount": 96,
+      "reportCount": 9,
+      "difference": -87
+    },
+    {
+      "description": "Transacciones Bóveda Monte",
+      "sheetName": "Bóveda_Monte",
+      "excelCount": 69,
+      "reportCount": 95,
+      "difference": 26
+    },
+    {
+      "description": "Transacciones Bóveda USA",
+      "sheetName": "Bóveda_USA",
+      "excelCount": 49,
+      "reportCount": 20,
+      "difference": -29
+    },
+    {
+      "description": "Transacciones Utilidades",
+      "sheetName": "Utilidades",
+      "excelCount": 52,
+      "reportCount": 62,
+      "difference": 10
+    },
+    {
+      "description": "Transacciones Flete Sur",
+      "sheetName": "Flete_Sur",
+      "excelCount": 103,
+      "reportCount": 121,
+      "difference": 18
+    },
+    {
+      "description": "Transacciones Banco Azteca",
+      "sheetName": "Azteca",
+      "excelCount": 25,
+      "reportCount": 6,
+      "difference": -19
+    },
+    {
+      "description": "Clientes",
+      "sheetName": "Clientes",
+      "excelCount": 197,
+      "reportCount": 31,
+      "difference": -166
+    },
+    {
+      "description": "Datos Auxiliares",
+      "sheetName": "DATA",
+      "excelCount": 91,
+      "reportCount": 83,
+      "difference": -8
+    }
+  ],
+  "summary": {
+    "totalRecords": 671,
+    "balanceTotal": 12861332.12,
+    "verified": false
+  }
+}

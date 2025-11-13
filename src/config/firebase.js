@@ -6,56 +6,16 @@
  */
 import { getAnalytics, logEvent, setUserProperties } from 'firebase/analytics';
 import { initializeApp } from 'firebase/app';
-import {
-  GoogleAuthProvider,
-  createUserWithEmailAndPassword,
-  getAuth,
-  onAuthStateChanged,
-  sendPasswordResetEmail,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  signOut,
-  updateProfile,
-} from 'firebase/auth';
-import {
-  Timestamp,
-  arrayRemove,
-  arrayUnion,
-  collection,
-  deleteDoc,
-  doc,
-  enableIndexedDbPersistence,
-  enableMultiTabIndexedDbPersistence,
-  getDoc,
-  getDocs,
-  getFirestore,
-  increment,
-  limit,
-  onSnapshot,
-  orderBy,
-  query,
-  runTransaction,
-  serverTimestamp,
-  setDoc,
-  startAfter,
-  updateDoc,
-  where,
-  writeBatch,
-} from 'firebase/firestore';
-import { connectFunctionsEmulator, getFunctions, httpsCallable } from 'firebase/functions';
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import { Timestamp, arrayRemove, arrayUnion, collection, deleteDoc, doc, enableMultiTabIndexedDbPersistence, getDoc, getDocs, getFirestore, increment, limit, onSnapshot, orderBy, query, runTransaction, serverTimestamp, setDoc, startAfter, updateDoc, where, writeBatch } from 'firebase/firestore';
+import { getFunctions, httpsCallable } from 'firebase/functions';
 import { getPerformance, trace } from 'firebase/performance';
 import { fetchAndActivate, getAll, getRemoteConfig, getValue } from 'firebase/remote-config';
-import {
-  deleteObject,
-  getDownloadURL,
-  getMetadata,
-  getStorage,
-  listAll,
-  ref,
-  updateMetadata,
-  uploadBytes,
-  uploadBytesResumable,
-} from 'firebase/storage';
+import { deleteObject, getDownloadURL, getMetadata, getStorage, listAll, ref, updateMetadata, uploadBytes, uploadBytesResumable } from 'firebase/storage';
+
+
+
+
 
 // ============================================
 // CONFIGURACIÓN DE FIREBASE
@@ -79,7 +39,16 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
-export const functions = getFunctions(app);
+
+// Functions es opcional (requiere plan Blaze)
+let functions = null;
+try {
+  functions = getFunctions(app);
+} catch (error) {
+  console.warn('Firebase Functions no disponible (requiere plan Blaze):', error.message);
+}
+export { functions };
+
 export const remoteConfig = getRemoteConfig(app);
 
 // Analytics y Performance (solo en producción)
@@ -450,6 +419,10 @@ export class PerformanceManager {
 export class FunctionsManager {
   // Llamar función
   async call(functionName, data = {}) {
+    if (!functions) {
+      console.warn('Firebase Functions no está disponible. Esta funcionalidad requiere plan Blaze.');
+      return { success: false, error: 'Functions not available' };
+    }
     const callable = httpsCallable(functions, functionName);
     const result = await callable(data);
     return result.data;
@@ -546,48 +519,19 @@ export const remoteConfigManager = new RemoteConfigManager();
 // ============================================
 
 export {
-  // Firestore utilities
-  collection,
-  doc,
-  setDoc,
-  getDoc,
-  getDocs,
-  updateDoc,
-  deleteDoc,
-  query,
-  where,
-  orderBy,
-  limit,
-  startAfter,
-  writeBatch,
-  runTransaction,
-  Timestamp,
-  serverTimestamp,
-  increment,
-  arrayUnion,
-  arrayRemove,
-  onSnapshot,
-
-  // Storage utilities
-  ref as storageRef,
-  uploadBytes,
-  uploadBytesResumable,
-  getDownloadURL,
-  deleteObject,
-
-  // Auth utilities
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  signOut as firebaseSignOut,
-  onAuthStateChanged,
-  GoogleAuthProvider,
-  signInWithPopup,
-
-  // Functions utilities
-  httpsCallable,
-
-  // App
-  app,
+    GoogleAuthProvider, Timestamp,
+    // App
+    app, arrayRemove, arrayUnion,
+    // Firestore utilities
+    collection, createUserWithEmailAndPassword, deleteDoc, deleteObject, doc, signOut as firebaseSignOut, getDoc,
+    getDocs, getDownloadURL,
+    // Functions utilities
+    httpsCallable, increment, limit, onAuthStateChanged, onSnapshot, orderBy, query, runTransaction, serverTimestamp, setDoc,
+    // Auth utilities
+    signInWithEmailAndPassword, signInWithPopup, startAfter,
+    // Storage utilities
+    ref as storageRef, updateDoc, uploadBytes,
+    uploadBytesResumable, where, writeBatch
 };
 
 export default app;

@@ -1,0 +1,356 @@
+name: 🏥 Health Check & System Monitoring
+
+on:
+  schedule:
+    # Cada hora
+    - cron: '0 * * * *'
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to check'
+        required: true
+        type: choice
+        options:
+          - production
+          - staging
+          - development
+        default: 'production'
+      deep_check:
+        description: 'Realizar verificación profunda'
+        required: false
+        type: boolean
+        default: false
+
+env:
+  NODE_VERSION: '20.x'
+
+jobs:
+  health-check:
+    name: 🏥 System Health Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: 🔐 Setup credentials
+        run: |
+                    echo "FIREBASE_API_KEY=${{ secrets.VITE_FIREBASE_API_KEY }}" >> $GITHUB_ENV
+          echo "FIREBASE_AUTH_DOMAIN=${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}" >> $GITHUB_ENV
+          echo "FIREBASE_PROJECT_ID=${{ secrets.VITE_FIREBASE_PROJECT_ID }}" >> $GITHUB_ENV
+          echo "FIREBASE_STORAGE_BUCKET=${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}" >> $GITHUB_ENV
+          echo "FIREBASE_MESSAGING_SENDER_ID=${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}" >> $GITHUB_ENV
+          echo "FIREBASE_APP_ID=${{ secrets.VITE_FIREBASE_APP_ID }}" >> $GITHUB_ENV
+          echo "GOOGLE_APPLICATION_CREDENTIALS=firebase-credentials.json" >> $GITHUB_ENV
+
+      - name: 🏥 Check Firestore health
+        id: firestore
+        run: |
+          STATUS=$(npm run health:firestore -- --json | jq -r '.status')
+          LATENCY=$(npm run health:firestore -- --json | jq -r '.latency')
+          echo "status=$STATUS" >> $GITHUB_OUTPUT
+          echo "latency=$LATENCY" >> $GITHUB_OUTPUT
+
+          if [ "$STATUS" != "healthy" ]; then
+            echo "❌ Firestore health check failed"
+            exit 1
+          fi
+
+      - name: 🔐 Check Firebase Auth
+        id: auth
+        run: |
+          STATUS=$(npm run health:auth -- --json | jq -r '.status')
+          echo "status=$STATUS" >> $GITHUB_OUTPUT
+
+          if [ "$STATUS" != "healthy" ]; then
+            echo "❌ Auth health check failed"
+            exit 1
+          fi
+
+      - name: 📦 Check Storage
+        id: storage
+        run: |
+          STATUS=$(npm run health:storage -- --json | jq -r '.status')
+          USAGE=$(npm run health:storage -- --json | jq -r '.usage_percent')
+          echo "status=$STATUS" >> $GITHUB_OUTPUT
+          echo "usage=$USAGE" >> $GITHUB_OUTPUT
+
+          if [ "$STATUS" != "healthy" ]; then
+            echo "❌ Storage health check failed"
+            exit 1
+          fi
+
+      - name: 🌐 Check API endpoints
+        id: api
+        run: |
+          npm run health:api -- --environment=${{ github.event.inputs.environment || 'production' }} > api-health.json
+
+          STATUS=$(jq -r '.overall_status' api-health.json)
+          FAILED=$(jq -r '.failed_endpoints | length' api-health.json)
+
+          echo "status=$STATUS" >> $GITHUB_OUTPUT
+          echo "failed=$FAILED" >> $GITHUB_OUTPUT
+
+          if [ "$STATUS" != "healthy" ]; then
+            echo "❌ API health check failed"
+            cat api-health.json
+            exit 1
+          fi
+
+      - name: 🔍 Check database indexes
+        if: github.event.inputs.deep_check == 'true'
+        run: npm run health:indexes
+
+      - name: 📊 Check data consistency
+        if: github.event.inputs.deep_check == 'true'
+        run: npm run health:data-consistency
+
+      - name: 📈 Generate health report
+        run: |
+          mkdir -p reports/health
+          cat > reports/health/report-$(date +%Y%m%d_%H%M%S).json <<EOF
+          {
+            "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "environment": "${{ github.event.inputs.environment || 'production' }}",
+            "services": {
+              "firestore": {
+                "status": "${{ steps.firestore.outputs.status }}",
+                "latency_ms": ${{ steps.firestore.outputs.latency }}
+              },
+              "auth": {
+                "status": "${{ steps.auth.outputs.status }}"
+              },
+              "storage": {
+                "status": "${{ steps.storage.outputs.status }}",
+                "usage_percent": ${{ steps.storage.outputs.usage }}
+              },
+              "api": {
+                "status": "${{ steps.api.outputs.status }}",
+                "failed_endpoints": ${{ steps.api.outputs.failed }}
+              }
+            },
+            "overall_status": "healthy",
+            "run_url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          }
+          EOF
+
+      - name: 📤 Upload health report
+        uses: actions/upload-artifact@v4
+        with:
+          name: health-report-${{ github.run_number }}
+          path: reports/health/
+          retention-days: 30
+
+  performance-metrics:
+    name: 📊 Performance Metrics
+    runs-on: ubuntu-latest
+    needs: health-check
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: 📊 Collect metrics
+        run: |
+          npm run metrics:collect -- --output=metrics.json
+
+      - name: 🔍 Analyze performance
+        run: |
+          npm run metrics:analyze -- --input=metrics.json --threshold=performance-thresholds.json
+
+      - name: 📈 Generate performance report
+        run: |
+          npm run metrics:report -- --input=metrics.json --format=markdown > performance-report.md
+
+      - name: 📤 Upload metrics
+        uses: actions/upload-artifact@v4
+        with:
+          name: performance-metrics
+          path: |
+            metrics.json
+            performance-report.md
+
+  database-stats:
+    name: 💾 Database Statistics
+    runs-on: ubuntu-latest
+    needs: health-check
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: 🔐 Setup credentials
+        run: |
+                    echo "FIREBASE_API_KEY=${{ secrets.VITE_FIREBASE_API_KEY }}" >> $GITHUB_ENV
+          echo "FIREBASE_AUTH_DOMAIN=${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}" >> $GITHUB_ENV
+          echo "FIREBASE_PROJECT_ID=${{ secrets.VITE_FIREBASE_PROJECT_ID }}" >> $GITHUB_ENV
+          echo "FIREBASE_STORAGE_BUCKET=${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}" >> $GITHUB_ENV
+          echo "FIREBASE_MESSAGING_SENDER_ID=${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}" >> $GITHUB_ENV
+          echo "FIREBASE_APP_ID=${{ secrets.VITE_FIREBASE_APP_ID }}" >> $GITHUB_ENV
+          echo "GOOGLE_APPLICATION_CREDENTIALS=firebase-credentials.json" >> $GITHUB_ENV
+
+      - name: 📊 Collect database stats
+        run: |
+          npm run db:stats -- --collections=all --output=db-stats.json
+
+      - name: 📈 Check collection sizes
+        run: |
+          npm run db:check-sizes -- --warn-threshold=10000 --error-threshold=50000
+
+      - name: 🔍 Analyze query patterns
+        run: |
+          npm run db:analyze-queries -- --days=1 --output=query-analysis.json
+
+      - name: 📤 Upload database stats
+        uses: actions/upload-artifact@v4
+        with:
+          name: database-stats
+          path: |
+            db-stats.json
+            query-analysis.json
+
+  alert-on-failure:
+    name: 🚨 Alert on Failure
+    runs-on: ubuntu-latest
+    needs: [health-check, performance-metrics, database-stats]
+    if: failure()
+
+    steps:
+      - name: 📧 Send alert email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: '🚨 URGENT: System Health Check Failed'
+          body: |
+            ⚠️ El sistema ha fallado la verificación de salud.
+
+            📅 Timestamp: $(date -u +%Y-%m-%dT%H:%M:%SZ)
+            🌐 Environment: ${{ github.event.inputs.environment || 'production' }}
+            🔗 Details: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+            Por favor, investiga inmediatamente.
+          to: ${{ secrets.NOTIFICATION_EMAIL }},dev-team@company.com
+          from: System Monitor
+
+      - name: 📢 Send Slack notification
+        if: secrets.SLACK_WEBHOOK != ''
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {
+              "text": "🚨 System Health Check Failed",
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "🚨 System Health Check Failed"
+                  }
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Environment:*\n${{ github.event.inputs.environment || 'production' }}"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Timestamp:*\n$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View Details>"
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+
+      - name: 🐛 Create critical issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🚨 CRITICAL: Health Check Failed - ${new Date().toISOString()}`,
+              body: `⚠️ El sistema ha fallado la verificación de salud.\n\n` +
+                    `**Environment:** ${{ github.event.inputs.environment || 'production' }}\n` +
+                    `**Timestamp:** ${new Date().toISOString()}\n` +
+                    `**Run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\n\n` +
+                    `## Acciones Inmediatas\n` +
+                    `- [ ] Investigar logs del sistema\n` +
+                    `- [ ] Verificar servicios de Firebase\n` +
+                    `- [ ] Revisar métricas de rendimiento\n` +
+                    `- [ ] Notificar al equipo de DevOps`,
+              labels: ['critical', 'health-check', 'incident', 'high-priority'],
+              assignees: ['zoro488']
+            });
+
+  status-badge:
+    name: 📛 Update Status Badge
+    runs-on: ubuntu-latest
+    needs: [health-check, performance-metrics, database-stats]
+    if: always()
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 📊 Update status
+        run: |
+          STATUS="${{ needs.health-check.result }}"
+          COLOR="green"
+          MESSAGE="healthy"
+
+          if [ "$STATUS" != "success" ]; then
+            COLOR="red"
+            MESSAGE="unhealthy"
+          fi
+
+          mkdir -p .github/badges
+          cat > .github/badges/health-status.json <<EOF
+          {
+            "schemaVersion": 1,
+            "label": "health",
+            "message": "$MESSAGE",
+            "color": "$COLOR"
+          }
+          EOF
+
+      - name: 💾 Commit status
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add .github/badges/
+          git diff --staged --quiet || git commit -m "🏥 Update health status badge"
+          git push || true
