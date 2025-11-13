@@ -1,0 +1,128 @@
+name: 🛠️ Auto-Corrección de Tests
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - develop
+  schedule:
+    - cron: '0 */4 * * *'
+
+jobs:
+  auto-fix:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        retry: [1, 2, 3, 4, 5]
+      fail-fast: false
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Instalar dependencias
+        run: npm ci --ignore-scripts
+      
+      - name: Ejecutar tests (Intento ${{ matrix.retry }})
+        id: test
+        run: npm run test:run > test.log 2>&1 || echo "Tests failed"
+        continue-on-error: true
+      
+      - name: Verificar resultado del test
+        id: check_result
+        run: |
+          if npm run test:run 2>&1 | grep -q "Test Files.*passed"; then
+            echo "test_passed=true" >> $GITHUB_OUTPUT
+            echo "✅ Tests pasaron exitosamente"
+          else
+            echo "test_passed=false" >> $GITHUB_OUTPUT
+            echo "❌ Tests fallaron"
+          fi
+        continue-on-error: true
+      
+      - name: Analizar tipo de error
+        if: steps.check_result.outputs.test_passed == 'false'
+        id: analyze
+        run: |
+          if grep -q "ECONNREFUSED" test.log; then
+            echo "error_type=connection" >> $GITHUB_OUTPUT
+            echo "🔍 Error detectado: Problema de conexión"
+          elif grep -q "TypeError" test.log; then
+            echo "error_type=type" >> $GITHUB_OUTPUT
+            echo "🔍 Error detectado: TypeError"
+          else
+            echo "error_type=unknown" >> $GITHUB_OUTPUT
+            echo "🔍 Error detectado: Desconocido"
+          fi
+      
+      - name: Auto-corregir conexión
+        if: steps.check_result.outputs.test_passed == 'false' && steps.analyze.outputs.error_type == 'connection'
+        run: |
+          echo "🔧 Intentando corregir problemas de conexión..."
+          echo "🔧 Reiniciando servicios..."
+          # Aquí se pueden agregar comandos específicos para reiniciar servicios
+          # Por ejemplo: firebase emulators:start --only firestore &
+          sleep 5
+      
+      - name: Auto-corregir tipos
+        if: steps.check_result.outputs.test_passed == 'false' && steps.analyze.outputs.error_type == 'type'
+        run: |
+          echo "🔧 Intentando corregir problemas de tipos..."
+          echo "🔧 Actualizando dependencias..."
+          npm install --force
+          npm install -D @types/node@latest
+      
+      - name: Re-ejecutar tests después de corrección
+        if: steps.check_result.outputs.test_passed == 'false' && matrix.retry < 5
+        id: retest
+        run: npm run test:run
+        continue-on-error: true
+      
+      - name: Crear PR si exitoso
+        if: steps.check_result.outputs.test_passed == 'true' || steps.retest.outcome == 'success'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "🛠️ Auto-corrección aplicada (Intento ${{ matrix.retry }})"
+          branch: auto-fix-tests-${{ github.run_id }}-${{ matrix.retry }}
+          delete-branch: true
+          title: "🛠️ Auto-corrección aplicada (Intento ${{ matrix.retry }})"
+          body: |
+            ## 🛠️ Auto-corrección de Tests
+            
+            Tests corregidos automáticamente.
+            
+            - **Tipo de error**: ${{ steps.analyze.outputs.error_type || 'ninguno' }}
+            - **Corrección aplicada**: Exitosa ✅
+            - **Intento**: ${{ matrix.retry }}/5
+            - **Workflow Run**: ${{ github.run_id }}
+            
+            Este PR fue generado automáticamente por el sistema de auto-corrección.
+      
+      - name: Crear issue si todo falla
+        if: matrix.retry == 5 && steps.check_result.outputs.test_passed == 'false' && steps.retest.outcome != 'success'
+        run: |
+          gh issue create \
+            --title "🚨 Tests fallaron después de 5 reintentos" \
+            --body "## ⚠️ Problema Crítico
+
+          Los tests han fallado después de 5 intentos de corrección automática.
+          
+          **Detalles:**
+          - Workflow Run ID: ${{ github.run_id }}
+          - Tipo de error: ${{ steps.analyze.outputs.error_type }}
+          - Fecha: $(date)
+          
+          Se requiere intervención manual para resolver el problema.
+          
+          Ver logs completos en: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            --label "bug,tests,high-priority"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

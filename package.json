@@ -27,6 +27,8 @@
     "docker:logs": "docker-compose logs -f",
     "quick-deploy": "pwsh -File deploy-quick.ps1",
     "auto-fix": "pwsh -File auto-fix.ps1",
+    "diagnose": "node scripts/diagnose-tests.js",
+    "fix:auto": "npm run diagnose && npm test",
     "prepare": "husky"
   },
   "dependencies": {
