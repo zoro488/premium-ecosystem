@@ -48,7 +48,7 @@ async function main() {
   console.log('\n╔════════════════════════════════════════════════════╗');
   console.log('║     🔥 CARGANDO DATOS A FIRESTORE                 ║');
   console.log('╚════════════════════════════════════════════════════╝\n');
-  
+
   try {
     // Leer archivo de datos
     const datosPath = path.join(__dirname, 'datos_para_firebase_COMPLETOS.json');    if (!fs.existsSync(datosPath)) {

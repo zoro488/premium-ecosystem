@@ -20,14 +20,14 @@ def normalizar_fecha(fecha_str):
     """Normaliza fechas al formato ISO"""
     if not fecha_str:
         return datetime.now().strftime('%Y-%m-%d')
-    
+
     fecha = str(fecha_str).split('T')[0].split(' ')[0]
     return fecha if fecha else datetime.now().strftime('%Y-%m-%d')
 
 def procesar_hoja(hoja_data, nombre_hoja):
     """Procesa una hoja completa del análisis"""
     documentos = []
-    
+
     for tabla in hoja_data.get('tablas', []):
         for dato in tabla.get('datos', []):
             doc = {
@@ -36,7 +36,7 @@ def procesar_hoja(hoja_data, nombre_hoja):
                 "createdAt": datetime.now().isoformat(),
                 "updatedAt": datetime.now().isoformat()
             }
-            
+
             # Agregar todos los campos del registro
             for key, value in dato.items():
                 if value is not None and str(value).strip() != '':
@@ -48,22 +48,22 @@ def procesar_hoja(hoja_data, nombre_hoja):
                         doc[key] = float(value)
                     else:
                         doc[key] = str(value)
-            
+
             if len(doc) > 4:  # Más que solo id, hoja, created, updated
                 documentos.append(doc)
-    
+
     return documentos
 
 def main():
     print("\n╔════════════════════════════════════════════════════╗")
     print("║  🔄 CONVERSIÓN DIRECTA A FIREBASE                 ║")
     print("╚════════════════════════════════════════════════════╝\n")
-    
+
     # Cargar datos
     print(f"📖 Leyendo {INPUT_FILE}...")
     with open(INPUT_FILE, 'r', encoding='utf-8') as f:
         datos = json.load(f)
-    
+
     # Estructura Firebase
     firebase_data = {
         "metadata": {
@@ -73,7 +73,7 @@ def main():
         },
         "colecciones": {}
     }
-    
+
     # Procesar cada hoja
     hojas_mapping = {
         "Distribuidores": "compras",
@@ -88,7 +88,7 @@ def main():
         "Profit": "profit",
         "Clientes": "clientes"
     }
-    
+
     for hoja_original, coleccion_nombre in hojas_mapping.items():
         if hoja_original in datos.get('hojas', {}):
             print(f"📊 Procesando {hoja_original} → {coleccion_nombre}...")
@@ -96,37 +96,37 @@ def main():
             documentos = procesar_hoja(hoja_data, hoja_original)
             firebase_data['colecciones'][coleccion_nombre] = documentos
             print(f"   ✅ {len(documentos)} documentos")
-    
+
     # Crear colección unificada de bancos (todos los paneles financieros)
     print("\n🏦 Creando colección unificada de bancos...")
     bancos = []
     paneles_bancos = ["bovedaMonte", "bovedaUsa", "utilidades", "fleteSur", "azteca", "leftie", "profit"]
-    
+
     for panel in paneles_bancos:
         if panel in firebase_data['colecciones']:
             for doc in firebase_data['colecciones'][panel]:
                 doc['panel'] = panel
                 bancos.append(doc)
-    
+
     firebase_data['colecciones']['bancos'] = bancos
     print(f"   ✅ {len(bancos)} movimientos bancarios totales")
-    
+
     # Guardar
     print(f"\n💾 Guardando en {OUTPUT_FILE}...")
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
         json.dump(firebase_data, f, ensure_ascii=False, indent=2)
-    
+
     # Resumen
     print("\n" + "="*60)
     print("✅ CONVERSIÓN COMPLETA")
     print("="*60)
-    
+
     total = 0
     for nombre, docs in firebase_data['colecciones'].items():
         cantidad = len(docs)
         total += cantidad
         print(f"{nombre}: {cantidad} documentos")
-    
+
     print(f"\n📊 TOTAL DOCUMENTOS: {total}")
     print(f"✅ Archivo guardado: {OUTPUT_FILE}\n")
 
