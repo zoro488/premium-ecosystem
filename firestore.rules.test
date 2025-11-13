@@ -1,0 +1,18 @@
+rules_version = '2';
+
+/**
+ * ============================================
+ * FIRESTORE SECURITY RULES - TESTING MODE
+ * Reglas permisivas SOLO para Firebase Emulator
+ * ⚠️ NUNCA usar en producción
+ * ============================================
+ */
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Permitir TODO para tests en emulator
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
