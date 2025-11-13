@@ -1,0 +1,148 @@
+name: 🛠️ Auto-Corrección Inteligente
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */4 * * *'
+  push:
+    branches: [main]
+
+jobs:
+  auto-fix:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        retry: [1, 2, 3, 4, 5]
+    
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Instalar dependencias
+        run: npm install --ignore-scripts
+      
+      - name: Ejecutar tests (Intento ${{ matrix.retry }})
+        id: test
+        run: npm test -- --run > test-output.log 2>&1 || true
+        continue-on-error: true
+      
+      - name: Verificar resultado de tests
+        id: check-test
+        run: |
+          if grep -q "Test Files.*failed" test-output.log; then
+            echo "test_failed=true" >> $GITHUB_OUTPUT
+            echo "❌ Tests fallaron"
+          else
+            echo "test_failed=false" >> $GITHUB_OUTPUT
+            echo "✅ Tests pasaron"
+          fi
+      
+      - name: Analizar tipo de error
+        if: steps.check-test.outputs.test_failed == 'true'
+        run: |
+          if grep -q "ECONNREFUSED" test-output.log; then
+            echo "ERROR_TYPE=connection" >> $GITHUB_ENV
+            echo "🔌 Detectado error de conexión"
+          elif grep -q "TypeError" test-output.log; then
+            echo "ERROR_TYPE=types" >> $GITHUB_ENV
+            echo "📝 Detectado error de tipos"
+          else
+            echo "ERROR_TYPE=unknown" >> $GITHUB_ENV
+            echo "❓ Error desconocido"
+          fi
+      
+      - name: Corrección - Reconectar Firebase
+        if: steps.check-test.outputs.test_failed == 'true' && env.ERROR_TYPE == 'connection'
+        run: |
+          echo "🔧 Aplicando corrección de conexión..."
+          pkill -f firebase || true
+          firebase emulators:start --only firestore &
+          sleep 20
+      
+      - name: Corrección - Actualizar tipos
+        if: steps.check-test.outputs.test_failed == 'true' && env.ERROR_TYPE == 'types'
+        run: |
+          echo "🔧 Actualizando tipos..."
+          npm install -D @types/node@latest @types/react@latest
+          npm install --force --ignore-scripts
+      
+      - name: Corrección - Limpiar cache
+        if: steps.check-test.outputs.test_failed == 'true' && env.ERROR_TYPE == 'unknown'
+        run: |
+          echo "🔧 Limpiando cache..."
+          npm cache clean --force
+          rm -rf node_modules package-lock.json
+          npm install --ignore-scripts
+      
+      - name: Re-ejecutar tests
+        if: steps.check-test.outputs.test_failed == 'true'
+        id: retest
+        run: npm test -- --run > test-output-retry.log 2>&1 || true
+        continue-on-error: true
+      
+      - name: Verificar corrección exitosa
+        if: steps.check-test.outputs.test_failed == 'true'
+        id: check-retest
+        run: |
+          if grep -q "Test Files.*failed" test-output-retry.log; then
+            echo "retest_failed=true" >> $GITHUB_OUTPUT
+            echo "❌ Re-test falló"
+          else
+            echo "retest_failed=false" >> $GITHUB_OUTPUT
+            echo "✅ Re-test exitoso"
+          fi
+      
+      - name: Crear PR si corrección exitosa
+        if: steps.check-test.outputs.test_failed == 'true' && steps.check-retest.outputs.retest_failed == 'false' && matrix.retry > 1
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "🛠️ Auto-corrección aplicada (intento ${{ matrix.retry }})"
+          branch: auto-fix/attempt-${{ matrix.retry }}-${{ github.run_id }}
+          title: "🛠️ Auto-corrección aplicada (intento ${{ matrix.retry }})"
+          body: |
+            ## 🛠️ Corrección Automática Aplicada
+            
+            - **Tipo de error**: ${{ env.ERROR_TYPE }}
+            - **Intentos necesarios**: ${{ matrix.retry }}
+            - **Tests**: ✅ Pasando
+            
+            Esta corrección fue aplicada automáticamente por el sistema de auto-corrección.
+            
+            ### 📊 Detalles
+            - Run ID: ${{ github.run_id }}
+            - Commit: ${{ github.sha }}
+            
+            Por favor revisa los cambios antes de mergear.
+          labels: |
+            auto-fix
+            automated
+      
+      - name: Crear issue si todo falló
+        if: steps.check-test.outputs.test_failed == 'true' && steps.check-retest.outputs.retest_failed == 'true' && matrix.retry == 5
+        run: |
+          gh issue create \
+            --title "🚨 Auto-corrección falló después de 5 intentos" \
+            --body "Tests fallaron después de múltiples correcciones. Requiere revisión manual.
+            
+            **Último tipo de error detectado**: ${{ env.ERROR_TYPE }}
+            **Run ID**: ${{ github.run_id }}
+            **Commit**: ${{ github.sha }}
+            
+            Por favor revisa los logs del workflow para más detalles." \
+            --label "bug,auto-fix-failed"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Subir logs de test
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-logs-retry-${{ matrix.retry }}
+          path: |
+            test-output.log
+            test-output-retry.log
+          retention-days: 7
