@@ -42,7 +42,12 @@ jobs:
 
       - name: 🔐 Setup credentials
         run: |
-          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > firebase-credentials.json
+                    echo "FIREBASE_API_KEY=${{ secrets.VITE_FIREBASE_API_KEY }}" >> $GITHUB_ENV
+          echo "FIREBASE_AUTH_DOMAIN=${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}" >> $GITHUB_ENV
+          echo "FIREBASE_PROJECT_ID=${{ secrets.VITE_FIREBASE_PROJECT_ID }}" >> $GITHUB_ENV
+          echo "FIREBASE_STORAGE_BUCKET=${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}" >> $GITHUB_ENV
+          echo "FIREBASE_MESSAGING_SENDER_ID=${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}" >> $GITHUB_ENV
+          echo "FIREBASE_APP_ID=${{ secrets.VITE_FIREBASE_APP_ID }}" >> $GITHUB_ENV
           echo "GOOGLE_APPLICATION_CREDENTIALS=firebase-credentials.json" >> $GITHUB_ENV
 
       - name: 🏥 Check Firestore health
@@ -195,7 +200,12 @@ jobs:
 
       - name: 🔐 Setup credentials
         run: |
-          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > firebase-credentials.json
+                    echo "FIREBASE_API_KEY=${{ secrets.VITE_FIREBASE_API_KEY }}" >> $GITHUB_ENV
+          echo "FIREBASE_AUTH_DOMAIN=${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}" >> $GITHUB_ENV
+          echo "FIREBASE_PROJECT_ID=${{ secrets.VITE_FIREBASE_PROJECT_ID }}" >> $GITHUB_ENV
+          echo "FIREBASE_STORAGE_BUCKET=${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}" >> $GITHUB_ENV
+          echo "FIREBASE_MESSAGING_SENDER_ID=${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}" >> $GITHUB_ENV
+          echo "FIREBASE_APP_ID=${{ secrets.VITE_FIREBASE_APP_ID }}" >> $GITHUB_ENV
           echo "GOOGLE_APPLICATION_CREDENTIALS=firebase-credentials.json" >> $GITHUB_ENV
 
       - name: 📊 Collect database stats
