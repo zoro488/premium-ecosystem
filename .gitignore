@@ -18,10 +18,14 @@ out/
 
 # Testing
 coverage/
+coverage-e2e/
 .nyc_output/
 test-results/
+test-results-e2e/
 playwright-report/
 playwright/.cache/
+VALIDATION_REPORT.md
+VALIDATION_FAILURE.md
 
 # Logs
 logs/

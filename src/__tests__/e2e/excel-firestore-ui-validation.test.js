@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * ============================================
  * E2E VALIDATION: Excel → Firestore → UI
