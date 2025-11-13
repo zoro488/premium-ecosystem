@@ -57,6 +57,9 @@ export {
 // 📊 Tablas virtualizadas
 export { VirtualizedTable } from './VirtualizedTable';
 
+// 🏦 Componentes de banco
+export { BancoCompleto } from './BancoCompleto';
+
 /**
  * 🎯 GUÍA DE USO RÁPIDO
  *
