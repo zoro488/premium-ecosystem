@@ -1,0 +1,77 @@
+# 🤖 Pa11y CI - Accessibility Testing Configuration
+
+defaults:
+  # Test runner settings
+  timeout: 30000
+  wait: 500
+  chromeLaunchConfig:
+    args:
+      - '--no-sandbox'
+      - '--disable-setuid-sandbox'
+  
+  # Standards to test against
+  standard: 'WCAG2AA'
+  
+  # Reporters
+  reporters:
+    - cli
+    - json
+  
+  # Ignore rules (with justification)
+  ignore:
+    # Temporarily ignore until external library is updated
+    - 'WCAG2AA.Principle1.Guideline1_3.1_3_1.H49.I'
+  
+  # Include warnings
+  includeWarnings: true
+  includeNotices: false
+
+# URLs to test
+urls:
+  # Main pages
+  - url: 'http://localhost:3001/'
+    screenCapture: './pa11y-screenshots/home.png'
+    timeout: 40000
+  
+  - url: 'http://localhost:3001/flowdistributor'
+    screenCapture: './pa11y-screenshots/flowdistributor.png'
+    actions:
+      - 'wait for element #root to be visible'
+  
+  - url: 'http://localhost:3001/smartsales'
+    screenCapture: './pa11y-screenshots/smartsales.png'
+  
+  - url: 'http://localhost:3001/clienthub'
+    screenCapture: './pa11y-screenshots/clienthub.png'
+  
+  - url: 'http://localhost:3001/analyticspro'
+    screenCapture: './pa11y-screenshots/analyticspro.png'
+  
+  - url: 'http://localhost:3001/teamsync'
+    screenCapture: './pa11y-screenshots/teamsync.png'
+  
+  # Critical user flows
+  - url: 'http://localhost:3001/flowdistributor/ventas/nueva'
+    screenCapture: './pa11y-screenshots/nueva-venta.png'
+    actions:
+      - 'wait for element form to be visible'
+    ignore:
+      - 'WCAG2AA.Principle3.Guideline3_3.3_3_2.G131' # Form labels
+  
+  - url: 'http://localhost:3001/flowdistributor/dashboard'
+    screenCapture: './pa11y-screenshots/dashboard.png'
+    hideElements:
+      - '.chart-loading' # Hide loading animations
+  
+  # Authentication flows
+  - url: 'http://localhost:3001/login'
+    screenCapture: './pa11y-screenshots/login.png'
+  
+  - url: 'http://localhost:3001/registro'
+    screenCapture: './pa11y-screenshots/registro.png'
+
+# Thresholds
+threshold:
+  errors: 0      # Fail if any errors
+  warnings: 10   # Allow up to 10 warnings
+  notices: 100   # Allow notices
