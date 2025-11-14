@@ -13,8 +13,16 @@ import ErrorBoundary from './components/ErrorBoundary.jsx';
 import { initializeTracing } from './config/tracing';
 import './index.css';
 
-// Inicializar tracing con OpenTelemetry
-initializeTracing();
+
+
+
+
+// Inicializar tracing con OpenTelemetry (opcional - sin bloquear app)
+try {
+  initializeTracing();
+} catch (error) {
+  console.warn('[Main] Tracing no disponible:', error);
+}
 
 // Create QueryClient instance
 const queryClient = new QueryClient({

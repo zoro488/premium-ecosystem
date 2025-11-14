@@ -12,7 +12,16 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'prettier', // Desactiva reglas que conflictúan con Prettier
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs', 'node_modules', 'coverage', 'build', '.vite'],
+  ignorePatterns: [
+    'dist',
+    '.eslintrc.cjs',
+    'node_modules',
+    'coverage',
+    'build',
+    '.vite',
+    'scripts/*.js',
+    'scripts/*.cjs',
+  ],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',

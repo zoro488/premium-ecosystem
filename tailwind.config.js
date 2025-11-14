@@ -31,29 +31,29 @@ export default {
           900: '#0c4a6e',
           950: '#082f49',
         },
-        // Fondos Deep Ocean
-        'bg-primary': '#09111A',
-        'bg-secondary': '#0D1821',
-        'bg-card': '#0F1729',
-        'bg-glass': 'rgba(15, 23, 41, 0.6)',
+        // Fondos Negro Profundo Premium
+        'bg-primary': '#000000',
+        'bg-secondary': '#0a0a0a',
+        'bg-card': '#111111',
+        'bg-glass': 'rgba(17, 17, 17, 0.8)',
 
-        // Acentos
-        'accent-blue': '#1890FF',
-        'accent-cyan': '#22D3EE',
-        'accent-purple': '#7C3AED',
-        'accent-green': '#10B981',
-        'accent-orange': '#F59E0B',
-        'accent-pink': '#EC4899',
+        // Acentos Ultra-Vibrantes
+        'accent-blue': '#3b82f6',
+        'accent-cyan': '#06b6d4',
+        'accent-purple': '#a855f7',
+        'accent-green': '#22c55e',
+        'accent-orange': '#f97316',
+        'accent-pink': '#ec4899',
 
-        // Texto
-        'text-primary': '#F8FAFC',
-        'text-secondary': '#E2E8F0',
-        'text-muted': '#94A3B8',
-        'text-accent': '#64748B',
+        // Texto Ultra-Legible
+        'text-primary': '#ffffff',
+        'text-secondary': '#e5e5e5',
+        'text-muted': '#a3a3a3',
+        'text-accent': '#737373',
 
-        // Bordes y glassmorphism
-        'border-glass': 'rgba(148, 163, 184, 0.1)',
-        'border-accent': 'rgba(24, 144, 255, 0.3)',
+        // Bordes y glassmorphism premium
+        'border-glass': 'rgba(255, 255, 255, 0.15)',
+        'border-accent': 'rgba(59, 130, 246, 0.5)',
 
         // 🌌 CHRONOS OS - Dark Mirror System
         'chronos-black': '#000000',

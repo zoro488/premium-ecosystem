@@ -1,0 +1,25 @@
+{
+  "name": "chronos-migration-tool",
+  "version": "1.0.0",
+  "description": "Script para migrar datos de JSON a Firestore para Chronos System",
+  "main": "importar.js",
+  "scripts": {
+    "start": "node importar.js",
+    "import": "node importar.js"
+  },
+  "keywords": [
+    "firebase",
+    "firestore",
+    "migration",
+    "chronos-system",
+    "flowdistributor"
+  ],
+  "author": "Chronos System Team",
+  "license": "ISC",
+  "dependencies": {
+    "firebase-admin": "^12.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

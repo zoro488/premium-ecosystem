@@ -23,8 +23,8 @@ const precioTotalVenta = precioTotalUnidad * cantidad;
 
 // ✅ DISTRIBUCIÓN EN BANCOS (3 bancos automáticos):
 
-// 3. 🏦 Bóveda Monte = Precio Venta por Unidad × Cantidad
-const montoBovedaMonte = precioVentaUnidad * cantidad;
+// 3. 🏦 Bóveda Monte = Precio compra por Unidad × Cantidad
+const montoBovedaMonte = preciocompraUnidad * cantidad;
 // = 10000 × 10 = 100000
 
 // 4. 🚚 Fletes = Flete por Unidad × Cantidad
@@ -43,7 +43,7 @@ const montoUtilidades = (precioVentaUnidad - precioCompraUnidad - precioFlete) *
 
 ### **1. Bóveda Monte** 🏦
 
-- **Recibe:** Precio de Venta × Cantidad (en cada venta)
+- **Recibe:** Precio de compra × Cantidad (en cada venta)
 - **Uso:** Capital principal de operaciones
 - **Puede:** Transferir, Gastar, Pagar a Distribuidores
 

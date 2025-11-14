@@ -1,0 +1,35 @@
+# ============================================
+# DATA DIRECTORY - CSV IMPORTS
+# ============================================
+
+# Archivos CSV reales (datos sensibles)
+*.csv
+
+# Archivos de Excel reales
+*.xlsx
+*.xls
+
+# Reportes de validación
+validation-report.json
+import-report.json
+
+# Logs de importación
+import-*.log
+validation-*.log
+
+# Backups temporales
+*.bak
+*.backup
+
+# ============================================
+# PERMITIR SOLO TEMPLATES Y EJEMPLOS
+# ============================================
+
+# Permitir archivos de template
+!*template*.csv
+!*example*.csv
+!EJEMPLO_*.csv
+
+# README y documentación
+!README.md
+!.gitkeep

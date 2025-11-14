@@ -49,7 +49,14 @@ try {
 }
 export { functions };
 
-export const remoteConfig = getRemoteConfig(app);
+// Remote Config es opcional (debe habilitarse en Firebase Console)
+let remoteConfig = null;
+try {
+  remoteConfig = getRemoteConfig(app);
+} catch (error) {
+  console.warn('Firebase Remote Config no disponible:', error.message);
+}
+export { remoteConfig };
 
 // Analytics y Performance (solo en producción)
 let analytics = null;
@@ -452,6 +459,17 @@ export class FunctionsManager {
 
 export class RemoteConfigManager {
   constructor() {
+    if (!remoteConfig) {
+      console.warn('Remote Config no está disponible. Usando configuración por defecto.');
+      this.defaults = {
+        theme: 'dark',
+        features_enabled: true,
+        max_upload_size: 5242880, // 5MB
+        maintenance_mode: false,
+      };
+      return;
+    }
+
     remoteConfig.settings.minimumFetchIntervalMillis = 3600000; // 1 hora
     remoteConfig.defaultConfig = {
       theme: 'dark',
@@ -462,6 +480,8 @@ export class RemoteConfigManager {
   }
 
   async fetchConfig() {
+    if (!remoteConfig) return false;
+
     try {
       await fetchAndActivate(remoteConfig);
       return true;
@@ -472,22 +492,37 @@ export class RemoteConfigManager {
   }
 
   getValue(key) {
+    if (!remoteConfig) {
+      return { _value: this.defaults[key] || null };
+    }
     return getValue(remoteConfig, key);
   }
 
   getAll() {
+    if (!remoteConfig) {
+      return this.defaults;
+    }
     return getAll(remoteConfig);
   }
 
   getBoolean(key) {
+    if (!remoteConfig) {
+      return Boolean(this.defaults[key]);
+    }
     return getValue(remoteConfig, key).asBoolean();
   }
 
   getNumber(key) {
+    if (!remoteConfig) {
+      return Number(this.defaults[key]) || 0;
+    }
     return getValue(remoteConfig, key).asNumber();
   }
 
   getString(key) {
+    if (!remoteConfig) {
+      return String(this.defaults[key]) || '';
+    }
     return getValue(remoteConfig, key).asString();
   }
 }

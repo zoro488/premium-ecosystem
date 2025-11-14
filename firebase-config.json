@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "result": {
+    "fileName": "firebase-js-config.json",
+    "fileContents": "{\n  \"projectId\": \"premium-ecosystem-1760790572\",\n  \"appId\": \"1:100411784487:web:ac2713291717869bc83d02\",\n  \"storageBucket\": \"premium-ecosystem-1760790572.firebasestorage.app\",\n  \"apiKey\": \"AIzaSyCR7zKZJAzCEq-jBbfkLJxWaz98zuRCkX4\",\n  \"authDomain\": \"premium-ecosystem-1760790572.firebaseapp.com\",\n  \"messagingSenderId\": \"100411784487\",\n  \"measurementId\": \"G-W9MGNWKX4E\",\n  \"projectNumber\": \"100411784487\",\n  \"version\": \"2\"\n}",
+    "sdkConfig": {
+      "projectId": "premium-ecosystem-1760790572",
+      "appId": "1:100411784487:web:ac2713291717869bc83d02",
+      "storageBucket": "premium-ecosystem-1760790572.firebasestorage.app",
+      "apiKey": "AIzaSyCR7zKZJAzCEq-jBbfkLJxWaz98zuRCkX4",
+      "authDomain": "premium-ecosystem-1760790572.firebaseapp.com",
+      "messagingSenderId": "100411784487",
+      "measurementId": "G-W9MGNWKX4E",
+      "projectNumber": "100411784487",
+      "version": "2"
+    }
+  }
+}

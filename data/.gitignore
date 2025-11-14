@@ -1,0 +1,31 @@
+# ═══════════════════════════════════════════════════════════════
+# 🔒 ARCHIVOS SENSIBLES - NO SUBIR A GIT
+# ═══════════════════════════════════════════════════════════════
+
+# Service Account Keys (Firebase)
+firebase/serviceAccountKey.json
+firebase/*.json
+!firebase/firestore.rules
+!firebase/storage.rules
+
+# Archivos CSV con datos empresariales
+data/csv/**/*.csv
+data/csv/*.csv
+
+# Logs de importación
+logs/**/*.log
+logs/*.log
+
+# Backups de datos
+data/backups/**/*
+data/backups/*.json
+
+# Variables de entorno con credenciales
+.env
+.env.local
+.env.production
+
+# ═══════════════════════════════════════════════════════════════
+# 📁 ESTRUCTURA DE CARPETAS A MANTENER
+# ═══════════════════════════════════════════════════════════════
+# Mantener las carpetas vacías en git con .gitkeep
