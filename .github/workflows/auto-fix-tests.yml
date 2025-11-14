@@ -32,7 +32,7 @@ jobs:
           cache: 'npm'
       
       - name: 📦 Instalar dependencias
-        run: npm ci || npm install
+        run: npm ci --ignore-scripts || npm install --ignore-scripts
       
       - name: 🧪 Ejecutar tests (Intento ${{ matrix.retry }})
         id: test
@@ -78,16 +78,21 @@ jobs:
         run: |
           echo "🔧 Aplicando corrección: Actualizar dependencias de tipos..."
           npm install -D @types/node@latest @types/react@latest
-          npm install --force
+          npm install --force --ignore-scripts
       
       - name: 🛠️ Corrección - Aumentar timeouts
         if: env.ERROR_TYPE == 'timeout' && matrix.retry < 5
         run: |
           echo "🔧 Aplicando corrección: Aumentar timeouts..."
           
-          # Actualizar timeout en vitest.config.ts
+          # Actualizar timeout en vitest.config.js
+          if [ -f "vitest.config.js" ]; then
+            sed -i 's/testTimeout: [0-9]\+/testTimeout: 30000/g' vitest.config.js
+          fi
+          
+          # También actualizar si existe vitest.config.ts
           if [ -f "vitest.config.ts" ]; then
-            sed -i 's/testTimeout: [0-9]*/testTimeout: 30000/g' vitest.config.ts
+            sed -i 's/testTimeout: [0-9]\+/testTimeout: 30000/g' vitest.config.ts
           fi
       
       - name: 🛠️ Corrección - Limpiar y reinstalar
@@ -96,7 +101,7 @@ jobs:
           echo "🔧 Aplicando corrección: Limpieza completa..."
           npm cache clean --force
           rm -rf node_modules package-lock.json
-          npm install
+          npm install --ignore-scripts
       
       - name: 🔄 Re-ejecutar tests después de corrección
         if: steps.test.outcome == 'failure' && matrix.retry < 5
