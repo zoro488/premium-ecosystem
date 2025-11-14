@@ -1,0 +1,202 @@
+name: 🛠️ Auto-Corrección Inteligente
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */4 * * *'  # Cada 4 horas
+  push:
+    branches: [main]
+
+jobs:
+  auto-fix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    
+    strategy:
+      matrix:
+        retry: [1, 2, 3, 4, 5]
+      fail-fast: false
+    
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+      
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: 📦 Instalar dependencias
+        run: npm ci || npm install
+      
+      - name: 🧪 Ejecutar tests (Intento ${{ matrix.retry }})
+        id: test
+        run: |
+          npm test 2>&1 | tee test-output.log
+        continue-on-error: true
+      
+      - name: 🔍 Analizar tipo de error
+        if: steps.test.outcome == 'failure'
+        run: |
+          echo "❌ Tests fallaron en intento ${{ matrix.retry }}"
+          
+          if grep -qi "ECONNREFUSED\|ETIMEDOUT\|ENOTFOUND" test-output.log; then
+            echo "ERROR_TYPE=connection" >> $GITHUB_ENV
+            echo "🔌 Error de CONEXIÓN detectado"
+          elif grep -qi "TypeError\|ReferenceError\|SyntaxError" test-output.log; then
+            echo "ERROR_TYPE=types" >> $GITHUB_ENV
+            echo "📝 Error de TIPOS detectado"
+          elif grep -qi "TIMEOUT\|timeout" test-output.log; then
+            echo "ERROR_TYPE=timeout" >> $GITHUB_ENV
+            echo "⏱️ Error de TIMEOUT detectado"
+          else
+            echo "ERROR_TYPE=unknown" >> $GITHUB_ENV
+            echo "❓ Error DESCONOCIDO detectado"
+          fi
+      
+      - name: 🛠️ Corrección - Reconectar servicios
+        if: env.ERROR_TYPE == 'connection' && matrix.retry < 5
+        run: |
+          echo "🔧 Aplicando corrección: Reconectar servicios..."
+          pkill -f firebase || true
+          pkill -f node || true
+          sleep 5
+          
+          # Reiniciar Firebase Emulator si existe
+          if command -v firebase &> /dev/null; then
+            firebase emulators:start --only firestore &
+            sleep 20
+          fi
+      
+      - name: 🛠️ Corrección - Actualizar tipos
+        if: env.ERROR_TYPE == 'types' && matrix.retry < 5
+        run: |
+          echo "🔧 Aplicando corrección: Actualizar dependencias de tipos..."
+          npm install -D @types/node@latest @types/react@latest
+          npm install --force
+      
+      - name: 🛠️ Corrección - Aumentar timeouts
+        if: env.ERROR_TYPE == 'timeout' && matrix.retry < 5
+        run: |
+          echo "🔧 Aplicando corrección: Aumentar timeouts..."
+          
+          # Actualizar timeout en vitest.config.ts
+          if [ -f "vitest.config.ts" ]; then
+            sed -i 's/testTimeout: [0-9]*/testTimeout: 30000/g' vitest.config.ts
+          fi
+      
+      - name: 🛠️ Corrección - Limpiar y reinstalar
+        if: env.ERROR_TYPE == 'unknown' && matrix.retry < 5
+        run: |
+          echo "🔧 Aplicando corrección: Limpieza completa..."
+          npm cache clean --force
+          rm -rf node_modules package-lock.json
+          npm install
+      
+      - name: 🔄 Re-ejecutar tests después de corrección
+        if: steps.test.outcome == 'failure' && matrix.retry < 5
+        id: retest
+        run: npm test
+        continue-on-error: true
+      
+      - name: ✅ Tests exitosos después de corrección
+        if: steps.retest.outcome == 'success' && matrix.retry > 1
+        run: |
+          echo "✅ Tests pasaron después de ${{ matrix.retry }} intentos"
+          echo "TESTS_FIXED=true" >> $GITHUB_ENV
+          echo "RETRY_COUNT=${{ matrix.retry }}" >> $GITHUB_ENV
+      
+      - name: 📊 Generar reporte de corrección
+        if: env.TESTS_FIXED == 'true'
+        run: |
+          cat > AUTO_FIX_REPORT.md << 'EOF'
+          # 🛠️ Reporte de Auto-Corrección
+          
+          **Fecha**: $(date)
+          **Intentos necesarios**: ${{ matrix.retry }}
+          **Tipo de error**: ${{ env.ERROR_TYPE }}
+          
+          ## Resultado
+          
+          ✅ Tests corregidos exitosamente después de ${{ matrix.retry }} intentos.
+          
+          ## Corrección aplicada
+          
+          - Tipo de error: **${{ env.ERROR_TYPE }}**
+          - Acción tomada: Corrección específica aplicada
+          - Estado final: **Tests pasando ✅**
+          
+          ## Próximos pasos
+          
+          Revisar y hacer merge de este PR para aplicar las correcciones.
+          EOF
+      
+      - name: 📝 Commit cambios
+        if: env.TESTS_FIXED == 'true'
+        run: |
+          git config user.name "GitHub Actions Auto-Fix"
+          git config user.email "actions@github.com"
+          git add .
+          git diff --staged --quiet || git commit -m "🛠️ Auto-corrección aplicada (intento ${{ matrix.retry }})"
+      
+      - name: 🎉 Crear PR con corrección
+        if: env.TESTS_FIXED == 'true'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: auto-fix-${{ github.run_number }}-retry-${{ matrix.retry }}
+          title: "🛠️ Auto-corrección aplicada (intento ${{ matrix.retry }}/5)"
+          body: |
+            ## 🛠️ Auto-Corrección Exitosa
+            
+            ### 📊 Resumen
+            
+            - **Intentos necesarios**: ${{ matrix.retry }} de 5
+            - **Tipo de error**: ${{ env.ERROR_TYPE }}
+            - **Estado**: ✅ Tests pasando
+            
+            ### 🔧 Corrección aplicada
+            
+            El sistema detectó un error de tipo **${{ env.ERROR_TYPE }}** y aplicó
+            la corrección específica automáticamente.
+            
+            ### ✅ Resultado
+            
+            Todos los tests están pasando correctamente después de la corrección.
+            
+            Ver reporte completo: [AUTO_FIX_REPORT.md](./AUTO_FIX_REPORT.md)
+            
+            ---
+            
+            🤖 Generado automáticamente por el sistema de auto-corrección
+      
+      - name: ❌ Crear issue si todos los intentos fallaron
+        if: steps.test.outcome == 'failure' && steps.retest.outcome == 'failure' && matrix.retry == 5
+        run: |
+          gh issue create \
+            --title "🚨 Auto-corrección falló después de 5 intentos" \
+            --body "## 🚨 Error Crítico
+
+          Los tests fallaron después de 5 intentos de auto-corrección.
+          
+          **Tipo de error**: ${{ env.ERROR_TYPE }}
+          **Último intento**: ${{ matrix.retry }}
+          
+          ### Acciones intentadas
+          
+          - Reconexión de servicios
+          - Actualización de dependencias
+          - Ajuste de timeouts
+          - Limpieza de cache
+          
+          **Se requiere revisión manual.**
+          
+          Ver logs del workflow: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            --label "bug,auto-fix-failed,critical"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

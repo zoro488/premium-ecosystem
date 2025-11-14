@@ -22,6 +22,9 @@ coverage/
 test-results/
 playwright-report/
 playwright/.cache/
+test-diagnostics.json
+test-output.log
+AUTO_FIX_REPORT.md
 
 # Logs
 logs/
