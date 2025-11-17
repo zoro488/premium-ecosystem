@@ -69,7 +69,7 @@ jobs:
           npx jsdoc -c .jsdoc.json
       
       - name: Commit Documentation
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "📚 Auto-update documentation [skip ci]"
           file_pattern: "docs/**"
@@ -203,7 +203,7 @@ jobs:
         run: npx prettier --write "src/**/*.{js,jsx,ts,tsx,json,css,md}"
       
       - name: Commit fixes
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "🤖 Auto-fix: Copilot code improvements [skip ci]"
           file_pattern: "src/**"
