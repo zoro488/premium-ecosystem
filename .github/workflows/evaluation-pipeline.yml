@@ -1,0 +1,621 @@
+name: 🎯 Comprehensive Evaluation Pipeline
+
+on:
+  pull_request:
+    branches: [main, develop, emergency-*]
+    types: [opened, synchronize, reopened, ready_for_review]
+  push:
+    branches: [main, develop]
+  schedule:
+    - cron: '0 2 * * *' # Daily at 2 AM UTC
+  workflow_dispatch: # Manual trigger
+    inputs:
+      environment:
+        description: 'Environment to evaluate'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - development
+          - staging
+          - production
+
+env:
+  NODE_VERSION: '20'
+  COVERAGE_THRESHOLD: 80
+  LIGHTHOUSE_THRESHOLD: 90
+
+jobs:
+  # ==========================================
+  # PHASE 1: CODE QUALITY CHECKS
+  # ==========================================
+  
+  lint-and-format:
+    name: 🔍 Lint & Format Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Full history for better analysis
+      
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+      
+      - name: 📦 Install dependencies
+        run: npm ci --prefer-offline --no-audit
+      
+      - name: 🎨 Check Prettier formatting
+        run: npm run format:check
+        continue-on-error: false
+      
+      - name: 🔍 Run ESLint
+        run: npm run lint -- --max-warnings 0
+        continue-on-error: false
+      
+      - name: 📊 Generate ESLint report
+        if: always()
+        run: |
+          npm run lint -- --format json --output-file eslint-report.json || true
+      
+      - name: 📤 Upload ESLint report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eslint-report
+          path: eslint-report.json
+          retention-days: 30
+
+  type-check:
+    name: 📘 TypeScript Type Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+      
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+      
+      - name: 📦 Install dependencies
+        run: npm ci --prefer-offline --no-audit
+      
+      - name: 🔎 Run TypeScript compiler
+        run: npx tsc --noEmit --pretty
+      
+      - name: 📊 Count TypeScript errors
+        if: failure()
+        run: |
+          ERROR_COUNT=$(npx tsc --noEmit | grep -c "error TS" || echo "0")
+          echo "TypeScript Errors: $ERROR_COUNT"
+          echo "ts_errors=$ERROR_COUNT" >> $GITHUB_OUTPUT
+        id: ts_errors
+      
+      - name: 💬 Comment on PR with errors
+        if: failure() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const errorCount = '${{ steps.ts_errors.outputs.ts_errors }}';
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `❌ **TypeScript Type Check Failed**\n\n${errorCount} type errors found. Please fix before merging.`
+            });
+
+  # ==========================================
+  # PHASE 2: UNIT TESTING
+  # ==========================================
+  
+  unit-tests:
+    name: 🧪 Unit Tests & Coverage
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+      
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+      
+      - name: 📦 Install dependencies
+        run: npm ci --prefer-offline --no-audit
+      
+      - name: 🧪 Run unit tests with coverage
+        run: npm run test:coverage
+        env:
+          CI: true
+      
+      - name: 📊 Generate coverage summary
+        if: always()
+        run: |
+          echo "## 📊 Test Coverage Report" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          cat coverage/coverage-summary.json | jq -r '
+            .total | 
+            "Lines: \(.lines.pct)%\nStatements: \(.statements.pct)%\nFunctions: \(.functions.pct)%\nBranches: \(.branches.pct)%"
+          ' >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+      
+      - name: ✅ Check coverage threshold
+        run: |
+          COVERAGE=$(cat coverage/coverage-summary.json | jq '.total.lines.pct')
+          echo "Current coverage: $COVERAGE%"
+          if (( $(echo "$COVERAGE < ${{ env.COVERAGE_THRESHOLD }}" | bc -l) )); then
+            echo "❌ Coverage $COVERAGE% is below threshold ${{ env.COVERAGE_THRESHOLD }}%"
+            exit 1
+          fi
+          echo "✅ Coverage meets threshold"
+      
+      - name: 📤 Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./coverage/lcov.info
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: false
+      
+      - name: 📤 Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit-test-results
+          path: |
+            coverage/
+            test-results/
+          retention-days: 30
+
+  # ==========================================
+  # PHASE 3: E2E TESTING
+  # ==========================================
+  
+  e2e-tests:
+    name: 🎭 E2E Tests (Playwright)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+        shard: [1/4, 2/4, 3/4, 4/4]
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+      
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+      
+      - name: 📦 Install dependencies
+        run: npm ci --prefer-offline --no-audit
+      
+      - name: 📦 Install Playwright browsers
+        run: npx playwright install --with-deps ${{ matrix.browser }}
+      
+      - name: 🚀 Build application
+        run: npm run build
+      
+      - name: 🎭 Run Playwright tests
+        run: |
+          npx playwright test \
+            --project=${{ matrix.browser }} \
+            --shard=${{ matrix.shard }} \
+            --reporter=html,json
+        env:
+          CI: true
+      
+      - name: 📤 Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-results-${{ matrix.browser }}-${{ strategy.job-index }}
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 30
+      
+      - name: 📸 Upload screenshots on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-screenshots-${{ matrix.browser }}-${{ strategy.job-index }}
+          path: test-results/**/screenshots/
+          retention-days: 7
+
+  # ==========================================
+  # PHASE 4: PERFORMANCE TESTING
+  # ==========================================
+  
+  lighthouse-audit:
+    name: 🔦 Lighthouse Performance Audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: [lint-and-format, type-check]
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+      
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+      
+      - name: 📦 Install dependencies
+        run: npm ci --prefer-offline --no-audit
+      
+      - name: 🚀 Build for production
+        run: npm run build
+      
+      - name: 🔦 Run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli
+          lhci autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+      
+      - name: 📊 Parse Lighthouse results
+        if: always()
+        run: |
+          echo "## 🔦 Lighthouse Audit Results" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          cat .lighthouseci/manifest.json | jq -r '
+            .[0].summary | 
+            "Performance: \(.performance * 100)%\nAccessibility: \(.accessibility * 100)%\nBest Practices: \(.best-practices * 100)%\nSEO: \(.seo * 100)%"
+          ' >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+      
+      - name: ✅ Check performance threshold
+        run: |
+          PERF_SCORE=$(cat .lighthouseci/manifest.json | jq '.[0].summary.performance * 100')
+          echo "Performance score: $PERF_SCORE"
+          if (( $(echo "$PERF_SCORE < ${{ env.LIGHTHOUSE_THRESHOLD }}" | bc -l) )); then
+            echo "❌ Performance score $PERF_SCORE is below threshold ${{ env.LIGHTHOUSE_THRESHOLD }}"
+            exit 1
+          fi
+          echo "✅ Performance meets threshold"
+      
+      - name: 📤 Upload Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: .lighthouseci/
+          retention-days: 30
+
+  bundle-analysis:
+    name: 📦 Bundle Size Analysis
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+      
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+      
+      - name: 📦 Install dependencies
+        run: npm ci --prefer-offline --no-audit
+      
+      - name: 🚀 Build and analyze
+        run: |
+          npm run build
+          npx vite-bundle-visualizer --json > bundle-analysis.json
+      
+      - name: 📊 Generate bundle report
+        run: |
+          echo "## 📦 Bundle Size Report" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          cat bundle-analysis.json | jq -r '
+            .assets[] | 
+            select(.size > 100000) | 
+            "\(.name): \(.size / 1024 | round)KB"
+          ' | head -10 >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+      
+      - name: 💬 Comment bundle size on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const analysis = JSON.parse(fs.readFileSync('bundle-analysis.json'));
+            const totalSize = (analysis.totalSize / 1024 / 1024).toFixed(2);
+            
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `## 📦 Bundle Size Analysis\n\n**Total Size:** ${totalSize} MB\n\nSee artifacts for detailed breakdown.`
+            });
+      
+      - name: 📤 Upload bundle analysis
+        uses: actions/upload-artifact@v4
+        with:
+          name: bundle-analysis
+          path: bundle-analysis.json
+          retention-days: 30
+
+  # ==========================================
+  # PHASE 5: SECURITY SCANNING
+  # ==========================================
+  
+  security-audit:
+    name: 🔒 Security Audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+      
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+      
+      - name: 🔍 Run npm audit
+        run: |
+          npm audit --json > audit-report.json || true
+          npm audit --audit-level=high
+        continue-on-error: true
+      
+      - name: 📊 Parse audit results
+        run: |
+          CRITICAL=$(cat audit-report.json | jq '.metadata.vulnerabilities.critical')
+          HIGH=$(cat audit-report.json | jq '.metadata.vulnerabilities.high')
+          
+          echo "## 🔒 Security Audit Results" >> $GITHUB_STEP_SUMMARY
+          echo "- Critical: $CRITICAL" >> $GITHUB_STEP_SUMMARY
+          echo "- High: $HIGH" >> $GITHUB_STEP_SUMMARY
+          
+          if [[ "$CRITICAL" -gt 0 || "$HIGH" -gt 0 ]]; then
+            echo "❌ Security vulnerabilities found!"
+            exit 1
+          fi
+      
+      - name: 📤 Upload audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-audit
+          path: audit-report.json
+          retention-days: 90
+
+  dependency-review:
+    name: 🔍 Dependency Review
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+      
+      - name: 🔍 Dependency Review
+        uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: high
+          deny-licenses: GPL-3.0, LGPL-3.0
+
+  # ==========================================
+  # PHASE 6: ACCESSIBILITY TESTING
+  # ==========================================
+  
+  accessibility-audit:
+    name: ♿ Accessibility Audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+      
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+      
+      - name: 📦 Install dependencies
+        run: npm ci --prefer-offline --no-audit
+      
+      - name: 🚀 Build application
+        run: npm run build
+      
+      - name: ♿ Run Pa11y accessibility tests
+        run: |
+          npm install -g pa11y-ci
+          pa11y-ci --json > accessibility-report.json || true
+      
+      - name: 📊 Parse accessibility results
+        if: always()
+        run: |
+          ERRORS=$(cat accessibility-report.json | jq '[.results[].issues[] | select(.type == "error")] | length')
+          WARNINGS=$(cat accessibility-report.json | jq '[.results[].issues[] | select(.type == "warning")] | length')
+          
+          echo "## ♿ Accessibility Audit Results" >> $GITHUB_STEP_SUMMARY
+          echo "- Errors: $ERRORS" >> $GITHUB_STEP_SUMMARY
+          echo "- Warnings: $WARNINGS" >> $GITHUB_STEP_SUMMARY
+          
+          if [[ "$ERRORS" -gt 0 ]]; then
+            echo "❌ Accessibility errors found!"
+            exit 1
+          fi
+      
+      - name: 📤 Upload accessibility report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: accessibility-audit
+          path: accessibility-report.json
+          retention-days: 30
+
+  # ==========================================
+  # PHASE 7: QUALITY GATES
+  # ==========================================
+  
+  quality-gate:
+    name: 🚦 Quality Gate Check
+    runs-on: ubuntu-latest
+    needs: 
+      - lint-and-format
+      - type-check
+      - unit-tests
+      - e2e-tests
+      - lighthouse-audit
+      - security-audit
+      - accessibility-audit
+    if: always()
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+      
+      - name: 📊 Evaluate quality gates
+        run: |
+          echo "## 🚦 Quality Gate Summary" >> $GITHUB_STEP_SUMMARY
+          
+          # Check job statuses
+          LINT_STATUS="${{ needs.lint-and-format.result }}"
+          TYPE_STATUS="${{ needs.type-check.result }}"
+          UNIT_STATUS="${{ needs.unit-tests.result }}"
+          E2E_STATUS="${{ needs.e2e-tests.result }}"
+          PERF_STATUS="${{ needs.lighthouse-audit.result }}"
+          SEC_STATUS="${{ needs.security-audit.result }}"
+          A11Y_STATUS="${{ needs.accessibility-audit.result }}"
+          
+          echo "| Check | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Lint & Format | $LINT_STATUS |" >> $GITHUB_STEP_SUMMARY
+          echo "| Type Check | $TYPE_STATUS |" >> $GITHUB_STEP_SUMMARY
+          echo "| Unit Tests | $UNIT_STATUS |" >> $GITHUB_STEP_SUMMARY
+          echo "| E2E Tests | $E2E_STATUS |" >> $GITHUB_STEP_SUMMARY
+          echo "| Performance | $PERF_STATUS |" >> $GITHUB_STEP_SUMMARY
+          echo "| Security | $SEC_STATUS |" >> $GITHUB_STEP_SUMMARY
+          echo "| Accessibility | $A11Y_STATUS |" >> $GITHUB_STEP_SUMMARY
+          
+          # Fail if any critical check failed
+          if [[ "$LINT_STATUS" != "success" ]] || \
+             [[ "$TYPE_STATUS" != "success" ]] || \
+             [[ "$UNIT_STATUS" != "success" ]] || \
+             [[ "$SEC_STATUS" != "success" ]]; then
+            echo "❌ Quality gate failed!"
+            exit 1
+          fi
+          
+          echo "✅ All quality gates passed!"
+      
+      - name: 💬 Post quality gate comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const results = {
+              lint: '${{ needs.lint-and-format.result }}',
+              type: '${{ needs.type-check.result }}',
+              unit: '${{ needs.unit-tests.result }}',
+              e2e: '${{ needs.e2e-tests.result }}',
+              perf: '${{ needs.lighthouse-audit.result }}',
+              security: '${{ needs.security-audit.result }}',
+              a11y: '${{ needs.accessibility-audit.result }}'
+            };
+            
+            const emoji = (status) => status === 'success' ? '✅' : status === 'failure' ? '❌' : '⚠️';
+            
+            const body = `## 🚦 Quality Gate Results
+            
+            | Check | Status |
+            |-------|--------|
+            | ${emoji(results.lint)} Lint & Format | ${results.lint} |
+            | ${emoji(results.type)} Type Check | ${results.type} |
+            | ${emoji(results.unit)} Unit Tests | ${results.unit} |
+            | ${emoji(results.e2e)} E2E Tests | ${results.e2e} |
+            | ${emoji(results.perf)} Performance | ${results.perf} |
+            | ${emoji(results.security)} Security | ${results.security} |
+            | ${emoji(results.a11y)} Accessibility | ${results.a11y} |
+            `;
+            
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: body
+            });
+
+  # ==========================================
+  # PHASE 8: DEPLOYMENT (on success)
+  # ==========================================
+  
+  deploy-preview:
+    name: 🚀 Deploy Preview
+    runs-on: ubuntu-latest
+    needs: [quality-gate]
+    if: github.event_name == 'pull_request' && needs.quality-gate.result == 'success'
+    environment:
+      name: preview-${{ github.event.pull_request.number }}
+      url: ${{ steps.deploy.outputs.url }}
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+      
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+      
+      - name: 📦 Install dependencies
+        run: npm ci --prefer-offline --no-audit
+      
+      - name: 🚀 Build for preview
+        run: npm run build
+        env:
+          VITE_FIREBASE_ENV: preview
+      
+      - name: 🔥 Deploy to Firebase Hosting (Preview)
+        id: deploy
+        run: |
+          npm install -g firebase-tools
+          firebase hosting:channel:deploy pr-${{ github.event.pull_request.number }} \
+            --expires 7d \
+            --token ${{ secrets.FIREBASE_TOKEN }} \
+            --json > deploy-output.json
+          
+          URL=$(cat deploy-output.json | jq -r '.result."premium-ecosystem".url')
+          echo "url=$URL" >> $GITHUB_OUTPUT
+      
+      - name: 💬 Comment preview URL on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const url = '${{ steps.deploy.outputs.url }}';
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `## 🚀 Preview Deployment\n\n✅ Your preview is ready!\n\n🔗 **Preview URL:** ${url}\n\n⏱️ Expires in 7 days`
+            });

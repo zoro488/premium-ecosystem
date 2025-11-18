@@ -1,0 +1,385 @@
+name: 🔄 Database Migration & Validation
+
+on:
+  workflow_dispatch:
+    inputs:
+      migration_type:
+        description: 'Tipo de migración'
+        required: true
+        type: choice
+        options:
+          - schema-update
+          - data-migration
+          - index-optimization
+          - validation-only
+        default: 'validation-only'
+      dry_run:
+        description: 'Modo simulación'
+        required: false
+        type: boolean
+        default: true
+
+  schedule:
+    # Validación diaria de integridad
+    - cron: '0 3 * * *'
+
+env:
+  NODE_VERSION: '20.x'
+
+jobs:
+  validate-schema:
+    name: ✅ Validate Database Schema
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: 🔐 Setup credentials
+        run: |
+                    echo "FIREBASE_API_KEY=${{ secrets.VITE_FIREBASE_API_KEY }}" >> $GITHUB_ENV
+          echo "FIREBASE_AUTH_DOMAIN=${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}" >> $GITHUB_ENV
+          echo "FIREBASE_PROJECT_ID=${{ secrets.VITE_FIREBASE_PROJECT_ID }}" >> $GITHUB_ENV
+          echo "FIREBASE_STORAGE_BUCKET=${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}" >> $GITHUB_ENV
+          echo "FIREBASE_MESSAGING_SENDER_ID=${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}" >> $GITHUB_ENV
+          echo "FIREBASE_APP_ID=${{ secrets.VITE_FIREBASE_APP_ID }}" >> $GITHUB_ENV
+          echo "GOOGLE_APPLICATION_CREDENTIALS=firebase-credentials.json" >> $GITHUB_ENV
+
+      - name: 📋 Validate collection schemas
+        run: |
+          echo "Validating database schemas..."
+
+          # Definir esquemas esperados
+          cat > expected-schema.json <<'EOF'
+          {
+            "usuarios": ["uid", "email", "nombre", "rol", "empresaId", "createdAt"],
+            "empresas": ["id", "nombre", "rfc", "plan", "activo", "createdAt"],
+            "clientes": ["id", "nombre", "email", "telefono", "empresaId"],
+            "ventas": ["id", "clienteId", "monto", "fecha", "status"],
+            "bancos": ["id", "nombre", "codigo", "tipo"],
+            "cuentas": ["id", "bancoId", "numero", "tipo", "saldo"],
+            "tarjetas": ["id", "bancoId", "numero", "limite", "tipo"],
+            "transacciones": ["id", "cuentaId", "monto", "tipo", "fecha"]
+          }
+          EOF
+
+          npm run validate:schema -- --schema=expected-schema.json
+
+      - name: 🔍 Check for orphaned documents
+        run: |
+          echo "Checking for orphaned documents..."
+          npm run db:check-orphans
+
+      - name: 🔍 Validate relationships
+        run: |
+          echo "Validating document relationships..."
+          npm run db:validate-relationships
+
+      - name: 📊 Generate validation report
+        run: |
+          mkdir -p reports/validation
+          npm run db:validation-report -- --output=reports/validation/report.json
+
+      - name: 📤 Upload validation report
+        uses: actions/upload-artifact@v4
+        with:
+          name: schema-validation-report
+          path: reports/validation/
+
+  check-indexes:
+    name: 📑 Check & Optimize Indexes
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: 🔐 Setup credentials
+        run: |
+                    echo "FIREBASE_API_KEY=${{ secrets.VITE_FIREBASE_API_KEY }}" >> $GITHUB_ENV
+          echo "FIREBASE_AUTH_DOMAIN=${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}" >> $GITHUB_ENV
+          echo "FIREBASE_PROJECT_ID=${{ secrets.VITE_FIREBASE_PROJECT_ID }}" >> $GITHUB_ENV
+          echo "FIREBASE_STORAGE_BUCKET=${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}" >> $GITHUB_ENV
+          echo "FIREBASE_MESSAGING_SENDER_ID=${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}" >> $GITHUB_ENV
+          echo "FIREBASE_APP_ID=${{ secrets.VITE_FIREBASE_APP_ID }}" >> $GITHUB_ENV
+          echo "GOOGLE_APPLICATION_CREDENTIALS=firebase-credentials.json" >> $GITHUB_ENV
+
+      - name: 📑 List current indexes
+        run: |
+          echo "Listing current Firestore indexes..."
+          npm run firestore:list-indexes
+
+      - name: 🔍 Analyze query patterns
+        run: |
+          echo "Analyzing query patterns for index suggestions..."
+          npm run db:analyze-queries -- --suggest-indexes
+
+      - name: ✅ Validate firestore.indexes.json
+        run: |
+          if [ -f "firestore.indexes.json" ]; then
+            echo "✅ firestore.indexes.json found"
+            cat firestore.indexes.json | jq '.'
+          else
+            echo "⚠️ firestore.indexes.json not found"
+          fi
+
+      - name: 🔍 Check for missing indexes
+        run: |
+          npm run firestore:check-missing-indexes || echo "⚠️ Some queries may need indexes"
+
+  data-integrity:
+    name: 🔍 Data Integrity Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: 🔐 Setup credentials
+        run: |
+                    echo "FIREBASE_API_KEY=${{ secrets.VITE_FIREBASE_API_KEY }}" >> $GITHUB_ENV
+          echo "FIREBASE_AUTH_DOMAIN=${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}" >> $GITHUB_ENV
+          echo "FIREBASE_PROJECT_ID=${{ secrets.VITE_FIREBASE_PROJECT_ID }}" >> $GITHUB_ENV
+          echo "FIREBASE_STORAGE_BUCKET=${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}" >> $GITHUB_ENV
+          echo "FIREBASE_MESSAGING_SENDER_ID=${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}" >> $GITHUB_ENV
+          echo "FIREBASE_APP_ID=${{ secrets.VITE_FIREBASE_APP_ID }}" >> $GITHUB_ENV
+          echo "GOOGLE_APPLICATION_CREDENTIALS=firebase-credentials.json" >> $GITHUB_ENV
+
+      - name: 🔍 Check data consistency
+        run: |
+          echo "Checking data consistency across collections..."
+          npm run db:check-consistency
+
+      - name: 🔍 Validate foreign keys
+        run: |
+          echo "Validating foreign key relationships..."
+          npm run db:validate-foreign-keys
+
+      - name: 🔍 Check duplicate records
+        run: |
+          echo "Checking for duplicate records..."
+          npm run db:check-duplicates
+
+      - name: 📊 Generate integrity report
+        run: |
+          mkdir -p reports/integrity
+          npm run db:integrity-report -- --output=reports/integrity/report.json
+
+      - name: 📤 Upload integrity report
+        uses: actions/upload-artifact@v4
+        with:
+          name: data-integrity-report
+          path: reports/integrity/
+
+  migration-execution:
+    name: 🔄 Execute Migration
+    runs-on: ubuntu-latest
+    needs: [validate-schema, check-indexes, data-integrity]
+    if: |
+      github.event_name == 'workflow_dispatch' &&
+      github.event.inputs.migration_type != 'validation-only'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: 🔐 Setup credentials
+        run: |
+                    echo "FIREBASE_API_KEY=${{ secrets.VITE_FIREBASE_API_KEY }}" >> $GITHUB_ENV
+          echo "FIREBASE_AUTH_DOMAIN=${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}" >> $GITHUB_ENV
+          echo "FIREBASE_PROJECT_ID=${{ secrets.VITE_FIREBASE_PROJECT_ID }}" >> $GITHUB_ENV
+          echo "FIREBASE_STORAGE_BUCKET=${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}" >> $GITHUB_ENV
+          echo "FIREBASE_MESSAGING_SENDER_ID=${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}" >> $GITHUB_ENV
+          echo "FIREBASE_APP_ID=${{ secrets.VITE_FIREBASE_APP_ID }}" >> $GITHUB_ENV
+          echo "GOOGLE_APPLICATION_CREDENTIALS=firebase-credentials.json" >> $GITHUB_ENV
+
+      - name: 💾 Create backup before migration
+        run: |
+          echo "Creating backup before migration..."
+          BACKUP_ID="pre-migration-$(date +%Y%m%d_%H%M%S)"
+          npm run db:backup -- --backup-id="$BACKUP_ID"
+          echo "BACKUP_ID=$BACKUP_ID" >> $GITHUB_ENV
+
+      - name: 🔄 Execute migration
+        run: |
+          FLAGS=""
+          if [[ "${{ github.event.inputs.dry_run }}" == "true" ]]; then
+            FLAGS="$FLAGS --dry-run"
+            echo "🔍 Running in DRY RUN mode - no changes will be applied"
+          fi
+
+          case "${{ github.event.inputs.migration_type }}" in
+            schema-update)
+              npm run migrate:schema $FLAGS
+              ;;
+            data-migration)
+              npm run migrate:data $FLAGS
+              ;;
+            index-optimization)
+              npm run migrate:indexes $FLAGS
+              ;;
+          esac
+
+      - name: ✅ Verify migration
+        if: github.event.inputs.dry_run != 'true'
+        run: |
+          echo "Verifying migration results..."
+          npm run db:verify-migration
+
+      - name: 📊 Generate migration report
+        run: |
+          mkdir -p reports/migration
+
+          cat > reports/migration/report.md <<EOF
+          # 🔄 Database Migration Report
+
+          **Date:** $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          **Type:** ${{ github.event.inputs.migration_type }}
+          **Dry Run:** ${{ github.event.inputs.dry_run }}
+          **Backup ID:** $BACKUP_ID
+
+          ## Summary
+
+          Migration executed successfully.
+
+          ## Next Steps
+
+          1. Verify data integrity
+          2. Test application functionality
+          3. Monitor for errors
+          4. Keep backup for rollback if needed
+          EOF
+
+      - name: 📤 Upload migration report
+        uses: actions/upload-artifact@v4
+        with:
+          name: migration-report
+          path: reports/migration/
+
+  rollback-plan:
+    name: 📋 Generate Rollback Plan
+    runs-on: ubuntu-latest
+    needs: migration-execution
+    if: always() && needs.migration-execution.result == 'success'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 📋 Create rollback instructions
+        run: |
+          mkdir -p rollback
+
+          cat > rollback/ROLLBACK_INSTRUCTIONS.md <<EOF
+          # 🔄 Rollback Instructions
+
+          ## Migration Details
+
+          - **Migration Type:** ${{ github.event.inputs.migration_type }}
+          - **Date:** $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          - **Backup ID:** Check migration report
+
+          ## Rollback Steps
+
+          ### 1. Stop Application
+          \`\`\`bash
+          # Stop serving traffic
+          firebase hosting:disable
+          \`\`\`
+
+          ### 2. Restore from Backup
+          \`\`\`bash
+          npm run db:restore -- --backup-id="BACKUP_ID"
+          \`\`\`
+
+          ### 3. Verify Data
+          \`\`\`bash
+          npm run db:verify
+          \`\`\`
+
+          ### 4. Restart Application
+          \`\`\`bash
+          firebase deploy
+          \`\`\`
+
+          ## Verification Checklist
+
+          - [ ] Backup restored successfully
+          - [ ] Data integrity verified
+          - [ ] Application functionality tested
+          - [ ] Users notified of changes
+          - [ ] Incident documented
+
+          ## Emergency Contacts
+
+          - DevOps Team: devops@company.com
+          - Database Admin: dba@company.com
+          EOF
+
+          cat rollback/ROLLBACK_INSTRUCTIONS.md
+
+      - name: 📤 Upload rollback plan
+        uses: actions/upload-artifact@v4
+        with:
+          name: rollback-plan
+          path: rollback/
+
+  notify-completion:
+    name: 📢 Notify Completion
+    runs-on: ubuntu-latest
+    needs: [validate-schema, check-indexes, data-integrity, migration-execution]
+    if: always()
+
+    steps:
+      - name: 📊 Summary
+        run: |
+          echo "🔄 Database operations completed"
+          echo "Schema Validation: ${{ needs.validate-schema.result }}"
+          echo "Index Check: ${{ needs.check-indexes.result }}"
+          echo "Data Integrity: ${{ needs.data-integrity.result }}"
+          echo "Migration: ${{ needs.migration-execution.result }}"
+
+      - name: 📧 Send notification on failure
+        if: |
+          needs.validate-schema.result == 'failure' ||
+          needs.check-indexes.result == 'failure' ||
+          needs.data-integrity.result == 'failure' ||
+          needs.migration-execution.result == 'failure'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: '🚨 Database Operation Failed'
+          body: |
+            ❌ Una operación de base de datos ha fallado.
+
+            Detalles: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+            Por favor, revisa los reportes inmediatamente.
+          to: ${{ secrets.NOTIFICATION_EMAIL }}
+          from: Database Monitor

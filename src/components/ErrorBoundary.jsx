@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { AlertCircle, RefreshCw } from 'lucide-react';
+import PropTypes from 'prop-types';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -12,19 +13,30 @@ class ErrorBoundary extends React.Component {
     };
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(_error) {
     return { hasError: true };
   }
 
   componentDidCatch(error, errorInfo) {
+    // Extraer información serializable del error para evitar referencias circulares
+    const safeError = {
+      message: error?.message || 'Unknown error',
+      stack: error?.stack || '',
+      name: error?.name || 'Error',
+    };
+
+    const safeErrorInfo = {
+      componentStack: errorInfo?.componentStack || '',
+    };
+
     this.setState({
-      error,
-      errorInfo,
+      error: safeError,
+      errorInfo: safeErrorInfo,
     });
 
     // Log to console in development
     if (import.meta.env.DEV) {
-      // console.error('Error Boundary caught error:', error, errorInfo);
+      console.error('Error Boundary caught error:', error, errorInfo);
     }
   }
 
@@ -53,8 +65,10 @@ class ErrorBoundary extends React.Component {
 
             {import.meta.env.DEV && this.state.error && (
               <div className="mb-6 p-4 bg-gray-900/50 rounded-lg border border-gray-700">
-                <p className="text-xs font-mono text-red-300 mb-2">{this.state.error.toString()}</p>
-                {this.state.errorInfo && (
+                <p className="text-xs font-mono text-red-300 mb-2">
+                  {this.state.error.name}: {this.state.error.message}
+                </p>
+                {this.state.errorInfo && this.state.errorInfo.componentStack && (
                   <details className="text-xs font-mono text-gray-400">
                     <summary className="cursor-pointer text-gray-500 hover:text-gray-300">
                       Stack trace
@@ -86,5 +100,9 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
+
+ErrorBoundary.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default ErrorBoundary;

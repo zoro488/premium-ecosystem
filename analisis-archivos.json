@@ -1,0 +1,2547 @@
+[
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\App-backup.jsx",
+    "Length": 8304,
+    "LastWriteTime": "2025-11-01T07:22:41.0605084-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\App.jsx",
+    "Length": 10400,
+    "LastWriteTime": "2025-11-01T07:22:41.0620114-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\index.css",
+    "Length": 9944,
+    "LastWriteTime": "2025-11-01T07:22:41.1085803-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\main.jsx",
+    "Length": 1447,
+    "LastWriteTime": "2025-11-01T10:01:34.2049789-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\ShowcaseAAA.jsx",
+    "Length": 20701,
+    "LastWriteTime": "2025-11-03T07:17:05.9376411-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\TestApp.jsx",
+    "Length": 883,
+    "LastWriteTime": "2025-11-03T07:17:06.043841-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\vite-env.d.ts",
+    "Length": 1032,
+    "LastWriteTime": "2025-10-28T01:16:47.3397671-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\Apollo\\Apollo.jsx",
+    "Length": 92660,
+    "LastWriteTime": "2025-11-01T07:22:41.0640155-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\Apollo\\Apollo.test.jsx",
+    "Length": 217,
+    "LastWriteTime": "2025-11-03T07:17:00.4774811-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\animations.css",
+    "Length": 9822,
+    "LastWriteTime": "2025-11-03T07:17:00.9040141-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\Attached HTML and CSS Context.txt",
+    "Length": 46719,
+    "LastWriteTime": "2025-10-18T09:31:38.388734-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\cinematicAnimations.css",
+    "Length": 984,
+    "LastWriteTime": "2025-11-03T07:17:00.9252048-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\dataLoader.js",
+    "Length": 7676,
+    "LastWriteTime": "2025-10-25T14:45:27.1130522-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\DOCUMENTACION_SISTEMA_FINANCIERO.md",
+    "Length": 14321,
+    "LastWriteTime": "2025-10-23T12:42:00.4298561-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\FLOWDISTRIBUTOR_MAESTRO_PLAN.md",
+    "Length": 17217,
+    "LastWriteTime": "2025-10-28T14:29:01.3346058-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\FlowDistributor.jsx",
+    "Length": 416627,
+    "LastWriteTime": "2025-11-03T07:45:34.3093592-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\FlowDistributor.jsx.backup",
+    "Length": 41021,
+    "LastWriteTime": "2025-10-30T08:35:47.8750299-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\index.js",
+    "Length": 779,
+    "LastWriteTime": "2025-10-29T15:34:48.6175799-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\PANEL_ALMACEN_COMPLETADO.md",
+    "Length": 8360,
+    "LastWriteTime": "2025-10-23T12:42:00.4304121-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\README_COMPLETO.md",
+    "Length": 11153,
+    "LastWriteTime": "2025-10-23T13:41:41.8759068-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\README.md",
+    "Length": 12822,
+    "LastWriteTime": "2025-10-23T13:33:40.3954779-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\REFACTORING_PROGRESS.md",
+    "Length": 9912,
+    "LastWriteTime": "2025-10-27T14:13:21.3207947-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\SISTEMA_COMPLETADO.md",
+    "Length": 10077,
+    "LastWriteTime": "2025-10-23T12:42:00.4309665-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\analysis\\analisisAzteca.js",
+    "Length": 3225,
+    "LastWriteTime": "2025-10-25T14:45:27.0118142-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\analysis\\analisisBovedaMonte.js",
+    "Length": 10258,
+    "LastWriteTime": "2025-10-23T12:42:00.4326034-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\analysis\\analisisClientes.js",
+    "Length": 8456,
+    "LastWriteTime": "2025-10-23T12:42:00.4337712-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\analysis\\analisisFletes.js",
+    "Length": 6829,
+    "LastWriteTime": "2025-10-23T12:42:00.4337712-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\analysis\\analisisLeftie.js",
+    "Length": 5280,
+    "LastWriteTime": "2025-10-25T14:45:27.0128149-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\analysis\\analisisProfit.js",
+    "Length": 5117,
+    "LastWriteTime": "2025-10-23T12:42:00.4348708-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\analysis\\analisisUtilidades.js",
+    "Length": 15612,
+    "LastWriteTime": "2025-10-25T14:45:27.0248157-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\animations\\premiumAnimations.js",
+    "Length": 11028,
+    "LastWriteTime": "2025-11-01T05:36:24.9975299-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\AbonoFormOptimizado.jsx",
+    "Length": 19296,
+    "LastWriteTime": "2025-10-28T04:14:57.1689367-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\AdvancedAnimations.jsx",
+    "Length": 8784,
+    "LastWriteTime": "2025-10-28T14:45:34.5431438-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\AIAssistantUltra.jsx",
+    "Length": 24774,
+    "LastWriteTime": "2025-11-03T07:43:30.969632-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\AIWidgetAdvanced.jsx",
+    "Length": 28205,
+    "LastWriteTime": "2025-11-03T07:17:01.1038035-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\AnimatedBackground.jsx",
+    "Length": 5750,
+    "LastWriteTime": "2025-11-03T07:17:01.1150111-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\AnimatedTransitions.jsx",
+    "Length": 7788,
+    "LastWriteTime": "2025-11-03T07:17:01.1331308-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\BankVisualization2D.jsx",
+    "Length": 15234,
+    "LastWriteTime": "2025-10-29T13:34:06.2058056-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\Charts.jsx",
+    "Length": 7904,
+    "LastWriteTime": "2025-11-01T07:22:41.0721306-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\Charts.test.jsx",
+    "Length": 217,
+    "LastWriteTime": "2025-11-03T07:17:01.1763168-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\ChartsLoading.jsx",
+    "Length": 952,
+    "LastWriteTime": "2025-11-01T07:22:41.073644-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\ChartsLoading.test.jsx",
+    "Length": 224,
+    "LastWriteTime": "2025-11-03T07:17:01.1848704-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\ChronosOptimization.jsx",
+    "Length": 8409,
+    "LastWriteTime": "2025-10-30T07:57:50.1942806-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\CinematicLoadingScreen.jsx",
+    "Length": 12027,
+    "LastWriteTime": "2025-11-03T01:20:46.9723991-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\CollapsedSidebarPremium.jsx",
+    "Length": 13334,
+    "LastWriteTime": "2025-10-28T06:48:51.7688342-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\CountingAnimations.jsx",
+    "Length": 9034,
+    "LastWriteTime": "2025-10-30T07:52:11.0328929-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\CursorGlow.jsx",
+    "Length": 1103,
+    "LastWriteTime": "2025-11-01T07:22:41.0746434-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\CursorGlow.test.jsx",
+    "Length": 221,
+    "LastWriteTime": "2025-11-03T07:17:01.2516583-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\DashboardUltra.tsx",
+    "Length": 19184,
+    "LastWriteTime": "2025-11-03T03:29:17.8896639-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\ElegantComponents.jsx",
+    "Length": 15440,
+    "LastWriteTime": "2025-11-03T07:17:01.2820095-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\FormGYA.jsx",
+    "Length": 17101,
+    "LastWriteTime": "2025-10-28T16:31:07.9876409-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\FormOrdenCompra.jsx",
+    "Length": 20820,
+    "LastWriteTime": "2025-10-28T16:31:25.0277863-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\FormVentaLocal.jsx",
+    "Length": 17339,
+    "LastWriteTime": "2025-10-28T16:26:54.2586953-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\GESTION_COMPRAS_README.md",
+    "Length": 8551,
+    "LastWriteTime": "2025-10-23T12:42:00.4365186-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\GestionCompras.jsx",
+    "Length": 6239,
+    "LastWriteTime": "2025-11-03T07:17:01.4312698-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\GestionFinanzasDemo.jsx",
+    "Length": 10449,
+    "LastWriteTime": "2025-11-03T07:17:01.4399666-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\GlassCard.jsx",
+    "Length": 6810,
+    "LastWriteTime": "2025-11-03T07:17:01.4499848-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\GraficoMaestroInteractivo.jsx",
+    "Length": 18428,
+    "LastWriteTime": "2025-11-03T07:17:01.4705182-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\Graficos3DAAA.jsx",
+    "Length": 13052,
+    "LastWriteTime": "2025-11-03T07:17:01.4871811-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\GraficosFleteSur.jsx",
+    "Length": 10897,
+    "LastWriteTime": "2025-11-03T07:17:01.5006902-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\GraficosPremium.jsx",
+    "Length": 25417,
+    "LastWriteTime": "2025-11-03T07:17:01.5285459-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\GUIA_VISUAL.md",
+    "Length": 17230,
+    "LastWriteTime": "2025-10-23T12:42:00.4365186-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\HolographicAIAssistant.jsx",
+    "Length": 20049,
+    "LastWriteTime": "2025-10-28T06:50:30.0403576-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\HolographicHeader.jsx",
+    "Length": 10825,
+    "LastWriteTime": "2025-11-03T01:20:21.0473337-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\Icon3D.jsx",
+    "Length": 13569,
+    "LastWriteTime": "2025-10-28T05:51:06.3223907-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\index-aaa.js",
+    "Length": 950,
+    "LastWriteTime": "2025-11-03T07:17:01.5751293-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\index.js",
+    "Length": 1957,
+    "LastWriteTime": "2025-11-03T07:17:01.5801998-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\KeyboardShortcutsPanel.jsx",
+    "Length": 10533,
+    "LastWriteTime": "2025-10-28T14:45:57.8004512-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\LoginScreen.jsx",
+    "Length": 11780,
+    "LastWriteTime": "2025-11-01T10:18:02.8576727-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\Logo3D.jsx",
+    "Length": 10858,
+    "LastWriteTime": "2025-11-03T07:17:01.6240641-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\MicroAnimations.jsx",
+    "Length": 11440,
+    "LastWriteTime": "2025-10-28T06:57:47.6773621-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\MicroInteraccionesAAA.jsx",
+    "Length": 10880,
+    "LastWriteTime": "2025-11-03T07:17:01.6543956-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\NotificationCenterPanel.jsx",
+    "Length": 13498,
+    "LastWriteTime": "2025-10-28T14:35:21.1463809-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelAlmacen.jsx",
+    "Length": 28886,
+    "LastWriteTime": "2025-10-30T09:30:27.3502291-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelAlmacenUltra.tsx",
+    "Length": 1554,
+    "LastWriteTime": "2025-11-03T07:26:40.3845088-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelAztecaUltra.tsx",
+    "Length": 9858,
+    "LastWriteTime": "2025-11-03T02:11:29.7349441-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelBancoGenerico.tsx",
+    "Length": 23823,
+    "LastWriteTime": "2025-11-03T02:11:29.7448727-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelBovedaMonteUltra.tsx",
+    "Length": 27151,
+    "LastWriteTime": "2025-11-03T02:11:29.7554341-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelBovedaUSAUltra.tsx",
+    "Length": 10605,
+    "LastWriteTime": "2025-11-03T02:11:29.7644379-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelClientes.jsx",
+    "Length": 8089,
+    "LastWriteTime": "2025-11-03T07:17:01.7059617-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelClientesUltra.tsx",
+    "Length": 31837,
+    "LastWriteTime": "2025-11-03T02:11:29.7749485-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelControlMaestro.jsx",
+    "Length": 39735,
+    "LastWriteTime": "2025-11-03T07:17:01.7398672-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelControlMaestroUltra.tsx",
+    "Length": 14474,
+    "LastWriteTime": "2025-11-03T02:11:29.7861697-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelDistribuidores.css",
+    "Length": 1305,
+    "LastWriteTime": "2025-10-23T12:42:00.4430675-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelDistribuidores.jsx",
+    "Length": 36962,
+    "LastWriteTime": "2025-11-03T02:31:48.944547-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelDistribuidoresCompleto.jsx",
+    "Length": 5257,
+    "LastWriteTime": "2025-10-28T13:52:47.2068331-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelFletesSurUltra.tsx",
+    "Length": 9067,
+    "LastWriteTime": "2025-11-03T02:11:29.7941742-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelFleteSur.jsx",
+    "Length": 38734,
+    "LastWriteTime": "2025-11-03T07:17:01.8270048-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelFleteSurV2.tsx",
+    "Length": 150,
+    "LastWriteTime": "2025-11-03T02:11:29.8042551-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelGYAUltra.tsx",
+    "Length": 27049,
+    "LastWriteTime": "2025-11-03T05:50:18.7794643-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelIAAnalyticsUltra.tsx",
+    "Length": 22705,
+    "LastWriteTime": "2025-11-03T02:11:29.8263412-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelLeftieUltra.tsx",
+    "Length": 8657,
+    "LastWriteTime": "2025-11-03T02:11:29.8401626-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelLeftieV2.tsx",
+    "Length": 148,
+    "LastWriteTime": "2025-11-03T02:11:29.8517532-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelOrdenesCompra.jsx",
+    "Length": 11925,
+    "LastWriteTime": "2025-10-29T16:04:11.963794-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelOrdenesCompraAAA.jsx",
+    "Length": 12065,
+    "LastWriteTime": "2025-11-03T07:17:01.8525939-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelProfitUltra.tsx",
+    "Length": 9638,
+    "LastWriteTime": "2025-11-03T02:11:29.8653779-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelProfitV2.tsx",
+    "Length": 148,
+    "LastWriteTime": "2025-11-03T02:11:29.8783967-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelReportes.jsx",
+    "Length": 20445,
+    "LastWriteTime": "2025-11-03T07:17:01.8691997-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelReportesUltra.tsx",
+    "Length": 17493,
+    "LastWriteTime": "2025-11-03T02:11:29.8909999-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelUtilidadesUltra.tsx",
+    "Length": 8372,
+    "LastWriteTime": "2025-11-03T02:11:29.9010846-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelUtilidadesV2.tsx",
+    "Length": 156,
+    "LastWriteTime": "2025-11-03T02:11:29.914888-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelVentaLocal.jsx",
+    "Length": 14838,
+    "LastWriteTime": "2025-11-03T07:17:01.9420035-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PanelVentas.jsx",
+    "Length": 52330,
+    "LastWriteTime": "2025-11-03T07:57:56.0169756-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PremiumAnimatedBackground.jsx",
+    "Length": 8829,
+    "LastWriteTime": "2025-10-28T06:53:25.6532883-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PremiumLoading.jsx",
+    "Length": 8413,
+    "LastWriteTime": "2025-11-03T07:17:02.1490353-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PremiumLoadingScreen.jsx",
+    "Length": 9177,
+    "LastWriteTime": "2025-11-03T07:17:02.1595539-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PremiumLoadingScreen.tsx",
+    "Length": 7391,
+    "LastWriteTime": "2025-11-01T06:24:24.5814256-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\PremiumModal.jsx",
+    "Length": 9685,
+    "LastWriteTime": "2025-11-03T07:17:02.1705631-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\RealtimeNotifications.jsx",
+    "Length": 8450,
+    "LastWriteTime": "2025-11-01T07:22:41.0786435-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\SidebarPremium3D.jsx",
+    "Length": 19986,
+    "LastWriteTime": "2025-11-03T07:17:02.224922-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\SistemaGestionFinanciera.jsx",
+    "Length": 11938,
+    "LastWriteTime": "2025-11-03T07:17:02.2373408-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\SplashScreen.jsx",
+    "Length": 9408,
+    "LastWriteTime": "2025-11-01T09:52:40.2795967-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\SyncIndicator.jsx",
+    "Length": 8236,
+    "LastWriteTime": "2025-11-03T07:17:02.2681902-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\TablaExpandiblePremium.jsx",
+    "Length": 17577,
+    "LastWriteTime": "2025-11-03T07:17:02.2884196-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\TablasBancoPremium.jsx",
+    "Length": 52985,
+    "LastWriteTime": "2025-11-03T07:17:02.3253074-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\TablaUniversalPremiumAAA.jsx",
+    "Length": 12402,
+    "LastWriteTime": "2025-11-03T07:17:02.3401512-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\TacticalBackground.jsx",
+    "Length": 7930,
+    "LastWriteTime": "2025-10-30T07:49:56.6229338-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\TacticalSidebar.jsx",
+    "Length": 11249,
+    "LastWriteTime": "2025-10-30T07:50:50.2584117-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\TacticalUIComponents.jsx",
+    "Length": 8434,
+    "LastWriteTime": "2025-10-30T07:57:41.092749-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\Text3DAAA.jsx",
+    "Length": 5737,
+    "LastWriteTime": "2025-11-03T07:17:02.4463627-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\ThemeCustomizerPanel.jsx",
+    "Length": 15865,
+    "LastWriteTime": "2025-10-28T14:35:20.349833-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\ToastContainer.jsx",
+    "Length": 2727,
+    "LastWriteTime": "2025-10-20T07:07:03.6988272-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\ToastContainer.test.jsx",
+    "Length": 225,
+    "LastWriteTime": "2025-11-03T07:17:02.4669926-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\VentaFormAAA.jsx",
+    "Length": 30489,
+    "LastWriteTime": "2025-10-30T08:16:33.9721325-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\VentaFormOptimizado.jsx",
+    "Length": 22677,
+    "LastWriteTime": "2025-11-03T07:56:24.7210441-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\VirtualizedTable.jsx",
+    "Length": 11694,
+    "LastWriteTime": "2025-11-03T07:17:02.5314225-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\ZeroForceFlowAI.jsx",
+    "Length": 61207,
+    "LastWriteTime": "2025-11-01T15:10:30.9376402-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\ai\\AIEngine.js",
+    "Length": 6405,
+    "LastWriteTime": "2025-11-03T04:13:25.9541235-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\ai\\ChartGenerator.js",
+    "Length": 7820,
+    "LastWriteTime": "2025-11-03T07:05:22.8424152-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\ai\\EntityExtractor.js",
+    "Length": 9925,
+    "LastWriteTime": "2025-11-03T07:54:42.2100366-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\ai\\index.js",
+    "Length": 1094,
+    "LastWriteTime": "2025-11-03T04:13:49.4691169-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\ai\\IntentClassifier.js",
+    "Length": 6128,
+    "LastWriteTime": "2025-11-03T04:13:28.7227282-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\ai\\ReportGenerator.js",
+    "Length": 8179,
+    "LastWriteTime": "2025-11-03T07:05:21.7230706-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\dashboard\\DashboardMetrics.tsx",
+    "Length": 9057,
+    "LastWriteTime": "2025-10-25T14:45:27.0664293-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\forms\\FormAbono.tsx",
+    "Length": 18233,
+    "LastWriteTime": "2025-10-29T15:40:14.2546194-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\forms\\FormBase.tsx",
+    "Length": 19692,
+    "LastWriteTime": "2025-10-29T15:10:29.8153814-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\forms\\FormCliente.tsx",
+    "Length": 18935,
+    "LastWriteTime": "2025-10-29T15:40:31.5353414-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\forms\\FormCorte.jsx",
+    "Length": 18069,
+    "LastWriteTime": "2025-11-03T07:17:01.342413-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\forms\\FormGasto.jsx",
+    "Length": 10988,
+    "LastWriteTime": "2025-11-03T07:17:01.3542715-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\forms\\FormGasto.tsx",
+    "Length": 15071,
+    "LastWriteTime": "2025-10-29T15:40:31.5353414-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\forms\\FormIngreso.jsx",
+    "Length": 9789,
+    "LastWriteTime": "2025-11-03T07:17:01.3645758-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\forms\\FormTransferencia.jsx",
+    "Length": 12977,
+    "LastWriteTime": "2025-11-03T07:17:01.3787539-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\forms\\FormTransferencia.tsx",
+    "Length": 18871,
+    "LastWriteTime": "2025-10-29T15:40:29.6825351-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\forms\\FormVenta.jsx",
+    "Length": 20723,
+    "LastWriteTime": "2025-11-03T07:17:01.3998365-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\forms\\FormVenta.tsx",
+    "Length": 27465,
+    "LastWriteTime": "2025-10-29T15:40:42.0617958-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\forms\\index.js",
+    "Length": 355,
+    "LastWriteTime": "2025-11-03T07:17:01.4053443-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\forms\\OrdenCompraForm.tsx",
+    "Length": 9513,
+    "LastWriteTime": "2025-10-25T14:45:27.0624274-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\forms\\VentaForm.tsx",
+    "Length": 12407,
+    "LastWriteTime": "2025-10-25T14:45:27.0674294-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\panels\\index.js",
+    "Length": 240,
+    "LastWriteTime": "2025-11-03T07:17:01.8731994-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\panels\\PanelAlmacen.jsx",
+    "Length": 33250,
+    "LastWriteTime": "2025-11-03T07:17:01.8994186-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\panels\\PanelBanco.jsx",
+    "Length": 13427,
+    "LastWriteTime": "2025-11-03T07:17:01.9166404-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\panels\\PanelVentas.jsx",
+    "Length": 9145,
+    "LastWriteTime": "2025-11-03T07:17:01.925787-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\panels\\PanelVentasCompleto.tsx",
+    "Length": 11798,
+    "LastWriteTime": "2025-10-29T15:31:12.4745442-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\premium\\AnimatedChart3D.jsx",
+    "Length": 12205,
+    "LastWriteTime": "2025-10-28T07:05:02.8522712-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\premium\\DashboardBancosInteligente.jsx",
+    "Length": 13251,
+    "LastWriteTime": "2025-10-28T15:25:45.9271098-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\premium\\DashboardClientesAvanzado.jsx",
+    "Length": 19135,
+    "LastWriteTime": "2025-10-28T15:27:59.4815228-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\premium\\DashboardReportesInteligente.jsx",
+    "Length": 15296,
+    "LastWriteTime": "2025-11-03T07:55:49.1835351-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\premium\\DashboardVentasPremium.jsx",
+    "Length": 17268,
+    "LastWriteTime": "2025-10-28T15:31:42.3899581-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\premium\\index.js",
+    "Length": 784,
+    "LastWriteTime": "2025-10-28T07:09:21.3816477-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\premium\\ModuloOrdenesCompra.jsx",
+    "Length": 16258,
+    "LastWriteTime": "2025-10-28T15:31:46.1885118-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\premium\\MovimientosTimeline3D.jsx",
+    "Length": 11859,
+    "LastWriteTime": "2025-10-28T07:09:21.0517298-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\premium\\PanelBancoPremium3D.jsx",
+    "Length": 19157,
+    "LastWriteTime": "2025-10-28T07:39:50.2094547-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\premium\\PremiumKPI3D.jsx",
+    "Length": 9644,
+    "LastWriteTime": "2025-10-28T07:09:21.3773382-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\shared\\AlertsPanel.tsx",
+    "Length": 7333,
+    "LastWriteTime": "2025-11-01T06:24:02.5767656-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\shared\\CreativeParticles.tsx",
+    "Length": 6476,
+    "LastWriteTime": "2025-11-01T06:34:26.0958645-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\shared\\HeatmapOperations.tsx",
+    "Length": 7833,
+    "LastWriteTime": "2025-11-01T06:24:04.9069652-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\shared\\KpiCard.jsx",
+    "Length": 8565,
+    "LastWriteTime": "2025-11-03T07:56:02.3900876-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\shared\\KpiCard3D.tsx",
+    "Length": 9292,
+    "LastWriteTime": "2025-11-01T06:33:56.7765731-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\shared\\PremiumChart.tsx",
+    "Length": 12681,
+    "LastWriteTime": "2025-11-01T06:33:22.7056952-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\shared\\PremiumTable.jsx",
+    "Length": 8631,
+    "LastWriteTime": "2025-11-01T05:36:48.0120237-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\shared\\QuickActions.tsx",
+    "Length": 4215,
+    "LastWriteTime": "2025-11-01T06:24:14.9192845-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\shared\\TimelineActivity.tsx",
+    "Length": 6738,
+    "LastWriteTime": "2025-11-01T06:24:04.9069652-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\tables\\ClientesTable.tsx",
+    "Length": 12406,
+    "LastWriteTime": "2025-10-28T05:48:06.9116575-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\tables\\DataTable.tsx",
+    "Length": 13943,
+    "LastWriteTime": "2025-10-29T15:31:17.4311831-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\tables\\index.js",
+    "Length": 386,
+    "LastWriteTime": "2025-11-03T07:17:02.3452332-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\tables\\OrdenesCompraTable.tsx",
+    "Length": 9870,
+    "LastWriteTime": "2025-11-03T02:29:33.419004-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\tables\\TablaCortes.jsx",
+    "Length": 13352,
+    "LastWriteTime": "2025-11-03T07:17:02.3574993-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\tables\\TablaGastos.jsx",
+    "Length": 7419,
+    "LastWriteTime": "2025-11-03T07:17:02.3659694-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\tables\\TablaIngresos.jsx",
+    "Length": 7029,
+    "LastWriteTime": "2025-11-03T07:17:02.3734762-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\tables\\TablaTransferencias.jsx",
+    "Length": 12492,
+    "LastWriteTime": "2025-11-03T07:17:02.3875682-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\tables\\TablaVentas.jsx",
+    "Length": 19522,
+    "LastWriteTime": "2025-11-03T07:17:02.4039773-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\tables\\VentasTable.tsx",
+    "Length": 15731,
+    "LastWriteTime": "2025-10-28T05:43:52.1294941-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\widgets\\FloatingWidget.tsx",
+    "Length": 7792,
+    "LastWriteTime": "2025-10-29T15:00:14.6311046-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\widgets\\WidgetAlertasInteligentes.tsx",
+    "Length": 13616,
+    "LastWriteTime": "2025-10-30T08:33:35.745707-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\widgets\\WidgetDistribucionBancos.tsx",
+    "Length": 7689,
+    "LastWriteTime": "2025-10-30T08:33:34.0108889-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\widgets\\WidgetKPIRealTime.tsx",
+    "Length": 10880,
+    "LastWriteTime": "2025-10-30T08:34:19.0342596-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\widgets\\WidgetManager.tsx",
+    "Length": 10449,
+    "LastWriteTime": "2025-10-29T15:00:13.783626-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\widgets\\widgetsConfig.tsx",
+    "Length": 2638,
+    "LastWriteTime": "2025-10-29T15:00:20.7809309-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\components\\widgets\\WidgetVentasChart.tsx",
+    "Length": 9935,
+    "LastWriteTime": "2025-10-30T08:34:14.5406981-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\constants\\index.ts",
+    "Length": 10075,
+    "LastWriteTime": "2025-10-27T14:09:54.2927581-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\constants\\storageKeys.js",
+    "Length": 3378,
+    "LastWriteTime": "2025-10-23T12:42:00.4522895-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\almacen-monte-excel.json",
+    "Length": 2826,
+    "LastWriteTime": "2025-11-03T07:17:02.5915074-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\azteca.ts",
+    "Length": 971,
+    "LastWriteTime": "2025-10-28T16:05:05.3953973-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\BASE_DATOS_FLOWDISTRIBUTOR_UNIFICADO.json",
+    "Length": 247260,
+    "LastWriteTime": "2025-11-03T07:17:02.6880457-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\bovedaUSA.ts",
+    "Length": 2021,
+    "LastWriteTime": "2025-10-28T16:02:20.0665795-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\clientes.ts",
+    "Length": 2042,
+    "LastWriteTime": "2025-10-28T16:05:18.827292-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\datosEjemploAlmacen.js",
+    "Length": 20069,
+    "LastWriteTime": "2025-10-28T10:57:34.9960292-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\datosEjemploAzteca.js",
+    "Length": 7393,
+    "LastWriteTime": "2025-10-25T14:45:27.0975305-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\datosEjemploBoveda.js",
+    "Length": 4125,
+    "LastWriteTime": "2025-10-25T14:45:27.0774324-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\datosEjemploBovedaUSA.js",
+    "Length": 3937,
+    "LastWriteTime": "2025-10-25T14:45:27.0805536-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\datosEjemploGYA.js",
+    "Length": 19153,
+    "LastWriteTime": "2025-10-25T14:45:27.1030389-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\datosEjemploLeftie.js",
+    "Length": 4136,
+    "LastWriteTime": "2025-10-25T14:45:27.0805536-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\datosEjemploProfit.js",
+    "Length": 3702,
+    "LastWriteTime": "2025-10-25T14:45:27.0845541-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\datosInicializacionClientes.js",
+    "Length": 14278,
+    "LastWriteTime": "2025-10-23T12:42:00.4588731-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\datosInicializacionDistribuidores.js",
+    "Length": 3639,
+    "LastWriteTime": "2025-10-23T12:42:00.4594386-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\datosInicializacionFletes.js",
+    "Length": 32255,
+    "LastWriteTime": "2025-10-23T12:42:00.4599833-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\datosInicializacionUtilidades.js",
+    "Length": 17441,
+    "LastWriteTime": "2025-10-23T12:42:00.4605302-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\distribuidores-excel.json",
+    "Length": 2839,
+    "LastWriteTime": "2025-11-03T07:17:02.8525781-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\fleteSur.ts",
+    "Length": 892,
+    "LastWriteTime": "2025-10-28T16:05:04.6172527-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\flowdistributor_complete_data.json",
+    "Length": 185796,
+    "LastWriteTime": "2025-11-03T07:17:02.910419-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\FlowDistributorData.json",
+    "Length": 183782,
+    "LastWriteTime": "2025-11-03T07:17:02.9695326-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\gya.ts",
+    "Length": 33774,
+    "LastWriteTime": "2025-10-28T17:09:07.149221-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\inicializadorClientes.js",
+    "Length": 10160,
+    "LastWriteTime": "2025-10-25T14:45:27.1431954-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\inicializadorDistribuidores.js",
+    "Length": 6893,
+    "LastWriteTime": "2025-11-03T07:17:02.9948181-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\inicializadorUtilidades.js",
+    "Length": 8937,
+    "LastWriteTime": "2025-11-03T07:17:03.0175204-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\leftie.ts",
+    "Length": 868,
+    "LastWriteTime": "2025-10-28T16:05:16.5449765-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\ordenesCompra.ts",
+    "Length": 3065,
+    "LastWriteTime": "2025-10-28T15:49:39.9170197-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\panel-almacen-monte-manual.json",
+    "Length": 18222,
+    "LastWriteTime": "2025-10-24T07:25:09.0312769-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\panel-azteca-manual.json",
+    "Length": 7102,
+    "LastWriteTime": "2025-10-24T07:30:08.1262035-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\panel-boveda-monte-manual.json",
+    "Length": 17562,
+    "LastWriteTime": "2025-10-24T07:26:54.7922302-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\panel-boveda-usa-manual.json",
+    "Length": 17663,
+    "LastWriteTime": "2025-10-24T07:28:39.1879187-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\panel-clientes-manual.json",
+    "Length": 4950,
+    "LastWriteTime": "2025-10-24T07:36:39.754915-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\panel-dashboard-manual.json",
+    "Length": 686,
+    "LastWriteTime": "2025-10-24T07:20:12.1798794-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\panel-fletes-manual.json",
+    "Length": 35420,
+    "LastWriteTime": "2025-10-24T07:14:18.4690963-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\panel-gastos-abonos-manual.json",
+    "Length": 70663,
+    "LastWriteTime": "2025-10-24T07:22:22.1213031-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\panel-leftie-manual.json",
+    "Length": 4278,
+    "LastWriteTime": "2025-10-24T07:33:05.9229986-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\panel-ordenes-compra-manual.json",
+    "Length": 3439,
+    "LastWriteTime": "2025-10-24T07:15:56.1905071-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\panel-profit-manual.json",
+    "Length": 14487,
+    "LastWriteTime": "2025-10-24T07:34:54.8733611-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\panel-utilidades-manual.json",
+    "Length": 10748,
+    "LastWriteTime": "2025-10-24T07:31:33.3565545-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\panel-ventas-local-manual.json",
+    "Length": 34428,
+    "LastWriteTime": "2025-10-24T07:19:42.9125463-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\profit.ts",
+    "Length": 905,
+    "LastWriteTime": "2025-10-28T16:05:16.5449765-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\utilidades.ts",
+    "Length": 922,
+    "LastWriteTime": "2025-10-28T16:05:07.0049229-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\data\\ventasLocales.ts",
+    "Length": 31567,
+    "LastWriteTime": "2025-10-28T16:40:13.2679137-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\design-system\\animations.ts",
+    "Length": 12269,
+    "LastWriteTime": "2025-11-01T06:23:22.7133966-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\design-system\\theme.ts",
+    "Length": 10653,
+    "LastWriteTime": "2025-11-01T06:09:06.6176144-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useAlmacen.js",
+    "Length": 5175,
+    "LastWriteTime": "2025-11-03T07:17:03.4977042-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useAlmacen.ts",
+    "Length": 12730,
+    "LastWriteTime": "2025-10-30T09:47:42.880544-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useAnimatedCounter.js",
+    "Length": 7301,
+    "LastWriteTime": "2025-11-01T05:36:30.7683512-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useBancos.js",
+    "Length": 8779,
+    "LastWriteTime": "2025-11-03T07:17:03.5196566-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useBancos.ts",
+    "Length": 11772,
+    "LastWriteTime": "2025-10-30T11:00:05.304964-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useBancosNew.ts",
+    "Length": 13205,
+    "LastWriteTime": "2025-10-30T09:43:09.6775758-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useCinematicTransitions.js",
+    "Length": 8567,
+    "LastWriteTime": "2025-10-30T07:36:12.5116817-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useClientes.js",
+    "Length": 3962,
+    "LastWriteTime": "2025-11-03T07:17:03.5392346-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useClientes.ts",
+    "Length": 1934,
+    "LastWriteTime": "2025-10-23T13:27:59.842673-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useClientesNew.js",
+    "Length": 9633,
+    "LastWriteTime": "2025-11-03T07:17:03.5528387-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useCortes.js",
+    "Length": 8463,
+    "LastWriteTime": "2025-11-03T07:17:03.5632385-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useCursorEffects.js",
+    "Length": 6842,
+    "LastWriteTime": "2025-10-30T07:35:56.9550391-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useDataInitializer.js",
+    "Length": 9062,
+    "LastWriteTime": "2025-11-03T07:17:03.5862666-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useDistribuidores.js",
+    "Length": 954,
+    "LastWriteTime": "2025-11-03T04:14:20.5665113-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useDistribuidores.ts",
+    "Length": 7124,
+    "LastWriteTime": "2025-10-30T09:35:48.1926199-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useExchangeRate.js",
+    "Length": 5139,
+    "LastWriteTime": "2025-11-03T07:17:03.600339-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useFlowDistributorState.js",
+    "Length": 6253,
+    "LastWriteTime": "2025-10-21T12:00:24.3213654-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useFlowDistributorState.test.js",
+    "Length": 234,
+    "LastWriteTime": "2025-11-03T07:17:03.6110374-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useFlowStore.js",
+    "Length": 108,
+    "LastWriteTime": "2025-11-03T07:17:03.6165504-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useGYA.js",
+    "Length": 1265,
+    "LastWriteTime": "2025-11-03T04:14:20.5278138-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useOrdenesCompra.js",
+    "Length": 4109,
+    "LastWriteTime": "2025-11-03T07:17:03.6286156-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useOrdenesCompra.ts",
+    "Length": 10611,
+    "LastWriteTime": "2025-10-25T14:45:27.1223538-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useOrdenesCompraNew.js",
+    "Length": 11045,
+    "LastWriteTime": "2025-11-03T07:17:03.644183-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useSyncTransactions.js",
+    "Length": 14645,
+    "LastWriteTime": "2025-10-25T14:45:27.1426913-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useTacticalKeyboards.js",
+    "Length": 9444,
+    "LastWriteTime": "2025-11-03T07:17:03.6721119-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useTacticalSounds.js",
+    "Length": 4177,
+    "LastWriteTime": "2025-10-30T07:34:55.8849971-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useTransferencias.js",
+    "Length": 7728,
+    "LastWriteTime": "2025-11-03T07:17:03.691663-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useVentas.js",
+    "Length": 8243,
+    "LastWriteTime": "2025-11-03T07:17:03.7045459-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useVentas.ts",
+    "Length": 1830,
+    "LastWriteTime": "2025-10-23T13:27:48.6320342-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\useVentasService.ts",
+    "Length": 7911,
+    "LastWriteTime": "2025-10-30T11:01:02.1027374-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\hooks\\__tests__\\useClientes.test.js",
+    "Length": 12193,
+    "LastWriteTime": "2025-11-03T07:17:03.4896075-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\panels\\DashboardControlMaestro.jsx",
+    "Length": 21738,
+    "LastWriteTime": "2025-10-30T08:04:48.3539581-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\panels\\PanelAnalisisReportes.jsx",
+    "Length": 36165,
+    "LastWriteTime": "2025-11-03T07:56:36.2188934-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\panels\\PanelClientes.jsx",
+    "Length": 32649,
+    "LastWriteTime": "2025-10-30T08:15:26.0147678-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\panels\\PanelDistribuidores.jsx",
+    "Length": 26676,
+    "LastWriteTime": "2025-10-30T08:04:56.7044296-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\REFACTORIZAR\\api_contracts.md",
+    "Length": 6519,
+    "LastWriteTime": "2025-10-27T13:11:26.6384805-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\REFACTORIZAR\\archivo_04_logica_negocio.md",
+    "Length": 12265,
+    "LastWriteTime": "2025-10-27T13:03:46.6726034-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\REFACTORIZAR\\Copia de Administación_General - Distribuidores.csv",
+    "Length": 27732,
+    "LastWriteTime": "2025-10-27T11:47:07.775468-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\REFACTORIZAR\\Copia de Administación_General.xlsx",
+    "Length": 10556884,
+    "LastWriteTime": "2025-11-03T05:10:41.0551607-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\REFACTORIZAR\\file_organization_guide.md",
+    "Length": 15114,
+    "LastWriteTime": "2025-10-27T12:30:56.864083-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\REFACTORIZAR\\flowdist_blueprint (1).txt",
+    "Length": 47827,
+    "LastWriteTime": "2025-10-28T07:43:20.6044963-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\REFACTORIZAR\\flowdist_blueprint.txt",
+    "Length": 47827,
+    "LastWriteTime": "2025-10-27T12:43:58.0745503-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\REFACTORIZAR\\frontend_core.ts.bak",
+    "Length": 16799,
+    "LastWriteTime": "2025-10-27T13:22:45.6837371-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\REFACTORIZAR\\frontend_core.tsx",
+    "Length": 16646,
+    "LastWriteTime": "2025-10-28T03:15:45.6700844-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\REFACTORIZAR\\howto_claude_dev.md",
+    "Length": 10145,
+    "LastWriteTime": "2025-10-27T12:44:23.4103895-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\REFACTORIZAR\\master_prompt_claude (1).md",
+    "Length": 11230,
+    "LastWriteTime": "2025-10-27T13:02:46.366023-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\REFACTORIZAR\\master_prompt_claude.md",
+    "Length": 11230,
+    "LastWriteTime": "2025-10-27T12:45:05.8095588-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\REFACTORIZAR\\quick_reference (1).md",
+    "Length": 11900,
+    "LastWriteTime": "2025-10-27T12:44:36.503219-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\REFACTORIZAR\\schema_6banks.txt",
+    "Length": 7858,
+    "LastWriteTime": "2025-10-27T13:11:13.9122425-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\REFACTORIZAR\\seed_data.ts",
+    "Length": 8023,
+    "LastWriteTime": "2025-10-27T13:11:34.2589683-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\REFACTORIZAR\\setup_scripts.txt",
+    "Length": 12153,
+    "LastWriteTime": "2025-10-27T13:11:43.8581111-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\REFACTORIZAR\\ui_components.ts",
+    "Length": 14802,
+    "LastWriteTime": "2025-10-28T07:41:53.3484453-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\REFACTORIZAR\\ui_components.ts.bak",
+    "Length": 14802,
+    "LastWriteTime": "2025-10-27T13:12:08.7315718-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\REFACTORIZAR\\ui_components.tsx",
+    "Length": 14497,
+    "LastWriteTime": "2025-10-28T03:15:39.0734045-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\schemas\\bancoSchemas.ts",
+    "Length": 2649,
+    "LastWriteTime": "2025-10-25T14:45:27.1426913-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\schemas\\index.ts",
+    "Length": 25924,
+    "LastWriteTime": "2025-11-03T06:37:03.1290963-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\schemas\\ordenCompra.schema.ts",
+    "Length": 1806,
+    "LastWriteTime": "2025-10-23T13:21:05.6599527-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\services\\almacen.service.ts",
+    "Length": 18250,
+    "LastWriteTime": "2025-10-30T14:11:41.4391222-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\services\\bancos.service.ts",
+    "Length": 22607,
+    "LastWriteTime": "2025-10-31T05:23:07.5643209-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\services\\clientes.service.ts",
+    "Length": 6216,
+    "LastWriteTime": "2025-10-28T02:33:33.8499707-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\services\\distribuidores.service.ts",
+    "Length": 14309,
+    "LastWriteTime": "2025-10-30T09:43:30.2626002-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\services\\ordenesCompra.service.ts",
+    "Length": 15447,
+    "LastWriteTime": "2025-10-31T05:23:52.2335202-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\services\\ventas.service.ts",
+    "Length": 13361,
+    "LastWriteTime": "2025-10-30T10:22:18.9295692-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\services\\__tests__\\ordenesCompra.service.test.ts",
+    "Length": 5038,
+    "LastWriteTime": "2025-10-23T13:40:26.5297125-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\services\\__tests__\\ventas.service.test.ts",
+    "Length": 5761,
+    "LastWriteTime": "2025-10-25T14:45:27.1362221-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\shared\\AdvancedBarChart.tsx",
+    "Length": 7550,
+    "LastWriteTime": "2025-11-02T03:25:23.0629436-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\shared\\AdvancedCharts.tsx",
+    "Length": 20398,
+    "LastWriteTime": "2025-11-02T03:25:23.0594404-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\shared\\AdvancedLineChart.tsx",
+    "Length": 19729,
+    "LastWriteTime": "2025-11-02T03:25:23.0574331-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\shared\\AdvancedPieChart.tsx",
+    "Length": 9250,
+    "LastWriteTime": "2025-11-02T03:25:23.0543021-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\shared\\AdvancedScatterChart.tsx",
+    "Length": 7811,
+    "LastWriteTime": "2025-11-02T03:25:23.0523035-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\shared\\AdvancedTreemapChart.tsx",
+    "Length": 8611,
+    "LastWriteTime": "2025-11-02T03:25:23.0493022-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\shared\\index.ts",
+    "Length": 1399,
+    "LastWriteTime": "2025-11-01T09:17:07.8929818-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\styles\\gestion-financiera.css",
+    "Length": 12420,
+    "LastWriteTime": "2025-10-23T12:42:00.467888-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\types\\azteca.types.js",
+    "Length": 11489,
+    "LastWriteTime": "2025-11-03T02:32:12.2237493-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\types\\bovedaMonte.types.js",
+    "Length": 12399,
+    "LastWriteTime": "2025-11-03T02:29:19.103789-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\types\\clientes.types.js",
+    "Length": 16006,
+    "LastWriteTime": "2025-10-25T14:45:27.1824176-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\types\\fletes.types.js",
+    "Length": 12867,
+    "LastWriteTime": "2025-10-25T14:45:27.1487142-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\types\\gya.types.js",
+    "Length": 14981,
+    "LastWriteTime": "2025-11-03T02:29:19.1148755-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\types\\index.ts",
+    "Length": 13139,
+    "LastWriteTime": "2025-10-30T08:40:32.03291-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\types\\leftie.types.js",
+    "Length": 13198,
+    "LastWriteTime": "2025-11-03T02:29:19.1183863-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\types\\ordenesCompra.types.js",
+    "Length": 12227,
+    "LastWriteTime": "2025-10-23T12:42:00.4720844-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\types\\ordenesCompra.types.ts",
+    "Length": 9326,
+    "LastWriteTime": "2025-10-23T12:42:00.4726046-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\types\\profit.types.js",
+    "Length": 14105,
+    "LastWriteTime": "2025-11-03T02:29:19.1223881-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\types\\utilidades.types.js",
+    "Length": 11207,
+    "LastWriteTime": "2025-11-03T02:29:19.1259983-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\types\\ventas.types.js",
+    "Length": 12296,
+    "LastWriteTime": "2025-11-03T02:29:19.1285077-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\types\\ventas.types.ts",
+    "Length": 8513,
+    "LastWriteTime": "2025-11-03T06:46:10.1900116-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\utils\\aiResponses.js",
+    "Length": 12229,
+    "LastWriteTime": "2025-11-01T07:22:41.082152-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\utils\\aiResponses.test.js",
+    "Length": 222,
+    "LastWriteTime": "2025-11-03T07:17:04.3002868-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\utils\\analisisAvanzado.js",
+    "Length": 17655,
+    "LastWriteTime": "2025-11-03T02:29:19.1375223-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\utils\\analisisBovedas.js",
+    "Length": 24207,
+    "LastWriteTime": "2025-11-03T02:29:19.1441351-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\utils\\analisisGYA.js",
+    "Length": 22887,
+    "LastWriteTime": "2025-11-03T02:29:19.1516492-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\utils\\analisisVentas.js",
+    "Length": 21909,
+    "LastWriteTime": "2025-11-03T02:29:19.156306-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\utils\\authSystem.js",
+    "Length": 5907,
+    "LastWriteTime": "2025-11-01T10:17:49.7711447-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\utils\\bulkActions.js",
+    "Length": 5088,
+    "LastWriteTime": "2025-11-01T07:22:41.0831579-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\utils\\bulkActions.test.js",
+    "Length": 222,
+    "LastWriteTime": "2025-11-03T07:17:04.4025445-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\utils\\calculations.js",
+    "Length": 16609,
+    "LastWriteTime": "2025-11-03T07:17:04.4105353-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\utils\\calculations.ts",
+    "Length": 9204,
+    "LastWriteTime": "2025-10-30T08:40:28.6808041-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\utils\\dataInitializer.js",
+    "Length": 815,
+    "LastWriteTime": "2025-11-03T07:44:39.0023928-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\utils\\dataManagement.js",
+    "Length": 13086,
+    "LastWriteTime": "2025-11-01T07:22:41.085157-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\utils\\dataManagement.test.js",
+    "Length": 225,
+    "LastWriteTime": "2025-11-03T07:17:04.4448087-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\utils\\distributionCalculator.ts",
+    "Length": 7564,
+    "LastWriteTime": "2025-10-27T14:11:45.1311136-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\utils\\formatters.js",
+    "Length": 11068,
+    "LastWriteTime": "2025-11-03T07:17:04.456714-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\utils\\formatters.ts",
+    "Length": 11303,
+    "LastWriteTime": "2025-10-27T14:09:54.8183517-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\utils\\validation.js",
+    "Length": 7584,
+    "LastWriteTime": "2025-10-20T07:07:05.5073374-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\utils\\validation.test.js",
+    "Length": 221,
+    "LastWriteTime": "2025-11-03T07:17:04.4699443-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\utils\\validation.ts",
+    "Length": 13023,
+    "LastWriteTime": "2025-10-27T14:11:45.6449187-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\utils\\validators.js",
+    "Length": 15897,
+    "LastWriteTime": "2025-11-03T07:17:04.4885614-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\utils\\validators.ts",
+    "Length": 8360,
+    "LastWriteTime": "2025-10-29T15:20:18.2712842-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\utils\\__tests__\\calculations.test.js",
+    "Length": 19723,
+    "LastWriteTime": "2025-11-03T07:17:04.2836858-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\utils\\__tests__\\formatters.test.ts",
+    "Length": 5743,
+    "LastWriteTime": "2025-10-23T13:40:26.8543647-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\FlowDistributor\\__tests__\\FlowDistributor.critical.test.jsx",
+    "Length": 11302,
+    "LastWriteTime": "2025-11-03T07:17:00.5071793-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\Nexus\\Nexus.jsx",
+    "Length": 79668,
+    "LastWriteTime": "2025-11-01T07:22:41.0867316-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\Pulse\\Pulse.jsx",
+    "Length": 22232,
+    "LastWriteTime": "2025-11-01T07:22:41.0877367-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\Quantum\\Quantum.jsx",
+    "Length": 18828,
+    "LastWriteTime": "2025-11-01T07:22:41.088737-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\ShadowPrime\\ShadowPrime.jsx",
+    "Length": 75000,
+    "LastWriteTime": "2025-11-01T07:22:41.088737-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\Synapse\\Synapse.jsx",
+    "Length": 28845,
+    "LastWriteTime": "2025-11-03T07:17:04.6372909-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\apps\\Vortex\\Vortex.jsx",
+    "Length": 19116,
+    "LastWriteTime": "2025-11-01T07:22:41.0907369-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\cli\\package.json",
+    "Length": 87,
+    "LastWriteTime": "2025-10-24T03:33:02.9201774-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\AdvancedCharts.jsx",
+    "Length": 16918,
+    "LastWriteTime": "2025-11-03T07:17:04.6925582-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\AdvancedDataTable.jsx",
+    "Length": 15011,
+    "LastWriteTime": "2025-11-01T07:22:41.0907369-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\AnimatedChart.jsx",
+    "Length": 10524,
+    "LastWriteTime": "2025-11-01T07:22:41.0922412-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\Charts.jsx",
+    "Length": 7834,
+    "LastWriteTime": "2025-11-01T07:22:41.0922412-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\ChartsLoading.jsx",
+    "Length": 857,
+    "LastWriteTime": "2025-11-03T07:17:04.7836366-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\ChronosLogin.jsx",
+    "Length": 12730,
+    "LastWriteTime": "2025-11-01T07:33:46.9289372-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\ChronosSplash.jsx",
+    "Length": 8005,
+    "LastWriteTime": "2025-11-01T03:48:32.4601438-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\EnterpriseFeaturesDemo.jsx",
+    "Length": 10823,
+    "LastWriteTime": "2025-11-01T07:22:41.0942462-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\ErrorBoundary.jsx",
+    "Length": 2864,
+    "LastWriteTime": "2025-11-01T07:22:41.0952461-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\FirebaseSetup.jsx",
+    "Length": 14145,
+    "LastWriteTime": "2025-11-01T07:22:41.0967523-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\GlobalShortcuts.jsx",
+    "Length": 4602,
+    "LastWriteTime": "2025-10-24T01:20:47.8631768-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\GuidedTour.jsx",
+    "Length": 9207,
+    "LastWriteTime": "2025-11-01T07:22:41.097757-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\index.js",
+    "Length": 360,
+    "LastWriteTime": "2025-10-21T17:16:02.5350052-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\KPICard.jsx",
+    "Length": 6465,
+    "LastWriteTime": "2025-10-21T17:16:02.711813-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\NotificationCenter.jsx",
+    "Length": 14837,
+    "LastWriteTime": "2025-11-01T07:22:41.097757-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\SplashScreen.jsx",
+    "Length": 6183,
+    "LastWriteTime": "2025-11-01T03:32:22.2138649-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\SplashScreen.tsx",
+    "Length": 6133,
+    "LastWriteTime": "2025-11-01T03:31:46.0755123-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\StatCard.jsx",
+    "Length": 4004,
+    "LastWriteTime": "2025-10-21T17:16:02.711813-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\ai\\AIAvatarInteractive.jsx",
+    "Length": 22358,
+    "LastWriteTime": "2025-11-03T07:17:04.7328666-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\ai\\TacticalAIAgent.jsx",
+    "Length": 12614,
+    "LastWriteTime": "2025-10-30T07:17:16.2614354-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\analytics\\AIInsightsWidget.tsx",
+    "Length": 25425,
+    "LastWriteTime": "2025-10-28T18:44:04.4251265-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\analytics\\WidgetAnalyticsPremium.tsx",
+    "Length": 15199,
+    "LastWriteTime": "2025-10-28T12:42:16.4855485-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\analytics\\dashboard\\index.ts",
+    "Length": 429,
+    "LastWriteTime": "2025-10-28T13:26:28.2716849-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\analytics\\dashboard\\WidgetInventarioHeatmap.tsx",
+    "Length": 11895,
+    "LastWriteTime": "2025-10-28T13:26:22.1654941-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\analytics\\dashboard\\WidgetsRestantes.tsx",
+    "Length": 13712,
+    "LastWriteTime": "2025-10-28T13:26:22.1683017-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\analytics\\dashboard\\WidgetVentas3D.tsx",
+    "Length": 12995,
+    "LastWriteTime": "2025-10-29T13:32:02.3188028-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\business\\BusinessWorkflowsPanel.tsx",
+    "Length": 12405,
+    "LastWriteTime": "2025-10-28T11:27:05.3521615-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\business\\OrdenCompraForm.tsx",
+    "Length": 14705,
+    "LastWriteTime": "2025-10-28T11:25:46.0276569-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\business\\VentaForm.tsx",
+    "Length": 22680,
+    "LastWriteTime": "2025-10-28T11:25:46.0371652-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\charts\\AdvancedCharts.jsx",
+    "Length": 15529,
+    "LastWriteTime": "2025-11-03T07:17:04.7791242-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\cinematic\\ChronosSplashScreen.jsx",
+    "Length": 0,
+    "LastWriteTime": "2025-10-30T07:08:11.5371778-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\cinematic\\SystemSelectionMenu.jsx",
+    "Length": 0,
+    "LastWriteTime": "2025-10-30T07:09:01.3094939-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\effects\\FloatingAssistant3D.jsx",
+    "Length": 12561,
+    "LastWriteTime": "2025-11-03T07:17:04.8387938-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\effects\\VisualEffects.jsx",
+    "Length": 12387,
+    "LastWriteTime": "2025-11-03T07:17:04.8536273-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\ExcelImporter\\index.jsx",
+    "Length": 225,
+    "LastWriteTime": "2025-11-01T07:22:41.0952461-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\ExcelImporter\\QuantumImporter.jsx",
+    "Length": 18736,
+    "LastWriteTime": "2025-11-01T07:22:41.0952461-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\ExcelImporter\\README.md",
+    "Length": 385,
+    "LastWriteTime": "2025-10-21T12:36:46.6418663-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\feedback\\FeedbackSystem.jsx",
+    "Length": 12540,
+    "LastWriteTime": "2025-11-03T07:17:04.9047284-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\global\\CommandPaletteGlobal.jsx",
+    "Length": 4830,
+    "LastWriteTime": "2025-11-03T07:17:04.9281621-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\global\\ToastManager.jsx",
+    "Length": 3035,
+    "LastWriteTime": "2025-11-03T07:17:04.951082-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\hub\\SystemHub.jsx",
+    "Length": 13993,
+    "LastWriteTime": "2025-10-30T07:17:03.9437338-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\interactive\\InteractivePremium.jsx",
+    "Length": 15551,
+    "LastWriteTime": "2025-11-03T07:17:05.0007578-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\navigation\\PremiumNavigation.jsx",
+    "Length": 13792,
+    "LastWriteTime": "2025-11-03T07:17:05.0416673-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\predictions\\PredictionsPanel.jsx",
+    "Length": 3286,
+    "LastWriteTime": "2025-11-03T07:17:05.0616937-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\premium\\AdvancedAnimationSystem.jsx",
+    "Length": 13691,
+    "LastWriteTime": "2025-10-31T06:09:55.1390135-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\premium\\ConversionCalculator.tsx",
+    "Length": 14499,
+    "LastWriteTime": "2025-10-28T08:55:07.6655633-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\premium\\CriticalAlertBanner.tsx",
+    "Length": 12098,
+    "LastWriteTime": "2025-10-28T08:32:58.9518934-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\premium\\ExchangeRateMonitor.tsx",
+    "Length": 15873,
+    "LastWriteTime": "2025-10-28T08:33:09.0495491-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\premium\\LoadingStates.jsx",
+    "Length": 13937,
+    "LastWriteTime": "2025-10-31T06:22:49.8109489-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\premium\\OverdraftProjector.tsx",
+    "Length": 16662,
+    "LastWriteTime": "2025-10-28T08:55:07.6680765-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\premium\\TablaTransferenciasProfitPremium.tsx",
+    "Length": 29043,
+    "LastWriteTime": "2025-10-28T08:29:24.7513125-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\premium\\VirtualizedTable.jsx",
+    "Length": 11640,
+    "LastWriteTime": "2025-10-31T06:27:16.430123-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\shared\\AGIAssistant.tsx",
+    "Length": 18811,
+    "LastWriteTime": "2025-10-30T03:13:14.1630386-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\shared\\AIAssistant.jsx",
+    "Length": 34107,
+    "LastWriteTime": "2025-11-01T07:22:41.0987569-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\shared\\AnimatedAssistant.tsx",
+    "Length": 17017,
+    "LastWriteTime": "2025-10-30T03:15:20.5912438-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\shared\\BuchonaAICharacter.tsx",
+    "Length": 18586,
+    "LastWriteTime": "2025-10-30T03:17:09.4278763-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\shared\\BuchonaAssistant.tsx",
+    "Length": 24902,
+    "LastWriteTime": "2025-10-30T03:19:51.4484408-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\shared\\KPICard.jsx",
+    "Length": 4570,
+    "LastWriteTime": "2025-11-01T07:22:41.0987569-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\shared\\KPICard.test.js",
+    "Length": 2243,
+    "LastWriteTime": "2025-10-21T13:06:42.7785183-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\shared\\README.md",
+    "Length": 357,
+    "LastWriteTime": "2025-10-21T12:36:46.6428674-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\shared\\ZeroForceAI.jsx",
+    "Length": 53215,
+    "LastWriteTime": "2025-11-01T15:10:21.7808654-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\transitions\\PageTransitions.jsx",
+    "Length": 6908,
+    "LastWriteTime": "2025-10-25T14:45:27.2219048-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\ui\\Badge.jsx",
+    "Length": 1399,
+    "LastWriteTime": "2025-11-03T07:17:05.2006249-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\ui\\Button.jsx",
+    "Length": 2324,
+    "LastWriteTime": "2025-11-03T07:17:05.208208-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\ui\\Card.jsx",
+    "Length": 2109,
+    "LastWriteTime": "2025-11-03T07:17:05.2144274-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\ui\\ComponentsAAA.jsx",
+    "Length": 14796,
+    "LastWriteTime": "2025-11-03T07:17:05.2282571-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\ui\\index.js",
+    "Length": 518,
+    "LastWriteTime": "2025-11-01T07:22:41.1045807-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\ui\\Input.jsx",
+    "Length": 3340,
+    "LastWriteTime": "2025-11-03T07:17:05.2372621-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\ui\\MicroInteractions.jsx",
+    "Length": 13784,
+    "LastWriteTime": "2025-11-03T07:17:05.2529369-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\ui\\Modal.jsx",
+    "Length": 4587,
+    "LastWriteTime": "2025-11-01T07:22:41.1025759-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\ui\\README.md",
+    "Length": 341,
+    "LastWriteTime": "2025-10-21T12:36:46.6448703-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\ui\\Select.jsx",
+    "Length": 4473,
+    "LastWriteTime": "2025-11-01T07:22:41.1035801-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\ui\\ShowcaseEnhancedAAA.jsx",
+    "Length": 18444,
+    "LastWriteTime": "2025-11-03T07:56:38.605252-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\ui\\SkeletonLoader.jsx",
+    "Length": 4469,
+    "LastWriteTime": "2025-10-25T14:45:27.2297105-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\ui\\Table.jsx",
+    "Length": 9656,
+    "LastWriteTime": "2025-11-01T07:22:41.1035801-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\ui-premium\\index.js",
+    "Length": 6187,
+    "LastWriteTime": "2025-11-03T07:38:13.9128785-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\components\\widgets\\CinematicFloatingWidget.jsx",
+    "Length": 15244,
+    "LastWriteTime": "2025-10-30T07:17:16.3042325-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\config\\api.js",
+    "Length": 13409,
+    "LastWriteTime": "2025-11-01T07:22:41.1055796-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\config\\firebase.js",
+    "Length": 15324,
+    "LastWriteTime": "2025-11-01T07:22:41.1055796-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\data\\datos_bovedas_completos.json",
+    "Length": 140440,
+    "LastWriteTime": "2025-11-03T07:17:05.3782346-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\data\\datos_excel_reales_completos.json",
+    "Length": 383844,
+    "LastWriteTime": "2025-11-03T07:17:05.4896681-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\data\\datos_excel_reales.json",
+    "Length": 224072,
+    "LastWriteTime": "2025-11-03T07:17:05.5720936-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\data\\datosExcelCompletos.ts",
+    "Length": 17777,
+    "LastWriteTime": "2025-10-28T08:55:07.6655633-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\hooks\\useAdobeAutomation.js",
+    "Length": 8493,
+    "LastWriteTime": "2025-10-24T03:39:34.1635495-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\hooks\\useAnimations.js",
+    "Length": 19488,
+    "LastWriteTime": "2025-11-03T07:17:05.6017361-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\hooks\\useAuth.js",
+    "Length": 984,
+    "LastWriteTime": "2025-10-25T14:45:27.2364863-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\hooks\\useBovedaData.ts",
+    "Length": 7203,
+    "LastWriteTime": "2025-10-28T09:02:36.4457626-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\hooks\\useBuchonaIntegration.ts",
+    "Length": 7259,
+    "LastWriteTime": "2025-10-30T03:27:52.5028137-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\hooks\\useExchangeRate.ts",
+    "Length": 6856,
+    "LastWriteTime": "2025-10-28T10:55:05.8924363-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\hooks\\useFirebase.js",
+    "Length": 11731,
+    "LastWriteTime": "2025-11-01T07:22:41.1065802-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\hooks\\useFirestore.js",
+    "Length": 5257,
+    "LastWriteTime": "2025-11-01T07:22:41.1065802-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\hooks\\useOptimisticUpdate.js",
+    "Length": 1253,
+    "LastWriteTime": "2025-10-21T12:00:25.9068854-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\hooks\\useVirtualScroll.js",
+    "Length": 741,
+    "LastWriteTime": "2025-11-01T07:22:41.1075817-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\hooks\\useWebWorker.js",
+    "Length": 1041,
+    "LastWriteTime": "2025-10-25T14:45:27.2429963-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\hooks\\useZeroForce.js",
+    "Length": 14170,
+    "LastWriteTime": "2025-11-01T07:22:41.1075817-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\lib\\firebase.js",
+    "Length": 1183,
+    "LastWriteTime": "2025-11-01T07:22:41.1095818-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\lib\\firebase.ts",
+    "Length": 7983,
+    "LastWriteTime": "2025-10-29T18:14:10.2630442-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\services\\authService.js",
+    "Length": 9117,
+    "LastWriteTime": "2025-11-01T07:22:41.1115813-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\services\\AutomationScheduler.js",
+    "Length": 10070,
+    "LastWriteTime": "2025-10-25T14:45:27.3546709-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\services\\BackgroundJobProcessor.js",
+    "Length": 7506,
+    "LastWriteTime": "2025-10-25T14:45:27.2545206-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\services\\businessLogic.ts",
+    "Length": 16305,
+    "LastWriteTime": "2025-10-28T11:16:50.2540992-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\services\\dataService.ts",
+    "Length": 5245,
+    "LastWriteTime": "2025-10-28T13:36:34.7660663-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\services\\firebaseService.js",
+    "Length": 9516,
+    "LastWriteTime": "2025-11-01T07:22:41.1115813-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\services\\firebaseSync.js",
+    "Length": 9034,
+    "LastWriteTime": "2025-11-03T07:17:05.8786015-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\services\\firestoreSync.js",
+    "Length": 18884,
+    "LastWriteTime": "2025-11-03T07:17:05.9048669-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\services\\adobe\\AdobeAutomationOrchestrator.js",
+    "Length": 21648,
+    "LastWriteTime": "2025-11-03T07:17:05.7104586-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\services\\adobe\\AdobeCreativeCloudService.js",
+    "Length": 25604,
+    "LastWriteTime": "2025-10-25T14:45:27.3859347-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\services\\adobe\\AIDesignAutomationEngine.js",
+    "Length": 24341,
+    "LastWriteTime": "2025-10-25T14:45:27.4091544-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\services\\adobe\\AnimationExporter.js",
+    "Length": 12974,
+    "LastWriteTime": "2025-10-25T14:45:27.3024881-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\services\\adobe\\PremiereProAutomation.js",
+    "Length": 13619,
+    "LastWriteTime": "2025-10-25T14:45:27.2697968-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\services\\ai\\BedrockService.js",
+    "Length": 8223,
+    "LastWriteTime": "2025-10-30T06:46:20.3008727-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\services\\ai\\HybridAIService.js",
+    "Length": 4047,
+    "LastWriteTime": "2025-11-03T07:17:05.7976776-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\services\\ai\\multiProviderAI.js",
+    "Length": 14866,
+    "LastWriteTime": "2025-11-03T07:17:05.8129178-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\services\\ai\\OllamaService.js",
+    "Length": 6071,
+    "LastWriteTime": "2025-10-25T14:45:27.2778478-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\services\\ai\\SageMakerService.js",
+    "Length": 4249,
+    "LastWriteTime": "2025-11-03T07:17:05.8259362-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\stores\\flowStore.js",
+    "Length": 6745,
+    "LastWriteTime": "2025-11-01T07:22:41.1140904-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\styles\\chronos-effects.css",
+    "Length": 5923,
+    "LastWriteTime": "2025-11-03T07:17:05.9663599-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\styles\\premium-theme.css",
+    "Length": 9645,
+    "LastWriteTime": "2025-11-03T07:17:05.9869339-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\test\\favorites.extended.test.jsx",
+    "Length": 8587,
+    "LastWriteTime": "2025-10-21T16:33:09.1476422-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\test\\favorites.test.jsx",
+    "Length": 2423,
+    "LastWriteTime": "2025-10-21T12:00:26.267996-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\test\\searchUtils.extended.test.js",
+    "Length": 5381,
+    "LastWriteTime": "2025-11-01T07:25:41.0947839-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\test\\searchUtils.test.js",
+    "Length": 1522,
+    "LastWriteTime": "2025-10-21T12:00:26.3001154-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\test\\setup.js",
+    "Length": 1186,
+    "LastWriteTime": "2025-11-01T07:22:41.1140904-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\test\\undoRedo.test.js",
+    "Length": 2779,
+    "LastWriteTime": "2025-10-21T12:00:26.3242268-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\test\\useActionHistory.test.js",
+    "Length": 9430,
+    "LastWriteTime": "2025-11-01T07:25:41.0947839-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\tests\\AdobeCreativeCloudService.test.js",
+    "Length": 2412,
+    "LastWriteTime": "2025-10-24T03:33:09.1585677-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\tests\\AIDesignAutomationEngine.test.js",
+    "Length": 2805,
+    "LastWriteTime": "2025-10-24T03:33:17.8811723-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\tests\\AnimationExporter.test.js",
+    "Length": 2548,
+    "LastWriteTime": "2025-10-24T03:39:11.7087718-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\tests\\BackgroundJobProcessor.test.js",
+    "Length": 4927,
+    "LastWriteTime": "2025-10-24T03:33:26.8563866-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\tests\\businessLogic.test.ts",
+    "Length": 14270,
+    "LastWriteTime": "2025-10-28T11:27:20.3666794-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\tests\\PremiereProAutomation.test.js",
+    "Length": 3939,
+    "LastWriteTime": "2025-10-24T03:39:18.897783-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\tests\\setup.js",
+    "Length": 4554,
+    "LastWriteTime": "2025-11-03T07:57:41.1599531-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\tests\\integration\\cli.test.js",
+    "Length": 4291,
+    "LastWriteTime": "2025-10-25T14:45:27.3173908-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\types\\excel-data.types.ts",
+    "Length": 4095,
+    "LastWriteTime": "2025-10-29T13:55:37.4668896-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\utils\\analytics.js",
+    "Length": 1736,
+    "LastWriteTime": "2025-10-25T14:45:27.3143903-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\utils\\bulkActions.jsx",
+    "Length": 15341,
+    "LastWriteTime": "2025-10-25T14:45:27.3368717-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\utils\\dragAndDrop.jsx",
+    "Length": 11788,
+    "LastWriteTime": "2025-11-01T07:22:41.1160909-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\utils\\excel-import-validator.js",
+    "Length": 16119,
+    "LastWriteTime": "2025-11-03T07:17:06.134364-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\utils\\excel-import-validator.test.js",
+    "Length": 4268,
+    "LastWriteTime": "2025-11-01T07:25:41.0957915-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\utils\\favorites.jsx",
+    "Length": 3407,
+    "LastWriteTime": "2025-11-01T07:25:41.0968452-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\utils\\highlightMatch.test.js",
+    "Length": 2220,
+    "LastWriteTime": "2025-10-21T18:10:02.098277-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\utils\\indexedDB.js",
+    "Length": 3198,
+    "LastWriteTime": "2025-11-01T07:22:41.1190939-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\utils\\keyboardShortcuts.jsx",
+    "Length": 5912,
+    "LastWriteTime": "2025-11-01T07:22:41.1199412-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\utils\\loadExcelDataToFirestore.js",
+    "Length": 3960,
+    "LastWriteTime": "2025-11-03T07:17:06.1682447-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\utils\\logger.ts",
+    "Length": 1415,
+    "LastWriteTime": "2025-10-25T14:45:27.2515214-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\utils\\searchHooks.js",
+    "Length": 4743,
+    "LastWriteTime": "2025-11-01T07:22:41.1204457-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\utils\\searchUtils.js",
+    "Length": 6414,
+    "LastWriteTime": "2025-10-21T13:06:42.4647582-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\utils\\storage.js",
+    "Length": 10598,
+    "LastWriteTime": "2025-11-01T07:22:41.1214503-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\utils\\themeSystem.jsx",
+    "Length": 14834,
+    "LastWriteTime": "2025-10-25T14:45:27.0885311-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\utils\\undoRedo.js",
+    "Length": 4807,
+    "LastWriteTime": "2025-11-01T07:25:41.0968452-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\utils\\validateEnv.ts",
+    "Length": 3694,
+    "LastWriteTime": "2025-10-29T18:10:16.4974301-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\utils\\voiceRecognition.js",
+    "Length": 4326,
+    "LastWriteTime": "2025-11-01T07:22:41.1214503-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\validation\\excel-schemas.js",
+    "Length": 12274,
+    "LastWriteTime": "2025-10-21T12:00:26.7835923-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\validation\\schemas.js",
+    "Length": 3538,
+    "LastWriteTime": "2025-10-21T12:00:26.8005926-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\validation\\schemas.ts",
+    "Length": 10533,
+    "LastWriteTime": "2025-10-31T06:10:19.4824784-06:00"
+  },
+  {
+    "FullName": "C:\\Users\\xpovo\\Documents\\premium-ecosystem\\src\\workers\\calculations.worker.js",
+    "Length": 4414,
+    "LastWriteTime": "2025-11-03T07:17:06.2531112-06:00"
+  }
+]

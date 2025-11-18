@@ -1,0 +1,14 @@
+# Esta carpeta contiene las credenciales de Firebase
+
+Coloca aquí tu archivo:
+serviceAccountKey.json
+
+Cómo obtenerlo:
+1. Ve a Firebase Console
+2. Project Settings > Service Accounts
+3. Generate New Private Key
+4. Descarga el archivo JSON
+5. Renómbralo a: serviceAccountKey.json
+6. Colócalo en esta carpeta
+
+⚠️ NUNCA subas este archivo a git - Contiene credenciales sensibles

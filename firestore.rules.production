@@ -1,0 +1,298 @@
+rules_version = '2';
+
+/**
+ * ============================================
+ * FIRESTORE SECURITY RULES - ULTRA PREMIUM
+ * Reglas de seguridad avanzadas para FlowDistributor
+ * ============================================
+ */
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ============================================
+    // FUNCIONES AUXILIARES
+    // ============================================
+
+    // Verificar si el usuario está autenticado
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Verificar si el usuario es propietario del documento
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Verificar si el usuario es admin
+    function isAdmin() {
+      return isAuthenticated() &&
+             exists(/databases/$(database)/documents/usuarios/$(request.auth.uid)) &&
+             get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    // Verificar campos requeridos en creación
+    function hasRequiredFields(fields) {
+      return request.resource.data.keys().hasAll(fields);
+    }
+
+    // Verificar que no se modifiquen campos específicos
+    function unchangedFields(fields) {
+      return !request.resource.data.diff(resource.data).affectedKeys().hasAny(fields);
+    }
+
+    // ============================================
+    // REGLAS PARA USUARIOS
+    // ============================================
+
+    match /usuarios/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow create: if isAuthenticated() &&
+                       hasRequiredFields(['email', 'role']) &&
+                       request.resource.data.role in ['user', 'admin', 'viewer'];
+      allow update: if (isOwner(userId) && unchangedFields(['email', 'role', 'createdAt', 'id'])) ||
+                       isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ============================================
+    // REGLAS PARA VENTAS (VALIDACIONES AVANZADAS)
+    // ============================================
+
+    match /ventas/{ventaId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() &&
+                       hasRequiredFields(['fecha', 'cliente', 'cantidad', 'precioVentaUnidad', 'precioCompraUnidad', 'precioTotalVenta']) &&
+                       request.resource.data.cantidad > 0 &&
+                       request.resource.data.precioVentaUnidad > 0 &&
+                       request.resource.data.precioCompraUnidad >= 0 &&
+                       request.resource.data.precioTotalVenta > 0 &&
+                       request.resource.data.estadoPago in ['completo', 'parcial', 'pendiente'] &&
+                       request.resource.data.montoPagado >= 0 &&
+                       request.resource.data.montoRestante >= 0 &&
+                       request.resource.data.montoPagado <= request.resource.data.precioTotalVenta &&
+                       request.resource.data.createdAt is timestamp;
+      allow update: if isAuthenticated() &&
+                       unchangedFields(['id', 'createdAt']) &&
+                       request.resource.data.estadoPago in ['completo', 'parcial', 'pendiente'] &&
+                       request.resource.data.montoPagado <= request.resource.data.precioTotalVenta &&
+                       request.resource.data.updatedAt is timestamp;
+      allow delete: if isAdmin();
+    }
+
+    // ============================================
+    // REGLAS PARA ÓRDENES DE COMPRA (VALIDACIONES AVANZADAS)
+    // ============================================
+
+    match /ordenes_compra/{compraId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() &&
+                       hasRequiredFields(['fecha', 'distribuidor', 'cantidad', 'costoDistribuidor', 'costoTransporte', 'costoTotal']) &&
+                       request.resource.data.cantidad > 0 &&
+                       request.resource.data.costoDistribuidor >= 0 &&
+                       request.resource.data.costoTransporte >= 0 &&
+                       request.resource.data.costoTotal > 0 &&
+                       request.resource.data.estado in ['pendiente', 'parcial', 'pagado'] &&
+                       request.resource.data.deuda >= 0 &&
+                       request.resource.data.pagoDistribuidor >= 0 &&
+                       request.resource.data.pagoDistribuidor <= request.resource.data.costoTotal &&
+                       request.resource.data.createdAt is timestamp;
+      allow update: if isAuthenticated() &&
+                       unchangedFields(['id', 'createdAt']) &&
+                       request.resource.data.estado in ['pendiente', 'parcial', 'pagado'] &&
+                       request.resource.data.pagoDistribuidor <= request.resource.data.costoTotal &&
+                       request.resource.data.updatedAt is timestamp;
+      allow delete: if isAdmin();
+    }
+
+    // ============================================
+    // REGLAS PARA DISTRIBUIDORES (VALIDACIONES AVANZADAS)
+    // ============================================
+
+    match /distribuidores/{distribuidorId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() &&
+                       hasRequiredFields(['nombre', 'totalCompras', 'totalPagado', 'deudaTotal']) &&
+                       request.resource.data.totalCompras >= 0 &&
+                       request.resource.data.totalPagado >= 0 &&
+                       request.resource.data.deudaTotal >= 0 &&
+                       request.resource.data.totalPagado <= request.resource.data.totalCompras &&
+                       request.resource.data.createdAt is timestamp;
+      allow update: if isAuthenticated() &&
+                       unchangedFields(['id', 'createdAt']) &&
+                       request.resource.data.totalPagado <= request.resource.data.totalCompras &&
+                       request.resource.data.updatedAt is timestamp;
+      allow delete: if isAdmin();
+    }
+
+    // ============================================
+    // REGLAS PARA CLIENTES (VALIDACIONES AVANZADAS)
+    // ============================================
+
+    match /clientes/{clienteId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() &&
+                       hasRequiredFields(['nombre', 'totalCompras', 'totalPagado', 'deudaTotal']) &&
+                       request.resource.data.totalCompras >= 0 &&
+                       request.resource.data.totalPagado >= 0 &&
+                       request.resource.data.deudaTotal >= 0 &&
+                       request.resource.data.totalPagado <= request.resource.data.totalCompras &&
+                       request.resource.data.createdAt is timestamp;
+      allow update: if isAuthenticated() &&
+                       unchangedFields(['id', 'createdAt']) &&
+                       request.resource.data.totalPagado <= request.resource.data.totalCompras &&
+                       request.resource.data.updatedAt is timestamp;
+      allow delete: if isAdmin();
+    }
+
+    // ============================================
+    // REGLAS PARA BANCOS (Todos los 7 bancos - VALIDACIONES AVANZADAS)
+    // ============================================
+
+    // Bóveda Monte
+    match /boveda_monte/{bancoDoc} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() &&
+                      request.resource.data.historicoIngresos >= 0 &&
+                      request.resource.data.historicoGastos >= 0 &&
+                      request.resource.data.updatedAt is timestamp;
+    }
+
+    // Bóveda USA
+    match /boveda_usa/{bancoDoc} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() &&
+                      request.resource.data.historicoIngresos >= 0 &&
+                      request.resource.data.historicoGastos >= 0 &&
+                      request.resource.data.updatedAt is timestamp;
+    }
+
+    // Utilidades
+    match /utilidades/{bancoDoc} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() &&
+                      request.resource.data.historicoIngresos >= 0 &&
+                      request.resource.data.historicoGastos >= 0 &&
+                      request.resource.data.updatedAt is timestamp;
+    }
+
+    // Fletes
+    match /fletes/{bancoDoc} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() &&
+                      request.resource.data.historicoIngresos >= 0 &&
+                      request.resource.data.historicoGastos >= 0 &&
+                      request.resource.data.updatedAt is timestamp;
+    }
+
+    // Azteca
+    match /azteca/{bancoDoc} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() &&
+                      request.resource.data.historicoIngresos >= 0 &&
+                      request.resource.data.historicoGastos >= 0 &&
+                      request.resource.data.updatedAt is timestamp;
+    }
+
+    // Leftie
+    match /leftie/{bancoDoc} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() &&
+                      request.resource.data.historicoIngresos >= 0 &&
+                      request.resource.data.historicoGastos >= 0 &&
+                      request.resource.data.updatedAt is timestamp;
+    }
+
+    // Profit
+    match /profit/{bancoDoc} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() &&
+                      request.resource.data.historicoIngresos >= 0 &&
+                      request.resource.data.historicoGastos >= 0 &&
+                      request.resource.data.updatedAt is timestamp;
+    }
+
+    // ============================================
+    // REGLAS PARA ALMACÉN (VALIDACIONES AVANZADAS)
+    // ============================================
+
+    match /almacen/{almacenDoc} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() &&
+                      request.resource.data.updatedAt is timestamp;
+    }
+
+    // ============================================
+    // REGLAS PARA AUDIT LOGS (SOLO LECTURA ADMIN)
+    // ============================================
+
+    match /audit_logs/{logId} {
+      allow read: if isAdmin();
+      allow create: if isAuthenticated();
+      allow update, delete: if false; // Los logs NUNCA se modifican ni eliminan
+    }
+
+    // ============================================
+    // REGLAS PARA MOVIMIENTOS
+    // ============================================
+
+    match /movimientos/{movimientoId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() &&
+                       hasRequiredFields(['tipo', 'monto', 'fecha']) &&
+                       request.resource.data.tipo in ['ingreso', 'gasto', 'transferencia'] &&
+                       request.resource.data.monto is number;
+      allow update: if isAuthenticated() &&
+                       unchangedFields(['id', 'tipo']);
+      allow delete: if isAdmin();
+    }
+
+    // ============================================
+    // REGLAS PARA MÉTRICAS
+    // ============================================
+
+    match /metricas/{metricaId} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
+    // ============================================
+    // REGLAS PARA REPORTES
+    // ============================================
+
+    match /reportes/{reporteId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated() && unchangedFields(['id']);
+      allow delete: if isAdmin() || (resource.data.userId != null && isOwner(resource.data.userId));
+    }
+
+    // ============================================
+    // REGLAS PARA CONFIGURACIÓN
+    // ============================================
+
+    match /configuracion/{configId} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
+    // ============================================
+    // REGLAS PARA LOGS Y AUDITORÍA
+    // ============================================
+
+    match /logs/{logId} {
+      allow read: if isAdmin();
+      allow create: if isAuthenticated();
+      allow update, delete: if false;
+    }
+
+    // ============================================
+    // REGLA POR DEFECTO
+    // ============================================
+
+    // Denegar todo lo demás por defecto
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

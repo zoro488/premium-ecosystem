@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   // Purge optimization for production
   safelist: [
     'animate-float',
@@ -34,30 +31,43 @@ export default {
           900: '#0c4a6e',
           950: '#082f49',
         },
-        // Fondos Deep Ocean
-        'bg-primary': '#09111A',
-        'bg-secondary': '#0D1821',
-        'bg-card': '#0F1729',
-        'bg-glass': 'rgba(15, 23, 41, 0.6)',
-        
-        // Acentos
-        'accent-blue': '#1890FF',
-        'accent-cyan': '#22D3EE',
-        'accent-purple': '#7C3AED',
-        'accent-green': '#10B981',
-        'accent-orange': '#F59E0B',
-        'accent-pink': '#EC4899',
-        
-        // Texto
-        'text-primary': '#F8FAFC',
-        'text-secondary': '#E2E8F0',
-        'text-muted': '#94A3B8',
-        'text-accent': '#64748B',
-        
-        // Bordes y glassmorphism
-        'border-glass': 'rgba(148, 163, 184, 0.1)',
-        'border-accent': 'rgba(24, 144, 255, 0.3)',
-        
+        // Fondos Negro Profundo Premium
+        'bg-primary': '#000000',
+        'bg-secondary': '#0a0a0a',
+        'bg-card': '#111111',
+        'bg-glass': 'rgba(17, 17, 17, 0.8)',
+
+        // Acentos Ultra-Vibrantes
+        'accent-blue': '#3b82f6',
+        'accent-cyan': '#06b6d4',
+        'accent-purple': '#a855f7',
+        'accent-green': '#22c55e',
+        'accent-orange': '#f97316',
+        'accent-pink': '#ec4899',
+
+        // Texto Ultra-Legible
+        'text-primary': '#ffffff',
+        'text-secondary': '#e5e5e5',
+        'text-muted': '#a3a3a3',
+        'text-accent': '#737373',
+
+        // Bordes y glassmorphism premium
+        'border-glass': 'rgba(255, 255, 255, 0.15)',
+        'border-accent': 'rgba(59, 130, 246, 0.5)',
+
+        // 🌌 CHRONOS OS - Dark Mirror System
+        'chronos-black': '#000000',
+        'chronos-glass': 'rgba(0, 0, 0, 0.7)',
+        'chronos-border': 'rgba(255, 255, 255, 0.08)',
+        'neon-blue': '#0ea5e9',
+        'neon-cyan': '#22d3ee',
+        'neon-purple': '#a855f7',
+        'neon-pink': '#ec4899',
+        'neon-green': '#10b981',
+        'metal-900': '#0a0a0a',
+        'metal-800': '#1a1a1a',
+        'metal-700': '#2a2a2a',
+
         // FlowDistributor - Azul/Cyan
         flow: {
           50: '#ecfeff',
@@ -126,15 +136,22 @@ export default {
       },
       // Animaciones Deep Ocean
       animation: {
-        'float': 'float 6s ease-in-out infinite',
+        float: 'float 6s ease-in-out infinite',
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'shimmer': 'shimmer 2s linear infinite',
-        'glow': 'glow 2s ease-in-out infinite alternate',
+        shimmer: 'shimmer 2s linear infinite',
+        glow: 'glow 2s ease-in-out infinite alternate',
         'slide-up': 'slideUp 0.3s ease-out',
         'slide-down': 'slideDown 0.3s ease-out',
         'fade-in': 'fadeIn 0.5s ease-out',
         'scale-in': 'scaleIn 0.3s ease-out',
         'bounce-subtle': 'bounceSubtle 0.6s ease-out',
+        // 🌌 CHRONOS Animations
+        'glow-pulse-blue': 'glowPulse 2s ease-in-out infinite',
+        'glow-pulse-cyan': 'glowPulseCyan 2s ease-in-out infinite',
+        'glow-pulse-purple': 'glowPulsePurple 2s ease-in-out infinite',
+        'slide-in-right': 'slideInRight 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
+        'scale-bounce': 'scaleBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
+        'rotate-glow': 'rotateGlow 3s ease-in-out infinite',
       },
       keyframes: {
         float: {
@@ -170,6 +187,33 @@ export default {
           '50%': { transform: 'scale(1.05)' },
           '100%': { transform: 'scale(1)' },
         },
+        // 🌌 CHRONOS Keyframes
+        glowPulse: {
+          '0%, 100%': { boxShadow: '0 0 20px rgba(14, 165, 233, 0.3)' },
+          '50%': { boxShadow: '0 0 40px rgba(14, 165, 233, 0.8)' },
+        },
+        glowPulseCyan: {
+          '0%, 100%': { boxShadow: '0 0 20px rgba(34, 211, 238, 0.3)' },
+          '50%': { boxShadow: '0 0 40px rgba(34, 211, 238, 0.8)' },
+        },
+        glowPulsePurple: {
+          '0%, 100%': { boxShadow: '0 0 20px rgba(168, 85, 247, 0.3)' },
+          '50%': { boxShadow: '0 0 40px rgba(168, 85, 247, 0.8)' },
+        },
+        slideInRight: {
+          '0%': { transform: 'translateX(100%)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
+        scaleBounce: {
+          '0%': { transform: 'scale(0)' },
+          '50%': { transform: 'scale(1.1)' },
+          '100%': { transform: 'scale(1)' },
+        },
+        rotateGlow: {
+          '0%': { transform: 'rotate(0deg)', filter: 'brightness(1)' },
+          '50%': { transform: 'rotate(180deg)', filter: 'brightness(1.2)' },
+          '100%': { transform: 'rotate(360deg)', filter: 'brightness(1)' },
+        },
       },
       backdropBlur: {
         xs: '2px',
@@ -177,13 +221,15 @@ export default {
       // Fondos gradientes
       backgroundImage: {
         'gradient-ocean': 'linear-gradient(135deg, #0D1821 0%, #1E3A8A 50%, #1E40AF 100%)',
-        'gradient-glass': 'linear-gradient(135deg, rgba(15, 23, 41, 0.6) 0%, rgba(30, 58, 138, 0.1) 100%)',
+        'gradient-glass':
+          'linear-gradient(135deg, rgba(15, 23, 41, 0.6) 0%, rgba(30, 58, 138, 0.1) 100%)',
         'gradient-button': 'linear-gradient(135deg, #1890FF 0%, #22D3EE 100%)',
-        'gradient-card': 'linear-gradient(135deg, rgba(15, 23, 41, 0.8) 0%, rgba(30, 58, 138, 0.2) 100%)',
+        'gradient-card':
+          'linear-gradient(135deg, rgba(15, 23, 41, 0.8) 0%, rgba(30, 58, 138, 0.2) 100%)',
       },
       // Sombras premium
       boxShadow: {
-        'glass': '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+        glass: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
         'glass-lg': '0 25px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
         'glow-blue': '0 0 20px rgba(24, 144, 255, 0.3)',
         'glow-cyan': '0 0 20px rgba(34, 211, 238, 0.3)',
@@ -191,7 +237,7 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require('tailwind-scrollbar')({ nocompatible: true })],
   // Production optimizations
   corePlugins: {
     preflight: true,
@@ -199,4 +245,4 @@ export default {
   future: {
     hoverOnlyWhenSupported: true,
   },
-}
+};

@@ -1,0 +1,36 @@
+{
+  "timestamp": "2025-11-13T09:49:18.238Z",
+  "duration": "6.80s",
+  "statistics": {
+    "totalCollections": 20,
+    "totalDocuments": 2256,
+    "collections": {
+      "control_maestro": 96,
+      "tabla_gya": 303,
+      "distribuidores": 997,
+      "almacen_monte": 96,
+      "boveda_monte_ingresos": 69,
+      "boveda_monte_gastos": 26,
+      "boveda_usa_ingresos": 17,
+      "boveda_usa_gastos": 49,
+      "azteca_ingresos": 6,
+      "azteca_gastos": 24,
+      "utilidades_ingresos": 50,
+      "utilidades_gastos": 13,
+      "flete_sur_ingresos": 58,
+      "flete_sur_gastos": 103,
+      "leftie_ingresos": 9,
+      "leftie_gastos": 4,
+      "profit_ingresos": 55,
+      "clientes": 197,
+      "data_adicional": 83,
+      "rf_actual": 1
+    },
+    "errors": []
+  },
+  "source": {
+    "fuente": "Administación_General (1).xlsx",
+    "fechaExtraccion": "2025-10-31T03:39:16.776756",
+    "totalHojas": 12
+  }
+}

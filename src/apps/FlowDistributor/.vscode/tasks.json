@@ -1,0 +1,56 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "🚀 Dev Server",
+      "type": "npm",
+      "script": "dev",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "🏗️ Build Production",
+      "type": "npm",
+      "script": "build",
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "🔍 Lint",
+      "type": "npm",
+      "script": "lint",
+      "problemMatcher": ["$eslint-stylish"]
+    },
+    {
+      "label": "🎨 Format",
+      "type": "shell",
+      "command": "npm run format",
+      "problemMatcher": []
+    },
+    {
+      "label": "🧪 Test",
+      "type": "npm",
+      "script": "test",
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
+      "label": "🔥 Firebase Emulators",
+      "type": "shell",
+      "command": "firebase emulators:start",
+      "problemMatcher": [],
+      "isBackground": true
+    },
+    {
+      "label": "🚀 Full Stack Start",
+      "dependsOn": [
+        "🔥 Firebase Emulators",
+        "🚀 Dev Server"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}
