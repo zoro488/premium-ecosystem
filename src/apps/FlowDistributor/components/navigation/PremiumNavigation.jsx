@@ -84,7 +84,7 @@ export const PremiumHeader = ({
               <div className="relative">
                 <div className="
                   w-12 h-12 rounded-xl
-                  bg-gradient-to-br from-blue-500 to-purple-500
+                  bg-gradient-to-br from-zinc-800 to-zinc-800
                   flex items-center justify-center
                   shadow-glow-lg animate-glow-pulse
                 ">
@@ -117,7 +117,7 @@ export const PremiumHeader = ({
               <Search className="
                 absolute left-3 top-1/2 -translate-y-1/2
                 w-5 h-5 text-gray-400
-                group-hover:text-blue-400 transition-colors
+                group-hover:text-zinc-300 transition-colors
               " />
               <input
                 type="text"
@@ -130,7 +130,7 @@ export const PremiumHeader = ({
                   border border-white/10
                   text-white placeholder-gray-400
                   hover:bg-white/10 focus:bg-white/10
-                  focus:border-blue-500/50
+                  focus:border-zinc-700/50
                   transition-all outline-none
                 "
               />
@@ -154,12 +154,12 @@ export const PremiumHeader = ({
               className="hidden xl:flex items-center gap-4 mr-4 px-4 py-2 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10"
             >
               <div className="flex items-center gap-2">
-                <TrendingUp className="w-4 h-4 text-green-400" />
+                <TrendingUp className="w-4 h-4 text-zinc-200" />
                 <span className="text-sm font-semibold text-white">+12.5%</span>
               </div>
               <div className="w-px h-4 bg-white/20" />
               <div className="flex items-center gap-2">
-                <Activity className="w-4 h-4 text-blue-400" />
+                <Activity className="w-4 h-4 text-zinc-300" />
                 <span className="text-sm font-semibold text-white">98.2%</span>
               </div>
             </motion.div>
@@ -180,7 +180,7 @@ export const PremiumHeader = ({
                 <span className="
                   absolute -top-1 -right-1
                   w-5 h-5 rounded-full
-                  bg-red-500 text-white text-xs font-bold
+                  bg-zinc-9000 text-white text-xs font-bold
                   flex items-center justify-center
                   animate-pulse
                 ">
@@ -208,7 +208,7 @@ export const PremiumHeader = ({
                     animate={{ rotate: 0, opacity: 1 }}
                     exit={{ rotate: 180, opacity: 0 }}
                   >
-                    <Sun className="w-5 h-5 text-yellow-400" />
+                    <Sun className="w-5 h-5 text-zinc-200" />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -217,7 +217,7 @@ export const PremiumHeader = ({
                     animate={{ rotate: 0, opacity: 1 }}
                     exit={{ rotate: -180, opacity: 0 }}
                   >
-                    <Moon className="w-5 h-5 text-blue-400" />
+                    <Moon className="w-5 h-5 text-zinc-300" />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -231,7 +231,7 @@ export const PremiumHeader = ({
 
       {/* Progress Bar */}
       <motion.div
-        className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+        className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-zinc-800 via-zinc-800 to-zinc-700"
         initial={{ width: 0 }}
         animate={{ width: scrolled ? '100%' : '0%' }}
         transition={{ duration: 0.3 }}
@@ -267,7 +267,7 @@ const UserDropdown = () => {
           border border-white/10
         "
       >
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-zinc-800 to-zinc-800 flex items-center justify-center">
           <User className="w-4 h-4 text-white" />
         </div>
         <ChevronDown className={`
@@ -304,7 +304,7 @@ const UserDropdown = () => {
                   className={`
                     w-full flex items-center gap-3 px-3 py-2 rounded-lg
                     text-sm transition-all
-                    ${item.danger ? 'text-red-400 hover:bg-red-500/10' : 'text-white'}
+                    ${item.danger ? 'text-zinc-200 hover:bg-zinc-9000/10' : 'text-white'}
                   `}
                 >
                   <item.icon className="w-4 h-4" />
@@ -399,7 +399,7 @@ export const FloatingActionButton = ({
           onClick={onClick}
           className="
             w-14 h-14 rounded-full
-            bg-gradient-to-br from-blue-500 to-purple-500
+            bg-gradient-to-br from-zinc-800 to-zinc-800
             flex items-center justify-center
             shadow-glow-lg hover:shadow-premium
             transition-all
@@ -439,7 +439,7 @@ export const TabNavigation = ({ tabs = [], activeTab, onChange }) => {
               layoutId="activeTab"
               className="
                 absolute inset-0 rounded-lg
-                bg-gradient-to-br from-blue-500/20 to-purple-500/20
+                bg-gradient-to-br from-zinc-800/20 to-zinc-800/20
                 border border-white/10
               "
               transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
@@ -453,7 +453,7 @@ export const TabNavigation = ({ tabs = [], activeTab, onChange }) => {
             {tab.badge && (
               <span className="
                 px-1.5 py-0.5 rounded-full
-                bg-red-500 text-white text-xs font-bold
+                bg-zinc-9000 text-white text-xs font-bold
               ">
                 {tab.badge}
               </span>

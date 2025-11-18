@@ -120,7 +120,7 @@ const DashboardMain = memo(({ user, onLogout }: DashboardMainProps) => {
             </div>
             <button
               onClick={onLogout}
-              className="bg-red-500/20 hover:bg-red-500/30 border border-red-500/50 text-red-300 px-4 py-2 rounded-lg transition-all"
+              className="bg-zinc-9000/20 hover:bg-zinc-9000/30 border border-zinc-500/50 text-red-300 px-4 py-2 rounded-lg transition-all"
             >
               Cerrar Sesión
             </button>
@@ -134,14 +134,14 @@ const DashboardMain = memo(({ user, onLogout }: DashboardMainProps) => {
           <div className="flex gap-4 mb-4">
             <button
               onClick={createDemoData}
-              className="bg-green-500/20 hover:bg-green-500/30 border border-green-500/50 text-green-300 px-4 py-2 rounded-lg transition-all"
+              className="bg-zinc-9000/20 hover:bg-zinc-9000/30 border border-zinc-500/50 text-green-300 px-4 py-2 rounded-lg transition-all"
             >
               Crear Datos Demo
             </button>
 
             <button
               onClick={() => window.location.reload()}
-              className="bg-blue-500/20 hover:bg-blue-500/30 border border-blue-500/50 text-blue-300 px-4 py-2 rounded-lg transition-all"
+              className="bg-zinc-800/20 hover:bg-zinc-800/30 border border-zinc-700/50 text-zinc-300 px-4 py-2 rounded-lg transition-all"
             >
               Recargar Datos
             </button>
@@ -175,7 +175,7 @@ const DashboardMain = memo(({ user, onLogout }: DashboardMainProps) => {
                         {cliente.telefono} • {cliente.direccion}
                       </span>
                     </div>
-                    <span className="text-green-400 text-sm">
+                    <span className="text-zinc-200 text-sm">
                       {cliente.activo ? '✅ Activo' : '❌ Inactivo'}
                     </span>
                   </div>
@@ -189,7 +189,7 @@ const DashboardMain = memo(({ user, onLogout }: DashboardMainProps) => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
           {/* KPI Card 1 */}
           <motion.div
-            className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-xl p-6"
+            className="bg-gradient-to-br from-zinc-800/20 to-zinc-700/20 border border-zinc-800/30 rounded-xl p-6"
             whileHover={{ scale: 1.02 }}
             transition={{ type: 'spring', stiffness: 300 }}
           >
@@ -199,7 +199,7 @@ const DashboardMain = memo(({ user, onLogout }: DashboardMainProps) => {
 
           {/* KPI Card 2 */}
           <motion.div
-            className="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-xl p-6"
+            className="bg-gradient-to-br from-zinc-800/20 to-zinc-800/20 border border-zinc-700/30 rounded-xl p-6"
             whileHover={{ scale: 1.02 }}
             transition={{ type: 'spring', stiffness: 300 }}
           >
@@ -209,7 +209,7 @@ const DashboardMain = memo(({ user, onLogout }: DashboardMainProps) => {
 
           {/* KPI Card 3 */}
           <motion.div
-            className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-xl p-6"
+            className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-zinc-500/30 rounded-xl p-6"
             whileHover={{ scale: 1.02 }}
             transition={{ type: 'spring', stiffness: 300 }}
           >
@@ -219,7 +219,7 @@ const DashboardMain = memo(({ user, onLogout }: DashboardMainProps) => {
         </div>
 
         {/* Mensaje de instrucciones */}
-        <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6">
+        <div className="bg-zinc-800/10 border border-zinc-700/30 rounded-xl p-6">
           <h3 className="text-white font-semibold mb-2 flex items-center gap-2">
             <span>💡</span> Instrucciones de Integración
           </h3>
@@ -233,7 +233,7 @@ const DashboardMain = memo(({ user, onLogout }: DashboardMainProps) => {
             <p>
               <strong className="text-white">3.</strong> Pasa las props necesarias: <code className="bg-black/30 px-2 py-1 rounded">user</code> y <code className="bg-black/30 px-2 py-1 rounded">onLogout</code>
             </p>
-            <p className="text-green-400 mt-4">
+            <p className="text-zinc-200 mt-4">
               ✅ El sistema de Login, Splash y Logo ya está completamente funcional
             </p>
           </div>

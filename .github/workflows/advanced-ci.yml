@@ -315,7 +315,7 @@ jobs:
       - name: OWASP Dependency Check
         uses: dependency-check/Dependency-Check_Action@main
         with:
-          project: 'premium-ecosystem'
+          project: 'chronos-system'
           path: '.'
           format: 'HTML'
         continue-on-error: true

@@ -174,13 +174,13 @@ export const DashboardVentasPremium = ({ ventas = [], productos = [], vendedores
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           whileHover={{ scale: 1.02 }}
-          className="bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 backdrop-blur-lg border border-emerald-500/30 rounded-xl p-6"
+          className="bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 backdrop-blur-lg border border-zinc-500/30 rounded-xl p-6"
         >
           <div className="flex items-center justify-between mb-2">
-            <DollarSign className="w-8 h-8 text-emerald-400" />
+            <DollarSign className="w-8 h-8 text-zinc-200" />
             <div
               className={`flex items-center gap-1 text-sm font-medium ${
-                stats.crecimiento >= 0 ? 'text-green-400' : 'text-red-400'
+                stats.crecimiento >= 0 ? 'text-zinc-200' : 'text-zinc-200'
               }`}
             >
               {stats.crecimiento >= 0 ? (
@@ -201,15 +201,15 @@ export const DashboardVentasPremium = ({ ventas = [], productos = [], vendedores
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.1 }}
           whileHover={{ scale: 1.02 }}
-          className="bg-gradient-to-br from-blue-500/20 to-blue-600/10 backdrop-blur-lg border border-blue-500/30 rounded-xl p-6"
+          className="bg-gradient-to-br from-zinc-800/20 to-zinc-900/10 backdrop-blur-lg border border-zinc-700/30 rounded-xl p-6"
         >
           <div className="flex items-center justify-between mb-2">
-            <ShoppingCart className="w-8 h-8 text-blue-400" />
-            <Zap className="w-5 h-5 text-yellow-400" />
+            <ShoppingCart className="w-8 h-8 text-zinc-300" />
+            <Zap className="w-5 h-5 text-zinc-200" />
           </div>
           <p className="text-slate-400 text-sm mb-1">Número de Ventas</p>
           <p className="text-2xl font-bold text-white">{stats.cantidadVentas}</p>
-          <p className="text-xs text-blue-300 mt-1">
+          <p className="text-xs text-zinc-300 mt-1">
             Ticket: {formatCurrency(stats.ticketPromedio)}
           </p>
         </motion.div>
@@ -221,15 +221,15 @@ export const DashboardVentasPremium = ({ ventas = [], productos = [], vendedores
           whileHover={{ scale: 1.02 }}
           className={`bg-gradient-to-br ${
             stats.progreso >= 100
-              ? 'from-green-500/20 to-green-600/10 border-green-500/30'
+              ? 'from-green-500/20 to-green-600/10 border-zinc-500/30'
               : stats.progreso >= 75
-                ? 'from-yellow-500/20 to-yellow-600/10 border-yellow-500/30'
-                : 'from-orange-500/20 to-orange-600/10 border-orange-500/30'
+                ? 'from-yellow-500/20 to-yellow-600/10 border-zinc-500/30'
+                : 'from-orange-500/20 to-orange-600/10 border-zinc-500/30'
           } backdrop-blur-lg border rounded-xl p-6`}
         >
           <div className="flex items-center justify-between mb-2">
             <Target
-              className={`w-8 h-8 ${stats.progreso >= 100 ? 'text-green-400' : 'text-yellow-400'}`}
+              className={`w-8 h-8 ${stats.progreso >= 100 ? 'text-zinc-200' : 'text-zinc-200'}`}
             />
             <Percent className="w-5 h-5 text-slate-400" />
           </div>
@@ -254,11 +254,11 @@ export const DashboardVentasPremium = ({ ventas = [], productos = [], vendedores
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3 }}
           whileHover={{ scale: 1.02 }}
-          className="bg-gradient-to-br from-purple-500/20 to-purple-600/10 backdrop-blur-lg border border-purple-500/30 rounded-xl p-6"
+          className="bg-gradient-to-br from-zinc-800/20 to-zinc-800/10 backdrop-blur-lg border border-zinc-800/30 rounded-xl p-6"
         >
           <div className="flex items-center justify-between mb-2">
-            <Award className="w-8 h-8 text-purple-400" />
-            <Star className="w-5 h-5 text-yellow-400" />
+            <Award className="w-8 h-8 text-zinc-800" />
+            <Star className="w-5 h-5 text-zinc-200" />
           </div>
           <p className="text-slate-400 text-sm mb-1">Ticket Promedio</p>
           <p className="text-2xl font-bold text-white">{formatCurrency(stats.ticketPromedio)}</p>
@@ -326,7 +326,7 @@ export const DashboardVentasPremium = ({ ventas = [], productos = [], vendedores
             className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-xl p-6"
           >
             <div className="flex items-center gap-3 mb-6">
-              <Package className="w-6 h-6 text-emerald-400" />
+              <Package className="w-6 h-6 text-zinc-200" />
               <h3 className="text-xl font-bold text-white">Top 5 Productos</h3>
             </div>
             <div className="space-y-4">
@@ -342,11 +342,11 @@ export const DashboardVentasPremium = ({ ventas = [], productos = [], vendedores
                     <div
                       className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${
                         index === 0
-                          ? 'bg-yellow-500/20 text-yellow-400'
+                          ? 'bg-zinc-9000/20 text-zinc-200'
                           : index === 1
                             ? 'bg-slate-400/20 text-slate-300'
                             : index === 2
-                              ? 'bg-orange-500/20 text-orange-400'
+                              ? 'bg-zinc-9000/20 text-zinc-200'
                               : 'bg-slate-600/20 text-slate-400'
                       }`}
                     >
@@ -358,7 +358,7 @@ export const DashboardVentasPremium = ({ ventas = [], productos = [], vendedores
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-emerald-400 font-bold">{formatCurrency(producto.total)}</p>
+                    <p className="text-zinc-200 font-bold">{formatCurrency(producto.total)}</p>
                   </div>
                 </motion.div>
               ))}
@@ -372,7 +372,7 @@ export const DashboardVentasPremium = ({ ventas = [], productos = [], vendedores
             className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-xl p-6"
           >
             <div className="flex items-center gap-3 mb-6">
-              <Award className="w-6 h-6 text-purple-400" />
+              <Award className="w-6 h-6 text-zinc-800" />
               <h3 className="text-xl font-bold text-white">Top 5 Vendedores</h3>
             </div>
             <div className="space-y-4">
@@ -407,8 +407,8 @@ export const DashboardVentasPremium = ({ ventas = [], productos = [], vendedores
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="text-emerald-400 font-bold">{formatCurrency(vendedor.total)}</p>
-                      <p className="text-xs text-purple-400">
+                      <p className="text-zinc-200 font-bold">{formatCurrency(vendedor.total)}</p>
+                      <p className="text-xs text-zinc-800">
                         Comisión: {formatCurrency(comision)}
                       </p>
                     </div>

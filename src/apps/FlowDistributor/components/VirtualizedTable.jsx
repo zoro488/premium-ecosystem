@@ -81,9 +81,9 @@ export const VirtualizedTable = ({
     }
 
     return sortConfig.direction === 'asc' ? (
-      <ChevronUp className="w-4 h-4 text-blue-400" />
+      <ChevronUp className="w-4 h-4 text-zinc-300" />
     ) : (
-      <ChevronDown className="w-4 h-4 text-blue-400" />
+      <ChevronDown className="w-4 h-4 text-zinc-300" />
     );
   };
 
@@ -261,7 +261,7 @@ export const VirtualizedTable = ({
                       onClick={() => setCurrentPage(pageNumber)}
                       className={`px-3 py-1 rounded-lg ${
                         currentPage === pageNumber
-                          ? 'bg-blue-500 text-white'
+                          ? 'bg-zinc-800 text-white'
                           : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
                       }`}
                       whileHover={{ scale: 1.05 }}

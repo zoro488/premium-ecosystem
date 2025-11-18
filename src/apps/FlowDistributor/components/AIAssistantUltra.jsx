@@ -527,7 +527,7 @@ const AIAssistantUltra = ({ onClose, onNavigate, onCreateRecord, currentPanel })
         whileHover={{ scale: 1.1, rotate: 5 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsMinimized(false)}
-        className="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full bg-gradient-to-r from-purple-600 via-violet-600 to-blue-600 flex items-center justify-center shadow-2xl group"
+        className="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full bg-gradient-to-r from-zinc-800 via-zinc-800 to-zinc-900 flex items-center justify-center shadow-2xl group"
       >
         <Bot className="w-8 h-8 text-white group-hover:scale-110 transition-transform" />
         <motion.div
@@ -568,12 +568,12 @@ const AIAssistantUltra = ({ onClose, onNavigate, onCreateRecord, currentPanel })
       </div>
 
       {/* Header */}
-      <div className="relative bg-gradient-to-r from-purple-600 via-violet-600 to-blue-600 text-white p-4 flex justify-between items-center">
+      <div className="relative bg-gradient-to-r from-zinc-800 via-zinc-800 to-zinc-900 text-white p-4 flex justify-between items-center">
         <div className="flex items-center gap-3">
           <div className="relative">
             <Bot className="w-8 h-8" />
             {isProcessing && (
-              <Loader2 className="w-4 h-4 absolute -top-1 -right-1 animate-spin text-green-400" />
+              <Loader2 className="w-4 h-4 absolute -top-1 -right-1 animate-spin text-zinc-200" />
             )}
           </div>
           <div>
@@ -631,7 +631,7 @@ const AIAssistantUltra = ({ onClose, onNavigate, onCreateRecord, currentPanel })
               <div
                 className={`max-w-[80%] p-3 rounded-2xl ${
                   msg.type === 'user'
-                    ? 'bg-gradient-to-r from-blue-600 to-violet-600 text-white'
+                    ? 'bg-gradient-to-r from-zinc-900 to-zinc-800 text-white'
                     : 'bg-slate-800/90 text-white border border-white/10'
                 }`}
               >
@@ -669,8 +669,8 @@ const AIAssistantUltra = ({ onClose, onNavigate, onCreateRecord, currentPanel })
             onClick={toggleVoiceInput}
             className={`p-3 rounded-xl transition-all ${
               isListening
-                ? 'bg-red-500 animate-pulse'
-                : 'bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700'
+                ? 'bg-zinc-9000 animate-pulse'
+                : 'bg-gradient-to-r from-zinc-800 to-zinc-900 hover:from-zinc-800 hover:to-blue-700'
             } text-white`}
           >
             {isListening ? <MicOff className="w-5 h-5" /> : <Mic className="w-5 h-5" />}
@@ -682,14 +682,14 @@ const AIAssistantUltra = ({ onClose, onNavigate, onCreateRecord, currentPanel })
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             placeholder="Escribe o habla tu consulta..."
-            className="flex-1 bg-slate-800/50 text-white px-4 py-3 rounded-xl border border-white/10 focus:border-purple-500 focus:outline-none"
+            className="flex-1 bg-slate-800/50 text-white px-4 py-3 rounded-xl border border-white/10 focus:border-zinc-800 focus:outline-none"
             disabled={isProcessing}
           />
 
           <button
             onClick={() => handleSend()}
             disabled={isProcessing || !inputValue.trim()}
-            className="p-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+            className="p-3 rounded-xl bg-gradient-to-r from-zinc-800 to-zinc-900 hover:from-zinc-800 hover:to-blue-700 text-white disabled:opacity-50 disabled:cursor-not-allowed transition-all"
           >
             <Send className="w-5 h-5" />
           </button>

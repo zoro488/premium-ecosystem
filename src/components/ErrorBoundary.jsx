@@ -51,7 +51,7 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 flex items-center justify-center p-4">
+        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-zinc-800 to-gray-900 flex items-center justify-center p-4">
           <div className="max-w-md w-full bg-gray-800/50 backdrop-blur-sm border border-red-500/30 rounded-xl p-8 shadow-2xl">
             <div className="flex items-center gap-3 mb-6">
               <div className="p-3 bg-red-500/20 rounded-lg">
@@ -83,7 +83,7 @@ class ErrorBoundary extends React.Component {
 
             <button
               onClick={this.handleReset}
-              className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors font-medium"
+              className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-zinc-800 hover:bg-zinc-800 text-white rounded-lg transition-colors font-medium"
             >
               <RefreshCw className="w-4 h-4" />
               Intentar de nuevo

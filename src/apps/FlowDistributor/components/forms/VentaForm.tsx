@@ -126,9 +126,9 @@ export const VentaForm: React.FC<VentaFormProps> = ({ onSubmit, onCancel, isLoad
             {...register('fecha')}
             type="date"
             id="fecha"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-zinc-500 focus:ring-green-500"
           />
-          {errors.fecha && <p className="mt-1 text-sm text-red-600">{errors.fecha.message}</p>}
+          {errors.fecha && <p className="mt-1 text-sm text-white">{errors.fecha.message}</p>}
         </div>
 
         <div>
@@ -139,10 +139,10 @@ export const VentaForm: React.FC<VentaFormProps> = ({ onSubmit, onCancel, isLoad
             {...register('cliente')}
             type="text"
             id="cliente"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-zinc-500 focus:ring-green-500"
             placeholder="Nombre del cliente"
           />
-          {errors.cliente && <p className="mt-1 text-sm text-red-600">{errors.cliente.message}</p>}
+          {errors.cliente && <p className="mt-1 text-sm text-white">{errors.cliente.message}</p>}
         </div>
       </div>
 
@@ -154,7 +154,7 @@ export const VentaForm: React.FC<VentaFormProps> = ({ onSubmit, onCancel, isLoad
         <select
           {...register('ocRelacionada')}
           id="ocRelacionada"
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-zinc-500 focus:ring-green-500"
         >
           <option value="">-- Sin OC (Stock Manual) --</option>
           {ordenes
@@ -166,7 +166,7 @@ export const VentaForm: React.FC<VentaFormProps> = ({ onSubmit, onCancel, isLoad
             ))}
         </select>
         {ordenSeleccionada && (
-          <p className="mt-1 text-sm text-blue-600">
+          <p className="mt-1 text-sm text-white">
             📦 Stock disponible: {stockDisponible} unidades | Costo: ${costoPorUnidad.toFixed(2)}{' '}
             USD
           </p>
@@ -186,7 +186,7 @@ export const VentaForm: React.FC<VentaFormProps> = ({ onSubmit, onCancel, isLoad
         <select
           {...register('moneda')}
           id="moneda"
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-zinc-500 focus:ring-green-500"
         >
           <option value="USD">USD (Dólares)</option>
           <option value="MXN">MXN (Pesos)</option>
@@ -204,16 +204,16 @@ export const VentaForm: React.FC<VentaFormProps> = ({ onSubmit, onCancel, isLoad
             type="number"
             id="cantidad"
             min="1"
-            className={`mt-1 block w-full rounded-md shadow-sm focus:border-green-500 focus:ring-green-500 ${
+            className={`mt-1 block w-full rounded-md shadow-sm focus:border-zinc-500 focus:ring-green-500 ${
               errors.cantidad || !stockSuficiente ? 'border-red-300' : 'border-gray-300'
             }`}
             placeholder="100"
           />
           {errors.cantidad && (
-            <p className="mt-1 text-sm text-red-600 font-semibold">❌ {errors.cantidad.message}</p>
+            <p className="mt-1 text-sm text-white font-semibold">❌ {errors.cantidad.message}</p>
           )}
           {!stockSuficiente && !errors.cantidad && (
-            <p className="mt-1 text-sm text-red-600 font-semibold">
+            <p className="mt-1 text-sm text-white font-semibold">
               ⚠️ Stock insuficiente. Disponible: {stockDisponible} unidades
             </p>
           )}
@@ -228,11 +228,11 @@ export const VentaForm: React.FC<VentaFormProps> = ({ onSubmit, onCancel, isLoad
             type="number"
             step="0.01"
             id="precioVenta"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-zinc-500 focus:ring-green-500"
             placeholder="550.00"
           />
           {errors.precioVenta && (
-            <p className="mt-1 text-sm text-red-600">{errors.precioVenta.message}</p>
+            <p className="mt-1 text-sm text-white">{errors.precioVenta.message}</p>
           )}
         </div>
       </div>
@@ -247,37 +247,37 @@ export const VentaForm: React.FC<VentaFormProps> = ({ onSubmit, onCancel, isLoad
           type="number"
           step="0.01"
           id="flete"
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-zinc-500 focus:ring-green-500"
           placeholder="0.00"
         />
-        {errors.flete && <p className="mt-1 text-sm text-red-600">{errors.flete.message}</p>}
+        {errors.flete && <p className="mt-1 text-sm text-white">{errors.flete.message}</p>}
       </div>
 
       {/* Cálculos Automáticos */}
-      <div className="bg-green-50 p-4 rounded-md space-y-2">
+      <div className="bg-zinc-900 p-4 rounded-md space-y-2">
         <p className="text-sm font-medium text-gray-700">Cálculos Automáticos:</p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 text-sm">
           <p>
             <span className="font-semibold">Ingreso:</span>{' '}
-            <span className="text-green-600">
+            <span className="text-white">
               ${ingreso.toFixed(2)} {moneda}
             </span>
           </p>
           <p>
             <span className="font-semibold">Costo:</span>{' '}
-            <span className="text-red-600">
+            <span className="text-white">
               ${costoTotal.toFixed(2)} {moneda}
             </span>
           </p>
           <p>
             <span className="font-semibold">Utilidad:</span>{' '}
-            <span className={utilidad >= 0 ? 'text-green-600' : 'text-red-600'}>
+            <span className={utilidad >= 0 ? 'text-white' : 'text-white'}>
               ${utilidad.toFixed(2)} {moneda}
             </span>
           </p>
           <p>
             <span className="font-semibold">Margen:</span>{' '}
-            <span className={parseFloat(margenPorcentaje) >= 0 ? 'text-green-600' : 'text-red-600'}>
+            <span className={parseFloat(margenPorcentaje) >= 0 ? 'text-white' : 'text-white'}>
               {margenPorcentaje}%
             </span>
           </p>
@@ -298,7 +298,7 @@ export const VentaForm: React.FC<VentaFormProps> = ({ onSubmit, onCancel, isLoad
           <select
             {...register('estatus')}
             id="estatus"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-zinc-500 focus:ring-green-500"
           >
             <option value="Completada">Completada</option>
             <option value="Pendiente">Pendiente</option>
@@ -314,7 +314,7 @@ export const VentaForm: React.FC<VentaFormProps> = ({ onSubmit, onCancel, isLoad
             {...register('concepto')}
             type="text"
             id="concepto"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-zinc-500 focus:ring-green-500"
             placeholder="Notas adicionales"
           />
         </div>
@@ -333,7 +333,7 @@ export const VentaForm: React.FC<VentaFormProps> = ({ onSubmit, onCancel, isLoad
         <button
           type="submit"
           disabled={isLoading || !stockSuficiente}
-          className="px-6 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="px-6 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-zinc-700 hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           title={!stockSuficiente ? 'Stock insuficiente para realizar la venta' : 'Registrar venta'}
         >
           {isLoading ? 'Guardando...' : 'Registrar Venta'}

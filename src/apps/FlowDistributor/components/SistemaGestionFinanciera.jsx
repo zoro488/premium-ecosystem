@@ -54,8 +54,8 @@ const SECCIONES = [
     nombre: 'Dashboard RF',
     descripcion: 'Vista ejecutiva consolidada',
     icon: LayoutDashboard,
-    color: 'from-purple-500 to-pink-400',
-    bg: 'from-purple-500/20 to-pink-500/10',
+    color: 'from-zinc-800 to-zinc-700',
+    bg: 'from-zinc-800/20 to-zinc-700/10',
     componente: DashboardRFActual,
   },
   {
@@ -72,8 +72,8 @@ const SECCIONES = [
     nombre: 'Bóveda USA',
     descripcion: 'RF: $128,005',
     icon: DollarSign,
-    color: 'from-blue-500 to-cyan-500',
-    bg: 'from-blue-500/20 to-cyan-500/10',
+    color: 'from-zinc-800 to-zinc-800',
+    bg: 'from-zinc-800/20 to-zinc-800/10',
   componente: PanelBovedaUSAUltra,
   },
   {
@@ -81,8 +81,8 @@ const SECCIONES = [
     nombre: 'Banco Azteca',
     descripcion: 'RF: -$178,714 ⚠️',
     icon: Building2,
-    color: 'from-indigo-500 to-purple-500',
-    bg: 'from-indigo-500/20 to-purple-500/10',
+    color: 'from-indigo-500 to-zinc-800',
+    bg: 'from-indigo-500/20 to-zinc-800/10',
   componente: PanelAztecaUltra,
   },
   {
@@ -117,8 +117,8 @@ const SECCIONES = [
     nombre: 'Gastos y Abonos',
     descripcion: 'Control de flujo de caja',
     icon: DollarSign,
-    color: 'from-blue-500 to-cyan-400',
-    bg: 'from-blue-500/20 to-cyan-500/10',
+    color: 'from-zinc-800 to-zinc-700',
+    bg: 'from-zinc-800/20 to-zinc-800/10',
   componente: PanelGYAUltra,
   },
   {
@@ -126,8 +126,8 @@ const SECCIONES = [
     nombre: 'Almacén Monte',
     descripcion: 'Gestión de inventario',
     icon: Package,
-    color: 'from-violet-500 to-purple-400',
-    bg: 'from-violet-500/20 to-purple-500/10',
+    color: 'from-zinc-800 to-zinc-800',
+    bg: 'from-zinc-800/20 to-zinc-800/10',
   componente: PanelAlmacenUltra,
   },
   {
@@ -144,8 +144,8 @@ const SECCIONES = [
     nombre: 'Distribuidores',
     descripcion: 'Relación con proveedores',
     icon: Users,
-    color: 'from-indigo-500 to-purple-400',
-    bg: 'from-indigo-500/20 to-purple-500/10',
+    color: 'from-indigo-500 to-zinc-800',
+    bg: 'from-indigo-500/20 to-zinc-800/10',
   componente: PanelDistribuidoresUltra,
   },
 ];
@@ -171,7 +171,7 @@ const Sidebar = ({ seccionActiva, onCambiarSeccion, sidebarAbierto, onToggleSide
                 animate={{ rotate: 360 }}
                 transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
               >
-                <Sparkles className="w-8 h-8 text-yellow-400" />
+                <Sparkles className="w-8 h-8 text-zinc-200" />
               </motion.div>
               <div>
                 <h2 className="text-xl font-bold text-white">FlowDistributor</h2>
@@ -242,10 +242,10 @@ const Sidebar = ({ seccionActiva, onCambiarSeccion, sidebarAbierto, onToggleSide
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="mt-8 p-4 rounded-xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20"
+            className="mt-8 p-4 rounded-xl bg-gradient-to-r from-zinc-800/10 to-zinc-800/10 border border-zinc-700/20"
           >
             <div className="flex items-start gap-3">
-              <Zap className="w-5 h-5 text-blue-400 mt-1" />
+              <Zap className="w-5 h-5 text-zinc-300 mt-1" />
               <div>
                 <h3 className="text-sm font-bold text-white mb-1">Sistema Activo</h3>
                 <p className="text-xs text-gray-400">Todos los módulos funcionando correctamente</p>
@@ -338,10 +338,10 @@ const SistemaGestionFinanciera = () => {
           <motion.div
             animate={{ scale: [1, 1.2, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="flex items-center gap-2 px-3 py-1 rounded-lg bg-green-500/20 border border-green-500/30"
+            className="flex items-center gap-2 px-3 py-1 rounded-lg bg-zinc-9000/20 border border-zinc-500/30"
           >
-            <Activity className="w-4 h-4 text-green-400" />
-            <span className="text-xs text-green-400 font-medium">Sistema Activo</span>
+            <Activity className="w-4 h-4 text-zinc-200" />
+            <span className="text-xs text-zinc-200 font-medium">Sistema Activo</span>
           </motion.div>
         </div>
       </motion.div>

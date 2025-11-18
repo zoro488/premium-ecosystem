@@ -73,10 +73,10 @@ export const OrdenCompraForm: React.FC<OrdenCompraFormProps> = ({
             {...register('id')}
             type="text"
             id="id"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-zinc-700 focus:ring-blue-500"
             placeholder="OC-001"
           />
-          {errors.id && <p className="mt-1 text-sm text-red-600">{errors.id.message}</p>}
+          {errors.id && <p className="mt-1 text-sm text-white">{errors.id.message}</p>}
         </div>
 
         <div>
@@ -87,9 +87,9 @@ export const OrdenCompraForm: React.FC<OrdenCompraFormProps> = ({
             {...register('fecha')}
             type="date"
             id="fecha"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-zinc-700 focus:ring-blue-500"
           />
-          {errors.fecha && <p className="mt-1 text-sm text-red-600">{errors.fecha.message}</p>}
+          {errors.fecha && <p className="mt-1 text-sm text-white">{errors.fecha.message}</p>}
         </div>
       </div>
 
@@ -103,10 +103,10 @@ export const OrdenCompraForm: React.FC<OrdenCompraFormProps> = ({
             {...register('origen')}
             type="text"
             id="origen"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-zinc-700 focus:ring-blue-500"
             placeholder="Distribuidor ABC"
           />
-          {errors.origen && <p className="mt-1 text-sm text-red-600">{errors.origen.message}</p>}
+          {errors.origen && <p className="mt-1 text-sm text-white">{errors.origen.message}</p>}
         </div>
 
         <div>
@@ -117,11 +117,11 @@ export const OrdenCompraForm: React.FC<OrdenCompraFormProps> = ({
             {...register('cantidad', { valueAsNumber: true })}
             type="number"
             id="cantidad"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-zinc-700 focus:ring-blue-500"
             placeholder="1000"
           />
           {errors.cantidad && (
-            <p className="mt-1 text-sm text-red-600">{errors.cantidad.message}</p>
+            <p className="mt-1 text-sm text-white">{errors.cantidad.message}</p>
           )}
         </div>
       </div>
@@ -134,7 +134,7 @@ export const OrdenCompraForm: React.FC<OrdenCompraFormProps> = ({
         <select
           {...register('moneda')}
           id="moneda"
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-zinc-700 focus:ring-blue-500"
         >
           <option value="USD">USD (Dólares)</option>
           <option value="MXN">MXN (Pesos)</option>
@@ -152,11 +152,11 @@ export const OrdenCompraForm: React.FC<OrdenCompraFormProps> = ({
             type="number"
             step="0.01"
             id="costoDistribuidor"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-zinc-700 focus:ring-blue-500"
             placeholder="50000.00"
           />
           {errors.costoDistribuidor && (
-            <p className="mt-1 text-sm text-red-600">{errors.costoDistribuidor.message}</p>
+            <p className="mt-1 text-sm text-white">{errors.costoDistribuidor.message}</p>
           )}
         </div>
 
@@ -169,28 +169,28 @@ export const OrdenCompraForm: React.FC<OrdenCompraFormProps> = ({
             type="number"
             step="0.01"
             id="costoTransporte"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-zinc-700 focus:ring-blue-500"
             placeholder="5000.00"
           />
           {errors.costoTransporte && (
-            <p className="mt-1 text-sm text-red-600">{errors.costoTransporte.message}</p>
+            <p className="mt-1 text-sm text-white">{errors.costoTransporte.message}</p>
           )}
         </div>
       </div>
 
       {/* Cálculos Automáticos */}
-      <div className="bg-blue-50 p-4 rounded-md space-y-2">
+      <div className="bg-zinc-900 p-4 rounded-md space-y-2">
         <p className="text-sm font-medium text-gray-700">Cálculos Automáticos:</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
           <p>
             <span className="font-semibold">Costo Total:</span>{' '}
-            <span className="text-blue-600">
+            <span className="text-white">
               ${costoTotal.toFixed(2)} {moneda}
             </span>
           </p>
           <p>
             <span className="font-semibold">Costo por Unidad:</span>{' '}
-            <span className="text-blue-600">
+            <span className="text-white">
               ${costoPorUnidad.toFixed(2)} {moneda}
             </span>
           </p>
@@ -207,11 +207,11 @@ export const OrdenCompraForm: React.FC<OrdenCompraFormProps> = ({
             {...register('stockMinimo', { valueAsNumber: true })}
             type="number"
             id="stockMinimo"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-zinc-700 focus:ring-blue-500"
             placeholder="100"
           />
           {errors.stockMinimo && (
-            <p className="mt-1 text-sm text-red-600">{errors.stockMinimo.message}</p>
+            <p className="mt-1 text-sm text-white">{errors.stockMinimo.message}</p>
           )}
         </div>
 
@@ -222,7 +222,7 @@ export const OrdenCompraForm: React.FC<OrdenCompraFormProps> = ({
           <select
             {...register('estado')}
             id="estado"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-zinc-700 focus:ring-blue-500"
           >
             <option value="pendiente">Pendiente</option>
             <option value="en_transito">En Tránsito</option>
@@ -230,7 +230,7 @@ export const OrdenCompraForm: React.FC<OrdenCompraFormProps> = ({
             <option value="pagada">Pagada</option>
             <option value="cancelada">Cancelada</option>
           </select>
-          {errors.estado && <p className="mt-1 text-sm text-red-600">{errors.estado.message}</p>}
+          {errors.estado && <p className="mt-1 text-sm text-white">{errors.estado.message}</p>}
         </div>
       </div>
 
@@ -247,7 +247,7 @@ export const OrdenCompraForm: React.FC<OrdenCompraFormProps> = ({
         <button
           type="submit"
           disabled={isLoading}
-          className="px-6 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
+          className="px-6 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-zinc-900 hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
         >
           {isLoading ? 'Guardando...' : initialData ? 'Actualizar' : 'Crear Orden'}
         </button>

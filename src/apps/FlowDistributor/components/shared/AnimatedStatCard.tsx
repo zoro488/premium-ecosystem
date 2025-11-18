@@ -61,8 +61,8 @@ export const AnimatedStatCard = memo<AnimatedStatCardProps>(({
   }, [springValue, displayValue]);
 
   const trendColors = {
-    up: 'text-green-400',
-    down: 'text-red-400',
+    up: 'text-zinc-200',
+    down: 'text-zinc-200',
     neutral: 'text-gray-400',
   };
 

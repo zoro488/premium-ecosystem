@@ -126,7 +126,7 @@ export default function FormCorteCaja({
       >
         <div className="flex items-center justify-between p-6 border-b border-white/10">
           <motion.h2 className="text-2xl font-bold text-white flex items-center gap-3">
-            <Calculator className="w-7 h-7 text-indigo-400" />
+            <Calculator className="w-7 h-7 text-zinc-200" />
             {corteExistente ? 'Editar Corte de Caja' : 'Nuevo Corte de Caja'}
           </motion.h2>
           <motion.button type="button" whileHover={{ scale: 1.1, rotate: 90 }} whileTap={{ scale: 0.9 }} onClick={onClose} className="text-gray-400 hover:text-white transition-colors p-2">
@@ -277,7 +277,7 @@ export default function FormCorteCaja({
               render={({ field: { onChange, value, ...field } }) => (
                 <FieldWrapper label="Total Ingresos" error={errors.totalIngresos}>
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-green-400">+$</span>
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-200">+$</span>
                     <input
                       type="number"
                       step="0.01"
@@ -285,7 +285,7 @@ export default function FormCorteCaja({
                       {...field}
                       value={value || ''}
                       onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
-                      className="w-full pl-10 pr-4 py-3 bg-green-500/10 border border-green-400/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-green-400/50 transition-all"
+                      className="w-full pl-10 pr-4 py-3 bg-zinc-9000/10 border border-green-400/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-green-400/50 transition-all"
                     />
                   </div>
                 </FieldWrapper>
@@ -298,7 +298,7 @@ export default function FormCorteCaja({
               render={({ field: { onChange, value, ...field } }) => (
                 <FieldWrapper label="Total Gastos" error={errors.totalGastos}>
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-red-400">-$</span>
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-200">-$</span>
                     <input
                       type="number"
                       step="0.01"
@@ -306,7 +306,7 @@ export default function FormCorteCaja({
                       {...field}
                       value={value || ''}
                       onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
-                      className="w-full pl-10 pr-4 py-3 bg-red-500/10 border border-red-400/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-red-400/50 transition-all"
+                      className="w-full pl-10 pr-4 py-3 bg-zinc-9000/10 border border-red-400/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-red-400/50 transition-all"
                     />
                   </div>
                 </FieldWrapper>
@@ -319,7 +319,7 @@ export default function FormCorteCaja({
               render={({ field: { onChange, value, ...field } }) => (
                 <FieldWrapper label="Transferencias Entrada" error={errors.totalTransferenciasEntrada}>
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-400">+$</span>
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-300">+$</span>
                     <input
                       type="number"
                       step="0.01"
@@ -327,7 +327,7 @@ export default function FormCorteCaja({
                       {...field}
                       value={value || ''}
                       onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
-                      className="w-full pl-10 pr-4 py-3 bg-blue-500/10 border border-blue-400/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 transition-all"
+                      className="w-full pl-10 pr-4 py-3 bg-zinc-800/10 border border-zinc-600/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 transition-all"
                     />
                   </div>
                 </FieldWrapper>
@@ -340,7 +340,7 @@ export default function FormCorteCaja({
               render={({ field: { onChange, value, ...field } }) => (
                 <FieldWrapper label="Transferencias Salida" error={errors.totalTransferenciasSalida}>
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-orange-400">-$</span>
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-200">-$</span>
                     <input
                       type="number"
                       step="0.01"
@@ -348,7 +348,7 @@ export default function FormCorteCaja({
                       {...field}
                       value={value || ''}
                       onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
-                      className="w-full pl-10 pr-4 py-3 bg-orange-500/10 border border-orange-400/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-orange-400/50 transition-all"
+                      className="w-full pl-10 pr-4 py-3 bg-zinc-9000/10 border border-orange-400/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-orange-400/50 transition-all"
                     />
                   </div>
                 </FieldWrapper>
@@ -357,9 +357,9 @@ export default function FormCorteCaja({
           </FormSection>
 
           {/* PANEL DE DIFERENCIAS */}
-          <div className={`bg-gradient-to-r ${tieneDiferencia ? 'from-red-500/10 to-orange-500/10 border-red-400/30' : 'from-green-500/10 to-emerald-500/10 border-green-400/30'} border rounded-xl p-6`}>
+          <div className={`bg-gradient-to-r ${tieneDiferencia ? 'from-zinc-700/10 to-orange-500/10 border-red-400/30' : 'from-green-500/10 to-emerald-500/10 border-green-400/30'} border rounded-xl p-6`}>
             <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-              {tieneDiferencia ? <AlertCircle className="w-5 h-5 text-red-400" /> : <CheckCircle className="w-5 h-5 text-green-400" />}
+              {tieneDiferencia ? <AlertCircle className="w-5 h-5 text-zinc-200" /> : <CheckCircle className="w-5 h-5 text-zinc-200" />}
               Resultado del Corte
             </h3>
             <div className="grid grid-cols-3 gap-6">
@@ -378,7 +378,7 @@ export default function FormCorteCaja({
 
               <div>
                 <p className="text-sm text-gray-400 mb-2">Diferencia</p>
-                <p className={`text-3xl font-bold ${tieneDiferencia ? (diferencia! > 0 ? 'text-green-400' : 'text-red-400') : 'text-emerald-400'}`}>
+                <p className={`text-3xl font-bold ${tieneDiferencia ? (diferencia! > 0 ? 'text-zinc-200' : 'text-zinc-200') : 'text-zinc-200'}`}>
                   {diferencia! > 0 && '+'}${diferencia?.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
                 </p>
                 {tieneDiferencia && (

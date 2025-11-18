@@ -181,7 +181,7 @@ const PanelBanorteUltra: FC = memo(() => {
 
         {/* Tabs Navigation */}
         <motion.div {...animations.container.fadeSlideUp} className="mb-6">
-          <div className="flex flex-wrap gap-2 bg-slate-900/50 backdrop-blur-xl p-2 rounded-2xl border border-orange-500/20">
+          <div className="flex flex-wrap gap-2 bg-slate-900/50 backdrop-blur-xl p-2 rounded-2xl border border-zinc-500/20">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               return (
@@ -193,7 +193,7 @@ const PanelBanorteUltra: FC = memo(() => {
                     flex items-center justify-center gap-2
                     ${
                       tabActiva === tab.id
-                        ? 'bg-gradient-to-r from-orange-500 to-red-600 text-white shadow-lg shadow-orange-500/30'
+                        ? 'bg-gradient-to-r from-orange-500 to-zinc-800 text-white shadow-lg shadow-orange-500/30'
                         : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
                     }
                   `}
@@ -212,7 +212,7 @@ const PanelBanorteUltra: FC = memo(() => {
         {/* Content */}
         <motion.div {...animations.container.fadeSlideUp}>
           {tabActiva === 'graficos' && (
-            <div className="bg-slate-900/50 backdrop-blur-xl rounded-2xl p-6 border border-orange-500/20">
+            <div className="bg-slate-900/50 backdrop-blur-xl rounded-2xl p-6 border border-zinc-500/20">
               <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
                 <Activity className="w-5 h-5 text-orange-500" />
                 📈 Tendencias Mensuales 2025

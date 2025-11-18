@@ -94,7 +94,7 @@ export default function LoginScreen() {
       </div>
 
       {/* Gradiente radial central */}
-      <div className="absolute inset-0 bg-gradient-radial from-blue-900/20 via-purple-900/10 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-radial from-blue-900/20 via-zinc-800/10 to-transparent" />
 
       {/* Anillos cósmicos giratorios de fondo */}
       <motion.div
@@ -103,7 +103,7 @@ export default function LoginScreen() {
         transition={{ duration: 80, repeat: Infinity, ease: 'linear' }}
       >
         <div className="w-[1000px] h-[1000px] rounded-full border border-blue-500/5" />
-        <div className="absolute w-[800px] h-[800px] rounded-full border border-purple-500/5" />
+        <div className="absolute w-[800px] h-[800px] rounded-full border border-zinc-700/5" />
         <div className="absolute w-[600px] h-[600px] rounded-full border border-pink-500/5" />
       </motion.div>
 
@@ -166,7 +166,7 @@ export default function LoginScreen() {
           >
             {/* Glow effect detrás de la card */}
             <div
-              className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-3xl blur-xl"
+              className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 via-zinc-800/20 to-zinc-800/20 rounded-3xl blur-xl"
               style={{
                 animation: 'pulse 4s ease-in-out infinite',
               }}
@@ -279,7 +279,7 @@ export default function LoginScreen() {
                   whileTap={{ scale: 0.98 }}
                   className="
                     w-full py-4 rounded-xl font-semibold
-                    bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500
+                    bg-gradient-to-r from-blue-500 via-zinc-800 to-zinc-800
                     text-white
                     flex items-center justify-center gap-2
                     hover:shadow-lg hover:shadow-blue-500/50
@@ -387,7 +387,7 @@ export default function LoginScreen() {
         <p>© 2025 Chronos Premium Ecosystem</p>
         <p className="mt-1">
           Powered by <span className="text-blue-400">Firebase</span> •{' '}
-          <span className="text-purple-400">React 18</span>
+          <span className="text-zinc-200">React 18</span>
         </p>
       </motion.div>
 

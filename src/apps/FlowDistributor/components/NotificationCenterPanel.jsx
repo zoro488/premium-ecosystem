@@ -109,7 +109,7 @@ export const NotificationCenterPanel = ({ isOpen, onClose, notifications = [], o
             <div className="p-6 border-b border-white/10">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500">
+                  <div className="p-2 rounded-xl bg-gradient-to-r from-zinc-800 to-zinc-800">
                     <Bell className="w-5 h-5 text-white" />
                   </div>
                   <div>
@@ -180,13 +180,13 @@ export const NotificationCenterPanel = ({ isOpen, onClose, notifications = [], o
                 <div className="flex gap-2">
                   <MagneticButton
                     onClick={handleBulkMarkRead}
-                    className="px-3 py-1.5 rounded-lg bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 text-xs font-medium transition-all"
+                    className="px-3 py-1.5 rounded-lg bg-zinc-800/20 hover:bg-zinc-800/30 text-zinc-300 text-xs font-medium transition-all"
                   >
                     Marcar leídas
                   </MagneticButton>
                   <MagneticButton
                     onClick={handleBulkDelete}
-                    className="px-3 py-1.5 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-300 text-xs font-medium transition-all"
+                    className="px-3 py-1.5 rounded-lg bg-zinc-9000/20 hover:bg-zinc-9000/30 text-red-300 text-xs font-medium transition-all"
                   >
                     Eliminar
                   </MagneticButton>
@@ -284,7 +284,7 @@ export const NotificationCenterPanel = ({ isOpen, onClose, notifications = [], o
                                 e.stopPropagation();
                                 onAction?.('delete', notification.id);
                               }}
-                              className="p-1.5 rounded-lg hover:bg-red-500/20 text-white/40 hover:text-red-400 transition-all"
+                              className="p-1.5 rounded-lg hover:bg-zinc-9000/20 text-white/40 hover:text-zinc-200 transition-all"
                             >
                               <Trash2 className="w-3.5 h-3.5" />
                             </MagneticButton>
@@ -310,7 +310,7 @@ export const NotificationCenterPanel = ({ isOpen, onClose, notifications = [], o
                 </MagneticButton>
                 <MagneticButton
                   onClick={() => onAction?.('clearAll')}
-                  className="px-4 py-2.5 rounded-xl bg-red-500/20 hover:bg-red-500/30 text-red-300 text-sm font-medium transition-all"
+                  className="px-4 py-2.5 rounded-xl bg-zinc-9000/20 hover:bg-zinc-9000/30 text-red-300 text-sm font-medium transition-all"
                 >
                   Limpiar todo
                 </MagneticButton>

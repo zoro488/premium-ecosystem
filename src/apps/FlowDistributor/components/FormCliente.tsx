@@ -163,7 +163,7 @@ export default function FormCliente({
         animate={{ scale: 1, y: 0, opacity: 1 }}
         exit={{ scale: 0.9, y: 20, opacity: 0 }}
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        className="bg-gradient-to-br from-slate-900/95 to-purple-900/95 backdrop-blur-xl border border-purple-400/30 rounded-2xl shadow-2xl max-w-6xl w-full my-8"
+        className="bg-gradient-to-br from-slate-900/95 to-zinc-800/95 backdrop-blur-xl border border-zinc-800/30 rounded-2xl shadow-2xl max-w-6xl w-full my-8"
         onClick={(e) => e.stopPropagation()}
       >
         {/* ============================================================ */}
@@ -176,7 +176,7 @@ export default function FormCliente({
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.1 }}
           >
-            <Users className="w-7 h-7 text-purple-400" />
+            <Users className="w-7 h-7 text-zinc-800" />
             {clienteExistente ? 'Editar Cliente' : 'Nuevo Cliente'}
           </motion.h2>
 
@@ -223,7 +223,7 @@ export default function FormCliente({
                     type="text"
                     {...field}
                     placeholder="Juan Pérez García"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -242,7 +242,7 @@ export default function FormCliente({
                 >
                   <select
                     {...field}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                   >
                     <option value="menudeo" className="bg-slate-900">
                       Menudeo
@@ -277,7 +277,7 @@ export default function FormCliente({
                     {...field}
                     placeholder="ABC123456XYZ"
                     maxLength={13}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300/50 uppercase focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-zinc-800/50 uppercase focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -298,7 +298,7 @@ export default function FormCliente({
                     type="text"
                     {...field}
                     placeholder="Empresa S.A. de C.V."
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -319,7 +319,7 @@ export default function FormCliente({
                     type="tel"
                     {...field}
                     placeholder="5512345678"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -339,7 +339,7 @@ export default function FormCliente({
                     type="email"
                     {...field}
                     placeholder="cliente@example.com"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -371,7 +371,7 @@ export default function FormCliente({
                     type="text"
                     {...field}
                     placeholder="Av. Reforma 123"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -387,7 +387,7 @@ export default function FormCliente({
                     type="text"
                     {...field}
                     placeholder="Centro"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -403,7 +403,7 @@ export default function FormCliente({
                     type="text"
                     {...field}
                     placeholder="Monterrey"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -417,7 +417,7 @@ export default function FormCliente({
                 <FieldWrapper label="Estado" error={errors.direccion?.estado} required>
                   <select
                     {...field}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                   >
                     <option value="" className="bg-slate-900">
                       Seleccionar estado...
@@ -470,7 +470,7 @@ export default function FormCliente({
                     {...field}
                     placeholder="64000"
                     maxLength={5}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -515,7 +515,7 @@ export default function FormCliente({
                   error={errors.limiteCredito}
                 >
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-purple-300/70">$</span>
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-800/70">$</span>
                     <input
                       type="number"
                       step="0.01"
@@ -524,7 +524,7 @@ export default function FormCliente({
                       value={value || ''}
                       onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
                       placeholder="0.00"
-                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                     />
                   </div>
                 </FieldWrapper>
@@ -542,7 +542,7 @@ export default function FormCliente({
                   error={errors.deudaActual}
                 >
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-purple-300/70">$</span>
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-800/70">$</span>
                     <input
                       type="number"
                       step="0.01"
@@ -551,7 +551,7 @@ export default function FormCliente({
                       value={value || ''}
                       onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
                       placeholder="0.00"
-                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                     />
                   </div>
                 </FieldWrapper>
@@ -560,7 +560,7 @@ export default function FormCliente({
 
             {/* Saldo Disponible (readonly) */}
             <FieldWrapper label="Saldo Disponible" tooltip="Límite - Deuda Actual">
-              <div className={`px-4 py-3 rounded-xl border ${saldoDisponible >= 0 ? 'bg-green-500/10 border-green-400/30' : 'bg-red-500/10 border-red-400/30'}`}>
+              <div className={`px-4 py-3 rounded-xl border ${saldoDisponible >= 0 ? 'bg-zinc-9000/10 border-green-400/30' : 'bg-zinc-9000/10 border-red-400/30'}`}>
                 <p className={`text-xl font-bold ${saldoDisponible >= 0 ? 'text-green-300' : 'text-red-300'}`}>
                   ${saldoDisponible.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
                 </p>
@@ -590,7 +590,7 @@ export default function FormCliente({
                     className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4"
                   >
                     <div className="flex items-center justify-between mb-3">
-                      <h4 className="text-sm font-semibold text-purple-300 flex items-center gap-2">
+                      <h4 className="text-sm font-semibold text-zinc-800 flex items-center gap-2">
                         <User className="w-4 h-4" />
                         Contacto #{index + 1}
                       </h4>
@@ -601,7 +601,7 @@ export default function FormCliente({
                           onClick={() => handleRemoveContacto(index)}
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
-                          className="text-red-400 hover:text-red-300 transition-colors p-1"
+                          className="text-zinc-200 hover:text-red-300 transition-colors p-1"
                         >
                           <Trash2 className="w-4 h-4" />
                         </motion.button>
@@ -619,7 +619,7 @@ export default function FormCliente({
                               type="text"
                               {...field}
                               placeholder="Nombre del contacto"
-                              className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 transition-all text-sm"
+                              className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 transition-all text-sm"
                             />
                           </FieldWrapper>
                         )}
@@ -635,7 +635,7 @@ export default function FormCliente({
                               type="text"
                               {...field}
                               placeholder="Gerente de Compras"
-                              className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 transition-all text-sm"
+                              className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 transition-all text-sm"
                             />
                           </FieldWrapper>
                         )}
@@ -651,7 +651,7 @@ export default function FormCliente({
                               type="tel"
                               {...field}
                               placeholder="5512345678"
-                              className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 transition-all text-sm"
+                              className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 transition-all text-sm"
                             />
                           </FieldWrapper>
                         )}
@@ -667,7 +667,7 @@ export default function FormCliente({
                               type="email"
                               {...field}
                               placeholder="contacto@example.com"
-                              className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 transition-all text-sm"
+                              className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 transition-all text-sm"
                             />
                           </FieldWrapper>
                         )}
@@ -686,7 +686,7 @@ export default function FormCliente({
                               checked={value || false}
                               onChange={(e) => onChange(e.target.checked)}
                               {...field}
-                              className="w-4 h-4 rounded border-white/20 text-purple-500 focus:ring-2 focus:ring-purple-400/50"
+                              className="w-4 h-4 rounded border-white/20 text-zinc-800 focus:ring-2 focus:ring-zinc-800/50"
                             />
                             <span className="text-sm text-white">Contacto Principal</span>
                           </label>
@@ -703,7 +703,7 @@ export default function FormCliente({
                 onClick={handleAddContacto}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full px-4 py-3 bg-purple-500/20 border border-purple-400/30 rounded-xl text-purple-300 hover:bg-purple-500/30 transition-all flex items-center justify-center gap-2 font-medium"
+                className="w-full px-4 py-3 bg-zinc-800/20 border border-zinc-800/30 rounded-xl text-zinc-800 hover:bg-zinc-800/30 transition-all flex items-center justify-center gap-2 font-medium"
               >
                 <Plus className="w-5 h-5" />
                 Agregar Contacto
@@ -736,7 +736,7 @@ export default function FormCliente({
                     placeholder="Notas u observaciones sobre el cliente..."
                     rows={4}
                     maxLength={1000}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all resize-none"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all resize-none"
                   />
                 </FieldWrapper>
               )}

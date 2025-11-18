@@ -37,7 +37,7 @@ export const Toast = ({
       shadow: 'shadow-green-500/30',
     },
     error: {
-      bg: 'bg-gradient-to-r from-red-500/90 to-rose-500/90',
+      bg: 'bg-gradient-to-r from-zinc-700/90 to-rose-500/90',
       icon: AlertCircle,
       color: 'text-white',
       shadow: 'shadow-red-500/30',
@@ -408,7 +408,7 @@ export const NotificationBadge = ({ count = 0, max = 99, pulse = true }) => {
 
   return (
     <motion.div
-      className="absolute -top-1 -right-1 bg-gradient-to-r from-red-500 to-rose-500 text-white text-xs font-bold rounded-full min-w-[20px] h-5 flex items-center justify-center px-1.5 shadow-lg"
+      className="absolute -top-1 -right-1 bg-gradient-to-r from-zinc-700 to-rose-500 text-white text-xs font-bold rounded-full min-w-[20px] h-5 flex items-center justify-center px-1.5 shadow-lg"
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
       transition={{ type: 'spring', stiffness: 500, damping: 30 }}

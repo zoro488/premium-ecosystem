@@ -134,7 +134,7 @@ export function ChronosSplashScreen({ onComplete }) {
             return (
               <motion.div
                 key={uniqueId}
-                className="absolute w-3 h-3 rounded-full bg-gradient-to-br from-blue-400 to-purple-500"
+                className="absolute w-3 h-3 rounded-full bg-gradient-to-br from-blue-400 to-zinc-800"
                 style={{
                   left: '50%',
                   top: '50%',
@@ -379,9 +379,9 @@ export function ChronosSplashScreen({ onComplete }) {
             <p className="text-gray-700 text-xs md:text-sm font-light">
               Powered by <span className="text-blue-500/70">Firebase</span>
               {' • '}
-              <span className="text-purple-500/70">React 18</span>
+              <span className="text-zinc-200/70">React 18</span>
               {' • '}
-              <span className="text-pink-500/70">Framer Motion</span>
+              <span className="text-zinc-200/70">Framer Motion</span>
             </p>
           </motion.div>
 

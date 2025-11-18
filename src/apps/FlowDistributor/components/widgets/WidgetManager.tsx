@@ -206,8 +206,8 @@ export const WidgetManager: React.FC<WidgetManagerProps> = ({ availableWidgets, 
               {/* Header */}
               <div className="p-6 border-b border-white/10">
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="p-2 rounded-lg bg-gradient-to-br from-indigo-500/20 to-purple-500/20">
-                    <Layout className="w-6 h-6 text-indigo-400" />
+                  <div className="p-2 rounded-lg bg-gradient-to-br from-indigo-500/20 to-zinc-800/20">
+                    <Layout className="w-6 h-6 text-zinc-200" />
                   </div>
                   <h2 className="text-xl font-bold text-white">Widgets Disponibles</h2>
                 </div>
@@ -222,7 +222,7 @@ export const WidgetManager: React.FC<WidgetManagerProps> = ({ availableWidgets, 
                   <div key={category}>
                     {/* Título de categoría */}
                     <div className="flex items-center gap-2 mb-3 px-2">
-                      <div className="text-indigo-400">{categoryIcons[category]}</div>
+                      <div className="text-zinc-200">{categoryIcons[category]}</div>
                       <h3 className="text-sm font-semibold text-slate-300 uppercase tracking-wider">
                         {categoryLabels[category]}
                       </h3>
@@ -251,12 +251,12 @@ export const WidgetManager: React.FC<WidgetManagerProps> = ({ availableWidgets, 
                             onClick={() => openWidget(widget.id)}
                             disabled={isActive}
                           >
-                            <div className="text-indigo-400">{widget.icon}</div>
+                            <div className="text-zinc-200">{widget.icon}</div>
                             <div className="flex-1">
                               <h4 className="text-sm font-medium text-white">{widget.title}</h4>
                             </div>
                             {isActive && (
-                              <div className="flex items-center gap-1 text-xs text-indigo-400">
+                              <div className="flex items-center gap-1 text-xs text-zinc-200">
                                 <Zap className="w-3 h-3" />
                                 Activo
                               </div>
@@ -276,7 +276,7 @@ export const WidgetManager: React.FC<WidgetManagerProps> = ({ availableWidgets, 
                     {activeWidgets.length} widget{activeWidgets.length !== 1 ? 's' : ''} activo
                     {activeWidgets.length !== 1 ? 's' : ''}
                   </span>
-                  <span className="text-indigo-400 font-medium">
+                  <span className="text-zinc-200 font-medium">
                     {availableWidgets.length} disponibles
                   </span>
                 </div>

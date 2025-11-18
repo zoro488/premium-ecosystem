@@ -39,11 +39,11 @@ const colorSchemes = {
     darkGradient: 'from-green-600/10 to-emerald-600/10',
   },
   purple: {
-    gradient: 'from-purple-500/20 to-pink-500/20',
-    border: 'border-purple-500/30',
-    icon: 'text-purple-400',
-    glow: 'shadow-purple-500/20',
-    darkGradient: 'from-purple-600/10 to-pink-600/10',
+    gradient: 'from-zinc-800/20 to-zinc-800/20',
+    border: 'border-zinc-700/30',
+    icon: 'text-zinc-200',
+    glow: 'shadow-zinc-800/20',
+    darkGradient: 'from-zinc-800/10 to-zinc-800/10',
   },
   orange: {
     gradient: 'from-orange-500/20 to-yellow-500/20',
@@ -53,11 +53,11 @@ const colorSchemes = {
     darkGradient: 'from-orange-600/10 to-yellow-600/10',
   },
   red: {
-    gradient: 'from-red-500/20 to-rose-500/20',
+    gradient: 'from-zinc-700/20 to-rose-500/20',
     border: 'border-red-500/30',
     icon: 'text-red-400',
     glow: 'shadow-red-500/20',
-    darkGradient: 'from-red-600/10 to-rose-600/10',
+    darkGradient: 'from-zinc-700/10 to-rose-600/10',
   },
   indigo: {
     gradient: 'from-indigo-500/20 to-blue-500/20',

@@ -104,7 +104,7 @@ export class ErrorBoundary extends Component<Props, State> {
 
       // UI de error por defecto - profesional y user-friendly
       return (
-        <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50 px-4 py-8">
+        <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-zinc-700 via-orange-50 to-yellow-50 px-4 py-8">
           <div className="w-full max-w-2xl">
             <div className="rounded-2xl bg-white p-8 shadow-2xl ring-1 ring-gray-900/5">
               {/* Header */}

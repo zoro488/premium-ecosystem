@@ -111,7 +111,7 @@ export function AnomaliesAlert({
     <div className="space-y-4">
       {/* HEADER CON STATS */}
       <motion.div
-        className="bg-gradient-to-r from-red-500 to-orange-500 rounded-lg p-4 text-white shadow-lg"
+        className="bg-gradient-to-r from-zinc-700 to-orange-500 rounded-lg p-4 text-white shadow-lg"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
       >
@@ -316,7 +316,7 @@ export function FloatingAnomalyCounter({
 
   return (
     <motion.button
-      className="fixed bottom-24 right-6 z-40 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-full shadow-2xl p-4 hover:scale-110 transition-transform"
+      className="fixed bottom-24 right-6 z-40 bg-gradient-to-r from-zinc-700 to-orange-500 text-white rounded-full shadow-2xl p-4 hover:scale-110 transition-transform"
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       exit={{ scale: 0, opacity: 0 }}

@@ -98,7 +98,7 @@ export default function LayoutPrincipal({ children }) {
       id: 'dashboard',
       label: 'Dashboard',
       icon: 'LayoutDashboard',
-      gradient: 'from-blue-500 via-cyan-500 to-blue-600',
+      gradient: 'from-zinc-800 via-cyan-500 to-zinc-900',
       glow: 'shadow-[0_0_30px_rgba(59,130,246,0.5)]',
     },
     {
@@ -112,21 +112,21 @@ export default function LayoutPrincipal({ children }) {
       id: 'almacen',
       label: 'Almacén Ultra',
       icon: 'Package',
-      gradient: 'from-purple-500 via-fuchsia-500 to-pink-600',
+      gradient: 'from-zinc-800 via-zinc-700 to-zinc-700',
       glow: 'shadow-[0_0_30px_rgba(168,85,247,0.5)]',
     },
     {
       id: 'distribuidores',
       label: 'Distribuidores',
       icon: 'Users',
-      gradient: 'from-blue-500 via-indigo-500 to-purple-600',
+      gradient: 'from-zinc-800 via-indigo-500 to-zinc-800',
       glow: 'shadow-[0_0_30px_rgba(99,102,241,0.5)]',
     },
     {
       id: 'clientes',
       label: 'Clientes Ultra',
       icon: 'Users',
-      gradient: 'from-pink-500 via-rose-500 to-red-600',
+      gradient: 'from-zinc-700 via-zinc-700 to-zinc-800',
       glow: 'shadow-[0_0_30px_rgba(236,72,153,0.5)]',
     },
     {
@@ -140,7 +140,7 @@ export default function LayoutPrincipal({ children }) {
       id: 'bovedas',
       label: 'Bóvedas Ultra',
       icon: 'Building2',
-      gradient: 'from-amber-500 via-orange-500 to-red-600',
+      gradient: 'from-amber-500 via-orange-500 to-zinc-800',
       glow: 'shadow-[0_0_30px_rgba(245,158,11,0.5)]',
       submenu: [
         { id: 'boveda-monte', label: 'Bóveda Monte', icon: 'Sparkles' },

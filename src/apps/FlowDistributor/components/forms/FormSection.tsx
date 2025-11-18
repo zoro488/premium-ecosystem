@@ -77,27 +77,27 @@ const variantStyles = {
     titleColor: 'text-white'
   },
   accent: {
-    bg: 'bg-blue-500/5',
-    border: 'border-blue-500/20',
-    headerBg: 'bg-blue-500/10',
-    titleColor: 'text-blue-300'
+    bg: 'bg-zinc-800/5',
+    border: 'border-zinc-700/20',
+    headerBg: 'bg-zinc-800/10',
+    titleColor: 'text-zinc-300'
   },
   warning: {
-    bg: 'bg-yellow-500/5',
-    border: 'border-yellow-500/20',
-    headerBg: 'bg-yellow-500/10',
+    bg: 'bg-zinc-9000/5',
+    border: 'border-zinc-500/20',
+    headerBg: 'bg-zinc-9000/10',
     titleColor: 'text-yellow-300'
   },
   success: {
-    bg: 'bg-green-500/5',
-    border: 'border-green-500/20',
-    headerBg: 'bg-green-500/10',
+    bg: 'bg-zinc-9000/5',
+    border: 'border-zinc-500/20',
+    headerBg: 'bg-zinc-9000/10',
     titleColor: 'text-green-300'
   },
   error: {
-    bg: 'bg-red-500/5',
-    border: 'border-red-500/20',
-    headerBg: 'bg-red-500/10',
+    bg: 'bg-zinc-9000/5',
+    border: 'border-zinc-500/20',
+    headerBg: 'bg-zinc-9000/10',
     titleColor: 'text-red-300'
   }
 };
@@ -147,7 +147,7 @@ export function FormSection({
   onToggle
 }: FormSectionProps) {
   const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed);
-  const styles = variantStyles[variant];
+  // Variant styles applied via className
 
   // Auto variant basado en estado
   const effectiveVariant = hasErrors ? 'error'
@@ -208,7 +208,7 @@ export function FormSection({
                 {/* Badges */}
                 <div className="flex items-center gap-1.5">
                   {required && (
-                    <span className="text-xs text-red-400 font-medium">
+                    <span className="text-xs text-zinc-200 font-medium">
                       *
                     </span>
                   )}
@@ -219,7 +219,7 @@ export function FormSection({
                       animate={{ scale: 1 }}
                       transition={{ type: 'spring', stiffness: 500 }}
                     >
-                      <CheckCircle2 className="w-4 h-4 text-green-400" />
+                      <CheckCircle2 className="w-4 h-4 text-zinc-200" />
                     </motion.div>
                   )}
 
@@ -229,7 +229,7 @@ export function FormSection({
                       animate={{ scale: 1 }}
                       transition={{ type: 'spring', stiffness: 500 }}
                     >
-                      <AlertCircle className="w-4 h-4 text-red-400" />
+                      <AlertCircle className="w-4 h-4 text-zinc-200" />
                     </motion.div>
                   )}
 
@@ -393,11 +393,11 @@ export function FormStepper({
                 flex items-center gap-3 px-4 py-3 rounded-xl
                 border backdrop-blur-sm transition-all
                 ${isActive
-                  ? 'bg-blue-500/20 border-blue-500/50 text-blue-300'
+                  ? 'bg-zinc-800/20 border-zinc-700/50 text-zinc-300'
                   : section.completed
-                  ? 'bg-green-500/10 border-green-500/30 text-green-300 hover:bg-green-500/20'
+                  ? 'bg-zinc-9000/10 border-zinc-500/30 text-green-300 hover:bg-zinc-9000/20'
                   : section.hasErrors
-                  ? 'bg-red-500/10 border-red-500/30 text-red-300 hover:bg-red-500/20'
+                  ? 'bg-zinc-9000/10 border-zinc-500/30 text-red-300 hover:bg-zinc-9000/20'
                   : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'
                 }
               `}
@@ -408,11 +408,11 @@ export function FormStepper({
                   flex items-center justify-center w-8 h-8 rounded-full
                   text-sm font-semibold
                   ${isActive
-                    ? 'bg-blue-500 text-white'
+                    ? 'bg-zinc-800 text-white'
                     : section.completed
-                    ? 'bg-green-500 text-white'
+                    ? 'bg-zinc-9000 text-white'
                     : section.hasErrors
-                    ? 'bg-red-500 text-white'
+                    ? 'bg-zinc-9000 text-white'
                     : 'bg-white/10 text-gray-400'
                   }
                 `}
@@ -447,7 +447,7 @@ export function FormStepper({
                 className={`
                   ${isHorizontal ? 'flex-1 h-0.5' : 'w-0.5 h-8 ml-8'}
                   ${isPast || section.completed
-                    ? 'bg-gradient-to-r from-green-500 to-blue-500'
+                    ? 'bg-gradient-to-r from-green-500 to-zinc-800'
                     : 'bg-white/10'
                   }
                 `}

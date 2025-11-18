@@ -82,7 +82,7 @@ export const PremiumModal = ({
               onClick={(e) => e.stopPropagation()}
             >
               {/* Glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/10 via-transparent to-zinc-800/10 pointer-events-none" />
 
               {/* Header */}
               {title && (

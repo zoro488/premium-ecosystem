@@ -12,7 +12,11 @@
  */
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+
+
 import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+
+
 
 import {
   use3DTilt,
@@ -463,7 +467,7 @@ const AIAvatarInteractive = ({
           style={tilt.style}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className={`relative ${currentSize.avatar} rounded-full backdrop-blur-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 border-2 border-white/30 shadow-2xl overflow-hidden cursor-pointer`}
+          className={`relative ${currentSize.avatar} rounded-full backdrop-blur-2xl bg-gradient-to-br from-black/80 to-black/90 border-2 border-white/30 shadow-2xl overflow-hidden cursor-pointer`}
           onClick={() => {
             if (!isListening) {
               startListening();
@@ -496,7 +500,7 @@ const AIAvatarInteractive = ({
                     repeat:
                       avatarState === 'thinking' || avatarState === 'listening' ? Infinity : 0,
                   }}
-                  className="w-3 h-3 rounded-full bg-gradient-to-br from-purple-600 to-pink-600 mt-1 ml-1"
+                  className="w-3 h-3 rounded-full bg-gradient-to-br from-zinc-800 to-zinc-800 mt-1 ml-1"
                 />
               </motion.div>
 
@@ -514,7 +518,7 @@ const AIAvatarInteractive = ({
                     repeat:
                       avatarState === 'thinking' || avatarState === 'listening' ? Infinity : 0,
                   }}
-                  className="w-3 h-3 rounded-full bg-gradient-to-br from-purple-600 to-pink-600 mt-1 ml-1"
+                  className="w-3 h-3 rounded-full bg-gradient-to-br from-zinc-800 to-zinc-800 mt-1 ml-1"
                 />
               </motion.div>
             </div>
@@ -609,7 +613,7 @@ const AIAvatarInteractive = ({
         animate={{ opacity: 1, y: 0 }}
         className="text-center space-y-2"
       >
-        <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+        <h3 className="text-2xl font-bold bg-gradient-to-r from-zinc-800 to-zinc-800 bg-clip-text text-transparent">
           {name}
         </h3>
         <p className="text-sm text-gray-400">
@@ -651,7 +655,7 @@ const AIAvatarInteractive = ({
             ${
               isListening
                 ? 'bg-red-500/20 border-red-500 text-red-400'
-                : 'bg-purple-500/20 border-purple-500 text-purple-400'
+                : 'bg-zinc-800/20 border-zinc-700 text-zinc-200'
             }
             border-2 transition-colors
           `}
@@ -663,7 +667,7 @@ const AIAvatarInteractive = ({
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={celebrate}
-          className="px-6 py-3 rounded-xl font-semibold backdrop-blur-xl bg-pink-500/20 border-2 border-pink-500 text-pink-400"
+          className="px-6 py-3 rounded-xl font-semibold backdrop-blur-xl bg-zinc-700/20 border-2 border-pink-500 text-zinc-200"
         >
           🎉 Celebrar
         </motion.button>

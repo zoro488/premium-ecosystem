@@ -23,9 +23,9 @@ export const PremiumKPICard = ({
 }) => {
   const colors = {
     cyan: { from: 'from-cyan-500', to: 'to-blue-500', text: 'text-cyan-400' },
-    purple: { from: 'from-purple-500', to: 'to-pink-500', text: 'text-purple-400' },
+    purple: { from: 'from-zinc-800', to: 'to-zinc-800', text: 'text-zinc-200' },
     green: { from: 'from-green-500', to: 'to-emerald-500', text: 'text-green-400' },
-    orange: { from: 'from-orange-500', to: 'to-red-500', text: 'text-orange-400' },
+    orange: { from: 'from-orange-500', to: 'to-zinc-800', text: 'text-orange-400' },
   };
 
   const currentColor = colors[color];
@@ -202,7 +202,7 @@ export const PremiumNotification = ({ title, message, type = 'info', onClose }) 
 
   const types = {
     success: { color: 'from-green-500 to-emerald-500', icon: '' },
-    error: { color: 'from-red-500 to-pink-500', icon: '' },
+    error: { color: 'from-zinc-700 to-zinc-800', icon: '' },
     warning: { color: 'from-orange-500 to-yellow-500', icon: '!' },
     info: { color: 'from-cyan-500 to-blue-500', icon: 'i' },
   };

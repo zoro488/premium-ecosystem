@@ -148,7 +148,7 @@ const ChronosHeader = ({
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center"
+                      className="absolute -top-1 -right-1 w-5 h-5 bg-zinc-9000 rounded-full flex items-center justify-center"
                     >
                       <span className="text-[10px] font-bold text-white">
                         {notificationCount > 9 ? '9+' : notificationCount}

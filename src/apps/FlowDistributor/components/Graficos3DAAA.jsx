@@ -131,7 +131,7 @@ export const KPICard3D = memo(
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.2 }}
                   className={`flex items-center gap-1 px-2 py-1 rounded-lg ${
-                    isPositive ? 'bg-emerald-500/20 text-emerald-400' : 'bg-red-500/20 text-red-400'
+                    isPositive ? 'bg-zinc-9000/20 text-zinc-200' : 'bg-zinc-9000/20 text-zinc-200'
                   }`}
                 >
                   {isPositive ? <TrendingUp size={14} /> : <TrendingDown size={14} />}
@@ -160,7 +160,7 @@ export const LineChart3D = memo(({ data, dataKeys = [], title = '', height = 300
       animate={{ opacity: 1, scale: 1 }}
     >
       {title && (
-        <h3 className="text-lg font-semibold text-white mb-4 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent">
+        <h3 className="text-lg font-semibold text-white mb-4 bg-gradient-to-r from-zinc-700 to-zinc-900 bg-clip-text text-transparent">
           {title}
         </h3>
       )}
@@ -220,7 +220,7 @@ export const BarChart3D = memo(({ data, dataKeys = [], title = '', height = 300 
       animate={{ opacity: 1, y: 0 }}
     >
       {title && (
-        <h3 className="text-lg font-semibold text-white mb-4 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
+        <h3 className="text-lg font-semibold text-white mb-4 bg-gradient-to-r from-zinc-800 to-zinc-700 bg-clip-text text-transparent">
           {title}
         </h3>
       )}
@@ -353,7 +353,7 @@ export const PieChart3D = memo(({ data, title = '', height = 300 }) => {
       animate={{ opacity: 1, scale: 1 }}
     >
       {title && (
-        <h3 className="text-lg font-semibold text-white mb-4 bg-gradient-to-r from-orange-400 to-red-600 bg-clip-text text-transparent">
+        <h3 className="text-lg font-semibold text-white mb-4 bg-gradient-to-r from-orange-400 to-zinc-800 bg-clip-text text-transparent">
           {title}
         </h3>
       )}

@@ -162,10 +162,10 @@ export const DashboardClientesAvanzado = ({ clientes = [], ventas = [] }) => {
   // Colores por segmento
   const getSegmentColor = (segmento) => {
     const colors = {
-      champion: 'from-yellow-500/20 to-yellow-600/10 border-yellow-500/30 text-yellow-400',
-      leal: 'from-blue-500/20 to-blue-600/10 border-blue-500/30 text-blue-400',
-      potencial: 'from-green-500/20 to-green-600/10 border-green-500/30 text-green-400',
-      en_riesgo: 'from-red-500/20 to-red-600/10 border-red-500/30 text-red-400',
+      champion: 'from-yellow-500/20 to-yellow-600/10 border-zinc-500/30 text-zinc-200',
+      leal: 'from-zinc-800/20 to-zinc-900/10 border-zinc-700/30 text-zinc-300',
+      potencial: 'from-green-500/20 to-green-600/10 border-zinc-500/30 text-zinc-200',
+      en_riesgo: 'from-zinc-700/20 to-zinc-800/10 border-zinc-500/30 text-zinc-200',
       inactivo: 'from-gray-500/20 to-gray-600/10 border-gray-500/30 text-gray-400',
     };
     return colors[segmento] || colors.inactivo;
@@ -174,7 +174,7 @@ export const DashboardClientesAvanzado = ({ clientes = [], ventas = [] }) => {
   const getNivelIcon = (nivel) => {
     switch (nivel) {
       case 'oro':
-        return <Award className="w-5 h-5 text-yellow-400" />;
+        return <Award className="w-5 h-5 text-zinc-200" />;
       case 'plata':
         return <Award className="w-5 h-5 text-gray-300" />;
       default:
@@ -186,7 +186,7 @@ export const DashboardClientesAvanzado = ({ clientes = [], ventas = [] }) => {
     <div className="w-full h-full overflow-auto bg-gradient-to-br from-slate-900 via-indigo-900/20 to-slate-900 p-6">
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
-        <h2 className="text-3xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent mb-2">
+        <h2 className="text-3xl font-bold bg-gradient-to-r from-indigo-400 to-zinc-800 bg-clip-text text-transparent mb-2">
           👥 CRM Inteligente
         </h2>
         <p className="text-slate-400">Gestión avanzada de relaciones con clientes</p>
@@ -198,10 +198,10 @@ export const DashboardClientesAvanzado = ({ clientes = [], ventas = [] }) => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           whileHover={{ scale: 1.02 }}
-          className="bg-gradient-to-br from-indigo-500/20 to-indigo-600/10 backdrop-blur-lg border border-indigo-500/30 rounded-xl p-6"
+          className="bg-gradient-to-br from-indigo-500/20 to-indigo-600/10 backdrop-blur-lg border border-zinc-500/30 rounded-xl p-6"
         >
           <div className="flex items-center justify-between mb-2">
-            <Users className="w-8 h-8 text-indigo-400" />
+            <Users className="w-8 h-8 text-zinc-200" />
             <div className="text-right">
               <p className="text-xs text-indigo-300">{stats.tasaActivacion.toFixed(1)}% activos</p>
             </div>
@@ -216,11 +216,11 @@ export const DashboardClientesAvanzado = ({ clientes = [], ventas = [] }) => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.1 }}
           whileHover={{ scale: 1.02 }}
-          className="bg-gradient-to-br from-yellow-500/20 to-yellow-600/10 backdrop-blur-lg border border-yellow-500/30 rounded-xl p-6"
+          className="bg-gradient-to-br from-yellow-500/20 to-yellow-600/10 backdrop-blur-lg border border-zinc-500/30 rounded-xl p-6"
         >
           <div className="flex items-center justify-between mb-2">
-            <Star className="w-8 h-8 text-yellow-400" />
-            <TrendingUp className="w-5 h-5 text-green-400" />
+            <Star className="w-8 h-8 text-zinc-200" />
+            <TrendingUp className="w-5 h-5 text-zinc-200" />
           </div>
           <p className="text-slate-400 text-sm mb-1">Champions</p>
           <p className="text-2xl font-bold text-white">{stats.champions}</p>
@@ -232,10 +232,10 @@ export const DashboardClientesAvanzado = ({ clientes = [], ventas = [] }) => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2 }}
           whileHover={{ scale: 1.02 }}
-          className="bg-gradient-to-br from-green-500/20 to-green-600/10 backdrop-blur-lg border border-green-500/30 rounded-xl p-6"
+          className="bg-gradient-to-br from-green-500/20 to-green-600/10 backdrop-blur-lg border border-zinc-500/30 rounded-xl p-6"
         >
           <div className="flex items-center justify-between mb-2">
-            <DollarSign className="w-8 h-8 text-green-400" />
+            <DollarSign className="w-8 h-8 text-zinc-200" />
             <Activity className="w-5 h-5 text-green-300" />
           </div>
           <p className="text-slate-400 text-sm mb-1">Lifetime Value Promedio</p>
@@ -250,13 +250,13 @@ export const DashboardClientesAvanzado = ({ clientes = [], ventas = [] }) => {
           whileHover={{ scale: 1.02 }}
           className={`bg-gradient-to-br ${
             stats.enRiesgo > 0
-              ? 'from-red-500/20 to-red-600/10 border-red-500/30'
-              : 'from-emerald-500/20 to-emerald-600/10 border-emerald-500/30'
+              ? 'from-zinc-700/20 to-zinc-800/10 border-zinc-500/30'
+              : 'from-emerald-500/20 to-emerald-600/10 border-zinc-500/30'
           } backdrop-blur-lg border rounded-xl p-6`}
         >
           <div className="flex items-center justify-between mb-2">
             <AlertTriangle
-              className={`w-8 h-8 ${stats.enRiesgo > 0 ? 'text-red-400' : 'text-emerald-400'}`}
+              className={`w-8 h-8 ${stats.enRiesgo > 0 ? 'text-zinc-200' : 'text-zinc-200'}`}
             />
             {stats.enRiesgo > 0 && <Zap className="w-5 h-5 text-red-300 animate-pulse" />}
           </div>
@@ -327,7 +327,7 @@ export const DashboardClientesAvanzado = ({ clientes = [], ventas = [] }) => {
               whileTap={{ scale: 0.95 }}
               onClick={() => setViewMode('grid')}
               className={`p-2 rounded-lg ${
-                viewMode === 'grid' ? 'bg-indigo-500 text-white' : 'bg-slate-700 text-slate-400'
+                viewMode === 'grid' ? 'bg-zinc-9000 text-white' : 'bg-slate-700 text-slate-400'
               }`}
             >
               <PieChart className="w-5 h-5" />
@@ -338,7 +338,7 @@ export const DashboardClientesAvanzado = ({ clientes = [], ventas = [] }) => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg font-medium flex items-center gap-2 hover:shadow-lg hover:shadow-indigo-500/50 transition-shadow"
+            className="px-4 py-2 bg-gradient-to-r from-indigo-500 to-zinc-800 text-white rounded-lg font-medium flex items-center gap-2 hover:shadow-lg hover:shadow-indigo-500/50 transition-shadow"
           >
             <Download className="w-4 h-4" />
             Exportar
@@ -366,7 +366,7 @@ export const DashboardClientesAvanzado = ({ clientes = [], ventas = [] }) => {
                 {/* Header */}
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold text-lg">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-zinc-800 flex items-center justify-center text-white font-bold text-lg">
                       {(cliente.nombre || 'C')[0].toUpperCase()}
                     </div>
                     <div>
@@ -386,10 +386,10 @@ export const DashboardClientesAvanzado = ({ clientes = [], ventas = [] }) => {
                     transition={{ duration: 2, repeat: Infinity }}
                     className={`px-2 py-1 rounded-full text-xs font-bold ${
                       cliente.riesgoChurn === 'alto'
-                        ? 'bg-red-500/20 text-red-300'
+                        ? 'bg-zinc-9000/20 text-red-300'
                         : cliente.riesgoChurn === 'medio'
-                          ? 'bg-yellow-500/20 text-yellow-300'
-                          : 'bg-green-500/20 text-green-300'
+                          ? 'bg-zinc-9000/20 text-yellow-300'
+                          : 'bg-zinc-9000/20 text-green-300'
                     }`}
                   >
                     {cliente.scoreTotal.toFixed(0)}
@@ -404,7 +404,7 @@ export const DashboardClientesAvanzado = ({ clientes = [], ventas = [] }) => {
                   </div>
                   <div className="text-center">
                     <p className="text-xs text-slate-400 mb-1">Total</p>
-                    <p className="text-lg font-bold text-green-400">
+                    <p className="text-lg font-bold text-zinc-200">
                       {formatCurrency(cliente.valorMonetario)}
                     </p>
                   </div>
@@ -443,7 +443,7 @@ export const DashboardClientesAvanzado = ({ clientes = [], ventas = [] }) => {
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className="mt-3 p-2 bg-red-500/10 border border-red-500/30 rounded-lg flex items-center gap-2 text-xs text-red-300"
+                    className="mt-3 p-2 bg-zinc-9000/10 border border-zinc-500/30 rounded-lg flex items-center gap-2 text-xs text-red-300"
                   >
                     <AlertTriangle className="w-4 h-4" />
                     <span>Requiere seguimiento urgente</span>

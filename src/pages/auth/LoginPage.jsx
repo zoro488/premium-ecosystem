@@ -111,7 +111,7 @@ export const LoginPage = ({ onLogin }) => {
           "
         >
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-zinc-800/5 to-zinc-800/5 pointer-events-none" />
 
           {/* Content */}
           <div className="relative z-10">
@@ -283,9 +283,9 @@ export const LoginPage = ({ onLogin }) => {
                 transition={{ delay: 1.2 }}
                 className="
                   w-full py-3 rounded-lg font-medium
-                  bg-gradient-to-r from-blue-500 to-purple-600
+                  bg-gradient-to-r from-blue-500 to-zinc-800
                   text-white
-                  hover:from-blue-600 hover:to-purple-700
+                  hover:from-blue-600 hover:to-zinc-800
                   disabled:opacity-50 disabled:cursor-not-allowed
                   transition-all
                   shadow-lg shadow-blue-500/30
@@ -461,7 +461,7 @@ const CosmicBackground = () => (
         rotate: [360, 0],
       }}
       transition={{ duration: 25, repeat: Infinity }}
-      className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"
+      className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-zinc-800/10 rounded-full blur-3xl"
     />
   </div>
 );

@@ -20,12 +20,12 @@ export default function PanelIA() {
   const [message, setMessage] = useState('');
 
   const tabs = [
-    { id: 'chat', label: 'Chat IA', icon: MessageSquare, gradient: 'from-blue-500 to-cyan-500' },
+    { id: 'chat', label: 'Chat IA', icon: MessageSquare, gradient: 'from-zinc-800 to-zinc-800' },
     { id: 'insights', label: 'Insights', icon: Lightbulb, gradient: 'from-yellow-500 to-orange-500' },
     { id: 'predictions', label: 'Predicciones', icon: TrendingUp, gradient: 'from-green-500 to-emerald-500' },
-    { id: 'analytics', label: 'Analytics', icon: BarChart3, gradient: 'from-purple-500 to-violet-500' },
-    { id: 'reports', label: 'Reportes', icon: FileText, gradient: 'from-pink-500 to-rose-500' },
-    { id: 'actions', label: 'Acciones', icon: Zap, gradient: 'from-indigo-500 to-blue-500' }
+    { id: 'analytics', label: 'Analytics', icon: BarChart3, gradient: 'from-zinc-800 to-zinc-800' },
+    { id: 'reports', label: 'Reportes', icon: FileText, gradient: 'from-zinc-700 to-zinc-700' },
+    { id: 'actions', label: 'Acciones', icon: Zap, gradient: 'from-indigo-500 to-zinc-800' }
   ];
 
   const insights = [
@@ -76,7 +76,7 @@ export default function PanelIA() {
       <div className="flex items-center justify-between">
         <div>
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-zinc-800 to-zinc-700 flex items-center justify-center">
               <Brain className="w-6 h-6 text-white" />
             </div>
             <div>
@@ -90,7 +90,7 @@ export default function PanelIA() {
           transition={{ repeat: Infinity, duration: 2 }}
           className="px-4 py-2 glass rounded-lg flex items-center gap-2"
         >
-          <div className="w-2 h-2 bg-green-500 rounded-full" />
+          <div className="w-2 h-2 bg-zinc-9000 rounded-full" />
           <span className="text-sm text-white/80">IA Activa</span>
         </motion.div>
       </div>
@@ -105,7 +105,7 @@ export default function PanelIA() {
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all whitespace-nowrap ${
                 activeTab === tab.id
-                  ? 'bg-gradient-to-r from-purple-500 to-pink-600 text-white'
+                  ? 'bg-gradient-to-r from-zinc-800 to-zinc-700 text-white'
                   : 'text-white/60 hover:text-white hover:bg-white/10'
               }`}
             >
@@ -137,9 +137,9 @@ export default function PanelIA() {
                     <input
                       type="text"
                       placeholder="Escribe tu pregunta..."
-                      className="flex-1 px-4 py-3 glass rounded-lg text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-purple-500/50"
+                      className="flex-1 px-4 py-3 glass rounded-lg text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-zinc-800/50"
                     />
-                    <button className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg text-white font-medium hover:from-purple-600 hover:to-pink-700 transition-all">
+                    <button className="px-6 py-3 bg-gradient-to-r from-zinc-800 to-zinc-700 rounded-lg text-white font-medium hover:from-zinc-800 hover:to-zinc-700 transition-all">
                       Enviar
                     </button>
                   </div>
@@ -160,14 +160,14 @@ export default function PanelIA() {
                   <Card>
                     <div className="flex items-start gap-4">
                       <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
-                        insight.type === 'success' ? 'bg-green-500/20' :
-                        insight.type === 'warning' ? 'bg-yellow-500/20' :
-                        'bg-blue-500/20'
+                        insight.type === 'success' ? 'bg-zinc-9000/20' :
+                        insight.type === 'warning' ? 'bg-zinc-9000/20' :
+                        'bg-zinc-800/20'
                       }`}>
                         <Sparkles className={`w-6 h-6 ${
-                          insight.type === 'success' ? 'text-green-400' :
-                          insight.type === 'warning' ? 'text-yellow-400' :
-                          'text-blue-400'
+                          insight.type === 'success' ? 'text-zinc-200' :
+                          insight.type === 'warning' ? 'text-zinc-200' :
+                          'text-zinc-300'
                         }`} />
                       </div>
                       <div className="flex-1">
@@ -175,9 +175,9 @@ export default function PanelIA() {
                         <p className="text-white/60">{insight.description}</p>
                         <div className="mt-2">
                           <span className={`inline-block px-3 py-1 rounded-full text-xs ${
-                            insight.impact === 'high' ? 'bg-red-500/20 text-red-400' :
-                            insight.impact === 'medium' ? 'bg-yellow-500/20 text-yellow-400' :
-                            'bg-blue-500/20 text-blue-400'
+                            insight.impact === 'high' ? 'bg-zinc-9000/20 text-zinc-200' :
+                            insight.impact === 'medium' ? 'bg-zinc-9000/20 text-zinc-200' :
+                            'bg-zinc-800/20 text-zinc-300'
                           }`}>
                             Impacto: {insight.impact === 'high' ? 'Alto' : insight.impact === 'medium' ? 'Medio' : 'Bajo'}
                           </span>
@@ -207,7 +207,7 @@ export default function PanelIA() {
                       </div>
                       <div className="text-right">
                         <div className="flex items-center gap-2 mb-2">
-                          <TrendingUp className={`w-5 h-5 ${pred.trend === 'up' ? 'text-green-400' : 'text-red-400'}`} />
+                          <TrendingUp className={`w-5 h-5 ${pred.trend === 'up' ? 'text-zinc-200' : 'text-zinc-200'}`} />
                           <span className="text-white/60 text-sm">Confianza: {pred.confidence}%</span>
                         </div>
                         <div className="w-32 h-2 glass rounded-full overflow-hidden">
@@ -215,7 +215,7 @@ export default function PanelIA() {
                             initial={{ width: 0 }}
                             animate={{ width: `${pred.confidence}%` }}
                             transition={{ delay: i * 0.1 + 0.5, duration: 0.5 }}
-                            className="h-full bg-gradient-to-r from-purple-500 to-pink-600"
+                            className="h-full bg-gradient-to-r from-zinc-800 to-zinc-700"
                           />
                         </div>
                       </div>
@@ -246,7 +246,7 @@ export default function PanelIA() {
                   'Comandos por voz'
                 ].map((capability, i) => (
                   <div key={i} className="flex items-center gap-2 text-sm text-white/80">
-                    <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-600" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-700" />
                     {capability}
                   </div>
                 ))}
@@ -266,7 +266,7 @@ export default function PanelIA() {
                     <span className="text-white font-medium">47</span>
                   </div>
                   <div className="w-full h-2 glass rounded-full overflow-hidden">
-                    <div className="h-full w-[70%] bg-gradient-to-r from-purple-500 to-pink-600" />
+                    <div className="h-full w-[70%] bg-gradient-to-r from-zinc-800 to-zinc-700" />
                   </div>
                 </div>
                 <div>
@@ -284,7 +284,7 @@ export default function PanelIA() {
                     <span className="text-white font-medium">1.2s</span>
                   </div>
                   <div className="w-full h-2 glass rounded-full overflow-hidden">
-                    <div className="h-full w-[85%] bg-gradient-to-r from-cyan-500 to-blue-600" />
+                    <div className="h-full w-[85%] bg-gradient-to-r from-zinc-800 to-zinc-900" />
                   </div>
                 </div>
               </div>

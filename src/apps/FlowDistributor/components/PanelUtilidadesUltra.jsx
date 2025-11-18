@@ -456,8 +456,8 @@ const PanelUtilidadesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
     const isPositive = trend === 'up' || (typeof value === 'string' && value.startsWith('+'));
     return {
       icon: isPositive ? TrendingUp : TrendingDown,
-      color: isPositive ? 'text-green-400' : 'text-red-400',
-      bgColor: isPositive ? 'bg-green-500/20' : 'bg-red-500/20',
+      color: isPositive ? 'text-zinc-200' : 'text-zinc-200',
+      bgColor: isPositive ? 'bg-zinc-9000/20' : 'bg-zinc-9000/20',
     };
   }, []);
 
@@ -565,8 +565,8 @@ const PanelUtilidadesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
         {/* Background Effects */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 via-emerald-500/5 to-teal-500/5" />
-          <div className="absolute top-0 left-1/4 w-32 h-32 bg-green-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-emerald-500/10 rounded-full blur-2xl" />
+          <div className="absolute top-0 left-1/4 w-32 h-32 bg-zinc-9000/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-zinc-9000/10 rounded-full blur-2xl" />
 
           {/* Floating particles */}
           {[...Array(8)].map((_, i) => (
@@ -600,7 +600,7 @@ const PanelUtilidadesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 whileHover={{ scale: 1.05, rotate: 5 }}
                 transition={{ duration: 0.3 }}
               >
-                <TrendingUp className="w-8 h-8 text-green-400" />
+                <TrendingUp className="w-8 h-8 text-zinc-200" />
               </motion.div>
 
               <div>
@@ -629,7 +629,7 @@ const PanelUtilidadesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 <div className="text-2xl font-bold text-white">
                   {showValues ? formatCurrency(localData.summary.totalUtilidades) : '••••••'}
                 </div>
-                <div className="flex items-center text-green-400 text-sm mt-1">
+                <div className="flex items-center text-zinc-200 text-sm mt-1">
                   <TrendingUp className="w-3 h-3 mr-1" />+
                   {localData.summary.crecimientoMensual.toFixed(1)}%
                 </div>
@@ -643,7 +643,7 @@ const PanelUtilidadesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 <div className="text-2xl font-bold text-white">
                   {formatPercentage(localData.summary.margenPromedio)}
                 </div>
-                <div className="flex items-center text-blue-400 text-sm mt-1">
+                <div className="flex items-center text-zinc-300 text-sm mt-1">
                   <Target className="w-3 h-3 mr-1" />
                   {localData.summary.clientesRentables} clientes
                 </div>
@@ -654,7 +654,7 @@ const PanelUtilidadesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
           {/* AI Insights Bar */}
           {aiInsights && (
             <motion.div
-              className="p-4 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-xl border border-purple-500/20 backdrop-blur-sm"
+              className="p-4 bg-gradient-to-r from-zinc-800/10 to-zinc-700/10 rounded-xl border border-zinc-800/20 backdrop-blur-sm"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
@@ -665,7 +665,7 @@ const PanelUtilidadesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                     animate={{ rotate: [0, 360] }}
                     transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
                   >
-                    <Brain className="w-5 h-5 text-purple-400" />
+                    <Brain className="w-5 h-5 text-zinc-800" />
                   </motion.div>
                   <span className="text-white font-medium">AI Insights</span>
                 </div>
@@ -675,7 +675,7 @@ const PanelUtilidadesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                     Cliente con mayor potencial: Bódega M-P (+25%)
                   </span>
                   <motion.button
-                    className="p-1 text-purple-400 hover:text-purple-300"
+                    className="p-1 text-zinc-800 hover:text-zinc-800"
                     whileHover={{ scale: 1.1 }}
                     onClick={() => setAiInsights(false)}
                   >
@@ -707,7 +707,7 @@ const PanelUtilidadesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 onClick={() => handleTableSwitch(id)}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   activeTable === id
-                    ? 'bg-green-500/20 text-green-400 shadow-lg'
+                    ? 'bg-zinc-9000/20 text-zinc-200 shadow-lg'
                     : 'text-slate-400 hover:text-white hover:bg-white/5'
                 }`}
                 whileHover={{ scale: 1.02 }}
@@ -726,7 +726,7 @@ const PanelUtilidadesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
               onClick={() => setAutoRefresh(!autoRefresh)}
               className={`p-2 rounded-lg transition-colors ${
                 autoRefresh
-                  ? 'bg-green-500/20 text-green-400'
+                  ? 'bg-zinc-9000/20 text-zinc-200'
                   : 'bg-white/5 text-slate-400 hover:text-white'
               }`}
               whileHover={{ scale: 1.05 }}
@@ -743,7 +743,7 @@ const PanelUtilidadesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 placeholder="Buscar..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500/50 w-64"
+                className="pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-zinc-500/50 w-64"
               />
             </div>
 
@@ -752,7 +752,7 @@ const PanelUtilidadesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
               onClick={() => setShowFilters(!showFilters)}
               className={`p-2 rounded-lg transition-colors ${
                 showFilters
-                  ? 'bg-green-500/20 text-green-400'
+                  ? 'bg-zinc-9000/20 text-zinc-200'
                   : 'bg-white/5 text-slate-400 hover:text-white'
               }`}
               whileHover={{ scale: 1.05 }}
@@ -908,11 +908,11 @@ const PanelUtilidadesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                             </div>
                           </div>
 
-                          <div className="text-blue-400 font-semibold">
+                          <div className="text-zinc-300 font-semibold">
                             {formatCurrency(cliente.ventasTotal)}
                           </div>
 
-                          <div className="text-green-400 font-semibold">
+                          <div className="text-zinc-200 font-semibold">
                             {formatCurrency(cliente.utilidadBruta)}
                           </div>
 
@@ -928,12 +928,12 @@ const PanelUtilidadesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                             <span
                               className={`px-2 py-1 rounded-full text-xs ${
                                 cliente.clasificacion === 'premium'
-                                  ? 'bg-purple-500/20 text-purple-400'
+                                  ? 'bg-zinc-800/20 text-zinc-800'
                                   : cliente.clasificacion === 'gold'
-                                    ? 'bg-yellow-500/20 text-yellow-400'
+                                    ? 'bg-zinc-9000/20 text-zinc-200'
                                     : cliente.clasificacion === 'silver'
                                       ? 'bg-gray-500/20 text-gray-400'
-                                      : 'bg-orange-500/20 text-orange-400'
+                                      : 'bg-zinc-9000/20 text-zinc-200'
                               }`}
                             >
                               {cliente.clasificacion}
@@ -949,7 +949,7 @@ const PanelUtilidadesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                             </span>
                           </div>
 
-                          <div className="text-emerald-400 font-medium">
+                          <div className="text-zinc-200 font-medium">
                             {formatCurrency(cliente.proyeccion12m)}
                           </div>
                         </div>
@@ -972,7 +972,7 @@ const PanelUtilidadesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
               className="h-full flex items-center justify-center"
             >
               <div className="text-center">
-                <Brain className="w-16 h-16 text-purple-400 mx-auto mb-4" />
+                <Brain className="w-16 h-16 text-zinc-800 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">
                   {activeTable === 'margenes'
                     ? 'Análisis de Márgenes'

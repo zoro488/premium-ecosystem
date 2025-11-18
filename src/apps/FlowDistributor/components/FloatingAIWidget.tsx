@@ -39,12 +39,12 @@ export default function FloatingAIWidget() {
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            className="fixed bottom-24 right-6 w-96 h-[600px] glass-dark rounded-2xl shadow-2xl border border-cyan-500/30 z-50 flex flex-col"
+            className="fixed bottom-24 right-6 w-96 h-[600px] glass-dark rounded-2xl shadow-2xl border border-zinc-500/30 z-50 flex flex-col"
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-white/10">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center">
                   <Sparkles className="w-5 h-5 text-white" />
                 </div>
                 <div>
@@ -96,7 +96,7 @@ export default function FloatingAIWidget() {
                     <div
                       className={`max-w-[80%] px-4 py-2 rounded-lg ${
                         msg.role === 'user'
-                          ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white'
+                          ? 'bg-gradient-to-r from-zinc-800 to-zinc-900 text-white'
                           : 'glass text-white/90'
                       }`}
                     >
@@ -111,7 +111,7 @@ export default function FloatingAIWidget() {
             <div className="p-4 border-t border-white/10">
               <div className="flex gap-2">
                 <button className="p-3 glass rounded-lg hover:bg-white/10 transition-colors">
-                  <Mic className="w-5 h-5 text-cyan-400" />
+                  <Mic className="w-5 h-5 text-zinc-300" />
                 </button>
                 <input
                   type="text"
@@ -123,7 +123,7 @@ export default function FloatingAIWidget() {
                 />
                 <button
                   onClick={handleSend}
-                  className="p-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg hover:from-cyan-600 hover:to-blue-700 transition-all"
+                  className="p-3 bg-gradient-to-r from-zinc-800 to-zinc-900 rounded-lg hover:from-cyan-600 hover:to-blue-700 transition-all"
                 >
                   <Send className="w-5 h-5 text-white" />
                 </button>
@@ -138,11 +138,11 @@ export default function FloatingAIWidget() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full shadow-2xl shadow-cyan-500/50 flex items-center justify-center z-50 hover:shadow-cyan-500/70 transition-shadow"
+        className="fixed bottom-6 right-6 w-14 h-14 bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-full shadow-2xl shadow-cyan-500/50 flex items-center justify-center z-50 hover:shadow-cyan-500/70 transition-shadow"
       >
         <Bot className="w-6 h-6 text-white" />
         <motion.div
-          className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full"
+          className="absolute -top-1 -right-1 w-3 h-3 bg-zinc-9000 rounded-full"
           animate={{ scale: [1, 1.2, 1] }}
           transition={{ repeat: Infinity, duration: 2 }}
         />

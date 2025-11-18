@@ -240,11 +240,11 @@ export const WidgetAlertasInteligentes: React.FC = () => {
       <div className="mb-4">
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-lg font-bold text-white flex items-center gap-2">
-            <Bell className="w-5 h-5 text-indigo-400" />
+            <Bell className="w-5 h-5 text-zinc-200" />
             Alertas Inteligentes
           </h3>
           <motion.div
-            className="px-2 py-1 rounded-full bg-indigo-500/20 text-indigo-400 text-xs font-bold"
+            className="px-2 py-1 rounded-full bg-zinc-9000/20 text-zinc-200 text-xs font-bold"
             animate={{ scale: [1, 1.1, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
@@ -257,7 +257,7 @@ export const WidgetAlertasInteligentes: React.FC = () => {
           <motion.button
             className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
               selectedFilter === 'all'
-                ? 'bg-indigo-500 text-white'
+                ? 'bg-zinc-9000 text-white'
                 : 'bg-white/5 text-slate-400 hover:bg-white/10'
             }`}
             whileHover={{ scale: 1.05 }}
@@ -302,7 +302,7 @@ export const WidgetAlertasInteligentes: React.FC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              <CheckCircle className="w-12 h-12 text-green-400 mx-auto mb-3" />
+              <CheckCircle className="w-12 h-12 text-zinc-200 mx-auto mb-3" />
               <p className="text-slate-400">No hay alertas en esta categoría</p>
             </motion.div>
           ) : (

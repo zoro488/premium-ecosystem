@@ -122,7 +122,7 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.9, y: 20 }}
         transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-        className="bg-gradient-to-br from-slate-900 to-purple-900 border border-purple-400/30 rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto"
+        className="bg-gradient-to-br from-slate-900 to-zinc-800 border border-zinc-800/30 rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -132,7 +132,7 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
             initial={{ x: -20 }}
             animate={{ x: 0 }}
           >
-            <Package className="w-7 h-7 text-purple-400" />
+            <Package className="w-7 h-7 text-zinc-800" />
             {ordenExistente ? 'Editar Orden de Compra' : 'Nueva Orden de Compra'}
           </motion.h2>
 
@@ -153,7 +153,7 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <h3 className="text-lg font-semibold text-purple-300 mb-4 flex items-center gap-2">
+            <h3 className="text-lg font-semibold text-zinc-800 mb-4 flex items-center gap-2">
               <FileText className="w-5 h-5" />
               Información General
             </h3>
@@ -161,7 +161,7 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
             <div className="grid grid-cols-3 gap-6">
               {/* Fecha Orden */}
               <div>
-                <label className="flex items-center gap-2 text-sm text-purple-300 mb-2">
+                <label className="flex items-center gap-2 text-sm text-zinc-800 mb-2">
                   <Calendar className="w-4 h-4" />
                   Fecha de Orden
                 </label>
@@ -171,10 +171,10 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
                   onChange={(e) => setFormData({ ...formData, fechaOrden: e.target.value })}
                   className={`w-full px-4 py-3 bg-white/10 border ${
                     errors.fechaOrden ? 'border-red-400' : 'border-white/20'
-                  } rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-400/50`}
+                  } rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-zinc-800/50`}
                 />
                 {errors.fechaOrden && (
-                  <p className="text-red-400 text-xs mt-1 flex items-center gap-1">
+                  <p className="text-zinc-200 text-xs mt-1 flex items-center gap-1">
                     <AlertCircle className="w-3 h-3" />
                     {errors.fechaOrden}
                   </p>
@@ -183,7 +183,7 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
 
               {/* Número OC */}
               <div>
-                <label className="flex items-center gap-2 text-sm text-purple-300 mb-2">
+                <label className="flex items-center gap-2 text-sm text-zinc-800 mb-2">
                   <Hash className="w-4 h-4" />
                   Número de OC
                 </label>
@@ -194,14 +194,14 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
                   placeholder="OC0001"
                   className={`w-full px-4 py-3 bg-white/10 border ${
                     errors.numeroOC ? 'border-red-400' : 'border-white/20'
-                  } rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50`}
+                  } rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50`}
                 />
-                {errors.numeroOC && <p className="text-red-400 text-xs mt-1">{errors.numeroOC}</p>}
+                {errors.numeroOC && <p className="text-zinc-200 text-xs mt-1">{errors.numeroOC}</p>}
               </div>
 
               {/* Distribuidor */}
               <div>
-                <label className="flex items-center gap-2 text-sm text-purple-300 mb-2">
+                <label className="flex items-center gap-2 text-sm text-zinc-800 mb-2">
                   <User className="w-4 h-4" />
                   Distribuidor
                 </label>
@@ -210,7 +210,7 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
                   onChange={(e) => setFormData({ ...formData, distribuidor: e.target.value })}
                   className={`w-full px-4 py-3 bg-white/10 border ${
                     errors.distribuidor ? 'border-red-400' : 'border-white/20'
-                  } rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-400/50`}
+                  } rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-zinc-800/50`}
                 >
                   {distribuidoresDisponibles.map((dist) => (
                     <option key={dist} value={dist}>
@@ -219,7 +219,7 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
                   ))}
                 </select>
                 {errors.distribuidor && (
-                  <p className="text-red-400 text-xs mt-1">{errors.distribuidor}</p>
+                  <p className="text-zinc-200 text-xs mt-1">{errors.distribuidor}</p>
                 )}
               </div>
             </div>
@@ -232,7 +232,7 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
-            <h3 className="text-lg font-semibold text-purple-300 mb-4 flex items-center gap-2">
+            <h3 className="text-lg font-semibold text-zinc-800 mb-4 flex items-center gap-2">
               <Package className="w-5 h-5" />
               Detalles del Pedido
             </h3>
@@ -240,7 +240,7 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
             <div className="grid grid-cols-2 gap-6">
               {/* Cantidad */}
               <div>
-                <label className="flex items-center gap-2 text-sm text-purple-300 mb-2">
+                <label className="flex items-center gap-2 text-sm text-zinc-800 mb-2">
                   <Package className="w-4 h-4" />
                   Cantidad
                 </label>
@@ -254,14 +254,14 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
                   onBlur={handleCalculate}
                   className={`w-full px-4 py-3 bg-white/10 border ${
                     errors.cantidad ? 'border-red-400' : 'border-white/20'
-                  } rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50`}
+                  } rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50`}
                 />
-                {errors.cantidad && <p className="text-red-400 text-xs mt-1">{errors.cantidad}</p>}
+                {errors.cantidad && <p className="text-zinc-200 text-xs mt-1">{errors.cantidad}</p>}
               </div>
 
               {/* Precio Compra */}
               <div>
-                <label className="flex items-center gap-2 text-sm text-purple-300 mb-2">
+                <label className="flex items-center gap-2 text-sm text-zinc-800 mb-2">
                   <DollarSign className="w-4 h-4" />
                   Precio de Compra (Unitario)
                 </label>
@@ -275,16 +275,16 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
                   onBlur={handleCalculate}
                   className={`w-full px-4 py-3 bg-white/10 border ${
                     errors.precioCompra ? 'border-red-400' : 'border-white/20'
-                  } rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50`}
+                  } rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50`}
                 />
                 {errors.precioCompra && (
-                  <p className="text-red-400 text-xs mt-1">{errors.precioCompra}</p>
+                  <p className="text-zinc-200 text-xs mt-1">{errors.precioCompra}</p>
                 )}
               </div>
 
               {/* Proveedor */}
               <div>
-                <label className="flex items-center gap-2 text-sm text-purple-300 mb-2">
+                <label className="flex items-center gap-2 text-sm text-zinc-800 mb-2">
                   <Truck className="w-4 h-4" />
                   Proveedor
                 </label>
@@ -293,13 +293,13 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
                   value={formData.proveedor}
                   onChange={(e) => setFormData({ ...formData, proveedor: e.target.value })}
                   placeholder="Nombre del proveedor"
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50"
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50"
                 />
               </div>
 
               {/* Número Factura */}
               <div>
-                <label className="flex items-center gap-2 text-sm text-purple-300 mb-2">
+                <label className="flex items-center gap-2 text-sm text-zinc-800 mb-2">
                   <FileText className="w-4 h-4" />
                   Número de Factura
                 </label>
@@ -308,7 +308,7 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
                   value={formData.numeroFactura}
                   onChange={(e) => setFormData({ ...formData, numeroFactura: e.target.value })}
                   placeholder="FAC-00001"
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50"
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50"
                 />
               </div>
             </div>
@@ -321,7 +321,7 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <h3 className="text-lg font-semibold text-purple-300 mb-4 flex items-center gap-2">
+            <h3 className="text-lg font-semibold text-zinc-800 mb-4 flex items-center gap-2">
               <Truck className="w-5 h-5" />
               Entrega
             </h3>
@@ -329,7 +329,7 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
             <div className="grid grid-cols-3 gap-6">
               {/* Fecha Entrega Esperada */}
               <div>
-                <label className="flex items-center gap-2 text-sm text-purple-300 mb-2">
+                <label className="flex items-center gap-2 text-sm text-zinc-800 mb-2">
                   <Calendar className="w-4 h-4" />
                   Fecha Esperada
                 </label>
@@ -341,16 +341,16 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
                   }
                   className={`w-full px-4 py-3 bg-white/10 border ${
                     errors.fechaEntregaEsperada ? 'border-red-400' : 'border-white/20'
-                  } rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-400/50`}
+                  } rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-zinc-800/50`}
                 />
                 {errors.fechaEntregaEsperada && (
-                  <p className="text-red-400 text-xs mt-1">{errors.fechaEntregaEsperada}</p>
+                  <p className="text-zinc-200 text-xs mt-1">{errors.fechaEntregaEsperada}</p>
                 )}
               </div>
 
               {/* Fecha Entrega Real */}
               <div>
-                <label className="flex items-center gap-2 text-sm text-purple-300 mb-2">
+                <label className="flex items-center gap-2 text-sm text-zinc-800 mb-2">
                   <Calendar className="w-4 h-4" />
                   Fecha Real
                 </label>
@@ -358,17 +358,17 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
                   type="date"
                   value={formData.fechaEntregaReal}
                   onChange={(e) => setFormData({ ...formData, fechaEntregaReal: e.target.value })}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-400/50"
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-zinc-800/50"
                 />
               </div>
 
               {/* Estatus Entrega */}
               <div>
-                <label className="text-sm text-purple-300 mb-2 block">Estatus Entrega</label>
+                <label className="text-sm text-zinc-800 mb-2 block">Estatus Entrega</label>
                 <select
                   value={formData.estatusEntrega}
                   onChange={(e) => setFormData({ ...formData, estatusEntrega: e.target.value })}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-400/50"
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-zinc-800/50"
                 >
                   <option value="Pendiente">Pendiente</option>
                   <option value="En Tránsito">En Tránsito</option>
@@ -386,7 +386,7 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <h3 className="text-lg font-semibold text-purple-300 mb-4 flex items-center gap-2">
+            <h3 className="text-lg font-semibold text-zinc-800 mb-4 flex items-center gap-2">
               <DollarSign className="w-5 h-5" />
               Información de Pago
             </h3>
@@ -394,7 +394,7 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
             <div className="grid grid-cols-2 gap-6">
               {/* Monto Pagado */}
               <div>
-                <label className="flex items-center gap-2 text-sm text-purple-300 mb-2">
+                <label className="flex items-center gap-2 text-sm text-zinc-800 mb-2">
                   <DollarSign className="w-4 h-4" />
                   Monto Pagado
                 </label>
@@ -406,17 +406,17 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
                   onChange={(e) => setFormData({ ...formData, montoPagado: e.target.value })}
                   placeholder="0.00"
                   onBlur={handleCalculate}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50"
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50"
                 />
               </div>
 
               {/* Estatus Pago */}
               <div>
-                <label className="text-sm text-purple-300 mb-2 block">Estatus de Pago</label>
+                <label className="text-sm text-zinc-800 mb-2 block">Estatus de Pago</label>
                 <select
                   value={formData.estatusPago}
                   onChange={(e) => setFormData({ ...formData, estatusPago: e.target.value })}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-400/50"
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-zinc-800/50"
                 >
                   <option value="Pendiente">Pendiente</option>
                   <option value="Parcial">Parcial</option>
@@ -433,46 +433,46 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <label className="text-sm text-purple-300 mb-2 block">Observaciones</label>
+            <label className="text-sm text-zinc-800 mb-2 block">Observaciones</label>
             <textarea
               value={formData.observaciones}
               onChange={(e) => setFormData({ ...formData, observaciones: e.target.value })}
               placeholder="Notas adicionales sobre la orden..."
               rows="3"
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 resize-none"
+              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 resize-none"
             />
           </motion.div>
 
           {/* Resumen Financiero */}
           <motion.div
-            className="bg-purple-500/10 border border-purple-400/30 rounded-xl p-6 mb-6"
+            className="bg-zinc-800/10 border border-zinc-800/30 rounded-xl p-6 mb-6"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5 }}
           >
-            <h3 className="text-lg font-semibold text-purple-300 mb-4 flex items-center gap-2">
+            <h3 className="text-lg font-semibold text-zinc-800 mb-4 flex items-center gap-2">
               <CheckCircle className="w-5 h-5" />
               Resumen Financiero
             </h3>
 
             <div className="grid grid-cols-3 gap-4">
               <div>
-                <label className="text-sm text-purple-300/70 mb-1 block">Total de Orden</label>
+                <label className="text-sm text-zinc-800/70 mb-1 block">Total de Orden</label>
                 <p className="text-2xl font-bold text-white">
                   ${parseFloat(formData.totalOrden || 0).toLocaleString()}
                 </p>
               </div>
 
               <div>
-                <label className="text-sm text-purple-300/70 mb-1 block">Monto Pagado</label>
-                <p className="text-2xl font-bold text-green-400">
+                <label className="text-sm text-zinc-800/70 mb-1 block">Monto Pagado</label>
+                <p className="text-2xl font-bold text-zinc-200">
                   ${parseFloat(formData.montoPagado || 0).toLocaleString()}
                 </p>
               </div>
 
               <div>
-                <label className="text-sm text-purple-300/70 mb-1 block">Saldo Pendiente</label>
-                <p className="text-2xl font-bold text-amber-400">
+                <label className="text-sm text-zinc-800/70 mb-1 block">Saldo Pendiente</label>
+                <p className="text-2xl font-bold text-zinc-200">
                   ${parseFloat(formData.saldoPendiente || 0).toLocaleString()}
                 </p>
               </div>
@@ -482,7 +482,7 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="text-red-400 text-sm mt-4 flex items-center gap-2"
+                className="text-zinc-200 text-sm mt-4 flex items-center gap-2"
               >
                 <AlertCircle className="w-4 h-4" />
                 {errors.totalOrden}
@@ -496,7 +496,7 @@ export default function FormOrdenCompra({ onClose, onSave, ordenExistente = null
               type="submit"
               whileHover={{ scale: 1.02, boxShadow: '0 10px 30px rgba(168, 85, 247, 0.3)' }}
               whileTap={{ scale: 0.98 }}
-              className="flex-1 px-6 py-4 bg-purple-500/20 border border-purple-400/30 rounded-xl text-white font-semibold hover:bg-purple-500/30 transition-all flex items-center justify-center gap-2"
+              className="flex-1 px-6 py-4 bg-zinc-800/20 border border-zinc-800/30 rounded-xl text-white font-semibold hover:bg-zinc-800/30 transition-all flex items-center justify-center gap-2"
             >
               <Save className="w-5 h-5" />
               {ordenExistente ? 'Actualizar Orden' : 'Crear Orden'}

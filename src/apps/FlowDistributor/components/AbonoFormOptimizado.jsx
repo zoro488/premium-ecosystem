@@ -90,20 +90,20 @@ const VentaPendienteCard = ({ venta, selected, onClick }) => {
       whileTap={{ scale: 0.98 }}
       onClick={onClick}
       className={`${ds.glass} rounded-xl p-4 cursor-pointer transition-all ${
-        selected ? 'ring-2 ring-emerald-500 bg-emerald-500/10' : 'hover:bg-white/5'
+        selected ? 'ring-2 ring-emerald-500 bg-zinc-9000/10' : 'hover:bg-white/5'
       }`}
     >
       <div className="flex items-start justify-between mb-3">
         <div>
           <h4 className="font-semibold text-white flex items-center gap-2">
             {venta.cliente}
-            {selected && <CheckCircle className="w-4 h-4 text-emerald-400" />}
+            {selected && <CheckCircle className="w-4 h-4 text-zinc-200" />}
           </h4>
           <p className="text-sm text-slate-400">{new Date(venta.fecha).toLocaleDateString()}</p>
         </div>
         <div className="text-right">
           <p className="text-sm text-slate-400">Adeudo</p>
-          <p className="text-lg font-bold text-red-400">${saldo.toLocaleString()}</p>
+          <p className="text-lg font-bold text-zinc-200">${saldo.toLocaleString()}</p>
         </div>
       </div>
 
@@ -125,10 +125,10 @@ const VentaPendienteCard = ({ venta, selected, onClick }) => {
           <span
             className={`font-semibold ${
               venta.estatus === 'Pendiente'
-                ? 'text-red-400'
+                ? 'text-zinc-200'
                 : venta.estatus === 'Parcial'
-                  ? 'text-yellow-400'
-                  : 'text-emerald-400'
+                  ? 'text-zinc-200'
+                  : 'text-zinc-200'
             }`}
           >
             {venta.estatus}
@@ -152,14 +152,14 @@ const PanelDistribucion = ({ distribucion }) => {
       className={`${ds.glass} rounded-xl p-6`}
     >
       <h3 className="font-bold mb-4 flex items-center gap-2">
-        <Calculator className="w-5 h-5 text-emerald-400" />
+        <Calculator className="w-5 h-5 text-zinc-200" />
         Distribución del Abono
       </h3>
 
       <div className="space-y-3">
         <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-zinc-800/20 rounded-lg flex items-center justify-center">
               <span className="text-lg">🏦</span>
             </div>
             <div>
@@ -167,14 +167,14 @@ const PanelDistribucion = ({ distribucion }) => {
               <p className="text-xs text-slate-400">Capital recuperado</p>
             </div>
           </div>
-          <span className="text-lg font-bold text-purple-400">
+          <span className="text-lg font-bold text-zinc-800">
             ${distribucion.bovedaMonte.toLocaleString()}
           </span>
         </div>
 
         <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-zinc-800/20 rounded-lg flex items-center justify-center">
               <span className="text-lg">🚚</span>
             </div>
             <div>
@@ -182,14 +182,14 @@ const PanelDistribucion = ({ distribucion }) => {
               <p className="text-xs text-slate-400">Costos de envío</p>
             </div>
           </div>
-          <span className="text-lg font-bold text-blue-400">
+          <span className="text-lg font-bold text-zinc-300">
             ${distribucion.fleteSur.toLocaleString()}
           </span>
         </div>
 
         <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-emerald-500/20 rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-zinc-9000/20 rounded-lg flex items-center justify-center">
               <span className="text-lg">💎</span>
             </div>
             <div>
@@ -197,7 +197,7 @@ const PanelDistribucion = ({ distribucion }) => {
               <p className="text-xs text-slate-400">Ganancia neta</p>
             </div>
           </div>
-          <span className="text-lg font-bold text-emerald-400">
+          <span className="text-lg font-bold text-zinc-200">
             ${distribucion.utilidades.toLocaleString()}
           </span>
         </div>
@@ -305,8 +305,8 @@ export default function AbonoFormOptimizado({ ventas, clientes, onSubmit, onCanc
       {/* Header */}
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold flex items-center gap-3">
-          <div className="p-3 bg-emerald-500/20 rounded-xl">
-            <CreditCard className="w-6 h-6 text-emerald-400" />
+          <div className="p-3 bg-zinc-9000/20 rounded-xl">
+            <CreditCard className="w-6 h-6 text-zinc-200" />
           </div>
           Registrar Abono/Pago
         </h2>
@@ -381,7 +381,7 @@ export default function AbonoFormOptimizado({ ventas, clientes, onSubmit, onCanc
           >
             {/* Información de la venta */}
             <div className={`${ds.glass} rounded-xl p-4`}>
-              <h3 className="font-semibold mb-3 text-emerald-400">Venta Seleccionada</h3>
+              <h3 className="font-semibold mb-3 text-zinc-200">Venta Seleccionada</h3>
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div>
                   <span className="text-slate-400">Cliente:</span>
@@ -401,7 +401,7 @@ export default function AbonoFormOptimizado({ ventas, clientes, onSubmit, onCanc
                 </div>
                 <div>
                   <span className="text-slate-400">Saldo Pendiente:</span>
-                  <p className="font-semibold text-red-400">
+                  <p className="font-semibold text-zinc-200">
                     ${(ventaSeleccionada.adeudo || 0).toLocaleString()}
                   </p>
                 </div>
@@ -452,11 +452,11 @@ export default function AbonoFormOptimizado({ ventas, clientes, onSubmit, onCanc
               {calculos && (
                 <div className="mt-3 space-y-2">
                   {calculos.porcentajePago >= 100 ? (
-                    <p className="text-sm text-emerald-400 flex items-center gap-2">
+                    <p className="text-sm text-zinc-200 flex items-center gap-2">
                       <CheckCircle className="w-4 h-4" />✅ Esta venta quedará como PAGADA
                     </p>
                   ) : calculos.porcentajePago > 0 ? (
-                    <p className="text-sm text-yellow-400 flex items-center gap-2">
+                    <p className="text-sm text-zinc-200 flex items-center gap-2">
                       <AlertCircle className="w-4 h-4" />
                       💰 Se pagará el {calculos.porcentajePago.toFixed(1)}% (Quedará saldo: $
                       {calculos.nuevoSaldo.toLocaleString()})
@@ -533,7 +533,7 @@ export default function AbonoFormOptimizado({ ventas, clientes, onSubmit, onCanc
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-xl"
+          className="p-4 bg-zinc-9000/10 border border-zinc-500/30 rounded-xl"
         >
           <p className="text-sm text-yellow-300 flex items-center gap-2">
             <AlertCircle className="w-4 h-4" />

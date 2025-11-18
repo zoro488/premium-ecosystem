@@ -205,7 +205,7 @@ export default function FormCliente({
           }}
         >
           <div className="flex items-center gap-3">
-            <User className="w-6 h-6 text-purple-400" />
+            <User className="w-6 h-6 text-zinc-800" />
             <div>
               <h2 className="text-2xl font-bold text-white">
                 {isEditMode ? 'Editar Cliente' : 'Nuevo Cliente'}
@@ -224,9 +224,9 @@ export default function FormCliente({
           {/* NOMBRE */}
           <label className="block">
             <div className="flex items-center gap-2 mb-2">
-              <User className="w-4 h-4 text-purple-400" />
+              <User className="w-4 h-4 text-zinc-800" />
               <span className="text-sm font-medium text-white">
-                Nombre Completo <span className="text-red-400">*</span>
+                Nombre Completo <span className="text-zinc-200">*</span>
               </span>
             </div>
             <input
@@ -237,13 +237,13 @@ export default function FormCliente({
               disabled={isSubmitting}
               className={`w-full px-4 py-3 rounded-lg bg-white/5 border text-white placeholder-slate-400 transition-all ${
                 errors.nombre
-                  ? 'border-red-500 focus:border-red-400'
-                  : 'border-white/10 focus:border-purple-500'
-              } focus:outline-none focus:ring-2 focus:ring-purple-500/20`}
+                  ? 'border-zinc-500 focus:border-red-400'
+                  : 'border-white/10 focus:border-zinc-800'
+              } focus:outline-none focus:ring-2 focus:ring-zinc-800/20`}
             />
             {errors.nombre && (
               <motion.p
-                className="mt-2 text-sm text-red-400 flex items-center gap-1"
+                className="mt-2 text-sm text-zinc-200 flex items-center gap-1"
                 initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
               >
@@ -256,7 +256,7 @@ export default function FormCliente({
           {/* RFC */}
           <label className="block">
             <div className="flex items-center gap-2 mb-2">
-              <Building className="w-4 h-4 text-purple-400" />
+              <Building className="w-4 h-4 text-zinc-800" />
               <span className="text-sm font-medium text-white">RFC</span>
             </div>
             <input
@@ -268,13 +268,13 @@ export default function FormCliente({
               disabled={isSubmitting}
               className={`w-full px-4 py-3 rounded-lg bg-white/5 border text-white placeholder-slate-400 transition-all uppercase ${
                 errors.rfc
-                  ? 'border-red-500 focus:border-red-400'
-                  : 'border-white/10 focus:border-purple-500'
-              } focus:outline-none focus:ring-2 focus:ring-purple-500/20`}
+                  ? 'border-zinc-500 focus:border-red-400'
+                  : 'border-white/10 focus:border-zinc-800'
+              } focus:outline-none focus:ring-2 focus:ring-zinc-800/20`}
             />
             {errors.rfc && (
               <motion.p
-                className="mt-2 text-sm text-red-400 flex items-center gap-1"
+                className="mt-2 text-sm text-zinc-200 flex items-center gap-1"
                 initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
               >
@@ -288,7 +288,7 @@ export default function FormCliente({
           <div className="grid grid-cols-2 gap-4">
             <label className="block">
               <div className="flex items-center gap-2 mb-2">
-                <Phone className="w-4 h-4 text-purple-400" />
+                <Phone className="w-4 h-4 text-zinc-800" />
                 <span className="text-sm font-medium text-white">Teléfono</span>
               </div>
               <input
@@ -299,13 +299,13 @@ export default function FormCliente({
                 disabled={isSubmitting}
                 className={`w-full px-4 py-3 rounded-lg bg-white/5 border text-white placeholder-slate-400 transition-all ${
                   errors.telefono
-                    ? 'border-red-500 focus:border-red-400'
-                    : 'border-white/10 focus:border-purple-500'
-                } focus:outline-none focus:ring-2 focus:ring-purple-500/20`}
+                    ? 'border-zinc-500 focus:border-red-400'
+                    : 'border-white/10 focus:border-zinc-800'
+                } focus:outline-none focus:ring-2 focus:ring-zinc-800/20`}
               />
               {errors.telefono && (
                 <motion.p
-                  className="mt-2 text-sm text-red-400 flex items-center gap-1"
+                  className="mt-2 text-sm text-zinc-200 flex items-center gap-1"
                   initial={{ opacity: 0, y: -5 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
@@ -317,7 +317,7 @@ export default function FormCliente({
 
             <label className="block">
               <div className="flex items-center gap-2 mb-2">
-                <Mail className="w-4 h-4 text-purple-400" />
+                <Mail className="w-4 h-4 text-zinc-800" />
                 <span className="text-sm font-medium text-white">Email</span>
               </div>
               <input
@@ -328,13 +328,13 @@ export default function FormCliente({
                 disabled={isSubmitting}
                 className={`w-full px-4 py-3 rounded-lg bg-white/5 border text-white placeholder-slate-400 transition-all ${
                   errors.email
-                    ? 'border-red-500 focus:border-red-400'
-                    : 'border-white/10 focus:border-purple-500'
-                } focus:outline-none focus:ring-2 focus:ring-purple-500/20`}
+                    ? 'border-zinc-500 focus:border-red-400'
+                    : 'border-white/10 focus:border-zinc-800'
+                } focus:outline-none focus:ring-2 focus:ring-zinc-800/20`}
               />
               {errors.email && (
                 <motion.p
-                  className="mt-2 text-sm text-red-400 flex items-center gap-1"
+                  className="mt-2 text-sm text-zinc-200 flex items-center gap-1"
                   initial={{ opacity: 0, y: -5 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
@@ -348,7 +348,7 @@ export default function FormCliente({
           {/* DIRECCIÓN */}
           <label className="block">
             <div className="flex items-center gap-2 mb-2">
-              <MapPin className="w-4 h-4 text-purple-400" />
+              <MapPin className="w-4 h-4 text-zinc-800" />
               <span className="text-sm font-medium text-white">Dirección</span>
             </div>
             <textarea
@@ -357,7 +357,7 @@ export default function FormCliente({
               placeholder="Calle, número, colonia, ciudad..."
               rows={2}
               disabled={isSubmitting}
-              className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20"
+              className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-zinc-800/20"
             />
           </label>
 
@@ -365,7 +365,7 @@ export default function FormCliente({
           <div className="grid grid-cols-2 gap-4">
             <label className="block">
               <div className="flex items-center gap-2 mb-2">
-                <FileText className="w-4 h-4 text-purple-400" />
+                <FileText className="w-4 h-4 text-zinc-800" />
                 <span className="text-sm font-medium text-white">Contacto</span>
               </div>
               <input
@@ -374,13 +374,13 @@ export default function FormCliente({
                 onChange={(e) => setContacto(e.target.value)}
                 placeholder="Nombre del contacto"
                 disabled={isSubmitting}
-                className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20"
+                className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-zinc-800/20"
               />
             </label>
 
             <label className="block">
               <div className="flex items-center gap-2 mb-2">
-                <CreditCard className="w-4 h-4 text-purple-400" />
+                <CreditCard className="w-4 h-4 text-zinc-800" />
                 <span className="text-sm font-medium text-white">Límite de Crédito</span>
               </div>
               <div className="relative">
@@ -395,14 +395,14 @@ export default function FormCliente({
                   disabled={isSubmitting}
                   className={`w-full pl-8 pr-4 py-3 rounded-lg bg-white/5 border text-white placeholder-slate-400 transition-all ${
                     errors.limiteCredito
-                      ? 'border-red-500 focus:border-red-400'
-                      : 'border-white/10 focus:border-purple-500'
-                  } focus:outline-none focus:ring-2 focus:ring-purple-500/20`}
+                      ? 'border-zinc-500 focus:border-red-400'
+                      : 'border-white/10 focus:border-zinc-800'
+                  } focus:outline-none focus:ring-2 focus:ring-zinc-800/20`}
                 />
               </div>
               {errors.limiteCredito && (
                 <motion.p
-                  className="mt-2 text-sm text-red-400 flex items-center gap-1"
+                  className="mt-2 text-sm text-zinc-200 flex items-center gap-1"
                   initial={{ opacity: 0, y: -5 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
@@ -416,7 +416,7 @@ export default function FormCliente({
           {/* NOTAS */}
           <label className="block">
             <div className="flex items-center gap-2 mb-2">
-              <FileText className="w-4 h-4 text-purple-400" />
+              <FileText className="w-4 h-4 text-zinc-800" />
               <span className="text-sm font-medium text-white">Notas</span>
             </div>
             <textarea
@@ -425,7 +425,7 @@ export default function FormCliente({
               placeholder="Notas adicionales sobre el cliente..."
               rows={3}
               disabled={isSubmitting}
-              className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20"
+              className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-zinc-800/20"
             />
           </label>
 

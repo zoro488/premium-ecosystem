@@ -173,10 +173,10 @@ const PanelMielUltra: FC = memo(() => {
         {parseFloat(roiPercentage) > 150 && (
           <motion.div
             {...animations.container.fadeSlideUp}
-            className="mb-6 bg-gradient-to-r from-emerald-500/20 to-green-500/20 backdrop-blur-xl border border-emerald-500/30 rounded-2xl p-4"
+            className="mb-6 bg-gradient-to-r from-emerald-500/20 to-green-500/20 backdrop-blur-xl border border-zinc-500/30 rounded-2xl p-4"
           >
             <div className="flex items-start gap-3">
-              <Sparkles className="w-6 h-6 text-emerald-400 flex-shrink-0 mt-1" />
+              <Sparkles className="w-6 h-6 text-zinc-200 flex-shrink-0 mt-1" />
               <div className="flex-1">
                 <h4 className="text-lg font-semibold text-emerald-300 mb-1">
                   🎯 ¡Excelente ROI Detectado!
@@ -192,7 +192,7 @@ const PanelMielUltra: FC = memo(() => {
 
         {/* Tabs Navigation */}
         <motion.div {...animations.container.fadeSlideUp} className="mb-6">
-          <div className="flex flex-wrap gap-2 bg-slate-900/50 backdrop-blur-xl p-2 rounded-2xl border border-amber-500/20">
+          <div className="flex flex-wrap gap-2 bg-slate-900/50 backdrop-blur-xl p-2 rounded-2xl border border-zinc-500/20">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               return (
@@ -223,7 +223,7 @@ const PanelMielUltra: FC = memo(() => {
         {/* Content */}
         <motion.div {...animations.container.fadeSlideUp}>
           {tabActiva === 'graficos' && (
-            <div className="bg-slate-900/50 backdrop-blur-xl rounded-2xl p-6 border border-amber-500/20">
+            <div className="bg-slate-900/50 backdrop-blur-xl rounded-2xl p-6 border border-zinc-500/20">
               <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
                 <Activity className="w-5 h-5 text-amber-500" />
                 🥧 Distribución de Recursos 2025

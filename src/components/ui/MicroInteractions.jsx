@@ -27,7 +27,7 @@ export const RippleButton = ({
     secondary: 'bg-gray-800/60 border border-gray-700/50 text-white',
     success:
       'bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-lg shadow-green-500/30',
-    danger: 'bg-gradient-to-r from-red-500 to-rose-500 text-white shadow-lg shadow-red-500/30',
+    danger: 'bg-gradient-to-r from-zinc-700 to-rose-500 text-white shadow-lg shadow-red-500/30',
   };
 
   const sizes = {

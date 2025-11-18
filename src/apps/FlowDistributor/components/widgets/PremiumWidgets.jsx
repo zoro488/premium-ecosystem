@@ -23,28 +23,28 @@ export const MetricCardPremium = ({
 }) => {
   const colorClasses = {
     primary: {
-      bg: 'from-blue-500/20 to-purple-500/20',
+      bg: 'from-zinc-800/20 to-zinc-800/20',
       glow: 'shadow-glow',
-      icon: 'text-blue-400',
-      trend: trend === 'up' ? 'text-green-400' : 'text-red-400'
+      icon: 'text-zinc-300',
+      trend: trend === 'up' ? 'text-zinc-200' : 'text-zinc-200'
     },
     success: {
       bg: 'from-green-500/20 to-emerald-500/20',
       glow: 'shadow-glow-success',
-      icon: 'text-green-400',
-      trend: trend === 'up' ? 'text-green-400' : 'text-red-400'
+      icon: 'text-zinc-200',
+      trend: trend === 'up' ? 'text-zinc-200' : 'text-zinc-200'
     },
     warning: {
       bg: 'from-yellow-500/20 to-orange-500/20',
       glow: 'shadow-glow-warning',
-      icon: 'text-yellow-400',
-      trend: trend === 'up' ? 'text-green-400' : 'text-red-400'
+      icon: 'text-zinc-200',
+      trend: trend === 'up' ? 'text-zinc-200' : 'text-zinc-200'
     },
     purple: {
-      bg: 'from-purple-500/20 to-pink-500/20',
+      bg: 'from-zinc-800/20 to-zinc-700/20',
       glow: 'shadow-glow-purple',
-      icon: 'text-purple-400',
-      trend: trend === 'up' ? 'text-green-400' : 'text-red-400'
+      icon: 'text-zinc-800',
+      trend: trend === 'up' ? 'text-zinc-200' : 'text-zinc-200'
     }
   };
 
@@ -139,11 +139,11 @@ export const GlassCard3D = ({ children, className = '', hover3D = true }) => {
     >
       {/* Floating particles effect */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute w-2 h-2 bg-blue-400/30 rounded-full blur-sm animate-float"
+        <div className="absolute w-2 h-2 bg-zinc-700/30 rounded-full blur-sm animate-float"
              style={{ top: '20%', left: '10%', animationDelay: '0s' }} />
-        <div className="absolute w-3 h-3 bg-purple-400/30 rounded-full blur-sm animate-float"
+        <div className="absolute w-3 h-3 bg-zinc-800/30 rounded-full blur-sm animate-float"
              style={{ top: '60%', right: '15%', animationDelay: '1s' }} />
-        <div className="absolute w-2 h-2 bg-pink-400/30 rounded-full blur-sm animate-float"
+        <div className="absolute w-2 h-2 bg-zinc-700/30 rounded-full blur-sm animate-float"
              style={{ bottom: '30%', left: '20%', animationDelay: '2s' }} />
       </div>
 
@@ -193,9 +193,9 @@ export const StatWidget = ({
   }, [numericValue, animated]);
 
   const colorClasses = {
-    blue: 'from-blue-500 to-cyan-500',
+    blue: 'from-zinc-800 to-zinc-800',
     green: 'from-green-500 to-emerald-500',
-    purple: 'from-purple-500 to-pink-500',
+    purple: 'from-zinc-800 to-zinc-700',
     orange: 'from-orange-500 to-yellow-500',
   };
 
@@ -355,9 +355,9 @@ export const QuickActionButton = ({
   badge = null
 }) => {
   const colorClasses = {
-    primary: 'from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600',
+    primary: 'from-zinc-800 to-zinc-800 hover:from-zinc-900 hover:to-zinc-800',
     success: 'from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600',
-    danger: 'from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600',
+    danger: 'from-zinc-700 to-zinc-700 hover:from-zinc-700 hover:to-zinc-700',
     warning: 'from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600',
   };
 
@@ -386,7 +386,7 @@ export const QuickActionButton = ({
         <span className="
           absolute -top-1 -right-1
           w-5 h-5 rounded-full
-          bg-red-500 text-white text-xs
+          bg-zinc-9000 text-white text-xs
           flex items-center justify-center
           animate-pulse
         ">
@@ -402,10 +402,10 @@ export const QuickActionButton = ({
 // ============================================
 export const NotificationBadge = ({ count, color = 'red', pulse = true }) => {
   const colorClasses = {
-    red: 'bg-red-500',
-    blue: 'bg-blue-500',
-    green: 'bg-green-500',
-    yellow: 'bg-yellow-500',
+    red: 'bg-zinc-9000',
+    blue: 'bg-zinc-800',
+    green: 'bg-zinc-9000',
+    yellow: 'bg-zinc-9000',
   };
 
   if (count === 0) return null;

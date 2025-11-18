@@ -81,7 +81,7 @@ export function ChronosLoginPage({ onLogin, onSocialLogin }) {
           transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
         >
           <div className="absolute w-[800px] h-[800px] rounded-full border border-blue-500/10" />
-          <div className="absolute w-[600px] h-[600px] rounded-full border border-purple-500/10" />
+          <div className="absolute w-[600px] h-[600px] rounded-full border border-zinc-700/10" />
           <div className="absolute w-[400px] h-[400px] rounded-full border border-pink-500/10" />
         </motion.div>
 
@@ -342,7 +342,7 @@ export function ChronosLoginPage({ onLogin, onSocialLogin }) {
                        text-gray-300 hover:bg-white/10 hover:border-white/20 transition-all duration-300
                        disabled:opacity-50 disabled:cursor-not-allowed group"
             >
-              <Github className="w-5 h-5 text-purple-400 group-hover:scale-110 transition-transform" />
+              <Github className="w-5 h-5 text-zinc-200 group-hover:scale-110 transition-transform" />
               GitHub
             </button>
           </motion.div>

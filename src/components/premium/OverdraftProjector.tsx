@@ -117,7 +117,7 @@ export const OverdraftProjector: React.FC<OverdraftProjectorProps> = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-gradient-to-br from-rose-500/10 to-red-600/10 backdrop-blur-xl rounded-2xl border border-white/10 p-6"
+      className="bg-gradient-to-br from-rose-500/10 to-zinc-800/10 backdrop-blur-xl rounded-2xl border border-white/10 p-6"
     >
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
@@ -125,7 +125,7 @@ export const OverdraftProjector: React.FC<OverdraftProjectorProps> = ({
           <motion.div
             animate={{ rotate: [0, 10, -10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-12 h-12 bg-gradient-to-br from-rose-500 to-red-600 rounded-full p-2.5 flex items-center justify-center"
+            className="w-12 h-12 bg-gradient-to-br from-rose-500 to-zinc-800 rounded-full p-2.5 flex items-center justify-center"
           >
             <TrendingDown className="text-white w-6 h-6" />
           </motion.div>
@@ -151,7 +151,7 @@ export const OverdraftProjector: React.FC<OverdraftProjectorProps> = ({
                   transition={{ duration: 1, ease: 'easeOut' }}
                   className={`h-full ${
                     urgencyScore > 80
-                      ? 'bg-gradient-to-r from-rose-500 to-red-600'
+                      ? 'bg-gradient-to-r from-rose-500 to-zinc-800'
                       : urgencyScore > 50
                       ? 'bg-gradient-to-r from-amber-500 to-orange-600'
                       : 'bg-gradient-to-r from-emerald-500 to-green-600'

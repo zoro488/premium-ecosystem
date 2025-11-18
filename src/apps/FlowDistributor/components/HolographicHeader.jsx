@@ -100,15 +100,15 @@ const HolographicHeader = ({
   const getStatusColor = (status) => {
     switch (status) {
       case 'ONLINE':
-        return 'text-green-400';
+        return 'text-zinc-200';
       case 'SCANNING':
-        return 'text-yellow-400';
+        return 'text-zinc-200';
       case 'ALERT':
-        return 'text-red-400';
+        return 'text-zinc-200';
       case 'SECURE':
-        return 'text-cyan-400';
+        return 'text-zinc-300';
       case 'READY':
-        return 'text-green-400';
+        return 'text-zinc-200';
       default:
         return 'text-gray-400';
     }
@@ -118,15 +118,15 @@ const HolographicHeader = ({
   const getNotificationColor = (type) => {
     switch (type) {
       case 'success':
-        return 'border-green-400 bg-green-400/10 text-green-400';
+        return 'border-green-400 bg-green-400/10 text-zinc-200';
       case 'warning':
-        return 'border-yellow-400 bg-yellow-400/10 text-yellow-400';
+        return 'border-yellow-400 bg-yellow-400/10 text-zinc-200';
       case 'error':
-        return 'border-red-400 bg-red-400/10 text-red-400';
+        return 'border-red-400 bg-red-400/10 text-zinc-200';
       case 'tactical':
-        return 'border-orange-400 bg-orange-400/10 text-orange-400';
+        return 'border-orange-400 bg-orange-400/10 text-zinc-200';
       default:
-        return 'border-blue-400 bg-blue-400/10 text-blue-400';
+        return 'border-zinc-600 bg-zinc-700/10 text-zinc-300';
     }
   };
 
@@ -134,7 +134,7 @@ const HolographicHeader = ({
 
   return (
     <motion.header
-      className={`relative bg-black/90 backdrop-blur-lg border-b border-orange-500/30 ${className}`}
+      className={`relative bg-black/90 backdrop-blur-lg border-b border-zinc-500/30 ${className}`}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -161,7 +161,7 @@ const HolographicHeader = ({
             {/* CHRONOS Logo */}
             <motion.div className="flex items-center space-x-2" whileHover={{ scale: 1.05 }}>
               <motion.div
-                className="w-8 h-8 bg-gradient-to-br from-orange-400 to-red-500 rounded-lg flex items-center justify-center"
+                className="w-8 h-8 bg-gradient-to-br from-orange-400 to-zinc-800 rounded-lg flex items-center justify-center"
                 animate={{
                   boxShadow: [
                     '0 0 10px rgba(255, 102, 0, 0.5)',
@@ -174,13 +174,13 @@ const HolographicHeader = ({
                 <span className="text-white font-bold text-sm">C</span>
               </motion.div>
               <div>
-                <h1 className="text-orange-400 font-bold text-lg tracking-wider">CHRONOS</h1>
+                <h1 className="text-zinc-200 font-bold text-lg tracking-wider">CHRONOS</h1>
                 <p className="text-xs text-gray-400 -mt-1">Enterprise Command</p>
               </div>
             </motion.div>
 
             {/* Current Panel */}
-            <div className="hidden md:block border-l border-orange-500/30 pl-6">
+            <div className="hidden md:block border-l border-zinc-500/30 pl-6">
               <motion.h2
                 className="text-white font-semibold text-sm"
                 key={currentPanel}
@@ -237,9 +237,9 @@ const HolographicHeader = ({
             </div>
 
             {/* Time Display */}
-            <div className="text-right border-l border-orange-500/30 pl-6">
+            <div className="text-right border-l border-zinc-500/30 pl-6">
               <motion.div
-                className="text-orange-400 font-mono text-lg font-bold"
+                className="text-zinc-200 font-mono text-lg font-bold"
                 animate={{ opacity: [1, 0.7, 1] }}
                 transition={{ duration: 1, repeat: Infinity }}
               >

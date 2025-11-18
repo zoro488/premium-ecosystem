@@ -15,9 +15,10 @@
 export { default as ChronosLogo } from './ChronosLogo';
 export { default as ChronosMainApp } from './ChronosMainApp';
 export { default as DashboardMain } from './DashboardMain';
-export { default as FlowDistributor } from './FlowDistributor';
-export { default as LoginChronos } from './LoginChronos';
-export { default as SplashChronos } from './SplashChronos';
+// Re-export FlowDistributor from FlowDistributor.tsx in parent directory
+export { default as FlowDistributor } from '../FlowDistributor';
+export { default as LoginChronos } from './ChronosLoginMinimal';
+export { default as SplashChronos } from './ChronosSplashMinimal';
 
 // Tipos principales del sistema
 export interface ChronosCredentials {

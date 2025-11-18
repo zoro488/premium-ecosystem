@@ -124,7 +124,7 @@ const CosmicBackground = () => (
         opacity: [0.5, 0.3, 0.5],
       }}
       transition={{ duration: 10, repeat: Infinity }}
-      className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"
+      className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-zinc-800/20 rounded-full blur-3xl"
     />
   </div>
 );

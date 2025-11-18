@@ -191,7 +191,7 @@ const ChronosDashboard = ({ data, onNavigate }) => {
                   if (header === 'Amount') {
                     const isPositive = row.amount > 0;
                     return (
-                      <span className={isPositive ? 'text-green-400' : 'text-red-400'}>
+                      <span className={isPositive ? 'text-zinc-200' : 'text-zinc-200'}>
                         {isPositive ? (
                           <ArrowUpRight className="inline w-3 h-3 mr-1" />
                         ) : (
@@ -245,9 +245,9 @@ const ChronosDashboard = ({ data, onNavigate }) => {
                     className="flex items-start gap-3 p-3 bg-white/5 rounded-sm border border-white/10"
                   >
                     <div className={`w-2 h-2 mt-1.5 rounded-full ${
-                      alert.type === 'danger' ? 'bg-red-500' :
-                      alert.type === 'warning' ? 'bg-yellow-500' :
-                      'bg-blue-500'
+                      alert.type === 'danger' ? 'bg-zinc-9000' :
+                      alert.type === 'warning' ? 'bg-zinc-9000' :
+                      'bg-zinc-800'
                     }`} />
                     <div className="flex-1">
                       <p className="text-sm text-white/80">

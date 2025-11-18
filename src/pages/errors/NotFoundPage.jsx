@@ -15,7 +15,7 @@ export const NotFoundPage = () => (
       <motion.div
         animate={{ rotate: [0, 5, -5, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600"
+        className="text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-zinc-800"
       >
         404
       </motion.div>
@@ -28,9 +28,9 @@ export const NotFoundPage = () => (
           to="/"
           className="
             px-6 py-3 rounded-lg
-            bg-gradient-to-r from-blue-500 to-purple-600
+            bg-gradient-to-r from-blue-500 to-zinc-800
             text-white font-medium
-            hover:from-blue-600 hover:to-purple-700
+            hover:from-blue-600 hover:to-zinc-800
             transition-all
             flex items-center gap-2
           "

@@ -173,7 +173,7 @@ const Vortex = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-white rounded-xl shadow-lg p-6">
           <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-            <GitBranch className="w-5 h-5 text-purple-600" />
+            <GitBranch className="w-5 h-5 text-zinc-200" />
             Evolución Multidimensional
           </h3>
           <ResponsiveContainer width="100%" height={300}>
@@ -279,7 +279,7 @@ const Vortex = () => {
 
         <div className="bg-white rounded-xl shadow-lg p-6">
           <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-            <BarChart3 className="w-5 h-5 text-purple-600" />
+            <BarChart3 className="w-5 h-5 text-zinc-200" />
             Densidad por Cluster
           </h3>
           <ResponsiveContainer width="100%" height={350}>
@@ -335,7 +335,7 @@ const Vortex = () => {
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+            <thead className="bg-gradient-to-r from-blue-600 to-zinc-800 text-white">
               <tr>
                 <th className="px-6 py-4 text-left">Capa</th>
                 <th className="px-6 py-4 text-left">Registros</th>
@@ -371,7 +371,7 @@ const Vortex = () => {
                       <button className="px-3 py-1 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors text-sm">
                         Analizar
                       </button>
-                      <button className="px-3 py-1 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200 transition-colors text-sm">
+                      <button className="px-3 py-1 bg-zinc-800 text-zinc-200 rounded-lg hover:bg-zinc-800 transition-colors text-sm">
                         Visualizar
                       </button>
                     </div>
@@ -409,7 +409,7 @@ const Vortex = () => {
 
         <div className="bg-white rounded-xl shadow-lg p-6">
           <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-purple-600" />
+            <Sparkles className="w-5 h-5 text-zinc-200" />
             Complejidad Dimensional
           </h3>
           <ResponsiveContainer width="100%" height={300}>
@@ -427,9 +427,9 @@ const Vortex = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-zinc-800 to-zinc-800">
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white shadow-2xl">
+      <div className="bg-gradient-to-r from-blue-600 via-zinc-800 to-zinc-800 text-white shadow-2xl">
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">

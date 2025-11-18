@@ -27,7 +27,7 @@ export const QuickActions = memo(() => {
       id: 'buscar',
       label: 'Buscar',
       icon: Search,
-      color: 'from-blue-500 to-cyan-600',
+      color: 'from-zinc-800 to-zinc-900',
       glow: 'shadow-[0_0_20px_rgba(59,130,246,0.3)]',
       action: () => console.log('Buscar'),
     },
@@ -35,7 +35,7 @@ export const QuickActions = memo(() => {
       id: 'reportes',
       label: 'Reportes',
       icon: FileText,
-      color: 'from-purple-500 to-pink-600',
+      color: 'from-zinc-800 to-zinc-700',
       glow: 'shadow-[0_0_20px_rgba(168,85,247,0.3)]',
       action: () => console.log('Reportes'),
     },
@@ -43,7 +43,7 @@ export const QuickActions = memo(() => {
       id: 'calendario',
       label: 'Calendario',
       icon: Calendar,
-      color: 'from-orange-500 to-red-600',
+      color: 'from-orange-500 to-zinc-800',
       glow: 'shadow-[0_0_20px_rgba(245,158,11,0.3)]',
       action: () => console.log('Calendario'),
     },
@@ -51,7 +51,7 @@ export const QuickActions = memo(() => {
       id: 'filtros',
       label: 'Filtros',
       icon: Filter,
-      color: 'from-indigo-500 to-purple-600',
+      color: 'from-indigo-500 to-zinc-800',
       glow: 'shadow-[0_0_20px_rgba(99,102,241,0.3)]',
       action: () => console.log('Filtros'),
     },
@@ -59,7 +59,7 @@ export const QuickActions = memo(() => {
       id: 'exportar',
       label: 'Exportar',
       icon: Download,
-      color: 'from-teal-500 to-cyan-600',
+      color: 'from-teal-500 to-zinc-900',
       glow: 'shadow-[0_0_20px_rgba(20,184,166,0.3)]',
       action: () => console.log('Exportar'),
     },
@@ -87,11 +87,11 @@ export const QuickActions = memo(() => {
         </motion.div>
 
         {/* Glow effect */}
-        <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" />
+        <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-zinc-800/20 to-zinc-800/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" />
 
         {/* Badge de notificación */}
         <motion.div
-          className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"
+          className="absolute -top-1 -right-1 w-3 h-3 bg-zinc-9000 rounded-full"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: 0.2, type: 'spring' }}
@@ -195,7 +195,7 @@ export const QuickActions = memo(() => {
                 >
                   <Bell className="w-4 h-4" />
                   <span className="text-sm">Notificaciones</span>
-                  <div className="ml-auto w-2 h-2 bg-red-500 rounded-full" />
+                  <div className="ml-auto w-2 h-2 bg-zinc-9000 rounded-full" />
                 </motion.button>
               </div>
             </div>

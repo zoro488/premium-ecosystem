@@ -148,15 +148,15 @@ export default function FormGYA({
   const colorScheme = useMemo(() => {
     return tipoOperacion === 'gasto'
       ? {
-          gradient: 'from-slate-900/95 to-red-900/95',
+          gradient: 'from-slate-900/95 to-zinc-800/95',
           border: 'border-red-400/30',
-          icon: 'text-red-400',
+          icon: 'text-zinc-200',
           accent: 'red',
         }
       : {
           gradient: 'from-slate-900/95 to-green-900/95',
           border: 'border-green-400/30',
-          icon: 'text-green-400',
+          icon: 'text-zinc-200',
           accent: 'green',
         };
   }, [tipoOperacion]);
@@ -223,7 +223,7 @@ export default function FormGYA({
               whileTap={{ scale: 0.98 }}
               className={`flex-1 px-6 py-4 rounded-xl font-semibold transition-all flex items-center justify-center gap-3 ${
                 tipoOperacion === 'gasto'
-                  ? 'bg-red-500/30 border-2 border-red-400 text-white shadow-lg shadow-red-500/30'
+                  ? 'bg-zinc-9000/30 border-2 border-red-400 text-white shadow-lg shadow-red-500/30'
                   : 'bg-white/5 border-2 border-white/10 text-gray-400 hover:text-white hover:border-white/20'
               }`}
             >
@@ -238,7 +238,7 @@ export default function FormGYA({
               whileTap={{ scale: 0.98 }}
               className={`flex-1 px-6 py-4 rounded-xl font-semibold transition-all flex items-center justify-center gap-3 ${
                 tipoOperacion === 'ingreso'
-                  ? 'bg-green-500/30 border-2 border-green-400 text-white shadow-lg shadow-green-500/30'
+                  ? 'bg-zinc-9000/30 border-2 border-green-400 text-white shadow-lg shadow-green-500/30'
                   : 'bg-white/5 border-2 border-white/10 text-gray-400 hover:text-white hover:border-white/20'
               }`}
             >
@@ -466,7 +466,7 @@ export default function FormGYA({
                           checked={value || false}
                           onChange={(e) => onChange(e.target.checked)}
                           {...field}
-                          className="w-5 h-5 rounded border-white/20 text-red-500 focus:ring-2 focus:ring-red-400/50"
+                          className="w-5 h-5 rounded border-white/20 text-zinc-100 focus:ring-2 focus:ring-red-400/50"
                         />
                         <span className="text-white">Deducible</span>
                       </label>
@@ -486,7 +486,7 @@ export default function FormGYA({
                           checked={value || false}
                           onChange={(e) => onChange(e.target.checked)}
                           {...field}
-                          className="w-5 h-5 rounded border-white/20 text-red-500 focus:ring-2 focus:ring-red-400/50"
+                          className="w-5 h-5 rounded border-white/20 text-zinc-100 focus:ring-2 focus:ring-red-400/50"
                         />
                         <span className="text-white">Con Factura</span>
                       </label>
@@ -536,7 +536,7 @@ export default function FormGYA({
                           checked={value || false}
                           onChange={(e) => onChange(e.target.checked)}
                           {...field}
-                          className="w-5 h-5 rounded border-white/20 text-red-500 focus:ring-2 focus:ring-red-400/50"
+                          className="w-5 h-5 rounded border-white/20 text-zinc-100 focus:ring-2 focus:ring-red-400/50"
                         />
                         <span className="text-white">Recurrente</span>
                       </label>
@@ -820,7 +820,7 @@ export default function FormGYA({
                           checked={value || false}
                           onChange={(e) => onChange(e.target.checked)}
                           {...field}
-                          className="w-5 h-5 rounded border-white/20 text-green-500 focus:ring-2 focus:ring-green-400/50"
+                          className="w-5 h-5 rounded border-white/20 text-zinc-100 focus:ring-2 focus:ring-green-400/50"
                         />
                         <span className="text-white">Gravable</span>
                       </label>

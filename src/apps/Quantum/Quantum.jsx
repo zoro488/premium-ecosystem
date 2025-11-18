@@ -97,7 +97,7 @@ const Quantum = () => {
     <div className="space-y-6">
       {/* Métricas principales */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-        <div className="bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl p-6 text-white">
+        <div className="bg-gradient-to-br from-zinc-800 to-zinc-800 rounded-xl p-6 text-white">
           <div className="flex items-center justify-between mb-2">
             <Atom className="w-8 h-8" />
             <span className="text-sm opacity-80">Qubits</span>
@@ -147,7 +147,7 @@ const Quantum = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-white rounded-xl shadow-lg p-6">
           <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-            <Activity className="w-5 h-5 text-purple-600" />
+            <Activity className="w-5 h-5 text-zinc-200" />
             Métricas Cuánticas en Tiempo Real
           </h3>
           <ResponsiveContainer width="100%" height={300}>
@@ -300,7 +300,7 @@ const Quantum = () => {
 
             <div className="mt-4 pt-4 border-t grid grid-cols-3 gap-4 text-center">
               <div>
-                <div className="text-2xl font-bold text-purple-600">
+                <div className="text-2xl font-bold text-zinc-200">
                   {Math.floor(algo.progress * 2.5)}
                 </div>
                 <div className="text-xs text-gray-600">Iteraciones</div>
@@ -329,7 +329,7 @@ const Quantum = () => {
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+            <thead className="bg-gradient-to-r from-zinc-800 to-blue-600 text-white">
               <tr>
                 <th className="px-6 py-4 text-left">Circuito</th>
                 <th className="px-6 py-4 text-left">Gates</th>
@@ -343,7 +343,7 @@ const Quantum = () => {
                 <tr key={circuit.id} className="hover:bg-gray-50 transition-colors">
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
-                      <Box className="w-5 h-5 text-purple-600" />
+                      <Box className="w-5 h-5 text-zinc-200" />
                       <span className="font-medium">{circuit.name}</span>
                     </div>
                   </td>
@@ -365,7 +365,7 @@ const Quantum = () => {
                       <button className="px-3 py-1 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors text-sm">
                         Ver
                       </button>
-                      <button className="px-3 py-1 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200 transition-colors text-sm">
+                      <button className="px-3 py-1 bg-zinc-800 text-zinc-200 rounded-lg hover:bg-zinc-800 transition-colors text-sm">
                         Ejecutar
                       </button>
                     </div>
@@ -380,12 +380,12 @@ const Quantum = () => {
       {/* Visualización de circuito */}
       <div className="bg-white rounded-xl shadow-lg p-6">
         <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-          <Box className="w-5 h-5 text-purple-600" />
+          <Box className="w-5 h-5 text-zinc-200" />
           Visualización de Circuito Cuántico
         </h3>
-        <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-lg p-8 min-h-[300px] flex items-center justify-center">
+        <div className="bg-gradient-to-br from-zinc-800 to-blue-50 rounded-lg p-8 min-h-[300px] flex items-center justify-center">
           <div className="text-center text-gray-500">
-            <Atom className="w-16 h-16 mx-auto mb-4 text-purple-400" />
+            <Atom className="w-16 h-16 mx-auto mb-4 text-zinc-200" />
             <p className="text-lg">Selecciona un circuito para visualizar</p>
             <p className="text-sm mt-2">Los circuitos cuánticos se mostrarán aquí</p>
           </div>
@@ -395,9 +395,9 @@ const Quantum = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50">
+    <div className="min-h-screen bg-gradient-to-br from-zinc-800 via-blue-50 to-cyan-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 text-white shadow-2xl">
+      <div className="bg-gradient-to-r from-zinc-800 via-blue-600 to-cyan-600 text-white shadow-2xl">
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -406,7 +406,7 @@ const Quantum = () => {
               </div>
               <div>
                 <h1 className="text-3xl font-bold">Quantum</h1>
-                <p className="text-purple-100 text-sm">
+                <p className="text-zinc-200 text-sm">
                   Sistema de Procesamiento Cuántico Avanzado
                 </p>
               </div>
@@ -432,8 +432,8 @@ const Quantum = () => {
               onClick={() => setActiveTab('processing')}
               className={`px-6 py-4 font-medium transition-all ${
                 activeTab === 'processing'
-                  ? 'text-purple-600 border-b-2 border-purple-600 bg-purple-50'
-                  : 'text-gray-600 hover:text-purple-600 hover:bg-gray-50'
+                  ? 'text-zinc-200 border-b-2 border-zinc-700 bg-zinc-800'
+                  : 'text-gray-600 hover:text-zinc-200 hover:bg-gray-50'
               }`}
             >
               <div className="flex items-center gap-2">
@@ -445,8 +445,8 @@ const Quantum = () => {
               onClick={() => setActiveTab('algorithms')}
               className={`px-6 py-4 font-medium transition-all ${
                 activeTab === 'algorithms'
-                  ? 'text-purple-600 border-b-2 border-purple-600 bg-purple-50'
-                  : 'text-gray-600 hover:text-purple-600 hover:bg-gray-50'
+                  ? 'text-zinc-200 border-b-2 border-zinc-700 bg-zinc-800'
+                  : 'text-gray-600 hover:text-zinc-200 hover:bg-gray-50'
               }`}
             >
               <div className="flex items-center gap-2">
@@ -458,8 +458,8 @@ const Quantum = () => {
               onClick={() => setActiveTab('circuits')}
               className={`px-6 py-4 font-medium transition-all ${
                 activeTab === 'circuits'
-                  ? 'text-purple-600 border-b-2 border-purple-600 bg-purple-50'
-                  : 'text-gray-600 hover:text-purple-600 hover:bg-gray-50'
+                  ? 'text-zinc-200 border-b-2 border-zinc-700 bg-zinc-800'
+                  : 'text-gray-600 hover:text-zinc-200 hover:bg-gray-50'
               }`}
             >
               <div className="flex items-center gap-2">

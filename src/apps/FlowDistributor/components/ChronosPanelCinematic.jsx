@@ -224,12 +224,12 @@ const CinematicKpiCard = ({ icon: Icon, label, value, trend, trendValue, color, 
               transition={{ duration: 2, repeat: Infinity }}
             >
               {trend === 'up' ? (
-                <ArrowUpRight className="w-4 h-4 text-green-400" />
+                <ArrowUpRight className="w-4 h-4 text-zinc-200" />
               ) : (
-                <ArrowDownRight className="w-4 h-4 text-red-400" />
+                <ArrowDownRight className="w-4 h-4 text-zinc-200" />
               )}
             </motion.div>
-            <span className={`text-sm font-semibold ${trend === 'up' ? 'text-green-400' : 'text-red-400'}`}>
+            <span className={`text-sm font-semibold ${trend === 'up' ? 'text-zinc-200' : 'text-zinc-200'}`}>
               {trendValue}%
             </span>
             <span className="text-xs text-gray-500">vs last month</span>
@@ -308,7 +308,7 @@ const CinematicTable = ({ title, icon: Icon, data = [], columns = [], onAdd }) =
               whileHover={{ scale: 1.1, rotate: 360 }}
               transition={{ duration: 0.5 }}
             >
-              <Icon className="w-5 h-5 text-blue-400" />
+              <Icon className="w-5 h-5 text-zinc-300" />
             </motion.div>
             <h3 className="text-xl font-bold text-white">{title}</h3>
           </div>
@@ -318,7 +318,7 @@ const CinematicTable = ({ title, icon: Icon, data = [], columns = [], onAdd }) =
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={onAdd}
-              className="px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold flex items-center gap-2 shadow-lg shadow-blue-500/50"
+              className="px-4 py-2 rounded-lg bg-gradient-to-r from-zinc-800 to-zinc-800 text-white font-semibold flex items-center gap-2 shadow-lg shadow-blue-500/50"
             >
               <Plus className="w-4 h-4" />
               Add New
@@ -355,7 +355,7 @@ const CinematicTable = ({ title, icon: Icon, data = [], columns = [], onAdd }) =
             placeholder="Search transactions..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-all duration-300"
+            className="w-full pl-10 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-zinc-700/50 transition-all duration-300"
           />
         </div>
       </motion.div>
@@ -515,7 +515,7 @@ const ChronosPanelCinematic = ({ title = "Financial Dashboard", bankId = "boveda
             ease: 'linear'
           }}
         >
-          <Sparkles className="w-12 h-12 text-blue-400" />
+          <Sparkles className="w-12 h-12 text-zinc-300" />
         </motion.div>
       </div>
     );
@@ -559,7 +559,7 @@ const ChronosPanelCinematic = ({ title = "Financial Dashboard", bankId = "boveda
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <h1 className="text-5xl font-black mb-2 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
+        <h1 className="text-5xl font-black mb-2 bg-gradient-to-r from-white via-blue-200 to-zinc-800 bg-clip-text text-transparent">
           {title}
         </h1>
         <p className="text-gray-400">Real-time financial control system</p>

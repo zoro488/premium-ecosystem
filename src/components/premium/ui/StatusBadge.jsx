@@ -281,7 +281,7 @@ export const CountBadge = ({
     blue: 'bg-blue-500 text-white',
     green: 'bg-green-500 text-white',
     yellow: 'bg-yellow-500 text-white',
-    purple: 'bg-purple-500 text-white',
+    purple: 'bg-zinc-800 text-white',
   };
 
   const sizeClasses = {
@@ -343,9 +343,9 @@ export const ProgressBadge = ({
       text: 'text-green-400',
     },
     purple: {
-      bg: 'bg-purple-500/20',
-      bar: 'bg-purple-500',
-      text: 'text-purple-400',
+      bg: 'bg-zinc-800/20',
+      bar: 'bg-zinc-800',
+      text: 'text-zinc-200',
     },
   };
 

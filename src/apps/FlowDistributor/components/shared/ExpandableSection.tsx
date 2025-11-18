@@ -78,34 +78,34 @@ interface ExpandableSectionProps {
 // Temas de colores
 const THEME_COLORS = {
   purple: {
-    bg: 'from-purple-500/10 to-pink-500/10',
-    border: 'border-purple-500/30 hover:border-purple-400/50',
-    icon: 'text-purple-400',
-    badge: 'bg-purple-500/20 text-purple-300',
+    bg: 'from-zinc-800/10 to-zinc-700/10',
+    border: 'border-zinc-800/30 hover:border-zinc-800/50',
+    icon: 'text-zinc-800',
+    badge: 'bg-zinc-800/20 text-zinc-800',
   },
   blue: {
-    bg: 'from-blue-500/10 to-cyan-500/10',
-    border: 'border-blue-500/30 hover:border-blue-400/50',
-    icon: 'text-blue-400',
-    badge: 'bg-blue-500/20 text-blue-300',
+    bg: 'from-zinc-800/10 to-zinc-800/10',
+    border: 'border-zinc-700/30 hover:border-zinc-600/50',
+    icon: 'text-zinc-300',
+    badge: 'bg-zinc-800/20 text-zinc-300',
   },
   green: {
     bg: 'from-green-500/10 to-emerald-500/10',
-    border: 'border-green-500/30 hover:border-green-400/50',
-    icon: 'text-green-400',
-    badge: 'bg-green-500/20 text-green-300',
+    border: 'border-zinc-500/30 hover:border-green-400/50',
+    icon: 'text-zinc-200',
+    badge: 'bg-zinc-9000/20 text-green-300',
   },
   orange: {
     bg: 'from-orange-500/10 to-amber-500/10',
-    border: 'border-orange-500/30 hover:border-orange-400/50',
-    icon: 'text-orange-400',
-    badge: 'bg-orange-500/20 text-orange-300',
+    border: 'border-zinc-500/30 hover:border-orange-400/50',
+    icon: 'text-zinc-200',
+    badge: 'bg-zinc-9000/20 text-orange-300',
   },
   teal: {
-    bg: 'from-teal-500/10 to-cyan-500/10',
-    border: 'border-teal-500/30 hover:border-teal-400/50',
-    icon: 'text-teal-400',
-    badge: 'bg-teal-500/20 text-teal-300',
+    bg: 'from-teal-500/10 to-zinc-800/10',
+    border: 'border-zinc-500/30 hover:border-teal-400/50',
+    icon: 'text-zinc-200',
+    badge: 'bg-zinc-9000/20 text-teal-300',
   },
 };
 

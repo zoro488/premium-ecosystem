@@ -280,13 +280,13 @@ export const FormVenta: React.FC<FormVentaProps> = ({ onClose, onSuccess }) => {
             exit={{ opacity: 0, x: -20 }}
           >
             <div className="flex items-center gap-3 mb-6">
-              <User className="w-6 h-6 text-indigo-400" />
+              <User className="w-6 h-6 text-zinc-200" />
               <h3 className="text-xl font-bold text-white">Seleccionar Cliente</h3>
             </div>
 
             <label className="block">
               <span className="text-sm font-medium text-white mb-2 block">
-                Cliente <span className="text-red-400">*</span>
+                Cliente <span className="text-zinc-200">*</span>
               </span>
               <input
                 type="text"
@@ -296,8 +296,8 @@ export const FormVenta: React.FC<FormVentaProps> = ({ onClose, onSuccess }) => {
                 list="clientes-datalist"
                 className={`w-full px-4 py-3 rounded-lg bg-white/5 border text-white placeholder-slate-400 transition-all ${
                   errors.cliente
-                    ? 'border-red-500 focus:border-red-400'
-                    : 'border-white/10 focus:border-indigo-500'
+                    ? 'border-zinc-500 focus:border-red-400'
+                    : 'border-white/10 focus:border-zinc-500'
                 } focus:outline-none focus:ring-2 focus:ring-indigo-500/20`}
               />
               <datalist id="clientes-datalist">
@@ -306,15 +306,15 @@ export const FormVenta: React.FC<FormVentaProps> = ({ onClose, onSuccess }) => {
                 ))}
               </datalist>
               {errors.cliente && (
-                <p className="mt-2 text-sm text-red-400 flex items-center gap-1">
+                <p className="mt-2 text-sm text-zinc-200 flex items-center gap-1">
                   <AlertCircle className="w-4 h-4" />
                   {errors.cliente}
                 </p>
               )}
             </label>
 
-            <div className="mt-6 p-4 rounded-lg bg-blue-500/10 border border-blue-500/20">
-              <p className="text-sm text-blue-300 flex items-center gap-2">
+            <div className="mt-6 p-4 rounded-lg bg-zinc-800/10 border border-zinc-700/20">
+              <p className="text-sm text-zinc-300 flex items-center gap-2">
                 <AlertCircle className="w-4 h-4" />
                 Si el cliente no existe, escribe el nombre y se creará automáticamente
               </p>
@@ -332,13 +332,13 @@ export const FormVenta: React.FC<FormVentaProps> = ({ onClose, onSuccess }) => {
           >
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
-                <Package className="w-6 h-6 text-indigo-400" />
+                <Package className="w-6 h-6 text-zinc-200" />
                 <h3 className="text-xl font-bold text-white">Productos</h3>
               </div>
               <button
                 type="button"
                 onClick={handleAddProduct}
-                className="px-4 py-2 rounded-lg bg-indigo-500/20 text-indigo-300 hover:bg-indigo-500/30 transition-colors flex items-center gap-2"
+                className="px-4 py-2 rounded-lg bg-zinc-9000/20 text-indigo-300 hover:bg-zinc-9000/30 transition-colors flex items-center gap-2"
               >
                 <Plus className="w-4 h-4" />
                 Agregar
@@ -362,7 +362,7 @@ export const FormVenta: React.FC<FormVentaProps> = ({ onClose, onSuccess }) => {
                       <button
                         type="button"
                         onClick={() => handleRemoveProduct(index)}
-                        className="text-red-400 hover:text-red-300 transition-colors"
+                        className="text-zinc-200 hover:text-red-300 transition-colors"
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
@@ -376,10 +376,10 @@ export const FormVenta: React.FC<FormVentaProps> = ({ onClose, onSuccess }) => {
                         value={producto.nombre}
                         onChange={(e) => handleProductChange(index, 'nombre', e.target.value)}
                         placeholder="Nombre del producto"
-                        className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-400 text-sm focus:border-indigo-500 focus:outline-none"
+                        className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-400 text-sm focus:border-zinc-500 focus:outline-none"
                       />
                       {errors[`producto_${index}_nombre`] && (
-                        <p className="mt-1 text-xs text-red-400">
+                        <p className="mt-1 text-xs text-zinc-200">
                           {errors[`producto_${index}_nombre`]}
                         </p>
                       )}
@@ -394,10 +394,10 @@ export const FormVenta: React.FC<FormVentaProps> = ({ onClose, onSuccess }) => {
                         }
                         placeholder="Cant."
                         min="1"
-                        className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-400 text-sm focus:border-indigo-500 focus:outline-none"
+                        className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-400 text-sm focus:border-zinc-500 focus:outline-none"
                       />
                       {errors[`producto_${index}_cantidad`] && (
-                        <p className="mt-1 text-xs text-red-400">
+                        <p className="mt-1 text-xs text-zinc-200">
                           {errors[`producto_${index}_cantidad`]}
                         </p>
                       )}
@@ -413,17 +413,17 @@ export const FormVenta: React.FC<FormVentaProps> = ({ onClose, onSuccess }) => {
                         placeholder="Precio"
                         min="0"
                         step="0.01"
-                        className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-400 text-sm focus:border-indigo-500 focus:outline-none"
+                        className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-400 text-sm focus:border-zinc-500 focus:outline-none"
                       />
                       {errors[`producto_${index}_precio`] && (
-                        <p className="mt-1 text-xs text-red-400">
+                        <p className="mt-1 text-xs text-zinc-200">
                           {errors[`producto_${index}_precio`]}
                         </p>
                       )}
                     </div>
 
                     <div className="col-span-2">
-                      <div className="px-3 py-2 rounded-lg bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 text-sm font-mono text-right">
+                      <div className="px-3 py-2 rounded-lg bg-zinc-9000/20 border border-zinc-500/30 text-indigo-300 text-sm font-mono text-right">
                         ${producto.subtotal.toFixed(2)}
                       </div>
                     </div>
@@ -433,13 +433,13 @@ export const FormVenta: React.FC<FormVentaProps> = ({ onClose, onSuccess }) => {
             </div>
 
             {errors.productos && (
-              <p className="text-sm text-red-400 flex items-center gap-1">
+              <p className="text-sm text-zinc-200 flex items-center gap-1">
                 <AlertCircle className="w-4 h-4" />
                 {errors.productos}
               </p>
             )}
 
-            <div className="mt-6 p-4 rounded-lg bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-500/30">
+            <div className="mt-6 p-4 rounded-lg bg-gradient-to-r from-indigo-500/20 to-zinc-800/20 border border-zinc-500/30">
               <div className="flex items-center justify-between">
                 <span className="text-lg font-bold text-white">Total Venta:</span>
                 <span className="text-2xl font-bold text-indigo-300">
@@ -459,7 +459,7 @@ export const FormVenta: React.FC<FormVentaProps> = ({ onClose, onSuccess }) => {
             exit={{ opacity: 0, x: -20 }}
           >
             <div className="flex items-center gap-3 mb-6">
-              <DollarSign className="w-6 h-6 text-indigo-400" />
+              <DollarSign className="w-6 h-6 text-zinc-200" />
               <h3 className="text-xl font-bold text-white">Fletes y Destino</h3>
             </div>
 
@@ -471,7 +471,7 @@ export const FormVenta: React.FC<FormVentaProps> = ({ onClose, onSuccess }) => {
                   setAplicaFlete(e.target.checked);
                   if (!e.target.checked) setTotalFletes(0);
                 }}
-                className="w-5 h-5 rounded border-white/10 bg-white/5 text-indigo-500 focus:ring-2 focus:ring-indigo-500/20 cursor-pointer"
+                className="w-5 h-5 rounded border-white/10 bg-white/5 text-zinc-100 focus:ring-2 focus:ring-indigo-500/20 cursor-pointer"
               />
               <span className="text-white font-medium">¿Aplica flete?</span>
             </label>
@@ -495,11 +495,11 @@ export const FormVenta: React.FC<FormVentaProps> = ({ onClose, onSuccess }) => {
                       placeholder="0.00"
                       min="0"
                       step="0.01"
-                      className="w-full pl-8 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                      className="w-full pl-8 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:border-zinc-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
                     />
                   </div>
                   {errors.totalFletes && (
-                    <p className="mt-2 text-sm text-red-400 flex items-center gap-1">
+                    <p className="mt-2 text-sm text-zinc-200 flex items-center gap-1">
                       <AlertCircle className="w-4 h-4" />
                       {errors.totalFletes}
                     </p>
@@ -510,16 +510,16 @@ export const FormVenta: React.FC<FormVentaProps> = ({ onClose, onSuccess }) => {
 
             <label className="block">
               <span className="text-sm font-medium text-white mb-2 block flex items-center gap-2">
-                <Building2 className="w-4 h-4 text-indigo-400" />
-                Banco Destino <span className="text-red-400">*</span>
+                <Building2 className="w-4 h-4 text-zinc-200" />
+                Banco Destino <span className="text-zinc-200">*</span>
               </span>
               <select
                 value={destino}
                 onChange={(e) => setDestino(e.target.value)}
                 className={`w-full px-4 py-3 rounded-lg bg-white/5 border text-white appearance-none cursor-pointer transition-all ${
                   errors.destino
-                    ? 'border-red-500 focus:border-red-400'
-                    : 'border-white/10 focus:border-indigo-500'
+                    ? 'border-zinc-500 focus:border-red-400'
+                    : 'border-white/10 focus:border-zinc-500'
                 } focus:outline-none focus:ring-2 focus:ring-indigo-500/20`}
               >
                 <option value="">Seleccionar banco...</option>
@@ -530,7 +530,7 @@ export const FormVenta: React.FC<FormVentaProps> = ({ onClose, onSuccess }) => {
                 ))}
               </select>
               {errors.destino && (
-                <p className="mt-2 text-sm text-red-400 flex items-center gap-1">
+                <p className="mt-2 text-sm text-zinc-200 flex items-center gap-1">
                   <AlertCircle className="w-4 h-4" />
                   {errors.destino}
                 </p>
@@ -544,20 +544,20 @@ export const FormVenta: React.FC<FormVentaProps> = ({ onClose, onSuccess }) => {
                 onChange={(e) => setConcepto(e.target.value)}
                 placeholder="Agrega notas o detalles adicionales..."
                 rows={3}
-                className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:border-zinc-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
               />
             </label>
 
             <div className="grid grid-cols-2 gap-4 mt-6">
-              <div className="p-4 rounded-lg bg-purple-500/10 border border-purple-500/20">
+              <div className="p-4 rounded-lg bg-zinc-800/10 border border-zinc-800/20">
                 <p className="text-sm text-slate-400 mb-1">Total Utilidades</p>
-                <p className="text-2xl font-bold text-purple-300 flex items-center gap-2">
+                <p className="text-2xl font-bold text-zinc-800 flex items-center gap-2">
                   <TrendingUp className="w-5 h-5" />
                   {formatCurrency(totalUtilidades)}
                 </p>
               </div>
 
-              <div className="p-4 rounded-lg bg-indigo-500/10 border border-indigo-500/20">
+              <div className="p-4 rounded-lg bg-zinc-9000/10 border border-zinc-500/20">
                 <p className="text-sm text-slate-400 mb-1">Total Venta</p>
                 <p className="text-2xl font-bold text-indigo-300 flex items-center gap-2">
                   <ShoppingCart className="w-5 h-5" />
@@ -577,7 +577,7 @@ export const FormVenta: React.FC<FormVentaProps> = ({ onClose, onSuccess }) => {
             exit={{ opacity: 0, x: -20 }}
           >
             <div className="flex items-center gap-3 mb-6">
-              <Check className="w-6 h-6 text-green-400" />
+              <Check className="w-6 h-6 text-zinc-200" />
               <h3 className="text-xl font-bold text-white">Confirmar Venta</h3>
             </div>
 
@@ -617,13 +617,13 @@ export const FormVenta: React.FC<FormVentaProps> = ({ onClose, onSuccess }) => {
                 </div>
               </div>
 
-              <div className="p-6 rounded-lg bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-500/30">
+              <div className="p-6 rounded-lg bg-gradient-to-r from-indigo-500/20 to-zinc-800/20 border border-zinc-500/30">
                 <div className="space-y-2">
                   <div className="flex items-center justify-between text-white">
                     <span>Total Venta:</span>
                     <span className="text-2xl font-bold">{formatCurrency(totalVenta)}</span>
                   </div>
-                  <div className="flex items-center justify-between text-purple-300">
+                  <div className="flex items-center justify-between text-zinc-800">
                     <span>Total Utilidades:</span>
                     <span className="text-xl font-bold">{formatCurrency(totalUtilidades)}</span>
                   </div>
@@ -661,7 +661,7 @@ export const FormVenta: React.FC<FormVentaProps> = ({ onClose, onSuccess }) => {
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <ShoppingCart className="w-6 h-6 text-indigo-400" />
+              <ShoppingCart className="w-6 h-6 text-zinc-200" />
               <div>
                 <h2 className="text-2xl font-bold text-white">Nueva Venta</h2>
                 <p className="text-sm text-slate-400">Paso {currentStep + 1} de 4</p>
@@ -676,7 +676,7 @@ export const FormVenta: React.FC<FormVentaProps> = ({ onClose, onSuccess }) => {
                 <div
                   key={step}
                   className={`flex-1 h-1.5 rounded-full transition-all ${
-                    step <= currentStep ? 'bg-indigo-500' : 'bg-white/10'
+                    step <= currentStep ? 'bg-zinc-9000' : 'bg-white/10'
                   }`}
                 />
               ))}

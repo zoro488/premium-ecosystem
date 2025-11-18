@@ -83,7 +83,7 @@ export const GrowthAnimation = ({
   };
 
   const getColor = () => {
-    return isPositive ? 'text-green-400' : 'text-red-400';
+    return isPositive ? 'text-zinc-200' : 'text-zinc-200';
   };
 
   const formatPercentage = () => {
@@ -146,21 +146,21 @@ export const MetricCard = ({
   className = '',
 }) => {
   const colorMap = {
-    blue: 'border-blue-500/30 bg-blue-900/20',
-    green: 'border-green-500/30 bg-green-900/20',
-    red: 'border-red-500/30 bg-red-900/20',
-    yellow: 'border-yellow-500/30 bg-yellow-900/20',
-    purple: 'border-purple-500/30 bg-purple-900/20',
-    orange: 'border-orange-500/30 bg-orange-900/20',
+    blue: 'border-zinc-700/30 bg-zinc-950/20',
+    green: 'border-zinc-500/30 bg-green-900/20',
+    red: 'border-zinc-500/30 bg-red-900/20',
+    yellow: 'border-zinc-500/30 bg-yellow-900/20',
+    purple: 'border-zinc-800/30 bg-zinc-800/20',
+    orange: 'border-zinc-500/30 bg-orange-900/20',
   };
 
   const textColorMap = {
-    blue: 'text-blue-400',
-    green: 'text-green-400',
-    red: 'text-red-400',
-    yellow: 'text-yellow-400',
-    purple: 'text-purple-400',
-    orange: 'text-orange-400',
+    blue: 'text-zinc-300',
+    green: 'text-zinc-200',
+    red: 'text-zinc-200',
+    yellow: 'text-zinc-200',
+    purple: 'text-zinc-800',
+    orange: 'text-zinc-200',
   };
 
   return (
@@ -285,7 +285,7 @@ export const ProgressBar = ({
   value,
   maxValue = 100,
   height = 8,
-  color = 'bg-blue-400',
+  color = 'bg-zinc-700',
   backgroundColor = 'bg-gray-700',
   duration = 2,
   showValue = true,

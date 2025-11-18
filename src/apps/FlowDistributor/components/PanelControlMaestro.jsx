@@ -199,7 +199,7 @@ export default function PanelControlMaestro() {
               📊 Panel Control Maestro
             </motion.h1>
             <motion.p
-              className="text-blue-300"
+              className="text-zinc-300"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
@@ -220,11 +220,11 @@ export default function PanelControlMaestro() {
                 scale: 0.92,
                 boxShadow: '0 5px 15px rgba(59, 130, 246, 0.2)',
               }}
-              className="flex items-center gap-2 px-5 py-2.5 bg-blue-500/20 border border-blue-400/30 rounded-xl text-blue-300 hover:bg-blue-500/30 transition-all backdrop-blur-sm overflow-hidden relative group"
+              className="flex items-center gap-2 px-5 py-2.5 bg-zinc-800/20 border border-zinc-600/30 rounded-xl text-zinc-300 hover:bg-zinc-800/30 transition-all backdrop-blur-sm overflow-hidden relative group"
               transition={{ type: 'spring', stiffness: 400, damping: 17 }}
             >
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/20 to-blue-500/0"
+                className="absolute inset-0 bg-gradient-to-r from-zinc-800/0 via-zinc-700/20 to-zinc-800/0"
                 initial={{ x: '-100%' }}
                 whileHover={{ x: '100%' }}
                 transition={{ duration: 0.6, ease: 'easeInOut' }}
@@ -249,7 +249,7 @@ export default function PanelControlMaestro() {
                 boxShadow: '0 5px 15px rgba(34, 197, 94, 0.2)',
               }}
               onClick={exportToCSV}
-              className="flex items-center gap-2 px-5 py-2.5 bg-green-500/20 border border-green-400/30 rounded-xl text-green-300 hover:bg-green-500/30 transition-all backdrop-blur-sm overflow-hidden relative group"
+              className="flex items-center gap-2 px-5 py-2.5 bg-zinc-9000/20 border border-green-400/30 rounded-xl text-green-300 hover:bg-zinc-9000/30 transition-all backdrop-blur-sm overflow-hidden relative group"
               transition={{ type: 'spring', stiffness: 400, damping: 17 }}
             >
               <motion.div
@@ -278,11 +278,11 @@ export default function PanelControlMaestro() {
                 boxShadow: '0 5px 15px rgba(168, 85, 247, 0.2)',
               }}
               onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center gap-2 px-5 py-2.5 bg-purple-500/20 border border-purple-400/30 rounded-xl text-purple-300 hover:bg-purple-500/30 transition-all backdrop-blur-sm overflow-hidden relative group"
+              className="flex items-center gap-2 px-5 py-2.5 bg-zinc-800/20 border border-zinc-800/30 rounded-xl text-zinc-800 hover:bg-zinc-800/30 transition-all backdrop-blur-sm overflow-hidden relative group"
               transition={{ type: 'spring', stiffness: 400, damping: 17 }}
             >
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-500/20 to-purple-500/0"
+                className="absolute inset-0 bg-gradient-to-r from-zinc-800/0 via-zinc-800/20 to-zinc-800/0"
                 initial={{ x: '-100%' }}
                 whileHover={{ x: '100%' }}
                 transition={{ duration: 0.6, ease: 'easeInOut' }}
@@ -354,7 +354,7 @@ export default function PanelControlMaestro() {
                   ease: 'easeInOut',
                 }}
               >
-                <TrendingUp className="w-5 h-5 text-emerald-400" />
+                <TrendingUp className="w-5 h-5 text-zinc-200" />
               </motion.div>
             </div>
             <motion.p
@@ -423,14 +423,14 @@ export default function PanelControlMaestro() {
                   className="p-2 rounded-lg transition-all cursor-default"
                 >
                   <motion.p
-                    className={`text-xs ${item.color === 'red' ? 'text-red-300' : 'text-blue-300'} mb-1`}
+                    className={`text-xs ${item.color === 'red' ? 'text-red-300' : 'text-zinc-300'} mb-1`}
                     whileHover={{ x: 2 }}
                     transition={{ type: 'spring', stiffness: 400 }}
                   >
                     {item.label}
                   </motion.p>
                   <motion.p
-                    className={`text-lg font-bold ${item.color === 'red' ? 'text-red-400' : 'text-white'}`}
+                    className={`text-lg font-bold ${item.color === 'red' ? 'text-zinc-200' : 'text-white'}`}
                     whileHover={{ scale: 1.08 }}
                     transition={{ type: 'spring', stiffness: 400 }}
                   >
@@ -460,7 +460,7 @@ export default function PanelControlMaestro() {
             transition={{ type: 'spring', stiffness: 400 }}
           >
             <motion.div
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-blue-400"
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-300"
               animate={{
                 rotate: searchTerm ? 0 : [0, -15, 15, -10, 10, 0],
                 scale: searchTerm ? 1 : [1, 1.1, 1],
@@ -493,7 +493,7 @@ export default function PanelControlMaestro() {
                 whileHover={{ scale: 1.2, rotate: 90 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setSearchTerm('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-blue-400 hover:text-blue-300 transition-colors"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-300 hover:text-zinc-300 transition-colors"
                 transition={{ type: 'spring', stiffness: 400, damping: 20 }}
               >
                 <X className="w-5 h-5" />
@@ -540,7 +540,7 @@ export default function PanelControlMaestro() {
                   transition={{ type: 'spring', stiffness: 400 }}
                 >
                   <motion.label
-                    className="text-sm text-blue-300 mb-2 block"
+                    className="text-sm text-zinc-300 mb-2 block"
                     whileHover={{ x: 2 }}
                     transition={{ type: 'spring', stiffness: 400 }}
                   >
@@ -566,7 +566,7 @@ export default function PanelControlMaestro() {
                   transition={{ type: 'spring', stiffness: 400 }}
                 >
                   <motion.label
-                    className="text-sm text-blue-300 mb-2 block"
+                    className="text-sm text-zinc-300 mb-2 block"
                     whileHover={{ x: 2 }}
                     transition={{ type: 'spring', stiffness: 400 }}
                   >
@@ -599,7 +599,7 @@ export default function PanelControlMaestro() {
                       setFiltroFlete('Todos');
                       setSortConfig(null);
                     }}
-                    className="w-full px-4 py-2 bg-red-500/20 border border-red-400/30 rounded-lg text-red-300 hover:bg-red-500/30 transition-all flex items-center justify-center gap-2 relative overflow-hidden group"
+                    className="w-full px-4 py-2 bg-zinc-9000/20 border border-red-400/30 rounded-lg text-red-300 hover:bg-zinc-9000/30 transition-all flex items-center justify-center gap-2 relative overflow-hidden group"
                     whileHover={{
                       boxShadow: '0 10px 30px rgba(239, 68, 68, 0.3)',
                       scale: 1.05,
@@ -608,7 +608,7 @@ export default function PanelControlMaestro() {
                     transition={{ type: 'spring', stiffness: 400, damping: 20 }}
                   >
                     <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-red-500/0 via-red-500/20 to-red-500/0"
+                      className="absolute inset-0 bg-gradient-to-r from-zinc-700/0 via-red-500/20 to-zinc-800/0"
                       initial={{ x: '-100%' }}
                       whileHover={{ x: '100%' }}
                       transition={{ duration: 0.5 }}
@@ -645,8 +645,8 @@ export default function PanelControlMaestro() {
               value: ventasFiltradas.length,
               icon: Package,
               color: 'blue',
-              gradient: 'from-blue-500/20 to-blue-600/10',
-              border: 'border-blue-400/30',
+              gradient: 'from-zinc-800/20 to-zinc-900/10',
+              border: 'border-zinc-600/30',
             },
             {
               label: 'Total Ingresos',
@@ -661,8 +661,8 @@ export default function PanelControlMaestro() {
               value: `$${totales.totalFleteUtilidad.toLocaleString()}`,
               icon: TrendingUp,
               color: 'purple',
-              gradient: 'from-purple-500/20 to-purple-600/10',
-              border: 'border-purple-400/30',
+              gradient: 'from-zinc-800/20 to-zinc-800/10',
+              border: 'border-zinc-800/30',
             },
             {
               label: 'Total Utilidad',
@@ -777,7 +777,7 @@ export default function PanelControlMaestro() {
                   <motion.th
                     key={col.key}
                     onClick={() => handleSort(col.key)}
-                    className="px-4 py-3 text-left text-xs font-semibold text-blue-300 uppercase tracking-wider cursor-pointer hover:bg-white/10 transition-all relative group"
+                    className="px-4 py-3 text-left text-xs font-semibold text-zinc-300 uppercase tracking-wider cursor-pointer hover:bg-white/10 transition-all relative group"
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{
@@ -811,7 +811,7 @@ export default function PanelControlMaestro() {
                       </AnimatePresence>
                     </motion.div>
                     <motion.div
-                      className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100"
+                      className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-zinc-800 to-zinc-800 opacity-0 group-hover:opacity-100"
                       initial={{ scaleX: 0 }}
                       whileHover={{ scaleX: 1 }}
                       transition={{ duration: 0.3 }}
@@ -850,7 +850,7 @@ export default function PanelControlMaestro() {
                       {venta.fecha.toLocaleDateString()}
                     </motion.td>
                     <motion.td
-                      className="px-4 py-3 text-sm text-blue-300 font-mono"
+                      className="px-4 py-3 text-sm text-zinc-300 font-mono"
                       whileHover={{ scale: 1.05, x: 2, color: '#93c5fd' }}
                       transition={{ type: 'spring', stiffness: 500 }}
                     >
@@ -871,7 +871,7 @@ export default function PanelControlMaestro() {
                       {venta.cliente}
                     </motion.td>
                     <motion.td
-                      className="px-4 py-3 text-sm text-green-400"
+                      className="px-4 py-3 text-sm text-zinc-200"
                       whileHover={{
                         scale: 1.05,
                         x: 2,
@@ -882,14 +882,14 @@ export default function PanelControlMaestro() {
                       ${venta.bovedaMonte.toLocaleString()}
                     </motion.td>
                     <motion.td
-                      className="px-4 py-3 text-sm text-blue-300"
+                      className="px-4 py-3 text-sm text-zinc-300"
                       whileHover={{ scale: 1.05, x: 2 }}
                       transition={{ type: 'spring', stiffness: 500 }}
                     >
                       ${venta.precioVenta.toLocaleString()}
                     </motion.td>
                     <motion.td
-                      className="px-4 py-3 text-sm text-emerald-400 font-semibold"
+                      className="px-4 py-3 text-sm text-zinc-200 font-semibold"
                       whileHover={{
                         scale: 1.08,
                         x: 2,
@@ -907,7 +907,7 @@ export default function PanelControlMaestro() {
                       <motion.span
                         className={`px-2 py-1 text-xs rounded-full inline-block ${
                           venta.flete === 'Aplica'
-                            ? 'bg-blue-500/20 text-blue-300'
+                            ? 'bg-zinc-800/20 text-zinc-300'
                             : 'bg-gray-500/20 text-gray-300'
                         }`}
                         whileHover={{
@@ -923,7 +923,7 @@ export default function PanelControlMaestro() {
                       </motion.span>
                     </motion.td>
                     <motion.td
-                      className="px-4 py-3 text-sm text-purple-400"
+                      className="px-4 py-3 text-sm text-zinc-800"
                       whileHover={{ scale: 1.05, x: 2 }}
                       transition={{ type: 'spring', stiffness: 500 }}
                     >
@@ -931,7 +931,7 @@ export default function PanelControlMaestro() {
                     </motion.td>
                     <motion.td
                       className={`px-4 py-3 text-sm font-semibold ${
-                        venta.utilidad >= 0 ? 'text-green-400' : 'text-red-400'
+                        venta.utilidad >= 0 ? 'text-zinc-200' : 'text-zinc-200'
                       }`}
                       whileHover={{
                         scale: 1.08,
@@ -968,7 +968,7 @@ export default function PanelControlMaestro() {
                                 ease: 'easeInOut',
                               }}
                             >
-                              <CheckCircle className="w-4 h-4 text-green-400" />
+                              <CheckCircle className="w-4 h-4 text-zinc-200" />
                             </motion.div>
                             <span className="text-green-300 text-sm">Pagado</span>
                           </>
@@ -984,7 +984,7 @@ export default function PanelControlMaestro() {
                                 ease: 'easeInOut',
                               }}
                             >
-                              <Clock className="w-4 h-4 text-amber-400" />
+                              <Clock className="w-4 h-4 text-zinc-200" />
                             </motion.div>
                             <span className="text-amber-300 text-sm">Pendiente</span>
                           </>

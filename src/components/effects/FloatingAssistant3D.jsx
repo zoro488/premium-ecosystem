@@ -93,7 +93,7 @@ export const FloatingAssistant3D = ({
       shadow: 'rgba(6, 182, 212, 0.5)',
     },
     purple: {
-      body: 'from-purple-400 via-purple-500 to-pink-500',
+      body: 'from-zinc-800 via-zinc-800 to-zinc-800',
       shine: 'bg-gradient-to-br from-white/40 to-transparent',
       shadow: 'rgba(139, 92, 246, 0.5)',
     },

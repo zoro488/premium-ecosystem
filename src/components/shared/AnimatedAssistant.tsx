@@ -144,15 +144,15 @@ export default function AnimatedAssistant({
         return 'from-yellow-400 to-orange-600';
       case 'thinking':
       case 'processing':
-        return 'from-blue-400 to-purple-600';
+        return 'from-blue-400 to-zinc-800';
       case 'listening':
         return 'from-cyan-400 to-blue-600';
       case 'confused':
         return 'from-amber-400 to-yellow-600';
       case 'error':
-        return 'from-red-400 to-pink-600';
+        return 'from-zinc-700 to-zinc-800';
       default:
-        return 'from-indigo-400 to-purple-600';
+        return 'from-indigo-400 to-zinc-800';
     }
   };
 

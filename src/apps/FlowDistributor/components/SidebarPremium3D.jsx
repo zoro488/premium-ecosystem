@@ -428,14 +428,14 @@ export const SidebarPremium3D = ({
               {/* Clear LocalStorage Button */}
               <motion.button
                 onClick={handleClearLocalStorage}
-                className={`${collapsed ? 'w-12 h-12 flex items-center justify-center' : 'w-full flex items-center gap-3 px-3 py-2'} rounded-lg bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 transition-all mb-3`}
+                className={`${collapsed ? 'w-12 h-12 flex items-center justify-center' : 'w-full flex items-center gap-3 px-3 py-2'} rounded-lg bg-zinc-9000/10 hover:bg-zinc-9000/20 border border-zinc-500/30 transition-all mb-3`}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 title="Limpiar datos del navegador"
               >
                 <Icon3D icon={Trash2} variant="outline" theme="danger" size="sm" />
                 {!collapsed && (
-                  <span className="text-red-400 text-sm font-medium">Limpiar Datos</span>
+                  <span className="text-zinc-200 text-sm font-medium">Limpiar Datos</span>
                 )}
               </motion.button>
 

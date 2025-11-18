@@ -139,7 +139,7 @@ const ChronosLaunchScreen = memo(({ onComplete }) => {
           {[...Array(12)].map((_, i) => (
             <motion.div
               key={`launch-particle-${i + 1}`}
-              className="absolute w-2 h-2 bg-blue-400/30 rounded-full blur-sm"
+              className="absolute w-2 h-2 bg-zinc-700/30 rounded-full blur-sm"
               style={{
                 left: `${10 + i * 7}%`,
                 top: `${15 + (i % 4) * 20}%`,
@@ -152,7 +152,7 @@ const ChronosLaunchScreen = memo(({ onComplete }) => {
 
           {/* Floating geometric shapes */}
           <motion.div
-            className="absolute top-1/4 left-1/4 w-32 h-32 border border-blue-500/20 rounded-full"
+            className="absolute top-1/4 left-1/4 w-32 h-32 border border-zinc-700/20 rounded-full"
             animate={{
               rotate: 360,
               scale: [1, 1.1, 1],
@@ -164,7 +164,7 @@ const ChronosLaunchScreen = memo(({ onComplete }) => {
           />
 
           <motion.div
-            className="absolute bottom-1/3 right-1/4 w-24 h-24 border border-purple-500/20 rounded-lg"
+            className="absolute bottom-1/3 right-1/4 w-24 h-24 border border-zinc-800/20 rounded-lg"
             animate={{
               rotate: -360,
               scale: [1, 0.8, 1],
@@ -185,16 +185,16 @@ const ChronosLaunchScreen = memo(({ onComplete }) => {
             animate="animate"
           >
             {/* Outer glow ring */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-pink-500/30 blur-xl" />
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-zinc-800/30 via-zinc-800/30 to-zinc-700/30 blur-xl" />
 
             {/* Main orb */}
-            <div className="absolute inset-2 rounded-full bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 opacity-80">
+            <div className="absolute inset-2 rounded-full bg-gradient-to-br from-zinc-700 via-zinc-800 to-zinc-700 opacity-80">
               <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-white/30 via-transparent to-transparent" />
               <div className="absolute inset-0 rounded-full bg-gradient-to-bl from-transparent via-transparent to-black/30" />
             </div>
 
             {/* Inner core */}
-            <div className="absolute inset-6 rounded-full bg-gradient-to-br from-white/40 via-blue-300/40 to-purple-400/40 backdrop-blur-sm">
+            <div className="absolute inset-6 rounded-full bg-gradient-to-br from-white/40 via-blue-300/40 to-zinc-800/40 backdrop-blur-sm">
               <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-white/60 to-transparent" />
             </div>
 
@@ -223,7 +223,7 @@ const ChronosLaunchScreen = memo(({ onComplete }) => {
             animate={stage}
           >
             <h1 className="text-4xl md:text-6xl font-thin tracking-wider text-white">
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-zinc-700 via-zinc-800 to-zinc-700 bg-clip-text text-transparent">
                 CHRONOS
               </span>
             </h1>
@@ -247,7 +247,7 @@ const ChronosLaunchScreen = memo(({ onComplete }) => {
             transition={{ delay: 1.5, duration: 0.5 }}
           >
             <motion.div
-              className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full"
+              className="h-full bg-gradient-to-r from-zinc-800 via-zinc-800 to-zinc-700 rounded-full"
               initial={{ width: '0%' }}
               animate={{ width: `${progress}%` }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
@@ -265,7 +265,7 @@ const ChronosLaunchScreen = memo(({ onComplete }) => {
               {[0, 1, 2].map((i) => (
                 <motion.div
                   key={`loading-dot-${i}`}
-                  className="w-2 h-2 bg-blue-400 rounded-full"
+                  className="w-2 h-2 bg-zinc-700 rounded-full"
                   animate={{
                     scale: [1, 1.5, 1],
                     opacity: [0.5, 1, 0.5],
@@ -298,7 +298,7 @@ const ChronosLaunchScreen = memo(({ onComplete }) => {
         </div>
 
         {/* Ambient light effect */}
-        <div className="absolute inset-0 bg-radial-gradient from-blue-500/5 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-radial-gradient from-zinc-800/5 via-transparent to-transparent pointer-events-none" />
       </motion.div>
     </AnimatePresence>
   );

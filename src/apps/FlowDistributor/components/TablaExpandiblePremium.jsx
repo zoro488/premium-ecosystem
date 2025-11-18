@@ -60,19 +60,19 @@ const TablaExpandiblePremium = ({
 
   // Gradientes por color
   const gradientes = {
-    blue: 'from-blue-500/20 to-cyan-500/20 border-blue-500/30',
-    red: 'from-red-500/20 to-rose-500/20 border-red-500/30',
-    green: 'from-emerald-500/20 to-teal-500/20 border-emerald-500/30',
-    purple: 'from-purple-500/20 to-pink-500/20 border-purple-500/30',
-    orange: 'from-orange-500/20 to-amber-500/20 border-orange-500/30',
+    blue: 'from-zinc-800/20 to-zinc-800/20 border-zinc-700/30',
+    red: 'from-zinc-700/20 to-zinc-700/20 border-zinc-500/30',
+    green: 'from-emerald-500/20 to-teal-500/20 border-zinc-500/30',
+    purple: 'from-zinc-800/20 to-zinc-700/20 border-zinc-800/30',
+    orange: 'from-orange-500/20 to-amber-500/20 border-zinc-500/30',
   };
 
   const textoColor = {
-    blue: 'text-blue-400',
-    red: 'text-red-400',
-    green: 'text-emerald-400',
-    purple: 'text-purple-400',
-    orange: 'text-orange-400',
+    blue: 'text-zinc-300',
+    red: 'text-zinc-200',
+    green: 'text-zinc-200',
+    purple: 'text-zinc-800',
+    orange: 'text-zinc-200',
   };
 
   // Filtrado y ordenamiento de datos
@@ -306,9 +306,9 @@ const TablaExpandiblePremium = ({
                           return <ArrowUpDown className="w-4 h-4 text-slate-500" />;
                         }
                         if (ordenamiento.direccion === 'asc') {
-                          return <ArrowUp className="w-4 h-4 text-emerald-400" />;
+                          return <ArrowUp className="w-4 h-4 text-zinc-200" />;
                         }
-                        return <ArrowDown className="w-4 h-4 text-orange-400" />;
+                        return <ArrowDown className="w-4 h-4 text-zinc-200" />;
                       };
 
                       return (

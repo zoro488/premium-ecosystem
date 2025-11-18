@@ -33,7 +33,7 @@ on:
 
 env:
   NODE_VERSION: '20.x'
-  BACKUP_BUCKET: 'premium-ecosystem-backups'
+  BACKUP_BUCKET: 'chronos-system-backups'
   BACKUP_PATH: 'backups'
 
 jobs:

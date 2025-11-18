@@ -27,20 +27,20 @@
   --mirror-chrome: linear-gradient(135deg, rgba(240, 240, 255, 0.12) 0%, rgba(200, 200, 220, 0.06) 50%, rgba(160, 160, 180, 0.02) 100%);
   --mirror-platinum: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(220, 220, 240, 0.09) 50%, rgba(180, 180, 200, 0.04) 100%);
 
-  /* 🌈 Acentos Holográficos Premium */
-  --accent-electric-blue: #3b82f6;
-  --accent-cyber-cyan: #06b6d4;
-  --accent-mystic-purple: #a855f7;
-  --accent-plasma-pink: #ec4899;
-  --accent-matrix-green: #10b981;
-  --accent-solar-orange: #f97316;
-  --accent-lunar-gold: #fbbf24;
+  /* 🌈 Acentos Metálicos Premium - Negro Absoluto */
+  --accent-platinum: #d4d4d8;
+  --accent-silver: #a1a1aa;
+  --accent-gold: #fbbf24;
+  --accent-diamond: #e0f2fe;
+  --accent-steel: #71717a;
+  --accent-chrome: #f4f4f5;
+  --accent-titanium: #52525b;
 
-  /* 🎭 Gradientes Holográficos */
-  --gradient-holo-1: linear-gradient(135deg, #3b82f6 0%, #06b6d4 50%, #10b981 100%);
-  --gradient-holo-2: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #f97316 100%);
-  --gradient-holo-3: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #a855f7 100%);
-  --gradient-aurora: linear-gradient(135deg, rgba(59, 130, 246, 0.3) 0%, rgba(168, 85, 247, 0.2) 50%, rgba(236, 72, 153, 0.1) 100%);
+  /* 🎭 Gradientes Metálicos Premium */
+  --gradient-platinum: linear-gradient(135deg, #27272a 0%, #18181b 50%, #09090b 100%);
+  --gradient-silver: linear-gradient(135deg, #3f3f46 0%, #27272a 50%, #18181b 100%);
+  --gradient-titanium: linear-gradient(135deg, #52525b 0%, #3f3f46 50%, #27272a 100%);
+  --gradient-aurora: linear-gradient(135deg, rgba(212, 212, 216, 0.1) 0%, rgba(161, 161, 170, 0.05) 50%, rgba(113, 113, 122, 0.02) 100%);
 
   /* ✨ Texto Ultra-Legible con Grises Plateados */
   --text-white-pure: #ffffff;
@@ -107,15 +107,12 @@ html {
 }
 
 body {
-  background: var(--bg-space-deep);
+  background: #000000;
   background-image:
-    /* Aurora Effects */
-    radial-gradient(circle at 15% 85%, rgba(59, 130, 246, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 85% 15%, rgba(168, 85, 247, 0.10) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.08) 0%, transparent 60%),
-    radial-gradient(circle at 30% 30%, rgba(236, 72, 153, 0.06) 0%, transparent 55%),
-    /* Subtle Grain Texture */
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.01) 0px, transparent 1px, transparent 2px, rgba(255, 255, 255, 0.01) 3px);
+    /* Subtle Metallic Grain */
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.01) 0px, transparent 1px, transparent 2px, rgba(255, 255, 255, 0.01) 3px),
+    /* Dark Gradient Overlay */
+    radial-gradient(circle at 50% 50%, rgba(39, 39, 42, 0.3) 0%, transparent 60%);
   background-attachment: fixed;
   color: var(--text-white-pure);
   font-family:

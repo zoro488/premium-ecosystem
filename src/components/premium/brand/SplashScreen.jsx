@@ -28,7 +28,7 @@ export const SplashScreen = ({ onComplete, duration = 3000 }) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.1 }}
           transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-gradient-to-br from-slate-950 via-blue-950/20 to-purple-950/20 overflow-hidden"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-gradient-to-br from-slate-950 via-blue-950/20 to-zinc-800/20 overflow-hidden"
         >
           {/* Estrellas de fondo */}
           <div className="absolute inset-0">
@@ -79,10 +79,10 @@ export const SplashScreen = ({ onComplete, duration = 3000 }) => {
                   repeat: Infinity,
                   ease: 'linear',
                 }}
-                className="w-32 h-32 rounded-full border-4 border-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-1"
+                className="w-32 h-32 rounded-full border-4 border-transparent bg-gradient-to-r from-blue-500 via-zinc-800 to-zinc-800 p-1"
               >
                 <div className="w-full h-full rounded-full bg-slate-950 flex items-center justify-center">
-                  <span className="text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text">
+                  <span className="text-4xl font-bold bg-gradient-to-r from-blue-400 via-zinc-800 to-zinc-800 text-transparent bg-clip-text">
                     C
                   </span>
                 </div>
@@ -109,7 +109,7 @@ export const SplashScreen = ({ onComplete, duration = 3000 }) => {
               transition={{ delay: 0.5, duration: 0.8 }}
               className="relative"
             >
-              <h1 className="text-6xl md:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 tracking-wider">
+              <h1 className="text-6xl md:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-zinc-800 to-zinc-800 tracking-wider">
                 CHRONOS
               </h1>
 
@@ -142,7 +142,7 @@ export const SplashScreen = ({ onComplete, duration = 3000 }) => {
                 initial={{ width: 0 }}
                 animate={{ width: '100%' }}
                 transition={{ duration: duration / 1000 - 0.5 }}
-                className="h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full"
+                className="h-1 bg-gradient-to-r from-blue-500 via-zinc-800 to-zinc-800 rounded-full"
               />
             </motion.div>
 

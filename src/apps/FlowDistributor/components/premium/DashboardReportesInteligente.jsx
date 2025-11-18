@@ -220,7 +220,7 @@ export const DashboardReportesInteligente = ({
     <div className="w-full h-full overflow-auto bg-gradient-to-br from-slate-900 via-cyan-900/20 to-slate-900 p-6">
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
-        <h2 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-2">
+        <h2 className="text-3xl font-bold bg-gradient-to-r from-zinc-700 to-zinc-700 bg-clip-text text-transparent mb-2">
           📋 Centro de Reportes
         </h2>
         <p className="text-slate-400">Análisis inteligente y generación de reportes</p>
@@ -283,7 +283,7 @@ export const DashboardReportesInteligente = ({
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-4 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-medium flex items-center gap-2 hover:shadow-lg hover:shadow-cyan-500/50 transition-shadow"
+              className="px-4 py-3 bg-gradient-to-r from-zinc-800 to-zinc-800 text-white rounded-lg font-medium flex items-center gap-2 hover:shadow-lg hover:shadow-cyan-500/50 transition-shadow"
             >
               <Download className="w-4 h-4" />
               Exportar
@@ -306,9 +306,9 @@ export const DashboardReportesInteligente = ({
               <div
                 className={`flex items-center gap-2 text-sm ${
                   metric.trend === 'up'
-                    ? 'text-green-400'
+                    ? 'text-zinc-200'
                     : metric.trend === 'down'
-                      ? 'text-red-400'
+                      ? 'text-zinc-200'
                       : 'text-slate-400'
                 }`}
               >
@@ -330,7 +330,7 @@ export const DashboardReportesInteligente = ({
         className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-xl p-6"
       >
         <h4 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-          <Download className="w-5 h-5 text-cyan-400" />
+          <Download className="w-5 h-5 text-zinc-300" />
           Opciones de Exportación
         </h4>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -342,7 +342,7 @@ export const DashboardReportesInteligente = ({
               transition={{ delay: 0.6 + index * 0.05 }}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="px-4 py-3 bg-slate-900/50 hover:bg-slate-900 border border-slate-700 hover:border-cyan-500/50 rounded-lg text-white font-medium transition-all"
+              className="px-4 py-3 bg-slate-900/50 hover:bg-slate-900 border border-slate-700 hover:border-zinc-500/50 rounded-lg text-white font-medium transition-all"
             >
               {format}
             </motion.button>
@@ -358,7 +358,7 @@ export const DashboardReportesInteligente = ({
         className="mt-6 bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-xl p-6"
       >
         <h4 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-          <Clock className="w-5 h-5 text-purple-400" />
+          <Clock className="w-5 h-5 text-zinc-800" />
           Reportes Programados
         </h4>
         <div className="space-y-3">
@@ -397,9 +397,9 @@ export const DashboardReportesInteligente = ({
               </div>
               <div className="flex items-center gap-2">
                 {scheduled.status === 'active' ? (
-                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <CheckCircle className="w-5 h-5 text-zinc-200" />
                 ) : (
-                  <AlertCircle className="w-5 h-5 text-yellow-400" />
+                  <AlertCircle className="w-5 h-5 text-zinc-200" />
                 )}
               </div>
             </motion.div>

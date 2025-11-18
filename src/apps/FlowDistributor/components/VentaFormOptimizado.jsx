@@ -32,7 +32,7 @@ const ds = {
     'px-6 py-3 rounded-xl font-semibold flex items-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed',
   gradient: 'bg-gradient-to-r from-orange-500 to-amber-500',
   success: 'bg-gradient-to-r from-emerald-500 to-teal-500',
-  danger: 'bg-gradient-to-r from-red-500 to-rose-500',
+  danger: 'bg-gradient-to-r from-zinc-700 to-zinc-700',
 };
 
 /**
@@ -177,7 +177,7 @@ const ResumenVenta = ({ productos, flete }) => {
       className={`${ds.glass} rounded-2xl p-6`}
     >
       <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-        <Calculator className="w-5 h-5 text-orange-400" />
+        <Calculator className="w-5 h-5 text-zinc-200" />
         Resumen de Venta
       </h3>
 
@@ -189,12 +189,12 @@ const ResumenVenta = ({ productos, flete }) => {
 
         <div className="flex justify-between items-center">
           <span className="text-slate-400">Costo Total:</span>
-          <span className="text-yellow-400 font-semibold">-${totales.costo.toLocaleString()}</span>
+          <span className="text-zinc-200 font-semibold">-${totales.costo.toLocaleString()}</span>
         </div>
 
         <div className="flex justify-between items-center">
           <span className="text-slate-400">Flete:</span>
-          <span className="text-yellow-400 font-semibold">-${totales.flete.toLocaleString()}</span>
+          <span className="text-zinc-200 font-semibold">-${totales.flete.toLocaleString()}</span>
         </div>
 
         <div className="h-px bg-white/10 my-3" />
@@ -202,7 +202,7 @@ const ResumenVenta = ({ productos, flete }) => {
         <div className="flex justify-between items-center">
           <span className="text-lg font-bold">Utilidad Neta:</span>
           <span
-            className={`text-lg font-bold ${totales.utilidad >= 0 ? 'text-emerald-400' : 'text-red-400'}`}
+            className={`text-lg font-bold ${totales.utilidad >= 0 ? 'text-zinc-200' : 'text-zinc-200'}`}
           >
             ${totales.utilidad.toLocaleString()}
           </span>
@@ -211,7 +211,7 @@ const ResumenVenta = ({ productos, flete }) => {
         <div className="flex justify-between items-center">
           <span className="text-slate-400">Margen:</span>
           <span
-            className={`font-semibold ${totales.margen >= 20 ? 'text-emerald-400' : 'text-yellow-400'}`}
+            className={`font-semibold ${totales.margen >= 20 ? 'text-zinc-200' : 'text-zinc-200'}`}
           >
             {totales.margen.toFixed(1)}%
           </span>
@@ -221,14 +221,14 @@ const ResumenVenta = ({ productos, flete }) => {
 
         <div className="flex justify-between items-center text-xl">
           <span className="font-bold">Total a Cobrar:</span>
-          <span className="font-bold text-orange-400">${totales.total.toLocaleString()}</span>
+          <span className="font-bold text-zinc-200">${totales.total.toLocaleString()}</span>
         </div>
 
         {totales.margen < 15 && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="mt-4 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg"
+            className="mt-4 p-3 bg-zinc-9000/10 border border-zinc-500/30 rounded-lg"
           >
             <p className="text-sm text-yellow-300 flex items-center gap-2">
               <AlertTriangle className="w-4 h-4" />
@@ -366,8 +366,8 @@ export default function VentaFormOptimizado({
       {/* Header */}
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold flex items-center gap-3">
-          <div className="p-3 bg-orange-500/20 rounded-xl">
-            <DollarSign className="w-6 h-6 text-orange-400" />
+          <div className="p-3 bg-zinc-9000/20 rounded-xl">
+            <DollarSign className="w-6 h-6 text-zinc-200" />
           </div>
           Nueva Venta
         </h2>
@@ -394,7 +394,7 @@ export default function VentaFormOptimizado({
           icon={User}
         />
         {validaciones.cliente && (
-          <p className="mt-2 text-sm text-yellow-400 flex items-center gap-2">
+          <p className="mt-2 text-sm text-zinc-200 flex items-center gap-2">
             <AlertCircle className="w-4 h-4" />
             {validaciones.cliente}
           </p>
@@ -436,9 +436,9 @@ export default function VentaFormOptimizado({
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => eliminarProducto(idx)}
-                    className="p-2 hover:bg-red-500/20 rounded-lg transition-colors"
+                    className="p-2 hover:bg-zinc-9000/20 rounded-lg transition-colors"
                   >
-                    <Trash2 className="w-4 h-4 text-red-400" />
+                    <Trash2 className="w-4 h-4 text-zinc-200" />
                   </motion.button>
                 )}
               </div>
@@ -464,7 +464,7 @@ export default function VentaFormOptimizado({
                     placeholder="Buscar producto..."
                   />
                   {validaciones[`producto_${idx}_nombre`] && (
-                    <p className="mt-1 text-xs text-red-400">
+                    <p className="mt-1 text-xs text-zinc-200">
                       {validaciones[`producto_${idx}_nombre`]}
                     </p>
                   )}
@@ -484,12 +484,12 @@ export default function VentaFormOptimizado({
                     className={ds.input}
                   />
                   {validaciones[`producto_${idx}_cantidad`] && (
-                    <p className="mt-1 text-xs text-red-400">
+                    <p className="mt-1 text-xs text-zinc-200">
                       {validaciones[`producto_${idx}_cantidad`]}
                     </p>
                   )}
                   {validaciones[`producto_${idx}_stock`] && (
-                    <p className="mt-1 text-xs text-yellow-400 flex items-center gap-1">
+                    <p className="mt-1 text-xs text-zinc-200 flex items-center gap-1">
                       <AlertTriangle className="w-3 h-3" />
                       {validaciones[`producto_${idx}_stock`]}
                     </p>
@@ -511,7 +511,7 @@ export default function VentaFormOptimizado({
                     className={ds.input}
                   />
                   {validaciones[`producto_${idx}_precioVenta`] && (
-                    <p className="mt-1 text-xs text-red-400">
+                    <p className="mt-1 text-xs text-zinc-200">
                       {validaciones[`producto_${idx}_precioVenta`]}
                     </p>
                   )}
@@ -532,7 +532,7 @@ export default function VentaFormOptimizado({
                     className={ds.input}
                   />
                   {validaciones[`producto_${idx}_costo`] && (
-                    <p className="mt-1 text-xs text-red-400">
+                    <p className="mt-1 text-xs text-zinc-200">
                       {validaciones[`producto_${idx}_costo`]}
                     </p>
                   )}
@@ -547,7 +547,7 @@ export default function VentaFormOptimizado({
                   className="mt-3 pt-3 border-t border-white/10 flex items-center justify-between"
                 >
                   <span className="text-sm text-slate-400">Utilidad este producto:</span>
-                  <span className="text-sm font-bold text-emerald-400">
+                  <span className="text-sm font-bold text-zinc-200">
                     $
                     {((producto.precioVenta - producto.costo) * producto.cantidad).toLocaleString()}
                   </span>
@@ -640,7 +640,7 @@ export default function VentaFormOptimizado({
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-xl"
+          className="p-4 bg-zinc-9000/10 border border-zinc-500/30 rounded-xl"
         >
           <p className="text-sm text-yellow-300 flex items-center gap-2">
             <AlertCircle className="w-4 h-4" />

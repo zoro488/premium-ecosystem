@@ -278,7 +278,7 @@ export const LiquidCard = ({ children, className = '' }) => {
       whileHover={{ scale: 1.02 }}
     >
       <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20"
+        className="absolute inset-0 bg-gradient-to-br from-zinc-800/20 to-zinc-800/20"
         animate={
           isHovered
             ? {

@@ -19,7 +19,7 @@ const variantStyles = {
   primary: 'bg-gradient-to-r from-neon-blue to-neon-cyan text-white hover:shadow-[0_0_30px_rgba(14,165,233,0.5)]',
   secondary: 'bg-white/10 text-white border border-white/20 hover:bg-white/20',
   success: 'bg-gradient-to-r from-neon-green to-emerald-400 text-white hover:shadow-[0_0_30px_rgba(16,185,129,0.5)]',
-  danger: 'bg-gradient-to-r from-neon-pink to-red-500 text-white hover:shadow-[0_0_30px_rgba(236,72,153,0.5)]',
+  danger: 'bg-gradient-to-r from-neon-pink to-zinc-800 text-white hover:shadow-[0_0_30px_rgba(236,72,153,0.5)]',
   ghost: 'bg-transparent text-white hover:bg-white/5',
 };
 

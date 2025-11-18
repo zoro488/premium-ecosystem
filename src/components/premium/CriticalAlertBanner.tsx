@@ -107,7 +107,7 @@ export const CriticalAlertBanner: React.FC<CriticalAlertBannerProps> = ({
                   rotate: [0, 5, -5, 0],
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="w-20 h-20 bg-gradient-to-br from-rose-500 to-red-600 rounded-2xl p-4 flex items-center justify-center shadow-lg shadow-rose-500/50"
+                className="w-20 h-20 bg-gradient-to-br from-rose-500 to-zinc-800 rounded-2xl p-4 flex items-center justify-center shadow-lg shadow-rose-500/50"
               >
                 <AlertTriangle className="w-12 h-12 text-white" />
               </motion.div>
@@ -174,18 +174,18 @@ export const CriticalAlertBanner: React.FC<CriticalAlertBannerProps> = ({
                   {/* Monto a transferir */}
                   <motion.div
                     whileHover={{ scale: 1.05 }}
-                    className="bg-purple-600/30 backdrop-blur-xl rounded-xl p-4 border border-purple-500/30"
+                    className="bg-zinc-900/30 backdrop-blur-xl rounded-xl p-4 border border-zinc-700/30"
                   >
                     <div className="flex items-center gap-2 mb-2">
-                      <ArrowRight className="w-5 h-5 text-purple-400" />
-                      <p className="text-purple-400/80 text-sm font-medium">
+                      <ArrowRight className="w-5 h-5 text-zinc-200" />
+                      <p className="text-zinc-200/80 text-sm font-medium">
                         Transferir
                       </p>
                     </div>
-                    <p className="text-purple-400 text-3xl font-black font-mono">
+                    <p className="text-zinc-200 text-3xl font-black font-mono">
                       ${montoNecearioUSDRedondeado.toLocaleString()}
                     </p>
-                    <p className="text-purple-400/60 text-xs mt-1">
+                    <p className="text-zinc-200/60 text-xs mt-1">
                       USD (redondeado)
                     </p>
                   </motion.div>
@@ -249,7 +249,7 @@ export const CriticalAlertBanner: React.FC<CriticalAlertBannerProps> = ({
                     whileHover={{ scale: 1.05, x: 5 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => handleTransfer('profit')}
-                    className="flex-1 px-6 py-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 rounded-xl text-white font-bold text-lg transition-all flex items-center justify-center gap-3 shadow-lg shadow-purple-500/30"
+                    className="flex-1 px-6 py-4 bg-gradient-to-r from-zinc-800 via-zinc-700 to-zinc-800 hover:from-zinc-800 hover:to-zinc-800 rounded-xl text-white font-bold text-lg transition-all flex items-center justify-center gap-3 shadow-lg shadow-zinc-700/30"
                   >
                     <Zap className="w-6 h-6" />
                     <span>Transferir desde Profit</span>

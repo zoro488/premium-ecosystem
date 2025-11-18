@@ -140,7 +140,7 @@ export function FieldWrapper({
           >
             {label}
             {required && (
-              <span className="text-red-400 ml-1" aria-label="required">
+              <span className="text-zinc-200 ml-1" aria-label="required">
                 *
               </span>
             )}
@@ -158,7 +158,7 @@ export function FieldWrapper({
               }}
             >
               <Check
-                className="w-4 h-4 text-green-500"
+                className="w-4 h-4 text-zinc-100"
                 aria-label="valid"
               />
             </motion.div>
@@ -229,7 +229,7 @@ export function FieldWrapper({
               animate={{ scale: 1, opacity: 1 }}
               className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"
             >
-              <AlertCircle className="w-5 h-5 text-red-400" />
+              <AlertCircle className="w-5 h-5 text-zinc-200" />
             </motion.div>
           )}
         </div>
@@ -242,8 +242,8 @@ export function FieldWrapper({
                 text-xs
                 ${currentLength && currentLength > maxLength * 0.9
                   ? currentLength >= maxLength
-                    ? 'text-red-400'
-                    : 'text-yellow-400'
+                    ? 'text-zinc-200'
+                    : 'text-zinc-200'
                   : 'text-gray-500'
                 }
               `}

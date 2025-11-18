@@ -157,7 +157,7 @@ export const TablaUniversalPremiumAAA = memo(
         {/* Header con título y acciones */}
         <div className="flex items-center justify-between">
           <motion.h2
-            className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent"
+            className="text-2xl font-bold bg-gradient-to-r from-zinc-700 to-zinc-900 bg-clip-text text-transparent"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
           >
@@ -168,7 +168,7 @@ export const TablaUniversalPremiumAAA = memo(
             {onAdd && (
               <motion.button
                 onClick={onAdd}
-                className="px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg font-medium shadow-lg hover:shadow-xl transition-shadow"
+                className="px-4 py-2 bg-gradient-to-r from-zinc-800 to-zinc-900 text-white rounded-lg font-medium shadow-lg hover:shadow-xl transition-shadow"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -239,7 +239,7 @@ export const TablaUniversalPremiumAAA = memo(
                   {columns.map((column, idx) => (
                     <th
                       key={column.key}
-                      className="px-6 py-4 text-left text-sm font-semibold text-gray-300 cursor-pointer hover:text-cyan-400 transition-colors"
+                      className="px-6 py-4 text-left text-sm font-semibold text-gray-300 cursor-pointer hover:text-zinc-300 transition-colors"
                       onClick={() => column.sortable && setSortBy(column.key)}
                     >
                       <motion.div
@@ -256,9 +256,9 @@ export const TablaUniversalPremiumAAA = memo(
                             transition={{ type: 'spring', stiffness: 500 }}
                           >
                             {sortOrder === 'asc' ? (
-                              <ArrowUp size={14} className="text-cyan-400" />
+                              <ArrowUp size={14} className="text-zinc-300" />
                             ) : (
-                              <ArrowDown size={14} className="text-cyan-400" />
+                              <ArrowDown size={14} className="text-zinc-300" />
                             )}
                           </motion.div>
                         )}
@@ -305,7 +305,7 @@ export const TablaUniversalPremiumAAA = memo(
                   Intenta buscar con otros términos o{' '}
                   <button
                     onClick={() => setSearchTerm('')}
-                    className="text-cyan-400 hover:underline"
+                    className="text-zinc-300 hover:underline"
                   >
                     limpiar búsqueda
                   </button>

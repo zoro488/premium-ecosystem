@@ -32,7 +32,7 @@ export function InsightsPanel({ data, autoAnalyze = true }: InsightsPanelProps) 
   if (!analysis && !isAnalyzing && !error) {
     return (
       <motion.div
-        className="bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20 rounded-xl p-6 border border-purple-200 dark:border-purple-800"
+        className="bg-gradient-to-br from-zinc-800 to-indigo-50 dark:from-zinc-800/20 dark:to-indigo-900/20 rounded-xl p-6 border border-zinc-700 dark:border-zinc-700"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >
@@ -46,7 +46,7 @@ export function InsightsPanel({ data, autoAnalyze = true }: InsightsPanelProps) 
           </p>
           <button
             onClick={() => analyze(data)}
-            className="px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-lg font-medium hover:shadow-lg transition-all"
+            className="px-6 py-3 bg-gradient-to-r from-zinc-800 to-indigo-600 text-white rounded-lg font-medium hover:shadow-lg transition-all"
           >
             🚀 Analizar con AI
           </button>
@@ -64,7 +64,7 @@ export function InsightsPanel({ data, autoAnalyze = true }: InsightsPanelProps) 
       >
         <div className="text-center">
           <motion.div
-            className="inline-block w-16 h-16 border-4 border-purple-500 border-t-transparent rounded-full"
+            className="inline-block w-16 h-16 border-4 border-zinc-700 border-t-transparent rounded-full"
             animate={{ rotate: 360 }}
             transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
           />
@@ -168,7 +168,7 @@ function PredictionCard({ prediccion, tendencia }: PredictionCardProps) {
 
   return (
     <motion.div
-      className="bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl p-6 text-white shadow-xl"
+      className="bg-gradient-to-br from-zinc-800 to-indigo-600 rounded-xl p-6 text-white shadow-xl"
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
     >

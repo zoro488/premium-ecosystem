@@ -222,7 +222,7 @@ const ChronosLoginPanel = memo(({ onLogin, isLoading = false }) => {
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={`login-particle-${i + 1}`}
-            className="absolute w-1 h-1 bg-blue-400/20 rounded-full"
+            className="absolute w-1 h-1 bg-zinc-700/20 rounded-full"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -242,8 +242,8 @@ const ChronosLoginPanel = memo(({ onLogin, isLoading = false }) => {
         ))}
 
         {/* Ambient light effects */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-zinc-800/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-zinc-800/5 rounded-full blur-3xl" />
       </div>
 
       {/* Main Login Container */}
@@ -281,7 +281,7 @@ const ChronosLoginPanel = memo(({ onLogin, isLoading = false }) => {
           <motion.div className="text-center mb-8" variants={itemVariants}>
             {/* Logo */}
             <motion.div
-              className="inline-flex items-center justify-center w-16 h-16 mb-4 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 backdrop-blur-sm border border-white/10"
+              className="inline-flex items-center justify-center w-16 h-16 mb-4 rounded-2xl bg-gradient-to-br from-zinc-800/20 to-zinc-800/20 backdrop-blur-sm border border-white/10"
               whileHover={{
                 scale: 1.1,
                 rotate: 5,
@@ -289,12 +289,12 @@ const ChronosLoginPanel = memo(({ onLogin, isLoading = false }) => {
               }}
               transition={{ duration: 0.3 }}
             >
-              <Shield className="w-8 h-8 text-blue-400" />
+              <Shield className="w-8 h-8 text-zinc-300" />
             </motion.div>
 
             <h2 className="text-2xl font-thin text-white mb-2">
               Bienvenido a{' '}
-              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-normal">
+              <span className="bg-gradient-to-r from-zinc-700 to-zinc-800 bg-clip-text text-transparent font-normal">
                 CHRONOS
               </span>
             </h2>
@@ -315,11 +315,11 @@ const ChronosLoginPanel = memo(({ onLogin, isLoading = false }) => {
                   <Mail
                     className={`w-5 h-5 transition-colors ${
                       focusedField === 'email'
-                        ? 'text-blue-400'
+                        ? 'text-zinc-300'
                         : getFieldStatus('email') === 'valid'
-                          ? 'text-green-400'
+                          ? 'text-zinc-200'
                           : getFieldStatus('email') === 'error'
-                            ? 'text-red-400'
+                            ? 'text-zinc-200'
                             : 'text-slate-500'
                     }`}
                   />
@@ -338,7 +338,7 @@ const ChronosLoginPanel = memo(({ onLogin, isLoading = false }) => {
                       ? 'border-red-400/50 focus:ring-red-400/20'
                       : getFieldStatus('email') === 'valid'
                         ? 'border-green-400/50 focus:ring-green-400/20'
-                        : 'border-white/10 focus:border-blue-400/50 focus:ring-blue-400/20'
+                        : 'border-white/10 focus:border-zinc-600/50 focus:ring-blue-400/20'
                   }`}
                   whileFocus={{ scale: 1.01 }}
                 />
@@ -351,7 +351,7 @@ const ChronosLoginPanel = memo(({ onLogin, isLoading = false }) => {
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <CheckCircle className="w-5 h-5 text-green-400" />
+                      <CheckCircle className="w-5 h-5 text-zinc-200" />
                     </motion.div>
                   )}
                   {getFieldStatus('email') === 'error' && (
@@ -360,7 +360,7 @@ const ChronosLoginPanel = memo(({ onLogin, isLoading = false }) => {
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <AlertCircle className="w-5 h-5 text-red-400" />
+                      <AlertCircle className="w-5 h-5 text-zinc-200" />
                     </motion.div>
                   )}
                 </div>
@@ -371,7 +371,7 @@ const ChronosLoginPanel = memo(({ onLogin, isLoading = false }) => {
                 <motion.p
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mt-2 text-sm text-red-400 flex items-center space-x-1"
+                  className="mt-2 text-sm text-zinc-200 flex items-center space-x-1"
                 >
                   <AlertCircle className="w-4 h-4" />
                   <span>{errors.email}</span>
@@ -390,11 +390,11 @@ const ChronosLoginPanel = memo(({ onLogin, isLoading = false }) => {
                   <Lock
                     className={`w-5 h-5 transition-colors ${
                       focusedField === 'password'
-                        ? 'text-blue-400'
+                        ? 'text-zinc-300'
                         : getFieldStatus('password') === 'valid'
-                          ? 'text-green-400'
+                          ? 'text-zinc-200'
                           : getFieldStatus('password') === 'error'
-                            ? 'text-red-400'
+                            ? 'text-zinc-200'
                             : 'text-slate-500'
                     }`}
                   />
@@ -413,7 +413,7 @@ const ChronosLoginPanel = memo(({ onLogin, isLoading = false }) => {
                       ? 'border-red-400/50 focus:ring-red-400/20'
                       : getFieldStatus('password') === 'valid'
                         ? 'border-green-400/50 focus:ring-green-400/20'
-                        : 'border-white/10 focus:border-blue-400/50 focus:ring-blue-400/20'
+                        : 'border-white/10 focus:border-zinc-600/50 focus:ring-blue-400/20'
                   }`}
                   whileFocus={{ scale: 1.01 }}
                 />
@@ -435,7 +435,7 @@ const ChronosLoginPanel = memo(({ onLogin, isLoading = false }) => {
                 <motion.p
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mt-2 text-sm text-red-400 flex items-center space-x-1"
+                  className="mt-2 text-sm text-zinc-200 flex items-center space-x-1"
                 >
                   <AlertCircle className="w-4 h-4" />
                   <span>{errors.password}</span>
@@ -447,7 +447,7 @@ const ChronosLoginPanel = memo(({ onLogin, isLoading = false }) => {
             <motion.button
               type="submit"
               disabled={isLoading || isValidating}
-              className="group relative w-full py-4 px-6 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium rounded-xl overflow-hidden transition-all hover:shadow-lg hover:shadow-blue-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="group relative w-full py-4 px-6 bg-gradient-to-r from-zinc-800 to-zinc-800 text-white font-medium rounded-xl overflow-hidden transition-all hover:shadow-lg hover:shadow-blue-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
               whileHover={{
                 scale: 1.02,
                 boxShadow: '0 20px 40px rgba(59, 130, 246, 0.4)',
@@ -457,7 +457,7 @@ const ChronosLoginPanel = memo(({ onLogin, isLoading = false }) => {
             >
               {/* Button background animation */}
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute inset-0 bg-gradient-to-r from-zinc-800 to-zinc-700 opacity-0 group-hover:opacity-100 transition-opacity"
                 initial={false}
                 animate={{ opacity: 0 }}
                 whileHover={{ opacity: 1 }}
@@ -503,7 +503,7 @@ const ChronosLoginPanel = memo(({ onLogin, isLoading = false }) => {
                 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Fingerprint className="w-5 h-5 group-hover:text-blue-400 transition-colors" />
+                <Fingerprint className="w-5 h-5 group-hover:text-zinc-300 transition-colors" />
                 <span className="text-sm font-light">Usar biometría</span>
               </motion.button>
             </motion.div>
@@ -514,7 +514,7 @@ const ChronosLoginPanel = memo(({ onLogin, isLoading = false }) => {
             <p className="text-slate-500 text-sm">
               ¿Olvidaste tu contraseña?{' '}
               <motion.button
-                className="text-blue-400 hover:text-blue-300 transition-colors underline"
+                className="text-zinc-300 hover:text-zinc-300 transition-colors underline"
                 whileHover={{ scale: 1.05 }}
               >
                 Recuperar acceso
@@ -525,7 +525,7 @@ const ChronosLoginPanel = memo(({ onLogin, isLoading = false }) => {
 
         {/* Decorative elements */}
         <motion.div
-          className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-xl"
+          className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-zinc-800/20 to-zinc-800/20 rounded-full blur-xl"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.6, 0.3],
@@ -538,7 +538,7 @@ const ChronosLoginPanel = memo(({ onLogin, isLoading = false }) => {
         />
 
         <motion.div
-          className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-tr from-purple-500/20 to-pink-500/20 rounded-full blur-xl"
+          className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-tr from-zinc-800/20 to-zinc-700/20 rounded-full blur-xl"
           animate={{
             scale: [1, 1.3, 1],
             opacity: [0.2, 0.5, 0.2],

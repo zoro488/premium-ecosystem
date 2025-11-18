@@ -225,7 +225,7 @@ export const VentaForm: React.FC<VentaFormProps> = ({ onSuccess, onCancel }) => 
         {/* STK Preview Card */}
         <motion.div
           layout
-          className="p-4 bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 rounded-lg border border-orange-200 dark:border-orange-700"
+          className="p-4 bg-gradient-to-br from-orange-50 to-zinc-800 dark:from-orange-900/20 dark:to-zinc-800/20 rounded-lg border border-orange-200 dark:border-orange-700"
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -480,9 +480,9 @@ export const VentaForm: React.FC<VentaFormProps> = ({ onSuccess, onCancel }) => 
                 </div>
 
                 {/* Utilidades */}
-                <div className="p-4 bg-white dark:bg-gray-800 rounded-lg border border-purple-200 dark:border-purple-700">
+                <div className="p-4 bg-white dark:bg-gray-800 rounded-lg border border-zinc-700 dark:border-zinc-700">
                   <div className="flex items-center gap-2 mb-2">
-                    <PiggyBank className="w-5 h-5 text-purple-600" />
+                    <PiggyBank className="w-5 h-5 text-zinc-200" />
                     <span className="font-semibold text-gray-700 dark:text-gray-300">
                       Utilidades
                     </span>
@@ -490,7 +490,7 @@ export const VentaForm: React.FC<VentaFormProps> = ({ onSuccess, onCancel }) => 
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">
                     Ingreso (Margen: {previewData.margenPorcentaje.toFixed(2)}%)
                   </p>
-                  <p className="text-2xl font-bold text-purple-600">
+                  <p className="text-2xl font-bold text-zinc-200">
                     ${previewData.utilidades.toFixed(2)}
                   </p>
                 </div>

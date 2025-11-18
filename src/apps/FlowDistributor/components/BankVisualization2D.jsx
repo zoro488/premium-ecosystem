@@ -7,16 +7,16 @@ import { useState } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import {
-  Activity,
-  AlertCircle,
-  ArrowUpRight,
-  Building2,
-  CheckCircle,
-  Clock,
-  DollarSign,
-  PieChart,
-  Sparkles,
-  TrendingUp,
+    Activity,
+    AlertCircle,
+    ArrowUpRight,
+    Building2,
+    CheckCircle,
+    Clock,
+    DollarSign,
+    PieChart,
+    Sparkles,
+    TrendingUp,
 } from 'lucide-react';
 
 /**
@@ -27,16 +27,16 @@ const BankCard = ({ bank, index, onClick }) => {
 
   const getStatusColor = (capital) => {
     if (capital > 5000000) return 'from-emerald-600 to-teal-600';
-    if (capital > 2000000) return 'from-blue-600 to-cyan-600';
-    if (capital > 1000000) return 'from-purple-600 to-pink-600';
-    return 'from-red-600 to-orange-600';
+    if (capital > 2000000) return 'from-zinc-900 to-zinc-900';
+    if (capital > 1000000) return 'from-zinc-800 to-zinc-700';
+    return 'from-zinc-700 to-orange-600';
   };
 
   const getStatusIcon = (capital) => {
-    if (capital > 5000000) return <CheckCircle className="w-5 h-5 text-emerald-400" />;
-    if (capital > 2000000) return <TrendingUp className="w-5 h-5 text-blue-400" />;
-    if (capital > 1000000) return <Clock className="w-5 h-5 text-purple-400" />;
-    return <AlertCircle className="w-5 h-5 text-red-400" />;
+    if (capital > 5000000) return <CheckCircle className="w-5 h-5 text-zinc-200" />;
+    if (capital > 2000000) return <TrendingUp className="w-5 h-5 text-zinc-300" />;
+    if (capital > 1000000) return <Clock className="w-5 h-5 text-zinc-800" />;
+    return <AlertCircle className="w-5 h-5 text-zinc-200" />;
   };
 
   const formatCurrency = (amount) => {
@@ -101,7 +101,7 @@ const BankCard = ({ bank, index, onClick }) => {
             <motion.span
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ repeat: Infinity, duration: 2 }}
-              className="text-sm text-emerald-400"
+              className="text-sm text-zinc-200"
             >
               <ArrowUpRight className="w-4 h-4" />
             </motion.span>
@@ -118,7 +118,7 @@ const BankCard = ({ bank, index, onClick }) => {
           </div>
           <div className="p-3 rounded-lg bg-slate-900/40 backdrop-blur-sm border border-white/5">
             <div className="text-xs text-slate-400 mb-1">Crecimiento</div>
-            <div className="text-lg font-bold text-emerald-400">+{bank.growth || '12'}%</div>
+            <div className="text-lg font-bold text-zinc-200">+{bank.growth || '12'}%</div>
           </div>
         </div>
 
@@ -196,22 +196,22 @@ export const BankVisualization2D = ({ banks = [], title = 'Análisis Bancario' }
   ).toFixed(1);
 
   return (
-    <div className="relative h-full flex flex-col bg-gradient-to-br from-slate-900/95 via-blue-900/30 to-slate-900/95 backdrop-blur-xl rounded-2xl border border-blue-500/20 overflow-hidden shadow-2xl">
+    <div className="relative h-full flex flex-col bg-gradient-to-br from-slate-900/95 via-blue-900/30 to-slate-900/95 backdrop-blur-xl rounded-2xl border border-zinc-700/20 overflow-hidden shadow-2xl">
       {/* Header con estadísticas globales */}
-      <div className="p-6 border-b border-white/10 bg-gradient-to-r from-blue-900/30 via-transparent to-purple-900/30">
+      <div className="p-6 border-b border-white/10 bg-gradient-to-r from-zinc-900/30 via-transparent to-zinc-800/30">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
             <motion.div
               animate={{ rotate: [0, 10, 0, -10, 0] }}
               transition={{ repeat: Infinity, duration: 4 }}
-              className="p-3 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-600 shadow-lg"
+              className="p-3 rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-900 shadow-lg"
             >
               <PieChart className="w-6 h-6 text-white" />
             </motion.div>
             <div>
               <h2 className="text-2xl font-bold text-white flex items-center gap-2">
                 {title}
-                <Sparkles className="w-5 h-5 text-yellow-400 animate-pulse" />
+                <Sparkles className="w-5 h-5 text-zinc-200 animate-pulse" />
               </h2>
               <p className="text-sm text-slate-400">Dashboard interactivo de métricas bancarias</p>
             </div>
@@ -222,10 +222,10 @@ export const BankVisualization2D = ({ banks = [], title = 'Análisis Bancario' }
         <div className="grid grid-cols-4 gap-4">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="p-4 rounded-xl bg-gradient-to-br from-emerald-600/20 to-teal-600/20 border border-emerald-500/30"
+            className="p-4 rounded-xl bg-gradient-to-br from-emerald-600/20 to-teal-600/20 border border-zinc-500/30"
           >
             <div className="flex items-center gap-2 mb-2">
-              <DollarSign className="w-5 h-5 text-emerald-400" />
+              <DollarSign className="w-5 h-5 text-zinc-200" />
               <div className="text-xs text-slate-400">Capital Total</div>
             </div>
             <div className="text-2xl font-bold text-white">
@@ -240,10 +240,10 @@ export const BankVisualization2D = ({ banks = [], title = 'Análisis Bancario' }
 
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="p-4 rounded-xl bg-gradient-to-br from-blue-600/20 to-cyan-600/20 border border-blue-500/30"
+            className="p-4 rounded-xl bg-gradient-to-br from-zinc-900/20 to-zinc-900/20 border border-zinc-700/30"
           >
             <div className="flex items-center gap-2 mb-2">
-              <Building2 className="w-5 h-5 text-blue-400" />
+              <Building2 className="w-5 h-5 text-zinc-300" />
               <div className="text-xs text-slate-400">Bancos Activos</div>
             </div>
             <div className="text-2xl font-bold text-white">{bankData.length}</div>
@@ -251,10 +251,10 @@ export const BankVisualization2D = ({ banks = [], title = 'Análisis Bancario' }
 
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="p-4 rounded-xl bg-gradient-to-br from-purple-600/20 to-pink-600/20 border border-purple-500/30"
+            className="p-4 rounded-xl bg-gradient-to-br from-zinc-800/20 to-zinc-700/20 border border-zinc-800/30"
           >
             <div className="flex items-center gap-2 mb-2">
-              <TrendingUp className="w-5 h-5 text-purple-400" />
+              <TrendingUp className="w-5 h-5 text-zinc-800" />
               <div className="text-xs text-slate-400">Crecimiento Promedio</div>
             </div>
             <div className="text-2xl font-bold text-white">+{avgGrowth}%</div>
@@ -262,13 +262,13 @@ export const BankVisualization2D = ({ banks = [], title = 'Análisis Bancario' }
 
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="p-4 rounded-xl bg-gradient-to-br from-orange-600/20 to-red-600/20 border border-orange-500/30"
+            className="p-4 rounded-xl bg-gradient-to-br from-orange-600/20 to-zinc-800/20 border border-zinc-500/30"
           >
             <div className="flex items-center gap-2 mb-2">
-              <Activity className="w-5 h-5 text-orange-400" />
+              <Activity className="w-5 h-5 text-zinc-200" />
               <div className="text-xs text-slate-400">Estado</div>
             </div>
-            <div className="text-lg font-bold text-emerald-400">Activo</div>
+            <div className="text-lg font-bold text-zinc-200">Activo</div>
           </motion.div>
         </div>
       </div>
@@ -311,7 +311,7 @@ export const BankVisualization2D = ({ banks = [], title = 'Análisis Bancario' }
             >
               <div className="flex items-start justify-between mb-6">
                 <div className="flex items-center gap-4">
-                  <div className="p-4 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-600">
+                  <div className="p-4 rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-900">
                     <Building2 className="w-8 h-8 text-white" />
                   </div>
                   <div>
@@ -345,7 +345,7 @@ export const BankVisualization2D = ({ banks = [], title = 'Análisis Bancario' }
                 </div>
                 <div className="p-4 rounded-xl bg-slate-800/50 border border-white/10">
                   <div className="text-sm text-slate-400 mb-2">Crecimiento</div>
-                  <div className="text-2xl font-bold text-emerald-400">
+                  <div className="text-2xl font-bold text-zinc-200">
                     +{selectedBank.growth || '0'}%
                   </div>
                 </div>
@@ -359,7 +359,7 @@ export const BankVisualization2D = ({ banks = [], title = 'Análisis Bancario' }
 
               <button
                 onClick={() => setSelectedBank(null)}
-                className="mt-6 w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-semibold transition-all"
+                className="mt-6 w-full py-3 rounded-xl bg-gradient-to-r from-zinc-900 to-zinc-900 hover:from-zinc-700 hover:to-zinc-800 text-white font-semibold transition-all"
               >
                 Cerrar
               </button>

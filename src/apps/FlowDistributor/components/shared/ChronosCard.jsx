@@ -175,7 +175,7 @@ export const ChronosStatCard = ({
             animate={{ y: isPositive ? [-2, 2, -2] : [2, -2, 2] }}
             transition={{ duration: 2, repeat: Infinity }}
             className={`text-sm font-medium ${
-              isPositive ? 'text-green-400' : 'text-red-400'
+              isPositive ? 'text-zinc-200' : 'text-zinc-200'
             }`}
           >
             {isPositive ? '↑' : '↓'} {Math.abs(trend)}%

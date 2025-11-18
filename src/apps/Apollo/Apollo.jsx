@@ -94,7 +94,7 @@ const initialVehicles = [
     battery: 87,
     fuel: 75,
     lastUpdate: '2 min ago',
-    color: 'from-blue-500 to-cyan-500',
+    color: 'from-zinc-800 to-cyan-500',
     icon: '🚙',
     altitude: 540,
     heading: 145,
@@ -130,7 +130,7 @@ const initialVehicles = [
     battery: 72,
     fuel: 60,
     lastUpdate: '1 min ago',
-    color: 'from-purple-500 to-pink-500',
+    color: 'from-zinc-800 to-zinc-700',
     icon: '🚐',
     altitude: 550,
     heading: 280,
@@ -148,7 +148,7 @@ const initialVehicles = [
     battery: 45,
     fuel: 30,
     lastUpdate: '10 min ago',
-    color: 'from-orange-500 to-red-500',
+    color: 'from-orange-500 to-zinc-800',
     icon: '🚕',
     altitude: 545,
     heading: 90,
@@ -170,7 +170,7 @@ const initialDrones = [
     camera: 'streaming',
     detections: 12,
     flightTime: '00:25:30',
-    color: 'from-red-500 to-orange-500',
+    color: 'from-zinc-700 to-orange-500',
     speed: 15,
     heading: 180,
     signal: 95,
@@ -188,7 +188,7 @@ const initialDrones = [
     camera: 'offline',
     detections: 0,
     flightTime: '00:00:00',
-    color: 'from-blue-500 to-cyan-500',
+    color: 'from-zinc-800 to-cyan-500',
     speed: 0,
     heading: 0,
     signal: 100,
@@ -206,7 +206,7 @@ const initialDrones = [
     camera: 'streaming',
     detections: 8,
     flightTime: '00:18:45',
-    color: 'from-purple-500 to-pink-500',
+    color: 'from-zinc-800 to-zinc-700',
     speed: 12,
     heading: 90,
     signal: 88,
@@ -387,28 +387,28 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
       id: 'vehicles',
       icon: Car,
       label: 'Vehículos GPS',
-      color: 'from-blue-500 to-cyan-500',
+      color: 'from-zinc-800 to-cyan-500',
       badge: 4,
     },
     {
       id: 'drones',
       icon: Radio,
       label: 'Control Drones',
-      color: 'from-purple-500 to-pink-500',
+      color: 'from-zinc-800 to-zinc-700',
       badge: 3,
     },
     {
       id: 'scanner',
       icon: Scan,
       label: 'Scanner IA',
-      color: 'from-cyan-500 to-teal-500',
+      color: 'from-zinc-800 to-teal-500',
       badge: 'LIVE',
     },
     {
       id: 'detections',
       icon: Target,
       label: 'Detecciones',
-      color: 'from-red-500 to-orange-500',
+      color: 'from-zinc-700 to-orange-500',
       badge: 12,
     },
     {
@@ -422,7 +422,7 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
       id: 'alerts',
       icon: AlertCircle,
       label: 'Alertas',
-      color: 'from-orange-500 to-red-500',
+      color: 'from-orange-500 to-zinc-800',
       badge: 2,
     },
   ];
@@ -430,7 +430,7 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
   return (
     <motion.aside
       animate={{ width: isCollapsed ? 80 : 320 }}
-      className="fixed left-0 top-0 h-screen backdrop-blur-2xl bg-gradient-to-br from-slate-950/95 via-green-950/30 to-slate-950/95 border-r border-green-500/20 z-50 flex flex-col overflow-hidden"
+      className="fixed left-0 top-0 h-screen backdrop-blur-2xl bg-gradient-to-br from-slate-950/95 via-green-950/30 to-slate-950/95 border-r border-zinc-500/20 z-50 flex flex-col overflow-hidden"
     >
       {/* Animated background */}
       <div className="absolute inset-0 opacity-30">
@@ -450,7 +450,7 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
       </div>
 
       {/* Header */}
-      <div className="relative p-6 border-b border-green-500/20">
+      <div className="relative p-6 border-b border-zinc-500/20">
         <div className="flex items-center justify-between">
           {!isCollapsed && (
             <motion.div
@@ -471,13 +471,13 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
               >
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 via-emerald-500 to-cyan-500 p-[2px]">
                   <div className="w-full h-full rounded-xl bg-slate-950 flex items-center justify-center">
-                    <Radio className="w-6 h-6 text-green-400" />
+                    <Radio className="w-6 h-6 text-zinc-200" />
                   </div>
                 </div>
                 <motion.div
                   animate={{ scale: [1, 1.5, 1], opacity: [1, 0, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
-                  className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full"
+                  className="absolute -top-1 -right-1 w-3 h-3 bg-zinc-9000 rounded-full"
                 />
               </motion.div>
               <div>
@@ -485,7 +485,7 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
                   Apollo
                 </h1>
                 <p className="text-xs text-slate-400 flex items-center gap-1">
-                  <Satellite className="w-3 h-3 text-green-400" />
+                  <Satellite className="w-3 h-3 text-zinc-200" />
                   Tactical Command
                 </p>
               </div>
@@ -571,8 +571,8 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
                           px-2 py-0.5 rounded-full text-xs font-bold
                           ${
                             typeof item.badge === 'number'
-                              ? 'bg-green-500/20 text-green-400 border border-green-500/30'
-                              : 'bg-gradient-to-r from-red-500 to-orange-500 text-white animate-pulse'
+                              ? 'bg-zinc-9000/20 text-zinc-200 border border-zinc-500/30'
+                              : 'bg-gradient-to-r from-zinc-700 to-orange-500 text-white animate-pulse'
                           }
                         `}
                       >
@@ -588,7 +588,7 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
       </nav>
 
       {/* Footer Stats */}
-      <div className="relative p-4 border-t border-green-500/20">
+      <div className="relative p-4 border-t border-zinc-500/20">
         {!isCollapsed && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -596,23 +596,23 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
             className="space-y-3"
           >
             {/* System Status */}
-            <div className="relative overflow-hidden rounded-xl p-4 bg-gradient-to-br from-green-500/10 via-emerald-500/10 to-cyan-500/10 border border-green-500/20">
+            <div className="relative overflow-hidden rounded-xl p-4 bg-gradient-to-br from-green-500/10 via-emerald-500/10 to-cyan-500/10 border border-zinc-500/20">
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs text-slate-400">System Status</span>
                   <div className="flex items-center gap-1">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-xs text-green-400 font-medium">ONLINE</span>
+                    <div className="w-2 h-2 bg-zinc-9000 rounded-full animate-pulse"></div>
+                    <span className="text-xs text-zinc-200 font-medium">ONLINE</span>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <div>
                     <span className="text-slate-500">GPS:</span>
-                    <span className="text-green-400 ml-1 font-medium">4 Active</span>
+                    <span className="text-zinc-200 ml-1 font-medium">4 Active</span>
                   </div>
                   <div>
                     <span className="text-slate-500">Drones:</span>
-                    <span className="text-cyan-400 ml-1 font-medium">2 Flying</span>
+                    <span className="text-zinc-200 ml-1 font-medium">2 Flying</span>
                   </div>
                 </div>
               </div>
@@ -640,22 +640,22 @@ const HUDOverlay = ({ vehicles, drones, selectedVehicle, selectedDrone }) => {
         <motion.div
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="backdrop-blur-xl bg-slate-950/80 border border-green-500/30 rounded-2xl px-6 py-3"
+          className="backdrop-blur-xl bg-slate-950/80 border border-zinc-500/30 rounded-2xl px-6 py-3"
         >
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
-              <Satellite className="w-4 h-4 text-green-400" />
-              <span className="text-sm font-mono text-green-400">{time.toLocaleTimeString()}</span>
+              <Satellite className="w-4 h-4 text-zinc-200" />
+              <span className="text-sm font-mono text-zinc-200">{time.toLocaleTimeString()}</span>
             </div>
-            <div className="w-px h-4 bg-green-500/30"></div>
+            <div className="w-px h-4 bg-zinc-9000/30"></div>
             <div className="flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-cyan-400" />
+              <MapPin className="w-4 h-4 text-zinc-200" />
               <span className="text-sm text-slate-400">Monterrey, MX</span>
             </div>
-            <div className="w-px h-4 bg-green-500/30"></div>
+            <div className="w-px h-4 bg-zinc-9000/30"></div>
             <div className="flex items-center gap-2">
-              <Signal className="w-4 h-4 text-green-400 animate-pulse" />
-              <span className="text-sm text-green-400 font-medium">CONNECTED</span>
+              <Signal className="w-4 h-4 text-zinc-200 animate-pulse" />
+              <span className="text-sm text-zinc-200 font-medium">CONNECTED</span>
             </div>
           </div>
         </motion.div>
@@ -666,13 +666,13 @@ const HUDOverlay = ({ vehicles, drones, selectedVehicle, selectedDrone }) => {
         <motion.div
           initial={{ x: 50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
-          className="backdrop-blur-xl bg-slate-950/80 border border-green-500/30 rounded-xl p-4 space-y-2"
+          className="backdrop-blur-xl bg-slate-950/80 border border-zinc-500/30 rounded-xl p-4 space-y-2"
         >
           <div className="flex items-center gap-2">
-            <Compass className="w-4 h-4 text-green-400" />
+            <Compass className="w-4 h-4 text-zinc-200" />
             <span className="text-xs text-slate-400">NORTH</span>
           </div>
-          <div className="text-2xl font-mono font-bold text-green-400">0°</div>
+          <div className="text-2xl font-mono font-bold text-zinc-200">0°</div>
         </motion.div>
       </div>
 
@@ -681,32 +681,32 @@ const HUDOverlay = ({ vehicles, drones, selectedVehicle, selectedDrone }) => {
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="backdrop-blur-xl bg-slate-950/80 border border-green-500/30 rounded-2xl p-4"
+          className="backdrop-blur-xl bg-slate-950/80 border border-zinc-500/30 rounded-2xl p-4"
         >
           <div className="grid grid-cols-4 gap-4">
             <div className="text-center">
-              <Car className="w-5 h-5 text-blue-400 mx-auto mb-1" />
+              <Car className="w-5 h-5 text-zinc-200 mx-auto mb-1" />
               <div className="text-lg font-bold text-white">
                 {vehicles.filter((v) => v.status === 'moving').length}
               </div>
               <div className="text-xs text-slate-400">En Movimiento</div>
             </div>
             <div className="text-center">
-              <Radio className="w-5 h-5 text-purple-400 mx-auto mb-1" />
+              <Radio className="w-5 h-5 text-zinc-800 mx-auto mb-1" />
               <div className="text-lg font-bold text-white">
                 {drones.filter((d) => d.status === 'active').length}
               </div>
               <div className="text-xs text-slate-400">Drones Activos</div>
             </div>
             <div className="text-center">
-              <Target className="w-5 h-5 text-red-400 mx-auto mb-1" />
+              <Target className="w-5 h-5 text-zinc-200 mx-auto mb-1" />
               <div className="text-lg font-bold text-white">
                 {drones.reduce((acc, d) => acc + d.detections, 0)}
               </div>
               <div className="text-xs text-slate-400">Detecciones IA</div>
             </div>
             <div className="text-center">
-              <Shield className="w-5 h-5 text-green-400 mx-auto mb-1" />
+              <Shield className="w-5 h-5 text-zinc-200 mx-auto mb-1" />
               <div className="text-lg font-bold text-white">98.5%</div>
               <div className="text-xs text-slate-400">Uptime</div>
             </div>
@@ -720,7 +720,7 @@ const HUDOverlay = ({ vehicles, drones, selectedVehicle, selectedDrone }) => {
           animate={{ rotate: 360 }}
           transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
         >
-          <Crosshair className="w-12 h-12 text-green-400/30" />
+          <Crosshair className="w-12 h-12 text-zinc-200/30" />
         </motion.div>
       </div>
 
@@ -741,7 +741,7 @@ const MapboxView = ({ vehicles, drones, selectedVehicle, setSelectedVehicle }) =
   return (
     <div className="relative w-full h-full">
       {/* Map Container */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-green-500/20">
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-zinc-500/20">
         {/* Simulated Mapbox with grid */}
         <div className="absolute inset-0">
           {/* Grid overlay */}
@@ -825,7 +825,7 @@ const MapboxView = ({ vehicles, drones, selectedVehicle, setSelectedVehicle }) =
                       opacity: [0.5, 0, 0.5],
                     }}
                     transition={{ duration: 2, repeat: Infinity }}
-                    className="absolute inset-0 rounded-full bg-green-500/30 -m-4"
+                    className="absolute inset-0 rounded-full bg-zinc-9000/30 -m-4"
                   />
                 )}
 
@@ -840,7 +840,7 @@ const MapboxView = ({ vehicles, drones, selectedVehicle, setSelectedVehicle }) =
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   whileHover={{ opacity: 1, y: 0 }}
-                  className="absolute top-full left-1/2 -translate-x-1/2 mt-2 backdrop-blur-xl bg-slate-950/90 border border-green-500/30 rounded-xl p-3 min-w-[200px] pointer-events-none"
+                  className="absolute top-full left-1/2 -translate-x-1/2 mt-2 backdrop-blur-xl bg-slate-950/90 border border-zinc-500/30 rounded-xl p-3 min-w-[200px] pointer-events-none"
                 >
                   <div className="text-sm font-bold text-white mb-1">{vehicle.name}</div>
                   <div className="text-xs text-slate-400 space-y-1">
@@ -890,7 +890,7 @@ const MapboxView = ({ vehicles, drones, selectedVehicle, setSelectedVehicle }) =
                       opacity: [0.3, 0, 0.3],
                     }}
                     transition={{ duration: 3, repeat: Infinity }}
-                    className="absolute inset-0 rounded-full bg-purple-500/20 -m-12 border-2 border-purple-500/30"
+                    className="absolute inset-0 rounded-full bg-zinc-800/20 -m-12 border-2 border-zinc-800/30"
                   />
                 )}
 
@@ -902,8 +902,8 @@ const MapboxView = ({ vehicles, drones, selectedVehicle, setSelectedVehicle }) =
                 </div>
 
                 {/* Altitude indicator */}
-                <div className="absolute -top-2 -right-2 backdrop-blur-sm bg-slate-950/80 border border-purple-500/30 rounded-lg px-2 py-1">
-                  <div className="text-xs text-purple-400 font-mono">{drone.altitude}m</div>
+                <div className="absolute -top-2 -right-2 backdrop-blur-sm bg-slate-950/80 border border-zinc-800/30 rounded-lg px-2 py-1">
+                  <div className="text-xs text-zinc-800 font-mono">{drone.altitude}m</div>
                 </div>
               </motion.div>
             </motion.div>
@@ -980,7 +980,7 @@ const VehiclesSection = ({ vehicles }) => {
           onClick={() => setFilter('moving')}
           className={`px-6 py-3 rounded-xl font-medium transition-all ${
             filter === 'moving'
-              ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg shadow-blue-500/50'
+              ? 'bg-gradient-to-r from-zinc-800 to-cyan-500 text-white shadow-lg shadow-blue-500/50'
               : 'bg-white/5 text-slate-400 hover:bg-white/10'
           }`}
         >
@@ -992,7 +992,7 @@ const VehiclesSection = ({ vehicles }) => {
           onClick={() => setFilter('stopped')}
           className={`px-6 py-3 rounded-xl font-medium transition-all ${
             filter === 'stopped'
-              ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg shadow-orange-500/50'
+              ? 'bg-gradient-to-r from-orange-500 to-zinc-800 text-white shadow-lg shadow-orange-500/50'
               : 'bg-white/5 text-slate-400 hover:bg-white/10'
           }`}
         >
@@ -1010,7 +1010,7 @@ const VehiclesSection = ({ vehicles }) => {
             transition={{ delay: index * 0.1 }}
             whileHover={{ scale: 1.02 }}
             onClick={() => setSelectedVehicle(vehicle)}
-            className="relative backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-green-500/20 rounded-2xl p-6 cursor-pointer group overflow-hidden"
+            className="relative backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-zinc-500/20 rounded-2xl p-6 cursor-pointer group overflow-hidden"
           >
             {/* Glow effect */}
             <div
@@ -1031,7 +1031,7 @@ const VehiclesSection = ({ vehicles }) => {
               <div
                 className={`px-3 py-1 rounded-full text-xs font-bold ${
                   vehicle.status === 'moving'
-                    ? 'bg-green-500/20 text-green-400 border border-green-500/30'
+                    ? 'bg-zinc-9000/20 text-zinc-200 border border-zinc-500/30'
                     : 'bg-slate-500/20 text-slate-400 border border-slate-500/30'
                 }`}
               >
@@ -1043,28 +1043,28 @@ const VehiclesSection = ({ vehicles }) => {
             <div className="relative grid grid-cols-2 gap-4 mb-4">
               <div className="backdrop-blur-sm bg-white/5 rounded-xl p-3">
                 <div className="flex items-center gap-2 mb-1">
-                  <Navigation className="w-4 h-4 text-blue-400" />
+                  <Navigation className="w-4 h-4 text-zinc-200" />
                   <span className="text-xs text-slate-400">Velocidad</span>
                 </div>
                 <div className="text-xl font-bold text-white">{vehicle.speed} km/h</div>
               </div>
               <div className="backdrop-blur-sm bg-white/5 rounded-xl p-3">
                 <div className="flex items-center gap-2 mb-1">
-                  <Battery className="w-4 h-4 text-green-400" />
+                  <Battery className="w-4 h-4 text-zinc-200" />
                   <span className="text-xs text-slate-400">Batería</span>
                 </div>
                 <div className="text-xl font-bold text-white">{vehicle.battery}%</div>
               </div>
               <div className="backdrop-blur-sm bg-white/5 rounded-xl p-3">
                 <div className="flex items-center gap-2 mb-1">
-                  <Zap className="w-4 h-4 text-yellow-400" />
+                  <Zap className="w-4 h-4 text-zinc-200" />
                   <span className="text-xs text-slate-400">Combustible</span>
                 </div>
                 <div className="text-xl font-bold text-white">{vehicle.fuel}%</div>
               </div>
               <div className="backdrop-blur-sm bg-white/5 rounded-xl p-3">
                 <div className="flex items-center gap-2 mb-1">
-                  <Thermometer className="w-4 h-4 text-red-400" />
+                  <Thermometer className="w-4 h-4 text-zinc-200" />
                   <span className="text-xs text-slate-400">Temperatura</span>
                 </div>
                 <div className="text-xl font-bold text-white">{vehicle.engineTemp}°C</div>
@@ -1091,7 +1091,7 @@ const VehiclesSection = ({ vehicles }) => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="relative w-full mt-4 px-4 py-2 rounded-xl bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 text-green-400 font-medium hover:from-green-500/30 hover:to-emerald-500/30 transition-all"
+              className="relative w-full mt-4 px-4 py-2 rounded-xl bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-zinc-500/30 text-zinc-200 font-medium hover:from-green-500/30 hover:to-emerald-500/30 transition-all"
             >
               Ver en Mapa
             </motion.button>
@@ -1121,7 +1121,7 @@ const DronesSection = ({ drones }) => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: index * 0.1 }}
-            className="relative backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-purple-500/20 rounded-2xl p-6 overflow-hidden group"
+            className="relative backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-zinc-800/20 rounded-2xl p-6 overflow-hidden group"
           >
             {/* Animated background */}
             <div
@@ -1137,7 +1137,7 @@ const DronesSection = ({ drones }) => {
                 <div
                   className={`px-3 py-1 rounded-full text-xs font-bold ${
                     drone.status === 'active'
-                      ? 'bg-green-500/20 text-green-400 border border-green-500/30 animate-pulse'
+                      ? 'bg-zinc-9000/20 text-zinc-200 border border-zinc-500/30 animate-pulse'
                       : 'bg-slate-500/20 text-slate-400 border border-slate-500/30'
                   }`}
                 >
@@ -1163,10 +1163,10 @@ const DronesSection = ({ drones }) => {
                       transition={{ delay: index * 0.1 + 0.3 }}
                       className={`h-full ${
                         drone.battery > 60
-                          ? 'bg-green-500'
+                          ? 'bg-zinc-9000'
                           : drone.battery > 30
-                            ? 'bg-yellow-500'
-                            : 'bg-red-500'
+                            ? 'bg-zinc-9000'
+                            : 'bg-zinc-9000'
                       }`}
                     />
                   </div>
@@ -1197,7 +1197,7 @@ const DronesSection = ({ drones }) => {
                 </div>
                 <span
                   className={`text-sm font-bold ${
-                    drone.camera === 'streaming' ? 'text-green-400' : 'text-slate-500'
+                    drone.camera === 'streaming' ? 'text-zinc-200' : 'text-slate-500'
                   }`}
                 >
                   {drone.camera === 'streaming' ? 'STREAMING' : 'OFFLINE'}
@@ -1209,7 +1209,7 @@ const DronesSection = ({ drones }) => {
                   <Target className="w-4 h-4" />
                   <span>Detecciones</span>
                 </div>
-                <span className="text-sm font-bold text-green-400">{drone.detections}</span>
+                <span className="text-sm font-bold text-zinc-200">{drone.detections}</span>
               </div>
 
               <div className="flex items-center justify-between">
@@ -1228,8 +1228,8 @@ const DronesSection = ({ drones }) => {
                 whileTap={{ scale: 0.95 }}
                 className={`p-3 rounded-xl ${
                   drone.status === 'active'
-                    ? 'bg-red-500/20 border border-red-500/30 text-red-400'
-                    : 'bg-green-500/20 border border-green-500/30 text-green-400'
+                    ? 'bg-zinc-9000/20 border border-zinc-500/30 text-zinc-200'
+                    : 'bg-zinc-9000/20 border border-zinc-500/30 text-zinc-200'
                 } font-medium transition-all`}
               >
                 {drone.status === 'active' ? (
@@ -1241,14 +1241,14 @@ const DronesSection = ({ drones }) => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-3 rounded-xl bg-blue-500/20 border border-blue-500/30 text-blue-400 font-medium transition-all"
+                className="p-3 rounded-xl bg-zinc-9000/20 border border-zinc-8000/30 text-zinc-200 font-medium transition-all"
               >
                 <Camera className="w-4 h-4 mx-auto" />
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-3 rounded-xl bg-purple-500/20 border border-purple-500/30 text-purple-400 font-medium transition-all"
+                className="p-3 rounded-xl bg-zinc-800/20 border border-zinc-800/30 text-zinc-800 font-medium transition-all"
               >
                 <Locate className="w-4 h-4 mx-auto" />
               </motion.button>
@@ -1267,7 +1267,7 @@ const DronesSection = ({ drones }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="relative backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-purple-500/20 rounded-2xl p-6 overflow-hidden"
+              className="relative backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-zinc-800/20 rounded-2xl p-6 overflow-hidden"
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
@@ -1280,8 +1280,8 @@ const DronesSection = ({ drones }) => {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                  <span className="text-xs text-red-400 font-medium">LIVE</span>
+                  <div className="w-2 h-2 bg-zinc-9000 rounded-full animate-pulse"></div>
+                  <span className="text-xs text-zinc-200 font-medium">LIVE</span>
                 </div>
               </div>
 
@@ -1295,7 +1295,7 @@ const DronesSection = ({ drones }) => {
                     animate={{ rotate: 360 }}
                     transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
                   >
-                    <Crosshair className="w-24 h-24 text-green-400/30" />
+                    <Crosshair className="w-24 h-24 text-zinc-200/30" />
                   </motion.div>
                 </div>
 
@@ -1303,11 +1303,11 @@ const DronesSection = ({ drones }) => {
                 <div className="absolute inset-0 p-4">
                   <div className="flex items-start justify-between">
                     <div className="space-y-1">
-                      <div className="text-xs font-mono text-green-400">ALT: {drone.altitude}m</div>
-                      <div className="text-xs font-mono text-green-400">SPD: {drone.speed} m/s</div>
-                      <div className="text-xs font-mono text-green-400">HDG: {drone.heading}°</div>
+                      <div className="text-xs font-mono text-zinc-200">ALT: {drone.altitude}m</div>
+                      <div className="text-xs font-mono text-zinc-200">SPD: {drone.speed} m/s</div>
+                      <div className="text-xs font-mono text-zinc-200">HDG: {drone.heading}°</div>
                     </div>
-                    <div className="text-xs font-mono text-green-400">
+                    <div className="text-xs font-mono text-zinc-200">
                       {new Date().toLocaleTimeString()}
                     </div>
                   </div>
@@ -1351,13 +1351,13 @@ const ScannerSection = ({ detections }) => {
       {/* Scanner Control Panel */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Main Scanner Display */}
-        <div className="lg:col-span-2 relative backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-cyan-500/20 rounded-2xl p-6 overflow-hidden">
+        <div className="lg:col-span-2 relative backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-zinc-500/20 rounded-2xl p-6 overflow-hidden">
           {/* Animated background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-teal-500/5" />
+          <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/5 to-teal-500/5" />
 
           {/* Scanner visualization */}
           <div className="relative aspect-square max-h-[500px] mx-auto">
-            <div className="absolute inset-0 rounded-full border-2 border-cyan-500/30" />
+            <div className="absolute inset-0 rounded-full border-2 border-zinc-500/30" />
 
             {/* Rotating scanner beam */}
             <motion.div
@@ -1365,7 +1365,7 @@ const ScannerSection = ({ detections }) => {
               transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
               className="absolute inset-0"
             >
-              <div className="absolute top-1/2 left-1/2 w-1/2 h-px bg-gradient-to-r from-cyan-500 to-transparent origin-left" />
+              <div className="absolute top-1/2 left-1/2 w-1/2 h-px bg-gradient-to-r from-zinc-800 to-transparent origin-left" />
             </motion.div>
 
             {/* Detection points */}
@@ -1396,10 +1396,10 @@ const ScannerSection = ({ detections }) => {
                     transition={{ duration: 2, repeat: Infinity }}
                     className={`w-4 h-4 rounded-full ${
                       detection.threat === 'high'
-                        ? 'bg-red-500'
+                        ? 'bg-zinc-9000'
                         : detection.threat === 'medium'
-                          ? 'bg-yellow-500'
-                          : 'bg-green-500'
+                          ? 'bg-zinc-9000'
+                          : 'bg-zinc-9000'
                     }`}
                   />
                 </motion.div>
@@ -1408,14 +1408,14 @@ const ScannerSection = ({ detections }) => {
 
             {/* Center crosshair */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <Crosshair className="w-12 h-12 text-cyan-400" />
+              <Crosshair className="w-12 h-12 text-zinc-200" />
             </div>
 
             {/* Range circles */}
             {[25, 50, 75].map((radius) => (
               <div
                 key={radius}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-500/20"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-zinc-500/20"
                 style={{
                   width: `${radius * 2}%`,
                   height: `${radius * 2}%`,
@@ -1428,12 +1428,12 @@ const ScannerSection = ({ detections }) => {
           <div className="relative mt-6">
             <div className="flex items-center justify-between mb-2">
               <span className="text-sm text-slate-400">Escaneo en Progreso</span>
-              <span className="text-sm font-mono text-cyan-400">{scanProgress}%</span>
+              <span className="text-sm font-mono text-zinc-200">{scanProgress}%</span>
             </div>
             <div className="w-full h-2 bg-slate-700/50 rounded-full overflow-hidden">
               <motion.div
                 animate={{ width: `${scanProgress}%` }}
-                className="h-full bg-gradient-to-r from-cyan-500 to-teal-500"
+                className="h-full bg-gradient-to-r from-zinc-800 to-teal-500"
               />
             </div>
           </div>
@@ -1444,7 +1444,7 @@ const ScannerSection = ({ detections }) => {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-green-500/20 rounded-2xl p-6"
+            className="backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-zinc-500/20 rounded-2xl p-6"
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="p-3 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500">
@@ -1455,7 +1455,7 @@ const ScannerSection = ({ detections }) => {
                 <p className="text-xs text-slate-400">Amenaza Baja</p>
               </div>
             </div>
-            <div className="text-3xl font-bold text-green-400">
+            <div className="text-3xl font-bold text-zinc-200">
               {detections.filter((d) => d.threat === 'low').length}
             </div>
           </motion.div>
@@ -1464,7 +1464,7 @@ const ScannerSection = ({ detections }) => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
-            className="backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-yellow-500/20 rounded-2xl p-6"
+            className="backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-zinc-500/20 rounded-2xl p-6"
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="p-3 rounded-xl bg-gradient-to-br from-yellow-500 to-amber-500">
@@ -1475,7 +1475,7 @@ const ScannerSection = ({ detections }) => {
                 <p className="text-xs text-slate-400">Amenaza Media</p>
               </div>
             </div>
-            <div className="text-3xl font-bold text-yellow-400">
+            <div className="text-3xl font-bold text-zinc-200">
               {detections.filter((d) => d.threat === 'medium').length}
             </div>
           </motion.div>
@@ -1484,10 +1484,10 @@ const ScannerSection = ({ detections }) => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-red-500/20 rounded-2xl p-6"
+            className="backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-zinc-500/20 rounded-2xl p-6"
           >
             <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-xl bg-gradient-to-br from-red-500 to-orange-500">
+              <div className="p-3 rounded-xl bg-gradient-to-br from-zinc-700 to-orange-500">
                 <XCircle className="w-6 h-6 text-white" />
               </div>
               <div>
@@ -1495,7 +1495,7 @@ const ScannerSection = ({ detections }) => {
                 <p className="text-xs text-slate-400">Amenaza Alta</p>
               </div>
             </div>
-            <div className="text-3xl font-bold text-red-400">
+            <div className="text-3xl font-bold text-zinc-200">
               {detections.filter((d) => d.threat === 'high').length}
             </div>
           </motion.div>
@@ -1507,7 +1507,7 @@ const ScannerSection = ({ detections }) => {
             onClick={() => setIsScanning(!isScanning)}
             className={`w-full px-6 py-4 rounded-xl font-bold transition-all ${
               isScanning
-                ? 'bg-gradient-to-r from-red-500 to-orange-500 text-white shadow-lg shadow-red-500/50'
+                ? 'bg-gradient-to-r from-zinc-700 to-orange-500 text-white shadow-lg shadow-red-500/50'
                 : 'bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-lg shadow-green-500/50'
             }`}
           >
@@ -1527,7 +1527,7 @@ const ScannerSection = ({ detections }) => {
       </div>
 
       {/* Recent Detections */}
-      <div className="backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-green-500/20 rounded-2xl p-6">
+      <div className="backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-zinc-500/20 rounded-2xl p-6">
         <h3 className="text-xl font-bold text-white mb-4">Detecciones Recientes</h3>
         <div className="space-y-2">
           {detections.slice(0, 5).map((detection, index) => (
@@ -1541,10 +1541,10 @@ const ScannerSection = ({ detections }) => {
               <div
                 className={`w-3 h-3 rounded-full ${
                   detection.threat === 'high'
-                    ? 'bg-red-500'
+                    ? 'bg-zinc-9000'
                     : detection.threat === 'medium'
-                      ? 'bg-yellow-500'
-                      : 'bg-green-500'
+                      ? 'bg-zinc-9000'
+                      : 'bg-zinc-9000'
                 }`}
               />
               <div className="flex-1">
@@ -1598,7 +1598,7 @@ const DetectionsSection = ({ detections }) => {
           onClick={() => setFilter('high')}
           className={`px-6 py-3 rounded-xl font-medium transition-all ${
             filter === 'high'
-              ? 'bg-gradient-to-r from-red-500 to-orange-500 text-white shadow-lg shadow-red-500/50'
+              ? 'bg-gradient-to-r from-zinc-700 to-orange-500 text-white shadow-lg shadow-red-500/50'
               : 'bg-white/5 text-slate-400 hover:bg-white/10'
           }`}
         >
@@ -1622,7 +1622,7 @@ const DetectionsSection = ({ detections }) => {
           onClick={() => setFilter('low')}
           className={`px-6 py-3 rounded-xl font-medium transition-all ${
             filter === 'low'
-              ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg shadow-blue-500/50'
+              ? 'bg-gradient-to-r from-zinc-800 to-cyan-500 text-white shadow-lg shadow-blue-500/50'
               : 'bg-white/5 text-slate-400 hover:bg-white/10'
           }`}
         >
@@ -1631,10 +1631,10 @@ const DetectionsSection = ({ detections }) => {
       </div>
 
       {/* Detections List */}
-      <div className="backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-green-500/20 rounded-2xl overflow-hidden">
+      <div className="backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-zinc-500/20 rounded-2xl overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-white/5 border-b border-green-500/20">
+            <thead className="bg-white/5 border-b border-zinc-500/20">
               <tr>
                 <th className="px-6 py-4 text-left text-sm font-bold text-slate-300">Estado</th>
                 <th className="px-6 py-4 text-left text-sm font-bold text-slate-300">Tipo</th>
@@ -1658,20 +1658,20 @@ const DetectionsSection = ({ detections }) => {
                     <div
                       className={`w-3 h-3 rounded-full ${
                         detection.threat === 'high'
-                          ? 'bg-red-500 animate-pulse'
+                          ? 'bg-zinc-9000 animate-pulse'
                           : detection.threat === 'medium'
-                            ? 'bg-yellow-500'
-                            : 'bg-green-500'
+                            ? 'bg-zinc-9000'
+                            : 'bg-zinc-9000'
                       }`}
                     />
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-2">
-                      {detection.type === 'person' && <User className="w-4 h-4 text-blue-400" />}
-                      {detection.type === 'vehicle' && <Car className="w-4 h-4 text-purple-400" />}
-                      {detection.type === 'weapon' && <Target className="w-4 h-4 text-red-400" />}
+                      {detection.type === 'person' && <User className="w-4 h-4 text-zinc-200" />}
+                      {detection.type === 'vehicle' && <Car className="w-4 h-4 text-zinc-800" />}
+                      {detection.type === 'weapon' && <Target className="w-4 h-4 text-zinc-200" />}
                       {detection.type === 'suspicious' && (
-                        <AlertCircle className="w-4 h-4 text-yellow-400" />
+                        <AlertCircle className="w-4 h-4 text-zinc-200" />
                       )}
                       <span className="text-sm text-white capitalize">{detection.type}</span>
                     </div>
@@ -1693,10 +1693,10 @@ const DetectionsSection = ({ detections }) => {
                     <span
                       className={`px-3 py-1 rounded-full text-xs font-bold ${
                         detection.threat === 'high'
-                          ? 'bg-red-500/20 text-red-400 border border-red-500/30'
+                          ? 'bg-zinc-9000/20 text-zinc-200 border border-zinc-500/30'
                           : detection.threat === 'medium'
-                            ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
-                            : 'bg-green-500/20 text-green-400 border border-green-500/30'
+                            ? 'bg-zinc-9000/20 text-zinc-200 border border-zinc-500/30'
+                            : 'bg-zinc-9000/20 text-zinc-200 border border-zinc-500/30'
                       }`}
                     >
                       {detection.threat === 'high'
@@ -1721,14 +1721,14 @@ const DetectionsSection = ({ detections }) => {
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={() => setSelectedDetection(detection)}
-                        className="p-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-all"
+                        className="p-2 rounded-lg bg-zinc-9000/20 border border-zinc-8000/30 text-zinc-200 hover:bg-zinc-9000/30 transition-all"
                       >
                         <Eye className="w-4 h-4" />
                       </motion.button>
                       <motion.button
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
-                        className="p-2 rounded-lg bg-green-500/20 border border-green-500/30 text-green-400 hover:bg-green-500/30 transition-all"
+                        className="p-2 rounded-lg bg-zinc-9000/20 border border-zinc-500/30 text-zinc-200 hover:bg-zinc-9000/30 transition-all"
                       >
                         <MapPin className="w-4 h-4" />
                       </motion.button>
@@ -1766,68 +1766,68 @@ const AnalyticsSection = ({ vehicles, drones, detections }) => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="backdrop-blur-xl bg-gradient-to-br from-blue-900/40 to-blue-800/40 border border-blue-500/20 rounded-2xl p-6"
+          className="backdrop-blur-xl bg-gradient-to-br from-blue-900/40 to-blue-800/40 border border-zinc-8000/20 rounded-2xl p-6"
         >
           <div className="flex items-center justify-between mb-4">
-            <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500">
+            <div className="p-3 rounded-xl bg-gradient-to-br from-zinc-800 to-cyan-500">
               <Car className="w-6 h-6 text-white" />
             </div>
-            <TrendingUp className="w-5 h-5 text-blue-400" />
+            <TrendingUp className="w-5 h-5 text-zinc-200" />
           </div>
           <div className="text-3xl font-bold text-white mb-2">{vehicles.length}</div>
           <div className="text-sm text-slate-400">Total Vehículos</div>
-          <div className="mt-2 text-xs text-blue-400">{vehiclesMoving} en movimiento</div>
+          <div className="mt-2 text-xs text-zinc-200">{vehiclesMoving} en movimiento</div>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="backdrop-blur-xl bg-gradient-to-br from-purple-900/40 to-purple-800/40 border border-purple-500/20 rounded-2xl p-6"
+          className="backdrop-blur-xl bg-gradient-to-br from-zinc-800/40 to-zinc-800/40 border border-zinc-800/20 rounded-2xl p-6"
         >
           <div className="flex items-center justify-between mb-4">
-            <div className="p-3 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500">
+            <div className="p-3 rounded-xl bg-gradient-to-br from-zinc-800 to-zinc-700">
               <Radio className="w-6 h-6 text-white" />
             </div>
-            <TrendingUp className="w-5 h-5 text-purple-400" />
+            <TrendingUp className="w-5 h-5 text-zinc-800" />
           </div>
           <div className="text-3xl font-bold text-white mb-2">{drones.length}</div>
           <div className="text-sm text-slate-400">Total Drones</div>
-          <div className="mt-2 text-xs text-purple-400">{dronesActive} activos</div>
+          <div className="mt-2 text-xs text-zinc-800">{dronesActive} activos</div>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="backdrop-blur-xl bg-gradient-to-br from-red-900/40 to-red-800/40 border border-red-500/20 rounded-2xl p-6"
+          className="backdrop-blur-xl bg-gradient-to-br from-zinc-700/40 to-zinc-800/40 border border-zinc-500/20 rounded-2xl p-6"
         >
           <div className="flex items-center justify-between mb-4">
-            <div className="p-3 rounded-xl bg-gradient-to-br from-red-500 to-orange-500">
+            <div className="p-3 rounded-xl bg-gradient-to-br from-zinc-700 to-orange-500">
               <Target className="w-6 h-6 text-white" />
             </div>
-            <TrendingUp className="w-5 h-5 text-red-400" />
+            <TrendingUp className="w-5 h-5 text-zinc-200" />
           </div>
           <div className="text-3xl font-bold text-white mb-2">{totalDetections}</div>
           <div className="text-sm text-slate-400">Total Detecciones</div>
-          <div className="mt-2 text-xs text-red-400">{highThreat} amenazas altas</div>
+          <div className="mt-2 text-xs text-zinc-200">{highThreat} amenazas altas</div>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="backdrop-blur-xl bg-gradient-to-br from-green-900/40 to-green-800/40 border border-green-500/20 rounded-2xl p-6"
+          className="backdrop-blur-xl bg-gradient-to-br from-green-900/40 to-green-800/40 border border-zinc-500/20 rounded-2xl p-6"
         >
           <div className="flex items-center justify-between mb-4">
             <div className="p-3 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500">
               <Activity className="w-6 h-6 text-white" />
             </div>
-            <TrendingUp className="w-5 h-5 text-green-400" />
+            <TrendingUp className="w-5 h-5 text-zinc-200" />
           </div>
           <div className="text-3xl font-bold text-white mb-2">98.5%</div>
           <div className="text-sm text-slate-400">Uptime del Sistema</div>
-          <div className="mt-2 text-xs text-green-400">Excelente rendimiento</div>
+          <div className="mt-2 text-xs text-zinc-200">Excelente rendimiento</div>
         </motion.div>
       </div>
 
@@ -1838,7 +1838,7 @@ const AnalyticsSection = ({ vehicles, drones, detections }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-green-500/20 rounded-2xl p-6"
+          className="backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-zinc-500/20 rounded-2xl p-6"
         >
           <div className="flex items-center gap-3 mb-6">
             <div className="p-3 rounded-xl bg-gradient-to-br from-yellow-500 to-amber-500">
@@ -1854,7 +1854,7 @@ const AnalyticsSection = ({ vehicles, drones, detections }) => {
             <div>
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm text-slate-300">Alta Amenaza</span>
-                <span className="text-sm font-bold text-red-400">
+                <span className="text-sm font-bold text-zinc-200">
                   {highThreat} ({((highThreat / totalDetections) * 100).toFixed(0)}%)
                 </span>
               </div>
@@ -1863,7 +1863,7 @@ const AnalyticsSection = ({ vehicles, drones, detections }) => {
                   initial={{ width: 0 }}
                   animate={{ width: `${(highThreat / totalDetections) * 100}%` }}
                   transition={{ delay: 0.5 }}
-                  className="h-full bg-gradient-to-r from-red-500 to-orange-500"
+                  className="h-full bg-gradient-to-r from-zinc-700 to-orange-500"
                 />
               </div>
             </div>
@@ -1871,7 +1871,7 @@ const AnalyticsSection = ({ vehicles, drones, detections }) => {
             <div>
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm text-slate-300">Amenaza Media</span>
-                <span className="text-sm font-bold text-yellow-400">
+                <span className="text-sm font-bold text-zinc-200">
                   {mediumThreat} ({((mediumThreat / totalDetections) * 100).toFixed(0)}%)
                 </span>
               </div>
@@ -1888,7 +1888,7 @@ const AnalyticsSection = ({ vehicles, drones, detections }) => {
             <div>
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm text-slate-300">Baja Amenaza</span>
-                <span className="text-sm font-bold text-green-400">
+                <span className="text-sm font-bold text-zinc-200">
                   {lowThreat} ({((lowThreat / totalDetections) * 100).toFixed(0)}%)
                 </span>
               </div>
@@ -1909,10 +1909,10 @@ const AnalyticsSection = ({ vehicles, drones, detections }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-green-500/20 rounded-2xl p-6"
+          className="backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-zinc-500/20 rounded-2xl p-6"
         >
           <div className="flex items-center gap-3 mb-6">
-            <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500">
+            <div className="p-3 rounded-xl bg-gradient-to-br from-zinc-800 to-cyan-500">
               <BarChart3 className="w-6 h-6 text-white" />
             </div>
             <div>
@@ -1928,7 +1928,7 @@ const AnalyticsSection = ({ vehicles, drones, detections }) => {
               const colors = {
                 moving: 'from-green-500 to-emerald-500',
                 stopped: 'from-yellow-500 to-amber-500',
-                idle: 'from-orange-500 to-red-500',
+                idle: 'from-orange-500 to-zinc-800',
               };
 
               return (
@@ -1959,10 +1959,10 @@ const AnalyticsSection = ({ vehicles, drones, detections }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6 }}
-        className="backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-green-500/20 rounded-2xl p-6"
+        className="backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-zinc-500/20 rounded-2xl p-6"
       >
         <div className="flex items-center gap-3 mb-6">
-          <div className="p-3 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500">
+          <div className="p-3 rounded-xl bg-gradient-to-br from-zinc-800 to-zinc-700">
             <LineChart className="w-6 h-6 text-white" />
           </div>
           <div>
@@ -1983,10 +1983,10 @@ const AnalyticsSection = ({ vehicles, drones, detections }) => {
               <div
                 className={`w-2 h-2 rounded-full ${
                   detection.threat === 'high'
-                    ? 'bg-red-500'
+                    ? 'bg-zinc-9000'
                     : detection.threat === 'medium'
-                      ? 'bg-yellow-500'
-                      : 'bg-green-500'
+                      ? 'bg-zinc-9000'
+                      : 'bg-zinc-9000'
                 }`}
               />
               <div className="flex-1">
@@ -2000,10 +2000,10 @@ const AnalyticsSection = ({ vehicles, drones, detections }) => {
               <div
                 className={`px-3 py-1 rounded-full text-xs font-bold ${
                   detection.threat === 'high'
-                    ? 'bg-red-500/20 text-red-400 border border-red-500/30'
+                    ? 'bg-zinc-9000/20 text-zinc-200 border border-zinc-500/30'
                     : detection.threat === 'medium'
-                      ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
-                      : 'bg-green-500/20 text-green-400 border border-green-500/30'
+                      ? 'bg-zinc-9000/20 text-zinc-200 border border-zinc-500/30'
+                      : 'bg-zinc-9000/20 text-zinc-200 border border-zinc-500/30'
                 }`}
               >
                 {detection.threat === 'high'
@@ -2047,10 +2047,10 @@ const AlertsSection = ({ alerts: initialAlerts }) => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-green-500/20 rounded-2xl p-6"
+          className="backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-zinc-500/20 rounded-2xl p-6"
         >
           <div className="flex items-center gap-3 mb-3">
-            <Bell className="w-5 h-5 text-green-400" />
+            <Bell className="w-5 h-5 text-zinc-200" />
             <span className="text-sm text-slate-400">Total</span>
           </div>
           <div className="text-3xl font-bold text-white">{alerts.length}</div>
@@ -2060,10 +2060,10 @@ const AlertsSection = ({ alerts: initialAlerts }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="backdrop-blur-xl bg-gradient-to-br from-red-900/40 to-red-800/40 border border-red-500/20 rounded-2xl p-6"
+          className="backdrop-blur-xl bg-gradient-to-br from-zinc-700/40 to-zinc-800/40 border border-zinc-500/20 rounded-2xl p-6"
         >
           <div className="flex items-center gap-3 mb-3">
-            <AlertCircle className="w-5 h-5 text-red-400" />
+            <AlertCircle className="w-5 h-5 text-zinc-200" />
             <span className="text-sm text-slate-400">Críticas</span>
           </div>
           <div className="text-3xl font-bold text-white">
@@ -2075,10 +2075,10 @@ const AlertsSection = ({ alerts: initialAlerts }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="backdrop-blur-xl bg-gradient-to-br from-yellow-900/40 to-yellow-800/40 border border-yellow-500/20 rounded-2xl p-6"
+          className="backdrop-blur-xl bg-gradient-to-br from-yellow-900/40 to-yellow-800/40 border border-zinc-500/20 rounded-2xl p-6"
         >
           <div className="flex items-center gap-3 mb-3">
-            <AlertCircle className="w-5 h-5 text-yellow-400" />
+            <AlertCircle className="w-5 h-5 text-zinc-200" />
             <span className="text-sm text-slate-400">Advertencias</span>
           </div>
           <div className="text-3xl font-bold text-white">
@@ -2090,10 +2090,10 @@ const AlertsSection = ({ alerts: initialAlerts }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="backdrop-blur-xl bg-gradient-to-br from-blue-900/40 to-blue-800/40 border border-blue-500/20 rounded-2xl p-6"
+          className="backdrop-blur-xl bg-gradient-to-br from-blue-900/40 to-blue-800/40 border border-zinc-8000/20 rounded-2xl p-6"
         >
           <div className="flex items-center gap-3 mb-3">
-            <Info className="w-5 h-5 text-blue-400" />
+            <Info className="w-5 h-5 text-zinc-200" />
             <span className="text-sm text-slate-400">Información</span>
           </div>
           <div className="text-3xl font-bold text-white">
@@ -2122,7 +2122,7 @@ const AlertsSection = ({ alerts: initialAlerts }) => {
           onClick={() => setFilter('critical')}
           className={`px-6 py-3 rounded-xl font-medium transition-all ${
             filter === 'critical'
-              ? 'bg-gradient-to-r from-red-500 to-orange-500 text-white shadow-lg shadow-red-500/50'
+              ? 'bg-gradient-to-r from-zinc-700 to-orange-500 text-white shadow-lg shadow-red-500/50'
               : 'bg-white/5 text-slate-400 hover:bg-white/10'
           }`}
         >
@@ -2146,7 +2146,7 @@ const AlertsSection = ({ alerts: initialAlerts }) => {
           onClick={() => setFilter('info')}
           className={`px-6 py-3 rounded-xl font-medium transition-all ${
             filter === 'info'
-              ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg shadow-blue-500/50'
+              ? 'bg-gradient-to-r from-zinc-800 to-cyan-500 text-white shadow-lg shadow-blue-500/50'
               : 'bg-white/5 text-slate-400 hover:bg-white/10'
           }`}
         >
@@ -2164,20 +2164,20 @@ const AlertsSection = ({ alerts: initialAlerts }) => {
             transition={{ delay: index * 0.05 }}
             className={`backdrop-blur-xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border rounded-2xl p-6 ${
               alert.type === 'critical'
-                ? 'border-red-500/30'
+                ? 'border-zinc-500/30'
                 : alert.type === 'warning'
-                  ? 'border-yellow-500/30'
-                  : 'border-blue-500/30'
+                  ? 'border-zinc-500/30'
+                  : 'border-zinc-8000/30'
             } ${!alert.read ? 'bg-white/5' : ''}`}
           >
             <div className="flex items-start gap-4">
               <div
                 className={`p-3 rounded-xl ${
                   alert.type === 'critical'
-                    ? 'bg-gradient-to-br from-red-500 to-orange-500'
+                    ? 'bg-gradient-to-br from-zinc-700 to-orange-500'
                     : alert.type === 'warning'
                       ? 'bg-gradient-to-br from-yellow-500 to-amber-500'
-                      : 'bg-gradient-to-br from-blue-500 to-cyan-500'
+                      : 'bg-gradient-to-br from-zinc-800 to-cyan-500'
                 }`}
               >
                 {alert.type === 'critical' && <AlertCircle className="w-6 h-6 text-white" />}
@@ -2192,7 +2192,7 @@ const AlertsSection = ({ alerts: initialAlerts }) => {
                     <p className="text-sm text-slate-300">{alert.message}</p>
                   </div>
                   {!alert.read && (
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+                    <div className="w-3 h-3 bg-zinc-9000 rounded-full animate-pulse" />
                   )}
                 </div>
 
@@ -2217,7 +2217,7 @@ const AlertsSection = ({ alerts: initialAlerts }) => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => markAsRead(alert.id)}
-                      className="px-4 py-2 rounded-xl bg-green-500/20 border border-green-500/30 text-green-400 hover:bg-green-500/30 transition-all text-sm font-medium"
+                      className="px-4 py-2 rounded-xl bg-zinc-9000/20 border border-zinc-500/30 text-zinc-200 hover:bg-zinc-9000/30 transition-all text-sm font-medium"
                     >
                       <div className="flex items-center gap-2">
                         <CheckCircle className="w-4 h-4" />
@@ -2228,7 +2228,7 @@ const AlertsSection = ({ alerts: initialAlerts }) => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-4 py-2 rounded-xl bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-all text-sm font-medium"
+                    className="px-4 py-2 rounded-xl bg-zinc-9000/20 border border-zinc-8000/30 text-zinc-200 hover:bg-zinc-9000/30 transition-all text-sm font-medium"
                   >
                     <div className="flex items-center gap-2">
                       <Eye className="w-4 h-4" />
@@ -2239,7 +2239,7 @@ const AlertsSection = ({ alerts: initialAlerts }) => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => deleteAlert(alert.id)}
-                    className="px-4 py-2 rounded-xl bg-red-500/20 border border-red-500/30 text-red-400 hover:bg-red-500/30 transition-all text-sm font-medium"
+                    className="px-4 py-2 rounded-xl bg-zinc-9000/20 border border-zinc-500/30 text-zinc-200 hover:bg-zinc-9000/30 transition-all text-sm font-medium"
                   >
                     <div className="flex items-center gap-2">
                       <Trash2 className="w-4 h-4" />
@@ -2318,7 +2318,7 @@ export default function Apollo() {
         style={{ marginLeft: isCollapsed ? 80 : 320 }}
       >
         {/* Header Premium */}
-        <header className="relative backdrop-blur-xl bg-slate-950/80 border-b border-green-500/20 p-6 z-10">
+        <header className="relative backdrop-blur-xl bg-slate-950/80 border-b border-zinc-500/20 p-6 z-10">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}

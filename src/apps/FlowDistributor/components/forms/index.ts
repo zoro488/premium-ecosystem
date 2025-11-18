@@ -43,16 +43,15 @@ export type { default as FormDebuggerType } from './FormDebugger';
 /**
  * Re-export común para uso rápido
  */
-export const FormComponents = {
-  ErrorMessage,
-  FieldWrapper,
-  LoadingButton,
-  FormSection,
-  FormDebugger,
-  FieldGroup,
-  ButtonGroup,
-  FormStepper
-};
+// Re-export form components
+export { ButtonGroup } from './ButtonGroup';
+export { ErrorMessage } from './ErrorMessage';
+export { FieldGroup } from './FieldGroup';
+export { FieldWrapper } from './FieldWrapper';
+export { FormDebugger } from './FormDebugger';
+export { FormSection } from './FormSection';
+export { FormStepper } from './FormStepper';
+export { LoadingButton } from './LoadingButton';
 
 /**
  * Utilerías de formulario
@@ -165,15 +164,15 @@ export const commonInputStyles = {
     border border-white/10
     text-white placeholder-gray-400
     focus:outline-none focus:ring-2 focus:ring-blue-500/50
-    focus:border-blue-500/50
+    focus:border-zinc-8000/50
     hover:bg-white/10 hover:border-white/20
     transition-all duration-200
   `,
   error: `
-    border-red-500/50 focus:ring-red-500/50
+    border-zinc-500/50 focus:ring-red-500/50
   `,
   success: `
-    border-green-500/50 focus:ring-green-500/50
+    border-zinc-500/50 focus:ring-green-500/50
   `,
   disabled: `
     opacity-50 cursor-not-allowed
@@ -185,7 +184,7 @@ export const commonInputStyles = {
  */
 export const commonLabelStyles = {
   base: 'block text-sm font-medium text-gray-200 mb-2',
-  required: 'after:content-["*"] after:ml-1 after:text-red-400',
+  required: 'after:content-["*"] after:ml-1 after:text-zinc-200',
   disabled: 'text-gray-500'
 };
 

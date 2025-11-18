@@ -42,15 +42,15 @@ const PanelSicarIA = lazy(() =>
 
 // ErrorFallback component - moved out of parent
 const ErrorFallback = ({ error, resetErrorBoundary, panelName }) => (
-  <div className="flex flex-col items-center justify-center h-full p-8 bg-red-900/20 border border-red-500/30 rounded-lg">
+  <div className="flex flex-col items-center justify-center h-full p-8 bg-red-900/20 border border-zinc-500/30 rounded-lg">
     <div className="text-6xl mb-4">⚠️</div>
-    <h2 className="text-xl font-bold text-red-400 mb-2">Error en {panelName}</h2>
+    <h2 className="text-xl font-bold text-zinc-200 mb-2">Error en {panelName}</h2>
     <p className="text-gray-400 mb-4 text-center max-w-md">
       {error.message || 'Ha ocurrido un error inesperado en este panel.'}
     </p>
     <button
       onClick={resetErrorBoundary}
-      className="px-4 py-2 bg-red-500/20 border border-red-500/50 text-red-400 rounded-lg hover:bg-red-500/30 transition-all"
+      className="px-4 py-2 bg-zinc-9000/20 border border-zinc-500/50 text-zinc-200 rounded-lg hover:bg-zinc-9000/30 transition-all"
     >
       🔄 Reintentar
     </button>

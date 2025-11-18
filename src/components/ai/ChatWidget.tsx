@@ -59,7 +59,7 @@ export function ChatWidget({
     <>
       {/* BOTÓN FLOTANTE */}
       <motion.button
-        className={`fixed ${positionClasses[position]} z-50 w-14 h-14 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 text-white shadow-2xl flex items-center justify-center hover:scale-110 transition-transform`}
+        className={`fixed ${positionClasses[position]} z-50 w-14 h-14 rounded-full bg-gradient-to-br from-zinc-800 to-indigo-600 text-white shadow-2xl flex items-center justify-center hover:scale-110 transition-transform`}
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
@@ -108,7 +108,7 @@ export function ChatWidget({
             style={{ marginBottom: '80px' }}
           >
             {/* HEADER */}
-            <div className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white p-4 flex items-center justify-between">
+            <div className="bg-gradient-to-r from-zinc-800 to-indigo-600 text-white p-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
                   🤖
@@ -155,17 +155,17 @@ export function ChatWidget({
                 >
                   <div className="flex gap-1">
                     <motion.div
-                      className="w-2 h-2 bg-purple-500 rounded-full"
+                      className="w-2 h-2 bg-zinc-800 rounded-full"
                       animate={{ y: [0, -8, 0] }}
                       transition={{ duration: 0.6, repeat: Infinity, delay: 0 }}
                     />
                     <motion.div
-                      className="w-2 h-2 bg-purple-500 rounded-full"
+                      className="w-2 h-2 bg-zinc-800 rounded-full"
                       animate={{ y: [0, -8, 0] }}
                       transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }}
                     />
                     <motion.div
-                      className="w-2 h-2 bg-purple-500 rounded-full"
+                      className="w-2 h-2 bg-zinc-800 rounded-full"
                       animate={{ y: [0, -8, 0] }}
                       transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }}
                     />
@@ -195,14 +195,14 @@ export function ChatWidget({
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Escribe tu pregunta..."
-                  className="flex-1 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 text-sm resize-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="flex-1 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 text-sm resize-none focus:ring-2 focus:ring-zinc-700 focus:border-transparent"
                   rows={2}
                   disabled={isLoading}
                 />
                 <button
                   onClick={handleSend}
                   disabled={!inputValue.trim() || isLoading}
-                  className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white p-3 rounded-lg hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="bg-gradient-to-r from-zinc-800 to-indigo-600 text-white p-3 rounded-lg hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path
@@ -244,7 +244,7 @@ function MessageBubble({ message }: MessageBubbleProps) {
       <div
         className={`max-w-[80%] rounded-2xl px-4 py-3 ${
           isUser
-            ? 'bg-gradient-to-r from-purple-500 to-indigo-600 text-white'
+            ? 'bg-gradient-to-r from-zinc-800 to-indigo-600 text-white'
             : isError
               ? 'bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800'
               : 'bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-md'

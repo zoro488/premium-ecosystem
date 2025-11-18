@@ -170,7 +170,7 @@ export default function FormDistribuidor({
         animate={{ scale: 1, y: 0, opacity: 1 }}
         exit={{ scale: 0.9, y: 20, opacity: 0 }}
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        className="bg-gradient-to-br from-slate-900/95 to-blue-900/95 backdrop-blur-xl border border-blue-400/30 rounded-2xl shadow-2xl max-w-7xl w-full my-8"
+        className="bg-gradient-to-br from-slate-900/95 to-blue-900/95 backdrop-blur-xl border border-zinc-600/30 rounded-2xl shadow-2xl max-w-7xl w-full my-8"
         onClick={(e) => e.stopPropagation()}
       >
         {/* ============================================================ */}
@@ -183,7 +183,7 @@ export default function FormDistribuidor({
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.1 }}
           >
-            <Truck className="w-7 h-7 text-blue-400" />
+            <Truck className="w-7 h-7 text-zinc-300" />
             {distribuidorExistente ? 'Editar Distribuidor' : 'Nuevo Distribuidor'}
           </motion.h2>
 
@@ -208,9 +208,9 @@ export default function FormDistribuidor({
           {/* ========================================================== */}
           <div className="grid grid-cols-3 gap-4 mb-6">
             {/* Estado Activo/Inactivo */}
-            <div className={`p-4 rounded-xl border ${activo ? 'bg-green-500/10 border-green-400/30' : 'bg-gray-500/10 border-gray-400/30'}`}>
+            <div className={`p-4 rounded-xl border ${activo ? 'bg-zinc-9000/10 border-green-400/30' : 'bg-gray-500/10 border-gray-400/30'}`}>
               <div className="flex items-center gap-2 mb-1">
-                {activo ? <CheckCircle2 className="w-5 h-5 text-green-400" /> : <XCircle className="w-5 h-5 text-gray-400" />}
+                {activo ? <CheckCircle2 className="w-5 h-5 text-zinc-200" /> : <XCircle className="w-5 h-5 text-gray-400" />}
                 <span className="text-sm text-white/70">Estado</span>
               </div>
               <p className={`text-lg font-bold ${activo ? 'text-green-300' : 'text-gray-300'}`}>
@@ -219,20 +219,20 @@ export default function FormDistribuidor({
             </div>
 
             {/* Categoría */}
-            <div className="p-4 rounded-xl bg-blue-500/10 border border-blue-400/30">
+            <div className="p-4 rounded-xl bg-zinc-800/10 border border-zinc-600/30">
               <div className="flex items-center gap-2 mb-1">
-                <Star className="w-5 h-5 text-blue-400" />
+                <Star className="w-5 h-5 text-zinc-300" />
                 <span className="text-sm text-white/70">Categoría</span>
               </div>
-              <p className="text-lg font-bold text-blue-300 capitalize">
+              <p className="text-lg font-bold text-zinc-300 capitalize">
                 {categoria || 'Nuevo'}
               </p>
             </div>
 
             {/* Bloqueado */}
-            <div className={`p-4 rounded-xl border ${bloqueado ? 'bg-red-500/10 border-red-400/30' : 'bg-gray-500/10 border-gray-400/30'}`}>
+            <div className={`p-4 rounded-xl border ${bloqueado ? 'bg-zinc-9000/10 border-red-400/30' : 'bg-gray-500/10 border-gray-400/30'}`}>
               <div className="flex items-center gap-2 mb-1">
-                {bloqueado ? <Lock className="w-5 h-5 text-red-400" /> : <Unlock className="w-5 h-5 text-gray-400" />}
+                {bloqueado ? <Lock className="w-5 h-5 text-zinc-200" /> : <Unlock className="w-5 h-5 text-gray-400" />}
                 <span className="text-sm text-white/70">Bloqueo</span>
               </div>
               <p className={`text-lg font-bold ${bloqueado ? 'text-red-300' : 'text-gray-300'}`}>
@@ -268,7 +268,7 @@ export default function FormDistribuidor({
                     type="text"
                     {...field}
                     placeholder="Distribuidora ABC S.A. de C.V."
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -289,7 +289,7 @@ export default function FormDistribuidor({
                     type="text"
                     {...field}
                     placeholder="ABC Distribuidora"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -308,7 +308,7 @@ export default function FormDistribuidor({
                 >
                   <select
                     {...field}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   >
                     <option value="nacional" className="bg-slate-900">Nacional</option>
                     <option value="internacional" className="bg-slate-900">Internacional</option>
@@ -332,7 +332,7 @@ export default function FormDistribuidor({
                 >
                   <select
                     {...field}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   >
                     <option value="nuevo" className="bg-slate-900">Nuevo</option>
                     <option value="en_evaluacion" className="bg-slate-900">En Evaluación</option>
@@ -358,7 +358,7 @@ export default function FormDistribuidor({
                     type="email"
                     {...field}
                     placeholder="contacto@distribuidor.com"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -378,7 +378,7 @@ export default function FormDistribuidor({
                     type="tel"
                     {...field}
                     placeholder="5512345678"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -398,7 +398,7 @@ export default function FormDistribuidor({
                     type="tel"
                     {...field}
                     placeholder="5587654321"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -418,7 +418,7 @@ export default function FormDistribuidor({
                     type="url"
                     {...field}
                     placeholder="https://www.distribuidor.com"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -449,7 +449,7 @@ export default function FormDistribuidor({
                       {...field}
                       placeholder="Calle, número, colonia..."
                       rows={2}
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all resize-none"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all resize-none"
                     />
                   </FieldWrapper>
                 )}
@@ -466,7 +466,7 @@ export default function FormDistribuidor({
                     type="text"
                     {...field}
                     placeholder="Monterrey"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -482,7 +482,7 @@ export default function FormDistribuidor({
                     type="text"
                     {...field}
                     placeholder="Nuevo León"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -496,7 +496,7 @@ export default function FormDistribuidor({
                 <FieldWrapper label="País" error={errors.pais}>
                   <select
                     {...field}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   >
                     {PAISES.map((pais) => (
                       <option key={pais} value={pais} className="bg-slate-900">
@@ -518,7 +518,7 @@ export default function FormDistribuidor({
                     type="text"
                     {...field}
                     placeholder="64000"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -549,7 +549,7 @@ export default function FormDistribuidor({
                     type="text"
                     {...field}
                     placeholder="ABC123456XYZ"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 uppercase focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 uppercase focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -565,7 +565,7 @@ export default function FormDistribuidor({
                     type="text"
                     {...field}
                     placeholder="Régimen General"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -592,7 +592,7 @@ export default function FormDistribuidor({
                     type="text"
                     {...field}
                     placeholder="BBVA Bancomer"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -608,7 +608,7 @@ export default function FormDistribuidor({
                     type="text"
                     {...field}
                     placeholder="0123456789"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -629,7 +629,7 @@ export default function FormDistribuidor({
                     {...field}
                     placeholder="012345678901234567"
                     maxLength={18}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -645,7 +645,7 @@ export default function FormDistribuidor({
                     type="text"
                     {...field}
                     placeholder="ABCDMXMM"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 uppercase focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 uppercase focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -674,7 +674,7 @@ export default function FormDistribuidor({
                     value={value || ''}
                     onChange={(e) => onChange(parseInt(e.target.value) || 0)}
                     placeholder="30"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -691,7 +691,7 @@ export default function FormDistribuidor({
                   error={errors.limiteCredito}
                 >
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-300/70">$</span>
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-300/70">$</span>
                     <input
                       type="number"
                       step="0.01"
@@ -700,7 +700,7 @@ export default function FormDistribuidor({
                       value={value || ''}
                       onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
                       placeholder="0.00"
-                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                     />
                   </div>
                 </FieldWrapper>
@@ -718,7 +718,7 @@ export default function FormDistribuidor({
                   error={errors.deudaActual}
                 >
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-300/70">$</span>
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-300/70">$</span>
                     <input
                       type="number"
                       step="0.01"
@@ -727,7 +727,7 @@ export default function FormDistribuidor({
                       value={value || ''}
                       onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
                       placeholder="0.00"
-                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                     />
                   </div>
                 </FieldWrapper>
@@ -737,9 +737,9 @@ export default function FormDistribuidor({
             {/* Panel de Crédito Disponible */}
             <div className="col-span-3 grid grid-cols-2 gap-4">
               {/* Saldo Disponible */}
-              <div className={`p-4 rounded-xl border ${saldoDisponible >= 0 ? 'bg-green-500/10 border-green-400/30' : 'bg-red-500/10 border-red-400/30'}`}>
+              <div className={`p-4 rounded-xl border ${saldoDisponible >= 0 ? 'bg-zinc-9000/10 border-green-400/30' : 'bg-zinc-9000/10 border-red-400/30'}`}>
                 <div className="flex items-center gap-2 mb-1">
-                  <TrendingUp className={`w-5 h-5 ${saldoDisponible >= 0 ? 'text-green-400' : 'text-red-400'}`} />
+                  <TrendingUp className={`w-5 h-5 ${saldoDisponible >= 0 ? 'text-zinc-200' : 'text-zinc-200'}`} />
                   <span className="text-sm text-white/70">Saldo Disponible</span>
                 </div>
                 <p className={`text-2xl font-bold ${saldoDisponible >= 0 ? 'text-green-300' : 'text-red-300'}`}>
@@ -748,22 +748,22 @@ export default function FormDistribuidor({
               </div>
 
               {/* Porcentaje de Deuda */}
-              <div className="p-4 rounded-xl bg-blue-500/10 border border-blue-400/30">
+              <div className="p-4 rounded-xl bg-zinc-800/10 border border-zinc-600/30">
                 <div className="flex items-center gap-2 mb-1">
-                  <AlertTriangle className="w-5 h-5 text-blue-400" />
+                  <AlertTriangle className="w-5 h-5 text-zinc-300" />
                   <span className="text-sm text-white/70">Uso de Crédito</span>
                 </div>
-                <p className="text-2xl font-bold text-blue-300">
+                <p className="text-2xl font-bold text-zinc-300">
                   {porcentajeDeuda.toFixed(1)}%
                 </p>
                 <div className="mt-2 h-2 bg-white/10 rounded-full overflow-hidden">
                   <div
                     className={`h-full transition-all ${
                       porcentajeDeuda > 90
-                        ? 'bg-red-500'
+                        ? 'bg-zinc-9000'
                         : porcentajeDeuda > 70
-                        ? 'bg-yellow-500'
-                        : 'bg-green-500'
+                        ? 'bg-zinc-9000'
+                        : 'bg-zinc-9000'
                     }`}
                     style={{ width: `${Math.min(porcentajeDeuda, 100)}%` }}
                   />
@@ -782,7 +782,7 @@ export default function FormDistribuidor({
                       {...field}
                       placeholder="50% anticipo, 50% contra entrega..."
                       rows={2}
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all resize-none"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all resize-none"
                     />
                   </FieldWrapper>
                 )}
@@ -821,7 +821,7 @@ export default function FormDistribuidor({
                       value={value || ''}
                       onChange={(e) => onChange(parseFloat(e.target.value) || undefined)}
                       placeholder="1-5"
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                     />
                     <div className="flex gap-1">
                       {[1, 2, 3, 4, 5].map((star) => (
@@ -829,7 +829,7 @@ export default function FormDistribuidor({
                           key={star}
                           className={`w-5 h-5 ${
                             (value || 0) >= star
-                              ? 'fill-yellow-400 text-yellow-400'
+                              ? 'fill-yellow-400 text-zinc-200'
                               : 'text-gray-600'
                           }`}
                         />
@@ -857,7 +857,7 @@ export default function FormDistribuidor({
                     value={value || ''}
                     onChange={(e) => onChange(parseInt(e.target.value) || undefined)}
                     placeholder="7"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -886,7 +886,7 @@ export default function FormDistribuidor({
                       checked={value || false}
                       onChange={(e) => onChange(e.target.checked)}
                       {...field}
-                      className="w-5 h-5 rounded border-white/20 text-green-500 focus:ring-2 focus:ring-green-400/50"
+                      className="w-5 h-5 rounded border-white/20 text-zinc-100 focus:ring-2 focus:ring-green-400/50"
                     />
                     <div>
                       <p className="text-white font-medium">Distribuidor Activo</p>
@@ -907,7 +907,7 @@ export default function FormDistribuidor({
                       checked={value || false}
                       onChange={(e) => onChange(e.target.checked)}
                       {...field}
-                      className="w-5 h-5 rounded border-white/20 text-red-500 focus:ring-2 focus:ring-red-400/50"
+                      className="w-5 h-5 rounded border-white/20 text-zinc-100 focus:ring-2 focus:ring-red-400/50"
                     />
                     <div>
                       <p className="text-white font-medium">Bloqueado</p>
@@ -939,7 +939,7 @@ export default function FormDistribuidor({
                         {...field}
                         placeholder="Explique el motivo del bloqueo..."
                         rows={3}
-                        className="w-full px-4 py-3 bg-red-500/10 border border-red-400/30 rounded-xl text-white placeholder-red-300/50 focus:outline-none focus:ring-2 focus:ring-red-400/50 focus:border-red-400/50 transition-all resize-none"
+                        className="w-full px-4 py-3 bg-zinc-9000/10 border border-red-400/30 rounded-xl text-white placeholder-red-300/50 focus:outline-none focus:ring-2 focus:ring-red-400/50 focus:border-red-400/50 transition-all resize-none"
                       />
                     </FieldWrapper>
                   )}
@@ -973,7 +973,7 @@ export default function FormDistribuidor({
                     placeholder="Notas, observaciones, historial..."
                     rows={4}
                     maxLength={2000}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all resize-none"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all resize-none"
                   />
                 </FieldWrapper>
               )}

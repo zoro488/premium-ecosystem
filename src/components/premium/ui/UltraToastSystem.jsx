@@ -219,7 +219,7 @@ const Toast = ({ toast, index, onRemove }) => {
     },
     error: {
       icon: XCircle,
-      colors: 'from-red-500/20 to-red-600/20 border-red-500/30',
+      colors: 'from-zinc-700/20 to-zinc-800/20 border-red-500/30',
       iconColor: 'text-red-400',
     },
     warning: {

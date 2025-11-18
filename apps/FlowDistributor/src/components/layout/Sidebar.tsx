@@ -78,7 +78,7 @@ export function Sidebar() {
       label: 'Ventas',
       icon: ShoppingCart,
       path: '/ventas',
-      gradient: 'from-purple-500 via-fuchsia-500 to-pink-600',
+      gradient: 'from-zinc-500 via-fuchsia-500 to-zinc-600',
       glow: 'shadow-[0_0_30px_rgba(168,85,247,0.5)]',
     },
     {
@@ -102,7 +102,7 @@ export function Sidebar() {
       label: 'Distribuidores',
       icon: Building2,
       path: '/distribuidores',
-      gradient: 'from-indigo-500 via-purple-500 to-violet-600',
+      gradient: 'from-indigo-500 via-zinc-500 to-violet-600',
       glow: 'shadow-[0_0_30px_rgba(99,102,241,0.5)]',
     },
     {
@@ -110,7 +110,7 @@ export function Sidebar() {
       label: 'Órdenes',
       icon: FileText,
       path: '/ordenes',
-      gradient: 'from-pink-500 via-rose-500 to-red-600',
+      gradient: 'from-zinc-500 via-rose-500 to-red-600',
       glow: 'shadow-[0_0_30px_rgba(236,72,153,0.5)]',
     },
     {
@@ -186,7 +186,7 @@ export function Sidebar() {
                 transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
                 className="relative"
               >
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 via-purple-500 to-pink-500 p-[2px]">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 via-zinc-500 to-zinc-500 p-[2px]">
                   <div className="w-full h-full rounded-xl bg-chronos-void flex items-center justify-center">
                     <TrendingUp className="w-6 h-6 text-cyan-400" />
                   </div>
@@ -194,13 +194,13 @@ export function Sidebar() {
                 <motion.div
                   animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
                   transition={{ duration: 2, repeat: Infinity }}
-                  className="absolute inset-0 rounded-xl bg-gradient-to-br from-cyan-500/30 to-purple-500/30 blur-md -z-10"
+                  className="absolute inset-0 rounded-xl bg-gradient-to-br from-cyan-500/30 to-zinc-500/30 blur-md -z-10"
                 />
               </motion.div>
 
               {/* Title */}
               <div>
-                <h1 className="text-lg font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                <h1 className="text-lg font-bold bg-gradient-to-r from-cyan-400 via-zinc-400 to-zinc-400 bg-clip-text text-transparent">
                   FlowDistributor
                 </h1>
                 <p className="text-xs text-chronos-silver flex items-center gap-1">
@@ -219,7 +219,7 @@ export function Sidebar() {
             className="p-2 hover:bg-white/5 rounded-lg transition-colors relative group"
           >
             {collapsed ? <Menu className="w-5 h-5 text-cyan-400" /> : <X className="w-5 h-5 text-cyan-400" />}
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity" />
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-zinc-500 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity" />
           </motion.button>
         </div>
       </div>
@@ -273,7 +273,7 @@ export function Sidebar() {
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className="absolute inset-0 rounded-lg bg-gradient-to-r from-cyan-500/20 to-purple-500/20"
+                    className="absolute inset-0 rounded-lg bg-gradient-to-r from-cyan-500/20 to-zinc-500/20"
                   />
                 )}
               </div>
@@ -339,7 +339,7 @@ export function Sidebar() {
             onClick={() => setBanksExpanded(!banksExpanded)}
             className="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-all group"
           >
-            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500/20 to-purple-500/20 group-hover:from-cyan-500/30 group-hover:to-purple-500/30 transition-all">
+            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500/20 to-zinc-500/20 group-hover:from-cyan-500/30 group-hover:to-zinc-500/30 transition-all">
               <Wallet className="w-5 h-5 text-cyan-400" />
             </div>
             {!collapsed && (
@@ -453,7 +453,7 @@ export function Sidebar() {
                 <Wallet className="w-4 h-4 text-cyan-400" />
                 <span className="text-xs text-chronos-silver font-medium">Capital Total</span>
               </div>
-              <div className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-green-400 bg-clip-text text-transparent">
+              <div className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-zinc-400 to-green-400 bg-clip-text text-transparent">
                 {loading ? '...' : `$${capitalTotal.toLocaleString('es-MX')}`}
               </div>
               <div className="flex items-center gap-2 mt-2 text-xs text-green-400">
@@ -468,7 +468,7 @@ export function Sidebar() {
         {collapsed && (
           <motion.div
             whileHover={{ scale: 1.1 }}
-            className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 mx-auto"
+            className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-zinc-500/20 mx-auto"
           >
             <Wallet className="w-6 h-6 text-cyan-400" />
           </motion.div>

@@ -43,22 +43,22 @@ const VARIANTS = {
 // Temas de color
 const THEMES = {
   gradient: {
-    base: 'from-cyan-400 via-blue-500 to-purple-600',
+    base: 'from-zinc-700 via-zinc-700 to-zinc-800',
     glow: 'rgba(59, 130, 246, 0.5)',
     shadow: 'rgba(0, 0, 0, 0.3)',
   },
   gold: {
-    base: 'from-yellow-400 via-orange-500 to-red-600',
+    base: 'from-yellow-400 via-orange-500 to-zinc-800',
     glow: 'rgba(251, 191, 36, 0.5)',
     shadow: 'rgba(0, 0, 0, 0.4)',
   },
   neon: {
-    base: 'from-pink-500 via-purple-500 to-indigo-600',
+    base: 'from-zinc-700 via-zinc-800 to-indigo-600',
     glow: 'rgba(168, 85, 247, 0.6)',
     shadow: 'rgba(0, 0, 0, 0.3)',
   },
   emerald: {
-    base: 'from-emerald-400 via-teal-500 to-cyan-600',
+    base: 'from-emerald-400 via-teal-500 to-zinc-900',
     glow: 'rgba(16, 185, 129, 0.5)',
     shadow: 'rgba(0, 0, 0, 0.3)',
   },

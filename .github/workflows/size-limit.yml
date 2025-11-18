@@ -1,0 +1,138 @@
+# ============================================================================
+# Bundle Size Monitoring
+# ============================================================================
+name: 📦 Size Limit
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  size-limit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Check bundle size
+        run: |
+          echo "## 📦 Bundle Size Analysis" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Get dist folder size
+          DIST_SIZE=$(du -sh dist | cut -f1)
+          echo "**Total dist size:** $DIST_SIZE" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # List largest files
+          echo "### 📊 Largest Files:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| File | Size |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|------|" >> $GITHUB_STEP_SUMMARY
+
+          find dist -type f -exec du -h {} + | sort -rh | head -20 | while read size file; do
+            filename=$(basename "$file")
+            echo "| $filename | $size |" >> $GITHUB_STEP_SUMMARY
+          done
+
+      - name: Analyze JavaScript bundles
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📝 JavaScript Files:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          JS_COUNT=$(find dist -name "*.js" | wc -l)
+          JS_SIZE=$(find dist -name "*.js" -exec du -ch {} + | tail -1 | cut -f1)
+
+          echo "- **Total JS files:** $JS_COUNT" >> $GITHUB_STEP_SUMMARY
+          echo "- **Total JS size:** $JS_SIZE" >> $GITHUB_STEP_SUMMARY
+
+      - name: Check for bloat
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### ⚠️ Size Warnings:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Check if any JS file is larger than 500KB
+          LARGE_FILES=$(find dist -name "*.js" -size +500k)
+
+          if [ -n "$LARGE_FILES" ]; then
+            echo "🚨 **Warning: Large JavaScript files detected (>500KB)**" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "$LARGE_FILES" | while read file; do
+              size=$(du -h "$file" | cut -f1)
+              echo "- $file ($size)" >> $GITHUB_STEP_SUMMARY
+            done
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Consider code splitting or lazy loading these modules." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ No excessively large files detected" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Compare with base branch
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📊 Size Comparison:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Checkout base branch and build
+          git checkout ${{ github.base_ref }}
+          npm ci
+          npm run build
+
+          BASE_SIZE=$(du -s dist | cut -f1)
+
+          # Checkout PR branch again
+          git checkout ${{ github.head_ref }}
+          npm ci
+          npm run build
+
+          PR_SIZE=$(du -s dist | cut -f1)
+          DIFF=$((PR_SIZE - BASE_SIZE))
+          PERCENT=$(awk "BEGIN {printf \"%.2f\", ($DIFF / $BASE_SIZE) * 100}")
+
+          if [ $DIFF -gt 0 ]; then
+            echo "⬆️ Bundle size **increased** by ${DIFF}KB (${PERCENT}%)" >> $GITHUB_STEP_SUMMARY
+          elif [ $DIFF -lt 0 ]; then
+            echo "⬇️ Bundle size **decreased** by ${DIFF#-}KB (${PERCENT#-}%)" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "➡️ Bundle size **unchanged**" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Post PR comment
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const summary = fs.readFileSync(process.env.GITHUB_STEP_SUMMARY, 'utf8');
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body: summary
+            });

@@ -125,7 +125,7 @@ export const ExchangeDashboard = () => {
 
       {/* Panel de Alertas (si hay) */}
       {alerts.length > 0 && (
-        <div className="alerts-panel bg-red-500/10 border border-red-500/30 rounded-xl p-4">
+        <div className="alerts-panel bg-zinc-9000/10 border border-zinc-500/30 rounded-xl p-4">
           <h3 className="text-lg font-bold text-white mb-3">⚠️ Alertas Activas</h3>
           <div className="space-y-2">
             {alerts.map((alert, index) => (
@@ -133,9 +133,9 @@ export const ExchangeDashboard = () => {
                 key={index}
                 className={`
                   p-3 rounded-lg
-                  ${alert.severity === 'HIGH' ? 'bg-red-500/20' :
-                    alert.severity === 'MEDIUM' ? 'bg-yellow-500/20' :
-                    'bg-blue-500/20'}
+                  ${alert.severity === 'HIGH' ? 'bg-zinc-9000/20' :
+                    alert.severity === 'MEDIUM' ? 'bg-zinc-9000/20' :
+                    'bg-zinc-800/20'}
                 `}
               >
                 <div className="flex items-center justify-between">
@@ -155,17 +155,17 @@ export const ExchangeDashboard = () => {
           <div className="grid grid-cols-2 gap-3">
             <button
               onClick={() => handleTransaction('BUY_USD', 1000)}
-              className="p-4 rounded-lg bg-green-500/20 hover:bg-green-500/30 border border-green-500/30 transition-all"
+              className="p-4 rounded-lg bg-zinc-9000/20 hover:bg-zinc-9000/30 border border-zinc-500/30 transition-all"
             >
               <div className="text-sm text-gray-300">Comprar USD</div>
-              <div className="text-2xl font-bold text-green-400">+$1,000</div>
+              <div className="text-2xl font-bold text-zinc-200">+$1,000</div>
             </button>
             <button
               onClick={() => handleTransaction('SELL_USD', 1000)}
-              className="p-4 rounded-lg bg-red-500/20 hover:bg-red-500/30 border border-red-500/30 transition-all"
+              className="p-4 rounded-lg bg-zinc-9000/20 hover:bg-zinc-9000/30 border border-zinc-500/30 transition-all"
             >
               <div className="text-sm text-gray-300">Vender USD</div>
-              <div className="text-2xl font-bold text-red-400">-$1,000</div>
+              <div className="text-2xl font-bold text-zinc-200">-$1,000</div>
             </button>
           </div>
         </div>
@@ -175,17 +175,17 @@ export const ExchangeDashboard = () => {
       <div className="stats-panel bg-white/5 rounded-xl p-4">
         <h3 className="text-lg font-bold text-white mb-3">📊 Estadísticas del Día</h3>
         <div className="grid grid-cols-3 gap-4">
-          <div className="p-3 rounded-lg bg-blue-500/10">
+          <div className="p-3 rounded-lg bg-zinc-800/10">
             <div className="text-xs text-gray-400">Operaciones</div>
             <div className="text-2xl font-bold text-white">24</div>
           </div>
-          <div className="p-3 rounded-lg bg-green-500/10">
+          <div className="p-3 rounded-lg bg-zinc-9000/10">
             <div className="text-xs text-gray-400">Ganancia</div>
-            <div className="text-2xl font-bold text-green-400">$8,450</div>
+            <div className="text-2xl font-bold text-zinc-200">$8,450</div>
           </div>
-          <div className="p-3 rounded-lg bg-purple-500/10">
+          <div className="p-3 rounded-lg bg-zinc-800/10">
             <div className="text-xs text-gray-400">Spread Prom.</div>
-            <div className="text-2xl font-bold text-purple-400">$0.35</div>
+            <div className="text-2xl font-bold text-zinc-800">$0.35</div>
           </div>
         </div>
       </div>
@@ -437,7 +437,7 @@ export default function CompleteExample() {
 
       {/* Estrategia recomendada */}
       {strategy && (
-        <div className="mt-4 p-4 bg-blue-500/10 rounded-lg">
+        <div className="mt-4 p-4 bg-zinc-800/10 rounded-lg">
           <h2 className="font-bold mb-2">Estrategia Actual</h2>
           <p>Acción: {strategy.action}</p>
           <p>Confianza: {strategy.confidence}%</p>

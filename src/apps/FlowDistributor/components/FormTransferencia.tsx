@@ -153,7 +153,7 @@ export default function FormTransferencia({
         animate={{ scale: 1, y: 0, opacity: 1 }}
         exit={{ scale: 0.9, y: 20, opacity: 0 }}
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        className="bg-gradient-to-br from-slate-900/95 to-blue-900/95 backdrop-blur-xl border border-blue-400/30 rounded-2xl shadow-2xl max-w-5xl w-full my-8"
+        className="bg-gradient-to-br from-slate-900/95 to-blue-900/95 backdrop-blur-xl border border-zinc-600/30 rounded-2xl shadow-2xl max-w-5xl w-full my-8"
         onClick={(e) => e.stopPropagation()}
       >
         {/* ============================================================ */}
@@ -166,7 +166,7 @@ export default function FormTransferencia({
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.1 }}
           >
-            <ArrowRightLeft className="w-7 h-7 text-blue-400" />
+            <ArrowRightLeft className="w-7 h-7 text-zinc-300" />
             {transferenciaExistente ? 'Editar Transferencia' : 'Nueva Transferencia'}
           </motion.h2>
 
@@ -211,7 +211,7 @@ export default function FormTransferencia({
                 >
                   <select
                     {...field}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   >
                     <option value="" className="bg-slate-900">
                       Seleccionar banco...
@@ -256,7 +256,7 @@ export default function FormTransferencia({
                 >
                   <select
                     {...field}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   >
                     <option value="" className="bg-slate-900">
                       Seleccionar banco...
@@ -300,7 +300,7 @@ export default function FormTransferencia({
                   tooltip="Monto en MXN"
                 >
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-300/70">$</span>
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-300/70">$</span>
                     <input
                       type="number"
                       step="0.01"
@@ -309,7 +309,7 @@ export default function FormTransferencia({
                       value={value || ''}
                       onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
                       placeholder="0.00"
-                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                     />
                   </div>
                 </FieldWrapper>
@@ -330,7 +330,7 @@ export default function FormTransferencia({
                   <input
                     type="date"
                     {...field}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -355,7 +355,7 @@ export default function FormTransferencia({
                       placeholder="Motivo de la transferencia..."
                       rows={3}
                       maxLength={500}
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all resize-none"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all resize-none"
                     />
                   </FieldWrapper>
                 )}
@@ -367,24 +367,24 @@ export default function FormTransferencia({
           {/* PANEL DE SALDOS */}
           {/* ========================================================== */}
           <motion.div
-            className="bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-400/30 rounded-xl p-6"
+            className="bg-gradient-to-r from-zinc-800/10 to-zinc-800/10 border border-zinc-600/30 rounded-xl p-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
             <div className="flex items-center gap-3 mb-4">
-              <Info className="w-5 h-5 text-blue-400" />
-              <h3 className="text-lg font-bold text-blue-300">Información de Saldos</h3>
+              <Info className="w-5 h-5 text-zinc-300" />
+              <h3 className="text-lg font-bold text-zinc-300">Información de Saldos</h3>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               {/* Saldo Origen */}
               <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
-                <p className="text-xs text-blue-300/70 mb-1">Saldo Disponible (Origen)</p>
+                <p className="text-xs text-zinc-300/70 mb-1">Saldo Disponible (Origen)</p>
                 <p className="text-xl font-bold text-white">
                   ${saldoOrigenDisponible.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
                 </p>
-                <p className="text-xs text-blue-300/50 mt-1">{bancoOrigen || 'Sin seleccionar'}</p>
+                <p className="text-xs text-zinc-300/50 mt-1">{bancoOrigen || 'Sin seleccionar'}</p>
               </div>
 
               {/* Saldo Destino */}
@@ -439,7 +439,7 @@ export default function FormTransferencia({
                 >
                   <select
                     {...field}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   >
                     <option value="pendiente" className="bg-slate-900">
                       Pendiente
@@ -476,7 +476,7 @@ export default function FormTransferencia({
                     type="text"
                     {...field}
                     placeholder="REF-00001"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -533,7 +533,7 @@ export default function FormTransferencia({
                       checked={value || false}
                       onChange={(e) => onChange(e.target.checked)}
                       {...field}
-                      className="w-5 h-5 rounded border-white/20 text-blue-500 focus:ring-2 focus:ring-blue-400/50"
+                      className="w-5 h-5 rounded border-white/20 text-zinc-200 focus:ring-2 focus:ring-blue-400/50"
                     />
                     <span className="text-white">Programar para fecha futura</span>
                   </label>
@@ -556,7 +556,7 @@ export default function FormTransferencia({
                     <input
                       type="date"
                       {...field}
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                     />
                   </FieldWrapper>
                 )}
@@ -575,7 +575,7 @@ export default function FormTransferencia({
                       checked={value || false}
                       onChange={(e) => onChange(e.target.checked)}
                       {...field}
-                      className="w-5 h-5 rounded border-white/20 text-blue-500 focus:ring-2 focus:ring-blue-400/50"
+                      className="w-5 h-5 rounded border-white/20 text-zinc-200 focus:ring-2 focus:ring-blue-400/50"
                     />
                     <span className="text-white">Transferencia recurrente</span>
                   </label>
@@ -597,7 +597,7 @@ export default function FormTransferencia({
                   >
                     <select
                       {...field}
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                     >
                       <option value="diario" className="bg-slate-900">
                         Diario

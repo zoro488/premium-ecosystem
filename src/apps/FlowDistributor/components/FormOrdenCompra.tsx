@@ -221,7 +221,7 @@ export default function FormOrdenCompra({
         animate={{ scale: 1, y: 0, opacity: 1 }}
         exit={{ scale: 0.9, y: 20, opacity: 0 }}
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        className="bg-gradient-to-br from-slate-900/95 to-purple-900/95 backdrop-blur-xl border border-purple-400/30 rounded-2xl shadow-2xl max-w-7xl w-full my-8"
+        className="bg-gradient-to-br from-slate-900/95 to-zinc-800/95 backdrop-blur-xl border border-zinc-800/30 rounded-2xl shadow-2xl max-w-7xl w-full my-8"
         onClick={(e) => e.stopPropagation()}
       >
         {/* ============================================================ */}
@@ -234,7 +234,7 @@ export default function FormOrdenCompra({
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.1 }}
           >
-            <ShoppingCart className="w-7 h-7 text-purple-400" />
+            <ShoppingCart className="w-7 h-7 text-zinc-800" />
             {ordenExistente ? 'Editar Orden de Compra' : 'Nueva Orden de Compra'}
           </motion.h2>
 
@@ -281,7 +281,7 @@ export default function FormOrdenCompra({
                     type="text"
                     {...field}
                     placeholder="OC-00001"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -301,7 +301,7 @@ export default function FormOrdenCompra({
                   <input
                     type="date"
                     {...field}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -323,7 +323,7 @@ export default function FormOrdenCompra({
                     type="text"
                     {...field}
                     placeholder="ID del distribuidor"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -342,7 +342,7 @@ export default function FormOrdenCompra({
                 >
                   <select
                     {...field}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                   >
                     <option value="borrador" className="bg-slate-900">Borrador</option>
                     <option value="pendiente_aprobacion" className="bg-slate-900">Pendiente Aprobación</option>
@@ -371,7 +371,7 @@ export default function FormOrdenCompra({
                 >
                   <select
                     {...field}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                   >
                     <option value="baja" className="bg-slate-900">Baja</option>
                     <option value="normal" className="bg-slate-900">Normal</option>
@@ -396,7 +396,7 @@ export default function FormOrdenCompra({
                   <input
                     type="date"
                     {...field}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -426,7 +426,7 @@ export default function FormOrdenCompra({
                     className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4"
                   >
                     <div className="flex items-center justify-between mb-3">
-                      <h4 className="text-sm font-semibold text-purple-300 flex items-center gap-2">
+                      <h4 className="text-sm font-semibold text-zinc-800 flex items-center gap-2">
                         <Package className="w-4 h-4" />
                         Producto #{index + 1}
                       </h4>
@@ -437,7 +437,7 @@ export default function FormOrdenCompra({
                           onClick={() => handleRemoveProducto(index)}
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
-                          className="text-red-400 hover:text-red-300 transition-colors p-1"
+                          className="text-zinc-200 hover:text-red-300 transition-colors p-1"
                         >
                           <Trash2 className="w-4 h-4" />
                         </motion.button>
@@ -460,7 +460,7 @@ export default function FormOrdenCompra({
                                 type="text"
                                 {...field}
                                 placeholder="Nombre del producto"
-                                className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 transition-all text-sm"
+                                className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 transition-all text-sm"
                               />
                             </FieldWrapper>
                           )}
@@ -491,7 +491,7 @@ export default function FormOrdenCompra({
                                 setValue(`productos.${index}.subtotal`, newValue * precio);
                               }}
                               placeholder="0"
-                              className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 transition-all text-sm"
+                              className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 transition-all text-sm"
                             />
                           </FieldWrapper>
                         )}
@@ -508,7 +508,7 @@ export default function FormOrdenCompra({
                             required
                           >
                             <div className="relative">
-                              <span className="absolute left-2 top-1/2 -translate-y-1/2 text-purple-300/70 text-xs">
+                              <span className="absolute left-2 top-1/2 -translate-y-1/2 text-zinc-800/70 text-xs">
                                 $
                               </span>
                               <input
@@ -525,7 +525,7 @@ export default function FormOrdenCompra({
                                   setValue(`productos.${index}.subtotal`, cant * newValue);
                                 }}
                                 placeholder="0.00"
-                                className="w-full pl-6 pr-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 transition-all text-sm"
+                                className="w-full pl-6 pr-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 transition-all text-sm"
                               />
                             </div>
                           </FieldWrapper>
@@ -540,7 +540,7 @@ export default function FormOrdenCompra({
                           <FieldWrapper label="Unidad" error={errors.productos?.[index]?.unidadMedida}>
                             <select
                               {...field}
-                              className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-400/50 transition-all text-sm"
+                              className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-zinc-800/50 transition-all text-sm"
                             >
                               <option value="pza" className="bg-slate-900">Pieza</option>
                               <option value="kg" className="bg-slate-900">Kilogramo</option>
@@ -560,7 +560,7 @@ export default function FormOrdenCompra({
                           control={control}
                           render={({ field }) => (
                             <FieldWrapper label="Subtotal">
-                              <div className="px-3 py-2 bg-emerald-500/10 border border-emerald-400/30 rounded-lg">
+                              <div className="px-3 py-2 bg-zinc-9000/10 border border-emerald-400/30 rounded-lg">
                                 <p className="text-emerald-300 font-bold text-sm">
                                   ${(field.value || 0).toLocaleString('es-MX', { minimumFractionDigits: 2 })}
                                 </p>
@@ -580,7 +580,7 @@ export default function FormOrdenCompra({
                 onClick={handleAddProducto}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full px-4 py-3 bg-purple-500/20 border border-purple-400/30 rounded-xl text-purple-300 hover:bg-purple-500/30 transition-all flex items-center justify-center gap-2 font-medium"
+                className="w-full px-4 py-3 bg-zinc-800/20 border border-zinc-800/30 rounded-xl text-zinc-800 hover:bg-zinc-800/30 transition-all flex items-center justify-center gap-2 font-medium"
               >
                 <Plus className="w-5 h-5" />
                 Agregar Producto
@@ -606,7 +606,7 @@ export default function FormOrdenCompra({
                 <FieldWrapper label="Moneda" icon={<DollarSign className="w-4 h-4" />} error={errors.moneda}>
                   <select
                     {...field}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                   >
                     <option value="MXN" className="bg-slate-900">MXN (Peso Mexicano)</option>
                     <option value="USD" className="bg-slate-900">USD (Dólar Americano)</option>
@@ -636,7 +636,7 @@ export default function FormOrdenCompra({
                       value={value || ''}
                       onChange={(e) => onChange(parseFloat(e.target.value) || 1)}
                       placeholder="1.00"
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                     />
                   </FieldWrapper>
                 )}
@@ -654,7 +654,7 @@ export default function FormOrdenCompra({
                   error={errors.costoEnvio}
                 >
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-purple-300/70">$</span>
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-800/70">$</span>
                     <input
                       type="number"
                       step="0.01"
@@ -663,7 +663,7 @@ export default function FormOrdenCompra({
                       value={value || ''}
                       onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
                       placeholder="0.00"
-                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                     />
                   </div>
                 </FieldWrapper>
@@ -681,7 +681,7 @@ export default function FormOrdenCompra({
                   error={errors.impuestos}
                 >
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-purple-300/70">$</span>
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-800/70">$</span>
                     <input
                       type="number"
                       step="0.01"
@@ -690,7 +690,7 @@ export default function FormOrdenCompra({
                       value={value || ''}
                       onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
                       placeholder="0.00"
-                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                     />
                   </div>
                 </FieldWrapper>
@@ -708,7 +708,7 @@ export default function FormOrdenCompra({
                   error={errors.descuento}
                 >
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-purple-300/70">$</span>
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-800/70">$</span>
                     <input
                       type="number"
                       step="0.01"
@@ -717,7 +717,7 @@ export default function FormOrdenCompra({
                       value={value || ''}
                       onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
                       placeholder="0.00"
-                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                     />
                   </div>
                 </FieldWrapper>
@@ -732,7 +732,7 @@ export default function FormOrdenCompra({
                 <FieldWrapper label="Método de Envío" icon={<Truck className="w-4 h-4" />} error={errors.metodoEnvio}>
                   <select
                     {...field}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                   >
                     <option value="terrestre" className="bg-slate-900">Terrestre</option>
                     <option value="aereo" className="bg-slate-900">Aéreo</option>
@@ -756,20 +756,20 @@ export default function FormOrdenCompra({
             transition={{ delay: 0.3 }}
           >
             <div className="flex items-center gap-3 mb-6">
-              <Calculator className="w-6 h-6 text-emerald-400" />
+              <Calculator className="w-6 h-6 text-zinc-200" />
               <h3 className="text-lg font-bold text-emerald-300">Resumen Financiero</h3>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
-                <p className="text-xs text-blue-300/70 mb-1">Subtotal</p>
+                <p className="text-xs text-zinc-300/70 mb-1">Subtotal</p>
                 <p className="text-xl font-bold text-white">
                   ${totales.subtotal.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
                 </p>
               </div>
 
               <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
-                <p className="text-xs text-purple-300/70 mb-1">Impuestos</p>
+                <p className="text-xs text-zinc-800/70 mb-1">Impuestos</p>
                 <p className="text-xl font-bold text-white">
                   ${totales.impuestosMonto.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
                 </p>
@@ -777,7 +777,7 @@ export default function FormOrdenCompra({
 
               <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
                 <p className="text-xs text-yellow-300/70 mb-1">Descuento</p>
-                <p className="text-xl font-bold text-yellow-400">
+                <p className="text-xl font-bold text-zinc-200">
                   -${totales.descuentoMonto.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
                 </p>
               </div>
@@ -791,8 +791,8 @@ export default function FormOrdenCompra({
             </div>
 
             {moneda !== 'MXN' && (
-              <div className="mt-4 p-3 bg-blue-500/10 border border-blue-400/30 rounded-lg">
-                <p className="text-sm text-blue-300">
+              <div className="mt-4 p-3 bg-zinc-800/10 border border-zinc-600/30 rounded-lg">
+                <p className="text-sm text-zinc-300">
                   Equivalente en MXN:{' '}
                   <span className="font-bold">
                     ${totales.totalEnMonedaBase.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
@@ -820,7 +820,7 @@ export default function FormOrdenCompra({
                 <FieldWrapper label="Estado de Pago" error={errors.estadoPago} required>
                   <select
                     {...field}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                   >
                     <option value="pendiente" className="bg-slate-900">Pendiente</option>
                     <option value="pago_parcial" className="bg-slate-900">Pago Parcial</option>
@@ -839,7 +839,7 @@ export default function FormOrdenCompra({
               render={({ field: { onChange, value, ...field } }) => (
                 <FieldWrapper label="Monto Pagado" error={errors.montoPagado}>
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-purple-300/70">$</span>
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-800/70">$</span>
                     <input
                       type="number"
                       step="0.01"
@@ -848,7 +848,7 @@ export default function FormOrdenCompra({
                       value={value || ''}
                       onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
                       placeholder="0.00"
-                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all"
+                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all"
                     />
                   </div>
                 </FieldWrapper>
@@ -861,7 +861,7 @@ export default function FormOrdenCompra({
               control={control}
               render={({ field }) => (
                 <FieldWrapper label="Saldo Pendiente">
-                  <div className="px-4 py-3 bg-yellow-500/10 border border-yellow-400/30 rounded-xl">
+                  <div className="px-4 py-3 bg-zinc-9000/10 border border-yellow-400/30 rounded-xl">
                     <p className="text-xl font-bold text-yellow-300">
                       ${(field.value || 0).toLocaleString('es-MX', { minimumFractionDigits: 2 })}
                     </p>
@@ -888,7 +888,7 @@ export default function FormOrdenCompra({
                       placeholder="Observaciones o notas adicionales..."
                       rows={3}
                       maxLength={1000}
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300/50 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 transition-all resize-none"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-zinc-800/50 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 focus:border-zinc-800/50 transition-all resize-none"
                     />
                   </FieldWrapper>
                 )}

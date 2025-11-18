@@ -45,9 +45,9 @@ export const SyncIndicator = ({ collapsed = false }) => {
 
   const getStatusColor = () => {
     if (!syncState.isOnline) return 'text-gray-400';
-    if (syncState.error) return 'text-red-400';
-    if (syncState.isSyncing) return 'text-blue-400';
-    return 'text-green-400';
+    if (syncState.error) return 'text-zinc-200';
+    if (syncState.isSyncing) return 'text-zinc-300';
+    return 'text-zinc-200';
   };
 
   const getStatusIcon = () => {
@@ -142,8 +142,8 @@ export const SyncIndicator = ({ collapsed = false }) => {
 
             {/* Error */}
             {syncState.error && (
-              <div className="mb-3 p-2 rounded bg-red-500/20 border border-red-500/40">
-                <p className="text-xs text-red-400">{syncState.error}</p>
+              <div className="mb-3 p-2 rounded bg-zinc-9000/20 border border-zinc-500/40">
+                <p className="text-xs text-zinc-200">{syncState.error}</p>
               </div>
             )}
 
@@ -156,7 +156,7 @@ export const SyncIndicator = ({ collapsed = false }) => {
                 className={`w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-xs font-medium transition-all ${
                   syncState.isSyncing || !syncState.isOnline
                     ? 'bg-white/5 text-white/30 cursor-not-allowed'
-                    : 'bg-cyan-500/20 text-cyan-400 hover:bg-cyan-500/30'
+                    : 'bg-zinc-9000/20 text-zinc-300 hover:bg-zinc-9000/30'
                 }`}
                 whileHover={!syncState.isSyncing && syncState.isOnline ? { scale: 1.02 } : {}}
                 whileTap={!syncState.isSyncing && syncState.isOnline ? { scale: 0.98 } : {}}
@@ -173,8 +173,8 @@ export const SyncIndicator = ({ collapsed = false }) => {
                   !syncState.isOnline
                     ? 'bg-white/5 text-white/30 cursor-not-allowed'
                     : syncState.isRealtimeActive
-                      ? 'bg-green-500/20 text-green-400 hover:bg-green-500/30'
-                      : 'bg-purple-500/20 text-purple-400 hover:bg-purple-500/30'
+                      ? 'bg-zinc-9000/20 text-zinc-200 hover:bg-zinc-9000/30'
+                      : 'bg-zinc-800/20 text-zinc-800 hover:bg-zinc-800/30'
                 }`}
                 whileHover={syncState.isOnline ? { scale: 1.02 } : {}}
                 whileTap={syncState.isOnline ? { scale: 0.98 } : {}}

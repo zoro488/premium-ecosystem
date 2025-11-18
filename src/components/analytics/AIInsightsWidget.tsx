@@ -13,6 +13,8 @@
  */
 import React, { useEffect, useState } from 'react';
 
+
+
 import { AnimatePresence, motion } from 'framer-motion';
 import {
   AlertTriangle,
@@ -363,7 +365,7 @@ const InsightCard: React.FC<{ insight: AIInsight; onClick: () => void }> = ({
           bg: 'bg-red-500/10',
           border: 'border-red-500/30',
           text: 'text-red-400',
-          glow: 'from-red-500/20',
+          glow: 'from-zinc-700/20',
         };
       case 'high':
         return {
@@ -531,7 +533,7 @@ export const AIInsightsWidget: React.FC = () => {
         `}
       >
         {/* Glass card */}
-        <div className="relative overflow-hidden rounded-2xl backdrop-blur-2xl bg-gradient-to-br from-slate-900/95 via-purple-900/80 to-slate-900/95 border border-purple-500/20 shadow-2xl">
+        <div className="relative overflow-hidden rounded-2xl backdrop-blur-2xl bg-gradient-to-br from-slate-900/95 via-zinc-800/80 to-slate-900/95 border border-zinc-700/20 shadow-2xl">
           {/* Patrón de fondo */}
           <div className="absolute inset-0 opacity-5">
             <div
@@ -544,17 +546,17 @@ export const AIInsightsWidget: React.FC = () => {
           </div>
 
           {/* Glow decorativo */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-gradient-to-r from-purple-500/30 via-pink-500/30 to-blue-500/30 blur-3xl rounded-full animate-pulse" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-gradient-to-r from-zinc-800/30 via-zinc-700/30 to-blue-500/30 blur-3xl rounded-full animate-pulse" />
 
           {/* Header */}
-          <div className="relative z-10 flex items-center justify-between p-4 border-b border-purple-500/20">
+          <div className="relative z-10 flex items-center justify-between p-4 border-b border-zinc-700/20">
             <div className="flex items-center gap-3">
               <motion.div
                 animate={isAnalyzing ? { rotate: 360 } : {}}
                 transition={{ duration: 2, repeat: isAnalyzing ? Infinity : 0, ease: 'linear' }}
-                className="p-2 rounded-xl bg-gradient-to-br from-purple-500/30 to-pink-500/30 border border-purple-500/30"
+                className="p-2 rounded-xl bg-gradient-to-br from-zinc-800/30 to-zinc-800/30 border border-zinc-700/30"
               >
-                <Brain className="w-5 h-5 text-purple-300" />
+                <Brain className="w-5 h-5 text-zinc-200" />
               </motion.div>
               <div>
                 <h3 className="text-white font-semibold flex items-center gap-2">
@@ -604,7 +606,7 @@ export const AIInsightsWidget: React.FC = () => {
                   transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
                   className="mb-4"
                 >
-                  <Brain className="w-12 h-12 text-purple-400" />
+                  <Brain className="w-12 h-12 text-zinc-200" />
                 </motion.div>
                 <p className="text-white/60 text-sm">Analizando datos del sistema...</p>
               </div>
@@ -634,7 +636,7 @@ export const AIInsightsWidget: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 onClick={runAnalysis}
-                className="w-full mt-4 px-4 py-3 rounded-xl bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 text-white text-sm font-medium hover:from-purple-500/30 hover:to-pink-500/30 transition-all flex items-center justify-center gap-2"
+                className="w-full mt-4 px-4 py-3 rounded-xl bg-gradient-to-r from-black/80 to-black/90 border border-zinc-700/30 text-white text-sm font-medium hover:from-black/90 hover:to-black/95 transition-all flex items-center justify-center gap-2"
               >
                 <Zap className="w-4 h-4" />
                 Re-analizar Sistema
@@ -643,7 +645,7 @@ export const AIInsightsWidget: React.FC = () => {
           </div>
 
           {/* Footer stats */}
-          <div className="relative z-10 border-t border-purple-500/20 p-3">
+          <div className="relative z-10 border-t border-zinc-700/20 p-3">
             <div className="grid grid-cols-3 gap-3 text-center">
               <div>
                 <p className="text-xs text-white/40 mb-1">Críticos</p>
@@ -659,7 +661,7 @@ export const AIInsightsWidget: React.FC = () => {
               </div>
               <div>
                 <p className="text-xs text-white/40 mb-1">Total</p>
-                <p className="text-lg font-bold text-purple-400">{insights.length}</p>
+                <p className="text-lg font-bold text-zinc-200">{insights.length}</p>
               </div>
             </div>
           </div>
@@ -681,12 +683,12 @@ export const AIInsightsWidget: React.FC = () => {
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
               onClick={(e) => e.stopPropagation()}
-              className="max-w-2xl w-full bg-slate-900 rounded-2xl border border-purple-500/20 p-6"
+              className="max-w-2xl w-full bg-slate-900 rounded-2xl border border-zinc-700/20 p-6"
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-3 rounded-xl bg-purple-500/20">
-                    <Target className="w-6 h-6 text-purple-400" />
+                  <div className="p-3 rounded-xl bg-zinc-800/20">
+                    <Target className="w-6 h-6 text-zinc-200" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white">{selectedInsight.title}</h3>
@@ -711,7 +713,7 @@ export const AIInsightsWidget: React.FC = () => {
               )}
 
               {selectedInsight.action && (
-                <button className="w-full px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium hover:from-purple-600 hover:to-pink-600 transition-all">
+                <button className="w-full px-6 py-3 rounded-xl bg-gradient-to-r from-zinc-800 to-zinc-800 text-white font-medium hover:from-zinc-800 hover:to-zinc-800 transition-all">
                   {selectedInsight.action}
                 </button>
               )}

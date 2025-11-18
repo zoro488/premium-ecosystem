@@ -243,7 +243,7 @@ const aiModels = [
     name: 'DALL-E 3',
     provider: 'OpenAI',
     icon: Image,
-    color: 'from-purple-500 to-pink-500',
+    color: 'from-zinc-800 to-zinc-800',
     capabilities: ['image'],
     speed: 'slow',
   },

@@ -206,13 +206,13 @@ export default function FormAbonoCliente({
       exit={{ opacity: 0 }}
     >
       <motion.div
-        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-slate-900 via-slate-900 to-purple-900/20 rounded-2xl border border-white/10 shadow-2xl"
+        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-slate-900 via-slate-900 to-zinc-800/20 rounded-2xl border border-white/10 shadow-2xl"
         initial={{ scale: 0.9, y: 20 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.9, y: 20 }}
       >
         {/* Header */}
-        <div className="sticky top-0 z-10 bg-gradient-to-r from-purple-600 to-pink-600 p-6 rounded-t-2xl">
+        <div className="sticky top-0 z-10 bg-gradient-to-r from-zinc-800 to-zinc-700 p-6 rounded-t-2xl">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
@@ -246,7 +246,7 @@ export default function FormAbonoCliente({
             </div>
             <div className="text-right">
               <p className="text-sm text-white/60 mb-1">Adeudo Actual</p>
-              <p className="text-3xl font-bold text-red-400">
+              <p className="text-3xl font-bold text-zinc-200">
                 ${(cliente.adeudo || 0).toLocaleString('es-MX', { minimumFractionDigits: 2 })}
               </p>
             </div>
@@ -289,18 +289,18 @@ export default function FormAbonoCliente({
                           onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
                           className={`w-full pl-8 pr-4 py-3 bg-slate-800/50 border ${
                             montoExcedido
-                              ? 'border-red-500'
-                              : 'border-white/10 focus:border-purple-500'
+                              ? 'border-zinc-500'
+                              : 'border-white/10 focus:border-zinc-800'
                           } rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 ${
                             montoExcedido
                               ? 'focus:ring-red-500'
-                              : 'focus:ring-purple-500/50'
+                              : 'focus:ring-zinc-800/50'
                           } transition-all text-lg font-semibold`}
                           placeholder="0.00"
                         />
                       </div>
                       {montoExcedido && (
-                        <p className="text-red-400 text-sm mt-2 flex items-center gap-1">
+                        <p className="text-zinc-200 text-sm mt-2 flex items-center gap-1">
                           <AlertTriangle size={14} />
                           El monto no puede ser mayor al adeudo actual
                         </p>
@@ -326,7 +326,7 @@ export default function FormAbonoCliente({
                       type="date"
                       value={value instanceof Date ? value.toISOString().split('T')[0] : ''}
                       onChange={(e) => onChange(new Date(e.target.value))}
-                      className="w-full px-4 py-3 bg-slate-800/50 border border-white/10 focus:border-purple-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all"
+                      className="w-full px-4 py-3 bg-slate-800/50 border border-white/10 focus:border-zinc-800 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-zinc-800/50 transition-all"
                     />
                   </FieldWrapper>
                 )}
@@ -345,7 +345,7 @@ export default function FormAbonoCliente({
                   >
                     <select
                       {...field}
-                      className="w-full px-4 py-3 bg-slate-800/50 border border-white/10 focus:border-purple-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all"
+                      className="w-full px-4 py-3 bg-slate-800/50 border border-white/10 focus:border-zinc-800 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-zinc-800/50 transition-all"
                     >
                       <option value="efectivo" className="bg-slate-900">
                         💵 Efectivo
@@ -386,7 +386,7 @@ export default function FormAbonoCliente({
                         <input
                           {...field}
                           type="text"
-                          className="w-full px-4 py-3 bg-slate-800/50 border border-white/10 focus:border-purple-500 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all"
+                          className="w-full px-4 py-3 bg-slate-800/50 border border-white/10 focus:border-zinc-800 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 transition-all"
                           placeholder={
                             metodoPago === 'cheque'
                               ? 'Ej: CHQ-123456'
@@ -413,7 +413,7 @@ export default function FormAbonoCliente({
                       <textarea
                         {...field}
                         rows={3}
-                        className="w-full px-4 py-3 bg-slate-800/50 border border-white/10 focus:border-purple-500 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all resize-none"
+                        className="w-full px-4 py-3 bg-slate-800/50 border border-white/10 focus:border-zinc-800 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-zinc-800/50 transition-all resize-none"
                         placeholder="Observaciones adicionales sobre el pago..."
                       />
                     </FieldWrapper>
@@ -431,49 +431,49 @@ export default function FormAbonoCliente({
           >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {/* Bóveda Monte */}
-              <div className="bg-gradient-to-br from-amber-500/10 to-amber-600/5 border border-amber-500/20 rounded-lg p-4">
+              <div className="bg-gradient-to-br from-amber-500/10 to-amber-600/5 border border-zinc-500/20 rounded-lg p-4">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-sm text-white/60">Bóveda Monte</span>
-                  <span className="text-xs bg-amber-500/20 text-amber-400 px-2 py-1 rounded">
+                  <span className="text-xs bg-zinc-9000/20 text-zinc-200 px-2 py-1 rounded">
                     ~63%
                   </span>
                 </div>
-                <p className="text-2xl font-bold text-amber-400">
+                <p className="text-2xl font-bold text-zinc-200">
                   ${distribucion.bovedaMonte.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
                 </p>
                 <p className="text-xs text-white/40 mt-1">Recuperación de costo</p>
               </div>
 
               {/* Fletes */}
-              <div className="bg-gradient-to-br from-blue-500/10 to-blue-600/5 border border-blue-500/20 rounded-lg p-4">
+              <div className="bg-gradient-to-br from-zinc-800/10 to-zinc-900/5 border border-zinc-700/20 rounded-lg p-4">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-sm text-white/60">Fletes</span>
-                  <span className="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">
+                  <span className="text-xs bg-zinc-800/20 text-zinc-300 px-2 py-1 rounded">
                     ~5%
                   </span>
                 </div>
-                <p className="text-2xl font-bold text-blue-400">
+                <p className="text-2xl font-bold text-zinc-300">
                   ${distribucion.fletes.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
                 </p>
                 <p className="text-xs text-white/40 mt-1">Costos de transporte</p>
               </div>
 
               {/* Utilidades */}
-              <div className="bg-gradient-to-br from-green-500/10 to-green-600/5 border border-green-500/20 rounded-lg p-4">
+              <div className="bg-gradient-to-br from-green-500/10 to-green-600/5 border border-zinc-500/20 rounded-lg p-4">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-sm text-white/60">Utilidades</span>
-                  <span className="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded">
+                  <span className="text-xs bg-zinc-9000/20 text-zinc-200 px-2 py-1 rounded">
                     ~32%
                   </span>
                 </div>
-                <p className="text-2xl font-bold text-green-400">
+                <p className="text-2xl font-bold text-zinc-200">
                   ${distribucion.utilidades.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
                 </p>
                 <p className="text-xs text-white/40 mt-1">Ganancia neta</p>
               </div>
             </div>
 
-            <div className="mt-4 p-3 bg-purple-500/10 border border-purple-500/20 rounded-lg">
+            <div className="mt-4 p-3 bg-zinc-800/10 border border-zinc-800/20 rounded-lg">
               <p className="text-xs text-white/60 text-center">
                 💡 La distribución se calcula automáticamente basándose en las fórmulas de negocio
               </p>
@@ -481,28 +481,28 @@ export default function FormAbonoCliente({
           </FormSection>
 
           {/* Resumen */}
-          <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/30 rounded-lg p-6">
+          <div className="bg-gradient-to-br from-zinc-800/10 to-zinc-700/10 border border-zinc-800/30 rounded-lg p-6">
             <div className="flex items-center justify-between mb-4">
               <span className="text-white/80 font-medium">Adeudo Actual:</span>
-              <span className="text-2xl font-bold text-red-400">
+              <span className="text-2xl font-bold text-zinc-200">
                 ${(cliente.adeudo || 0).toLocaleString('es-MX', { minimumFractionDigits: 2 })}
               </span>
             </div>
             <div className="flex items-center justify-between mb-4">
               <span className="text-white/80 font-medium">Abono:</span>
-              <span className="text-2xl font-bold text-blue-400">
+              <span className="text-2xl font-bold text-zinc-300">
                 -${montoAbono.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
               </span>
             </div>
             <div className="h-px bg-white/10 my-4" />
             <div className="flex items-center justify-between">
               <span className="text-white font-semibold text-lg">Nuevo Adeudo:</span>
-              <span className="text-3xl font-bold text-green-400">
+              <span className="text-3xl font-bold text-zinc-200">
                 ${nuevoAdeudo.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
               </span>
             </div>
             {nuevoAdeudo === 0 && (
-              <div className="mt-4 flex items-center justify-center gap-2 text-green-400">
+              <div className="mt-4 flex items-center justify-center gap-2 text-zinc-200">
                 <CheckCircle size={20} />
                 <span className="font-semibold">¡Adeudo liquidado completamente!</span>
               </div>

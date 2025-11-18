@@ -72,7 +72,7 @@ export function PanelIA() {
   }, [voice.transcript]);
 
   return (
-    <div className="w-full h-full bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 p-6 overflow-hidden">
+    <div className="w-full h-full bg-gradient-to-br from-zinc-800 via-blue-900 to-indigo-900 p-6 overflow-hidden">
       <div className="max-w-7xl mx-auto h-full flex flex-col">
         {/* Header */}
         <motion.div
@@ -82,12 +82,12 @@ export function PanelIA() {
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="p-3 bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl shadow-lg">
+              <div className="p-3 bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-xl shadow-lg">
                 <Sparkles className="w-8 h-8 text-white" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-white">Panel de Inteligencia Artificial</h1>
-                <p className="text-blue-200">Asistente avanzado con Gemini, AWS y Ollama</p>
+                <p className="text-zinc-400">Asistente avanzado con Gemini, AWS y Ollama</p>
               </div>
             </div>
           </div>
@@ -106,7 +106,7 @@ export function PanelIA() {
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all ${
                 activeTab === tab.id
-                  ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg'
+                  ? 'bg-gradient-to-r from-zinc-800 to-zinc-900 text-white shadow-lg'
                   : 'text-white/60 hover:text-white hover:bg-white/10'
               }`}
             >
@@ -153,7 +153,7 @@ export function PanelIA() {
                       <div
                         className={`max-w-[70%] p-4 rounded-2xl ${
                           msg.role === 'user'
-                            ? 'bg-gradient-to-br from-purple-600 to-blue-600 text-white'
+                            ? 'bg-gradient-to-br from-zinc-800 to-zinc-900 text-white'
                             : 'bg-white/10 text-white'
                         }`}
                       >
@@ -177,7 +177,7 @@ export function PanelIA() {
                   )}
 
                   {chat.error && (
-                    <div className="bg-red-500/20 text-red-300 p-4 rounded-lg">
+                    <div className="bg-zinc-9000/20 text-red-300 p-4 rounded-lg">
                       {chat.error}
                     </div>
                   )}
@@ -190,7 +190,7 @@ export function PanelIA() {
                       onClick={voice.isListening ? voice.stopListening : voice.startListening}
                       className={`p-3 rounded-xl transition-all ${
                         voice.isListening
-                          ? 'bg-red-500 text-white animate-pulse'
+                          ? 'bg-zinc-9000 text-white animate-pulse'
                           : 'bg-white/10 text-white hover:bg-white/20'
                       }`}
                     >
@@ -205,13 +205,13 @@ export function PanelIA() {
                     onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
                     placeholder="Escribe tu mensaje..."
                     disabled={chat.isLoading}
-                    className="flex-1 px-4 py-3 bg-white/10 text-white placeholder-white/50 rounded-xl border border-white/20 focus:outline-none focus:border-purple-500 transition-colors"
+                    className="flex-1 px-4 py-3 bg-white/10 text-white placeholder-white/50 rounded-xl border border-white/20 focus:outline-none focus:border-zinc-800 transition-colors"
                   />
 
                   <button
                     onClick={handleSendMessage}
                     disabled={!inputMessage.trim() || chat.isLoading}
-                    className="p-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl hover:shadow-lg transition-all disabled:opacity-50"
+                    className="p-3 bg-gradient-to-r from-zinc-800 to-zinc-900 text-white rounded-xl hover:shadow-lg transition-all disabled:opacity-50"
                   >
                     <Send className="w-5 h-5" />
                   </button>
@@ -237,7 +237,7 @@ export function PanelIA() {
                       <ul className="space-y-2 text-white/80">
                         {analysis.analysis.insights.map((insight, idx) => (
                           <li key={idx} className="flex items-start space-x-2">
-                            <Sparkles className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
+                            <Sparkles className="w-5 h-5 text-zinc-800 flex-shrink-0 mt-0.5" />
                             <span>{insight}</span>
                           </li>
                         ))}
@@ -249,7 +249,7 @@ export function PanelIA() {
                       <ul className="space-y-2 text-white/80">
                         {analysis.analysis.recommendations.map((rec, idx) => (
                           <li key={idx} className="flex items-start space-x-2">
-                            <TrendingUp className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                            <TrendingUp className="w-5 h-5 text-zinc-300 flex-shrink-0 mt-0.5" />
                             <span>{rec}</span>
                           </li>
                         ))}
@@ -267,7 +267,7 @@ export function PanelIA() {
                     <button
                       onClick={() => analysis.analyze({}, 'ventas')}
                       disabled={analysis.isAnalyzing}
-                      className="mt-4 px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl hover:shadow-lg transition-all disabled:opacity-50"
+                      className="mt-4 px-6 py-3 bg-gradient-to-r from-zinc-800 to-zinc-900 text-white rounded-xl hover:shadow-lg transition-all disabled:opacity-50"
                     >
                       {analysis.isAnalyzing ? (
                         <span className="flex items-center space-x-2">
@@ -298,7 +298,7 @@ export function PanelIA() {
                 <button
                   onClick={() => predictions.predictSales([])}
                   disabled={predictions.isPredicting}
-                  className="mt-4 px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl hover:shadow-lg transition-all disabled:opacity-50"
+                  className="mt-4 px-6 py-3 bg-gradient-to-r from-zinc-800 to-zinc-900 text-white rounded-xl hover:shadow-lg transition-all disabled:opacity-50"
                 >
                   {predictions.isPredicting ? 'Prediciendo...' : 'Generar Predicciones'}
                 </button>
@@ -325,7 +325,7 @@ export function PanelIA() {
                     </div>
                     <button
                       onClick={() => reports.downloadReport('reporte.txt')}
-                      className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl hover:shadow-lg transition-all"
+                      className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-zinc-800 to-zinc-900 text-white rounded-xl hover:shadow-lg transition-all"
                     >
                       <Download className="w-5 h-5" />
                       <span>Descargar Reporte</span>
@@ -338,7 +338,7 @@ export function PanelIA() {
                     <button
                       onClick={() => reports.generateReport('ventas-mensual', {})}
                       disabled={reports.isGenerating}
-                      className="mt-4 px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl hover:shadow-lg transition-all disabled:opacity-50"
+                      className="mt-4 px-6 py-3 bg-gradient-to-r from-zinc-800 to-zinc-900 text-white rounded-xl hover:shadow-lg transition-all disabled:opacity-50"
                     >
                       {reports.isGenerating ? (
                         <span className="flex items-center space-x-2">
@@ -368,9 +368,9 @@ export function PanelIA() {
                 {anomalies.anomalies.length > 0 ? (
                   <div className="space-y-3">
                     {anomalies.anomalies.map((anomaly, idx) => (
-                      <div key={idx} className="bg-red-500/20 border border-red-500/30 p-4 rounded-xl text-white">
+                      <div key={idx} className="bg-zinc-9000/20 border border-zinc-500/30 p-4 rounded-xl text-white">
                         <div className="flex items-start space-x-2">
-                          <AlertTriangle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+                          <AlertTriangle className="w-5 h-5 text-zinc-200 flex-shrink-0 mt-0.5" />
                           <div>
                             <p className="font-semibold">Anomalía detectada</p>
                             <p className="text-sm text-white/80 mt-1">{JSON.stringify(anomaly)}</p>
@@ -386,7 +386,7 @@ export function PanelIA() {
                     <button
                       onClick={() => anomalies.detectAnomalies([])}
                       disabled={anomalies.isDetecting}
-                      className="mt-4 px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl hover:shadow-lg transition-all disabled:opacity-50"
+                      className="mt-4 px-6 py-3 bg-gradient-to-r from-zinc-800 to-zinc-900 text-white rounded-xl hover:shadow-lg transition-all disabled:opacity-50"
                     >
                       {anomalies.isDetecting ? (
                         <span className="flex items-center space-x-2">
@@ -415,7 +415,7 @@ export function PanelIA() {
                 <div className="bg-white/10 p-6 rounded-xl space-y-4">
                   <div>
                     <label className="block text-white font-medium mb-2">Proveedor de IA</label>
-                    <select className="w-full px-4 py-2 bg-white/10 text-white border border-white/20 rounded-lg focus:outline-none focus:border-purple-500">
+                    <select className="w-full px-4 py-2 bg-white/10 text-white border border-white/20 rounded-lg focus:outline-none focus:border-zinc-800">
                       <option value="gemini">Google Gemini</option>
                       <option value="ollama">Ollama (Local)</option>
                       <option value="bedrock">AWS Bedrock</option>
@@ -434,7 +434,7 @@ export function PanelIA() {
                   </div>
                   <button
                     onClick={chat.clearChat}
-                    className="w-full flex items-center justify-center space-x-2 px-6 py-3 bg-red-500/20 text-red-300 border border-red-500/30 rounded-xl hover:bg-red-500/30 transition-all"
+                    className="w-full flex items-center justify-center space-x-2 px-6 py-3 bg-zinc-9000/20 text-red-300 border border-zinc-500/30 rounded-xl hover:bg-zinc-9000/30 transition-all"
                   >
                     <RefreshCw className="w-5 h-5" />
                     <span>Limpiar Historial</span>

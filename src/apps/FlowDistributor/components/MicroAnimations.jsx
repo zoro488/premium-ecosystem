@@ -15,12 +15,12 @@ export const AnimatedButton = ({
   ...props
 }) => {
   const variants = {
-    primary: 'bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700',
+    primary: 'bg-gradient-to-r from-zinc-800 to-zinc-900 hover:from-zinc-700 hover:to-zinc-800',
     secondary:
-      'bg-gradient-to-r from-purple-500 to-fuchsia-600 hover:from-purple-600 hover:to-fuchsia-700',
+      'bg-gradient-to-r from-zinc-800 to-zinc-700 hover:from-zinc-800 hover:to-zinc-700',
     success:
       'bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700',
-    danger: 'bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700',
+    danger: 'bg-gradient-to-r from-zinc-700 to-zinc-700 hover:from-zinc-700 hover:to-zinc-700',
     ghost: 'bg-white/5 hover:bg-white/10 border border-white/20',
   };
 
@@ -62,7 +62,7 @@ export const AnimatedButton = ({
 export const AnimatedCard = ({
   children,
   className = '',
-  gradient = 'from-blue-500/10 to-purple-500/10',
+  gradient = 'from-zinc-800/10 to-zinc-800/10',
 }) => {
   return (
     <motion.div
@@ -106,10 +106,10 @@ export const AnimatedCard = ({
  */
 export const AnimatedBadge = ({ children, color = 'blue', pulse = false }) => {
   const colors = {
-    blue: 'from-blue-500 to-cyan-600',
+    blue: 'from-zinc-800 to-zinc-900',
     green: 'from-green-500 to-emerald-600',
-    purple: 'from-purple-500 to-fuchsia-600',
-    red: 'from-red-500 to-rose-600',
+    purple: 'from-zinc-800 to-zinc-700',
+    red: 'from-zinc-700 to-zinc-700',
     orange: 'from-orange-500 to-amber-600',
   };
 
@@ -170,7 +170,7 @@ export const AnimatedInput = ({ placeholder, value, onChange, icon: Icon, ...pro
           bg-white/5 border border-white/10
           text-white placeholder-white/40
           focus:outline-none focus:ring-2 focus:ring-cyan-500/50
-          focus:border-cyan-500/50
+          focus:border-zinc-500/50
           transition-all duration-300
           ${Icon ? 'pl-12' : ''}
         `}
@@ -179,7 +179,7 @@ export const AnimatedInput = ({ placeholder, value, onChange, icon: Icon, ...pro
 
       {/* Underline effect */}
       <motion.div
-        className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-500 to-blue-600"
+        className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-zinc-800 to-zinc-900"
         initial={{ scaleX: 0 }}
         whileHover={{ scaleX: 1 }}
         transition={{ duration: 0.3 }}
@@ -222,9 +222,9 @@ export const AnimatedProgressBar = ({
   showPercentage = true,
 }) => {
   const colors = {
-    blue: 'from-blue-500 to-cyan-600',
+    blue: 'from-zinc-800 to-zinc-900',
     green: 'from-green-500 to-emerald-600',
-    purple: 'from-purple-500 to-fuchsia-600',
+    purple: 'from-zinc-800 to-zinc-700',
     orange: 'from-orange-500 to-amber-600',
   };
 
@@ -305,9 +305,9 @@ export const AnimatedToggle = ({ checked, onChange, label }) => {
 export const AnimatedToast = ({ message, type = 'info', onClose }) => {
   const types = {
     success: { gradient: 'from-green-500 to-emerald-600', icon: '✓' },
-    error: { gradient: 'from-red-500 to-rose-600', icon: '✕' },
+    error: { gradient: 'from-zinc-700 to-zinc-700', icon: '✕' },
     warning: { gradient: 'from-orange-500 to-amber-600', icon: '⚠' },
-    info: { gradient: 'from-blue-500 to-cyan-600', icon: 'ℹ' },
+    info: { gradient: 'from-zinc-800 to-zinc-900', icon: 'ℹ' },
   };
 
   const config = types[type];
@@ -376,8 +376,8 @@ export const FloatingActionButton = ({
   };
 
   const colors = {
-    blue: 'from-blue-500 to-cyan-600',
-    purple: 'from-purple-500 to-fuchsia-600',
+    blue: 'from-zinc-800 to-zinc-900',
+    purple: 'from-zinc-800 to-zinc-700',
     green: 'from-green-500 to-emerald-600',
   };
 

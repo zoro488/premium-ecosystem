@@ -14,6 +14,8 @@
  */
 import React, { useEffect, useState } from 'react';
 
+
+
 import { AnimatePresence, motion, useDragControls } from 'framer-motion';
 import {
   Activity,
@@ -316,13 +318,13 @@ export const WidgetAnalyticsPremium: React.FC = () => {
         </div>
 
         {/* Glow decorativo */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-cyan-500/20 blur-3xl rounded-full" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-black/50 blur-3xl rounded-full" />
 
         {/* Header */}
         <div className="relative z-10 flex items-center justify-between p-4 border-b border-white/10">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-purple-500/20">
-              <BarChart3 className="w-5 h-5 text-purple-400" />
+            <div className="p-2 rounded-xl bg-gradient-to-br from-black/80 to-black/90 border border-zinc-700/20">
+              <BarChart3 className="w-5 h-5 text-zinc-200" />
             </div>
             <div>
               <h3 className="text-white font-semibold flex items-center gap-2">
@@ -409,7 +411,7 @@ export const WidgetAnalyticsPremium: React.FC = () => {
                   transition={{ delay: 0.4 }}
                   className="mt-6 flex gap-3"
                 >
-                  <button className="flex-1 px-4 py-3 rounded-xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/20 text-white text-sm font-medium hover:from-blue-500/30 hover:to-purple-500/30 transition-all">
+                  <button className="flex-1 px-4 py-3 rounded-xl bg-gradient-to-r from-black/80 to-black/90 border border-blue-500/20 text-white text-sm font-medium hover:from-black/90 hover:to-black/95 transition-all">
                     <Activity className="w-4 h-4 inline mr-2" />
                     Ver Dashboard Completo
                   </button>

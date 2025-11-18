@@ -193,7 +193,7 @@ export const ThemeCustomizerPanel = ({ isOpen, onClose }) => {
             <div className="p-6 border-b border-white/10">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-xl bg-gradient-to-r from-pink-500 to-purple-500">
+                  <div className="p-2 rounded-xl bg-gradient-to-r from-zinc-700 to-zinc-800">
                     <Palette className="w-5 h-5 text-white" />
                   </div>
                   <div>
@@ -219,9 +219,9 @@ export const ThemeCustomizerPanel = ({ isOpen, onClose }) => {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         {darkMode ? (
-                          <Moon className="w-5 h-5 text-blue-400" />
+                          <Moon className="w-5 h-5 text-zinc-300" />
                         ) : (
-                          <Sun className="w-5 h-5 text-yellow-400" />
+                          <Sun className="w-5 h-5 text-zinc-200" />
                         )}
                         <div>
                           <h3 className="text-white font-semibold">Modo Oscuro</h3>
@@ -247,7 +247,7 @@ export const ThemeCustomizerPanel = ({ isOpen, onClose }) => {
                 <StaggerItem>
                   <div className="space-y-3">
                     <h3 className="text-white font-semibold flex items-center gap-2">
-                      <Sparkles className="w-4 h-4 text-yellow-400" />
+                      <Sparkles className="w-4 h-4 text-zinc-200" />
                       Temas Predefinidos
                     </h3>
                     <div className="grid grid-cols-2 gap-3">
@@ -292,7 +292,7 @@ export const ThemeCustomizerPanel = ({ isOpen, onClose }) => {
                 <StaggerItem>
                   <div className="space-y-4">
                     <h3 className="text-white font-semibold flex items-center gap-2">
-                      <Palette className="w-4 h-4 text-pink-400" />
+                      <Palette className="w-4 h-4 text-zinc-700" />
                       Colores Personalizados
                     </h3>
                     <ColorPicker
@@ -354,7 +354,7 @@ export const ThemeCustomizerPanel = ({ isOpen, onClose }) => {
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
                       <h3 className="text-white font-semibold flex items-center gap-2">
-                        <Zap className="w-4 h-4 text-yellow-400" />
+                        <Zap className="w-4 h-4 text-zinc-200" />
                         Velocidad de Animaciones
                       </h3>
                       <span className="text-primary font-mono text-sm">{animationSpeed}x</span>
@@ -394,7 +394,7 @@ export const ThemeCustomizerPanel = ({ isOpen, onClose }) => {
               <div className="flex gap-2">
                 <MagneticButton
                   onClick={handleReset}
-                  className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-red-500/20 hover:bg-red-500/30 text-red-300 transition-all"
+                  className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-zinc-9000/20 hover:bg-zinc-9000/30 text-red-300 transition-all"
                 >
                   <RefreshCw className="w-4 h-4" />
                   Resetear

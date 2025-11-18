@@ -481,14 +481,14 @@ const DashboardMaestroUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
   // Holographic color rotation
   const [colorIndex, setColorIndex] = useState(0);
   const holographicColors = [
-    'from-purple-500/10 via-blue-500/10 to-cyan-500/10',
-    'from-blue-500/10 via-cyan-500/10 to-green-500/10',
-    'from-cyan-500/10 via-green-500/10 to-yellow-500/10',
+    'from-zinc-800/10 via-zinc-700/10 to-zinc-800/10',
+    'from-zinc-800/10 via-cyan-500/10 to-green-500/10',
+    'from-zinc-800/10 via-green-500/10 to-yellow-500/10',
     'from-green-500/10 via-yellow-500/10 to-orange-500/10',
-    'from-yellow-500/10 via-orange-500/10 to-red-500/10',
-    'from-orange-500/10 via-red-500/10 to-pink-500/10',
-    'from-red-500/10 via-pink-500/10 to-purple-500/10',
-    'from-pink-500/10 via-purple-500/10 to-blue-500/10',
+    'from-yellow-500/10 via-orange-500/10 to-zinc-800/10',
+    'from-orange-500/10 via-red-500/10 to-zinc-700/10',
+    'from-zinc-700/10 via-zinc-700/10 to-zinc-800/10',
+    'from-zinc-700/10 via-zinc-800/10 to-zinc-800/10',
   ];
 
   // Real-time color rotation effect
@@ -546,11 +546,11 @@ const DashboardMaestroUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
   const getSystemStatus = useCallback((estado) => {
     switch (estado) {
       case 'online':
-        return { color: 'text-green-400', bgColor: 'bg-green-500/20', icon: CheckCircle };
+        return { color: 'text-zinc-200', bgColor: 'bg-zinc-9000/20', icon: CheckCircle };
       case 'warning':
-        return { color: 'text-yellow-400', bgColor: 'bg-yellow-500/20', icon: AlertTriangle };
+        return { color: 'text-zinc-200', bgColor: 'bg-zinc-9000/20', icon: AlertTriangle };
       case 'error':
-        return { color: 'text-red-400', bgColor: 'bg-red-500/20', icon: XCircle };
+        return { color: 'text-zinc-200', bgColor: 'bg-zinc-9000/20', icon: XCircle };
       case 'offline':
         return { color: 'text-gray-400', bgColor: 'bg-gray-500/20', icon: WifiOff };
       default:
@@ -561,21 +561,21 @@ const DashboardMaestroUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
   // Get KPI status
   const getKPIStatus = useCallback((kpi) => {
     const percentage = (kpi.valor / kpi.objetivo) * 100;
-    if (percentage >= 110) return { color: 'text-green-400', status: 'excelente' };
-    if (percentage >= 100) return { color: 'text-blue-400', status: 'bueno' };
-    if (percentage >= 90) return { color: 'text-yellow-400', status: 'aceptable' };
-    return { color: 'text-red-400', status: 'critico' };
+    if (percentage >= 110) return { color: 'text-zinc-200', status: 'excelente' };
+    if (percentage >= 100) return { color: 'text-zinc-300', status: 'bueno' };
+    if (percentage >= 90) return { color: 'text-zinc-200', status: 'aceptable' };
+    return { color: 'text-zinc-200', status: 'critico' };
   }, []);
 
   // Get trend icon
   const getTrendIcon = useCallback((tendencia) => {
     switch (tendencia) {
       case 'up':
-        return { icon: TrendingUp, color: 'text-green-400' };
+        return { icon: TrendingUp, color: 'text-zinc-200' };
       case 'down':
-        return { icon: TrendingDown, color: 'text-red-400' };
+        return { icon: TrendingDown, color: 'text-zinc-200' };
       case 'stable':
-        return { icon: ArrowRight, color: 'text-blue-400' };
+        return { icon: ArrowRight, color: 'text-zinc-300' };
       default:
         return { icon: Activity, color: 'text-slate-400' };
     }
@@ -648,8 +648,8 @@ const DashboardMaestroUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
       >
         {/* Holographic Background Effects */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-blue-500/5 to-cyan-500/5" />
-          <div className="absolute top-0 left-1/4 w-32 h-32 bg-gradient-conic from-purple-500/10 via-blue-500/10 to-cyan-500/10 rounded-full blur-3xl" />
+          <div className="absolute inset-0 bg-gradient-to-r from-zinc-800/5 via-zinc-700/5 to-zinc-800/5" />
+          <div className="absolute top-0 left-1/4 w-32 h-32 bg-gradient-conic from-zinc-800/10 via-zinc-700/10 to-zinc-800/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-gradient-radial from-green-500/10 via-yellow-500/10 to-orange-500/10 rounded-full blur-2xl" />
 
           {/* Floating holographic particles */}
@@ -683,7 +683,7 @@ const DashboardMaestroUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center space-x-4">
               <motion.div
-                className="p-3 bg-gradient-to-br from-purple-500/20 via-blue-500/20 to-cyan-500/20 rounded-xl backdrop-blur-sm border border-white/10"
+                className="p-3 bg-gradient-to-br from-zinc-800/20 via-zinc-700/20 to-zinc-800/20 rounded-xl backdrop-blur-sm border border-white/10"
                 whileHover={{ scale: 1.05, rotate: 5 }}
                 transition={{ duration: 0.3 }}
                 animate={{
@@ -695,7 +695,7 @@ const DashboardMaestroUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                   ],
                 }}
               >
-                <Crown className="w-8 h-8 text-yellow-400" />
+                <Crown className="w-8 h-8 text-zinc-200" />
               </motion.div>
 
               <div>
@@ -713,10 +713,10 @@ const DashboardMaestroUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 whileHover={{ scale: 1.02 }}
               >
                 <div className="text-slate-400 text-sm mb-1">Utilidad Neta</div>
-                <div className="text-xl font-bold text-green-400">
+                <div className="text-xl font-bold text-zinc-200">
                   {showValues ? formatCurrency(localData.summary.utilidadNeta) : '••••••••'}
                 </div>
-                <div className="flex items-center text-green-400 text-sm mt-1">
+                <div className="flex items-center text-zinc-200 text-sm mt-1">
                   <TrendingUp className="w-3 h-3 mr-1" />
                   {localData.summary.margenUtilidad}%
                 </div>
@@ -727,10 +727,10 @@ const DashboardMaestroUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 whileHover={{ scale: 1.02 }}
               >
                 <div className="text-slate-400 text-sm mb-1">Satisfacción Cliente</div>
-                <div className="text-xl font-bold text-blue-400">
+                <div className="text-xl font-bold text-zinc-300">
                   {showValues ? `${localData.summary.satisfaccionCliente}%` : '••%'}
                 </div>
-                <div className="flex items-center text-blue-400 text-sm mt-1">
+                <div className="flex items-center text-zinc-300 text-sm mt-1">
                   <Star className="w-3 h-3 mr-1" />
                   Excelente
                 </div>
@@ -741,12 +741,12 @@ const DashboardMaestroUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 whileHover={{ scale: 1.02 }}
               >
                 <div className="text-slate-400 text-sm mb-1">Sistemas Online</div>
-                <div className="text-xl font-bold text-green-400">
+                <div className="text-xl font-bold text-zinc-200">
                   {showValues
                     ? `${localData.summary.sistemasOnline}/${localData.summary.sistemasTotales}`
                     : '••/••'}
                 </div>
-                <div className="flex items-center text-green-400 text-sm mt-1">
+                <div className="flex items-center text-zinc-200 text-sm mt-1">
                   <CheckCircle className="w-3 h-3 mr-1" />
                   {localData.summary.uptimePromedio}% uptime
                 </div>
@@ -767,10 +767,10 @@ const DashboardMaestroUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                     {showValues ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
                   </motion.button>
                 </div>
-                <div className="text-xl font-bold text-red-400">
+                <div className="text-xl font-bold text-zinc-200">
                   {showValues ? localData.summary.alertasCriticas : '•'}
                 </div>
-                <div className="flex items-center text-yellow-400 text-sm mt-1">
+                <div className="flex items-center text-zinc-200 text-sm mt-1">
                   <AlertTriangle className="w-3 h-3 mr-1" />
                   {localData.summary.alertasAdvertencia} warnings
                 </div>
@@ -780,7 +780,7 @@ const DashboardMaestroUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
 
           {/* Master Status Bar */}
           <motion.div
-            className="p-4 bg-gradient-to-r from-purple-500/10 via-blue-500/10 to-cyan-500/10 rounded-xl border border-purple-500/20 backdrop-blur-sm"
+            className="p-4 bg-gradient-to-r from-zinc-800/10 via-zinc-700/10 to-zinc-800/10 rounded-xl border border-zinc-800/20 backdrop-blur-sm"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
@@ -794,21 +794,21 @@ const DashboardMaestroUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                   }}
                   transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                 >
-                  <Sparkles className="w-5 h-5 text-purple-400" />
+                  <Sparkles className="w-5 h-5 text-zinc-800" />
                 </motion.div>
                 <span className="text-white font-medium">
                   CHRONOS Master Intelligence Engine Activo
                 </span>
                 <div className="flex items-center space-x-2">
-                  <span className="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs flex items-center">
+                  <span className="px-2 py-1 bg-zinc-9000/20 text-zinc-200 rounded-full text-xs flex items-center">
                     <CheckCircle className="w-3 h-3 mr-1" />
                     AI Analytics
                   </span>
-                  <span className="px-2 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs flex items-center">
+                  <span className="px-2 py-1 bg-zinc-800/20 text-zinc-300 rounded-full text-xs flex items-center">
                     <Activity className="w-3 h-3 mr-1" />
                     Real-Time
                   </span>
-                  <span className="px-2 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs flex items-center">
+                  <span className="px-2 py-1 bg-zinc-800/20 text-zinc-800 rounded-full text-xs flex items-center">
                     <Zap className="w-3 h-3 mr-1" />
                     Predictive
                   </span>
@@ -821,13 +821,13 @@ const DashboardMaestroUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 </span>
                 <motion.button
                   onClick={() => setIsRealTime(!isRealTime)}
-                  className={`p-1 transition-colors ${isRealTime ? 'text-green-400' : 'text-slate-400'}`}
+                  className={`p-1 transition-colors ${isRealTime ? 'text-zinc-200' : 'text-slate-400'}`}
                   whileHover={{ scale: 1.1 }}
                 >
                   {isRealTime ? <Wifi className="w-4 h-4" /> : <WifiOff className="w-4 h-4" />}
                 </motion.button>
                 <motion.button
-                  className="p-1 text-purple-400 hover:text-purple-300"
+                  className="p-1 text-zinc-800 hover:text-zinc-800"
                   whileHover={{ scale: 1.1 }}
                   animate={{ rotate: isRealTime ? 360 : 0 }}
                   transition={{ duration: 2, repeat: isRealTime ? Infinity : 0, ease: 'linear' }}
@@ -859,7 +859,7 @@ const DashboardMaestroUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 onClick={() => setActiveView(id)}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   activeView === id
-                    ? 'bg-gradient-to-r from-purple-500/20 to-blue-500/20 text-purple-300 shadow-lg'
+                    ? 'bg-gradient-to-r from-zinc-800/20 to-zinc-800/20 text-zinc-800 shadow-lg'
                     : 'text-slate-400 hover:text-white hover:bg-white/5'
                 }`}
                 whileHover={{ scale: 1.02 }}
@@ -877,7 +877,7 @@ const DashboardMaestroUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
             <motion.button
               onClick={() => setAlertsVisible(!alertsVisible)}
               className={`p-2 rounded-lg transition-colors ${
-                alertsVisible ? 'bg-red-500/20 text-red-400' : 'bg-white/5 text-slate-400'
+                alertsVisible ? 'bg-zinc-9000/20 text-zinc-200' : 'bg-white/5 text-slate-400'
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -929,7 +929,7 @@ const DashboardMaestroUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
               scale: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
             }}
           >
-            <Crown className="w-24 h-24 text-yellow-400 mx-auto" />
+            <Crown className="w-24 h-24 text-zinc-200 mx-auto" />
             <motion.div
               className="absolute inset-0 w-24 h-24 mx-auto"
               animate={{
@@ -956,10 +956,10 @@ const DashboardMaestroUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
             variants={containerVariants}
           >
             {[
-              { label: 'Executive Summary', value: '100%', color: 'text-purple-400' },
-              { label: 'Real-time Monitoring', value: '100%', color: 'text-blue-400' },
-              { label: 'KPIs Dashboard', value: '100%', color: 'text-green-400' },
-              { label: 'System Health', value: '100%', color: 'text-yellow-400' },
+              { label: 'Executive Summary', value: '100%', color: 'text-zinc-800' },
+              { label: 'Real-time Monitoring', value: '100%', color: 'text-zinc-300' },
+              { label: 'KPIs Dashboard', value: '100%', color: 'text-zinc-200' },
+              { label: 'System Health', value: '100%', color: 'text-zinc-200' },
             ].map((item, index) => (
               <motion.div
                 key={item.label}

@@ -379,9 +379,9 @@ const ChronosLoginCinematic = ({ onLogin }) => {
                           className="absolute right-4 top-1/2 -translate-y-1/2"
                         >
                           {validationState.email ? (
-                            <Check className="w-5 h-5 text-green-400" />
+                            <Check className="w-5 h-5 text-zinc-200" />
                           ) : (
-                            <span className="text-red-400 text-xs">✕</span>
+                            <span className="text-zinc-200 text-xs">✕</span>
                           )}
                         </motion.div>
                       )}

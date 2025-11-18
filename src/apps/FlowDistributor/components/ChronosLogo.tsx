@@ -365,7 +365,7 @@ const ChronosLogo = memo(({
           }}
         />
         <motion.div
-          className="absolute inset-0 bg-cyan-400 rounded-full blur-xl opacity-10 pointer-events-none"
+          className="absolute inset-0 bg-zinc-700 rounded-full blur-xl opacity-10 pointer-events-none"
           animate={{
             scale: [1.2, 1.6, 1.2],
             opacity: [0.05, 0.15, 0.05],

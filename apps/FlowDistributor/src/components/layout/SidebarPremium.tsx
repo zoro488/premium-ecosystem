@@ -79,7 +79,7 @@ export function SidebarPremium() {
       label: 'Clientes',
       icon: Users,
       path: '/clientes',
-      gradient: 'from-neon-purple to-purple-500',
+      gradient: 'from-neon-purple to-zinc-500',
       glow: 'shadow-[0_0_20px_rgba(139,92,246,0.5)]'
     },
     {
@@ -103,7 +103,7 @@ export function SidebarPremium() {
       label: 'Distribuidores',
       icon: TrendingUp,
       path: '/distribuidores',
-      gradient: 'from-pink-500 to-rose-500',
+      gradient: 'from-zinc-500 to-rose-500',
       glow: 'shadow-[0_0_20px_rgba(236,72,153,0.5)]'
     },
     {
@@ -111,7 +111,7 @@ export function SidebarPremium() {
       label: 'Gastos',
       icon: DollarSign,
       path: '/gastos',
-      gradient: 'from-red-500 to-pink-500',
+      gradient: 'from-red-500 to-zinc-500',
       glow: 'shadow-[0_0_20px_rgba(239,68,68,0.5)]'
     },
     {
@@ -119,7 +119,7 @@ export function SidebarPremium() {
       label: 'Reportes',
       icon: BarChart3,
       path: '/reportes',
-      gradient: 'from-violet-500 to-purple-500',
+      gradient: 'from-violet-500 to-zinc-500',
       glow: 'shadow-[0_0_20px_rgba(139,92,246,0.5)]'
     }
   ];

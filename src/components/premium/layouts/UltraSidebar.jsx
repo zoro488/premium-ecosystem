@@ -212,7 +212,7 @@ export const UltraSidebar = ({
         {!isCollapsed ? (
           <div className="text-xs text-gray-500 text-center">CHRONOS System v1.0</div>
         ) : (
-          <div className="w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full" />
+          <div className="w-full h-1 bg-gradient-to-r from-blue-500 via-zinc-800 to-zinc-800 rounded-full" />
         )}
       </div>
     </motion.aside>
@@ -245,7 +245,7 @@ const MenuItem = ({ item, isCollapsed, isExpanded, onToggle }) => {
           transition-all duration-200 group
           ${
             isActive
-              ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-white border border-blue-500/30 shadow-lg shadow-blue-500/20'
+              ? 'bg-gradient-to-r from-blue-500/20 to-zinc-800/20 text-white border border-blue-500/30 shadow-lg shadow-blue-500/20'
               : 'text-gray-400 hover:text-white hover:bg-white/5'
           }
           ${isCollapsed ? 'justify-center' : ''}

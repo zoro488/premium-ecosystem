@@ -65,9 +65,9 @@ interface LoadingButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 
 const variantStyles = {
   primary: {
-    base: 'bg-gradient-to-r from-blue-600 to-purple-600 text-white',
-    hover: 'hover:from-blue-700 hover:to-purple-700',
-    active: 'active:from-blue-800 active:to-purple-800',
+    base: 'bg-gradient-to-r from-zinc-900 to-zinc-800 text-white',
+    hover: 'hover:from-zinc-700 hover:to-zinc-800',
+    active: 'active:from-zinc-800 active:to-zinc-900',
     disabled: 'disabled:from-gray-600 disabled:to-gray-700',
     glow: 'shadow-lg shadow-blue-500/25'
   },
@@ -86,9 +86,9 @@ const variantStyles = {
     glow: 'shadow-lg shadow-green-500/25'
   },
   danger: {
-    base: 'bg-gradient-to-r from-red-600 to-rose-600 text-white',
-    hover: 'hover:from-red-700 hover:to-rose-700',
-    active: 'active:from-red-800 active:to-rose-800',
+    base: 'bg-gradient-to-r from-zinc-700 to-zinc-700 text-white',
+    hover: 'hover:from-zinc-700 hover:to-zinc-700',
+    active: 'active:from-zinc-700 active:to-zinc-700',
     disabled: 'disabled:from-gray-600 disabled:to-gray-700',
     glow: 'shadow-lg shadow-red-500/25'
   },
@@ -100,9 +100,9 @@ const variantStyles = {
     glow: ''
   },
   outline: {
-    base: 'bg-transparent text-blue-400 border-2 border-blue-500/50',
-    hover: 'hover:bg-blue-500/10 hover:border-blue-500',
-    active: 'active:bg-blue-500/20',
+    base: 'bg-transparent text-zinc-300 border-2 border-zinc-700/50',
+    hover: 'hover:bg-zinc-800/10 hover:border-zinc-700',
+    active: 'active:bg-zinc-800/20',
     disabled: 'disabled:border-gray-600 disabled:text-gray-600',
     glow: 'shadow-lg shadow-blue-500/25'
   }

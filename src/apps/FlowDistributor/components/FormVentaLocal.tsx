@@ -177,7 +177,7 @@ export default function FormVentaLocal({
         animate={{ scale: 1, y: 0, opacity: 1 }}
         exit={{ scale: 0.9, y: 20, opacity: 0 }}
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        className="bg-gradient-to-br from-slate-900/95 to-blue-900/95 backdrop-blur-xl border border-blue-400/30 rounded-2xl shadow-2xl max-w-6xl w-full my-8"
+        className="bg-gradient-to-br from-slate-900/95 to-blue-900/95 backdrop-blur-xl border border-zinc-600/30 rounded-2xl shadow-2xl max-w-6xl w-full my-8"
         onClick={(e) => e.stopPropagation()}
       >
         {/* ============================================================ */}
@@ -190,7 +190,7 @@ export default function FormVentaLocal({
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.1 }}
           >
-            <FileText className="w-7 h-7 text-blue-400" />
+            <FileText className="w-7 h-7 text-zinc-300" />
             {ventaExistente ? 'Editar Venta Local' : 'Nueva Venta Local'}
           </motion.h2>
 
@@ -236,7 +236,7 @@ export default function FormVentaLocal({
                   <input
                     type="date"
                     {...field}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -258,7 +258,7 @@ export default function FormVentaLocal({
                     type="text"
                     {...field}
                     placeholder="ID o nombre del cliente"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -280,7 +280,7 @@ export default function FormVentaLocal({
                     type="text"
                     {...field}
                     placeholder="ID o nombre del producto"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -306,7 +306,7 @@ export default function FormVentaLocal({
                     value={value || ''}
                     onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
                     placeholder="0"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   />
                 </FieldWrapper>
               )}
@@ -331,7 +331,7 @@ export default function FormVentaLocal({
                       placeholder="Detalles adicionales de la venta..."
                       rows={3}
                       maxLength={500}
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all resize-none"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all resize-none"
                     />
                   </FieldWrapper>
                 )}
@@ -363,7 +363,7 @@ export default function FormVentaLocal({
                   tooltip="Precio de venta por unidad"
                 >
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-300/70">
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-300/70">
                       $
                     </span>
                     <input
@@ -374,7 +374,7 @@ export default function FormVentaLocal({
                       value={value || ''}
                       onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
                       placeholder="0.00"
-                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                     />
                   </div>
                 </FieldWrapper>
@@ -394,7 +394,7 @@ export default function FormVentaLocal({
                   tooltip="Precio de compra por unidad"
                 >
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-300/70">
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-300/70">
                       $
                     </span>
                     <input
@@ -405,7 +405,7 @@ export default function FormVentaLocal({
                       value={value || ''}
                       onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
                       placeholder="0.00"
-                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                     />
                   </div>
                 </FieldWrapper>
@@ -424,7 +424,7 @@ export default function FormVentaLocal({
                   tooltip="Costo del flete (opcional, default: $0)"
                 >
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-300/70">
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-300/70">
                       $
                     </span>
                     <input
@@ -435,7 +435,7 @@ export default function FormVentaLocal({
                       value={value || ''}
                       onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
                       placeholder="0.00"
-                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                     />
                   </div>
                 </FieldWrapper>
@@ -453,7 +453,7 @@ export default function FormVentaLocal({
             transition={{ delay: 0.3 }}
           >
             <div className="flex items-center gap-3 mb-6">
-              <Calculator className="w-6 h-6 text-emerald-400" />
+              <Calculator className="w-6 h-6 text-zinc-200" />
               <h3 className="text-lg font-bold text-emerald-300">Cálculos Automáticos</h3>
             </div>
 
@@ -463,7 +463,7 @@ export default function FormVentaLocal({
                 className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10"
                 whileHover={{ scale: 1.02, borderColor: 'rgba(59, 130, 246, 0.5)' }}
               >
-                <p className="text-xs text-blue-300/70 mb-1">Total Venta</p>
+                <p className="text-xs text-zinc-300/70 mb-1">Total Venta</p>
                 <p className="text-2xl font-bold text-white">
                   ${totales.precioTotalVenta.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
                 </p>
@@ -488,7 +488,7 @@ export default function FormVentaLocal({
                 <p className="text-xs text-emerald-300/70 mb-1">Utilidad Bruta</p>
                 <p
                   className={`text-2xl font-bold ${
-                    totales.utilidadBruta >= 0 ? 'text-green-400' : 'text-red-400'
+                    totales.utilidadBruta >= 0 ? 'text-zinc-200' : 'text-zinc-200'
                   }`}
                 >
                   ${totales.utilidadBruta.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
@@ -500,9 +500,9 @@ export default function FormVentaLocal({
                 className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10"
                 whileHover={{ scale: 1.02, borderColor: 'rgba(168, 85, 247, 0.5)' }}
               >
-                <p className="text-xs text-purple-300/70 mb-1">Margen %</p>
+                <p className="text-xs text-zinc-800/70 mb-1">Margen %</p>
                 <p className="text-2xl font-bold text-white flex items-center gap-1">
-                  <TrendingUp className="w-5 h-5 text-purple-400" />
+                  <TrendingUp className="w-5 h-5 text-zinc-800" />
                   {totales.margenPorcentaje}%
                 </p>
               </motion.div>
@@ -545,7 +545,7 @@ export default function FormVentaLocal({
                 >
                   <select
                     {...field}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   >
                     <option value="pendiente" className="bg-slate-900">
                       Pendiente
@@ -574,7 +574,7 @@ export default function FormVentaLocal({
                 >
                   <select
                     {...field}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   >
                     <option value="efectivo" className="bg-slate-900">
                       Efectivo
@@ -617,7 +617,7 @@ export default function FormVentaLocal({
                   }
                 >
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-300/70">
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-300/70">
                       $
                     </span>
                     <input
@@ -629,7 +629,7 @@ export default function FormVentaLocal({
                       onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
                       placeholder="0.00"
                       disabled={estadoPago === 'completo' || estadoPago === 'pendiente'}
-                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full pl-8 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                   </div>
                 </FieldWrapper>
@@ -649,7 +649,7 @@ export default function FormVentaLocal({
                 >
                   <select
                     {...field}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   >
                     <option value="Bóveda Monte" className="bg-slate-900">
                       Bóveda Monte
@@ -690,7 +690,7 @@ export default function FormVentaLocal({
                 >
                   <select
                     {...field}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   >
                     <option value="Bóveda USA" className="bg-slate-900">
                       Bóveda USA
@@ -731,7 +731,7 @@ export default function FormVentaLocal({
                 >
                   <select
                     {...field}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all"
                   >
                     <option value="Utilidades" className="bg-slate-900">
                       Utilidades
@@ -778,7 +778,7 @@ export default function FormVentaLocal({
                       placeholder="Notas adicionales sobre el pago..."
                       rows={3}
                       maxLength={1000}
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all resize-none"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-zinc-600/50 transition-all resize-none"
                     />
                   </FieldWrapper>
                 )}

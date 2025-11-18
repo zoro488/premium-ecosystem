@@ -13,7 +13,7 @@
 import { AnimatePresence } from 'framer-motion';
 import { Suspense, lazy, memo, useEffect, useState } from 'react';
 import ChronosLogo from './components/ChronosLogo';
-import LoginChronos from './components/LoginChronos';
+import LoginChronos from './components/ChronosLoginCinematic';
 import SplashChronos from './components/SplashChronos';
 
 // Lazy load del dashboard principal para optimizar carga inicial

@@ -188,26 +188,26 @@ const PanelFletesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
   const getStatusInfo = useCallback((status) => {
     const statusMap = {
       en_transito: {
-        color: 'text-blue-400',
-        bgColor: 'bg-blue-500/20',
+        color: 'text-zinc-300',
+        bgColor: 'bg-zinc-800/20',
         icon: Truck,
         label: 'En Tránsito',
       },
       programada: {
-        color: 'text-yellow-400',
-        bgColor: 'bg-yellow-500/20',
+        color: 'text-zinc-200',
+        bgColor: 'bg-zinc-9000/20',
         icon: Clock,
         label: 'Programada',
       },
       completada: {
-        color: 'text-green-400',
-        bgColor: 'bg-green-500/20',
+        color: 'text-zinc-200',
+        bgColor: 'bg-zinc-9000/20',
         icon: CheckCircle,
         label: 'Completada',
       },
       retrasada: {
-        color: 'text-red-400',
-        bgColor: 'bg-red-500/20',
+        color: 'text-zinc-200',
+        bgColor: 'bg-zinc-9000/20',
         icon: AlertTriangle,
         label: 'Retrasada',
       },
@@ -218,9 +218,9 @@ const PanelFletesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
   // Get priority color
   const getPriorityColor = useCallback((priority) => {
     const priorityMap = {
-      alta: 'text-red-400 bg-red-500/20',
-      media: 'text-yellow-400 bg-yellow-500/20',
-      baja: 'text-green-400 bg-green-500/20',
+      alta: 'text-zinc-200 bg-zinc-9000/20',
+      media: 'text-zinc-200 bg-zinc-9000/20',
+      baja: 'text-zinc-200 bg-zinc-9000/20',
     };
     return priorityMap[priority] || priorityMap.media;
   }, []);
@@ -296,15 +296,15 @@ const PanelFletesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
       >
         {/* Background Effects */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-cyan-500/5 to-teal-500/5" />
-          <div className="absolute top-0 left-1/4 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-cyan-500/10 rounded-full blur-2xl" />
+          <div className="absolute inset-0 bg-gradient-to-r from-zinc-800/5 via-cyan-500/5 to-teal-500/5" />
+          <div className="absolute top-0 left-1/4 w-32 h-32 bg-zinc-800/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-zinc-9000/10 rounded-full blur-2xl" />
 
           {/* Floating truck particles */}
           {[...Array(6)].map((_, i) => (
             <motion.div
               key={`truck-particle-${i + 1}`}
-              className="absolute w-2 h-2 bg-blue-400/40 rounded-full"
+              className="absolute w-2 h-2 bg-zinc-700/40 rounded-full"
               style={{
                 left: `${15 + i * 12}%`,
                 top: `${25 + (i % 2) * 30}%`,
@@ -328,11 +328,11 @@ const PanelFletesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center space-x-4">
               <motion.div
-                className="p-3 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl backdrop-blur-sm border border-white/10"
+                className="p-3 bg-gradient-to-br from-zinc-800/20 to-zinc-800/20 rounded-xl backdrop-blur-sm border border-white/10"
                 whileHover={{ scale: 1.05, rotate: 5 }}
                 transition={{ duration: 0.3 }}
               >
-                <Truck className="w-8 h-8 text-blue-400" />
+                <Truck className="w-8 h-8 text-zinc-300" />
               </motion.div>
 
               <div>
@@ -353,7 +353,7 @@ const PanelFletesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 <div className="text-2xl font-bold text-white">
                   {localData.summary.rutasActivas}
                 </div>
-                <div className="flex items-center text-blue-400 text-sm mt-1">
+                <div className="flex items-center text-zinc-300 text-sm mt-1">
                   <Route className="w-3 h-3 mr-1" />
                   {localData.summary.vehiculosOperando} vehículos
                 </div>
@@ -367,7 +367,7 @@ const PanelFletesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 <div className="text-2xl font-bold text-white">
                   {localData.summary.eficienciaGeneral}%
                 </div>
-                <div className="flex items-center text-green-400 text-sm mt-1">
+                <div className="flex items-center text-zinc-200 text-sm mt-1">
                   <TrendingUp className="w-3 h-3 mr-1" />
                   +3.2% vs ayer
                 </div>
@@ -391,7 +391,7 @@ const PanelFletesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 <div className="text-2xl font-bold text-white">
                   {showValues ? formatCurrency(localData.summary.ingresosDiarios) : '••••••'}
                 </div>
-                <div className="flex items-center text-cyan-400 text-sm mt-1">
+                <div className="flex items-center text-zinc-300 text-sm mt-1">
                   <DollarSign className="w-3 h-3 mr-1" />
                   {formatDistance(localData.summary.kmRecorridos)}
                 </div>
@@ -402,7 +402,7 @@ const PanelFletesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
           {/* GPS Tracking Bar */}
           {gpsTracking && (
             <motion.div
-              className="p-4 bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-xl border border-green-500/20 backdrop-blur-sm"
+              className="p-4 bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-xl border border-zinc-500/20 backdrop-blur-sm"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
@@ -413,10 +413,10 @@ const PanelFletesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
                   >
-                    <Signal className="w-5 h-5 text-green-400" />
+                    <Signal className="w-5 h-5 text-zinc-200" />
                   </motion.div>
                   <span className="text-white font-medium">GPS Tracking Activo</span>
-                  <span className="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">
+                  <span className="px-2 py-1 bg-zinc-9000/20 text-zinc-200 rounded-full text-xs">
                     {filteredRutas.filter((r) => r.estado === 'en_transito').length} vehículos en
                     movimiento
                   </span>
@@ -428,7 +428,7 @@ const PanelFletesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                     {new Date(localData.summary.ultimaActualizacion).toLocaleTimeString()}
                   </span>
                   <motion.button
-                    className="p-1 text-green-400 hover:text-green-300"
+                    className="p-1 text-zinc-200 hover:text-green-300"
                     whileHover={{ scale: 1.1 }}
                     onClick={() => setGpsTracking(false)}
                   >
@@ -460,7 +460,7 @@ const PanelFletesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 onClick={() => setActiveTable(id)}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   activeTable === id
-                    ? 'bg-blue-500/20 text-blue-400 shadow-lg'
+                    ? 'bg-zinc-800/20 text-zinc-300 shadow-lg'
                     : 'text-slate-400 hover:text-white hover:bg-white/5'
                 }`}
                 whileHover={{ scale: 1.02 }}
@@ -482,7 +482,7 @@ const PanelFletesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 placeholder="Buscar rutas..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/50 w-64"
+                className="pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-zinc-700/50 w-64"
               />
             </div>
 
@@ -550,7 +550,7 @@ const PanelFletesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                             </div>
                           </div>
 
-                          <div className="text-cyan-400 font-semibold">
+                          <div className="text-zinc-300 font-semibold">
                             {ruta.vehiculo.split(' - ')[0]}
                             <div className="text-xs text-slate-400 mt-1">
                               {ruta.vehiculo.split(' - ')[1]}
@@ -574,13 +574,13 @@ const PanelFletesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                             <div className="flex items-center space-x-2 mb-1">
                               <div className="flex-1 bg-white/10 rounded-full h-2">
                                 <motion.div
-                                  className="bg-blue-400 h-2 rounded-full"
+                                  className="bg-zinc-700 h-2 rounded-full"
                                   initial={{ width: 0 }}
                                   animate={{ width: `${ruta.progreso}%` }}
                                   transition={{ duration: 1 }}
                                 />
                               </div>
-                              <span className="text-blue-400 text-xs font-medium">
+                              <span className="text-zinc-300 text-xs font-medium">
                                 {ruta.progreso.toFixed(0)}%
                               </span>
                             </div>
@@ -610,14 +610,14 @@ const PanelFletesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
 
                           <div>
                             <div className="flex items-center space-x-1">
-                              <Fuel className="w-3 h-3 text-yellow-400" />
+                              <Fuel className="w-3 h-3 text-zinc-200" />
                               <span
                                 className={`text-sm ${
                                   ruta.combustibleRestante > 50
-                                    ? 'text-green-400'
+                                    ? 'text-zinc-200'
                                     : ruta.combustibleRestante > 25
-                                      ? 'text-yellow-400'
-                                      : 'text-red-400'
+                                      ? 'text-zinc-200'
+                                      : 'text-zinc-200'
                                 }`}
                               >
                                 {ruta.combustibleRestante.toFixed(0)}%
@@ -625,7 +625,7 @@ const PanelFletesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                             </div>
                           </div>
 
-                          <div className="text-green-400 font-medium">
+                          <div className="text-zinc-200 font-medium">
                             {formatCurrency(ruta.ingresoEstimado)}
                             <div className="text-xs text-slate-400 mt-1">
                               Margen: {formatCurrency(ruta.ingresoEstimado - ruta.costoEstimado)}
@@ -651,7 +651,7 @@ const PanelFletesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
               className="h-full flex items-center justify-center"
             >
               <div className="text-center">
-                <Truck className="w-16 h-16 text-blue-400 mx-auto mb-4" />
+                <Truck className="w-16 h-16 text-zinc-300 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">
                   {activeTable === 'costos'
                     ? 'Análisis de Costos por Kilómetro'

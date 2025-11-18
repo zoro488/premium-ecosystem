@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+
+
 import { AnimatePresence, motion } from 'framer-motion';
 import {
   Activity,
@@ -108,7 +110,7 @@ export const ExchangeRateMonitor: React.FC<ExchangeRateMonitorProps> = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-xl rounded-2xl border border-white/10 p-6 ${className}`}
+      className={`bg-gradient-to-br from-black/80 to-black/90 backdrop-blur-xl rounded-2xl border border-white/10 p-6 ${className}`}
     >
       {/* Header con TC actual */}
       <div className="flex items-center justify-between mb-6">
@@ -116,7 +118,7 @@ export const ExchangeRateMonitor: React.FC<ExchangeRateMonitorProps> = ({
           <motion.div
             animate={{ rotate: [0, 360] }}
             transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-            className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full p-2.5 flex items-center justify-center"
+            className="w-12 h-12 bg-gradient-to-br from-black/80 to-black/90 border border-zinc-700/30 rounded-full p-2.5 flex items-center justify-center"
           >
             <Activity className="text-white w-6 h-6" />
           </motion.div>
@@ -219,7 +221,7 @@ export const ExchangeRateMonitor: React.FC<ExchangeRateMonitorProps> = ({
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="bg-black/90 border border-purple-500/30 rounded-lg p-3 backdrop-blur-xl"
+                    className="bg-black/90 border border-zinc-700/30 rounded-lg p-3 backdrop-blur-xl"
                   >
                     <p className="text-white text-sm font-mono font-bold">
                       TC: ${payload[0].value?.toFixed(4)}
@@ -378,14 +380,14 @@ export const ExchangeRateMonitor: React.FC<ExchangeRateMonitorProps> = ({
 
         <motion.div
           whileHover={{ scale: 1.02 }}
-          className="bg-purple-500/10 border border-purple-500/20 rounded-xl p-4"
+          className="bg-zinc-900/10 border border-zinc-800/20 rounded-xl p-4"
         >
           <div className="flex items-center gap-2 mb-2">
-            <Activity className="w-4 h-4 text-purple-400" />
-            <p className="text-purple-400/80 text-xs font-medium">Promedio 7d</p>
+            <Activity className="w-4 h-4 text-zinc-200" />
+            <p className="text-zinc-200/80 text-xs font-medium">Promedio 7d</p>
           </div>
-          <p className="text-purple-400 text-xl font-bold font-mono">{avgTC7d.toFixed(4)}</p>
-          <p className="text-purple-400/60 text-xs mt-1">Referencia</p>
+          <p className="text-zinc-200 text-xl font-bold font-mono">{avgTC7d.toFixed(4)}</p>
+          <p className="text-zinc-200/60 text-xs mt-1">Referencia</p>
         </motion.div>
       </div>
 

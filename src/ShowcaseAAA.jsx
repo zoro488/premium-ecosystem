@@ -39,7 +39,7 @@ const ShowcaseAAA = () => {
         viewport={{ once: true }}
         className="mb-8"
       >
-        <h2 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
+        <h2 className="text-4xl font-bold bg-gradient-to-r from-zinc-800 to-zinc-800 bg-clip-text text-transparent mb-2">
           {title}
         </h2>
         <p className="text-gray-600 text-lg">{description}</p>
@@ -59,7 +59,7 @@ const ShowcaseAAA = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-purple-50 to-pink-50 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-zinc-800 to-zinc-800 relative overflow-hidden">
       {/* Particles Background */}
       <div className="fixed inset-0 pointer-events-none">
         {particles.map((particle) => (
@@ -280,7 +280,7 @@ const ShowcaseAAA = () => {
           <DemoCard title="Card con Hover">
             <CardAAA hover className="p-6">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-2xl">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-zinc-800 to-zinc-800 flex items-center justify-center text-white text-2xl">
                   🚀
                 </div>
                 <div>
@@ -342,7 +342,7 @@ const ShowcaseAAA = () => {
               className="p-6 cursor-pointer"
             >
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-pink-500 flex items-center justify-center text-white text-2xl">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-zinc-700 to-zinc-800 flex items-center justify-center text-white text-2xl">
                   👆
                 </div>
                 <div>
@@ -384,7 +384,7 @@ const ShowcaseAAA = () => {
           </DemoCard>
 
           <DemoCard title="Estado del Toggle">
-            <div className="p-6 rounded-xl bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200">
+            <div className="p-6 rounded-xl bg-gradient-to-br from-zinc-800 to-zinc-800 border-2 border-zinc-700">
               <p className="text-center text-lg">
                 Estado actual:
                 <span
@@ -477,7 +477,7 @@ const ShowcaseAAA = () => {
                   backgroundPosition: ['0%', '100%', '0%'],
                 }}
                 transition={{ duration: 5, repeat: Infinity }}
-                className="text-3xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 bg-clip-text text-transparent mb-6"
+                className="text-3xl font-bold bg-gradient-to-r from-zinc-800 via-zinc-700 to-zinc-800 bg-clip-text text-transparent mb-6"
                 style={{ backgroundSize: '200% auto' }}
               >
                 Formulario Premium de Ejemplo
@@ -556,7 +556,7 @@ const ShowcaseAAA = () => {
             transition={{ duration: 2, repeat: Infinity }}
             className="inline-block"
           >
-            <h3 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
+            <h3 className="text-4xl font-bold bg-gradient-to-r from-zinc-800 to-zinc-800 bg-clip-text text-transparent mb-2">
               Componentes AAA
             </h3>
             <p className="text-gray-600">Ultra Premium • Fluid • Innovative</p>

@@ -133,9 +133,9 @@ export const HeatmapOperations = memo(({ data = {} }) => {
               rotate: { duration: 8, repeat: Infinity, ease: 'linear' },
               scale: { duration: 2, repeat: Infinity, ease: 'easeInOut' },
             }}
-            className="p-2 rounded-lg bg-gradient-to-br from-orange-500/20 to-red-600/20 border border-orange-500/30"
+            className="p-2 rounded-lg bg-gradient-to-br from-orange-500/20 to-zinc-800/20 border border-zinc-500/30"
           >
-            <Activity className="w-5 h-5 text-orange-400" />
+            <Activity className="w-5 h-5 text-zinc-200" />
           </motion.div>
           <div>
             <h3 className="text-lg font-semibold text-white">Mapa de Calor - Operaciones</h3>
@@ -156,7 +156,7 @@ export const HeatmapOperations = memo(({ data = {} }) => {
           <select
             value={selectedPeriod}
             onChange={(e) => setSelectedPeriod(e.target.value)}
-            className="px-3 py-2 rounded-lg bg-white/10 border border-white/20 text-white text-sm focus:outline-none focus:border-blue-500/50"
+            className="px-3 py-2 rounded-lg bg-white/10 border border-white/20 text-white text-sm focus:outline-none focus:border-zinc-700/50"
           >
             <option value="week">Esta Semana</option>
             <option value="month">Este Mes</option>
@@ -184,11 +184,11 @@ export const HeatmapOperations = memo(({ data = {} }) => {
 
         <div className="flex items-center gap-4 text-xs text-white/50">
           <div className="flex items-center gap-1">
-            <div className="w-2 h-2 bg-green-500 rounded-full" />
+            <div className="w-2 h-2 bg-zinc-9000 rounded-full" />
             <span>Ventas</span>
           </div>
           <div className="flex items-center gap-1">
-            <div className="w-2 h-2 bg-blue-500 rounded-full" />
+            <div className="w-2 h-2 bg-zinc-800 rounded-full" />
             <span>Compras</span>
           </div>
         </div>
@@ -282,7 +282,7 @@ export const HeatmapOperations = memo(({ data = {} }) => {
 
                 <div className="flex items-center justify-between">
                   <span className="text-white/60">Valor total:</span>
-                  <span className="text-green-400 font-medium">
+                  <span className="text-zinc-200 font-medium">
                     ${hoveredCell.value.toLocaleString()}
                   </span>
                 </div>
@@ -310,7 +310,7 @@ export const HeatmapOperations = memo(({ data = {} }) => {
           whileHover={{ scale: 1.02 }}
         >
           <div className="flex items-center gap-2 mb-1">
-            <TrendingUp className="w-4 h-4 text-green-400" />
+            <TrendingUp className="w-4 h-4 text-zinc-200" />
             <span className="text-xs text-white/60">Pico de actividad</span>
           </div>
           <div className="text-white font-bold">14:00 - 16:00</div>
@@ -321,7 +321,7 @@ export const HeatmapOperations = memo(({ data = {} }) => {
           whileHover={{ scale: 1.02 }}
         >
           <div className="flex items-center gap-2 mb-1">
-            <BarChart3 className="w-4 h-4 text-blue-400" />
+            <BarChart3 className="w-4 h-4 text-zinc-300" />
             <span className="text-xs text-white/60">Promedio diario</span>
           </div>
           <div className="text-white font-bold">
@@ -334,10 +334,10 @@ export const HeatmapOperations = memo(({ data = {} }) => {
           whileHover={{ scale: 1.02 }}
         >
           <div className="flex items-center gap-2 mb-1">
-            <Zap className="w-4 h-4 text-yellow-400" />
+            <Zap className="w-4 h-4 text-zinc-200" />
             <span className="text-xs text-white/60">Tendencia</span>
           </div>
-          <div className="text-green-400 font-bold">+12.5%</div>
+          <div className="text-zinc-200 font-bold">+12.5%</div>
         </motion.div>
       </div>
     </motion.div>

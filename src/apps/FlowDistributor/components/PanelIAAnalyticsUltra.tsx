@@ -280,7 +280,7 @@ const PanelIAAnalyticsUltra: FC = memo(() => {
         <motion.div {...animations.container.fadeSlideUp} className="mb-8">
           <div className="flex justify-between items-start">
             <div>
-              <h1 className="text-5xl font-bold mb-2 bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 bg-clip-text text-transparent">
+              <h1 className="text-5xl font-bold mb-2 bg-gradient-to-r from-zinc-700 via-zinc-700 to-indigo-600 bg-clip-text text-transparent">
                 🤖 IA Analytics Ultra - Powered by ML
               </h1>
               <p className="text-cyan-300">
@@ -298,9 +298,9 @@ const PanelIAAnalyticsUltra: FC = memo(() => {
                 repeat: Infinity,
                 ease: 'easeInOut',
               }}
-              className="p-4 rounded-full bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border-2 border-cyan-400/30"
+              className="p-4 rounded-full bg-gradient-to-br from-zinc-800/20 to-zinc-800/20 border-2 border-cyan-400/30"
             >
-              <Brain className="w-12 h-12 text-cyan-400" />
+              <Brain className="w-12 h-12 text-zinc-300" />
             </motion.div>
           </div>
         </motion.div>
@@ -390,7 +390,7 @@ const PanelIAAnalyticsUltra: FC = memo(() => {
               border: `1px solid ${"rgba(148, 163, 184, 0.1)"}`,
             }}
           >
-            <h3 className="text-2xl font-bold mb-6 text-cyan-400">
+            <h3 className="text-2xl font-bold mb-6 text-zinc-300">
               📈 Predicciones de Balance - Próximos 3 Meses
             </h3>
             <div className="space-y-4">
@@ -401,11 +401,11 @@ const PanelIAAnalyticsUltra: FC = memo(() => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.15 }}
                   whileHover={{ scale: 1.02, x: 5 }}
-                  className="p-6 rounded-xl border border-cyan-500/30 bg-gradient-to-r from-cyan-500/10 to-blue-500/5"
+                  className="p-6 rounded-xl border border-zinc-500/30 bg-gradient-to-r from-zinc-800/10 to-zinc-800/5"
                 >
                   <div className="flex justify-between items-center">
                     <div className="flex items-center gap-4">
-                      <div className="text-4xl font-bold text-cyan-400">
+                      <div className="text-4xl font-bold text-zinc-300">
                         {pred.tendencia === 'up' ? '📈' : pred.tendencia === 'down' ? '📉' : '➡️'}
                       </div>
                       <div>
@@ -421,10 +421,10 @@ const PanelIAAnalyticsUltra: FC = memo(() => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="text-3xl font-bold text-cyan-400">
+                      <p className="text-3xl font-bold text-zinc-300">
                         ${pred.valorPredicted.toLocaleString('es-MX', { maximumFractionDigits: 0 })}
                       </p>
-                      <div className="mt-2 px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 text-xs">
+                      <div className="mt-2 px-3 py-1 rounded-full bg-zinc-9000/20 text-cyan-300 text-xs">
                         Predicción ML
                       </div>
                     </div>
@@ -446,7 +446,7 @@ const PanelIAAnalyticsUltra: FC = memo(() => {
               border: `1px solid ${"rgba(148, 163, 184, 0.1)"}`,
             }}
           >
-            <h3 className="text-2xl font-bold mb-6 text-amber-400">
+            <h3 className="text-2xl font-bold mb-6 text-zinc-200">
               ⚠️ Anomalías Detectadas - Análisis Estadístico
             </h3>
             <div className="space-y-3">
@@ -458,20 +458,20 @@ const PanelIAAnalyticsUltra: FC = memo(() => {
                   transition={{ delay: idx * 0.1 }}
                   className={`p-4 rounded-xl border ${
                     anomaly.severidad === 'high'
-                      ? 'border-red-500/40 bg-red-500/10'
+                      ? 'border-zinc-500/40 bg-zinc-9000/10'
                       : anomaly.severidad === 'medium'
-                        ? 'border-amber-500/40 bg-amber-500/10'
-                        : 'border-yellow-500/40 bg-yellow-500/10'
+                        ? 'border-zinc-500/40 bg-zinc-9000/10'
+                        : 'border-zinc-500/40 bg-zinc-9000/10'
                   }`}
                 >
                   <div className="flex items-start gap-3">
                     <AlertCircle
                       className={`w-6 h-6 ${
                         anomaly.severidad === 'high'
-                          ? 'text-red-400'
+                          ? 'text-zinc-200'
                           : anomaly.severidad === 'medium'
-                            ? 'text-amber-400'
-                            : 'text-yellow-400'
+                            ? 'text-zinc-200'
+                            : 'text-zinc-200'
                       }`}
                     />
                     <div className="flex-1">
@@ -483,10 +483,10 @@ const PanelIAAnalyticsUltra: FC = memo(() => {
                         <span
                           className={`px-2 py-1 rounded text-xs font-bold ${
                             anomaly.severidad === 'high'
-                              ? 'bg-red-500/20 text-red-300'
+                              ? 'bg-zinc-9000/20 text-red-300'
                               : anomaly.severidad === 'medium'
-                                ? 'bg-amber-500/20 text-amber-300'
-                                : 'bg-yellow-500/20 text-yellow-300'
+                                ? 'bg-zinc-9000/20 text-amber-300'
+                                : 'bg-zinc-9000/20 text-yellow-300'
                           }`}
                         >
                           {anomaly.severidad.toUpperCase()}
@@ -511,7 +511,7 @@ const PanelIAAnalyticsUltra: FC = memo(() => {
               border: `1px solid ${"rgba(148, 163, 184, 0.1)"}`,
             }}
           >
-            <h3 className="text-2xl font-bold mb-6 text-purple-400">
+            <h3 className="text-2xl font-bold mb-6 text-zinc-800">
               ✨ Recomendaciones Inteligentes - AI-Powered
             </h3>
             <div className="space-y-4">
@@ -522,25 +522,25 @@ const PanelIAAnalyticsUltra: FC = memo(() => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.1 }}
                   whileHover={{ scale: 1.02 }}
-                  className="p-5 rounded-xl border border-purple-500/30 bg-gradient-to-r from-purple-500/10 to-pink-500/5"
+                  className="p-5 rounded-xl border border-zinc-800/30 bg-gradient-to-r from-zinc-800/10 to-zinc-700/5"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="p-2 rounded-lg bg-purple-500/20">
-                      <Sparkles className="w-6 h-6 text-purple-400" />
+                    <div className="p-2 rounded-lg bg-zinc-800/20">
+                      <Sparkles className="w-6 h-6 text-zinc-800" />
                     </div>
                     <div className="flex-1">
                       <div className="flex justify-between items-start mb-2">
                         <h4 className="text-lg font-semibold text-white">{rec.titulo}</h4>
                         <div className="flex gap-2">
-                          <span className="px-2 py-1 rounded text-xs bg-purple-500/20 text-purple-300">
+                          <span className="px-2 py-1 rounded text-xs bg-zinc-800/20 text-zinc-800">
                             {rec.categoria}
                           </span>
                           <span
                             className={`px-2 py-1 rounded text-xs font-bold ${
                               rec.impacto === 'high'
-                                ? 'bg-green-500/20 text-green-300'
+                                ? 'bg-zinc-9000/20 text-green-300'
                                 : rec.impacto === 'medium'
-                                  ? 'bg-blue-500/20 text-blue-300'
+                                  ? 'bg-zinc-800/20 text-zinc-300'
                                   : 'bg-gray-500/20 text-gray-300'
                             }`}
                           >
@@ -550,8 +550,8 @@ const PanelIAAnalyticsUltra: FC = memo(() => {
                       </div>
                       <p className="text-gray-400">{rec.descripcion}</p>
                       <div className="mt-3 flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-green-400" />
-                        <span className="text-sm text-green-400">Prioridad {rec.prioridad}</span>
+                        <CheckCircle2 className="w-4 h-4 text-zinc-200" />
+                        <span className="text-sm text-zinc-200">Prioridad {rec.prioridad}</span>
                       </div>
                     </div>
                   </div>

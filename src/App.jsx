@@ -1,6 +1,8 @@
 import { Suspense, lazy, useEffect, useState } from 'react';
 import { Route, BrowserRouter as Router, Routes, useLocation, useNavigate } from 'react-router-dom';
 
+
+
 import { motion } from 'framer-motion';
 import {
   ArrowLeft,
@@ -23,7 +25,7 @@ import { initGA, logPageView } from './utils/analytics';
 // Lazy loading de las 5 aplicaciones para mejorar rendimiento
 // ✅ ACTIVADO - FlowDistributor nuevo sistema completo integrado
 const FlowDistributorPage = lazy(
-  () => import('./apps/FlowDistributor/chronos-system/pages/FlowDistributorPage')
+  () => import('./apps/FlowDistributor/chronos-system/pages/FlowDistributorPage.jsx')
 );
 const ShadowPrime = lazy(() => import('./apps/ShadowPrime/ShadowPrime'));
 const Apollo = lazy(() => import('./apps/Apollo/Apollo'));
@@ -75,7 +77,7 @@ const BanorteePage = lazy(
 // Componente de Loading optimizado
 const LoadingScreen = ({ _appName }) => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-blue-950/20 to-purple-950/20">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-zinc-950 to-black">
       <div className="text-center">
         <motion.div
           animate={{
@@ -86,7 +88,7 @@ const LoadingScreen = ({ _appName }) => {
             rotate: { duration: 2, repeat: Infinity, ease: 'linear' },
             scale: { duration: 1.5, repeat: Infinity },
           }}
-          className="mb-6 mx-auto w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center"
+          className="mb-6 mx-auto w-16 h-16 rounded-full bg-gradient-to-r from-zinc-700 to-zinc-900 flex items-center justify-center border border-zinc-700"
         >
           <Loader2 className="w-8 h-8 text-white" />
         </motion.div>
@@ -111,7 +113,7 @@ const LoadingScreen = ({ _appName }) => {
             repeat: Infinity,
             ease: 'easeInOut',
           }}
-          className="mt-6 h-1 w-48 mx-auto bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
+          className="mt-6 h-1 w-48 mx-auto bg-gradient-to-r from-zinc-700 to-zinc-900 rounded-full"
         />
       </div>
     </div>
@@ -185,9 +187,9 @@ const apps = [
     name: 'ShadowPrime',
     description: 'Gestión avanzada de wallets y criptomonedas',
     icon: Wallet,
-    color: 'from-purple-500 to-violet-500',
-    bgColor: 'bg-purple-500/10',
-    borderColor: 'border-purple-500/20',
+    color: 'from-zinc-800 to-violet-500',
+    bgColor: 'bg-zinc-900/10',
+    borderColor: 'border-zinc-800/20',
     path: '/shadow',
     component: ShadowPrime,
   },
@@ -218,9 +220,9 @@ const apps = [
     name: 'Nexus',
     description: 'Centro de control y conexiones',
     icon: Network,
-    color: 'from-pink-500 to-rose-500',
-    bgColor: 'bg-pink-500/10',
-    borderColor: 'border-pink-500/20',
+    color: 'from-zinc-800 via-zinc-700 to-zinc-800',
+    bgColor: 'bg-zinc-900/10',
+    borderColor: 'border-zinc-800/20',
     path: '/nexus',
     component: Nexus,
   },
@@ -299,7 +301,7 @@ const Hub = () => {
       <StarField />
 
       {/* Gradiente de fondo */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-blue-950/20 to-purple-950/20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-zinc-950 to-black" />
 
       {/* Contenido principal */}
       <div className="relative z-10 container mx-auto px-6 py-16">
@@ -309,7 +311,7 @@ const Hub = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h1 className="text-6xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-gradient">
+          <h1 className="text-6xl font-bold mb-4 bg-gradient-to-r from-zinc-200 via-zinc-100 to-zinc-300 bg-clip-text text-transparent">
             Premium Ecosystem
           </h1>
           <p className="text-xl text-slate-400">6 aplicaciones empresariales de nueva generación</p>

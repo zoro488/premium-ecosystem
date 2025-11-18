@@ -15,6 +15,10 @@
  */
 import { useCallback, useEffect, useState } from 'react';
 
+
+
+
+
 // Tipos
 export interface ExchangeRate {
   rate: number;
@@ -28,8 +32,15 @@ export interface Opportunity {
   changePercent: number;
 }
 
+export interface ExchangeRateData {
+  rate: number;
+  trend: 'up' | 'down' | 'stable';
+  change24h: number;
+  changePercent: number;
+}
+
 interface UseExchangeRateReturn {
-  tc: number;
+  tc: ExchangeRateData;
   historicalRates: ExchangeRate[];
   opportunity: Opportunity | null;
   loading: boolean;
@@ -235,8 +246,23 @@ export const useExchangeRate = (): UseExchangeRateReturn => {
    */
   const opportunity = calculateOpportunity(tc, historicalRates);
 
+  // Calcular trend y cambios
+  const firstRate = historicalRates[0]?.rate || tc;
+  const change24h = historicalRates.length > 0 ? tc - firstRate : 0;
+  const changePercent =
+    historicalRates.length > 0 && firstRate !== 0 ? ((tc - firstRate) / firstRate) * 100 : 0;
+  const trend: 'up' | 'down' | 'stable' =
+    change24h > 0.01 ? 'up' : change24h < -0.01 ? 'down' : 'stable';
+
+  const tcData: ExchangeRateData = {
+    rate: tc,
+    trend,
+    change24h: parseFloat(change24h.toFixed(4)),
+    changePercent: parseFloat(changePercent.toFixed(2)),
+  };
+
   return {
-    tc,
+    tc: tcData,
     historicalRates,
     opportunity,
     loading,

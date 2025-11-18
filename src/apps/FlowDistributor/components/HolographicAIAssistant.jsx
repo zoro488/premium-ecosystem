@@ -53,11 +53,11 @@ const HolographicEyes = ({ mood = 'neutral', isAnimating = false }) => {
 
   // Colores según el mood
   const moodColors = {
-    neutral: 'from-cyan-400 via-blue-500 to-purple-600',
+    neutral: 'from-zinc-700 via-zinc-700 to-zinc-800',
     happy: 'from-green-400 via-emerald-500 to-teal-600',
     thinking: 'from-amber-400 via-orange-500 to-yellow-600',
-    alert: 'from-red-400 via-rose-500 to-pink-600',
-    analyzing: 'from-purple-400 via-fuchsia-500 to-pink-600',
+    alert: 'from-zinc-700 via-zinc-700 to-zinc-700',
+    analyzing: 'from-zinc-800 via-zinc-700 to-zinc-700',
   };
 
   const currentGradient = moodColors[mood] || moodColors.neutral;
@@ -114,7 +114,7 @@ const HolographicEyes = ({ mood = 'neutral', isAnimating = false }) => {
 
           {/* Pupila */}
           <motion.div
-            className="absolute inset-4 rounded-full bg-gradient-to-br from-blue-400 to-purple-600 shadow-[0_0_20px_rgba(59,130,246,0.8)]"
+            className="absolute inset-4 rounded-full bg-gradient-to-br from-zinc-700 to-zinc-800 shadow-[0_0_20px_rgba(59,130,246,0.8)]"
             animate={{
               scale: isAnimating ? [1, 0.9, 1] : 1,
             }}
@@ -190,7 +190,7 @@ const HolographicEyes = ({ mood = 'neutral', isAnimating = false }) => {
 
           {/* Pupila */}
           <motion.div
-            className="absolute inset-4 rounded-full bg-gradient-to-br from-blue-400 to-purple-600 shadow-[0_0_20px_rgba(59,130,246,0.8)]"
+            className="absolute inset-4 rounded-full bg-gradient-to-br from-zinc-700 to-zinc-800 shadow-[0_0_20px_rgba(59,130,246,0.8)]"
             animate={{
               scale: isAnimating ? [1, 0.9, 1] : 1,
             }}
@@ -350,7 +350,7 @@ export const HolographicAIAssistant = ({
             <div className="relative">
               {/* Resplandor animado */}
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 rounded-full blur-2xl"
+                className="absolute inset-0 bg-gradient-to-r from-zinc-800 via-zinc-700 to-zinc-800 rounded-full blur-2xl"
                 animate={{
                   scale: [1, 1.3, 1],
                   opacity: [0.5, 0.8, 0.5],
@@ -368,7 +368,7 @@ export const HolographicAIAssistant = ({
 
                 {/* Anillo de pulso */}
                 <motion.div
-                  className="absolute inset-0 rounded-full border-2 border-cyan-500/50"
+                  className="absolute inset-0 rounded-full border-2 border-zinc-500/50"
                   animate={{
                     scale: [1, 1.2, 1],
                     opacity: [0.5, 0, 0.5],
@@ -385,7 +385,7 @@ export const HolographicAIAssistant = ({
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
-                className="absolute -top-1 -right-1 w-6 h-6 bg-gradient-to-r from-red-500 to-pink-600 rounded-full flex items-center justify-center text-xs text-white font-bold shadow-lg"
+                className="absolute -top-1 -right-1 w-6 h-6 bg-gradient-to-r from-zinc-700 to-zinc-700 rounded-full flex items-center justify-center text-xs text-white font-bold shadow-lg"
               >
                 3
               </motion.div>
@@ -409,7 +409,7 @@ export const HolographicAIAssistant = ({
               <div className="relative p-4 border-b border-white/10">
                 {/* Fondo animado */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-600/10"
+                  className="absolute inset-0 bg-gradient-to-r from-zinc-800/10 via-zinc-700/10 to-zinc-800/10"
                   animate={{
                     backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
                   }}
@@ -493,7 +493,7 @@ export const HolographicAIAssistant = ({
                             whileTap={{ scale: 0.95 }}
                             className="flex items-center gap-2 p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-all"
                           >
-                            <Icon className="w-4 h-4 text-cyan-400" />
+                            <Icon className="w-4 h-4 text-zinc-300" />
                             <span className="text-white text-xs font-medium">
                               {suggestion.text}
                             </span>
@@ -521,7 +521,7 @@ export const HolographicAIAssistant = ({
                           <div
                             className={`max-w-[80%] p-3 rounded-lg ${
                               message.sender === 'user'
-                                ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white'
+                                ? 'bg-gradient-to-r from-zinc-800 to-zinc-900 text-white'
                                 : 'bg-white/10 text-white'
                             }`}
                           >
@@ -547,7 +547,7 @@ export const HolographicAIAssistant = ({
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={handleSendMessage}
-                        className="p-2 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg hover:shadow-lg hover:shadow-cyan-500/50 transition-all"
+                        className="p-2 bg-gradient-to-r from-zinc-800 to-zinc-900 rounded-lg hover:shadow-lg hover:shadow-cyan-500/50 transition-all"
                       >
                         <MessageCircle className="w-5 h-5 text-white" />
                       </motion.button>

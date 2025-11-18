@@ -68,7 +68,7 @@ const COLOR_THEMES = {
 /**
  * ✨ Componente de Partícula Individual
  */
-const Particle = memo(({ index, color, intensity }: { index: number; color: string; intensity: number }) => {
+const Particle = memo(({ color, intensity }: { color: string; intensity: number }) => {
   const x = useMotionValue(Math.random() * 100);
   const y = useMotionValue(Math.random() * 100);
   const size = useMemo(() => 2 + Math.random() * 4, []);
@@ -146,7 +146,7 @@ export const AnimatedBackground = memo<AnimatedBackgroundProps>(({
         <Particle
           key={i}
           index={i}
-          color={colors[i % colors.length]}
+          color={colors[i % colors.length] || colors[0]}
           intensity={intensity}
         />
       )),

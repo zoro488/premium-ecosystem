@@ -1,5 +1,7 @@
 import React, { useMemo, useState } from 'react';
 
+
+
 import { AnimatePresence, motion } from 'framer-motion';
 import {
   ArrowRight,
@@ -190,7 +192,7 @@ export const TablaTransferenciasProfitPremium: React.FC<TablaTransferenciasProfi
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
         >
-          <RefreshCw className="w-12 h-12 text-purple-500" />
+          <RefreshCw className="w-12 h-12 text-white" />
         </motion.div>
       </div>
     );
@@ -249,38 +251,38 @@ export const TablaTransferenciasProfitPremium: React.FC<TablaTransferenciasProfi
 
         <motion.div
           whileHover={{ scale: 1.02 }}
-          className="bg-gradient-to-br from-purple-500/10 to-purple-600/5 backdrop-blur-xl rounded-2xl p-6 border border-purple-500/20"
+          className="bg-gradient-to-br from-black/80 to-black/90 backdrop-blur-xl rounded-2xl p-6 border border-zinc-800/20"
         >
           <div className="flex items-center justify-between mb-2">
-            <DollarSign className="w-8 h-8 text-purple-400" />
-            <div className="text-xs text-purple-400/60">Balance Neto</div>
+            <DollarSign className="w-8 h-8 text-zinc-200" />
+            <div className="text-xs text-zinc-200/60">Balance Neto</div>
           </div>
           <div className="space-y-1">
-            <p className="text-purple-400/80 text-sm font-medium">Balance</p>
+            <p className="text-zinc-200/80 text-sm font-medium">Balance</p>
             <p
               className={`text-3xl font-bold font-mono ${stats.balance >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}
             >
               {stats.balance >= 0 ? '+' : ''}$
               {stats.balance.toLocaleString('en-US', { minimumFractionDigits: 2 })}
             </p>
-            <p className="text-purple-400/60 text-xs">USD</p>
+            <p className="text-zinc-200/60 text-xs">USD</p>
           </div>
         </motion.div>
 
         <motion.div
           whileHover={{ scale: 1.02 }}
-          className="bg-gradient-to-br from-pink-500/10 to-pink-600/5 backdrop-blur-xl rounded-2xl p-6 border border-pink-500/20"
+          className="bg-gradient-to-br from-black/80 to-black/90 backdrop-blur-xl rounded-2xl p-6 border border-zinc-800/20"
         >
           <div className="flex items-center justify-between mb-2">
             <div className="text-2xl">🇲🇽</div>
-            <div className="text-xs text-pink-400/60">TC: {stats.tcPromedio.toFixed(4)}</div>
+            <div className="text-xs text-zinc-200/60">TC: {stats.tcPromedio.toFixed(4)}</div>
           </div>
           <div className="space-y-1">
-            <p className="text-pink-400/80 text-sm font-medium">Conversión MXN</p>
+            <p className="text-zinc-200/80 text-sm font-medium">Conversión MXN</p>
             <p className="text-3xl font-bold text-white font-mono">
               ${stats.conversionTotal.toLocaleString('en-US', { minimumFractionDigits: 2 })}
             </p>
-            <p className="text-pink-400/60 text-xs">Total convertido</p>
+            <p className="text-zinc-200/60 text-xs">Total convertido</p>
           </div>
         </motion.div>
       </div>
@@ -296,7 +298,7 @@ export const TablaTransferenciasProfitPremium: React.FC<TablaTransferenciasProfi
               placeholder="Buscar por concepto, origen, destino, referencia..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all"
+              className="w-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-zinc-600/50 focus:ring-2 focus:ring-zinc-800/20 transition-all"
             />
           </div>
         </div>
@@ -309,7 +311,7 @@ export const TablaTransferenciasProfitPremium: React.FC<TablaTransferenciasProfi
             onClick={() => setFilter('all')}
             className={`px-4 py-2 rounded-lg font-medium transition-all ${
               filter === 'all'
-                ? 'bg-purple-500 text-white'
+                ? 'bg-zinc-800 text-white'
                 : 'bg-white/5 text-white/60 hover:bg-white/10'
             }`}
           >
@@ -366,7 +368,7 @@ export const TablaTransferenciasProfitPremium: React.FC<TablaTransferenciasProfi
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={exportToCSV}
-          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 rounded-lg text-white font-medium transition-all"
+          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-zinc-800 via-zinc-700 to-zinc-800 hover:from-zinc-800 hover:to-zinc-800 rounded-lg text-white font-medium transition-all"
         >
           <Download className="w-4 h-4" />
           <span>Exportar CSV</span>
@@ -550,7 +552,7 @@ export const TablaTransferenciasProfitPremium: React.FC<TablaTransferenciasProfi
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() => onEdit?.(trans)}
-                            className="p-2 bg-purple-500/20 hover:bg-purple-500/30 text-purple-400 rounded-lg transition-all"
+                            className="p-2 bg-zinc-800/20 hover:bg-zinc-800/30 text-zinc-200 rounded-lg transition-all"
                             title="Editar"
                           >
                             <Edit className="w-4 h-4" />
@@ -657,7 +659,7 @@ export const TablaTransferenciasProfitPremium: React.FC<TablaTransferenciasProfi
                         onClick={() => setCurrentPage(page)}
                         className={`w-10 h-10 rounded-lg font-medium transition-all ${
                           currentPage === page
-                            ? 'bg-purple-500 text-white'
+                            ? 'bg-zinc-800 text-white'
                             : 'bg-white/5 text-white/60 hover:bg-white/10'
                         }`}
                       >

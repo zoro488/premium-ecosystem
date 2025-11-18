@@ -98,13 +98,13 @@ export default function PanelDistribuidoresUltra() {
         <div className="flex items-center gap-4">
           <motion.div
             whileHover={{ scale: 1.05, rotate: 5 }}
-            className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-600
+            className="w-16 h-16 rounded-2xl bg-gradient-to-br from-zinc-800 to-zinc-900
                        flex items-center justify-center shadow-lg shadow-blue-500/30"
           >
             <Building2 className="w-8 h-8 text-white" />
           </motion.div>
           <div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-zinc-700 to-zinc-700
                            bg-clip-text text-transparent">
               Distribuidores
             </h1>
@@ -117,7 +117,7 @@ export default function PanelDistribuidoresUltra() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsModalOpen(true)}
-            className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-600
+            className="px-6 py-3 rounded-xl bg-gradient-to-r from-zinc-800 to-zinc-900
                        text-white font-semibold shadow-lg shadow-blue-500/30
                        flex items-center gap-2 hover:shadow-blue-500/50 transition-all"
           >
@@ -130,7 +130,7 @@ export default function PanelDistribuidoresUltra() {
             whileTap={{ scale: 0.95 }}
             className="px-6 py-3 rounded-xl glass-dark border border-white/10
                        text-white font-semibold flex items-center gap-2
-                       hover:border-blue-500/50 transition-all"
+                       hover:border-zinc-700/50 transition-all"
           >
             <Download className="w-5 h-5" />
             Exportar
@@ -226,7 +226,7 @@ export default function PanelDistribuidoresUltra() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/5 border border-white/10
-                         text-white placeholder-white/40 focus:border-blue-500/50
+                         text-white placeholder-white/40 focus:border-zinc-700/50
                          focus:outline-none transition-all"
             />
           </div>
@@ -236,7 +236,7 @@ export default function PanelDistribuidoresUltra() {
               onClick={() => setViewMode('cards')}
               className={`px-4 py-2 rounded-lg transition-all ${
                 viewMode === 'cards'
-                  ? 'bg-blue-500 text-white'
+                  ? 'bg-zinc-800 text-white'
                   : 'text-white/60 hover:text-white'
               }`}
             >
@@ -246,7 +246,7 @@ export default function PanelDistribuidoresUltra() {
               onClick={() => setViewMode('table')}
               className={`px-4 py-2 rounded-lg transition-all ${
                 viewMode === 'table'
-                  ? 'bg-blue-500 text-white'
+                  ? 'bg-zinc-800 text-white'
                   : 'text-white/60 hover:text-white'
               }`}
             >
@@ -271,14 +271,14 @@ export default function PanelDistribuidoresUltra() {
               className="glass-card p-6 rounded-2xl border border-white/10
                          hover:border-white/20 transition-all relative overflow-hidden group"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent
+              <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/10 to-transparent
                              opacity-0 group-hover:opacity-100 transition-opacity" />
 
               <div className="relative z-10">
                 {/* Header de tarjeta */}
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-zinc-800 to-zinc-900
                                    flex items-center justify-center text-white font-bold text-lg">
                       {distribuidor.nombre?.charAt(0).toUpperCase()}
                     </div>
@@ -289,8 +289,8 @@ export default function PanelDistribuidoresUltra() {
                   </div>
 
                   {(distribuidor.deudaActual || 0) > 0 && (
-                    <span className="px-2 py-1 rounded-lg bg-red-500/20 text-red-400
-                                   border border-red-500/30 text-xs font-semibold">
+                    <span className="px-2 py-1 rounded-lg bg-zinc-9000/20 text-zinc-200
+                                   border border-zinc-500/30 text-xs font-semibold">
                       Deuda
                     </span>
                   )}
@@ -328,13 +328,13 @@ export default function PanelDistribuidoresUltra() {
                   </div>
                   <div className="glass-dark p-3 rounded-lg">
                     <p className="text-xs text-white/60 mb-1">Total Pagado</p>
-                    <p className="text-lg font-bold text-green-400">
+                    <p className="text-lg font-bold text-zinc-200">
                       ${(distribuidor.totalPagado || 0).toLocaleString('es-MX')}
                     </p>
                   </div>
                   <div className="glass-dark p-3 rounded-lg">
                     <p className="text-xs text-white/60 mb-1">Deuda Actual</p>
-                    <p className="text-lg font-bold text-red-400">
+                    <p className="text-lg font-bold text-zinc-200">
                       ${(distribuidor.deudaActual || 0).toLocaleString('es-MX')}
                     </p>
                   </div>
@@ -343,7 +343,7 @@ export default function PanelDistribuidoresUltra() {
                     <div className="flex items-center gap-2">
                       <p className="text-lg font-bold text-white">{distribuidor.totalOrdenes || 0}</p>
                       {(distribuidor.ordenesPendientes || 0) > 0 && (
-                        <span className="text-xs px-2 py-0.5 rounded bg-orange-500/20 text-orange-400">
+                        <span className="text-xs px-2 py-0.5 rounded bg-zinc-9000/20 text-zinc-200">
                           {distribuidor.ordenesPendientes} pend.
                         </span>
                       )}
@@ -357,8 +357,8 @@ export default function PanelDistribuidoresUltra() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setSelectedDistribuidor(distribuidor)}
-                    className="flex-1 py-2 rounded-lg bg-blue-500/20 text-blue-400
-                             hover:bg-blue-500/30 transition-colors flex items-center
+                    className="flex-1 py-2 rounded-lg bg-zinc-800/20 text-zinc-300
+                             hover:bg-zinc-800/30 transition-colors flex items-center
                              justify-center gap-2 font-semibold"
                   >
                     <Eye className="w-4 h-4" />
@@ -367,8 +367,8 @@ export default function PanelDistribuidoresUltra() {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-3 py-2 rounded-lg bg-green-500/20 text-green-400
-                             hover:bg-green-500/30 transition-colors"
+                    className="px-3 py-2 rounded-lg bg-zinc-9000/20 text-zinc-200
+                             hover:bg-zinc-9000/30 transition-colors"
                   >
                     <Edit3 className="w-4 h-4" />
                   </motion.button>
@@ -376,7 +376,7 @@ export default function PanelDistribuidoresUltra() {
               </div>
 
               <div className="absolute -bottom-10 -right-10 w-32 h-32 rounded-full
-                             bg-blue-500/20 blur-3xl group-hover:scale-150
+                             bg-zinc-800/20 blur-3xl group-hover:scale-150
                              transition-transform duration-700" />
             </motion.div>
           ))}
@@ -420,7 +420,7 @@ export default function PanelDistribuidoresUltra() {
                     >
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-600
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-zinc-800 to-zinc-900
                                          flex items-center justify-center text-white font-bold">
                             {distribuidor.nombre?.charAt(0).toUpperCase()}
                           </div>
@@ -439,12 +439,12 @@ export default function PanelDistribuidoresUltra() {
                         </span>
                       </td>
                       <td className="px-6 py-4">
-                        <span className="font-semibold text-green-400">
+                        <span className="font-semibold text-zinc-200">
                           ${(distribuidor.totalPagado || 0).toLocaleString('es-MX')}
                         </span>
                       </td>
                       <td className="px-6 py-4">
-                        <span className="font-semibold text-red-400">
+                        <span className="font-semibold text-zinc-200">
                           ${(distribuidor.deudaActual || 0).toLocaleString('es-MX')}
                         </span>
                       </td>
@@ -452,7 +452,7 @@ export default function PanelDistribuidoresUltra() {
                         <div className="flex items-center gap-2">
                           <span className="font-semibold text-white">{distribuidor.totalOrdenes || 0}</span>
                           {(distribuidor.ordenesPendientes || 0) > 0 && (
-                            <span className="px-2 py-0.5 rounded bg-orange-500/20 text-orange-400 text-xs">
+                            <span className="px-2 py-0.5 rounded bg-zinc-9000/20 text-zinc-200 text-xs">
                               {distribuidor.ordenesPendientes}
                             </span>
                           )}
@@ -464,24 +464,24 @@ export default function PanelDistribuidoresUltra() {
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() => setSelectedDistribuidor(distribuidor)}
-                            className="p-2 rounded-lg bg-blue-500/20 text-blue-400
-                                     hover:bg-blue-500/30 transition-colors"
+                            className="p-2 rounded-lg bg-zinc-800/20 text-zinc-300
+                                     hover:bg-zinc-800/30 transition-colors"
                           >
                             <Eye className="w-4 h-4" />
                           </motion.button>
                           <motion.button
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
-                            className="p-2 rounded-lg bg-green-500/20 text-green-400
-                                     hover:bg-green-500/30 transition-colors"
+                            className="p-2 rounded-lg bg-zinc-9000/20 text-zinc-200
+                                     hover:bg-zinc-9000/30 transition-colors"
                           >
                             <Edit3 className="w-4 h-4" />
                           </motion.button>
                           <motion.button
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
-                            className="p-2 rounded-lg bg-red-500/20 text-red-400
-                                     hover:bg-red-500/30 transition-colors"
+                            className="p-2 rounded-lg bg-zinc-9000/20 text-zinc-200
+                                     hover:bg-zinc-9000/30 transition-colors"
                           >
                             <Trash2 className="w-4 h-4" />
                           </motion.button>

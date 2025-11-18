@@ -207,7 +207,7 @@ export const FlowDistributorRouter: React.FC = () => {
               <p className="text-xl text-gray-400 mb-8">Página no encontrada</p>
               <button
                 onClick={() => window.location.href = '/'}
-                className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl font-semibold hover:scale-105 transition-transform"
+                className="px-6 py-3 bg-gradient-to-r from-zinc-800 to-zinc-800 text-white rounded-xl font-semibold hover:scale-105 transition-transform"
               >
                 Volver al Dashboard
               </button>

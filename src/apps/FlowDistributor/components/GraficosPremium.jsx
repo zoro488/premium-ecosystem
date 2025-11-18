@@ -68,9 +68,9 @@ const TooltipPremium = ({ active, payload, label, formatValue }) => {
       initial={{ opacity: 0, scale: 0.9, y: -10 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       className="backdrop-blur-xl bg-gradient-to-br from-slate-900/95 via-slate-800/95 to-slate-900/95
-                 rounded-2xl p-4 border-2 border-white/20 shadow-2xl shadow-purple-500/20"
+                 rounded-2xl p-4 border-2 border-white/20 shadow-2xl shadow-zinc-800/20"
     >
-      <p className="font-bold text-white mb-3 text-sm bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+      <p className="font-bold text-white mb-3 text-sm bg-gradient-to-r from-zinc-700 to-zinc-800 bg-clip-text text-transparent">
         {label}
       </p>
       <div className="space-y-2">
@@ -129,7 +129,7 @@ export const GraficoLinea = ({
       className="w-full backdrop-blur-xl bg-white/5 rounded-2xl p-6 border border-white/10 shadow-2xl"
     >
       {titulo && (
-        <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+        <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2 bg-gradient-to-r from-zinc-700 to-zinc-700 bg-clip-text text-transparent">
           📈 {titulo}
         </h3>
       )}
@@ -195,7 +195,7 @@ export const GraficoBarras = ({
       className="w-full backdrop-blur-xl bg-white/5 rounded-2xl p-6 border border-white/10 shadow-2xl"
     >
       {titulo && (
-        <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+        <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2 bg-gradient-to-r from-zinc-800 to-zinc-700 bg-clip-text text-transparent">
           📊 {titulo}
         </h3>
       )}
@@ -426,7 +426,7 @@ export const GraficoArea = ({
       className="w-full backdrop-blur-xl bg-white/5 rounded-2xl p-6 border border-white/10 shadow-2xl"
     >
       {titulo && (
-        <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+        <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2 bg-gradient-to-r from-zinc-700 to-zinc-700 bg-clip-text text-transparent">
           📈 {titulo}
         </h3>
       )}
@@ -597,11 +597,11 @@ export const KPIConGrafico = ({
   color = 'green',
 }) => {
   const colores = {
-    green: { from: 'from-green-500', to: 'to-emerald-500', text: 'text-green-400' },
-    blue: { from: 'from-blue-500', to: 'to-cyan-500', text: 'text-blue-400' },
-    purple: { from: 'from-purple-500', to: 'to-pink-500', text: 'text-purple-400' },
-    orange: { from: 'from-orange-500', to: 'to-amber-500', text: 'text-orange-400' },
-    red: { from: 'from-red-500', to: 'to-rose-500', text: 'text-red-400' },
+    green: { from: 'from-green-500', to: 'to-emerald-500', text: 'text-zinc-200' },
+    blue: { from: 'from-zinc-800', to: 'to-zinc-800', text: 'text-zinc-300' },
+    purple: { from: 'from-zinc-800', to: 'to-zinc-700', text: 'text-zinc-800' },
+    orange: { from: 'from-orange-500', to: 'to-amber-500', text: 'text-zinc-200' },
+    red: { from: 'from-zinc-700', to: 'to-zinc-700', text: 'text-zinc-200' },
   };
 
   const colorConfig = colores[color];
@@ -612,7 +612,7 @@ export const KPIConGrafico = ({
       animate={{ opacity: 1, scale: 1 }}
       whileHover={{ scale: 1.03, y: -4 }}
       className="backdrop-blur-xl bg-white/5 rounded-2xl p-6
-                 border border-white/10 shadow-2xl hover:shadow-purple-500/20 transition-all"
+                 border border-white/10 shadow-2xl hover:shadow-zinc-800/20 transition-all"
     >
       <div className="flex items-start justify-between mb-4">
         <div>
@@ -629,7 +629,7 @@ export const KPIConGrafico = ({
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className={`flex items-center gap-1 mt-2 ${cambio >= 0 ? 'text-green-400' : 'text-red-400'}`}
+              className={`flex items-center gap-1 mt-2 ${cambio >= 0 ? 'text-zinc-200' : 'text-zinc-200'}`}
             >
               <span className="text-sm font-bold">
                 {cambio >= 0 ? '↑' : '↓'} {Math.abs(cambio)}%

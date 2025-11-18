@@ -324,8 +324,8 @@ const PanelVentasUltra = memo(() => {
         {/* Background Effects */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/5 via-amber-500/5 to-orange-500/5" />
-          <div className="absolute top-0 left-1/4 w-32 h-32 bg-yellow-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-amber-500/10 rounded-full blur-2xl" />
+          <div className="absolute top-0 left-1/4 w-32 h-32 bg-zinc-9000/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-zinc-9000/10 rounded-full blur-2xl" />
 
           {/* Floating money particles */}
           {[...Array(12)].map((_, i) => (
@@ -360,7 +360,7 @@ const PanelVentasUltra = memo(() => {
                 whileHover={{ scale: 1.05, rotate: 5 }}
                 transition={{ duration: 0.3 }}
               >
-                <DollarSign className="w-8 h-8 text-yellow-400" />
+                <DollarSign className="w-8 h-8 text-zinc-200" />
               </motion.div>
 
               <div>
@@ -381,7 +381,7 @@ const PanelVentasUltra = memo(() => {
                 <div className="text-2xl font-bold text-white">
                   {showValues ? formatCurrency(summary.ventasDelMes) : '••••••••'}
                 </div>
-                <div className="flex items-center text-green-400 text-sm mt-1 justify-end">
+                <div className="flex items-center text-zinc-200 text-sm mt-1 justify-end">
                   <TrendingUp className="w-3 h-3 mr-1" />
                   {summary.progresoMeta.toFixed(1)}% de la meta
                 </div>
@@ -395,7 +395,7 @@ const PanelVentasUltra = memo(() => {
                 <div className="text-2xl font-bold text-white">
                   {summary.progresoMeta.toFixed(1)}%
                 </div>
-                <div className="flex items-center text-amber-400 text-sm mt-1 justify-end">
+                <div className="flex items-center text-zinc-200 text-sm mt-1 justify-end">
                   <Target className="w-3 h-3 mr-1" />
                   Meta: {showValues ? formatCurrency(summary.metaMensual) : '••••••••'}
                 </div>
@@ -417,7 +417,7 @@ const PanelVentasUltra = memo(() => {
                   </motion.button>
                 </div>
                 <div className="text-2xl font-bold text-white">{summary.dealsActivos}</div>
-                <div className="flex items-center text-yellow-400 text-sm mt-1 justify-end">
+                <div className="flex items-center text-zinc-200 text-sm mt-1 justify-end">
                   <Percent className="w-3 h-3 mr-1" />
                   Pagados: {summary.conversionRate.toFixed(1)}%
                 </div>
@@ -449,7 +449,7 @@ const PanelVentasUltra = memo(() => {
             onClick={() => setShowFilters(!showFilters)}
             className={`px-4 py-2 rounded-lg flex items-center gap-2 transition-all ${
               showFilters
-                ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
+                ? 'bg-zinc-9000/20 text-zinc-200 border border-zinc-500/30'
                 : 'bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10'
             }`}
           >
@@ -499,7 +499,7 @@ const PanelVentasUltra = memo(() => {
             onClick={() => setShowCharts(!showCharts)}
             className={`px-4 py-2 rounded-lg flex items-center gap-2 transition-all ${
               showCharts
-                ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
+                ? 'bg-zinc-9000/20 text-zinc-200 border border-zinc-500/30'
                 : 'bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10'
             }`}
           >
@@ -702,7 +702,7 @@ const PanelVentasUltra = memo(() => {
                       onClick={() => setCurrentPage(page)}
                       className={`px-3 py-2 rounded-lg transition-all ${
                         currentPage === page
-                          ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
+                          ? 'bg-zinc-9000/20 text-zinc-200 border border-zinc-500/30'
                           : 'bg-white/5 text-white hover:bg-white/10'
                       }`}
                     >

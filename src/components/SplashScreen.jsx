@@ -92,7 +92,7 @@ export default function SplashScreen({ onComplete, duration = 4000 }) {
               transition={{ delay: 0.5, duration: 0.8 }}
               className="relative"
             >
-              <h1 className="text-6xl md:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 tracking-wider">
+              <h1 className="text-6xl md:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-zinc-800 tracking-wider">
                 CHRONOS
               </h1>
 
@@ -127,7 +127,7 @@ export default function SplashScreen({ onComplete, duration = 4000 }) {
                 width: videoLoaded ? '200px' : 0,
               }}
               transition={{ delay: 1, duration: duration / 1000 - 1 }}
-              className="h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 rounded-full mt-8"
+              className="h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-zinc-800 rounded-full mt-8"
             />
 
             {/* Indicador de carga */}

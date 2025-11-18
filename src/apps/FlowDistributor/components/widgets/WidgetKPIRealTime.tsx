@@ -231,7 +231,7 @@ export const WidgetKPIRealTime: React.FC = () => {
       {/* 🎯 HEADER */}
       <div className="mb-4 flex items-center justify-between">
         <h3 className="text-lg font-bold text-white flex items-center gap-2">
-          <Zap className="w-5 h-5 text-yellow-400" />
+          <Zap className="w-5 h-5 text-zinc-200" />
           KPIs en Tiempo Real
         </h3>
         <motion.div
@@ -277,20 +277,20 @@ export const WidgetKPIRealTime: React.FC = () => {
                 {/* Indicador de cambio */}
                 <motion.div
                   className={`flex items-center gap-1 px-2 py-1 rounded-lg ${
-                    isPositive ? 'bg-green-500/20' : 'bg-red-500/20'
+                    isPositive ? 'bg-zinc-9000/20' : 'bg-zinc-9000/20'
                   }`}
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: index * 0.1 + 0.3 }}
                 >
                   {isPositive ? (
-                    <TrendingUp className="w-3 h-3 text-green-400" />
+                    <TrendingUp className="w-3 h-3 text-zinc-200" />
                   ) : (
-                    <TrendingDown className="w-3 h-3 text-red-400" />
+                    <TrendingDown className="w-3 h-3 text-zinc-200" />
                   )}
                   <span
                     className={`text-xs font-bold ${
-                      isPositive ? 'text-green-400' : 'text-red-400'
+                      isPositive ? 'text-zinc-200' : 'text-zinc-200'
                     }`}
                   >
                     {Math.abs(change).toFixed(1)}%

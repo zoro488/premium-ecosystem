@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+
+
 import { motion } from 'framer-motion';
 import {
   Calendar,
@@ -32,13 +34,13 @@ const BANCO_CONFIG = {
   banorte: {
     nombre: 'Banorte Premium',
     color: 'red',
-    gradient: 'from-red-500 to-rose-600',
+    gradient: 'from-zinc-700 to-rose-600',
     icon: '🏦',
   },
   santander: {
     nombre: 'Santander Elite',
     color: 'red',
-    gradient: 'from-red-600 to-pink-600',
+    gradient: 'from-zinc-700 to-zinc-800',
     icon: '🔴',
   },
   bbva: {
@@ -50,13 +52,13 @@ const BANCO_CONFIG = {
   hsbc: {
     nombre: 'HSBC Premier',
     color: 'red',
-    gradient: 'from-red-700 to-rose-700',
+    gradient: 'from-zinc-700 to-rose-700',
     icon: '🔺',
   },
   scotiabank: {
     nombre: 'Scotiabank Select',
     color: 'red',
-    gradient: 'from-red-500 to-orange-600',
+    gradient: 'from-zinc-700 to-orange-600',
     icon: '🍁',
   },
 };
@@ -146,7 +148,7 @@ export default function UniversalBankView() {
         animate={{ opacity: 1, y: 0 }}
         className="relative overflow-hidden rounded-2xl"
       >
-        <div className={`absolute inset-0 bg-gradient-to-r ${config.gradient} opacity-20`} />
+        <div className="absolute inset-0 bg-black/90" />
         <div className="relative p-8 backdrop-blur-xl bg-white/5 border border-white/10">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">

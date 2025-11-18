@@ -257,10 +257,10 @@ const PanelClientesUltra = memo(() => {
 
   // Get health score color
   const getHealthScoreColor = useCallback((score) => {
-    if (score >= 85) return { color: 'text-green-400', bgColor: 'bg-green-500/20' };
-    if (score >= 70) return { color: 'text-blue-400', bgColor: 'bg-blue-500/20' };
-    if (score >= 60) return { color: 'text-yellow-400', bgColor: 'bg-yellow-500/20' };
-    return { color: 'text-red-400', bgColor: 'bg-red-500/20' };
+    if (score >= 85) return { color: 'text-zinc-200', bgColor: 'bg-zinc-9000/20' };
+    if (score >= 70) return { color: 'text-zinc-300', bgColor: 'bg-zinc-800/20' };
+    if (score >= 60) return { color: 'text-zinc-200', bgColor: 'bg-zinc-9000/20' };
+    return { color: 'text-zinc-200', bgColor: 'bg-zinc-9000/20' };
   }, []);
 
   // Get category icon
@@ -348,15 +348,15 @@ const PanelClientesUltra = memo(() => {
       >
         {/* Background Effects */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-cyan-500/5 to-teal-500/5" />
-          <div className="absolute top-0 left-1/4 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-cyan-500/10 rounded-full blur-2xl" />
+          <div className="absolute inset-0 bg-gradient-to-r from-zinc-800/5 via-cyan-500/5 to-teal-500/5" />
+          <div className="absolute top-0 left-1/4 w-32 h-32 bg-zinc-800/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-zinc-9000/10 rounded-full blur-2xl" />
 
           {/* Floating customer particles */}
           {[...Array(15)].map((_, i) => (
             <motion.div
               key={`customer-particle-${i + 1}`}
-              className="absolute w-2 h-2 bg-cyan-400/40 rounded-full"
+              className="absolute w-2 h-2 bg-zinc-700/40 rounded-full"
               style={{
                 left: `${8 + i * 6}%`,
                 top: `${20 + (i % 3) * 25}%`,
@@ -380,11 +380,11 @@ const PanelClientesUltra = memo(() => {
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center space-x-4">
               <motion.div
-                className="p-3 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl backdrop-blur-sm border border-white/10"
+                className="p-3 bg-gradient-to-br from-zinc-800/20 to-zinc-800/20 rounded-xl backdrop-blur-sm border border-white/10"
                 whileHover={{ scale: 1.05, rotate: 5 }}
                 transition={{ duration: 0.3 }}
               >
-                <Users className="w-8 h-8 text-cyan-400" />
+                <Users className="w-8 h-8 text-zinc-300" />
               </motion.div>
 
               <div>
@@ -403,7 +403,7 @@ const PanelClientesUltra = memo(() => {
               >
                 <div className="text-slate-400 text-sm mb-1">Total Clientes</div>
                 <div className="text-2xl font-bold text-white">{summary.totalClientes}</div>
-                <div className="flex items-center text-green-400 text-sm mt-1 justify-end">
+                <div className="flex items-center text-zinc-200 text-sm mt-1 justify-end">
                   <TrendingUp className="w-3 h-3 mr-1" />
                   {summary.clientesActivos} activos
                 </div>
@@ -417,7 +417,7 @@ const PanelClientesUltra = memo(() => {
                 <div className="text-2xl font-bold text-white">
                   {showValues ? formatCurrency(summary.valorTotalCartera) : '••••••••'}
                 </div>
-                <div className="flex items-center text-cyan-400 text-sm mt-1 justify-end">
+                <div className="flex items-center text-zinc-300 text-sm mt-1 justify-end">
                   <DollarSign className="w-3 h-3 mr-1" />
                   CLV Prom: {showValues ? formatCurrency(summary.clvPromedio) : '••••••'}
                 </div>
@@ -439,7 +439,7 @@ const PanelClientesUltra = memo(() => {
                   </motion.button>
                 </div>
                 <div className="text-2xl font-bold text-white">{summary.clientesPremium}</div>
-                <div className="flex items-center text-blue-400 text-sm mt-1 justify-end">
+                <div className="flex items-center text-zinc-300 text-sm mt-1 justify-end">
                   <Heart className="w-3 h-3 mr-1" />
                   Retención: {summary.retentionRate}%
                 </div>
@@ -468,7 +468,7 @@ const PanelClientesUltra = memo(() => {
                 onClick={() => alert('Navegación a otras tablas en desarrollo.')}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   'clientes' === id
-                    ? 'bg-cyan-500/20 text-cyan-400 shadow-lg'
+                    ? 'bg-zinc-9000/20 text-zinc-300 shadow-lg'
                     : 'text-slate-400 hover:text-white hover:bg-white/5'
                 }`}
                 whileHover={{ scale: 1.02 }}
@@ -505,7 +505,7 @@ const PanelClientesUltra = memo(() => {
                 placeholder="Buscar clientes..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 focus:border-cyan-500/50 w-64"
+                className="pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 focus:border-zinc-500/50 w-64"
               />
             </div>
 
@@ -570,8 +570,8 @@ const PanelClientesUltra = memo(() => {
                           </div>
 
                           <div className="flex items-center space-x-2">
-                            <CategoryIcon className="w-4 h-4 text-cyan-400" />
-                            <span className="text-cyan-400">{cliente.categoria}</span>
+                            <CategoryIcon className="w-4 h-4 text-zinc-300" />
+                            <span className="text-zinc-300">{cliente.categoria}</span>
                           </div>
 
                           <div className="text-center">
@@ -616,19 +616,19 @@ const PanelClientesUltra = memo(() => {
 
                           <div className="flex space-x-1">
                             <motion.button
-                              className="p-1 text-green-400 hover:text-green-300"
+                              className="p-1 text-zinc-200 hover:text-green-300"
                               whileHover={{ scale: 1.1 }}
                             >
                               <Phone className="w-4 h-4" />
                             </motion.button>
                             <motion.button
-                              className="p-1 text-blue-400 hover:text-blue-300"
+                              className="p-1 text-zinc-300 hover:text-zinc-300"
                               whileHover={{ scale: 1.1 }}
                             >
                               <Mail className="w-4 h-4" />
                             </motion.button>
                             <motion.button
-                              className="p-1 text-purple-400 hover:text-purple-300"
+                              className="p-1 text-zinc-800 hover:text-zinc-800"
                               whileHover={{ scale: 1.1 }}
                             >
                               <MessageSquare className="w-4 h-4" />
@@ -654,7 +654,7 @@ const PanelClientesUltra = memo(() => {
               className="h-full flex items-center justify-center"
             >
               <div className="text-center">
-                <Users className="w-16 h-16 text-cyan-400 mx-auto mb-4" />
+                <Users className="w-16 h-16 text-zinc-300 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">
                   {'clientes' === 'journey'
                     ? 'Customer Journey Analytics en Tiempo Real'
@@ -687,12 +687,12 @@ const PanelClientesUltra = memo(() => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-slate-800/90 backdrop-blur-xl p-6 rounded-2xl border border-cyan-500/30 max-w-4xl w-full max-h-[80vh] overflow-y-auto"
+              className="bg-slate-800/90 backdrop-blur-xl p-6 rounded-2xl border border-zinc-500/30 max-w-4xl w-full max-h-[80vh] overflow-y-auto"
             >
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center space-x-3">
-                  <div className="p-2 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-lg">
-                    <Building2 className="w-6 h-6 text-cyan-400" />
+                  <div className="p-2 bg-gradient-to-br from-zinc-800/20 to-zinc-800/20 rounded-lg">
+                    <Building2 className="w-6 h-6 text-zinc-300" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white">{selectedClient.nombre}</h3>
@@ -745,7 +745,7 @@ const PanelClientesUltra = memo(() => {
                         <span className="text-slate-400">Estado:</span>
                         <span
                           className={
-                            selectedClient.estado === 'activo' ? 'text-green-400' : 'text-red-400'
+                            selectedClient.estado === 'activo' ? 'text-zinc-200' : 'text-zinc-200'
                           }
                         >
                           {selectedClient.estado}
@@ -772,13 +772,13 @@ const PanelClientesUltra = memo(() => {
                       </div>
                       <div className="flex justify-between">
                         <span className="text-slate-400">Email:</span>
-                        <span className="text-cyan-400">
+                        <span className="text-zinc-300">
                           {selectedClient.contactoPrincipal.email}
                         </span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-slate-400">Teléfono:</span>
-                        <span className="text-cyan-400">
+                        <span className="text-zinc-300">
                           {selectedClient.contactoPrincipal.telefono}
                         </span>
                       </div>
@@ -805,7 +805,7 @@ const PanelClientesUltra = memo(() => {
                       </div>
                       <div className="flex justify-between">
                         <span className="text-slate-400">Total Abonado:</span>
-                        <span className="text-green-400">
+                        <span className="text-zinc-200">
                           {formatCurrency(selectedClient.abonos)}
                         </span>
                       </div>
@@ -815,7 +815,7 @@ const PanelClientesUltra = memo(() => {
                       </div>
                       <div className="flex justify-between">
                         <span className="text-slate-400">CLV (calculado):</span>
-                        <span className="text-green-400 font-bold">
+                        <span className="text-zinc-200 font-bold">
                           {formatCurrency(selectedClient.clv)}
                         </span>
                       </div>
@@ -843,7 +843,7 @@ const PanelClientesUltra = memo(() => {
                         {selectedClient.tags.map((tag, index) => (
                           <span
                             key={index}
-                            className={`px-2 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs`}
+                            className={`px-2 py-1 bg-zinc-9000/20 text-zinc-300 rounded-full text-xs`}
                           >
                             {tag}
                           </span>
@@ -873,13 +873,13 @@ const PanelClientesUltra = memo(() => {
                   Cerrar
                 </motion.button>
                 <motion.button
-                  className="px-4 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition-colors"
+                  className="px-4 py-2 bg-zinc-800 text-white rounded-lg hover:bg-cyan-700 transition-colors"
                   whileHover={{ scale: 1.02 }}
                 >
                   Editar Cliente
                 </motion.button>
                 <motion.button
-                  className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                  className="px-4 py-2 bg-zinc-700 text-white rounded-lg hover:bg-green-700 transition-colors"
                   whileHover={{ scale: 1.02 }}
                 >
                   Nueva Interacción

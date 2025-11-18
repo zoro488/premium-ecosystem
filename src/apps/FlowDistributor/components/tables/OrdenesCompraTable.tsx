@@ -88,13 +88,13 @@ export const OrdenesCompraTable: React.FC<OrdenesCompraTableProps> = memo(({
       case 'pendiente':
         return 'bg-yellow-100 text-yellow-800';
       case 'en_transito':
-        return 'bg-blue-100 text-blue-800';
+        return 'bg-zinc-800 text-white';
       case 'recibida':
-        return 'bg-green-100 text-green-800';
+        return 'bg-zinc-800 text-green-800';
       case 'pagada':
-        return 'bg-purple-100 text-purple-800';
+        return 'bg-zinc-800 text-zinc-800';
       case 'cancelada':
-        return 'bg-red-100 text-red-800';
+        return 'bg-zinc-800 text-red-800';
       default:
         return 'bg-gray-100 text-gray-800';
     }
@@ -103,7 +103,7 @@ export const OrdenesCompraTable: React.FC<OrdenesCompraTableProps> = memo(({
   if (isLoading) {
     return (
       <div className="flex justify-center items-center py-12">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-zinc-600"></div>
       </div>
     );
   }
@@ -204,10 +204,10 @@ export const OrdenesCompraTable: React.FC<OrdenesCompraTableProps> = memo(({
                   <span
                     className={`font-semibold ${
                       oc.stockActual === 0
-                        ? 'text-red-600'
+                        ? 'text-white'
                         : oc.stockActual < 100
                           ? 'text-yellow-600'
-                          : 'text-green-600'
+                          : 'text-white'
                     }`}
                   >
                     {oc.stockActual}
@@ -225,7 +225,7 @@ export const OrdenesCompraTable: React.FC<OrdenesCompraTableProps> = memo(({
                 <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium space-x-2">
                   <button
                     onClick={() => onEdit(oc.id)}
-                    className="text-blue-600 hover:text-blue-900"
+                    className="text-white hover:text-zinc-100"
                   >
                     Editar
                   </button>
@@ -235,7 +235,7 @@ export const OrdenesCompraTable: React.FC<OrdenesCompraTableProps> = memo(({
                         onDelete(oc.id);
                       }
                     }}
-                    className="text-red-600 hover:text-red-900"
+                    className="text-white hover:text-red-900"
                   >
                     Eliminar
                   </button>

@@ -6,8 +6,6 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   plugins: [
     react({
-      // Fast Refresh optimizado
-      fastRefresh: true,
       // Babel plugins para optimización
       babel: {
         plugins: [

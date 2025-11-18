@@ -453,7 +453,7 @@ export const DashboardUltra = memo(({ vistaEspecifica }) => {
             className="p-6 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10"
           >
             <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <Users className="w-5 h-5 text-blue-400" />
+              <Users className="w-5 h-5 text-zinc-300" />
               Top 5 Clientes
             </h3>
             <div className="space-y-3">
@@ -476,7 +476,7 @@ export const DashboardUltra = memo(({ vistaEspecifica }) => {
                     </div>
                     <span className="text-white font-medium">{cliente.nombre}</span>
                   </div>
-                  <span className="text-green-400 font-bold">
+                  <span className="text-zinc-200 font-bold">
                     {formatCurrency(cliente.total, 'MXN')}
                   </span>
                 </motion.div>
@@ -492,7 +492,7 @@ export const DashboardUltra = memo(({ vistaEspecifica }) => {
             className="p-6 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10"
           >
             <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <Activity className="w-5 h-5 text-purple-400" />
+              <Activity className="w-5 h-5 text-zinc-800" />
               Estadísticas Rápidas
             </h3>
             <div className="space-y-4">
@@ -500,25 +500,25 @@ export const DashboardUltra = memo(({ vistaEspecifica }) => {
                 label="Órdenes Activas"
                 value={ordenesCompra.filter((o) => o.estatus !== 'completada').length}
                 icon={ShoppingCart}
-                color="text-orange-400"
+                color="text-zinc-200"
               />
               <StatItem
                 label="Ventas Promedio"
                 value={formatCurrency(ventasMetrics.promedio, 'MXN')}
                 icon={BarChart3}
-                color="text-blue-400"
+                color="text-zinc-300"
               />
               <StatItem
                 label="Productos en Almacén"
                 value={almacenMetrics.totalProductos}
                 icon={Package}
-                color="text-purple-400"
+                color="text-zinc-800"
               />
               <StatItem
                 label="Valor Inventario"
                 value={formatCurrency(almacenMetrics.valorInventario, 'MXN')}
                 icon={DollarSign}
-                color="text-green-400"
+                color="text-zinc-200"
               />
             </div>
           </motion.div>

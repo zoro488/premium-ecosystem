@@ -363,7 +363,7 @@ const PanelClientes = ({ isActive = false }) => {
         return 'text-green-400 bg-green-400/20 border-green-400/50';
       case 'PROSPECTO':
       case 'EN_PROGRESO':
-        return 'text-blue-400 bg-blue-400/20 border-blue-400/50';
+        return 'text-zinc-300 bg-zinc-700/20 border-zinc-600/50';
       case 'INACTIVO':
         return 'text-red-400 bg-red-400/20 border-red-400/50';
       case 'PENDIENTE':
@@ -377,9 +377,9 @@ const PanelClientes = ({ isActive = false }) => {
   const getSegmentColor = (segmento) => {
     switch (segmento?.toUpperCase()) {
       case 'ENTERPRISE':
-        return 'text-purple-400 bg-purple-400/20';
+        return 'text-zinc-200 bg-zinc-800/20';
       case 'CORPORATIVO':
-        return 'text-blue-400 bg-blue-400/20';
+        return 'text-zinc-300 bg-zinc-700/20';
       case 'PYME':
         return 'text-green-400 bg-green-400/20';
       case 'RETAIL':
@@ -406,7 +406,7 @@ const PanelClientes = ({ isActive = false }) => {
   // Obtener color de calificación
   const getRatingColor = (calificacion) => {
     if (calificacion?.includes('A')) return 'text-green-400 bg-green-400/20';
-    if (calificacion?.includes('B')) return 'text-blue-400 bg-blue-400/20';
+    if (calificacion?.includes('B')) return 'text-zinc-300 bg-zinc-700/20';
     if (calificacion?.includes('C')) return 'text-yellow-400 bg-yellow-400/20';
     if (calificacion?.includes('D')) return 'text-red-400 bg-red-400/20';
     return 'text-gray-400 bg-gray-400/20';
@@ -418,13 +418,13 @@ const PanelClientes = ({ isActive = false }) => {
       case 'VENTA':
         return 'text-green-400 bg-green-400/20';
       case 'SOPORTE':
-        return 'text-blue-400 bg-blue-400/20';
+        return 'text-zinc-300 bg-zinc-700/20';
       case 'PROSPECCIÓN':
-        return 'text-purple-400 bg-purple-400/20';
+        return 'text-zinc-200 bg-zinc-800/20';
       case 'MARKETING':
         return 'text-orange-400 bg-orange-400/20';
       case 'REUNIÓN':
-        return 'text-cyan-400 bg-cyan-400/20';
+        return 'text-zinc-300 bg-zinc-700/20';
       default:
         return 'text-gray-400 bg-gray-400/20';
     }
@@ -446,7 +446,7 @@ const PanelClientes = ({ isActive = false }) => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.1 }}
       >
-        <h1 className="text-3xl font-bold text-blue-400 mb-2">👥 CLIENTES</h1>
+        <h1 className="text-3xl font-bold text-zinc-300 mb-2">👥 CLIENTES</h1>
         <p className="text-gray-400">
           Gestión de Clientes • CRM • Interacciones • Seguimiento Comercial
         </p>
@@ -459,7 +459,7 @@ const PanelClientes = ({ isActive = false }) => {
           <button
             className={`px-4 py-2 rounded text-sm font-semibold transition-all ${
               activeView === 'clientes'
-                ? 'bg-blue-500/20 text-blue-400 border border-blue-500/50'
+                ? 'bg-zinc-800/20 text-zinc-300 border border-zinc-700/50'
                 : 'text-gray-400 hover:text-white hover:bg-white/10'
             }`}
             onClick={() => {
@@ -472,7 +472,7 @@ const PanelClientes = ({ isActive = false }) => {
           <button
             className={`px-4 py-2 rounded text-sm font-semibold transition-all ${
               activeView === 'interacciones'
-                ? 'bg-blue-500/20 text-blue-400 border border-blue-500/50'
+                ? 'bg-zinc-800/20 text-zinc-300 border border-zinc-700/50'
                 : 'text-gray-400 hover:text-white hover:bg-white/10'
             }`}
             onClick={() => {
@@ -490,7 +490,7 @@ const PanelClientes = ({ isActive = false }) => {
             <select
               value={filterSegmento}
               onChange={(e) => setFilterSegmento(e.target.value)}
-              className="bg-black/50 border border-blue-500/30 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-blue-400"
+              className="bg-black/50 border border-zinc-700/30 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-zinc-600"
             >
               <option value="TODOS">Todos los Segmentos</option>
               <option value="ENTERPRISE">Enterprise</option>
@@ -506,7 +506,7 @@ const PanelClientes = ({ isActive = false }) => {
               placeholder="Buscar clientes o interacciones..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="bg-black/50 border border-blue-500/30 rounded-lg px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 w-64"
+              className="bg-black/50 border border-zinc-700/30 rounded-lg px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-zinc-600 w-64"
             />
             <div className="absolute right-3 top-2.5 text-gray-400">🔍</div>
           </div>
@@ -528,14 +528,14 @@ const PanelClientes = ({ isActive = false }) => {
               {filteredClientes.map((cliente) => (
                 <motion.div
                   key={cliente.id}
-                  className="bg-black/50 border border-blue-500/30 rounded-lg p-4 hover:border-blue-400/50 transition-all cursor-pointer"
+                  className="bg-black/50 border border-zinc-700/30 rounded-lg p-4 hover:border-zinc-600/50 transition-all cursor-pointer"
                   whileHover={{ scale: 1.02, boxShadow: '0 0 20px rgba(59, 130, 246, 0.2)' }}
                   onClick={() => setSelectedCliente(cliente)}
                 >
                   {/* Header del Cliente */}
                   <div className="flex justify-between items-start mb-3">
                     <div>
-                      <h3 className="text-blue-400 font-semibold text-lg">{cliente.nombre}</h3>
+                      <h3 className="text-zinc-300 font-semibold text-lg">{cliente.nombre}</h3>
                       <p className="text-gray-400 text-sm">
                         {cliente.sector} • {cliente.empleados} empleados
                       </p>
@@ -574,8 +574,8 @@ const PanelClientes = ({ isActive = false }) => {
                         {formatCurrency(cliente.ventasAnuales)}
                       </p>
                     </div>
-                    <div className="bg-blue-900/20 p-2 rounded">
-                      <p className="text-blue-400 text-xs">Margen Prom.</p>
+                    <div className="bg-zinc-950/20 p-2 rounded">
+                      <p className="text-zinc-300 text-xs">Margen Prom.</p>
                       <p className="text-white font-semibold">{cliente.margenPromedio}%</p>
                     </div>
                   </div>
@@ -610,21 +610,21 @@ const PanelClientes = ({ isActive = false }) => {
             exit={{ opacity: 0, x: -20 }}
           >
             {/* Tabla de Interacciones */}
-            <div className="bg-black/50 rounded-lg border border-blue-500/30 overflow-hidden">
-              <div className="bg-blue-900/30 p-4 border-b border-blue-500/30">
-                <h3 className="text-blue-400 font-semibold">💬 HISTORIAL DE INTERACCIONES</h3>
+            <div className="bg-black/50 rounded-lg border border-zinc-700/30 overflow-hidden">
+              <div className="bg-zinc-950/30 p-4 border-b border-zinc-700/30">
+                <h3 className="text-zinc-300 font-semibold">💬 HISTORIAL DE INTERACCIONES</h3>
               </div>
               <div className="overflow-x-auto max-h-[calc(100vh-350px)]">
                 <table className="w-full">
                   <thead className="bg-black/70 sticky top-0">
                     <tr>
-                      <th className="p-3 text-left text-blue-400">Fecha</th>
-                      <th className="p-3 text-left text-blue-400">Cliente</th>
-                      <th className="p-3 text-left text-blue-400">Tipo</th>
-                      <th className="p-3 text-left text-blue-400">Descripción</th>
-                      <th className="p-3 text-left text-blue-400">Responsable</th>
-                      <th className="p-3 text-center text-blue-400">Estado</th>
-                      <th className="p-3 text-center text-blue-400">Seguimiento</th>
+                      <th className="p-3 text-left text-zinc-300">Fecha</th>
+                      <th className="p-3 text-left text-zinc-300">Cliente</th>
+                      <th className="p-3 text-left text-zinc-300">Tipo</th>
+                      <th className="p-3 text-left text-zinc-300">Descripción</th>
+                      <th className="p-3 text-left text-zinc-300">Responsable</th>
+                      <th className="p-3 text-center text-zinc-300">Estado</th>
+                      <th className="p-3 text-center text-zinc-300">Seguimiento</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -678,7 +678,7 @@ const PanelClientes = ({ isActive = false }) => {
             onClick={() => setSelectedCliente(null)}
           >
             <motion.div
-              className="bg-black/90 border border-blue-500/50 rounded-lg p-6 max-w-4xl w-full mx-4 max-h-[85vh] overflow-y-auto"
+              className="bg-black/90 border border-zinc-700/50 rounded-lg p-6 max-w-4xl w-full mx-4 max-h-[85vh] overflow-y-auto"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
@@ -686,7 +686,7 @@ const PanelClientes = ({ isActive = false }) => {
             >
               <div className="flex justify-between items-start mb-6">
                 <div>
-                  <h2 className="text-2xl font-bold text-blue-400">{selectedCliente.nombre}</h2>
+                  <h2 className="text-2xl font-bold text-zinc-300">{selectedCliente.nombre}</h2>
                   <p className="text-gray-400">
                     {selectedCliente.sector} • {selectedCliente.segmento}
                   </p>
@@ -704,8 +704,8 @@ const PanelClientes = ({ isActive = false }) => {
                 {/* Columna Izquierda */}
                 <div className="space-y-4">
                   <div>
-                    <h4 className="text-blue-400 font-semibold mb-3">📞 INFORMACIÓN DE CONTACTO</h4>
-                    <div className="bg-blue-900/20 p-4 rounded space-y-2">
+                    <h4 className="text-zinc-300 font-semibold mb-3">📞 INFORMACIÓN DE CONTACTO</h4>
+                    <div className="bg-zinc-950/20 p-4 rounded space-y-2">
                       <p>
                         <span className="text-gray-400">Contacto Principal:</span>{' '}
                         {selectedCliente.contactoPrincipal}
@@ -724,7 +724,7 @@ const PanelClientes = ({ isActive = false }) => {
                   </div>
 
                   <div>
-                    <h4 className="text-blue-400 font-semibold mb-3">🏢 INFORMACIÓN EMPRESARIAL</h4>
+                    <h4 className="text-zinc-300 font-semibold mb-3">🏢 INFORMACIÓN EMPRESARIAL</h4>
                     <div className="bg-green-900/20 p-4 rounded space-y-2">
                       <p>
                         <span className="text-gray-400">Empleados:</span>{' '}
@@ -762,8 +762,8 @@ const PanelClientes = ({ isActive = false }) => {
                 {/* Columna Derecha */}
                 <div className="space-y-4">
                   <div>
-                    <h4 className="text-blue-400 font-semibold mb-3">💰 INFORMACIÓN COMERCIAL</h4>
-                    <div className="bg-purple-900/20 p-4 rounded space-y-2">
+                    <h4 className="text-zinc-300 font-semibold mb-3">💰 INFORMACIÓN COMERCIAL</h4>
+                    <div className="bg-zinc-800/20 p-4 rounded space-y-2">
                       <p>
                         <span className="text-gray-400">Ventas Totales:</span>{' '}
                         {formatCurrency(selectedCliente.ventasTotales)}
@@ -790,7 +790,7 @@ const PanelClientes = ({ isActive = false }) => {
                   </div>
 
                   <div>
-                    <h4 className="text-blue-400 font-semibold mb-3">💳 CONDICIONES COMERCIALES</h4>
+                    <h4 className="text-zinc-300 font-semibold mb-3">💳 CONDICIONES COMERCIALES</h4>
                     <div className="bg-orange-900/20 p-4 rounded space-y-2">
                       <p>
                         <span className="text-gray-400">Método de Pago:</span>{' '}
@@ -821,7 +821,7 @@ const PanelClientes = ({ isActive = false }) => {
 
               {/* Fechas Importantes */}
               <div className="mt-6">
-                <h4 className="text-blue-400 font-semibold mb-3">📅 FECHAS IMPORTANTES</h4>
+                <h4 className="text-zinc-300 font-semibold mb-3">📅 FECHAS IMPORTANTES</h4>
                 <div className="bg-gray-900/20 p-4 rounded grid grid-cols-1 md:grid-cols-2 gap-4">
                   <p>
                     <span className="text-gray-400">Fecha de Registro:</span>{' '}

@@ -62,14 +62,14 @@ function NavegacionPrincipal({ vistaActiva, setVistaActiva }) {
       id: 'ordenes',
       label: 'Órdenes de Compra',
       icon: ShoppingCart,
-      color: 'from-cyan-500 to-blue-600',
+      color: 'from-zinc-800 to-zinc-900',
       description: 'Gestión completa de órdenes',
     },
     {
       id: 'distribuidores',
       label: 'Distribuidores',
       icon: Building2,
-      color: 'from-purple-500 to-pink-600',
+      color: 'from-zinc-800 to-zinc-700',
       description: 'Perfiles y pagos',
     },
   ];
@@ -84,7 +84,7 @@ function NavegacionPrincipal({ vistaActiva, setVistaActiva }) {
         <div className="flex items-center justify-between mb-4">
           {/* Logo/Título */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 via-purple-500 to-pink-500 flex items-center justify-center shadow-lg">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-zinc-800 via-zinc-800 to-zinc-700 flex items-center justify-center shadow-lg">
               <ShoppingCart className="w-5 h-5 text-white" />
             </div>
             <div>

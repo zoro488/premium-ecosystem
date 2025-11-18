@@ -149,7 +149,7 @@ const appsStatus = [
     activeUsers: 89,
     requests: 8934,
     avgResponseTime: 189,
-    color: 'from-purple-500 to-violet-500',
+    color: 'from-zinc-800 to-violet-500',
     revenue: 1254800,
     transactions: 456,
     path: '/shadow',
@@ -205,7 +205,7 @@ const recentActivity = [
     value: '$45,000',
     timestamp: '5 min ago',
     icon: Wallet,
-    color: 'text-purple-400',
+    color: 'text-zinc-200',
   },
   {
     id: 3,
@@ -398,7 +398,7 @@ const CursorGlow = () => {
         y: '-50%',
       }}
     >
-      <div className="w-full h-full bg-gradient-to-r from-pink-500/20 via-rose-500/20 to-red-500/20 blur-3xl rounded-full" />
+      <div className="w-full h-full bg-gradient-to-r from-zinc-700/20 via-rose-500/20 to-zinc-800/20 blur-3xl rounded-full" />
     </motion.div>
   );
 };
@@ -410,7 +410,7 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
       id: 'dashboard',
       icon: Gauge,
       label: 'Mission Control',
-      color: 'from-pink-500 to-rose-500',
+      color: 'from-zinc-700 to-rose-500',
       badge: null,
     },
     {
@@ -424,7 +424,7 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
       id: 'analytics',
       icon: BarChart3,
       label: 'Analytics',
-      color: 'from-purple-500 to-violet-500',
+      color: 'from-zinc-800 to-violet-500',
       badge: null,
     },
     {
@@ -441,7 +441,7 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
       color: 'from-cyan-500 to-teal-500',
       badge: 'LIVE',
     },
-    { id: 'alerts', icon: Bell, label: 'Alertas', color: 'from-orange-500 to-red-500', badge: 3 },
+    { id: 'alerts', icon: Bell, label: 'Alertas', color: 'from-orange-500 to-zinc-800', badge: 3 },
     {
       id: 'settings',
       icon: Settings,
@@ -454,11 +454,11 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
   return (
     <motion.aside
       animate={{ width: isCollapsed ? 80 : 320 }}
-      className="fixed left-0 top-0 h-screen backdrop-blur-2xl bg-gradient-to-br from-slate-950/95 via-pink-950/30 to-slate-950/95 border-r border-pink-500/20 z-50 flex flex-col overflow-hidden"
+      className="fixed left-0 top-0 h-screen backdrop-blur-2xl bg-gradient-to-br from-slate-950/95 via-zinc-700/30 to-slate-950/95 border-r border-pink-500/20 z-50 flex flex-col overflow-hidden"
     >
       {/* Animated background */}
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 via-transparent to-rose-500/10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-zinc-700/10 via-transparent to-rose-500/10" />
         <motion.div
           animate={{
             backgroundPosition: ['0% 0%', '100% 100%'],
@@ -493,9 +493,9 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
                 transition={{ duration: 2, repeat: Infinity }}
                 className="relative"
               >
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 via-rose-500 to-red-500 p-[2px]">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-zinc-700 via-rose-500 to-zinc-800 p-[2px]">
                   <div className="w-full h-full rounded-xl bg-slate-950 flex items-center justify-center">
-                    <Network className="w-6 h-6 text-pink-400" />
+                    <Network className="w-6 h-6 text-zinc-200" />
                   </div>
                 </div>
                 <motion.div
@@ -504,15 +504,15 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
                     scale: [1, 1.2, 1],
                   }}
                   transition={{ duration: 3, repeat: Infinity }}
-                  className="absolute -top-1 -right-1 w-3 h-3 bg-pink-500 rounded-full"
+                  className="absolute -top-1 -right-1 w-3 h-3 bg-zinc-700 rounded-full"
                 />
               </motion.div>
               <div>
-                <h1 className="text-xl font-bold bg-gradient-to-r from-pink-400 via-rose-400 to-red-400 bg-clip-text text-transparent">
+                <h1 className="text-xl font-bold bg-gradient-to-r from-zinc-700 via-rose-400 to-zinc-800 bg-clip-text text-transparent">
                   Nexus
                 </h1>
                 <p className="text-xs text-slate-400 flex items-center gap-1">
-                  <Satellite className="w-3 h-3 text-pink-400" />
+                  <Satellite className="w-3 h-3 text-zinc-200" />
                   Control Center
                 </p>
               </div>
@@ -525,7 +525,7 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
             className="p-2 hover:bg-white/5 rounded-lg transition-colors relative group"
           >
             {isCollapsed ? <Menu className="w-5 h-5" /> : <X className="w-5 h-5" />}
-            <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-rose-500 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity" />
+            <div className="absolute inset-0 bg-gradient-to-r from-zinc-700 to-rose-500 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity" />
           </motion.button>
         </div>
       </div>
@@ -598,8 +598,8 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
                           px-2 py-0.5 rounded-full text-xs font-bold
                           ${
                             typeof item.badge === 'number'
-                              ? 'bg-pink-500/20 text-pink-400 border border-pink-500/30'
-                              : 'bg-gradient-to-r from-red-500 to-orange-500 text-white animate-pulse'
+                              ? 'bg-zinc-700/20 text-zinc-200 border border-pink-500/30'
+                              : 'bg-gradient-to-r from-zinc-700 to-orange-500 text-white animate-pulse'
                           }
                         `}
                       >
@@ -620,7 +620,7 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="relative overflow-hidden rounded-xl p-4 bg-gradient-to-br from-pink-500/10 via-rose-500/10 to-red-500/10 border border-pink-500/20"
+            className="relative overflow-hidden rounded-xl p-4 bg-gradient-to-br from-zinc-700/10 via-rose-500/10 to-zinc-800/10 border border-pink-500/20"
           >
             <div className="relative z-10">
               <div className="flex items-center justify-between mb-3">
@@ -643,7 +643,7 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <div>
                   <span className="text-slate-500">Apps:</span>
-                  <span className="text-pink-400 ml-1 font-medium">
+                  <span className="text-zinc-200 ml-1 font-medium">
                     {systemStats.activeApps}/{systemStats.totalApps}
                   </span>
                 </div>
@@ -719,7 +719,7 @@ const AppStatusCard = ({ app, navigate, delay = 0 }) => {
               <h3 className="text-lg font-bold text-white">{app.name}</h3>
               <div className="flex items-center gap-2 mt-1">
                 <div
-                  className={`w-2 h-2 rounded-full ${app.status === 'online' ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`}
+                  className={`w-2 h-2 rounded-full ${app.status === 'online' ? 'bg-green-500 animate-pulse bg-zinc-700500'}`}
                 />
                 <span className="text-xs text-slate-400">{app.status}</span>
               </div>
@@ -789,7 +789,7 @@ const DashboardView = ({ apps, navigate }) => {
       className="space-y-6"
     >
       {/* Hero Stats - Mission Control Style */}
-      <div className="relative overflow-hidden rounded-3xl p-8 bg-gradient-to-br from-pink-500/10 via-rose-500/10 to-red-500/10 border border-pink-500/20">
+      <div className="relative overflow-hidden rounded-3xl p-8 bg-gradient-to-br from-zinc-700/10 via-rose-500/10 to-zinc-800/10 border border-pink-500/20">
         <motion.div
           animate={{
             backgroundPosition: ['0% 0%', '100% 100%'],
@@ -805,8 +805,8 @@ const DashboardView = ({ apps, navigate }) => {
 
         <div className="relative z-10">
           <div className="flex items-center gap-2 mb-6">
-            <Rocket className="w-8 h-8 text-pink-400" />
-            <h2 className="text-2xl font-bold bg-gradient-to-r from-pink-400 via-rose-400 to-red-400 bg-clip-text text-transparent">
+            <Rocket className="w-8 h-8 text-zinc-200" />
+            <h2 className="text-2xl font-bold bg-gradient-to-r from-zinc-700 via-rose-400 to-zinc-800 bg-clip-text text-transparent">
               Mission Control Dashboard
             </h2>
           </div>
@@ -859,7 +859,7 @@ const DashboardView = ({ apps, navigate }) => {
               className="backdrop-blur-sm bg-white/5 rounded-xl p-6 border border-white/10"
             >
               <div className="flex items-center gap-3 mb-3">
-                <div className="p-3 rounded-xl bg-gradient-to-br from-purple-500 to-violet-500">
+                <div className="p-3 rounded-xl bg-gradient-to-br from-zinc-800 to-violet-500">
                   <Users className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -868,8 +868,8 @@ const DashboardView = ({ apps, navigate }) => {
                 </div>
               </div>
               <div className="flex items-center gap-2 text-xs">
-                <TrendingUp className="w-3 h-3 text-purple-400" />
-                <span className="text-purple-400 font-medium">+15.2%</span>
+                <TrendingUp className="w-3 h-3 text-zinc-200" />
+                <span className="text-zinc-200 font-medium">+15.2%</span>
                 <span className="text-slate-500">vs last month</span>
               </div>
             </motion.div>
@@ -879,7 +879,7 @@ const DashboardView = ({ apps, navigate }) => {
               className="backdrop-blur-sm bg-white/5 rounded-xl p-6 border border-white/10"
             >
               <div className="flex items-center gap-3 mb-3">
-                <div className="p-3 rounded-xl bg-gradient-to-br from-pink-500 to-rose-500">
+                <div className="p-3 rounded-xl bg-gradient-to-br from-zinc-700 to-rose-500">
                   <Activity className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -900,7 +900,7 @@ const DashboardView = ({ apps, navigate }) => {
       <div>
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-bold flex items-center gap-2">
-            <Boxes className="w-7 h-7 text-pink-400" />
+            <Boxes className="w-7 h-7 text-zinc-200" />
             Sistema de Aplicaciones
           </h2>
           <div className="flex items-center gap-2 text-sm">
@@ -923,7 +923,7 @@ const DashboardView = ({ apps, navigate }) => {
         {/* Recent Activity */}
         <div className="backdrop-blur-xl bg-slate-950/60 rounded-2xl p-6 border border-pink-500/20">
           <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-            <Activity className="w-5 h-5 text-pink-400" />
+            <Activity className="w-5 h-5 text-zinc-200" />
             Actividad Reciente
           </h3>
           <div className="space-y-2">
@@ -957,7 +957,7 @@ const DashboardView = ({ apps, navigate }) => {
         {/* Performance Chart */}
         <div className="backdrop-blur-xl bg-slate-950/60 rounded-2xl p-6 border border-pink-500/20">
           <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-            <TrendingUp className="w-5 h-5 text-pink-400" />
+            <TrendingUp className="w-5 h-5 text-zinc-200" />
             Rendimiento del Sistema
           </h3>
           <ResponsiveContainer width="100%" height={250}>
@@ -1022,7 +1022,7 @@ const AppsView = ({ apps, navigate }) => {
               <h3 className="text-xl font-bold text-white mb-1">{app.name}</h3>
               <div className="flex items-center gap-2">
                 <div
-                  className={`w-2 h-2 rounded-full ${isRunning ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`}
+                  className={`w-2 h-2 rounded-full ${isRunning ? 'bg-green-500 animate-pulse bg-zinc-700500'}`}
                 />
                 <span className="text-sm text-slate-400">{isRunning ? 'Online' : 'Offline'}</span>
                 <span className="text-xs text-slate-500">• Uptime: {app.uptime}%</span>
@@ -1054,9 +1054,9 @@ const AppsView = ({ apps, navigate }) => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => navigate(app.path)}
-              className="p-2 rounded-lg bg-purple-500/20 hover:bg-purple-500/30 transition-colors"
+              className="p-2 rounded-lg bg-zinc-800/20 hover:bg-zinc-800/30 transition-colors"
             >
-              <ExternalLink className="w-5 h-5 text-purple-400" />
+              <ExternalLink className="w-5 h-5 text-zinc-200" />
             </motion.button>
           </div>
         </div>
@@ -1101,7 +1101,7 @@ const AppsView = ({ apps, navigate }) => {
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${Math.floor(Math.random() * 40 + 30)}%` }}
-              className="h-full bg-gradient-to-r from-purple-500 to-violet-500"
+              className="h-full bg-gradient-to-r from-zinc-800 to-violet-500"
             />
           </div>
         </div>
@@ -1168,7 +1168,7 @@ const AnalyticsView = () => {
     >
       <div>
         <h2 className="text-3xl font-bold flex items-center gap-2">
-          <BarChart3 className="w-8 h-8 text-purple-400" />
+          <BarChart3 className="w-8 h-8 text-zinc-200" />
           Analytics Dashboard
         </h2>
         <p className="text-slate-400 mt-1">Análisis detallado del rendimiento del ecosistema</p>
@@ -1196,7 +1196,7 @@ const AnalyticsView = () => {
             value: '4/5',
             change: '80%',
             icon: Boxes,
-            color: 'from-purple-500 to-violet-500',
+            color: 'from-zinc-800 to-violet-500',
           },
           {
             label: 'Avg Response',
@@ -1269,7 +1269,7 @@ const AnalyticsView = () => {
         {/* App Usage Pie Chart */}
         <div className="backdrop-blur-xl bg-slate-950/60 rounded-2xl p-6 border border-pink-500/20">
           <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-            <PieChart className="w-5 h-5 text-purple-400" />
+            <PieChart className="w-5 h-5 text-zinc-200" />
             Distribución de Uso por App
           </h3>
           <ResponsiveContainer width="100%" height={300}>
@@ -1401,7 +1401,7 @@ const NetworkView = () => {
                   <p className="text-sm font-medium text-white">{conn.bandwidth}</p>
                 </div>
                 <div
-                  className={`w-2 h-2 rounded-full ${conn.status === 'active' ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`}
+                  className={`w-2 h-2 rounded-full ${conn.status === 'active' ? 'bg-green-500 animate-pulse bg-zinc-700500'}`}
                 />
               </div>
             </motion.div>
@@ -1498,7 +1498,7 @@ const PerformanceView = () => {
         <motion.div
           animate={{ scale: [1, 1.1, 1] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-red-500 to-orange-500"
+          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-zinc-700 to-orange-500"
         >
           <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
           <span className="text-white font-medium">LIVE</span>
@@ -1512,14 +1512,14 @@ const PerformanceView = () => {
             label: 'CPU Usage',
             value: currentMetrics.cpu,
             icon: Cpu,
-            color: 'from-pink-500 to-rose-500',
+            color: 'from-zinc-700 to-rose-500',
             unit: '%',
           },
           {
             label: 'RAM Usage',
             value: currentMetrics.ram,
             icon: HardDrive,
-            color: 'from-purple-500 to-violet-500',
+            color: 'from-zinc-800 to-violet-500',
             unit: '%',
           },
           {
@@ -1675,7 +1675,7 @@ const PerformanceView = () => {
                     CPU: <span className="text-cyan-400">{process.cpu}%</span>
                   </span>
                   <span className="text-slate-400">
-                    MEM: <span className="text-purple-400">{process.mem} GB</span>
+                    MEM: <span className="text-zinc-200">{process.mem} GB</span>
                   </span>
                 </div>
               </div>
@@ -1696,7 +1696,7 @@ const AlertsView = () => {
     filter === 'all' ? alerts : alerts.filter((alert) => alert.status === filter);
 
   const alertColors = {
-    error: 'from-red-500 to-rose-500',
+    error: 'from-zinc-700 to-rose-500',
     warning: 'from-orange-500 to-amber-500',
     info: 'from-blue-500 to-cyan-500',
     success: 'from-green-500 to-emerald-500',
@@ -1726,7 +1726,7 @@ const AlertsView = () => {
               onClick={() => setFilter(status)}
               className={`px-4 py-2 rounded-xl font-medium transition-all ${
                 filter === status
-                  ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white'
+                  ? 'bg-gradient-to-r from-zinc-700 to-rose-500 text-white'
                   : 'bg-white/5 text-slate-400 hover:bg-white/10'
               }`}
             >
@@ -1743,7 +1743,7 @@ const AlertsView = () => {
             label: 'Active Alerts',
             value: alerts.filter((a) => a.status === 'active').length,
             icon: AlertTriangle,
-            color: 'from-red-500 to-rose-500',
+            color: 'from-zinc-700 to-rose-500',
           },
           {
             label: 'Resolved',
@@ -1892,7 +1892,7 @@ const SettingsView = () => {
         {/* General Settings */}
         <div className="backdrop-blur-xl bg-slate-950/60 rounded-2xl p-6 border border-pink-500/20">
           <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-pink-400" />
+            <Sparkles className="w-5 h-5 text-zinc-200" />
             General
           </h3>
           <div className="space-y-4">
@@ -1926,7 +1926,7 @@ const SettingsView = () => {
                   onClick={() => toggleSetting(setting.key)}
                   className={`relative w-14 h-7 rounded-full transition-colors ${
                     settings[setting.key]
-                      ? 'bg-gradient-to-r from-pink-500 to-rose-500'
+                      ? 'bg-gradient-to-r from-zinc-700 to-rose-500'
                       : 'bg-slate-700'
                   }`}
                 >
@@ -1975,7 +1975,7 @@ const SettingsView = () => {
                   onClick={() => toggleSetting(setting.key)}
                   className={`relative w-14 h-7 rounded-full transition-colors ${
                     settings[setting.key]
-                      ? 'bg-gradient-to-r from-pink-500 to-rose-500'
+                      ? 'bg-gradient-to-r from-zinc-700 to-rose-500'
                       : 'bg-slate-700'
                   }`}
                 >
@@ -2049,7 +2049,7 @@ const SettingsView = () => {
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full p-4 rounded-xl bg-gradient-to-r from-red-500 to-rose-500 text-white font-medium flex items-center justify-center gap-2"
+              className="w-full p-4 rounded-xl bg-gradient-to-r from-zinc-700 to-rose-500 text-white font-medium flex items-center justify-center gap-2"
             >
               <AlertTriangle className="w-5 h-5" />
               Clear All Data
@@ -2124,7 +2124,7 @@ export default function Nexus() {
             className="flex items-center justify-between"
           >
             <div>
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-pink-400 via-rose-400 to-red-400 bg-clip-text text-transparent capitalize">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-zinc-700 via-rose-400 to-zinc-800 bg-clip-text text-transparent capitalize">
                 {activeSection === 'dashboard' ? 'Mission Control' : activeSection}
               </h2>
               <p className="text-slate-400 mt-1">Centro de comando del ecosistema premium</p>
@@ -2137,7 +2137,7 @@ export default function Nexus() {
                 className="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all relative group"
               >
                 <RefreshCw className="w-5 h-5" />
-                <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-rose-500 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-r from-zinc-700 to-rose-500 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity" />
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -2145,7 +2145,7 @@ export default function Nexus() {
                 className="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all relative group"
               >
                 <Bell className="w-5 h-5" />
-                <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-rose-500 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-r from-zinc-700 to-rose-500 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity" />
                 <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full animate-pulse" />
               </motion.button>
               <motion.button
@@ -2154,7 +2154,7 @@ export default function Nexus() {
                 className="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all relative group"
               >
                 <Settings className="w-5 h-5" />
-                <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-rose-500 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-r from-zinc-700 to-rose-500 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity" />
               </motion.button>
             </div>
           </motion.div>

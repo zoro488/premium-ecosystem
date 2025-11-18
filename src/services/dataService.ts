@@ -44,6 +44,7 @@ interface RegistroSalida {
   Cantidad: number;
   Concepto: string;
   Observaciones: string;
+  Distribuidor?: string;
 }
 
 interface Panel {

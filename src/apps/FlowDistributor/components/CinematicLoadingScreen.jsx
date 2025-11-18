@@ -102,7 +102,7 @@ const CinematicLoadingScreen = ({
         return {
           background: 'linear-gradient(135deg, rgba(0, 50, 0, 0.95) 0%, rgba(0, 100, 0, 0.8) 100%)',
           accentColor: 'rgb(0, 255, 0)',
-          textColor: 'text-green-400',
+          textColor: 'text-zinc-200',
           glowColor: 'rgba(0, 255, 0, 0.5)',
         };
       case 'holographic':
@@ -110,7 +110,7 @@ const CinematicLoadingScreen = ({
           background:
             'linear-gradient(135deg, rgba(0, 50, 100, 0.95) 0%, rgba(100, 0, 200, 0.8) 100%)',
           accentColor: 'rgb(0, 200, 255)',
-          textColor: 'text-cyan-400',
+          textColor: 'text-zinc-300',
           glowColor: 'rgba(0, 200, 255, 0.5)',
         };
       case 'ai':
@@ -118,7 +118,7 @@ const CinematicLoadingScreen = ({
           background:
             'linear-gradient(135deg, rgba(100, 0, 100, 0.95) 0%, rgba(200, 0, 100, 0.8) 100%)',
           accentColor: 'rgb(255, 0, 200)',
-          textColor: 'text-pink-400',
+          textColor: 'text-zinc-700',
           glowColor: 'rgba(255, 0, 200, 0.5)',
         };
       default: // tactical
@@ -126,7 +126,7 @@ const CinematicLoadingScreen = ({
           background:
             'linear-gradient(135deg, rgba(50, 25, 0, 0.95) 0%, rgba(100, 50, 0, 0.8) 100%)',
           accentColor: 'rgb(255, 102, 0)',
-          textColor: 'text-orange-400',
+          textColor: 'text-zinc-200',
           glowColor: 'rgba(255, 102, 0, 0.5)',
         };
     }

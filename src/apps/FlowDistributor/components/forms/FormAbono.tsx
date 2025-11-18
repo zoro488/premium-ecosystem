@@ -210,7 +210,7 @@ export const FormAbono: React.FC<FormAbonoProps> = ({
           }}
         >
           <div className="flex items-center gap-3">
-            <CreditCard className="w-6 h-6 text-green-400" />
+            <CreditCard className="w-6 h-6 text-zinc-200" />
             <div>
               <h2 className="text-2xl font-bold text-white">Registrar Abono</h2>
               <p className="text-sm text-slate-400">Pago a venta pendiente</p>
@@ -224,9 +224,9 @@ export const FormAbono: React.FC<FormAbonoProps> = ({
           <label className="block">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
-                <FileText className="w-4 h-4 text-green-400" />
+                <FileText className="w-4 h-4 text-zinc-200" />
                 <span className="text-sm font-medium text-white">
-                  Venta <span className="text-red-400">*</span>
+                  Venta <span className="text-zinc-200">*</span>
                 </span>
               </div>
               <span className="text-xs text-slate-400">
@@ -239,8 +239,8 @@ export const FormAbono: React.FC<FormAbonoProps> = ({
               disabled={isSubmitting || !!ventaIdPreseleccionada}
               className={`w-full px-4 py-3 rounded-lg bg-white/5 border text-white appearance-none cursor-pointer transition-all ${
                 errors.ventaId
-                  ? 'border-red-500 focus:border-red-400'
-                  : 'border-white/10 focus:border-green-500'
+                  ? 'border-zinc-500 focus:border-red-400'
+                  : 'border-white/10 focus:border-zinc-500'
               } focus:outline-none focus:ring-2 focus:ring-green-500/20`}
             >
               <option value="">Seleccionar venta...</option>
@@ -252,7 +252,7 @@ export const FormAbono: React.FC<FormAbonoProps> = ({
             </select>
             {errors.ventaId && (
               <motion.p
-                className="mt-2 text-sm text-red-400 flex items-center gap-1"
+                className="mt-2 text-sm text-zinc-200 flex items-center gap-1"
                 initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
               >
@@ -284,20 +284,20 @@ export const FormAbono: React.FC<FormAbonoProps> = ({
                 </div>
                 <div>
                   <p className="text-xs text-slate-400">Pagado</p>
-                  <p className="text-green-400 font-mono">{formatCurrency(montoPagadoActual)}</p>
+                  <p className="text-zinc-200 font-mono">{formatCurrency(montoPagadoActual)}</p>
                 </div>
               </div>
               <div className="pt-3 border-t border-white/10">
                 <p className="text-xs text-slate-400 mb-1">Adeudo Actual</p>
                 <div className="flex items-center justify-between">
-                  <p className="text-2xl font-bold text-yellow-400">
+                  <p className="text-2xl font-bold text-zinc-200">
                     {formatCurrency(adeudoActual)}
                   </p>
                   <button
                     type="button"
                     onClick={handlePayFull}
                     disabled={isSubmitting}
-                    className="px-3 py-1.5 rounded-lg bg-green-500/20 text-green-300 text-sm hover:bg-green-500/30 transition-colors"
+                    className="px-3 py-1.5 rounded-lg bg-zinc-9000/20 text-green-300 text-sm hover:bg-zinc-9000/30 transition-colors"
                   >
                     Pagar completo
                   </button>
@@ -309,9 +309,9 @@ export const FormAbono: React.FC<FormAbonoProps> = ({
           {/* FECHA */}
           <label className="block">
             <div className="flex items-center gap-2 mb-2">
-              <Calendar className="w-4 h-4 text-green-400" />
+              <Calendar className="w-4 h-4 text-zinc-200" />
               <span className="text-sm font-medium text-white">
-                Fecha <span className="text-red-400">*</span>
+                Fecha <span className="text-zinc-200">*</span>
               </span>
             </div>
             <input
@@ -321,13 +321,13 @@ export const FormAbono: React.FC<FormAbonoProps> = ({
               disabled={isSubmitting}
               className={`w-full px-4 py-3 rounded-lg bg-white/5 border text-white transition-all ${
                 errors.fecha
-                  ? 'border-red-500 focus:border-red-400'
-                  : 'border-white/10 focus:border-green-500'
+                  ? 'border-zinc-500 focus:border-red-400'
+                  : 'border-white/10 focus:border-zinc-500'
               } focus:outline-none focus:ring-2 focus:ring-green-500/20`}
             />
             {errors.fecha && (
               <motion.p
-                className="mt-2 text-sm text-red-400 flex items-center gap-1"
+                className="mt-2 text-sm text-zinc-200 flex items-center gap-1"
                 initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
               >
@@ -341,9 +341,9 @@ export const FormAbono: React.FC<FormAbonoProps> = ({
           <label className="block">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
-                <DollarSign className="w-4 h-4 text-green-400" />
+                <DollarSign className="w-4 h-4 text-zinc-200" />
                 <span className="text-sm font-medium text-white">
-                  Monto <span className="text-red-400">*</span>
+                  Monto <span className="text-zinc-200">*</span>
                 </span>
               </div>
               {ventaSeleccionada && (
@@ -365,14 +365,14 @@ export const FormAbono: React.FC<FormAbonoProps> = ({
                 disabled={isSubmitting || !ventaId}
                 className={`w-full pl-8 pr-4 py-3 rounded-lg bg-white/5 border text-white placeholder-slate-400 transition-all ${
                   errors.monto
-                    ? 'border-red-500 focus:border-red-400'
-                    : 'border-white/10 focus:border-green-500'
+                    ? 'border-zinc-500 focus:border-red-400'
+                    : 'border-white/10 focus:border-zinc-500'
                 } focus:outline-none focus:ring-2 focus:ring-green-500/20`}
               />
             </div>
             {errors.monto && (
               <motion.p
-                className="mt-2 text-sm text-red-400 flex items-center gap-1"
+                className="mt-2 text-sm text-zinc-200 flex items-center gap-1"
                 initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
               >
@@ -391,14 +391,14 @@ export const FormAbono: React.FC<FormAbonoProps> = ({
               onChange={(e) => setConcepto(e.target.value)}
               placeholder="Notas adicionales..."
               disabled={isSubmitting}
-              className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20"
+              className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-400 focus:border-zinc-500 focus:outline-none focus:ring-2 focus:ring-green-500/20"
             />
           </label>
 
           {/* PREVIEW DESPUÉS DEL ABONO */}
           {monto > 0 && ventaSeleccionada && (
             <motion.div
-              className="p-4 rounded-lg bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20"
+              className="p-4 rounded-lg bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-zinc-500/20"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
             >
@@ -409,13 +409,13 @@ export const FormAbono: React.FC<FormAbonoProps> = ({
               <div className="space-y-2">
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-white">Monto Pagado:</span>
-                  <span className="text-green-400 font-mono">
+                  <span className="text-zinc-200 font-mono">
                     {formatCurrency(nuevoMontoPagado)}
                   </span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-white">Nuevo Adeudo:</span>
-                  <span className="text-yellow-400 font-mono font-bold">
+                  <span className="text-zinc-200 font-mono font-bold">
                     {formatCurrency(nuevoAdeudo)}
                   </span>
                 </div>
@@ -424,10 +424,10 @@ export const FormAbono: React.FC<FormAbonoProps> = ({
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-medium ${
                       nuevoEstadoPago === 'Pagado'
-                        ? 'bg-green-500/20 text-green-300'
+                        ? 'bg-zinc-9000/20 text-green-300'
                         : nuevoEstadoPago === 'Parcial'
-                          ? 'bg-yellow-500/20 text-yellow-300'
-                          : 'bg-red-500/20 text-red-300'
+                          ? 'bg-zinc-9000/20 text-yellow-300'
+                          : 'bg-zinc-9000/20 text-red-300'
                     }`}
                   >
                     {nuevoEstadoPago}

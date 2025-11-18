@@ -115,7 +115,7 @@ export const GraficoIngresosVsGastos = ({ ingresos, gastos }) => {
       className="backdrop-blur-2xl bg-gradient-to-br from-slate-900/50 to-slate-800/50 border border-slate-700/50 rounded-2xl p-6 shadow-2xl"
     >
       <div className="flex items-center gap-3 mb-6">
-        <BarChart3 className="w-6 h-6 text-blue-400" />
+        <BarChart3 className="w-6 h-6 text-zinc-300" />
         <h3 className="text-xl font-bold text-white">Ingresos vs Gastos Mensuales</h3>
       </div>
 
@@ -189,7 +189,7 @@ export const GraficoRFHistorico = ({ rfActual }) => {
       className="backdrop-blur-2xl bg-gradient-to-br from-slate-900/50 to-slate-800/50 border border-slate-700/50 rounded-2xl p-6 shadow-2xl"
     >
       <div className="flex items-center gap-3 mb-6">
-        <LineChartIcon className="w-6 h-6 text-emerald-400" />
+        <LineChartIcon className="w-6 h-6 text-zinc-200" />
         <h3 className="text-xl font-bold text-white">Evolución de RF (5 Cortes)</h3>
       </div>
 
@@ -248,7 +248,7 @@ export const GraficoDistribucionGastos = ({ gastos }) => {
       className="backdrop-blur-2xl bg-gradient-to-br from-slate-900/50 to-slate-800/50 border border-slate-700/50 rounded-2xl p-6 shadow-2xl"
     >
       <div className="flex items-center gap-3 mb-6">
-        <PieChartIcon className="w-6 h-6 text-orange-400" />
+        <PieChartIcon className="w-6 h-6 text-zinc-200" />
         <h3 className="text-xl font-bold text-white">Top 10 Gastos por Origen</h3>
       </div>
 

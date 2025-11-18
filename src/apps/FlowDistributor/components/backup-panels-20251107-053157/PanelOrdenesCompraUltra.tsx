@@ -93,13 +93,13 @@ export default function PanelOrdenesCompraUltra() {
         <div className="flex items-center gap-4">
           <motion.div
             whileHover={{ scale: 1.05, rotate: 5 }}
-            className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-indigo-600
-                       flex items-center justify-center shadow-lg shadow-purple-500/30"
+            className="w-16 h-16 rounded-2xl bg-gradient-to-br from-zinc-800 to-indigo-600
+                       flex items-center justify-center shadow-lg shadow-zinc-800/30"
           >
             <ShoppingCart className="w-8 h-8 text-white" />
           </motion.div>
           <div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-indigo-400
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-zinc-800 to-indigo-400
                            bg-clip-text text-transparent">
               Órdenes de Compra
             </h1>
@@ -125,7 +125,7 @@ export default function PanelOrdenesCompraUltra() {
             whileTap={{ scale: 0.95 }}
             className="px-6 py-3 rounded-xl glass-dark border border-white/10
                        text-white font-semibold flex items-center gap-2
-                       hover:border-purple-500/50 transition-all"
+                       hover:border-zinc-800/50 transition-all"
           >
             <Download className="w-5 h-5" />
             Exportar
@@ -190,7 +190,7 @@ export default function PanelOrdenesCompraUltra() {
                 >
                   <kpi.icon className="w-6 h-6 text-white" />
                 </div>
-                <span className="text-sm font-semibold text-green-400">{kpi.change}</span>
+                <span className="text-sm font-semibold text-zinc-200">{kpi.change}</span>
               </div>
 
               <h3 className="text-2xl font-bold text-white mb-1">{kpi.value}</h3>
@@ -226,7 +226,7 @@ export default function PanelOrdenesCompraUltra() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/5 border border-white/10
-                         text-white placeholder-white/40 focus:border-purple-500/50
+                         text-white placeholder-white/40 focus:border-zinc-800/50
                          focus:outline-none transition-all"
             />
           </div>
@@ -241,7 +241,7 @@ export default function PanelOrdenesCompraUltra() {
                 onClick={() => setFilterStatus(status)}
                 className={`px-6 py-3 rounded-xl font-semibold transition-all ${
                   filterStatus === status
-                    ? 'bg-gradient-to-r from-purple-500 to-indigo-600 text-white shadow-lg shadow-purple-500/30'
+                    ? 'bg-gradient-to-r from-zinc-800 to-indigo-600 text-white shadow-lg shadow-zinc-800/30'
                     : 'glass-dark border border-white/10 text-white/60 hover:text-white'
                 }`}
               >
@@ -256,7 +256,7 @@ export default function PanelOrdenesCompraUltra() {
               onClick={() => setViewMode('table')}
               className={`px-4 py-2 rounded-lg transition-all ${
                 viewMode === 'table'
-                  ? 'bg-purple-500 text-white'
+                  ? 'bg-zinc-800 text-white'
                   : 'text-white/60 hover:text-white'
               }`}
             >
@@ -266,7 +266,7 @@ export default function PanelOrdenesCompraUltra() {
               onClick={() => setViewMode('cards')}
               className={`px-4 py-2 rounded-lg transition-all ${
                 viewMode === 'cards'
-                  ? 'bg-purple-500 text-white'
+                  ? 'bg-zinc-800 text-white'
                   : 'text-white/60 hover:text-white'
               }`}
             >
@@ -332,7 +332,7 @@ export default function PanelOrdenesCompraUltra() {
                           </span>
                         </td>
                         <td className="px-6 py-4">
-                          <span className="text-green-400 font-semibold">
+                          <span className="text-zinc-200 font-semibold">
                             ${orden.montoPagado?.toLocaleString('es-MX') || 0}
                           </span>
                         </td>
@@ -352,24 +352,24 @@ export default function PanelOrdenesCompraUltra() {
                               whileHover={{ scale: 1.1 }}
                               whileTap={{ scale: 0.9 }}
                               onClick={() => setSelectedOrden(orden)}
-                              className="p-2 rounded-lg bg-blue-500/20 text-blue-400
-                                       hover:bg-blue-500/30 transition-colors"
+                              className="p-2 rounded-lg bg-zinc-800/20 text-zinc-300
+                                       hover:bg-zinc-800/30 transition-colors"
                             >
                               <Eye className="w-4 h-4" />
                             </motion.button>
                             <motion.button
                               whileHover={{ scale: 1.1 }}
                               whileTap={{ scale: 0.9 }}
-                              className="p-2 rounded-lg bg-purple-500/20 text-purple-400
-                                       hover:bg-purple-500/30 transition-colors"
+                              className="p-2 rounded-lg bg-zinc-800/20 text-zinc-800
+                                       hover:bg-zinc-800/30 transition-colors"
                             >
                               <Edit3 className="w-4 h-4" />
                             </motion.button>
                             <motion.button
                               whileHover={{ scale: 1.1 }}
                               whileTap={{ scale: 0.9 }}
-                              className="p-2 rounded-lg bg-red-500/20 text-red-400
-                                       hover:bg-red-500/30 transition-colors"
+                              className="p-2 rounded-lg bg-zinc-9000/20 text-zinc-200
+                                       hover:bg-zinc-9000/30 transition-colors"
                             >
                               <Trash2 className="w-4 h-4" />
                             </motion.button>
@@ -412,7 +412,7 @@ export default function PanelOrdenesCompraUltra() {
                            hover:border-white/20 transition-all relative overflow-hidden group"
               >
                 {/* Background gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent
+                <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/10 to-transparent
                                opacity-0 group-hover:opacity-100 transition-opacity" />
 
                 <div className="relative z-10">
@@ -445,7 +445,7 @@ export default function PanelOrdenesCompraUltra() {
                       </div>
                       <div>
                         <span className="text-sm text-white/60">Pagado</span>
-                        <p className="text-green-400 font-semibold">
+                        <p className="text-zinc-200 font-semibold">
                           ${orden.montoPagado?.toLocaleString('es-MX') || 0}
                         </p>
                       </div>
@@ -464,8 +464,8 @@ export default function PanelOrdenesCompraUltra() {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => setSelectedOrden(orden)}
-                      className="flex-1 py-2 rounded-lg bg-blue-500/20 text-blue-400
-                               hover:bg-blue-500/30 transition-colors flex items-center
+                      className="flex-1 py-2 rounded-lg bg-zinc-800/20 text-zinc-300
+                               hover:bg-zinc-800/30 transition-colors flex items-center
                                justify-center gap-2"
                     >
                       <Eye className="w-4 h-4" />
@@ -474,8 +474,8 @@ export default function PanelOrdenesCompraUltra() {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="flex-1 py-2 rounded-lg bg-purple-500/20 text-purple-400
-                               hover:bg-purple-500/30 transition-colors flex items-center
+                      className="flex-1 py-2 rounded-lg bg-zinc-800/20 text-zinc-800
+                               hover:bg-zinc-800/30 transition-colors flex items-center
                                justify-center gap-2"
                     >
                       <Edit3 className="w-4 h-4" />

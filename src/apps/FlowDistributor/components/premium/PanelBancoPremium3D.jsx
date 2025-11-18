@@ -47,7 +47,7 @@ const BANK_THEMES = {
   bovedaUsa: {
     primary: 'blue-500',
     secondary: 'indigo-600',
-    gradient: 'from-blue-500 to-indigo-600',
+    gradient: 'from-zinc-800 to-indigo-600',
     tailwindColor: 'info',
   },
   azteca: {
@@ -57,21 +57,21 @@ const BANK_THEMES = {
     tailwindColor: 'warning',
   },
   utilidades: {
-    primary: 'purple-500',
-    secondary: 'violet-600',
-    gradient: 'from-purple-500 to-violet-600',
+    primary: 'zinc-800',
+    secondary: 'zinc-800',
+    gradient: 'from-zinc-800 to-zinc-800',
     tailwindColor: 'secondary',
   },
   fleteSur: {
     primary: 'red-500',
-    secondary: 'rose-600',
-    gradient: 'from-red-500 to-rose-600',
+    secondary: 'zinc-700',
+    gradient: 'from-zinc-700 to-zinc-700',
     tailwindColor: 'error',
   },
   leftie: {
     primary: 'cyan-500',
     secondary: 'teal-600',
-    gradient: 'from-cyan-500 to-teal-600',
+    gradient: 'from-zinc-800 to-teal-600',
     tailwindColor: 'info',
   },
   profit: {
@@ -81,9 +81,9 @@ const BANK_THEMES = {
     tailwindColor: 'success',
   },
   clientes: {
-    primary: 'pink-500',
-    secondary: 'rose-600',
-    gradient: 'from-pink-500 to-rose-600',
+    primary: 'zinc-700',
+    secondary: 'zinc-700',
+    gradient: 'from-zinc-700 to-zinc-700',
     tailwindColor: 'error',
   },
 };

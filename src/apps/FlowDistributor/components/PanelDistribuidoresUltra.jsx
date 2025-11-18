@@ -77,7 +77,7 @@ const PanelDistribuidoresUltra = memo(() => {
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">
+            <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-zinc-800">
               🚚 Distribuidores
             </h1>
             <p className="text-slate-400 mt-2">Gestión completa de proveedores</p>
@@ -85,7 +85,7 @@ const PanelDistribuidoresUltra = memo(() => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-xl font-semibold shadow-lg shadow-orange-500/50 flex items-center gap-2"
+            className="px-6 py-3 bg-gradient-to-r from-orange-500 to-zinc-800 text-white rounded-xl font-semibold shadow-lg shadow-orange-500/50 flex items-center gap-2"
           >
             <Plus size={20} />
             Nuevo Distribuidor
@@ -95,9 +95,9 @@ const PanelDistribuidoresUltra = memo(() => {
         {/* KPIs */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {[
-            { label: 'Total Distribuidores', value: estadisticas.total, icon: Building2, color: 'from-orange-500 to-red-500' },
+            { label: 'Total Distribuidores', value: estadisticas.total, icon: Building2, color: 'from-orange-500 to-zinc-800' },
             { label: 'Activos', value: estadisticas.activos, icon: TrendingUp, color: 'from-green-500 to-emerald-500' },
-            { label: 'Monto Total', value: `$${estadisticas.montoTotal.toLocaleString()}`, icon: DollarSign, color: 'from-blue-500 to-cyan-500' },
+            { label: 'Monto Total', value: `$${estadisticas.montoTotal.toLocaleString()}`, icon: DollarSign, color: 'from-zinc-800 to-zinc-800' },
             { label: 'Adeudo Total', value: `$${estadisticas.adeudoTotal.toLocaleString()}`, icon: AlertCircle, color: 'from-yellow-500 to-orange-500' },
           ].map((kpi, index) => (
             <motion.div
@@ -156,12 +156,12 @@ const PanelDistribuidoresUltra = memo(() => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-slate-900/50 rounded-xl p-6 border border-slate-700/50 hover:border-orange-500/50 transition-all cursor-pointer"
+                className="bg-slate-900/50 rounded-xl p-6 border border-slate-700/50 hover:border-zinc-500/50 transition-all cursor-pointer"
                 onClick={() => setSelectedDistribuidor(dist)}
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <div className="p-3 rounded-xl bg-gradient-to-br from-orange-500 to-red-500">
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-orange-500 to-zinc-800">
                       <Building2 className="text-white" size={24} />
                     </div>
                     <div>
@@ -174,7 +174,7 @@ const PanelDistribuidoresUltra = memo(() => {
                       <Star
                         key={i}
                         size={16}
-                        className={i < dist.calificacion ? 'text-yellow-400 fill-yellow-400' : 'text-slate-600'}
+                        className={i < dist.calificacion ? 'text-zinc-200 fill-yellow-400' : 'text-slate-600'}
                       />
                     ))}
                   </div>
@@ -207,16 +207,16 @@ const PanelDistribuidoresUltra = memo(() => {
                 </div>
 
                 {dist.adeudo > 0 && (
-                  <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-3 mb-4">
+                  <div className="bg-zinc-9000/10 border border-zinc-500/30 rounded-lg p-3 mb-4">
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-orange-400 font-medium">Adeudo Pendiente</span>
-                      <span className="text-lg font-bold text-orange-400">${dist.adeudo.toLocaleString()}</span>
+                      <span className="text-sm text-zinc-200 font-medium">Adeudo Pendiente</span>
+                      <span className="text-lg font-bold text-zinc-200">${dist.adeudo.toLocaleString()}</span>
                     </div>
                   </div>
                 )}
 
                 <div className="flex items-center justify-between">
-                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${dist.estado === 'activo' ? 'bg-green-500/20 text-green-400' : 'bg-slate-700 text-slate-400'}`}>
+                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${dist.estado === 'activo' ? 'bg-zinc-9000/20 text-zinc-200' : 'bg-slate-700 text-slate-400'}`}>
                     {dist.estado === 'activo' ? '● Activo' : '● Inactivo'}
                   </span>
                   <button className="p-2 hover:bg-slate-800 rounded-lg transition-colors">

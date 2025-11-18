@@ -213,10 +213,10 @@ export const WidgetInventarioHeatmap: React.FC = () => {
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
-      className="relative h-full flex flex-col overflow-hidden rounded-2xl backdrop-blur-xl bg-gradient-to-br from-slate-900/90 via-purple-900/40 to-slate-900/90 border border-purple-500/20"
+      className="relative h-full flex flex-col overflow-hidden rounded-2xl backdrop-blur-xl bg-gradient-to-br from-slate-900/90 via-zinc-800/40 to-slate-900/90 border border-zinc-700/20"
     >
       {/* Header */}
-      <div className="p-4 border-b border-purple-500/20">
+      <div className="p-4 border-b border-zinc-700/20">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="p-2 rounded-lg bg-orange-500/20 border border-orange-500/30">
@@ -233,7 +233,7 @@ export const WidgetInventarioHeatmap: React.FC = () => {
         <div className="grid grid-cols-3 gap-2 mt-3">
           <div className="p-2 rounded-lg bg-slate-800/50">
             <div className="text-xs text-slate-400">Promedio</div>
-            <div className="text-lg font-bold text-purple-400">{avgRotacion.toFixed(1)}%</div>
+            <div className="text-lg font-bold text-zinc-200">{avgRotacion.toFixed(1)}%</div>
           </div>
           <div className="p-2 rounded-lg bg-slate-800/50">
             <div className="text-xs text-slate-400 flex items-center gap-1">
@@ -272,7 +272,7 @@ export const WidgetInventarioHeatmap: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
-          className="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-slate-900/95 backdrop-blur-sm border border-purple-500/30"
+          className="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-slate-900/95 backdrop-blur-sm border border-zinc-700/30"
         >
           <div className="flex items-start justify-between mb-2">
             <div>
@@ -292,7 +292,7 @@ export const WidgetInventarioHeatmap: React.FC = () => {
               </div>
             </div>
             <div className="text-right">
-              <div className="text-2xl font-bold text-purple-400">
+              <div className="text-2xl font-bold text-zinc-200">
                 {selectedPanel.rotacion.toFixed(1)}%
               </div>
               <div className="text-xs text-slate-400">Rotación</div>
@@ -323,11 +323,11 @@ export const WidgetInventarioHeatmap: React.FC = () => {
       )}
 
       {/* Leyenda */}
-      <div className="p-3 border-t border-purple-500/20">
+      <div className="p-3 border-t border-zinc-700/20">
         <div className="flex items-center justify-between text-xs">
           <div className="flex items-center gap-2">
             <div className="flex items-center">
-              <div className="w-12 h-3 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 to-cyan-500 rounded" />
+              <div className="w-12 h-3 bg-gradient-to-r from-zinc-700 via-yellow-500 via-green-500 to-cyan-500 rounded" />
             </div>
             <span className="text-slate-400">0% → 100% Rotación</span>
           </div>

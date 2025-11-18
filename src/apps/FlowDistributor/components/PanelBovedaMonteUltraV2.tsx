@@ -70,7 +70,7 @@ const LoadingState = () => (
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-        className="w-16 h-16 mx-auto mb-4 border-4 border-amber-500 border-t-transparent rounded-full"
+        className="w-16 h-16 mx-auto mb-4 border-4 border-zinc-500 border-t-transparent rounded-full"
       />
       <h2 className="text-2xl font-bold text-white mb-2">Cargando Bóveda Monte</h2>
       <p className="text-slate-400">Obteniendo datos desde Firestore...</p>
@@ -87,9 +87,9 @@ const ErrorState = ({ error, onRetry }: { error: any; onRetry: () => void }) => 
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="max-w-md w-full bg-slate-800/50 backdrop-blur-xl rounded-2xl p-8 border border-red-500/20"
+      className="max-w-md w-full bg-slate-800/50 backdrop-blur-xl rounded-2xl p-8 border border-zinc-500/20"
     >
-      <AlertCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
+      <AlertCircle className="w-16 h-16 text-zinc-100 mx-auto mb-4" />
       <h2 className="text-2xl font-bold text-white text-center mb-2">Error al Cargar Datos</h2>
       <p className="text-slate-400 text-center mb-6">{error?.message || 'Error desconocido'}</p>
       <button
@@ -125,13 +125,13 @@ const KpiCard3D = memo(({ title, value, icon, trend, color, delay = 0 }: KpiCard
     className="relative group"
   >
     <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-amber-600/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all" />
-    <div className="relative bg-slate-800/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-700/50 hover:border-amber-500/50 transition-all">
+    <div className="relative bg-slate-800/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-700/50 hover:border-zinc-500/50 transition-all">
       <div className="flex items-start justify-between mb-4">
         <div className={`p-3 rounded-xl bg-gradient-to-br ${color}`}>{icon}</div>
         {trend !== undefined && (
           <span
             className={`flex items-center gap-1 text-sm font-semibold ${
-              trend >= 0 ? 'text-green-400' : 'text-red-400'
+              trend >= 0 ? 'text-zinc-200' : 'text-zinc-200'
             }`}
           >
             {trend >= 0 ? (
@@ -188,8 +188,8 @@ const TimelineActivity = memo(({ transactions }: { transactions: TimelineItemPro
             <div
               className={`p-2 rounded-lg ${
                 transaction.tipo === 'ingreso'
-                  ? 'bg-green-500/20 text-green-400'
-                  : 'bg-red-500/20 text-red-400'
+                  ? 'bg-zinc-9000/20 text-zinc-200'
+                  : 'bg-zinc-9000/20 text-zinc-200'
               }`}
             >
               {transaction.tipo === 'ingreso' ? (
@@ -205,7 +205,7 @@ const TimelineActivity = memo(({ transactions }: { transactions: TimelineItemPro
                 </span>
                 <span
                   className={`font-bold ${
-                    transaction.tipo === 'ingreso' ? 'text-green-400' : 'text-red-400'
+                    transaction.tipo === 'ingreso' ? 'text-zinc-200' : 'text-zinc-200'
                   }`}
                 >
                   {transaction.tipo === 'ingreso' ? '+' : '-'}
@@ -374,7 +374,7 @@ export default function PanelBovedaMonteUltra() {
             onClick={refetch}
             title="Actualizar datos"
             aria-label="Actualizar datos desde Firestore"
-            className="p-3 rounded-xl bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 hover:border-amber-500/50 transition-all group"
+            className="p-3 rounded-xl bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 hover:border-zinc-500/50 transition-all group"
           >
             <RefreshCw className="w-5 h-5 text-amber-500 group-hover:rotate-180 transition-transform duration-500" />
           </button>
@@ -402,7 +402,7 @@ export default function PanelBovedaMonteUltra() {
           title="Total Gastos"
           value={formatCurrency(totales.gastos)}
           icon={<TrendingDown className="w-6 h-6 text-white" />}
-          color="from-red-500 to-red-600"
+          color="from-zinc-700 to-zinc-800"
           trend={-8}
           delay={0.2}
         />
@@ -410,7 +410,7 @@ export default function PanelBovedaMonteUltra() {
           title="Total Cortes"
           value={formatCurrency(totales.cortes)}
           icon={<Activity className="w-6 h-6 text-white" />}
-          color="from-purple-500 to-purple-600"
+          color="from-zinc-800 to-zinc-800"
           delay={0.3}
         />
       </div>
@@ -424,7 +424,7 @@ export default function PanelBovedaMonteUltra() {
           className="bg-slate-800/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-700/50"
         >
           <p className="text-slate-400 text-sm mb-2">Promedio Ingreso</p>
-          <p className="text-2xl font-bold text-green-400">
+          <p className="text-2xl font-bold text-zinc-200">
             {formatCurrency(stats.promedioIngreso)}
           </p>
           <p className="text-xs text-slate-500 mt-1">{stats.countIngresos} transacciones</p>
@@ -436,7 +436,7 @@ export default function PanelBovedaMonteUltra() {
           className="bg-slate-800/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-700/50"
         >
           <p className="text-slate-400 text-sm mb-2">Promedio Gasto</p>
-          <p className="text-2xl font-bold text-red-400">{formatCurrency(stats.promedioGasto)}</p>
+          <p className="text-2xl font-bold text-zinc-200">{formatCurrency(stats.promedioGasto)}</p>
           <p className="text-xs text-slate-500 mt-1">{stats.countGastos} transacciones</p>
         </motion.div>
         <motion.div
@@ -446,7 +446,7 @@ export default function PanelBovedaMonteUltra() {
           className="bg-slate-800/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-700/50"
         >
           <p className="text-slate-400 text-sm mb-2">RF Calculado</p>
-          <p className="text-2xl font-bold text-amber-400">{formatCurrency(totales.rfActual)}</p>
+          <p className="text-2xl font-bold text-zinc-200">{formatCurrency(totales.rfActual)}</p>
           <p className="text-xs text-slate-500 mt-1">Ingresos - Gastos - Cortes</p>
         </motion.div>
       </div>
@@ -463,31 +463,31 @@ export default function PanelBovedaMonteUltra() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="bg-gradient-to-br from-green-500/20 to-green-600/20 rounded-2xl p-6 border border-green-500/30"
+              className="bg-gradient-to-br from-green-500/20 to-green-600/20 rounded-2xl p-6 border border-zinc-500/30"
             >
               <div className="flex items-center gap-3 mb-3">
-                <TrendingUp className="w-8 h-8 text-green-400" />
+                <TrendingUp className="w-8 h-8 text-zinc-200" />
                 <div>
                   <p className="text-sm text-slate-300">Ingresos</p>
                   <p className="text-2xl font-bold text-white">{stats.countIngresos}</p>
                 </div>
               </div>
-              <p className="text-green-400 font-semibold">{formatCurrency(totales.ingresos)}</p>
+              <p className="text-zinc-200 font-semibold">{formatCurrency(totales.ingresos)}</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.55 }}
-              className="bg-gradient-to-br from-red-500/20 to-red-600/20 rounded-2xl p-6 border border-red-500/30"
+              className="bg-gradient-to-br from-zinc-700/20 to-zinc-800/20 rounded-2xl p-6 border border-zinc-500/30"
             >
               <div className="flex items-center gap-3 mb-3">
-                <TrendingDown className="w-8 h-8 text-red-400" />
+                <TrendingDown className="w-8 h-8 text-zinc-200" />
                 <div>
                   <p className="text-sm text-slate-300">Gastos</p>
                   <p className="text-2xl font-bold text-white">{stats.countGastos}</p>
                 </div>
               </div>
-              <p className="text-red-400 font-semibold">{formatCurrency(totales.gastos)}</p>
+              <p className="text-zinc-200 font-semibold">{formatCurrency(totales.gastos)}</p>
             </motion.div>
           </div>
         </div>

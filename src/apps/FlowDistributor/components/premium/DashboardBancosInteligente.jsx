@@ -77,10 +77,10 @@ export const DashboardBancosInteligente = ({ bancos, onSelectBanco }) => {
   }, [bancos, searchTerm, sortBy]);
 
   return (
-    <div className="w-full h-full overflow-auto bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900 p-6">
+    <div className="w-full h-full overflow-auto bg-gradient-to-br from-slate-900 via-zinc-800/20 to-slate-900 p-6">
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
-        <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-2">
+        <h2 className="text-3xl font-bold bg-gradient-to-r from-zinc-700 to-zinc-800 bg-clip-text text-transparent mb-2">
           🏦 Dashboard de Bancos
         </h2>
         <p className="text-slate-400">Gestión inteligente de cuentas bancarias</p>
@@ -92,11 +92,11 @@ export const DashboardBancosInteligente = ({ bancos, onSelectBanco }) => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           whileHover={{ scale: 1.02 }}
-          className="bg-gradient-to-br from-blue-500/20 to-blue-600/10 backdrop-blur-lg border border-blue-500/30 rounded-xl p-6"
+          className="bg-gradient-to-br from-zinc-800/20 to-zinc-900/10 backdrop-blur-lg border border-zinc-700/30 rounded-xl p-6"
         >
           <div className="flex items-center justify-between mb-2">
-            <DollarSign className="w-8 h-8 text-blue-400" />
-            <TrendingUp className="w-5 h-5 text-green-400" />
+            <DollarSign className="w-8 h-8 text-zinc-300" />
+            <TrendingUp className="w-5 h-5 text-zinc-200" />
           </div>
           <p className="text-slate-400 text-sm mb-1">Saldo Total</p>
           <p className="text-2xl font-bold text-white">{formatCurrency(stats.totalSaldos)}</p>
@@ -107,11 +107,11 @@ export const DashboardBancosInteligente = ({ bancos, onSelectBanco }) => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.1 }}
           whileHover={{ scale: 1.02 }}
-          className="bg-gradient-to-br from-purple-500/20 to-purple-600/10 backdrop-blur-lg border border-purple-500/30 rounded-xl p-6"
+          className="bg-gradient-to-br from-zinc-800/20 to-zinc-800/10 backdrop-blur-lg border border-zinc-800/30 rounded-xl p-6"
         >
           <div className="flex items-center justify-between mb-2">
-            <Activity className="w-8 h-8 text-purple-400" />
-            <CreditCard className="w-5 h-5 text-purple-300" />
+            <Activity className="w-8 h-8 text-zinc-800" />
+            <CreditCard className="w-5 h-5 text-zinc-800" />
           </div>
           <p className="text-slate-400 text-sm mb-1">Bancos Activos</p>
           <p className="text-2xl font-bold text-white">
@@ -124,10 +124,10 @@ export const DashboardBancosInteligente = ({ bancos, onSelectBanco }) => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2 }}
           whileHover={{ scale: 1.02 }}
-          className="bg-gradient-to-br from-green-500/20 to-green-600/10 backdrop-blur-lg border border-green-500/30 rounded-xl p-6"
+          className="bg-gradient-to-br from-green-500/20 to-green-600/10 backdrop-blur-lg border border-zinc-500/30 rounded-xl p-6"
         >
           <div className="flex items-center justify-between mb-2">
-            <PieChart className="w-8 h-8 text-green-400" />
+            <PieChart className="w-8 h-8 text-zinc-200" />
             <ArrowUpRight className="w-5 h-5 text-green-300" />
           </div>
           <p className="text-slate-400 text-sm mb-1">Promedio por Banco</p>
@@ -141,13 +141,13 @@ export const DashboardBancosInteligente = ({ bancos, onSelectBanco }) => {
           whileHover={{ scale: 1.02 }}
           className={`bg-gradient-to-br ${
             stats.bancosConAlerta > 0
-              ? 'from-red-500/20 to-red-600/10 border-red-500/30'
-              : 'from-emerald-500/20 to-emerald-600/10 border-emerald-500/30'
+              ? 'from-zinc-700/20 to-zinc-800/10 border-zinc-500/30'
+              : 'from-emerald-500/20 to-emerald-600/10 border-zinc-500/30'
           } backdrop-blur-lg border rounded-xl p-6`}
         >
           <div className="flex items-center justify-between mb-2">
             <AlertCircle
-              className={`w-8 h-8 ${stats.bancosConAlerta > 0 ? 'text-red-400' : 'text-emerald-400'}`}
+              className={`w-8 h-8 ${stats.bancosConAlerta > 0 ? 'text-zinc-200' : 'text-zinc-200'}`}
             />
             {stats.bancosConAlerta > 0 && <TrendingDown className="w-5 h-5 text-red-300" />}
           </div>
@@ -209,7 +209,7 @@ export const DashboardBancosInteligente = ({ bancos, onSelectBanco }) => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg font-medium flex items-center gap-2 hover:shadow-lg hover:shadow-blue-500/50 transition-shadow"
+            className="px-4 py-2 bg-gradient-to-r from-zinc-800 to-zinc-800 text-white rounded-lg font-medium flex items-center gap-2 hover:shadow-lg hover:shadow-blue-500/50 transition-shadow"
           >
             <Download className="w-4 h-4" />
             Exportar
@@ -238,7 +238,7 @@ export const DashboardBancosInteligente = ({ bancos, onSelectBanco }) => {
                 onClick={() => onSelectBanco?.(banco)}
                 className={`bg-gradient-to-br ${
                   esAlerta
-                    ? 'from-red-900/20 to-red-800/10 border-red-500/30'
+                    ? 'from-zinc-700/20 to-zinc-800/10 border-zinc-500/30'
                     : 'from-slate-800/50 to-slate-900/50 border-slate-700'
                 } backdrop-blur-lg border rounded-xl p-6 cursor-pointer hover:shadow-xl hover:shadow-blue-500/20 transition-all`}
               >
@@ -248,10 +248,10 @@ export const DashboardBancosInteligente = ({ bancos, onSelectBanco }) => {
                     <p className="text-slate-400 text-sm">{banco.tipo || 'Cuenta Corriente'}</p>
                   </div>
                   <div
-                    className={`p-3 rounded-lg ${esAlerta ? 'bg-red-500/20' : 'bg-blue-500/20'}`}
+                    className={`p-3 rounded-lg ${esAlerta ? 'bg-zinc-9000/20' : 'bg-zinc-800/20'}`}
                   >
                     <CreditCard
-                      className={`w-6 h-6 ${esAlerta ? 'text-red-400' : 'text-blue-400'}`}
+                      className={`w-6 h-6 ${esAlerta ? 'text-zinc-200' : 'text-zinc-300'}`}
                     />
                   </div>
                 </div>
@@ -259,7 +259,7 @@ export const DashboardBancosInteligente = ({ bancos, onSelectBanco }) => {
                 <div className="mb-4">
                   <p className="text-slate-400 text-sm mb-1">Saldo Actual</p>
                   <p
-                    className={`text-3xl font-bold ${esAlerta ? 'text-red-400' : 'text-green-400'}`}
+                    className={`text-3xl font-bold ${esAlerta ? 'text-zinc-200' : 'text-zinc-200'}`}
                   >
                     {formatCurrency(saldo)}
                   </p>
@@ -278,8 +278,8 @@ export const DashboardBancosInteligente = ({ bancos, onSelectBanco }) => {
                       transition={{ delay: index * 0.05 + 0.5, duration: 0.8 }}
                       className={`h-full ${
                         esAlerta
-                          ? 'bg-gradient-to-r from-red-500 to-red-600'
-                          : 'bg-gradient-to-r from-blue-500 to-purple-500'
+                          ? 'bg-gradient-to-r from-zinc-700 to-zinc-800'
+                          : 'bg-gradient-to-r from-zinc-800 to-zinc-800'
                       }`}
                     />
                   </div>
@@ -292,14 +292,14 @@ export const DashboardBancosInteligente = ({ bancos, onSelectBanco }) => {
                     <span>Activo</span>
                   </div>
                   {esAlerta && (
-                    <div className="flex items-center gap-1 text-red-400 text-sm">
+                    <div className="flex items-center gap-1 text-zinc-200 text-sm">
                       <AlertCircle className="w-4 h-4" />
                       <span>Saldo Bajo</span>
                     </div>
                   )}
                   <motion.button
                     whileHover={{ x: 5 }}
-                    className="text-blue-400 hover:text-blue-300 text-sm font-medium flex items-center gap-1"
+                    className="text-zinc-300 hover:text-zinc-300 text-sm font-medium flex items-center gap-1"
                   >
                     Ver detalles
                     <ArrowUpRight className="w-4 h-4" />

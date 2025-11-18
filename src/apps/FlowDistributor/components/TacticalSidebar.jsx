@@ -29,7 +29,7 @@ const TacticalSidebar = ({
       description: 'Panel maestro que integra ventas, gastos y abonos',
       status: 'ACTIVO',
       priority: 'HIGH',
-      color: 'from-cyan-500 to-blue-500',
+      color: 'from-zinc-800 to-zinc-800',
     },
     {
       id: 'distribuidores',
@@ -38,7 +38,7 @@ const TacticalSidebar = ({
       description: 'Panel distribuidores con órdenes de compra',
       status: 'ACTIVO',
       priority: 'HIGH',
-      color: 'from-blue-500 to-indigo-500',
+      color: 'from-zinc-800 to-indigo-500',
     },
     {
       id: 'clientes',
@@ -47,7 +47,7 @@ const TacticalSidebar = ({
       description: 'Gestión completa de clientes',
       status: 'ACTIVO',
       priority: 'MEDIUM',
-      color: 'from-pink-500 to-rose-500',
+      color: 'from-zinc-700 to-zinc-700',
     },
     {
       id: 'analisis',
@@ -65,7 +65,7 @@ const TacticalSidebar = ({
       description: 'Asistente de inteligencia artificial',
       status: 'ACTIVO',
       priority: 'LOW',
-      color: 'from-purple-500 to-violet-500',
+      color: 'from-zinc-800 to-zinc-800',
     },
   ];
 
@@ -102,11 +102,11 @@ const TacticalSidebar = ({
   const getSystemStatusColor = () => {
     switch (systemStatus) {
       case 'ONLINE':
-        return 'text-green-400';
+        return 'text-zinc-200';
       case 'SCANNING':
-        return 'text-yellow-400';
+        return 'text-zinc-200';
       case 'ALERT':
-        return 'text-red-400';
+        return 'text-zinc-200';
       default:
         return 'text-gray-400';
     }
@@ -144,7 +144,7 @@ const TacticalSidebar = ({
 
   return (
     <motion.div
-      className="fixed left-0 top-0 h-full bg-black bg-opacity-90 backdrop-blur-lg border-r border-orange-500/30 z-50"
+      className="fixed left-0 top-0 h-full bg-black bg-opacity-90 backdrop-blur-lg border-r border-zinc-500/30 z-50"
       variants={sidebarVariants}
       animate={isCollapsed ? 'collapsed' : 'expanded'}
       style={{
@@ -153,7 +153,7 @@ const TacticalSidebar = ({
       }}
     >
       {/* Header táctico */}
-      <div className="p-4 border-b border-orange-500/30">
+      <div className="p-4 border-b border-zinc-500/30">
         <motion.div className="flex items-center justify-between" layout>
           <AnimatePresence>
             {!isCollapsed && (
@@ -163,7 +163,7 @@ const TacticalSidebar = ({
                 exit={{ opacity: 0, x: -20 }}
                 className="flex flex-col"
               >
-                <h2 className="text-orange-400 font-bold text-sm tracking-wider">
+                <h2 className="text-zinc-200 font-bold text-sm tracking-wider">
                   CHRONOS TACTICAL
                 </h2>
                 <p className={`text-xs ${getSystemStatusColor()}`}>STATUS: {systemStatus}</p>
@@ -173,14 +173,14 @@ const TacticalSidebar = ({
 
           <motion.button
             onClick={onToggleCollapse}
-            className="p-2 rounded bg-orange-500/20 hover:bg-orange-500/30 transition-colors"
+            className="p-2 rounded bg-zinc-9000/20 hover:bg-zinc-9000/30 transition-colors"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onMouseEnter={() => playUISound('hover')}
             onMouseDown={() => playUISound('click')}
           >
             <motion.div animate={{ rotate: isCollapsed ? 0 : 180 }} transition={{ duration: 0.3 }}>
-              <span className="text-orange-400 text-lg">⮞</span>
+              <span className="text-zinc-200 text-lg">⮞</span>
             </motion.div>
           </motion.button>
         </motion.div>
@@ -253,11 +253,11 @@ const TacticalSidebar = ({
                         <span
                           className={`text-xs px-2 py-1 rounded ${
                             panel.priority === 'CRITICAL'
-                              ? 'bg-red-500/20 text-red-400'
+                              ? 'bg-zinc-9000/20 text-zinc-200'
                               : panel.priority === 'HIGH'
-                                ? 'bg-orange-500/20 text-orange-400'
+                                ? 'bg-zinc-9000/20 text-zinc-200'
                                 : panel.priority === 'STRATEGIC'
-                                  ? 'bg-yellow-500/20 text-yellow-400'
+                                  ? 'bg-zinc-9000/20 text-zinc-200'
                                   : 'bg-gray-500/20 text-gray-400'
                           }`}
                         >
@@ -298,21 +298,21 @@ const TacticalSidebar = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="p-4 border-t border-orange-500/30"
+            className="p-4 border-t border-zinc-500/30"
           >
             <div className="text-xs text-gray-400 space-y-1">
               <div className="flex justify-between">
                 <span>Panels Active:</span>
-                <span className="text-orange-400">{panels.length}</span>
+                <span className="text-zinc-200">{panels.length}</span>
               </div>
               <div className="flex justify-between">
                 <span>AI Status:</span>
-                <span className="text-green-400">READY</span>
+                <span className="text-zinc-200">READY</span>
               </div>
               <div className="flex justify-between">
                 <span>Data Sync:</span>
                 <motion.span
-                  className="text-cyan-400"
+                  className="text-zinc-300"
                   animate={{ opacity: [1, 0.5, 1] }}
                   transition={{ duration: 1, repeat: Infinity }}
                 >

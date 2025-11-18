@@ -42,7 +42,7 @@ export const CollapsedSidebarPremium = ({
       id: 'dashboard',
       label: 'Dashboard',
       icon: LayoutDashboard,
-      gradient: 'from-blue-500 via-cyan-500 to-blue-600',
+      gradient: 'from-zinc-800 via-cyan-500 to-zinc-900',
       glow: 'shadow-[0_0_30px_rgba(59,130,246,0.5)]',
     },
     {
@@ -56,14 +56,14 @@ export const CollapsedSidebarPremium = ({
       id: 'ventas',
       label: 'Ventas',
       icon: ShoppingCart,
-      gradient: 'from-purple-500 via-fuchsia-500 to-pink-600',
+      gradient: 'from-zinc-800 via-zinc-700 to-zinc-700',
       glow: 'shadow-[0_0_30px_rgba(168,85,247,0.5)]',
     },
     {
       id: 'bovedas',
       label: 'Bóvedas',
       icon: Building2,
-      gradient: 'from-amber-500 via-orange-500 to-red-600',
+      gradient: 'from-amber-500 via-orange-500 to-zinc-800',
       glow: 'shadow-[0_0_30px_rgba(245,158,11,0.5)]',
       submenu: [
         { id: 'bovedaMonte', label: 'Bóveda Monte', icon: Sparkles },
@@ -277,7 +277,7 @@ export const CollapsedSidebarPremium = ({
       {/* Efectos de luz animados */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-blue-500/10 via-transparent to-transparent blur-3xl"
+          className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-zinc-800/10 via-transparent to-transparent blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             rotate: [0, 90, 0],
@@ -289,7 +289,7 @@ export const CollapsedSidebarPremium = ({
           }}
         />
         <motion.div
-          className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-purple-500/10 via-transparent to-transparent blur-3xl"
+          className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-zinc-800/10 via-transparent to-transparent blur-3xl"
           animate={{
             scale: [1.2, 1, 1.2],
             rotate: [90, 0, 90],
@@ -314,14 +314,14 @@ export const CollapsedSidebarPremium = ({
             whileHover={{ scale: 1.1, rotate: 360 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center shadow-[0_0_30px_rgba(59,130,246,0.5)]">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-zinc-800 via-zinc-800 to-zinc-700 flex items-center justify-center shadow-[0_0_30px_rgba(59,130,246,0.5)]">
               <Sparkles className="w-6 h-6 text-white" />
             </div>
             {notifications > 0 && (
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
-                className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-xs text-white font-bold shadow-lg"
+                className="absolute -top-1 -right-1 w-5 h-5 bg-zinc-9000 rounded-full flex items-center justify-center text-xs text-white font-bold shadow-lg"
               >
                 {notifications}
               </motion.div>
@@ -350,7 +350,7 @@ export const CollapsedSidebarPremium = ({
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="mb-6 p-4 rounded-xl bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20"
+              className="mb-6 p-4 rounded-xl bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-zinc-500/20"
             >
               <p className="text-white/60 text-xs mb-1">Capital Total</p>
               <p className="text-white font-bold text-xl">{formatCurrency(totalCapital)}</p>

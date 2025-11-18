@@ -107,7 +107,7 @@ export default function FormVentaLocal({ onClose, onSave, ventaExistente = null 
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.9, y: 20 }}
         transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-        className="bg-gradient-to-br from-slate-900 to-blue-900 border border-blue-400/30 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+        className="bg-gradient-to-br from-slate-900 to-blue-900 border border-zinc-600/30 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -117,7 +117,7 @@ export default function FormVentaLocal({ onClose, onSave, ventaExistente = null 
             initial={{ x: -20 }}
             animate={{ x: 0 }}
           >
-            <FileText className="w-7 h-7 text-blue-400" />
+            <FileText className="w-7 h-7 text-zinc-300" />
             {ventaExistente ? 'Editar Venta Local' : 'Nueva Venta Local'}
           </motion.h2>
 
@@ -140,7 +140,7 @@ export default function FormVentaLocal({ onClose, onSave, ventaExistente = null 
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
             >
-              <label className="flex items-center gap-2 text-sm text-blue-300 mb-2">
+              <label className="flex items-center gap-2 text-sm text-zinc-300 mb-2">
                 <Calendar className="w-4 h-4" />
                 Fecha
               </label>
@@ -156,7 +156,7 @@ export default function FormVentaLocal({ onClose, onSave, ventaExistente = null 
                 <motion.p
                   initial={{ opacity: 0, y: -5 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-red-400 text-xs mt-1 flex items-center gap-1"
+                  className="text-zinc-200 text-xs mt-1 flex items-center gap-1"
                 >
                   <AlertCircle className="w-3 h-3" />
                   {errors.fecha}
@@ -170,7 +170,7 @@ export default function FormVentaLocal({ onClose, onSave, ventaExistente = null 
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 }}
             >
-              <label className="flex items-center gap-2 text-sm text-blue-300 mb-2">
+              <label className="flex items-center gap-2 text-sm text-zinc-300 mb-2">
                 <FileText className="w-4 h-4" />
                 OC Relacionada
               </label>
@@ -184,7 +184,7 @@ export default function FormVentaLocal({ onClose, onSave, ventaExistente = null 
                 } rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50`}
               />
               {errors.ocRelacionada && (
-                <p className="text-red-400 text-xs mt-1">{errors.ocRelacionada}</p>
+                <p className="text-zinc-200 text-xs mt-1">{errors.ocRelacionada}</p>
               )}
             </motion.div>
 
@@ -194,7 +194,7 @@ export default function FormVentaLocal({ onClose, onSave, ventaExistente = null 
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <label className="flex items-center gap-2 text-sm text-blue-300 mb-2">
+              <label className="flex items-center gap-2 text-sm text-zinc-300 mb-2">
                 <Package className="w-4 h-4" />
                 Cantidad
               </label>
@@ -209,7 +209,7 @@ export default function FormVentaLocal({ onClose, onSave, ventaExistente = null 
                   errors.cantidad ? 'border-red-400' : 'border-white/20'
                 } rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50`}
               />
-              {errors.cantidad && <p className="text-red-400 text-xs mt-1">{errors.cantidad}</p>}
+              {errors.cantidad && <p className="text-zinc-200 text-xs mt-1">{errors.cantidad}</p>}
             </motion.div>
 
             {/* Cliente */}
@@ -218,7 +218,7 @@ export default function FormVentaLocal({ onClose, onSave, ventaExistente = null 
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25 }}
             >
-              <label className="flex items-center gap-2 text-sm text-blue-300 mb-2">
+              <label className="flex items-center gap-2 text-sm text-zinc-300 mb-2">
                 <User className="w-4 h-4" />
                 Cliente
               </label>
@@ -231,7 +231,7 @@ export default function FormVentaLocal({ onClose, onSave, ventaExistente = null 
                   errors.cliente ? 'border-red-400' : 'border-white/20'
                 } rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50`}
               />
-              {errors.cliente && <p className="text-red-400 text-xs mt-1">{errors.cliente}</p>}
+              {errors.cliente && <p className="text-zinc-200 text-xs mt-1">{errors.cliente}</p>}
             </motion.div>
 
             {/* Precio de Venta */}
@@ -240,7 +240,7 @@ export default function FormVentaLocal({ onClose, onSave, ventaExistente = null 
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              <label className="flex items-center gap-2 text-sm text-blue-300 mb-2">
+              <label className="flex items-center gap-2 text-sm text-zinc-300 mb-2">
                 <DollarSign className="w-4 h-4" />
                 Precio de Venta
               </label>
@@ -256,7 +256,7 @@ export default function FormVentaLocal({ onClose, onSave, ventaExistente = null 
                 } rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50`}
               />
               {errors.precioVenta && (
-                <p className="text-red-400 text-xs mt-1">{errors.precioVenta}</p>
+                <p className="text-zinc-200 text-xs mt-1">{errors.precioVenta}</p>
               )}
             </motion.div>
 
@@ -266,7 +266,7 @@ export default function FormVentaLocal({ onClose, onSave, ventaExistente = null 
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35 }}
             >
-              <label className="flex items-center gap-2 text-sm text-blue-300 mb-2">
+              <label className="flex items-center gap-2 text-sm text-zinc-300 mb-2">
                 <DollarSign className="w-4 h-4" />
                 Bóveda Monte
               </label>
@@ -287,7 +287,7 @@ export default function FormVentaLocal({ onClose, onSave, ventaExistente = null 
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              <label className="text-sm text-blue-300 mb-2 block">Flete</label>
+              <label className="text-sm text-zinc-300 mb-2 block">Flete</label>
               <select
                 value={formData.flete}
                 onChange={(e) => setFormData({ ...formData, flete: e.target.value })}
@@ -304,7 +304,7 @@ export default function FormVentaLocal({ onClose, onSave, ventaExistente = null 
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45 }}
             >
-              <label className="flex items-center gap-2 text-sm text-blue-300 mb-2">
+              <label className="flex items-center gap-2 text-sm text-zinc-300 mb-2">
                 <DollarSign className="w-4 h-4" />
                 Flete Utilidad
               </label>
@@ -325,7 +325,7 @@ export default function FormVentaLocal({ onClose, onSave, ventaExistente = null 
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
             >
-              <label className="text-sm text-blue-300 mb-2 block">Estatus</label>
+              <label className="text-sm text-zinc-300 mb-2 block">Estatus</label>
               <select
                 value={formData.estatus}
                 onChange={(e) => setFormData({ ...formData, estatus: e.target.value })}
@@ -343,7 +343,7 @@ export default function FormVentaLocal({ onClose, onSave, ventaExistente = null 
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.55 }}
             >
-              <label className="text-sm text-blue-300 mb-2 block">Concepto / Observaciones</label>
+              <label className="text-sm text-zinc-300 mb-2 block">Concepto / Observaciones</label>
               <textarea
                 value={formData.concepto}
                 onChange={(e) => setFormData({ ...formData, concepto: e.target.value })}
@@ -356,7 +356,7 @@ export default function FormVentaLocal({ onClose, onSave, ventaExistente = null 
 
           {/* Campos Calculados */}
           <motion.div
-            className="bg-emerald-500/10 border border-emerald-400/30 rounded-xl p-6 mb-6"
+            className="bg-zinc-9000/10 border border-emerald-400/30 rounded-xl p-6 mb-6"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.6 }}
@@ -377,7 +377,7 @@ export default function FormVentaLocal({ onClose, onSave, ventaExistente = null 
               <div>
                 <label className="text-sm text-emerald-300/70 mb-1 block">Utilidad</label>
                 <p
-                  className={`text-2xl font-bold ${parseFloat(formData.utilidad || 0) >= 0 ? 'text-green-400' : 'text-red-400'}`}
+                  className={`text-2xl font-bold ${parseFloat(formData.utilidad || 0) >= 0 ? 'text-zinc-200' : 'text-zinc-200'}`}
                 >
                   ${parseFloat(formData.utilidad || 0).toLocaleString()}
                 </p>
@@ -390,7 +390,7 @@ export default function FormVentaLocal({ onClose, onSave, ventaExistente = null 
               whileHover={{ scale: 1.02, boxShadow: '0 10px 30px rgba(16, 185, 129, 0.3)' }}
               whileTap={{ scale: 0.98 }}
               disabled={isCalculating}
-              className="w-full mt-4 px-4 py-3 bg-emerald-500/20 border border-emerald-400/30 rounded-xl text-emerald-300 hover:bg-emerald-500/30 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+              className="w-full mt-4 px-4 py-3 bg-zinc-9000/20 border border-emerald-400/30 rounded-xl text-emerald-300 hover:bg-zinc-9000/30 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
             >
               {isCalculating ? (
                 <>
@@ -416,7 +416,7 @@ export default function FormVentaLocal({ onClose, onSave, ventaExistente = null 
               type="submit"
               whileHover={{ scale: 1.02, boxShadow: '0 10px 30px rgba(59, 130, 246, 0.3)' }}
               whileTap={{ scale: 0.98 }}
-              className="flex-1 px-6 py-4 bg-blue-500/20 border border-blue-400/30 rounded-xl text-white font-semibold hover:bg-blue-500/30 transition-all flex items-center justify-center gap-2"
+              className="flex-1 px-6 py-4 bg-zinc-800/20 border border-zinc-600/30 rounded-xl text-white font-semibold hover:bg-zinc-800/30 transition-all flex items-center justify-center gap-2"
             >
               <Save className="w-5 h-5" />
               {ventaExistente ? 'Actualizar Venta' : 'Guardar Venta'}

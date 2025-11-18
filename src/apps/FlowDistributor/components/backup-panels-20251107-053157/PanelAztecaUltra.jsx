@@ -117,18 +117,18 @@ const PanelAztecaUltra = memo(() => {
     >
       {/* Header Section */}
       <motion.div
-        className="relative p-6 bg-gradient-to-r from-red-900/20 via-orange-900/20 to-yellow-900/20 border-b border-white/10"
+        className="relative p-6 bg-gradient-to-r from-zinc-700/20 via-orange-900/20 to-yellow-900/20 border-b border-white/10"
         variants={itemVariants}
       >
         <div className="relative z-10">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center space-x-4">
               <motion.div
-                className="p-3 bg-gradient-to-br from-red-500/20 to-orange-500/20 rounded-xl backdrop-blur-sm border border-white/10"
+                className="p-3 bg-gradient-to-br from-zinc-700/20 to-orange-500/20 rounded-xl backdrop-blur-sm border border-white/10"
                 whileHover={{ scale: 1.05, rotate: 5 }}
                 transition={{ duration: 0.3 }}
               >
-                <Building className="w-8 h-8 text-orange-400" />
+                <Building className="w-8 h-8 text-zinc-200" />
               </motion.div>
               <div>
                 <h2 className="text-2xl font-bold text-white mb-1">Banco Azteca Ultra</h2>
@@ -139,13 +139,13 @@ const PanelAztecaUltra = memo(() => {
             <div className="grid grid-cols-3 gap-4">
               <motion.div className="text-right p-3 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm">
                 <div className="text-slate-400 text-sm mb-1">Ingresos Totales</div>
-                <div className="text-2xl font-bold text-green-400">
+                <div className="text-2xl font-bold text-zinc-200">
                   {showValues ? formatCurrency(data.ingresos) : '••••••'}
                 </div>
               </motion.div>
               <motion.div className="text-right p-3 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm">
                 <div className="text-slate-400 text-sm mb-1">Gastos Totales</div>
-                <div className="text-2xl font-bold text-red-400">
+                <div className="text-2xl font-bold text-zinc-200">
                   {showValues ? formatCurrency(data.gastos) : '••••••'}
                 </div>
               </motion.div>
@@ -160,7 +160,7 @@ const PanelAztecaUltra = memo(() => {
                   </motion.button>
                 </div>
                 <div
-                  className={`text-2xl font-bold ${data.rfActual >= 0 ? 'text-green-400' : 'text-red-400'}`}
+                  className={`text-2xl font-bold ${data.rfActual >= 0 ? 'text-zinc-200' : 'text-zinc-200'}`}
                 >
                   {showValues ? formatCurrency(data.rfActual) : '••••••'}
                 </div>
@@ -186,7 +186,7 @@ const PanelAztecaUltra = memo(() => {
                 onClick={() => setActiveTable(id)}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   activeTable === id
-                    ? 'bg-orange-500/20 text-orange-400 shadow-lg'
+                    ? 'bg-zinc-9000/20 text-zinc-200 shadow-lg'
                     : 'text-slate-400 hover:text-white hover:bg-white/5'
                 }`}
               >

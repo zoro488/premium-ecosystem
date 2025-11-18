@@ -3668,7 +3668,9 @@ export const totalesPorDestino = () => {
     if (!destinos[registro.destino]) {
       destinos[registro.destino] = 0;
     }
-    destinos[registro.destino] += registro.valor;
+    if (destinos[registro.destino] !== undefined) {
+      destinos[registro.destino] += registro.valor;
+    }
   });
 
   return destinos;
@@ -3681,7 +3683,9 @@ export const totalesPorOrigen = () => {
     if (!origenes[registro.origenGastoAbono]) {
       origenes[registro.origenGastoAbono] = 0;
     }
-    origenes[registro.origenGastoAbono] += registro.valor;
+    if (origenes[registro.origenGastoAbono] !== undefined) {
+      origenes[registro.origenGastoAbono] += registro.valor;
+    }
   });
 
   return origenes;

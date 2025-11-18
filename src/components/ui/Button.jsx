@@ -17,7 +17,7 @@ const buttonVariants = {
     outline: 'border border-blue-500/50 hover:border-blue-400 hover:bg-blue-500/10 text-blue-400',
     ghost: 'hover:bg-white/5 text-slate-300 hover:text-white',
     danger:
-      'bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white shadow-lg shadow-red-500/25',
+      'bg-gradient-to-r from-zinc-700 to-zinc-800 hover:from-zinc-700 hover:to-zinc-800 text-white shadow-lg shadow-red-500/25',
     success:
       'bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white shadow-lg shadow-green-500/25',
   },

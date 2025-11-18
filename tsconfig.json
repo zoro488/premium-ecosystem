@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     // Suppress deprecation warnings for baseUrl (will be removed in TS 7.0)
-    "ignoreDeprecations": "6.0",
+    "ignoreDeprecations": "5.0",
 
     // Language and Environment
     "target": "ES2020",

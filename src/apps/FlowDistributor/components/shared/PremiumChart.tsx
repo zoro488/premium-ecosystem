@@ -154,7 +154,7 @@ export const PremiumChart = memo<PremiumChartProps>(
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-xl font-bold text-white flex items-center gap-2">
-            <TrendingUp className="w-5 h-5 text-blue-400" />
+            <TrendingUp className="w-5 h-5 text-zinc-300" />
             {title}
           </h3>
 
@@ -165,7 +165,7 @@ export const PremiumChart = memo<PremiumChartProps>(
               <button
                 onClick={() => onTypeChange('bar')}
                 className={`p-2 rounded transition-colors ${
-                  type === 'bar' ? 'bg-blue-500 text-white' : 'text-white/50 hover:text-white'
+                  type === 'bar' ? 'bg-zinc-800 text-white' : 'text-white/50 hover:text-white'
                 }`}
               >
                 <BarChart3 className="w-4 h-4" />
@@ -173,7 +173,7 @@ export const PremiumChart = memo<PremiumChartProps>(
               <button
                 onClick={() => onTypeChange('line')}
                 className={`p-2 rounded transition-colors ${
-                  type === 'line' ? 'bg-blue-500 text-white' : 'text-white/50 hover:text-white'
+                  type === 'line' ? 'bg-zinc-800 text-white' : 'text-white/50 hover:text-white'
                 }`}
               >
                 <LineChartIcon className="w-4 h-4" />
@@ -181,7 +181,7 @@ export const PremiumChart = memo<PremiumChartProps>(
               <button
                 onClick={() => onTypeChange('area')}
                 className={`p-2 rounded transition-colors ${
-                  type === 'area' ? 'bg-blue-500 text-white' : 'text-white/50 hover:text-white'
+                  type === 'area' ? 'bg-zinc-800 text-white' : 'text-white/50 hover:text-white'
                 }`}
               >
                 <TrendingUp className="w-4 h-4" />
@@ -196,7 +196,7 @@ export const PremiumChart = memo<PremiumChartProps>(
                   onClick={() => onTimeRangeChange(range as any)}
                   className={`px-3 py-1 rounded text-xs font-medium transition-colors ${
                     timeRange === range
-                      ? 'bg-blue-500 text-white'
+                      ? 'bg-zinc-800 text-white'
                       : 'text-white/50 hover:text-white'
                   }`}
                 >

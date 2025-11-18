@@ -292,7 +292,7 @@ const PanelDistribuidores = ({ isActive = false }) => {
         return 'text-green-400 bg-green-400/20 border-green-400/50';
       case 'PROCESANDO':
       case 'ENVIADO':
-        return 'text-blue-400 bg-blue-400/20 border-blue-400/50';
+        return 'text-zinc-300 bg-zinc-700/20 border-zinc-600/50';
       case 'SUSPENDIDO':
         return 'text-red-400 bg-red-400/20 border-red-400/50';
       case 'PENDIENTE':
@@ -322,7 +322,7 @@ const PanelDistribuidores = ({ isActive = false }) => {
       case 'A+':
         return 'text-green-400 bg-green-400/20';
       case 'A':
-        return 'text-blue-400 bg-blue-400/20';
+        return 'text-zinc-300 bg-zinc-700/20';
       case 'B':
         return 'text-yellow-400 bg-yellow-400/20';
       case 'C':
@@ -350,7 +350,7 @@ const PanelDistribuidores = ({ isActive = false }) => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.1 }}
       >
-        <h1 className="text-3xl font-bold text-blue-400 mb-2">🚛 DISTRIBUIDORES</h1>
+        <h1 className="text-3xl font-bold text-zinc-300 mb-2">🚛 DISTRIBUIDORES</h1>
         <p className="text-gray-400">Red de Distribución • Órdenes de Compra • Gestión Logística</p>
       </motion.div>
 
@@ -361,7 +361,7 @@ const PanelDistribuidores = ({ isActive = false }) => {
           <button
             className={`px-4 py-2 rounded text-sm font-semibold transition-all ${
               activeView === 'distribuidores'
-                ? 'bg-blue-500/20 text-blue-400 border border-blue-500/50'
+                ? 'bg-zinc-800/20 text-zinc-300 border border-zinc-700/50'
                 : 'text-gray-400 hover:text-white hover:bg-white/10'
             }`}
             onClick={() => {
@@ -374,7 +374,7 @@ const PanelDistribuidores = ({ isActive = false }) => {
           <button
             className={`px-4 py-2 rounded text-sm font-semibold transition-all ${
               activeView === 'ordenes'
-                ? 'bg-blue-500/20 text-blue-400 border border-blue-500/50'
+                ? 'bg-zinc-800/20 text-zinc-300 border border-zinc-700/50'
                 : 'text-gray-400 hover:text-white hover:bg-white/10'
             }`}
             onClick={() => {
@@ -393,7 +393,7 @@ const PanelDistribuidores = ({ isActive = false }) => {
             placeholder="Buscar distribuidores u órdenes..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="bg-black/50 border border-blue-500/30 rounded-lg px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 w-64"
+            className="bg-black/50 border border-zinc-700/30 rounded-lg px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-zinc-600 w-64"
           />
           <div className="absolute right-3 top-2.5 text-gray-400">🔍</div>
         </div>
@@ -414,14 +414,14 @@ const PanelDistribuidores = ({ isActive = false }) => {
               {filteredDistribuidores.map((distribuidor) => (
                 <motion.div
                   key={distribuidor.id}
-                  className="bg-black/50 border border-blue-500/30 rounded-lg p-4 hover:border-blue-400/50 transition-all cursor-pointer"
+                  className="bg-black/50 border border-zinc-700/30 rounded-lg p-4 hover:border-zinc-600/50 transition-all cursor-pointer"
                   whileHover={{ scale: 1.02, boxShadow: '0 0 20px rgba(59, 130, 246, 0.2)' }}
                   onClick={() => setSelectedDistribuidor(distribuidor)}
                 >
                   {/* Header del Distribuidor */}
                   <div className="flex justify-between items-start mb-3">
                     <div>
-                      <h3 className="text-blue-400 font-semibold text-lg">{distribuidor.nombre}</h3>
+                      <h3 className="text-zinc-300 font-semibold text-lg">{distribuidor.nombre}</h3>
                       <p className="text-gray-400 text-sm">{distribuidor.region}</p>
                     </div>
                     <div className="flex space-x-2">
@@ -458,8 +458,8 @@ const PanelDistribuidores = ({ isActive = false }) => {
                         {formatCurrency(distribuidor.ventasUltimo12M)}
                       </p>
                     </div>
-                    <div className="bg-blue-900/20 p-2 rounded">
-                      <p className="text-blue-400 text-xs">Crédito Disp.</p>
+                    <div className="bg-zinc-950/20 p-2 rounded">
+                      <p className="text-zinc-300 text-xs">Crédito Disp.</p>
                       <p className="text-white font-semibold">
                         {formatCurrency(distribuidor.creditoDisponible)}
                       </p>
@@ -477,7 +477,7 @@ const PanelDistribuidores = ({ isActive = false }) => {
                     </div>
                     <div className="bg-black/50 h-2 rounded-full overflow-hidden">
                       <motion.div
-                        className="h-full bg-gradient-to-r from-blue-500 to-cyan-400"
+                        className="h-full bg-gradient-to-r from-zinc-800 to-zinc-700"
                         initial={{ width: 0 }}
                         animate={{
                           width: `${(distribuidor.creditoDisponible / distribuidor.credito) * 100}%`,
@@ -500,22 +500,22 @@ const PanelDistribuidores = ({ isActive = false }) => {
             exit={{ opacity: 0, x: -20 }}
           >
             {/* Tabla de Órdenes */}
-            <div className="bg-black/50 rounded-lg border border-blue-500/30 overflow-hidden">
-              <div className="bg-blue-900/30 p-4 border-b border-blue-500/30">
-                <h3 className="text-blue-400 font-semibold">📦 ÓRDENES DE COMPRA</h3>
+            <div className="bg-black/50 rounded-lg border border-zinc-700/30 overflow-hidden">
+              <div className="bg-zinc-950/30 p-4 border-b border-zinc-700/30">
+                <h3 className="text-zinc-300 font-semibold">📦 ÓRDENES DE COMPRA</h3>
               </div>
               <div className="overflow-x-auto max-h-[calc(100vh-350px)]">
                 <table className="w-full">
                   <thead className="bg-black/70 sticky top-0">
                     <tr>
-                      <th className="p-3 text-left text-blue-400">Orden ID</th>
-                      <th className="p-3 text-left text-blue-400">Distribuidor</th>
-                      <th className="p-3 text-left text-blue-400">Fecha</th>
-                      <th className="p-3 text-left text-blue-400">Entrega</th>
-                      <th className="p-3 text-right text-blue-400">Total</th>
-                      <th className="p-3 text-center text-blue-400">Prioridad</th>
-                      <th className="p-3 text-center text-blue-400">Estado</th>
-                      <th className="p-3 text-center text-blue-400">Vendedor</th>
+                      <th className="p-3 text-left text-zinc-300">Orden ID</th>
+                      <th className="p-3 text-left text-zinc-300">Distribuidor</th>
+                      <th className="p-3 text-left text-zinc-300">Fecha</th>
+                      <th className="p-3 text-left text-zinc-300">Entrega</th>
+                      <th className="p-3 text-right text-zinc-300">Total</th>
+                      <th className="p-3 text-center text-zinc-300">Prioridad</th>
+                      <th className="p-3 text-center text-zinc-300">Estado</th>
+                      <th className="p-3 text-center text-zinc-300">Vendedor</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -525,7 +525,7 @@ const PanelDistribuidores = ({ isActive = false }) => {
                         className="border-b border-white/10 hover:bg-white/5"
                         whileHover={{ backgroundColor: 'rgba(59, 130, 246, 0.1)' }}
                       >
-                        <td className="p-3 text-blue-400 font-mono font-semibold">{orden.id}</td>
+                        <td className="p-3 text-zinc-300 font-mono font-semibold">{orden.id}</td>
                         <td className="p-3 text-white">{orden.distribuidor}</td>
                         <td className="p-3 text-gray-300">{orden.fecha}</td>
                         <td className="p-3 text-gray-300">{orden.fechaEntrega}</td>
@@ -568,7 +568,7 @@ const PanelDistribuidores = ({ isActive = false }) => {
             onClick={() => setSelectedDistribuidor(null)}
           >
             <motion.div
-              className="bg-black/90 border border-blue-500/50 rounded-lg p-6 max-w-2xl w-full mx-4 max-h-[80vh] overflow-y-auto"
+              className="bg-black/90 border border-zinc-700/50 rounded-lg p-6 max-w-2xl w-full mx-4 max-h-[80vh] overflow-y-auto"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
@@ -576,7 +576,7 @@ const PanelDistribuidores = ({ isActive = false }) => {
             >
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h2 className="text-2xl font-bold text-blue-400">
+                  <h2 className="text-2xl font-bold text-zinc-300">
                     {selectedDistribuidor.nombre}
                   </h2>
                   <p className="text-gray-400">{selectedDistribuidor.region}</p>
@@ -593,8 +593,8 @@ const PanelDistribuidores = ({ isActive = false }) => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-3">
                   <div>
-                    <h4 className="text-blue-400 font-semibold mb-2">📞 INFORMACIÓN DE CONTACTO</h4>
-                    <div className="bg-blue-900/20 p-3 rounded space-y-1">
+                    <h4 className="text-zinc-300 font-semibold mb-2">📞 INFORMACIÓN DE CONTACTO</h4>
+                    <div className="bg-zinc-950/20 p-3 rounded space-y-1">
                       <p>
                         <span className="text-gray-400">Contacto:</span>{' '}
                         {selectedDistribuidor.contacto}
@@ -614,7 +614,7 @@ const PanelDistribuidores = ({ isActive = false }) => {
                   </div>
 
                   <div>
-                    <h4 className="text-blue-400 font-semibold mb-2">📊 MÉTRICAS COMERCIALES</h4>
+                    <h4 className="text-zinc-300 font-semibold mb-2">📊 MÉTRICAS COMERCIALES</h4>
                     <div className="bg-green-900/20 p-3 rounded space-y-1">
                       <p>
                         <span className="text-gray-400">Ventas 12M:</span>{' '}
@@ -641,8 +641,8 @@ const PanelDistribuidores = ({ isActive = false }) => {
 
                 <div className="space-y-3">
                   <div>
-                    <h4 className="text-blue-400 font-semibold mb-2">💳 INFORMACIÓN CREDITICIA</h4>
-                    <div className="bg-purple-900/20 p-3 rounded space-y-1">
+                    <h4 className="text-zinc-300 font-semibold mb-2">💳 INFORMACIÓN CREDITICIA</h4>
+                    <div className="bg-zinc-800/20 p-3 rounded space-y-1">
                       <p>
                         <span className="text-gray-400">Línea de Crédito:</span>{' '}
                         {formatCurrency(selectedDistribuidor.credito)}
@@ -664,7 +664,7 @@ const PanelDistribuidores = ({ isActive = false }) => {
                   </div>
 
                   <div>
-                    <h4 className="text-blue-400 font-semibold mb-2">📅 INFORMACIÓN GENERAL</h4>
+                    <h4 className="text-zinc-300 font-semibold mb-2">📅 INFORMACIÓN GENERAL</h4>
                     <div className="bg-orange-900/20 p-3 rounded space-y-1">
                       <p>
                         <span className="text-gray-400">Fecha Registro:</span>{' '}

@@ -250,7 +250,7 @@ export const UltraHeader = ({
                       className="w-8 h-8 rounded-full object-cover"
                     />
                   ) : (
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-black/80 to-black/90 border border-white/20 flex items-center justify-center">
                       <span className="text-white font-bold text-sm">
                         {user.name.charAt(0).toUpperCase()}
                       </span>

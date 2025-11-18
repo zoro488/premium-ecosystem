@@ -121,12 +121,12 @@ export default function FormTransaccion({
 
   const tipoIcon = useMemo(() => {
     if (['ingreso', 'transferencia_entrada', 'deposito', 'devolucion', 'interes'].includes(tipo)) {
-      return <ArrowUpCircle className="w-5 h-5 text-green-400" />;
+      return <ArrowUpCircle className="w-5 h-5 text-zinc-200" />;
     }
     if (['gasto', 'transferencia_salida', 'retiro', 'comision', 'cargo_bancario'].includes(tipo)) {
-      return <ArrowDownCircle className="w-5 h-5 text-red-400" />;
+      return <ArrowDownCircle className="w-5 h-5 text-zinc-200" />;
     }
-    return <RefreshCw className="w-5 h-5 text-blue-400" />;
+    return <RefreshCw className="w-5 h-5 text-zinc-300" />;
   }, [tipo]);
 
   return (
@@ -146,7 +146,7 @@ export default function FormTransaccion({
       >
         <div className="flex items-center justify-between p-6 border-b border-white/10">
           <motion.h2 className="text-2xl font-bold text-white flex items-center gap-3">
-            <CreditCard className="w-7 h-7 text-emerald-400" />
+            <CreditCard className="w-7 h-7 text-zinc-200" />
             {transaccionExistente ? 'Editar Transacción' : 'Nueva Transacción'}
           </motion.h2>
           <motion.button type="button" whileHover={{ scale: 1.1, rotate: 90 }} whileTap={{ scale: 0.9 }} onClick={onClose} className="text-gray-400 hover:text-white transition-colors p-2">
@@ -357,7 +357,7 @@ export default function FormTransaccion({
           </FormSection>
 
           {/* PANEL DE SALDOS */}
-          <div className="bg-gradient-to-r from-emerald-500/10 to-blue-500/10 border border-emerald-400/30 rounded-xl p-4">
+          <div className="bg-gradient-to-r from-emerald-500/10 to-zinc-800/10 border border-emerald-400/30 rounded-xl p-4">
             <h3 className="text-sm font-semibold text-emerald-300 mb-3 flex items-center gap-2">
               <TrendingUp className="w-4 h-4" />
               Actualización de Saldos
@@ -369,13 +369,13 @@ export default function FormTransaccion({
               </div>
               <div>
                 <p className="text-xs text-gray-400 mb-1">Movimiento</p>
-                <p className={`text-lg font-bold ${['ingreso', 'transferencia_entrada', 'deposito'].includes(tipo) ? 'text-green-400' : 'text-red-400'}`}>
+                <p className={`text-lg font-bold ${['ingreso', 'transferencia_entrada', 'deposito'].includes(tipo) ? 'text-zinc-200' : 'text-zinc-200'}`}>
                   {['ingreso', 'transferencia_entrada', 'deposito'].includes(tipo) ? '+' : '-'}${((monto || 0) + (comision || 0) + (iva || 0)).toLocaleString('es-MX', { minimumFractionDigits: 2 })}
                 </p>
               </div>
               <div>
                 <p className="text-xs text-gray-400 mb-1">Saldo Nuevo</p>
-                <p className={`text-lg font-bold ${saldoNuevo >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                <p className={`text-lg font-bold ${saldoNuevo >= 0 ? 'text-zinc-200' : 'text-zinc-200'}`}>
                   ${saldoNuevo?.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
                 </p>
               </div>

@@ -103,11 +103,11 @@ export const AlertsPanel = memo<AlertsPanelProps>(({ alertas }) => {
         className="p-6 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10"
       >
         <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-          <CheckCircle className="w-5 h-5 text-green-400" />
+          <CheckCircle className="w-5 h-5 text-zinc-200" />
           Alertas del Sistema
         </h3>
         <div className="text-center py-12">
-          <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4 opacity-50" />
+          <CheckCircle className="w-16 h-16 text-zinc-200 mx-auto mb-4 opacity-50" />
           <p className="text-white/50">No hay alertas activas</p>
           <p className="text-white/30 text-sm mt-1">Todo funcionando correctamente</p>
         </div>
@@ -123,7 +123,7 @@ export const AlertsPanel = memo<AlertsPanelProps>(({ alertas }) => {
       className="p-6 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10"
     >
       <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-        <AlertCircle className="w-5 h-5 text-orange-400" />
+        <AlertCircle className="w-5 h-5 text-zinc-200" />
         Alertas del Sistema
         <span
           className="ml-auto text-xs px-2 py-1 rounded-full"

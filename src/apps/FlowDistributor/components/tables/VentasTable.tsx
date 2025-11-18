@@ -136,13 +136,13 @@ export const VentasTable: React.FC<VentasTableProps> = memo(
     const getEstadoColor = (estado: EstadoVenta) => {
       switch (estado) {
         case 'PAGADA':
-          return 'bg-green-100 text-green-800';
+          return 'bg-zinc-800 text-green-800';
         case 'PENDIENTE':
           return 'bg-yellow-100 text-yellow-800';
         case 'CREDITO':
-          return 'bg-blue-100 text-blue-800';
+          return 'bg-zinc-800 text-white';
         case 'CANCELADA':
-          return 'bg-red-100 text-red-800';
+          return 'bg-zinc-800 text-red-800';
         default:
           return 'bg-gray-100 text-gray-800';
       }
@@ -151,7 +151,7 @@ export const VentasTable: React.FC<VentasTableProps> = memo(
     if (isLoading) {
       return (
         <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-zinc-600"></div>
         </div>
       );
     }
@@ -160,41 +160,41 @@ export const VentasTable: React.FC<VentasTableProps> = memo(
       <div className="space-y-4">
         {/* Estadísticas */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div className="bg-blue-50 rounded-lg p-4">
+          <div className="bg-zinc-900 rounded-lg p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600">Ventas Totales</p>
-                <p className="text-2xl font-bold text-blue-600">
+                <p className="text-2xl font-bold text-white">
                   {formatCurrency(stats.total, 'USD')}
                 </p>
               </div>
-              <DollarSign className="h-8 w-8 text-blue-600" />
+              <DollarSign className="h-8 w-8 text-white" />
             </div>
           </div>
 
-          <div className="bg-green-50 rounded-lg p-4">
+          <div className="bg-zinc-900 rounded-lg p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600">Utilidad</p>
-                <p className="text-2xl font-bold text-green-600">
+                <p className="text-2xl font-bold text-white">
                   {formatCurrency(stats.utilidad, 'USD')}
                 </p>
               </div>
-              <DollarSign className="h-8 w-8 text-green-600" />
+              <DollarSign className="h-8 w-8 text-white" />
             </div>
           </div>
 
-          <div className="bg-purple-50 rounded-lg p-4">
+          <div className="bg-zinc-800 rounded-lg p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600">Margen</p>
-                <p className="text-2xl font-bold text-purple-600">{stats.margen.toFixed(1)}%</p>
+                <p className="text-2xl font-bold text-zinc-800">{stats.margen.toFixed(1)}%</p>
               </div>
-              <DollarSign className="h-8 w-8 text-purple-600" />
+              <DollarSign className="h-8 w-8 text-zinc-800" />
             </div>
           </div>
 
-          <div className="bg-orange-50 rounded-lg p-4">
+          <div className="bg-zinc-900 rounded-lg p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600">Cantidad</p>
@@ -233,7 +233,7 @@ export const VentasTable: React.FC<VentasTableProps> = memo(
 
             <button
               onClick={exportToCSV}
-              className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+              className="flex items-center gap-2 px-4 py-2 bg-zinc-700 text-white rounded-lg hover:bg-green-700 transition-colors"
             >
               <Download className="h-4 w-4" />
               Exportar
@@ -318,7 +318,7 @@ export const VentasTable: React.FC<VentasTableProps> = memo(
                         {onView && (
                           <button
                             onClick={() => onView(venta)}
-                            className="text-blue-600 hover:text-blue-900"
+                            className="text-white hover:text-zinc-100"
                             title="Ver detalles"
                           >
                             <Eye className="h-4 w-4" />
@@ -327,7 +327,7 @@ export const VentasTable: React.FC<VentasTableProps> = memo(
                         {onEdit && venta.estado !== 'CANCELADA' && (
                           <button
                             onClick={() => onEdit(venta)}
-                            className="text-green-600 hover:text-green-900"
+                            className="text-white hover:text-green-900"
                             title="Editar"
                           >
                             <Edit className="h-4 w-4" />
@@ -335,7 +335,7 @@ export const VentasTable: React.FC<VentasTableProps> = memo(
                         )}
                         <button
                           onClick={() => handleDelete(venta.id!)}
-                          className="text-red-600 hover:text-red-900"
+                          className="text-white hover:text-red-900"
                           title="Eliminar"
                         >
                           <Trash2 className="h-4 w-4" />

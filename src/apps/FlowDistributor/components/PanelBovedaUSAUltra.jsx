@@ -24,16 +24,16 @@ import { memo, useCallback, useMemo, useRef, useState } from 'react';
 
 import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import {
-  DollarSign,
-  Download,
-  Exchange,
-  Eye,
-  EyeOff,
-  Flag,
-  Globe,
-  Search,
-  Settings,
-  Shield,
+    DollarSign,
+    Download,
+    Exchange,
+    Eye,
+    EyeOff,
+    Flag,
+    Globe,
+    Search,
+    Settings,
+    Shield,
 } from 'lucide-react';
 import PropTypes from 'prop-types';
 
@@ -274,10 +274,10 @@ const PanelBovedaUSAUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
   // Get account type color
   const getAccountTypeColor = useCallback((tipo) => {
     const typeMap = {
-      Checking: 'text-blue-400 bg-blue-500/20',
-      Investment: 'text-green-400 bg-green-500/20',
-      'Credit Line': 'text-orange-400 bg-orange-500/20',
-      Treasury: 'text-purple-400 bg-purple-500/20',
+      Checking: 'text-zinc-300 bg-zinc-800/20',
+      Investment: 'text-zinc-200 bg-zinc-9000/20',
+      'Credit Line': 'text-zinc-200 bg-zinc-9000/20',
+      Treasury: 'text-zinc-800 bg-zinc-800/20',
     };
     return typeMap[tipo] || typeMap.Checking;
   }, []);
@@ -285,9 +285,9 @@ const PanelBovedaUSAUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
   // Get compliance status color
   const getComplianceStatusColor = useCallback((estado) => {
     const statusMap = {
-      COMPLIANT: 'text-green-400 bg-green-500/20',
-      UNDER_REVIEW: 'text-yellow-400 bg-yellow-500/20',
-      NON_COMPLIANT: 'text-red-400 bg-red-500/20',
+      COMPLIANT: 'text-zinc-200 bg-zinc-9000/20',
+      UNDER_REVIEW: 'text-zinc-200 bg-zinc-9000/20',
+      NON_COMPLIANT: 'text-zinc-200 bg-zinc-9000/20',
     };
     return statusMap[estado] || statusMap.UNDER_REVIEW;
   }, []);
@@ -295,10 +295,10 @@ const PanelBovedaUSAUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
   // Get conversion status color
   const getConversionStatusColor = useCallback((estado) => {
     const statusMap = {
-      completada: 'text-green-400 bg-green-500/20',
-      procesando: 'text-yellow-400 bg-yellow-500/20',
-      pendiente: 'text-orange-400 bg-orange-500/20',
-      cancelada: 'text-red-400 bg-red-500/20',
+      completada: 'text-zinc-200 bg-zinc-9000/20',
+      procesando: 'text-zinc-200 bg-zinc-9000/20',
+      pendiente: 'text-zinc-200 bg-zinc-9000/20',
+      cancelada: 'text-zinc-200 bg-zinc-9000/20',
     };
     return statusMap[estado] || statusMap.pendiente;
   }, []);
@@ -369,20 +369,20 @@ const PanelBovedaUSAUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
     >
       {/* Header Section */}
       <motion.div
-        className="relative p-6 bg-gradient-to-r from-blue-900/20 via-indigo-900/20 to-purple-900/20 border-b border-white/10"
+        className="relative p-6 bg-gradient-to-r from-zinc-900/20 via-zinc-800/20 to-zinc-800/20 border-b border-white/10"
         variants={itemVariants}
       >
         {/* Background Effects */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-indigo-500/5 to-purple-500/5" />
-          <div className="absolute top-0 left-1/4 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-indigo-500/10 rounded-full blur-2xl" />
+          <div className="absolute inset-0 bg-gradient-to-r from-zinc-800/5 via-indigo-500/5 to-zinc-800/5" />
+          <div className="absolute top-0 left-1/4 w-32 h-32 bg-zinc-800/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-zinc-9000/10 rounded-full blur-2xl" />
 
           {/* Floating USD particles */}
           {[...Array(6)].map((_, i) => (
             <motion.div
               key={`usd-particle-${i + 1}`}
-              className="absolute w-2 h-2 bg-blue-400/40 rounded-full"
+              className="absolute w-2 h-2 bg-zinc-700/40 rounded-full"
               style={{
                 left: `${15 + i * 12}%`,
                 top: `${25 + (i % 2) * 30}%`,
@@ -406,11 +406,11 @@ const PanelBovedaUSAUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center space-x-4">
               <motion.div
-                className="p-3 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-xl backdrop-blur-sm border border-white/10"
+                className="p-3 bg-gradient-to-br from-zinc-800/20 to-indigo-500/20 rounded-xl backdrop-blur-sm border border-white/10"
                 whileHover={{ scale: 1.05, rotate: 5 }}
                 transition={{ duration: 0.3 }}
               >
-                <Flag className="w-8 h-8 text-blue-400" />
+                <Flag className="w-8 h-8 text-zinc-300" />
               </motion.div>
 
               <div>
@@ -431,7 +431,7 @@ const PanelBovedaUSAUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 <div className="text-2xl font-bold text-white">
                   {showValues ? formatCurrencyUSD(localData.summary.saldoTotalUSD) : '••••••'}
                 </div>
-                <div className="flex items-center text-blue-400 text-sm mt-1">
+                <div className="flex items-center text-zinc-300 text-sm mt-1">
                   <DollarSign className="w-3 h-3 mr-1" />
                   {localData.summary.cuentasActivasUSD} cuentas
                 </div>
@@ -445,7 +445,7 @@ const PanelBovedaUSAUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 <div className="text-2xl font-bold text-white">
                   ${localData.summary.tipoCambioActual}
                 </div>
-                <div className="flex items-center text-green-400 text-sm mt-1">
+                <div className="flex items-center text-zinc-200 text-sm mt-1">
                   <Exchange className="w-3 h-3 mr-1" />
                   +0.15 vs ayer
                 </div>
@@ -466,10 +466,10 @@ const PanelBovedaUSAUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                     {showValues ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
                   </motion.button>
                 </div>
-                <div className="text-2xl font-bold text-green-400">
+                <div className="text-2xl font-bold text-zinc-200">
                   {localData.summary.cumplimientoScore}%
                 </div>
-                <div className="flex items-center text-cyan-400 text-sm mt-1">
+                <div className="flex items-center text-zinc-300 text-sm mt-1">
                   <Shield className="w-3 h-3 mr-1" />
                   {localData.summary.eficienciaInternacional}% eficiencia
                 </div>
@@ -480,7 +480,7 @@ const PanelBovedaUSAUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
           {/* Compliance Bar */}
           {complianceMode && (
             <motion.div
-              className="p-4 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-xl border border-blue-500/20 backdrop-blur-sm"
+              className="p-4 bg-gradient-to-r from-zinc-800/10 to-indigo-500/10 rounded-xl border border-zinc-700/20 backdrop-blur-sm"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
@@ -491,10 +491,10 @@ const PanelBovedaUSAUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
                   >
-                    <Shield className="w-5 h-5 text-blue-400" />
+                    <Shield className="w-5 h-5 text-zinc-300" />
                   </motion.div>
                   <span className="text-white font-medium">Cumplimiento Regulatorio Activo</span>
-                  <span className="px-2 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs">
+                  <span className="px-2 py-1 bg-zinc-800/20 text-zinc-300 rounded-full text-xs">
                     {localData.summary.alertasRegulatorias} alerta regulatoria
                   </span>
                 </div>
@@ -505,7 +505,7 @@ const PanelBovedaUSAUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                     {new Date(localData.summary.ultimaActualizacion).toLocaleTimeString()}
                   </span>
                   <motion.button
-                    className="p-1 text-blue-400 hover:text-blue-300"
+                    className="p-1 text-zinc-300 hover:text-zinc-300"
                     whileHover={{ scale: 1.1 }}
                     onClick={() => setComplianceMode(false)}
                   >
@@ -537,7 +537,7 @@ const PanelBovedaUSAUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 onClick={() => setActiveTable(id)}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   activeTable === id
-                    ? 'bg-blue-500/20 text-blue-400 shadow-lg'
+                    ? 'bg-zinc-800/20 text-zinc-300 shadow-lg'
                     : 'text-slate-400 hover:text-white hover:bg-white/5'
                 }`}
                 whileHover={{ scale: 1.02 }}
@@ -559,7 +559,7 @@ const PanelBovedaUSAUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 placeholder="Buscar cuentas USD..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/50 w-64"
+                className="pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-zinc-700/50 w-64"
               />
             </div>
 
@@ -625,7 +625,7 @@ const PanelBovedaUSAUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                             </div>
                           </div>
 
-                          <div className="text-cyan-400 font-mono">
+                          <div className="text-zinc-300 font-mono">
                             {cuenta.numero}
                             <div className="text-xs text-slate-400 mt-1">
                               RT: {cuenta.routingNumber}
@@ -641,25 +641,25 @@ const PanelBovedaUSAUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                           </div>
 
                           <div
-                            className={`font-medium ${cuenta.saldoUSD >= 0 ? 'text-green-400' : 'text-red-400'}`}
+                            className={`font-medium ${cuenta.saldoUSD >= 0 ? 'text-zinc-200' : 'text-zinc-200'}`}
                           >
                             {cuenta.saldoUSD >= 0 ? '+' : ''}
                             {formatCurrencyUSD(cuenta.saldoUSD)}
                           </div>
 
                           <div
-                            className={`font-medium ${cuenta.saldoMXN >= 0 ? 'text-emerald-400' : 'text-red-400'}`}
+                            className={`font-medium ${cuenta.saldoMXN >= 0 ? 'text-zinc-200' : 'text-zinc-200'}`}
                           >
                             {cuenta.saldoMXN >= 0 ? '+' : ''}
                             {formatCurrencyMXN(cuenta.saldoMXN)}
                           </div>
 
-                          <div className="text-yellow-400 font-medium">
+                          <div className="text-zinc-200 font-medium">
                             {cuenta.tasaInteres.toFixed(1)}%
                           </div>
 
                           <div>
-                            <span className="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">
+                            <span className="px-2 py-1 bg-zinc-9000/20 text-zinc-200 rounded-full text-xs">
                               {cuenta.estado.toUpperCase()}
                             </span>
                           </div>
@@ -692,7 +692,7 @@ const PanelBovedaUSAUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
               className="h-full flex items-center justify-center"
             >
               <div className="text-center">
-                <Flag className="w-16 h-16 text-blue-400 mx-auto mb-4" />
+                <Flag className="w-16 h-16 text-zinc-300 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">
                   {activeTable === 'conversion'
                     ? 'Conversión de Divisas en Tiempo Real'

@@ -53,7 +53,7 @@ const initialWallets = [
     address: 'TJMTXqJr8R4Wp2qYk3NFj8x9Q2Lp5Km7dD',
     balance: 15234.56,
     balanceUSD: 23456.78,
-    color: 'from-red-500 via-orange-500 to-yellow-500',
+    color: 'from-zinc-700 via-orange-500 to-yellow-500',
     icon: '🔴',
     change24h: 5.2,
     assets: [
@@ -82,7 +82,7 @@ const initialWallets = [
         price: 0.00000123,
         change: -2.3,
         icon: '🎬',
-        color: 'text-purple-400',
+        color: 'text-zinc-200',
       },
       {
         symbol: 'SUN',
@@ -131,7 +131,7 @@ const initialWallets = [
         price: 2.34,
         change: 12.5,
         icon: '🥞',
-        color: 'text-pink-400',
+        color: 'text-zinc-200',
       },
     ],
   },
@@ -142,7 +142,7 @@ const initialWallets = [
     address: 'bc1qxy2kgd93dh82k3mf8qla9s8r7tc5np2kq8fh4m',
     balance: 45678.9,
     balanceUSD: 67890.12,
-    color: 'from-purple-500 via-pink-500 to-rose-500',
+    color: 'from-zinc-800 via-zinc-700 to-rose-500',
     icon: '🟣',
     change24h: 8.5,
     assets: [
@@ -258,7 +258,7 @@ const CursorGlow = () => {
         y: '-50%',
       }}
     >
-      <div className="w-full h-full bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-orange-500/20 blur-3xl rounded-full" />
+      <div className="w-full h-full bg-gradient-to-r from-zinc-800/20 via-zinc-700/20 to-orange-500/20 blur-3xl rounded-full" />
     </motion.div>
   );
 };
@@ -270,7 +270,7 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
       id: 'overview',
       icon: BarChart3,
       label: 'Overview',
-      color: 'from-purple-500 to-violet-500',
+      color: 'from-zinc-800 to-violet-500',
       badge: null,
     },
     {
@@ -292,7 +292,7 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
       id: 'receive',
       icon: Download,
       label: 'Recibir',
-      color: 'from-pink-500 to-rose-500',
+      color: 'from-zinc-700 to-rose-500',
       badge: null,
     },
     {
@@ -306,14 +306,14 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
       id: 'emails',
       icon: Mail,
       label: 'Emails Proton',
-      color: 'from-orange-500 to-red-500',
+      color: 'from-orange-500 to-zinc-800',
       badge: 5,
     },
     {
       id: 'security',
       icon: Shield,
       label: 'Seguridad',
-      color: 'from-red-500 to-pink-500',
+      color: 'from-zinc-700 to-zinc-800',
       badge: null,
     },
   ];
@@ -321,11 +321,11 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
   return (
     <motion.aside
       animate={{ width: isCollapsed ? 80 : 320 }}
-      className="fixed left-0 top-0 h-screen backdrop-blur-2xl bg-gradient-to-br from-slate-950/95 via-purple-950/30 to-slate-950/95 border-r border-purple-500/20 z-50 flex flex-col overflow-hidden"
+      className="fixed left-0 top-0 h-screen backdrop-blur-2xl bg-gradient-to-br from-slate-950/95 via-zinc-800/30 to-slate-950/95 border-r border-zinc-700/20 z-50 flex flex-col overflow-hidden"
     >
       {/* Animated background */}
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-pink-500/10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/10 via-transparent to-zinc-800/10" />
         <motion.div
           animate={{
             backgroundPosition: ['0% 0%', '100% 100%'],
@@ -341,7 +341,7 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
       </div>
 
       {/* Header */}
-      <div className="relative p-6 border-b border-purple-500/20">
+      <div className="relative p-6 border-b border-zinc-700/20">
         <div className="flex items-center justify-between">
           {!isCollapsed && (
             <motion.div
@@ -354,9 +354,9 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
                 transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
                 className="relative"
               >
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 p-[2px]">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-zinc-800 via-zinc-700 to-orange-500 p-[2px]">
                   <div className="w-full h-full rounded-xl bg-slate-950 flex items-center justify-center">
-                    <Wallet className="w-6 h-6 text-purple-400" />
+                    <Wallet className="w-6 h-6 text-zinc-200" />
                   </div>
                 </div>
                 <motion.div
@@ -366,7 +366,7 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
                 />
               </motion.div>
               <div>
-                <h1 className="text-xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent">
+                <h1 className="text-xl font-bold bg-gradient-to-r from-zinc-800 via-zinc-700 to-orange-400 bg-clip-text text-transparent">
                   ShadowPrime
                 </h1>
                 <p className="text-xs text-slate-400 flex items-center gap-1">
@@ -383,7 +383,7 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
             className="p-2 hover:bg-white/5 rounded-lg transition-colors relative group"
           >
             {isCollapsed ? <Menu className="w-5 h-5" /> : <X className="w-5 h-5" />}
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity" />
+            <div className="absolute inset-0 bg-gradient-to-r from-zinc-800 to-zinc-800 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity" />
           </motion.button>
         </div>
       </div>
@@ -458,7 +458,7 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
                           ${
                             typeof item.badge === 'number'
                               ? 'bg-red-500/20 text-red-400 border border-red-500/30'
-                              : 'bg-gradient-to-r from-orange-500 to-red-500 text-white'
+                              : 'bg-gradient-to-r from-orange-500 to-zinc-800 text-white'
                           }
                         `}
                       >
@@ -474,19 +474,19 @@ const Sidebar = ({ activeSection, setActiveSection, isCollapsed, setIsCollapsed 
       </nav>
 
       {/* Footer Stats */}
-      <div className="relative p-4 border-t border-purple-500/20">
+      <div className="relative p-4 border-t border-zinc-700/20">
         {!isCollapsed && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="relative overflow-hidden rounded-xl p-4 bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-orange-500/10 border border-purple-500/20"
+            className="relative overflow-hidden rounded-xl p-4 bg-gradient-to-br from-zinc-800/10 via-zinc-700/10 to-orange-500/10 border border-zinc-700/20"
           >
             <div className="relative z-10">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-xs text-slate-400">Balance Total</span>
-                <Sparkles className="w-4 h-4 text-purple-400" />
+                <Sparkles className="w-4 h-4 text-zinc-200" />
               </div>
-              <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent">
+              <div className="text-2xl font-bold bg-gradient-to-r from-zinc-800 via-zinc-700 to-orange-400 bg-clip-text text-transparent">
                 $109,581.40
               </div>
               <div className="flex items-center gap-2 mt-2 text-xs">
@@ -677,7 +677,7 @@ const WalletCard = ({ wallet, onClick, delay = 0 }) => {
         <motion.div
           initial={{ opacity: 0 }}
           whileHover={{ opacity: 1 }}
-          className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-orange-500/10 pointer-events-none"
+          className="absolute inset-0 bg-gradient-to-br from-zinc-800/10 via-zinc-700/10 to-orange-500/10 pointer-events-none"
         />
       </div>
     </motion.div>
@@ -699,7 +699,7 @@ const OverviewSection = ({ wallets }) => {
       className="space-y-6"
     >
       {/* Hero Stats */}
-      <div className="relative overflow-hidden rounded-3xl p-8 bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-orange-500/10 border border-purple-500/20">
+      <div className="relative overflow-hidden rounded-3xl p-8 bg-gradient-to-br from-zinc-800/10 via-zinc-700/10 to-orange-500/10 border border-zinc-700/20">
         <motion.div
           animate={{
             backgroundPosition: ['0% 0%', '100% 100%'],
@@ -724,7 +724,7 @@ const OverviewSection = ({ wallets }) => {
             transition={{ type: 'spring', stiffness: 100 }}
             className="flex items-baseline gap-4 mb-6"
           >
-            <span className="text-6xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent">
+            <span className="text-6xl font-bold bg-gradient-to-r from-zinc-800 via-zinc-700 to-orange-400 bg-clip-text text-transparent">
               ${totalBalance.toLocaleString('en-US', { minimumFractionDigits: 2 })}
             </span>
             <div
@@ -750,7 +750,7 @@ const OverviewSection = ({ wallets }) => {
               className="backdrop-blur-sm bg-white/5 rounded-xl p-4 border border-white/10"
             >
               <div className="flex items-center gap-2 mb-2">
-                <Wallet className="w-4 h-4 text-purple-400" />
+                <Wallet className="w-4 h-4 text-zinc-200" />
                 <span className="text-xs text-slate-400">Wallets</span>
               </div>
               <div className="text-3xl font-bold text-white">{wallets.length}</div>
@@ -798,13 +798,13 @@ const OverviewSection = ({ wallets }) => {
       <div>
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-bold flex items-center gap-2">
-            <Sparkles className="w-6 h-6 text-purple-400" />
+            <Sparkles className="w-6 h-6 text-zinc-200" />
             Mis Wallets
           </h2>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-4 py-2 rounded-xl bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white font-medium flex items-center gap-2"
+            className="px-4 py-2 rounded-xl bg-gradient-to-r from-zinc-800 via-zinc-700 to-orange-500 text-white font-medium flex items-center gap-2"
           >
             <Plus className="w-4 h-4" />
             Nueva Wallet
@@ -819,9 +819,9 @@ const OverviewSection = ({ wallets }) => {
       </div>
 
       {/* Recent Transactions */}
-      <div className="backdrop-blur-xl bg-slate-950/60 rounded-2xl p-6 border border-purple-500/20">
+      <div className="backdrop-blur-xl bg-slate-950/60 rounded-2xl p-6 border border-zinc-700/20">
         <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-          <Activity className="w-5 h-5 text-purple-400" />
+          <Activity className="w-5 h-5 text-zinc-200" />
           Transacciones Recientes
         </h3>
         <div className="space-y-2">
@@ -901,7 +901,7 @@ const WalletsSection = ({ wallets }) => {
       className="space-y-6"
     >
       {/* Search and Filter Bar */}
-      <div className="backdrop-blur-xl bg-slate-950/60 rounded-2xl p-6 border border-purple-500/20">
+      <div className="backdrop-blur-xl bg-slate-950/60 rounded-2xl p-6 border border-zinc-700/20">
         <div className="flex gap-4 flex-wrap">
           <div className="flex-1 min-w-[250px] relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
@@ -910,13 +910,13 @@ const WalletsSection = ({ wallets }) => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Buscar wallet por nombre o dirección..."
-              className="w-full pl-12 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-purple-500/50 focus:outline-none transition-colors text-white"
+              className="w-full pl-12 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-zinc-700/50 focus:outline-none transition-colors text-white"
             />
           </div>
           <select
             value={filterType}
             onChange={(e) => setFilterType(e.target.value)}
-            className="px-6 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-purple-500/50 focus:outline-none transition-colors text-white cursor-pointer"
+            className="px-6 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-zinc-700/50 focus:outline-none transition-colors text-white cursor-pointer"
           >
             <option value="all">Todos los tipos</option>
             <option value="TronLink">TronLink</option>
@@ -967,18 +967,18 @@ const CreateWalletSection = () => {
       exit={{ opacity: 0 }}
       className="space-y-6"
     >
-      <div className="backdrop-blur-xl bg-slate-950/60 rounded-2xl p-8 border border-purple-500/20 max-w-2xl mx-auto">
+      <div className="backdrop-blur-xl bg-slate-950/60 rounded-2xl p-8 border border-zinc-700/20 max-w-2xl mx-auto">
         <div className="text-center mb-8">
           <motion.div
             animate={{ rotate: [0, 10, -10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
             className="inline-block mb-4"
           >
-            <div className="p-4 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500">
+            <div className="p-4 rounded-2xl bg-gradient-to-br from-zinc-800 to-zinc-800">
               <Plus className="w-12 h-12 text-white" />
             </div>
           </motion.div>
-          <h2 className="text-3xl font-bold mb-2 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-bold mb-2 bg-gradient-to-r from-zinc-800 to-zinc-800 bg-clip-text text-transparent">
             Crear Nueva Wallet
           </h2>
           <p className="text-slate-400">Genera una nueva wallet de criptomonedas de forma segura</p>
@@ -995,7 +995,7 @@ const CreateWalletSection = () => {
                 value={walletName}
                 onChange={(e) => setWalletName(e.target.value)}
                 placeholder="Mi Nueva Wallet"
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-purple-500/50 focus:outline-none transition-colors text-white"
+                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-zinc-700/50 focus:outline-none transition-colors text-white"
               />
             </div>
 
@@ -1006,7 +1006,7 @@ const CreateWalletSection = () => {
               <select
                 value={walletType}
                 onChange={(e) => setWalletType(e.target.value)}
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-purple-500/50 focus:outline-none transition-colors text-white cursor-pointer"
+                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-zinc-700/50 focus:outline-none transition-colors text-white cursor-pointer"
               >
                 <option value="TronLink">TronLink</option>
                 <option value="Trust Wallet">Trust Wallet</option>
@@ -1020,7 +1020,7 @@ const CreateWalletSection = () => {
               whileTap={{ scale: 0.98 }}
               onClick={generateWallet}
               disabled={!walletName}
-              className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-purple-500/50 transition-all"
+              className="w-full px-6 py-4 rounded-xl bg-gradient-to-r from-zinc-800 to-zinc-800 text-white font-semibold flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-zinc-900/50-500/50 transition-all"
             >
               <Sparkles className="w-5 h-5" />
               Generar Wallet
@@ -1120,7 +1120,7 @@ const SendSection = ({ wallets }) => {
       exit={{ opacity: 0 }}
       className="space-y-6"
     >
-      <div className="backdrop-blur-xl bg-slate-950/60 rounded-2xl p-8 border border-purple-500/20 max-w-2xl mx-auto">
+      <div className="backdrop-blur-xl bg-slate-950/60 rounded-2xl p-8 border border-zinc-700/20 max-w-2xl mx-auto">
         <div className="text-center mb-8">
           <div className="inline-block mb-4">
             <div className="p-4 rounded-2xl bg-gradient-to-br from-cyan-500 to-teal-500">
@@ -1263,14 +1263,14 @@ const ReceiveSection = ({ wallets }) => {
       exit={{ opacity: 0 }}
       className="space-y-6"
     >
-      <div className="backdrop-blur-xl bg-slate-950/60 rounded-2xl p-8 border border-purple-500/20 max-w-2xl mx-auto">
+      <div className="backdrop-blur-xl bg-slate-950/60 rounded-2xl p-8 border border-zinc-700/20 max-w-2xl mx-auto">
         <div className="text-center mb-8">
           <div className="inline-block mb-4">
-            <div className="p-4 rounded-2xl bg-gradient-to-br from-pink-500 to-rose-500">
+            <div className="p-4 rounded-2xl bg-gradient-to-br from-zinc-700 to-rose-500">
               <Download className="w-12 h-12 text-white" />
             </div>
           </div>
-          <h2 className="text-3xl font-bold mb-2 bg-gradient-to-r from-pink-400 to-rose-400 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-bold mb-2 bg-gradient-to-r from-zinc-700 to-rose-400 bg-clip-text text-transparent">
             Recibir Crypto
           </h2>
           <p className="text-slate-400">Comparte tu dirección para recibir criptomonedas</p>
@@ -1372,7 +1372,7 @@ const TradingSection = () => {
       exit={{ opacity: 0 }}
       className="space-y-6"
     >
-      <div className="backdrop-blur-xl bg-slate-950/60 rounded-2xl p-8 border border-purple-500/20 max-w-2xl mx-auto">
+      <div className="backdrop-blur-xl bg-slate-950/60 rounded-2xl p-8 border border-zinc-700/20 max-w-2xl mx-auto">
         <div className="text-center mb-8">
           <div className="inline-block mb-4">
             <div className="p-4 rounded-2xl bg-gradient-to-br from-yellow-500 to-orange-500 relative">
@@ -1533,7 +1533,7 @@ const EmailsSection = () => {
     >
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">
         {/* Email List */}
-        <div className="lg:col-span-1 backdrop-blur-xl bg-slate-950/60 rounded-2xl p-6 border border-purple-500/20 h-full overflow-y-auto">
+        <div className="lg:col-span-1 backdrop-blur-xl bg-slate-950/60 rounded-2xl p-6 border border-zinc-700/20 h-full overflow-y-auto">
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-xl font-bold flex items-center gap-2">
               <Mail className="w-5 h-5 text-orange-400" />
@@ -1586,7 +1586,7 @@ const EmailsSection = () => {
         </div>
 
         {/* Email Content */}
-        <div className="lg:col-span-2 backdrop-blur-xl bg-slate-950/60 rounded-2xl p-8 border border-purple-500/20">
+        <div className="lg:col-span-2 backdrop-blur-xl bg-slate-950/60 rounded-2xl p-8 border border-zinc-700/20">
           {selectedEmail ? (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -1598,7 +1598,7 @@ const EmailsSection = () => {
                 <h2 className="text-2xl font-bold text-white mb-4">{selectedEmail.subject}</h2>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center text-white font-bold text-lg">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-zinc-800 flex items-center justify-center text-white font-bold text-lg">
                       {selectedEmail.from[0].toUpperCase()}
                     </div>
                     <div>
@@ -1634,7 +1634,7 @@ const EmailsSection = () => {
 
               {/* Actions */}
               <div className="flex gap-3 pt-6 border-t border-white/10">
-                <button className="px-6 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold hover:shadow-lg hover:shadow-orange-500/50 transition-all">
+                <button className="px-6 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-zinc-800 text-white font-semibold hover:shadow-lg hover:shadow-orange-500/50 transition-all">
                   Responder
                 </button>
                 <button className="px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold transition-all">
@@ -1686,14 +1686,14 @@ const SecuritySection = () => {
       exit={{ opacity: 0 }}
       className="space-y-6"
     >
-      <div className="backdrop-blur-xl bg-slate-950/60 rounded-2xl p-8 border border-purple-500/20 max-w-4xl mx-auto">
+      <div className="backdrop-blur-xl bg-slate-950/60 rounded-2xl p-8 border border-zinc-700/20 max-w-4xl mx-auto">
         <div className="text-center mb-8">
           <div className="inline-block mb-4">
-            <div className="p-4 rounded-2xl bg-gradient-to-br from-red-500 to-pink-500">
+            <div className="p-4 rounded-2xl bg-gradient-to-br from-zinc-700 to-zinc-800">
               <Shield className="w-12 h-12 text-white" />
             </div>
           </div>
-          <h2 className="text-3xl font-bold mb-2 bg-gradient-to-r from-red-400 to-pink-400 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-bold mb-2 bg-gradient-to-r from-zinc-700 to-zinc-800 bg-clip-text text-transparent">
             Centro de Seguridad
           </h2>
           <p className="text-slate-400">Protege tu cuenta con múltiples capas de seguridad</p>
@@ -1771,7 +1771,7 @@ const SecuritySection = () => {
           {/* Recent Activity */}
           <div className="p-6 rounded-xl bg-white/5 border border-white/10">
             <h3 className="text-white font-semibold mb-4 flex items-center gap-2">
-              <Activity className="w-5 h-5 text-purple-400" />
+              <Activity className="w-5 h-5 text-zinc-200" />
               Actividad Reciente
             </h3>
             <div className="space-y-3">
@@ -1903,14 +1903,14 @@ export default function ShadowPrime() {
         style={{ marginLeft: isCollapsed ? 80 : 320 }}
       >
         {/* Header Premium */}
-        <header className="relative backdrop-blur-xl bg-slate-950/80 border-b border-purple-500/20 p-6 z-10">
+        <header className="relative backdrop-blur-xl bg-slate-950/80 border-b border-zinc-700/20 p-6 z-10">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center justify-between"
           >
             <div>
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent capitalize">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-zinc-800 via-zinc-700 to-orange-400 bg-clip-text text-transparent capitalize">
                 {activeSection}
               </h2>
               <p className="text-slate-400 mt-1">Gestiona tus criptomonedas de forma segura</p>
@@ -1923,7 +1923,7 @@ export default function ShadowPrime() {
                 className="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all relative group"
               >
                 <RefreshCw className="w-5 h-5" />
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-r from-zinc-800 to-zinc-800 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity" />
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -1931,7 +1931,7 @@ export default function ShadowPrime() {
                 className="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all relative group"
               >
                 <Settings className="w-5 h-5" />
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-r from-zinc-800 to-zinc-800 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity" />
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -1939,7 +1939,7 @@ export default function ShadowPrime() {
                 className="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all relative group"
               >
                 <Shield className="w-5 h-5" />
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-r from-zinc-800 to-zinc-800 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity" />
               </motion.button>
             </div>
           </motion.div>

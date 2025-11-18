@@ -230,8 +230,8 @@ export const SelectionCheckbox = ({ checked, onChange, disabled = false, label =
           w-5 h-5 rounded border-2 transition-all duration-200
           ${
             checked
-              ? 'bg-purple-500 border-purple-500'
-              : 'border-slate-400 group-hover:border-purple-400'
+              ? 'bg-zinc-800 border-zinc-700'
+              : 'border-slate-400 group-hover:border-zinc-600'
           }
           ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
         `}
@@ -277,11 +277,11 @@ export const BulkActionsBar = ({
 
   return (
     <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 animate-slide-up">
-      <div className="glass rounded-2xl px-6 py-4 border border-purple-500/30 shadow-2xl shadow-purple-500/20 backdrop-blur-xl">
+      <div className="glass rounded-2xl px-6 py-4 border border-zinc-700/30 shadow-2xl shadow-zinc-800/20 backdrop-blur-xl">
         <div className="flex items-center gap-6">
           {/* Counter */}
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center font-bold text-sm">
+            <div className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-sm">
               {selectedCount}
             </div>
             <span className="text-sm font-semibold">
@@ -381,7 +381,7 @@ export const BulkActionsBar = ({
 
           {isProcessing && (
             <div className="flex items-center gap-2">
-              <div className="animate-spin rounded-full h-4 w-4 border-2 border-purple-500 border-t-transparent" />
+              <div className="animate-spin rounded-full h-4 w-4 border-2 border-zinc-700 border-t-transparent" />
               <span className="text-sm text-slate-400">Procesando...</span>
             </div>
           )}
@@ -408,10 +408,10 @@ export const BulkConfirmModal = ({
   if (!isOpen) return null;
 
   const colorClasses = {
-    red: 'from-red-500 to-pink-500',
+    red: 'from-zinc-700 to-zinc-800',
     blue: 'from-blue-500 to-cyan-500',
     green: 'from-green-500 to-emerald-500',
-    purple: 'from-purple-500 to-pink-500',
+    purple: 'from-zinc-800 via-zinc-700 to-zinc-800',
   };
 
   return (
@@ -451,7 +451,7 @@ export const BulkConfirmModal = ({
 
           {itemCount && (
             <p className="text-sm text-slate-400 mb-6">
-              Se procesarán <span className="font-bold text-purple-400">{itemCount}</span> elemento
+              Se procesarán <span className="font-bold text-zinc-200">{itemCount}</span> elemento
               {itemCount !== 1 ? 's' : ''}
             </p>
           )}

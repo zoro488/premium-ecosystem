@@ -100,13 +100,13 @@ export default function PanelVentasUltra() {
   }, {} as Record<string, number>);
 
   const bancosColores = {
-    utilidades: { color: 'from-purple-500 to-indigo-600', bg: 'purple' },
-    guardadito: { color: 'from-blue-500 to-cyan-600', bg: 'blue' },
+    utilidades: { color: 'from-zinc-800 to-indigo-600', bg: 'purple' },
+    guardadito: { color: 'from-zinc-800 to-zinc-900', bg: 'blue' },
     miel: { color: 'from-yellow-500 to-orange-600', bg: 'yellow' },
     bovedaMonte: { color: 'from-green-500 to-emerald-600', bg: 'green' },
-    azteca: { color: 'from-red-500 to-pink-600', bg: 'red' },
-    banorte: { color: 'from-indigo-500 to-purple-600', bg: 'indigo' },
-    bovedaUSA: { color: 'from-teal-500 to-cyan-600', bg: 'teal' },
+    azteca: { color: 'from-zinc-700 to-zinc-700', bg: 'red' },
+    banorte: { color: 'from-indigo-500 to-zinc-800', bg: 'indigo' },
+    bovedaUSA: { color: 'from-teal-500 to-zinc-900', bg: 'teal' },
   };
 
   return (
@@ -159,7 +159,7 @@ export default function PanelVentasUltra() {
             whileTap={{ scale: 0.95 }}
             className="px-6 py-3 rounded-xl glass-dark border border-white/10
                        text-white font-semibold flex items-center gap-2
-                       hover:border-green-500/50 transition-all"
+                       hover:border-zinc-500/50 transition-all"
           >
             <Download className="w-5 h-5" />
             Exportar
@@ -229,13 +229,13 @@ export default function PanelVentasUltra() {
                 </div>
                 <div className="flex items-center gap-1">
                   {kpi.trend === 'up' ? (
-                    <ArrowUpRight className="w-4 h-4 text-green-400" />
+                    <ArrowUpRight className="w-4 h-4 text-zinc-200" />
                   ) : (
-                    <ArrowDownRight className="w-4 h-4 text-red-400" />
+                    <ArrowDownRight className="w-4 h-4 text-zinc-200" />
                   )}
                   <span
                     className={`text-sm font-semibold ${
-                      kpi.trend === 'up' ? 'text-green-400' : 'text-red-400'
+                      kpi.trend === 'up' ? 'text-zinc-200' : 'text-zinc-200'
                     }`}
                   >
                     {kpi.change}
@@ -267,7 +267,7 @@ export default function PanelVentasUltra() {
       >
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-zinc-800 to-zinc-900
                            flex items-center justify-center">
               <Landmark className="w-5 h-5 text-white" />
             </div>
@@ -357,7 +357,7 @@ export default function PanelVentasUltra() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/5 border border-white/10
-                         text-white placeholder-white/40 focus:border-green-500/50
+                         text-white placeholder-white/40 focus:border-zinc-500/50
                          focus:outline-none transition-all"
             />
           </div>
@@ -438,12 +438,12 @@ export default function PanelVentasUltra() {
                       </span>
                     </td>
                     <td className="px-6 py-4">
-                      <span className="text-green-400 font-semibold">
+                      <span className="text-zinc-200 font-semibold">
                         ${venta.montoPagado?.toLocaleString('es-MX') || 0}
                       </span>
                     </td>
                     <td className="px-6 py-4">
-                      <span className="text-orange-400 font-semibold">
+                      <span className="text-zinc-200 font-semibold">
                         ${((venta.montoTotal || 0) - (venta.montoPagado || 0)).toLocaleString('es-MX')}
                       </span>
                     </td>
@@ -453,24 +453,24 @@ export default function PanelVentasUltra() {
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
                           onClick={() => setSelectedVenta(venta)}
-                          className="p-2 rounded-lg bg-blue-500/20 text-blue-400
-                                   hover:bg-blue-500/30 transition-colors"
+                          className="p-2 rounded-lg bg-zinc-800/20 text-zinc-300
+                                   hover:bg-zinc-800/30 transition-colors"
                         >
                           <Eye className="w-4 h-4" />
                         </motion.button>
                         <motion.button
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
-                          className="p-2 rounded-lg bg-green-500/20 text-green-400
-                                   hover:bg-green-500/30 transition-colors"
+                          className="p-2 rounded-lg bg-zinc-9000/20 text-zinc-200
+                                   hover:bg-zinc-9000/30 transition-colors"
                         >
                           <Edit3 className="w-4 h-4" />
                         </motion.button>
                         <motion.button
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
-                          className="p-2 rounded-lg bg-red-500/20 text-red-400
-                                   hover:bg-red-500/30 transition-colors"
+                          className="p-2 rounded-lg bg-zinc-9000/20 text-zinc-200
+                                   hover:bg-zinc-9000/30 transition-colors"
                         >
                           <Trash2 className="w-4 h-4" />
                         </motion.button>

@@ -21,7 +21,7 @@ export const ChronosButton = ({
     primary: 'bg-white text-black hover:bg-white/90',
     secondary: 'bg-white/10 text-white hover:bg-white/15 border border-white/20',
     ghost: 'bg-transparent text-white hover:bg-white/5 border border-white/10',
-    danger: 'bg-red-500/20 text-red-400 hover:bg-red-500/30 border border-red-500/30'
+    danger: 'bg-zinc-9000/20 text-zinc-200 hover:bg-zinc-9000/30 border border-zinc-500/30'
   };
 
   const sizes = {
@@ -142,7 +142,7 @@ export const ChronosInput = ({
             text-white text-sm placeholder-white/30 outline-none
             transition-all duration-300
             ${Icon ? 'pl-10' : ''}
-            ${error ? 'border-red-500/30' : 'border-white/10'}
+            ${error ? 'border-zinc-500/30' : 'border-white/10'}
           `}
           {...props}
         />
@@ -165,7 +165,7 @@ export const ChronosInput = ({
         <motion.p
           initial={{ opacity: 0, y: -5 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-xs text-red-400 mt-2"
+          className="text-xs text-zinc-200 mt-2"
         >
           {error}
         </motion.p>

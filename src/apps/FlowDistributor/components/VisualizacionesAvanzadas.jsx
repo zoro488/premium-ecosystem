@@ -73,10 +73,10 @@ const DonutChart = ({ data, title, centerValue, centerLabel }) => {
   const centerY = 100;
 
   const colors = [
-    'from-cyan-500 to-blue-600',
-    'from-purple-500 to-pink-600',
+    'from-zinc-800 to-zinc-900',
+    'from-zinc-800 to-zinc-700',
     'from-green-500 to-emerald-600',
-    'from-orange-500 to-red-600',
+    'from-orange-500 to-zinc-800',
     'from-yellow-500 to-amber-600',
   ];
 
@@ -240,17 +240,17 @@ const MetricCard = ({ icon: Icon, title, value, change, changeType, description 
     {...animations.fadeIn}
   >
     <div className="flex items-center justify-between mb-4">
-      <div className="p-3 rounded-xl bg-cyan-500/10">
-        <Icon className="w-6 h-6 text-cyan-400" />
+      <div className="p-3 rounded-xl bg-zinc-9000/10">
+        <Icon className="w-6 h-6 text-zinc-300" />
       </div>
 
       {change !== undefined && (
         <div
           className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${
             changeType === 'positive'
-              ? 'bg-green-500/20 text-green-300'
+              ? 'bg-zinc-9000/20 text-green-300'
               : changeType === 'negative'
-                ? 'bg-red-500/20 text-red-300'
+                ? 'bg-zinc-9000/20 text-red-300'
                 : 'bg-gray-500/20 text-gray-300'
           }`}
         >
@@ -421,8 +421,8 @@ export const CardsView = ({ data, onEdit, onDelete, onView }) => {
             {/* Header */}
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <Building className="w-5 h-5 text-cyan-400" />
-                <span className="font-mono text-cyan-400 text-sm">{orden.id}</span>
+                <Building className="w-5 h-5 text-zinc-300" />
+                <span className="font-mono text-zinc-300 text-sm">{orden.id}</span>
               </div>
 
               <div className="flex items-center gap-2">
@@ -433,7 +433,7 @@ export const CardsView = ({ data, onEdit, onDelete, onView }) => {
                     e.stopPropagation();
                     onEdit?.(orden);
                   }}
-                  className="p-2 rounded-lg bg-slate-800 hover:bg-cyan-600 transition-colors opacity-0 group-hover:opacity-100"
+                  className="p-2 rounded-lg bg-slate-800 hover:bg-zinc-800 transition-colors opacity-0 group-hover:opacity-100"
                 >
                   <Edit3 className="w-4 h-4 text-slate-300" />
                 </motion.button>
@@ -445,7 +445,7 @@ export const CardsView = ({ data, onEdit, onDelete, onView }) => {
                     e.stopPropagation();
                     onDelete?.(orden);
                   }}
-                  className="p-2 rounded-lg bg-slate-800 hover:bg-red-600 transition-colors opacity-0 group-hover:opacity-100"
+                  className="p-2 rounded-lg bg-slate-800 hover:bg-zinc-700 transition-colors opacity-0 group-hover:opacity-100"
                 >
                   <Trash2 className="w-4 h-4 text-slate-300" />
                 </motion.button>
@@ -473,7 +473,7 @@ export const CardsView = ({ data, onEdit, onDelete, onView }) => {
 
               <div className="flex justify-between">
                 <span className="text-slate-400">Costo Total:</span>
-                <span className="font-semibold text-green-400">
+                <span className="font-semibold text-zinc-200">
                   {formatCurrency(orden.costoTotal)}
                 </span>
               </div>
@@ -498,10 +498,10 @@ export const CardsView = ({ data, onEdit, onDelete, onView }) => {
                   transition={{ duration: 1, delay: index * 0.1 }}
                   className={`h-full transition-all duration-300 ${
                     stockPercentage > 50
-                      ? 'bg-green-500'
+                      ? 'bg-zinc-9000'
                       : stockPercentage > 20
-                        ? 'bg-yellow-500'
-                        : 'bg-red-500'
+                        ? 'bg-zinc-9000'
+                        : 'bg-zinc-9000'
                   }`}
                 />
               </div>
@@ -512,10 +512,10 @@ export const CardsView = ({ data, onEdit, onDelete, onView }) => {
               <span
                 className={`px-3 py-1 rounded-full text-xs font-medium ${
                   estado === 'En Stock'
-                    ? 'bg-green-500/20 text-green-300'
+                    ? 'bg-zinc-9000/20 text-green-300'
                     : estado === 'Pagado'
-                      ? 'bg-blue-500/20 text-blue-300'
-                      : 'bg-yellow-500/20 text-yellow-300'
+                      ? 'bg-zinc-800/20 text-zinc-300'
+                      : 'bg-zinc-9000/20 text-yellow-300'
                 }`}
               >
                 {estado}

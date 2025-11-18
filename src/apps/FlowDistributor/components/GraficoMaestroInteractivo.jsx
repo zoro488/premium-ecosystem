@@ -155,21 +155,21 @@ const TooltipSupremo = memo(({ active, payload, label, colorScheme }) => {
       >
         <div className="flex items-center gap-2 mb-2">
           {tendencia === 'positiva' ? (
-            <TrendingUp className="w-4 h-4 text-emerald-400" />
+            <TrendingUp className="w-4 h-4 text-zinc-200" />
           ) : tendencia === 'negativa' ? (
-            <TrendingDown className="w-4 h-4 text-red-400" />
+            <TrendingDown className="w-4 h-4 text-zinc-200" />
           ) : (
-            <DollarSign className="w-4 h-4 text-amber-400" />
+            <DollarSign className="w-4 h-4 text-zinc-200" />
           )}
           <span className="text-xs font-semibold text-slate-400">Análisis</span>
         </div>
         <p
           className={`text-xs font-medium ${
             tendencia === 'positiva'
-              ? 'text-emerald-400'
+              ? 'text-zinc-200'
               : tendencia === 'negativa'
-                ? 'text-red-400'
-                : 'text-amber-400'
+                ? 'text-zinc-200'
+                : 'text-zinc-200'
           }`}
         >
           {tendencia === 'positiva'

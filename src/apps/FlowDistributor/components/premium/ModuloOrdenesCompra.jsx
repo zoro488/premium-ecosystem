@@ -139,12 +139,12 @@ export const ModuloOrdenesCompra = ({ distribuidores = [] }) => {
   }, [ordenes, searchTerm, filterEstado]);
 
   return (
-    <div className="w-full h-full bg-gradient-to-br from-slate-900 via-violet-900/20 to-slate-900 p-6 overflow-auto">
+    <div className="w-full h-full bg-gradient-to-br from-slate-900 via-zinc-800/20 to-slate-900 p-6 overflow-auto">
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-3xl font-bold bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent mb-2">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-zinc-800 to-zinc-800 bg-clip-text text-transparent mb-2">
               🛒 Órdenes de Compra
             </h2>
             <p className="text-slate-400">Gestión completa de pedidos a distribuidores</p>
@@ -153,7 +153,7 @@ export const ModuloOrdenesCompra = ({ distribuidores = [] }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setShowModal(true)}
-            className="px-6 py-3 bg-gradient-to-r from-violet-500 to-purple-500 text-white rounded-lg font-medium flex items-center gap-2 hover:shadow-lg hover:shadow-violet-500/50 transition-shadow"
+            className="px-6 py-3 bg-gradient-to-r from-zinc-800 to-zinc-800 text-white rounded-lg font-medium flex items-center gap-2 hover:shadow-lg hover:shadow-zinc-800/50 transition-shadow"
           >
             <Plus className="w-5 h-5" />
             Nueva Orden
@@ -167,11 +167,11 @@ export const ModuloOrdenesCompra = ({ distribuidores = [] }) => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           whileHover={{ scale: 1.02 }}
-          className="bg-gradient-to-br from-violet-500/20 to-violet-600/10 backdrop-blur-lg border border-violet-500/30 rounded-xl p-6"
+          className="bg-gradient-to-br from-zinc-800/20 to-zinc-800/10 backdrop-blur-lg border border-zinc-800/30 rounded-xl p-6"
         >
           <div className="flex items-center justify-between mb-2">
-            <ShoppingCart className="w-8 h-8 text-violet-400" />
-            <FileText className="w-5 h-5 text-violet-300" />
+            <ShoppingCart className="w-8 h-8 text-zinc-200" />
+            <FileText className="w-5 h-5 text-zinc-800" />
           </div>
           <p className="text-slate-400 text-sm mb-1">Total Órdenes</p>
           <p className="text-2xl font-bold text-white">{stats.totalOrdenes}</p>
@@ -182,10 +182,10 @@ export const ModuloOrdenesCompra = ({ distribuidores = [] }) => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.1 }}
           whileHover={{ scale: 1.02 }}
-          className="bg-gradient-to-br from-yellow-500/20 to-yellow-600/10 backdrop-blur-lg border border-yellow-500/30 rounded-xl p-6"
+          className="bg-gradient-to-br from-yellow-500/20 to-yellow-600/10 backdrop-blur-lg border border-zinc-500/30 rounded-xl p-6"
         >
           <div className="flex items-center justify-between mb-2">
-            <Clock className="w-8 h-8 text-yellow-400" />
+            <Clock className="w-8 h-8 text-zinc-200" />
             <AlertCircle className="w-5 h-5 text-yellow-300" />
           </div>
           <p className="text-slate-400 text-sm mb-1">Pendientes</p>
@@ -197,11 +197,11 @@ export const ModuloOrdenesCompra = ({ distribuidores = [] }) => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2 }}
           whileHover={{ scale: 1.02 }}
-          className="bg-gradient-to-br from-blue-500/20 to-blue-600/10 backdrop-blur-lg border border-blue-500/30 rounded-xl p-6"
+          className="bg-gradient-to-br from-zinc-800/20 to-zinc-900/10 backdrop-blur-lg border border-zinc-700/30 rounded-xl p-6"
         >
           <div className="flex items-center justify-between mb-2">
-            <Truck className="w-8 h-8 text-blue-400" />
-            <TrendingUp className="w-5 h-5 text-blue-300" />
+            <Truck className="w-8 h-8 text-zinc-300" />
+            <TrendingUp className="w-5 h-5 text-zinc-300" />
           </div>
           <p className="text-slate-400 text-sm mb-1">En Tránsito</p>
           <p className="text-2xl font-bold text-white">{stats.enTransito}</p>
@@ -212,10 +212,10 @@ export const ModuloOrdenesCompra = ({ distribuidores = [] }) => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3 }}
           whileHover={{ scale: 1.02 }}
-          className="bg-gradient-to-br from-green-500/20 to-green-600/10 backdrop-blur-lg border border-green-500/30 rounded-xl p-6"
+          className="bg-gradient-to-br from-green-500/20 to-green-600/10 backdrop-blur-lg border border-zinc-500/30 rounded-xl p-6"
         >
           <div className="flex items-center justify-between mb-2">
-            <DollarSign className="w-8 h-8 text-green-400" />
+            <DollarSign className="w-8 h-8 text-zinc-200" />
             <Package className="w-5 h-5 text-green-300" />
           </div>
           <p className="text-slate-400 text-sm mb-1">Monto Total</p>
@@ -240,7 +240,7 @@ export const ModuloOrdenesCompra = ({ distribuidores = [] }) => {
                 placeholder="Buscar por número de orden o distribuidor..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 bg-slate-900/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                className="w-full pl-10 pr-4 py-2 bg-slate-900/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-zinc-800"
               />
             </div>
           </div>
@@ -251,7 +251,7 @@ export const ModuloOrdenesCompra = ({ distribuidores = [] }) => {
             <select
               value={filterEstado}
               onChange={(e) => setFilterEstado(e.target.value)}
-              className="px-4 py-2 bg-slate-900/50 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-violet-500"
+              className="px-4 py-2 bg-slate-900/50 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-zinc-800"
             >
               <option value="todos">Todos los estados</option>
               <option value="pendiente">Pendientes</option>
@@ -289,7 +289,7 @@ export const ModuloOrdenesCompra = ({ distribuidores = [] }) => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-xl p-6 hover:border-violet-500/50 transition-all"
+                className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-xl p-6 hover:border-zinc-800/50 transition-all"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
@@ -321,7 +321,7 @@ export const ModuloOrdenesCompra = ({ distribuidores = [] }) => {
                       </div>
                       <div>
                         <p className="text-slate-400 mb-1">Total</p>
-                        <p className="text-2xl font-bold text-green-400">
+                        <p className="text-2xl font-bold text-zinc-200">
                           {formatCurrency(orden.total)}
                         </p>
                       </div>
@@ -334,7 +334,7 @@ export const ModuloOrdenesCompra = ({ distribuidores = [] }) => {
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                       onClick={() => setSelectedOrden(orden)}
-                      className="p-2 bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 rounded-lg transition-colors"
+                      className="p-2 bg-zinc-800/20 hover:bg-zinc-800/30 text-zinc-300 rounded-lg transition-colors"
                       title="Ver detalle"
                     >
                       <Eye className="w-5 h-5" />
@@ -342,7 +342,7 @@ export const ModuloOrdenesCompra = ({ distribuidores = [] }) => {
                     <motion.button
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
-                      className="p-2 bg-yellow-500/20 hover:bg-yellow-500/30 text-yellow-400 rounded-lg transition-colors"
+                      className="p-2 bg-zinc-9000/20 hover:bg-zinc-9000/30 text-zinc-200 rounded-lg transition-colors"
                       title="Editar"
                     >
                       <Edit className="w-5 h-5" />
@@ -350,7 +350,7 @@ export const ModuloOrdenesCompra = ({ distribuidores = [] }) => {
                     <motion.button
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
-                      className="p-2 bg-red-500/20 hover:bg-red-500/30 text-red-400 rounded-lg transition-colors"
+                      className="p-2 bg-zinc-9000/20 hover:bg-zinc-9000/30 text-zinc-200 rounded-lg transition-colors"
                       title="Eliminar"
                     >
                       <Trash2 className="w-5 h-5" />

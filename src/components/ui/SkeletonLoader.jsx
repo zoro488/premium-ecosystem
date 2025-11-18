@@ -5,6 +5,10 @@
  */
 import { motion } from 'framer-motion';
 
+
+
+
+
 // Skeleton base component
 export const Skeleton = ({ className = '', variant = 'default', ...props }) => {
   const variants = {
@@ -79,7 +83,7 @@ export const DashboardSkeleton = () => (
     <motion.div
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="backdrop-blur-xl bg-gradient-to-br from-blue-500/20 to-purple-500/10 rounded-2xl p-8 border border-white/10 space-y-6"
+      className="backdrop-blur-xl bg-gradient-to-br from-black/80 to-black/90 rounded-2xl p-8 border border-white/10 space-y-6"
     >
       <div className="flex items-center justify-between">
         <div className="space-y-3">

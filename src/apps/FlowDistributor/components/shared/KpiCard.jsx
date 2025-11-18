@@ -44,7 +44,7 @@ export const KpiCard = ({
   trend,
   trendValue,
   icon: Icon,
-  gradient = 'from-blue-500 to-indigo-600',
+  gradient = 'from-zinc-800 to-indigo-600',
   glowColor = 'shadow-blue-500/50',
   animated = true,
   onClick,
@@ -77,7 +77,7 @@ export const KpiCard = ({
     if (trend === 'up')
       return (
         <motion.svg
-          className="w-5 h-5 text-green-500"
+          className="w-5 h-5 text-zinc-100"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -96,7 +96,7 @@ export const KpiCard = ({
     if (trend === 'down')
       return (
         <motion.svg
-          className="w-5 h-5 text-red-500"
+          className="w-5 h-5 text-zinc-100"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -214,9 +214,9 @@ export const KpiCard = ({
             <span
               className={`text-sm font-medium ${
                 trend === 'up'
-                  ? 'text-green-500'
+                  ? 'text-zinc-100'
                   : trend === 'down'
-                    ? 'text-red-500'
+                    ? 'text-zinc-100'
                     : 'text-gray-300'
               }`}
             >
@@ -244,11 +244,11 @@ export const KpiCard = ({
  */
 export const KpiCardMini = ({ label, value, format = 'number', icon: Icon, color = 'blue' }) => {
   const colorVariants = {
-    blue: 'from-blue-500/20 to-indigo-500/20 border-blue-500/30',
-    green: 'from-green-500/20 to-emerald-500/20 border-green-500/30',
-    purple: 'from-purple-500/20 to-violet-500/20 border-purple-500/30',
-    amber: 'from-amber-500/20 to-orange-500/20 border-amber-500/30',
-    red: 'from-red-500/20 to-pink-500/20 border-red-500/30',
+    blue: 'from-zinc-800/20 to-indigo-500/20 border-zinc-700/30',
+    green: 'from-green-500/20 to-emerald-500/20 border-zinc-500/30',
+    purple: 'from-zinc-800/20 to-zinc-800/20 border-zinc-800/30',
+    amber: 'from-amber-500/20 to-orange-500/20 border-zinc-500/30',
+    red: 'from-zinc-700/20 to-zinc-700/20 border-zinc-500/30',
   };
 
   return (

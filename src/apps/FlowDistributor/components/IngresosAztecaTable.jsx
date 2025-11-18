@@ -69,7 +69,7 @@ const IngresosAztecaTable = memo(({ data }) => {
               <td className="px-6 py-4 whitespace-nowrap">{ingreso.fecha}</td>
               <td className="px-6 py-4 font-medium text-white">{ingreso.cliente}</td>
               <td className="px-6 py-4 text-slate-400">{ingreso.concepto}</td>
-              <td className="px-6 py-4 text-right font-bold text-green-400">
+              <td className="px-6 py-4 text-right font-bold text-zinc-200">
                 {formatCurrency(ingreso.ingreso)}
               </td>
             </motion.tr>

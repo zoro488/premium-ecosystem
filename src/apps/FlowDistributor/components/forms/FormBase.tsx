@@ -227,7 +227,7 @@ export const FormBase: React.FC<FormBaseProps> = ({
     }
 
     const baseInputClasses = `w-full px-4 py-3 rounded-lg bg-white/5 border text-white placeholder-slate-400 transition-all ${
-      error ? 'border-red-500 focus:border-red-400' : 'border-white/10 focus:border-indigo-500'
+      error ? 'border-zinc-500 focus:border-red-400' : 'border-white/10 focus:border-zinc-500'
     } focus:outline-none focus:ring-2 focus:ring-indigo-500/20`;
 
     switch (field.type) {
@@ -341,7 +341,7 @@ export const FormBase: React.FC<FormBaseProps> = ({
                   <motion.button
                     key={index}
                     type="button"
-                    className="w-full px-4 py-2 text-left text-white hover:bg-indigo-500/20 transition-colors"
+                    className="w-full px-4 py-2 text-left text-white hover:bg-zinc-9000/20 transition-colors"
                     onClick={() => {
                       handleChange(field.name, option);
                       setAutocompleteQuery((prev) => ({ ...prev, [field.name]: option }));
@@ -365,7 +365,7 @@ export const FormBase: React.FC<FormBaseProps> = ({
               checked={!!value}
               onChange={(e) => handleChange(field.name, e.target.checked)}
               disabled={field.disabled}
-              className="w-5 h-5 rounded border-white/10 bg-white/5 text-indigo-500 focus:ring-2 focus:ring-indigo-500/20 cursor-pointer"
+              className="w-5 h-5 rounded border-white/10 bg-white/5 text-zinc-100 focus:ring-2 focus:ring-indigo-500/20 cursor-pointer"
             />
             <span className="text-white">{field.label}</span>
           </label>
@@ -383,7 +383,7 @@ export const FormBase: React.FC<FormBaseProps> = ({
                   checked={value === option.value}
                   onChange={(e) => handleChange(field.name, e.target.value)}
                   disabled={field.disabled}
-                  className="w-5 h-5 border-white/10 bg-white/5 text-indigo-500 focus:ring-2 focus:ring-indigo-500/20 cursor-pointer"
+                  className="w-5 h-5 border-white/10 bg-white/5 text-zinc-100 focus:ring-2 focus:ring-indigo-500/20 cursor-pointer"
                 />
                 <span className="text-white">{option.label}</span>
               </label>
@@ -419,7 +419,7 @@ export const FormBase: React.FC<FormBaseProps> = ({
           }}
         >
           <div className="flex items-center gap-3">
-            {icon && <div className="text-indigo-400">{icon}</div>}
+            {icon && <div className="text-zinc-200">{icon}</div>}
             <div>
               <h2 className="text-2xl font-bold text-white">{title}</h2>
               {subtitle && <p className="text-sm text-slate-400 mt-1">{subtitle}</p>}
@@ -435,9 +435,9 @@ export const FormBase: React.FC<FormBaseProps> = ({
                     <div
                       className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${
                         index < currentStep
-                          ? 'bg-green-500 text-white'
+                          ? 'bg-zinc-9000 text-white'
                           : index === currentStep
-                            ? 'bg-indigo-500 text-white'
+                            ? 'bg-zinc-9000 text-white'
                             : 'bg-white/10 text-slate-400'
                       }`}
                     >
@@ -454,7 +454,7 @@ export const FormBase: React.FC<FormBaseProps> = ({
                   {index < steps.length - 1 && (
                     <div
                       className={`flex-1 h-0.5 mx-2 ${
-                        index < currentStep ? 'bg-green-500' : 'bg-white/10'
+                        index < currentStep ? 'bg-zinc-9000' : 'bg-white/10'
                       }`}
                     />
                   )}
@@ -481,7 +481,7 @@ export const FormBase: React.FC<FormBaseProps> = ({
                     {renderField(field)}
                     {errors[field.name] && (
                       <motion.p
-                        className="mt-1 text-sm text-red-400 flex items-center gap-1"
+                        className="mt-1 text-sm text-zinc-200 flex items-center gap-1"
                         initial={{ opacity: 0, y: -5 }}
                         animate={{ opacity: 1, y: 0 }}
                       >
@@ -503,10 +503,10 @@ export const FormBase: React.FC<FormBaseProps> = ({
                 >
                   <label className="block mb-2">
                     <div className="flex items-center gap-2 mb-2">
-                      {field.icon && <div className="text-indigo-400">{field.icon}</div>}
+                      {field.icon && <div className="text-zinc-200">{field.icon}</div>}
                       <span className="text-sm font-medium text-white">
                         {field.label}
-                        {field.required && <span className="text-red-400 ml-1">*</span>}
+                        {field.required && <span className="text-zinc-200 ml-1">*</span>}
                       </span>
                     </div>
                     {renderField(field)}
@@ -519,7 +519,7 @@ export const FormBase: React.FC<FormBaseProps> = ({
                   )}
                   {errors[field.name] && (
                     <motion.p
-                      className="mt-1 text-sm text-red-400 flex items-center gap-1"
+                      className="mt-1 text-sm text-zinc-200 flex items-center gap-1"
                       initial={{ opacity: 0, y: -5 }}
                       animate={{ opacity: 1, y: 0 }}
                     >

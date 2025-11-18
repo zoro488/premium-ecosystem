@@ -490,9 +490,9 @@ const PanelAnalisisReportes = ({ isActive = false }) => {
       case 'VENTAS':
         return 'text-green-400 bg-green-400/20';
       case 'DISTRIBUCIÓN':
-        return 'text-blue-400 bg-blue-400/20';
+        return 'text-zinc-300 bg-zinc-700/20';
       case 'CRM':
-        return 'text-purple-400 bg-purple-400/20';
+        return 'text-zinc-200 bg-zinc-800/20';
       case 'FINANCIERO':
         return 'text-yellow-400 bg-yellow-400/20';
       case 'PRODUCTOS':
@@ -527,7 +527,7 @@ const PanelAnalisisReportes = ({ isActive = false }) => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.1 }}
       >
-        <h1 className="text-3xl font-bold text-blue-400 mb-2">📊 ANÁLISIS Y REPORTES</h1>
+        <h1 className="text-3xl font-bold text-zinc-300 mb-2">📊 ANÁLISIS Y REPORTES</h1>
         <p className="text-gray-400">
           Centro de Inteligencia • Métricas • KPIs • Reportes Ejecutivos
         </p>
@@ -540,7 +540,7 @@ const PanelAnalisisReportes = ({ isActive = false }) => {
           <button
             className={`px-4 py-2 rounded text-sm font-semibold transition-all ${
               activeView === 'dashboard'
-                ? 'bg-blue-500/20 text-blue-400 border border-blue-500/50'
+                ? 'bg-zinc-800/20 text-zinc-300 border border-zinc-700/50'
                 : 'text-gray-400 hover:text-white hover:bg-white/10'
             }`}
             onClick={() => {
@@ -553,7 +553,7 @@ const PanelAnalisisReportes = ({ isActive = false }) => {
           <button
             className={`px-4 py-2 rounded text-sm font-semibold transition-all ${
               activeView === 'reportes'
-                ? 'bg-blue-500/20 text-blue-400 border border-blue-500/50'
+                ? 'bg-zinc-800/20 text-zinc-300 border border-zinc-700/50'
                 : 'text-gray-400 hover:text-white hover:bg-white/10'
             }`}
             onClick={() => {
@@ -573,7 +573,7 @@ const PanelAnalisisReportes = ({ isActive = false }) => {
                 key={period}
                 className={`px-3 py-1 rounded text-sm transition-all ${
                   selectedPeriod === period
-                    ? 'bg-blue-500/20 text-blue-400'
+                    ? 'bg-zinc-800/20 text-zinc-300'
                     : 'text-gray-400 hover:text-white'
                 }`}
                 onClick={() => {
@@ -600,7 +600,7 @@ const PanelAnalisisReportes = ({ isActive = false }) => {
           >
             {loading ? (
               <div className="flex items-center justify-center h-64">
-                <div className="text-blue-400">
+                <div className="text-zinc-300">
                   <div className="animate-spin text-4xl mb-4">⚡</div>
                   <p>Cargando análisis...</p>
                 </div>
@@ -648,12 +648,12 @@ const PanelAnalisisReportes = ({ isActive = false }) => {
 
                   {/* Clientes */}
                   <motion.div
-                    className="bg-gradient-to-br from-blue-900/30 to-blue-800/20 border border-blue-500/30 rounded-lg p-4"
+                    className="bg-gradient-to-br from-zinc-800/30 to-zinc-700/20 border border-zinc-700/30 rounded-lg p-4"
                     whileHover={{ scale: 1.02 }}
                   >
                     <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-blue-400 font-semibold">👥 CLIENTES</h3>
-                      <span className="text-sm text-blue-400">
+                      <h3 className="text-zinc-300 font-semibold">👥 CLIENTES</h3>
+                      <span className="text-sm text-zinc-300">
                         {currentMetrics.clientes?.nuevos || 0} nuevos
                       </span>
                     </div>
@@ -679,12 +679,12 @@ const PanelAnalisisReportes = ({ isActive = false }) => {
 
                   {/* Margen */}
                   <motion.div
-                    className="bg-gradient-to-br from-purple-900/30 to-purple-800/20 border border-purple-500/30 rounded-lg p-4"
+                    className="bg-gradient-to-br from-zinc-800/30 to-zinc-800/20 border border-zinc-700/30 rounded-lg p-4"
                     whileHover={{ scale: 1.02 }}
                   >
                     <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-purple-400 font-semibold">📊 MARGEN</h3>
-                      <span className="text-sm text-purple-400">Neto</span>
+                      <h3 className="text-zinc-200 font-semibold">📊 MARGEN</h3>
+                      <span className="text-sm text-zinc-200">Neto</span>
                     </div>
                     <p className="text-2xl font-bold text-white">
                       {formatPercentage(currentMetrics.financiero?.margenNeto || 0, false)}
@@ -727,8 +727,8 @@ const PanelAnalisisReportes = ({ isActive = false }) => {
                 </div>
 
                 {/* Productos Más Vendidos */}
-                <div className="bg-black/50 border border-blue-500/30 rounded-lg p-6">
-                  <h3 className="text-blue-400 font-semibold mb-4">🏆 PRODUCTOS MÁS VENDIDOS</h3>
+                <div className="bg-black/50 border border-zinc-700/30 rounded-lg p-6">
+                  <h3 className="text-zinc-300 font-semibold mb-4">🏆 PRODUCTOS MÁS VENDIDOS</h3>
                   <div className="space-y-3">
                     {(currentMetrics.productos?.masVendidos || []).map((producto, index) => (
                       <motion.div
@@ -800,8 +800,8 @@ const PanelAnalisisReportes = ({ isActive = false }) => {
                     </div>
                   </div>
 
-                  <div className="bg-black/50 border border-blue-500/30 rounded-lg p-4">
-                    <h4 className="text-blue-400 font-semibold mb-3">💰 FLUJO</h4>
+                  <div className="bg-black/50 border border-zinc-700/30 rounded-lg p-4">
+                    <h4 className="text-zinc-300 font-semibold mb-3">💰 FLUJO</h4>
                     <div className="space-y-2">
                       <div className="flex justify-between">
                         <span className="text-gray-400">Efectivo:</span>
@@ -835,21 +835,21 @@ const PanelAnalisisReportes = ({ isActive = false }) => {
             exit={{ opacity: 0, x: -20 }}
           >
             {/* Tabla de Reportes */}
-            <div className="bg-black/50 rounded-lg border border-blue-500/30 overflow-hidden">
-              <div className="bg-blue-900/30 p-4 border-b border-blue-500/30">
-                <h3 className="text-blue-400 font-semibold">📋 BIBLIOTECA DE REPORTES</h3>
+            <div className="bg-black/50 rounded-lg border border-zinc-700/30 overflow-hidden">
+              <div className="bg-zinc-950/30 p-4 border-b border-zinc-700/30">
+                <h3 className="text-zinc-300 font-semibold">📋 BIBLIOTECA DE REPORTES</h3>
               </div>
               <div className="overflow-x-auto max-h-[calc(100vh-350px)]">
                 <table className="w-full">
                   <thead className="bg-black/70 sticky top-0">
                     <tr>
-                      <th className="p-3 text-left text-blue-400">Reporte</th>
-                      <th className="p-3 text-left text-blue-400">Descripción</th>
-                      <th className="p-3 text-center text-blue-400">Tipo</th>
-                      <th className="p-3 text-center text-blue-400">Formato</th>
-                      <th className="p-3 text-center text-blue-400">Última Gen.</th>
-                      <th className="p-3 text-center text-blue-400">Tamaño</th>
-                      <th className="p-3 text-center text-blue-400">Acciones</th>
+                      <th className="p-3 text-left text-zinc-300">Reporte</th>
+                      <th className="p-3 text-left text-zinc-300">Descripción</th>
+                      <th className="p-3 text-center text-zinc-300">Tipo</th>
+                      <th className="p-3 text-center text-zinc-300">Formato</th>
+                      <th className="p-3 text-center text-zinc-300">Última Gen.</th>
+                      <th className="p-3 text-center text-zinc-300">Tamaño</th>
+                      <th className="p-3 text-center text-zinc-300">Acciones</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -876,7 +876,7 @@ const PanelAnalisisReportes = ({ isActive = false }) => {
                         <td className="p-3 text-center">
                           <div className="flex justify-center space-x-2">
                             <button
-                              className="text-blue-400 hover:text-blue-300 transition-colors"
+                              className="text-zinc-300 hover:text-zinc-100 transition-colors"
                               onClick={() => playUISound('click')}
                               title="Descargar"
                             >
@@ -890,7 +890,7 @@ const PanelAnalisisReportes = ({ isActive = false }) => {
                               🔄
                             </button>
                             <button
-                              className="text-purple-400 hover:text-purple-300 transition-colors"
+                              className="text-zinc-200 hover:text-zinc-200 transition-colors"
                               onClick={() => playUISound('click')}
                               title="Ver"
                             >
@@ -917,7 +917,7 @@ const PanelAnalisisReportes = ({ isActive = false }) => {
               </motion.button>
 
               <motion.button
-                className="bg-gradient-to-r from-blue-600 to-blue-500 text-white p-4 rounded-lg font-semibold hover:from-blue-500 hover:to-blue-400 transition-all"
+                className="bg-gradient-to-r from-zinc-900 to-zinc-800 text-white p-4 rounded-lg font-semibold hover:from-zinc-800 hover:to-zinc-700 transition-all"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => playUISound('confirm')}
@@ -926,7 +926,7 @@ const PanelAnalisisReportes = ({ isActive = false }) => {
               </motion.button>
 
               <motion.button
-                className="bg-gradient-to-r from-purple-600 to-purple-500 text-white p-4 rounded-lg font-semibold hover:from-purple-500 hover:to-purple-400 transition-all"
+                className="bg-gradient-to-r from-zinc-800 to-zinc-700 text-white p-4 rounded-lg font-semibold hover:from-zinc-700 hover:to-zinc-600 transition-all"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => playUISound('confirm')}

@@ -40,7 +40,7 @@ export const WidgetFinanzasWaterfall: React.FC = () => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="h-full p-6 rounded-2xl bg-gradient-to-br from-slate-900/90 to-purple-900/40 border border-purple-500/20"
+      className="h-full p-6 rounded-2xl bg-gradient-to-br from-slate-900/90 to-zinc-800/40 border border-zinc-700/20"
     >
       <div className="flex items-center gap-3 mb-6">
         <DollarSign className="w-6 h-6 text-green-400" />
@@ -179,7 +179,7 @@ export const WidgetClientesSegmentacion: React.FC = () => {
               <div className="text-sm text-white font-medium">{cliente.nombre}</div>
               <div className="text-xs text-slate-400">{cliente.cantidad} unidades</div>
             </div>
-            <div className="text-sm font-bold text-purple-400">
+            <div className="text-sm font-bold text-zinc-200">
               {cliente.porcentaje.toFixed(1)}%
             </div>
           </div>

@@ -128,7 +128,7 @@ export const KeyboardShortcutsPanel = ({ isOpen, onClose }) => {
             <div className="p-6 border-b border-white/10">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500">
+                  <div className="p-3 rounded-xl bg-gradient-to-r from-zinc-800 to-zinc-700">
                     <Keyboard className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -219,7 +219,7 @@ export const KeyboardShortcutsPanel = ({ isOpen, onClose }) => {
             {/* Footer */}
             <div className="p-6 border-t border-white/10 bg-gradient-to-t from-gray-900/50 to-transparent">
               <div className="flex items-center gap-4">
-                <div className="flex-1 p-4 rounded-xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20">
+                <div className="flex-1 p-4 rounded-xl bg-gradient-to-r from-zinc-800/10 to-zinc-800/10 border border-zinc-700/20">
                   <p className="text-white/80 text-sm">
                     💡 <span className="font-semibold">Tip:</span> Mantén presionada la tecla Ctrl
                     para ver todos los shortcuts disponibles en cualquier momento

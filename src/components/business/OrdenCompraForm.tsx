@@ -177,11 +177,11 @@ export const OrdenCompraForm: React.FC<OrdenCompraFormProps> = ({ onSuccess, onC
         {/* STK Preview Card */}
         <motion.div
           layout
-          className="p-4 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-lg border border-purple-200 dark:border-purple-700"
+          className="p-4 bg-gradient-to-br from-zinc-800 to-blue-50 dark:from-zinc-800/20 dark:to-blue-900/20 rounded-lg border border-zinc-700 dark:border-zinc-700"
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Package className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+              <Package className="w-5 h-5 text-zinc-200 dark:text-zinc-200" />
               <span className="font-semibold text-gray-700 dark:text-gray-300">STK Actual:</span>
               <span className="text-xl font-bold text-gray-900 dark:text-white">{currentSTK}</span>
             </div>

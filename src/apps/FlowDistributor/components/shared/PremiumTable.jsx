@@ -34,7 +34,7 @@ import {
 export const PremiumTable = ({
   data = [],
   columns = [],
-  gradient = 'from-blue-500/20 to-indigo-500/20',
+  gradient = 'from-zinc-800/20 to-indigo-500/20',
   animated = true,
   onRowClick,
   sortable = true,
@@ -240,10 +240,10 @@ export const PremiumTable = ({
 export const TableBadge = ({ children, variant = 'default' }) => {
   const variants = {
     default: 'bg-gray-700/50 text-gray-300',
-    success: 'bg-green-500/20 text-green-400',
-    warning: 'bg-amber-500/20 text-amber-400',
-    danger: 'bg-red-500/20 text-red-400',
-    info: 'bg-blue-500/20 text-blue-400',
+    success: 'bg-zinc-9000/20 text-zinc-200',
+    warning: 'bg-zinc-9000/20 text-zinc-200',
+    danger: 'bg-zinc-9000/20 text-zinc-200',
+    info: 'bg-zinc-800/20 text-zinc-300',
   };
 
   return (

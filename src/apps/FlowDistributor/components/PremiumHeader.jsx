@@ -174,7 +174,7 @@ const PremiumHeader = memo(
         label: 'Dashboard',
         path: '/dashboard',
         icon: Activity,
-        gradient: 'from-blue-500 via-cyan-500 to-blue-600',
+        gradient: 'from-zinc-800 via-cyan-500 to-zinc-900',
         description: 'Panel principal de control',
       },
       {
@@ -198,7 +198,7 @@ const PremiumHeader = memo(
         label: 'Distribuidores',
         path: '/distribuidores',
         icon: Zap,
-        gradient: 'from-blue-500 via-indigo-500 to-purple-600',
+        gradient: 'from-zinc-800 via-indigo-500 to-zinc-800',
         description: 'Gestión de distribuidores',
       },
       {
@@ -206,7 +206,7 @@ const PremiumHeader = memo(
         label: 'Clientes',
         path: '/clientes',
         icon: User,
-        gradient: 'from-pink-500 via-rose-500 to-red-600',
+        gradient: 'from-zinc-700 via-zinc-700 to-zinc-800',
         description: 'Administración de clientes',
       },
       {
@@ -214,7 +214,7 @@ const PremiumHeader = memo(
         label: 'Almacén',
         path: '/almacen',
         icon: Activity,
-        gradient: 'from-purple-500 via-violet-500 to-indigo-600',
+        gradient: 'from-zinc-800 via-zinc-800 to-indigo-600',
         description: 'Control de inventario',
       },
       {
@@ -222,7 +222,7 @@ const PremiumHeader = memo(
         label: 'GYA',
         path: '/gastos-abonos',
         icon: TrendingUp,
-        gradient: 'from-teal-500 via-cyan-500 to-blue-600',
+        gradient: 'from-teal-500 via-cyan-500 to-zinc-900',
         description: 'Gastos y abonos',
       },
       {
@@ -246,7 +246,7 @@ const PremiumHeader = memo(
         label: 'Azteca',
         path: '/azteca',
         icon: Activity,
-        gradient: 'from-blue-500 via-sky-500 to-cyan-600',
+        gradient: 'from-zinc-800 via-sky-500 to-zinc-900',
         description: 'Banco Azteca',
       },
       {
@@ -254,7 +254,7 @@ const PremiumHeader = memo(
         label: 'Leftie',
         path: '/leftie',
         icon: TrendingUp,
-        gradient: 'from-purple-500 via-fuchsia-500 to-pink-600',
+        gradient: 'from-zinc-800 via-zinc-700 to-zinc-700',
         description: 'Leftie Bank',
       },
       {
@@ -262,7 +262,7 @@ const PremiumHeader = memo(
         label: 'Bóveda USA',
         path: '/boveda-usa',
         icon: Sparkles,
-        gradient: 'from-red-500 via-orange-500 to-yellow-600',
+        gradient: 'from-zinc-700 via-orange-500 to-yellow-600',
         description: 'Bóveda Estados Unidos',
       },
       {
@@ -377,7 +377,7 @@ const PremiumHeader = memo(
             >
               {/* Glassmorphism layers */}
               <div className="absolute inset-0 bg-white/5 backdrop-blur-xl border border-white/10" />
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/20 to-zinc-800/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               <motion.div
                 className="relative z-10"
@@ -391,7 +391,7 @@ const PremiumHeader = memo(
             {/* Logo y título con AI Glow Effect */}
             <motion.div className="flex items-center space-x-3" variants={itemVariants}>
               <motion.div
-                className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 via-blue-600 to-purple-700 flex items-center justify-center overflow-hidden"
+                className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-zinc-800 via-blue-600 to-zinc-800 flex items-center justify-center overflow-hidden"
                 variants={pulseVariants}
                 animate="animate"
                 whileHover={{
@@ -403,7 +403,7 @@ const PremiumHeader = memo(
                 style={{ transformStyle: 'preserve-3d' }}
               >
                 {/* Animated glow */}
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-600 animate-pulse opacity-50" />
+                <div className="absolute inset-0 bg-gradient-to-r from-zinc-700 to-zinc-900 animate-pulse opacity-50" />
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/20 to-transparent" />
 
                 <motion.div
@@ -441,7 +441,7 @@ const PremiumHeader = memo(
           >
             {/* Enhanced Glassmorphism Container */}
             <div className="absolute inset-0 bg-white/5 backdrop-blur-xl rounded-xl border border-white/10 shadow-2xl" />
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/5 to-pink-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-r from-zinc-800/10 via-zinc-800/5 to-zinc-700/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             <div className="relative z-10 flex items-center space-x-2 p-2">
               <AnimatePresence>
@@ -473,14 +473,14 @@ const PremiumHeader = memo(
                         >
                           <Icon className="w-4 h-4" />
                         </motion.div>
-                        <span className="group-hover/btn:text-blue-300 transition-colors duration-300">
+                        <span className="group-hover/btn:text-zinc-300 transition-colors duration-300">
                           {panel.label}
                         </span>
                       </div>
 
                       {isActive && (
                         <motion.div
-                          className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500/30 to-purple-500/30"
+                          className="absolute inset-0 rounded-lg bg-gradient-to-r from-zinc-800/30 to-zinc-800/30"
                           style={{
                             background: `linear-gradient(135deg, ${panel.gradient.replace('from-', '').replace(' via-', ', ').replace(' to-', ', ')})`,
                           }}
@@ -516,14 +516,14 @@ const PremiumHeader = memo(
                 <div
                   className={`absolute inset-0 backdrop-blur-xl border transition-all ${
                     isSearchFocused
-                      ? 'border-cyan-500/50 bg-white/10'
+                      ? 'border-zinc-500/50 bg-white/10'
                       : 'border-white/10 bg-white/5'
                   }`}
                 />
 
                 {/* AI Glow Effect */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-r from-cyan-500/20 via-blue-500/10 to-purple-500/20 transition-opacity ${
+                  className={`absolute inset-0 bg-gradient-to-r from-zinc-800/20 via-zinc-700/10 to-zinc-800/20 transition-opacity ${
                     isSearchFocused ? 'opacity-100' : 'opacity-0'
                   }`}
                 />
@@ -559,7 +559,7 @@ const PremiumHeader = memo(
                         initial={{ opacity: 0, scale: 0.5 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.5 }}
-                        className="w-4 h-4 border-2 border-cyan-500/30 border-t-cyan-500 rounded-full animate-spin"
+                        className="w-4 h-4 border-2 border-zinc-500/30 border-t-cyan-500 rounded-full animate-spin"
                       />
                     )}
                   </AnimatePresence>
@@ -573,7 +573,7 @@ const PremiumHeader = memo(
               variants={itemVariants}
             >
               <motion.div
-                className="flex items-center space-x-1 text-green-400"
+                className="flex items-center space-x-1 text-zinc-200"
                 variants={pulseVariants}
                 animate="animate"
               >
@@ -581,7 +581,7 @@ const PremiumHeader = memo(
                 <span>Online</span>
               </motion.div>
               <motion.div
-                className="flex items-center space-x-1 text-blue-400"
+                className="flex items-center space-x-1 text-zinc-300"
                 whileHover={{ scale: 1.1 }}
               >
                 <Battery className="w-4 h-4" />
@@ -609,7 +609,7 @@ const PremiumHeader = memo(
               >
                 {/* Glassmorphism background */}
                 <div className="absolute inset-0 bg-white/5 backdrop-blur-xl border border-white/10" />
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-red-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-zinc-800/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 <motion.div
                   className="relative z-10"
@@ -621,7 +621,7 @@ const PremiumHeader = memo(
 
                 {notifications > 0 && (
                   <motion.span
-                    className="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs rounded-full flex items-center justify-center shadow-lg"
+                    className="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-r from-zinc-700 to-zinc-700 text-white text-xs rounded-full flex items-center justify-center shadow-lg"
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     whileHover={{ scale: 1.2 }}
@@ -649,11 +649,11 @@ const PremiumHeader = memo(
               >
                 {/* Enhanced Glassmorphism */}
                 <div className="absolute inset-0 bg-white/5 backdrop-blur-xl border border-white/10" />
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/20 to-zinc-800/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 <div className="relative z-10 flex items-center space-x-3">
                   <motion.div
-                    className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 via-blue-600 to-purple-700 flex items-center justify-center overflow-hidden"
+                    className="w-8 h-8 rounded-lg bg-gradient-to-br from-zinc-800 via-blue-600 to-zinc-800 flex items-center justify-center overflow-hidden"
                     whileHover={{
                       scale: 1.1,
                       rotateY: 15,

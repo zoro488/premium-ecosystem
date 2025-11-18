@@ -122,7 +122,7 @@ const QuantumImporter = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-zinc-800 p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -203,7 +203,7 @@ const QuantumImporter = () => {
                   ${
                     !file || importing
                       ? 'bg-gray-500 cursor-not-allowed'
-                      : 'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 hover:scale-105 shadow-lg hover:shadow-xl'
+                      : 'bg-gradient-to-r from-blue-500 to-zinc-800 hover:from-blue-600 hover:to-zinc-800 hover:scale-105 shadow-lg hover:shadow-xl'
                   }
                   text-white
                 `}
@@ -237,7 +237,7 @@ const QuantumImporter = () => {
               >
                 <div className="bg-gray-700 rounded-full h-3 overflow-hidden">
                   <motion.div
-                    className="h-full bg-gradient-to-r from-blue-500 to-purple-600"
+                    className="h-full bg-gradient-to-r from-blue-500 to-zinc-800"
                     initial={{ width: 0 }}
                     animate={{ width: `${progress}%` }}
                     transition={{ duration: 0.3 }}

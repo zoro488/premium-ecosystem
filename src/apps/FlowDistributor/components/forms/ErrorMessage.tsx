@@ -38,19 +38,19 @@ interface ErrorMessageProps {
 
 const variantStyles = {
   error: {
-    bg: 'bg-red-500/10',
-    border: 'border-red-500/20',
-    text: 'text-red-400',
-    icon: 'text-red-400'
+    bg: 'bg-zinc-9000/10',
+    border: 'border-zinc-500/20',
+    text: 'text-zinc-200',
+    icon: 'text-zinc-200'
   },
   warning: {
-    bg: 'bg-yellow-500/10',
-    border: 'border-yellow-500/20',
-    text: 'text-yellow-400',
-    icon: 'text-yellow-400'
+    bg: 'bg-zinc-9000/10',
+    border: 'border-zinc-500/20',
+    text: 'text-zinc-200',
+    icon: 'text-zinc-200'
   },
   critical: {
-    bg: 'bg-red-600/20',
+    bg: 'bg-zinc-700/20',
     border: 'border-red-600/30',
     text: 'text-red-300',
     icon: 'text-red-300'

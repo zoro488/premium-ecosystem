@@ -627,7 +627,7 @@ const BuchonaAssistant: React.FC<BuchonaAssistantProps> = ({
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            className="absolute -bottom-2 -right-2 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full p-2 shadow-lg"
+            className="absolute -bottom-2 -right-2 bg-gradient-to-r from-zinc-700 to-zinc-800 rounded-full p-2 shadow-lg"
           >
             {state === 'idle' && <Heart className="w-4 h-4 text-white" />}
             {state === 'thinking' && <Sparkles className="w-4 h-4 text-white" />}
@@ -646,7 +646,7 @@ const BuchonaAssistant: React.FC<BuchonaAssistantProps> = ({
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0, y: 20 }}
               transition={{ type: 'spring', damping: 15 }}
-              className="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-pink-500 via-purple-600 to-pink-500 text-white px-4 py-2 rounded-2xl shadow-2xl whitespace-nowrap"
+              className="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-zinc-700 via-zinc-800 to-zinc-800 text-white px-4 py-2 rounded-2xl shadow-2xl whitespace-nowrap"
               style={{
                 border: `2px solid ${colors.secondary}`,
                 boxShadow: `0 0 20px ${colors.accent}50`,
@@ -696,7 +696,7 @@ const BuchonaAssistant: React.FC<BuchonaAssistantProps> = ({
                   e.stopPropagation();
                   changeState('celebrating');
                 }}
-                className="p-2 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full shadow-lg"
+                className="p-2 bg-gradient-to-r from-zinc-700 to-zinc-800 rounded-full shadow-lg"
                 title="Celebrar"
               >
                 <Crown className="w-4 h-4 text-white" />
@@ -709,7 +709,7 @@ const BuchonaAssistant: React.FC<BuchonaAssistantProps> = ({
                   e.stopPropagation();
                   changeState('thinking');
                 }}
-                className="p-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full shadow-lg"
+                className="p-2 bg-gradient-to-r from-zinc-800 to-blue-600 rounded-full shadow-lg"
                 title="Pensar"
               >
                 <Sparkles className="w-4 h-4 text-white" />
@@ -722,7 +722,7 @@ const BuchonaAssistant: React.FC<BuchonaAssistantProps> = ({
                   e.stopPropagation();
                   setIsSpeaking(!isSpeaking);
                 }}
-                className="p-2 bg-gradient-to-r from-pink-500 to-red-600 rounded-full shadow-lg"
+                className="p-2 bg-gradient-to-r from-zinc-700 to-zinc-800 rounded-full shadow-lg"
                 title="Hablar"
               >
                 <MessageCircle className="w-4 h-4 text-white" />

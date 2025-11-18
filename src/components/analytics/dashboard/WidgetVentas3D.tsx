@@ -5,6 +5,8 @@
  */
 import { useEffect, useState } from 'react';
 
+
+
 import { AnimatePresence, motion } from 'framer-motion';
 import {
   Activity,
@@ -112,7 +114,7 @@ const BarraAnimada = ({
             initial={{ opacity: 0, y: 10, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className="absolute left-0 right-0 -bottom-2 translate-y-full z-50 p-4 bg-slate-900/95 backdrop-blur-xl rounded-xl border border-purple-500/30 shadow-2xl"
+            className="absolute left-0 right-0 -bottom-2 translate-y-full z-50 p-4 bg-slate-900/95 backdrop-blur-xl rounded-xl border border-zinc-700/30 shadow-2xl"
           >
             <div className="grid grid-cols-3 gap-4">
               <div>
@@ -121,7 +123,7 @@ const BarraAnimada = ({
               </div>
               <div>
                 <div className="text-xs text-slate-400">Participación</div>
-                <div className="text-lg font-bold text-purple-400">
+                <div className="text-lg font-bold text-zinc-200">
                   {data.porcentaje.toFixed(1)}%
                 </div>
               </div>
@@ -147,7 +149,6 @@ const BarraAnimada = ({
 export const WidgetVentas3D = () => {
   const [ventasData, setVentasData] = useState<VentaData[]>([]);
   const [loading, setLoading] = useState(true);
-  const [vistaActual, setVistaActual] = useState<'barras' | 'grid'>('barras');
 
   // Cargar datos
   useEffect(() => {
@@ -167,29 +168,36 @@ export const WidgetVentas3D = () => {
         });
 
         const gradientes = [
-          'bg-gradient-to-r from-purple-600 to-pink-600',
+          'bg-gradient-to-r from-zinc-800 to-zinc-800',
           'bg-gradient-to-r from-emerald-600 to-teal-600',
-          'bg-gradient-to-r from-orange-600 to-red-600',
+          'bg-gradient-to-r from-orange-600 to-zinc-800',
           'bg-gradient-to-r from-blue-600 to-cyan-600',
-          'bg-gradient-to-r from-pink-600 to-rose-600',
+          'bg-gradient-to-r from-zinc-700 to-rose-600',
           'bg-gradient-to-r from-yellow-600 to-orange-600',
-          'bg-gradient-to-r from-indigo-600 to-purple-600',
+          'bg-gradient-to-r from-indigo-600 to-zinc-800',
           'bg-gradient-to-r from-green-600 to-emerald-600',
-          'bg-gradient-to-r from-red-600 to-pink-600',
+          'bg-gradient-to-r from-zinc-700 to-zinc-800',
           'bg-gradient-to-r from-cyan-600 to-blue-600',
         ];
 
         const total = Object.values(ventasPorDistribuidor).reduce((a, b) => a + b, 0);
         const ventasArray: VentaData[] = Object.entries(ventasPorDistribuidor)
-          .map(([distribuidor, cantidad], index) => ({
-            distribuidor,
-            cantidad,
-            porcentaje: (cantidad / total) * 100,
-            tendencia: Math.random() > 0.5 ? 'up' : 'down',
-            cambio: Math.random() * 20 - 5,
-            color: gradientes[index % gradientes.length].match(/from-([\w-]+)/)?.[1] || 'purple',
-            gradiente: gradientes[index % gradientes.length],
-          }))
+          .map(([distribuidor, cantidad], index) => {
+            const randomVal = Math.random();
+            const tendencia: 'up' | 'down' | 'stable' =
+              randomVal > 0.6 ? 'up' : randomVal > 0.3 ? 'down' : 'stable';
+            return {
+              distribuidor,
+              cantidad,
+              porcentaje: (cantidad / total) * 100,
+              tendencia,
+              cambio: Math.random() * 20 - 5,
+              color: gradientes[index % gradientes.length]?.match(/from-([\w-]+)/)?.[1] || 'purple',
+              gradiente:
+                gradientes[index % gradientes.length] ||
+                'bg-gradient-to-r from-zinc-800 to-zinc-800',
+            };
+          })
           .sort((a, b) => b.cantidad - a.cantidad)
           .slice(0, 10);
 
@@ -210,12 +218,12 @@ export const WidgetVentas3D = () => {
 
   if (loading) {
     return (
-      <div className="h-full flex items-center justify-center bg-gradient-to-br from-slate-900/90 via-purple-900/30 to-slate-900/90 rounded-2xl border border-purple-500/20">
+      <div className="h-full flex items-center justify-center bg-gradient-to-br from-slate-900/90 via-zinc-800/30 to-slate-900/90 rounded-2xl border border-zinc-700/20">
         <div className="text-center">
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}
-            className="w-16 h-16 border-4 border-purple-500/30 border-t-purple-500 rounded-full mx-auto mb-4"
+            className="w-16 h-16 border-4 border-zinc-700/30 border-t-purple-500 rounded-full mx-auto mb-4"
           />
           <div className="text-slate-400 flex items-center gap-2">
             <Sparkles className="w-4 h-4 animate-pulse" />
@@ -230,16 +238,16 @@ export const WidgetVentas3D = () => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="h-full flex flex-col bg-gradient-to-br from-slate-900/95 via-purple-900/40 to-slate-900/95 backdrop-blur-xl rounded-2xl border border-purple-500/20 overflow-hidden shadow-2xl"
+      className="h-full flex flex-col bg-gradient-to-br from-slate-900/95 via-zinc-800/40 to-slate-900/95 backdrop-blur-xl rounded-2xl border border-zinc-700/20 overflow-hidden shadow-2xl"
     >
       {/* Header con métricas */}
-      <div className="p-6 border-b border-white/10 bg-gradient-to-r from-purple-900/30 via-transparent to-blue-900/30">
+      <div className="p-6 border-b border-white/10 bg-gradient-to-r from-zinc-800/30 via-transparent to-blue-900/30">
         <div className="flex items-start justify-between mb-4">
           <div className="flex items-center gap-3">
             <motion.div
               animate={{ rotate: [0, 5, 0, -5, 0] }}
               transition={{ repeat: Infinity, duration: 3 }}
-              className="p-3 rounded-xl bg-gradient-to-br from-purple-600 to-pink-600 shadow-lg"
+              className="p-3 rounded-xl bg-gradient-to-br from-zinc-800 to-zinc-800 shadow-lg"
             >
               <BarChart3 className="w-6 h-6 text-white" />
             </motion.div>
@@ -259,10 +267,10 @@ export const WidgetVentas3D = () => {
         <div className="grid grid-cols-3 gap-4">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="p-4 rounded-xl bg-gradient-to-br from-purple-600/20 to-pink-600/20 border border-purple-500/30"
+            className="p-4 rounded-xl bg-gradient-to-br from-black/80 to-black/90 border border-zinc-700/30"
           >
             <div className="flex items-center gap-2 mb-2">
-              <DollarSign className="w-4 h-4 text-purple-400" />
+              <DollarSign className="w-4 h-4 text-zinc-200" />
               <div className="text-xs text-slate-400">Total Ventas</div>
             </div>
             <div className="text-2xl font-bold text-white">{totalVentas.toLocaleString()}</div>
@@ -286,7 +294,7 @@ export const WidgetVentas3D = () => {
 
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="p-4 rounded-xl bg-gradient-to-br from-blue-600/20 to-cyan-600/20 border border-blue-500/30"
+                className="p-4 rounded-xl bg-gradient-to-br from-black/80 to-black/90 border border-blue-500/30"
               >
                 <div className="flex items-center gap-2 mb-2">
                   <Target className="w-4 h-4 text-blue-400" />
@@ -324,9 +332,9 @@ export const WidgetVentas3D = () => {
       </div>
 
       {/* Footer con insight */}
-      <div className="p-4 border-t border-white/10 bg-gradient-to-r from-slate-900/50 to-purple-900/20">
+      <div className="p-4 border-t border-white/10 bg-gradient-to-r from-slate-900/50 to-zinc-800/20">
         <div className="flex items-center gap-2 text-sm text-slate-300">
-          <Activity className="w-4 h-4 text-purple-400" />
+          <Activity className="w-4 h-4 text-zinc-200" />
           <span>
             Mostrando <span className="font-bold text-white">{ventasData.length}</span>{' '}
             distribuidores con mayor rendimiento

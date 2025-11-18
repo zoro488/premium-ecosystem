@@ -274,9 +274,9 @@ export const GlassmorphismCard = ({ children, className = '', blur = 'xl', tint 
   const tintColors = {
     white: 'bg-white/5',
     black: 'bg-black/20',
-    cyan: 'bg-cyan-500/10',
-    purple: 'bg-purple-500/10',
-    blue: 'bg-blue-500/10',
+    cyan: 'bg-zinc-9000/10',
+    purple: 'bg-zinc-800/10',
+    blue: 'bg-zinc-800/10',
   };
 
   return (
@@ -327,10 +327,10 @@ export const useSmoothScroll = () => {
 // <� Magnetic Button - Bot�n con efecto magn�tico ultra premium
 export const MagneticButton = ({ children, onClick, variant = 'primary', className = '' }) => {
   const variants = {
-    primary: 'bg-gradient-to-r from-cyan-500 to-blue-500',
-    secondary: 'bg-gradient-to-r from-purple-500 to-pink-500',
+    primary: 'bg-gradient-to-r from-zinc-800 to-zinc-800',
+    secondary: 'bg-gradient-to-r from-zinc-800 to-zinc-700',
     success: 'bg-gradient-to-r from-green-500 to-emerald-500',
-    warning: 'bg-gradient-to-r from-orange-500 to-red-500',
+    warning: 'bg-gradient-to-r from-orange-500 to-zinc-800',
   };
 
   return (

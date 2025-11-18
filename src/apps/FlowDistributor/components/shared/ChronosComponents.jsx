@@ -14,10 +14,10 @@ export const ChronosBadge = ({
 }) => {
   const variants = {
     default: 'bg-white/10 text-white border-white/20',
-    success: 'bg-green-500/20 text-green-400 border-green-500/30',
-    warning: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
-    danger: 'bg-red-500/20 text-red-400 border-red-500/30',
-    info: 'bg-blue-500/20 text-blue-400 border-blue-500/30'
+    success: 'bg-zinc-9000/20 text-zinc-200 border-zinc-500/30',
+    warning: 'bg-zinc-9000/20 text-zinc-200 border-zinc-500/30',
+    danger: 'bg-zinc-9000/20 text-zinc-200 border-zinc-500/30',
+    info: 'bg-zinc-800/20 text-zinc-300 border-zinc-700/30'
   };
 
   const sizes = {
@@ -85,7 +85,7 @@ export const ChronosTabs = ({ tabs, activeTab, onChange, className = '' }) => {
               <motion.span
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
-                className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-[10px] font-bold"
+                className="absolute -top-1 -right-1 w-5 h-5 bg-zinc-9000 rounded-full flex items-center justify-center text-[10px] font-bold"
               >
                 {tab.badge}
               </motion.span>

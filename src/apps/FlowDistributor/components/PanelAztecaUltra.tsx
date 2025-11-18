@@ -102,7 +102,7 @@ const PanelAztecaUltra: FC = memo(() => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-900 to-slate-900 flex items-center justify-center">
         <div className="text-center">
-          <AlertTriangle className="w-16 h-16 text-red-400 mx-auto mb-4" />
+          <AlertTriangle className="w-16 h-16 text-zinc-200 mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-white mb-2">Error al cargar datos</h2>
           <p className="text-gray-400">{error}</p>
         </div>
@@ -130,10 +130,10 @@ const PanelAztecaUltra: FC = memo(() => {
               <motion.div
                 animate={{ scale: [1, 1.05, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="px-3 py-1 rounded-lg bg-red-500/20 border border-red-500 flex items-center gap-2"
+                className="px-3 py-1 rounded-lg bg-zinc-9000/20 border border-zinc-500 flex items-center gap-2"
               >
-                <AlertTriangle className="w-4 h-4 text-red-400" />
-                <span className="text-sm font-bold text-red-400">RF NEGATIVO</span>
+                <AlertTriangle className="w-4 h-4 text-zinc-200" />
+                <span className="text-sm font-bold text-zinc-200">RF NEGATIVO</span>
               </motion.div>
             )}
           </div>
@@ -146,12 +146,12 @@ const PanelAztecaUltra: FC = memo(() => {
         {isNegativeBalance && (
           <motion.div
             {...animations.container.fadeSlideUp}
-            className="mb-6 p-4 rounded-xl border-2 border-red-500 bg-red-500/10 backdrop-blur-xl"
+            className="mb-6 p-4 rounded-xl border-2 border-zinc-500 bg-zinc-9000/10 backdrop-blur-xl"
           >
             <div className="flex items-center gap-3">
-              <AlertTriangle className="w-6 h-6 text-red-400 flex-shrink-0" />
+              <AlertTriangle className="w-6 h-6 text-zinc-200 flex-shrink-0" />
               <div>
-                <h3 className="text-lg font-bold text-red-400 mb-1">⚠️ Alerta Crítica</h3>
+                <h3 className="text-lg font-bold text-zinc-200 mb-1">⚠️ Alerta Crítica</h3>
                 <p className="text-sm text-red-300">
                   RF Actual negativo: ${Math.abs(rfActual).toLocaleString('es-MX')} - Requiere
                   acción inmediata

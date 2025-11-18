@@ -558,7 +558,7 @@ export const DashboardUltra = memo(({ _vistaEspecifica }) => {
         >
           <div className="flex items-center justify-between">
             <motion.div variants={cardVariants} whileHover={{ x: 10 }}>
-              <h1 className="text-4xl font-bold text-white mb-2 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <h1 className="text-4xl font-bold text-white mb-2 bg-gradient-to-r from-zinc-700 via-zinc-800 to-zinc-700 bg-clip-text text-transparent">
                 Dashboard Chronos
               </h1>
               <p className="text-white/60">Vista ejecutiva del sistema en tiempo real</p>
@@ -624,7 +624,7 @@ export const DashboardUltra = memo(({ _vistaEspecifica }) => {
             >
               {/* Glassmorphism backdrop */}
               <div className="absolute inset-0 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl" />
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/10 to-pink-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/20 via-zinc-800/10 to-zinc-700/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="relative z-10">
                 <PremiumChart
@@ -647,7 +647,7 @@ export const DashboardUltra = memo(({ _vistaEspecifica }) => {
               className="relative group"
             >
               <div className="absolute inset-0 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl" />
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 via-pink-500/10 to-orange-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/20 via-zinc-700/10 to-orange-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="relative z-10">
                 <HeatmapOperations data={{ ventas, ordenesCompra }} />
@@ -665,7 +665,7 @@ export const DashboardUltra = memo(({ _vistaEspecifica }) => {
             {/* Alertas Panel with Pulse Effect */}
             <motion.div variants={cardVariants} whileHover="hover" className="relative group">
               <div className="absolute inset-0 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl" />
-              <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 via-orange-500/10 to-yellow-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-zinc-700/20 via-orange-500/10 to-yellow-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="relative z-10">
                 <AlertsPanel alertas={alertas} />
@@ -675,7 +675,7 @@ export const DashboardUltra = memo(({ _vistaEspecifica }) => {
             {/* Timeline Activity with Floating Animation */}
             <motion.div variants={floatingVariants} animate="animate" className="relative group">
               <div className="absolute inset-0 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl" />
-              <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 via-blue-500/10 to-purple-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 via-zinc-700/10 to-zinc-800/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="relative z-10">
                 <TimelineActivity
@@ -708,7 +708,7 @@ export const DashboardUltra = memo(({ _vistaEspecifica }) => {
           >
             {/* Advanced Glassmorphism layers */}
             <div className="absolute inset-0 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl" />
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/10 to-pink-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
+            <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/20 via-zinc-800/10 to-zinc-700/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
             <div className="absolute inset-0 border border-transparent bg-gradient-to-br from-white/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             <div className="relative z-10">
@@ -717,7 +717,7 @@ export const DashboardUltra = memo(({ _vistaEspecifica }) => {
                 variants={floatingVariants}
                 animate="animate"
               >
-                <Users className="w-5 h-5 text-blue-400" />
+                <Users className="w-5 h-5 text-zinc-300" />
                 Top 5 Clientes
               </motion.h3>
               <div className="space-y-3">
@@ -738,17 +738,17 @@ export const DashboardUltra = memo(({ _vistaEspecifica }) => {
                     >
                       <div className="flex items-center gap-3">
                         <motion.div
-                          className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold bg-gradient-to-br from-blue-500 to-purple-500"
+                          className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold bg-gradient-to-br from-zinc-800 to-zinc-800"
                           whileHover={{ scale: 1.1, rotate: 360 }}
                           transition={{ duration: 0.5 }}
                         >
                           #{index + 1}
                         </motion.div>
-                        <span className="text-white font-medium group-hover:text-blue-300 transition-colors duration-300">
+                        <span className="text-white font-medium group-hover:text-zinc-300 transition-colors duration-300">
                           {cliente.nombre}
                         </span>
                       </div>
-                      <motion.span className="text-green-400 font-bold" whileHover={{ scale: 1.1 }}>
+                      <motion.span className="text-zinc-200 font-bold" whileHover={{ scale: 1.1 }}>
                         {formatCurrency(cliente.total, 'MXN')}
                       </motion.span>
                     </motion.div>
@@ -772,7 +772,7 @@ export const DashboardUltra = memo(({ _vistaEspecifica }) => {
           >
             {/* Multi-layer Glassmorphism */}
             <div className="absolute inset-0 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl" />
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 via-pink-500/10 to-orange-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
+            <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/20 via-zinc-700/10 to-orange-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
             <div className="absolute inset-0 border border-transparent bg-gradient-to-br from-white/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             <div className="relative z-10">
@@ -781,7 +781,7 @@ export const DashboardUltra = memo(({ _vistaEspecifica }) => {
                 variants={pulseVariants}
                 animate="animate"
               >
-                <Activity className="w-5 h-5 text-purple-400" />
+                <Activity className="w-5 h-5 text-zinc-800" />
                 Estadísticas Rápidas
               </motion.h3>
               <motion.div
@@ -795,7 +795,7 @@ export const DashboardUltra = memo(({ _vistaEspecifica }) => {
                     label="Órdenes Activas"
                     value={ordenesCompra.filter((o) => o.estatus !== 'completada').length}
                     icon={ShoppingCart}
-                    color="text-orange-400"
+                    color="text-zinc-200"
                   />
                 </motion.div>
                 <motion.div variants={cardVariants}>
@@ -803,7 +803,7 @@ export const DashboardUltra = memo(({ _vistaEspecifica }) => {
                     label="Ventas Promedio"
                     value={formatCurrency(ventasMetrics.promedio, 'MXN')}
                     icon={BarChart3}
-                    color="text-blue-400"
+                    color="text-zinc-300"
                   />
                 </motion.div>
                 <motion.div variants={cardVariants}>
@@ -811,7 +811,7 @@ export const DashboardUltra = memo(({ _vistaEspecifica }) => {
                     label="Productos en Almacén"
                     value={almacenMetrics.totalProductos}
                     icon={Package}
-                    color="text-purple-400"
+                    color="text-zinc-800"
                   />
                 </motion.div>
                 <motion.div variants={cardVariants}>
@@ -819,7 +819,7 @@ export const DashboardUltra = memo(({ _vistaEspecifica }) => {
                     label="Valor Inventario"
                     value={formatCurrency(almacenMetrics.valorInventario, 'MXN')}
                     icon={DollarSign}
-                    color="text-green-400"
+                    color="text-zinc-200"
                   />
                 </motion.div>
               </motion.div>

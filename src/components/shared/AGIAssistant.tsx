@@ -340,7 +340,7 @@ export default function AGIAssistant() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-50 p-4 bg-gradient-to-br from-purple-600 to-blue-600 text-white rounded-full shadow-2xl hover:shadow-purple-500/50 transition-all"
+        className="fixed bottom-6 right-6 z-50 p-4 bg-gradient-to-br from-zinc-800 to-blue-600 text-white rounded-full shadow-2xl hover:shadow-zinc-900/50-500/50 transition-all"
       >
         <Brain className="w-6 h-6" />
 
@@ -366,7 +366,7 @@ export default function AGIAssistant() {
             className="fixed bottom-24 right-6 z-50 w-96 h-[600px] bg-white dark:bg-gray-900 rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-gray-200 dark:border-gray-700"
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-4 flex items-center justify-between">
+            <div className="bg-gradient-to-r from-zinc-800 to-blue-600 text-white p-4 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Brain className="w-5 h-5" />
                 <div>
@@ -384,8 +384,8 @@ export default function AGIAssistant() {
 
             {/* Patrones aprendidos */}
             {userPatterns.length > 0 && (
-              <div className="bg-purple-50 dark:bg-purple-900/20 p-3 border-b border-purple-200 dark:border-purple-800">
-                <div className="flex items-center gap-2 text-sm text-purple-800 dark:text-purple-200">
+              <div className="bg-zinc-800 dark:bg-zinc-800/20 p-3 border-b border-zinc-700 dark:border-zinc-700">
+                <div className="flex items-center gap-2 text-sm text-zinc-200 dark:text-zinc-200">
                   <Sparkles className="w-4 h-4" />
                   <span className="font-medium">{userPatterns.length} patrones aprendidos</span>
                 </div>
@@ -440,7 +440,7 @@ export default function AGIAssistant() {
                   <div
                     className={`max-w-[80%] rounded-2xl px-4 py-2 ${
                       msg.role === 'user'
-                        ? 'bg-purple-600 text-white'
+                        ? 'bg-zinc-800 text-white'
                         : msg.role === 'system'
                           ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-100'
                           : 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100'
@@ -476,9 +476,9 @@ export default function AGIAssistant() {
                 >
                   <div className="bg-gray-100 dark:bg-gray-800 rounded-2xl px-4 py-2">
                     <div className="flex gap-2">
-                      <div className="w-2 h-2 bg-purple-600 rounded-full animate-bounce" />
-                      <div className="w-2 h-2 bg-purple-600 rounded-full animate-bounce [animation-delay:0.2s]" />
-                      <div className="w-2 h-2 bg-purple-600 rounded-full animate-bounce [animation-delay:0.4s]" />
+                      <div className="w-2 h-2 bg-zinc-800 rounded-full animate-bounce" />
+                      <div className="w-2 h-2 bg-zinc-800 rounded-full animate-bounce [animation-delay:0.2s]" />
+                      <div className="w-2 h-2 bg-zinc-800 rounded-full animate-bounce [animation-delay:0.4s]" />
                     </div>
                   </div>
                 </motion.div>
@@ -496,7 +496,7 @@ export default function AGIAssistant() {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
                   placeholder="Escribe o habla..."
-                  className="flex-1 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-600"
+                  className="flex-1 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-zinc-700"
                 />
 
                 <button
@@ -514,7 +514,7 @@ export default function AGIAssistant() {
                 <button
                   onClick={() => sendMessage()}
                   disabled={!input.trim() || isLoading}
-                  className="p-2 bg-purple-600 text-white rounded-xl hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition"
+                  className="p-2 bg-zinc-800 text-white rounded-xl hover:bg-zinc-800 disabled:opacity-50 disabled:cursor-not-allowed transition"
                 >
                   <Send className="w-5 h-5" />
                 </button>
@@ -523,21 +523,21 @@ export default function AGIAssistant() {
               <div className="flex justify-center gap-4 mt-2">
                 <button
                   onClick={() => sendMessage('Analiza mis datos')}
-                  className="text-xs text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 flex items-center gap-1"
+                  className="text-xs text-gray-600 dark:text-gray-400 hover:text-zinc-200 dark:hover:text-zinc-200 flex items-center gap-1"
                 >
                   <BarChart3 className="w-3 h-3" />
                   Analizar
                 </button>
                 <button
                   onClick={() => sendMessage('Genera un reporte')}
-                  className="text-xs text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 flex items-center gap-1"
+                  className="text-xs text-gray-600 dark:text-gray-400 hover:text-zinc-200 dark:hover:text-zinc-200 flex items-center gap-1"
                 >
                   <FileText className="w-3 h-3" />
                   Reporte
                 </button>
                 <button
                   onClick={() => sendMessage('Navega a ventas')}
-                  className="text-xs text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 flex items-center gap-1"
+                  className="text-xs text-gray-600 dark:text-gray-400 hover:text-zinc-200 dark:hover:text-zinc-200 flex items-center gap-1"
                 >
                   <Navigation className="w-3 h-3" />
                   Navegar

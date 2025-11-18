@@ -239,7 +239,7 @@ const DashboardControlMaestro = ({ isActive = false }) => {
       case 'PENDIENTE':
         return 'text-yellow-400 bg-yellow-400/20';
       case 'EN_PROCESO':
-        return 'text-blue-400 bg-blue-400/20';
+        return 'text-zinc-300 bg-zinc-700/20';
       default:
         return 'text-gray-400 bg-gray-400/20';
     }
@@ -353,14 +353,14 @@ const DashboardControlMaestro = ({ isActive = false }) => {
               </motion.div>
 
               <motion.div
-                className="bg-gradient-to-br from-purple-900/50 to-purple-800/30 p-4 rounded-lg border border-purple-500/30"
+                className="bg-gradient-to-br from-zinc-800/50 to-zinc-800/30 p-4 rounded-lg border border-zinc-700/30"
                 whileHover={{ scale: 1.02, boxShadow: '0 0 20px rgba(147, 51, 234, 0.3)' }}
               >
-                <h3 className="text-purple-400 font-semibold mb-2">💧 FLUJO DE EFECTIVO</h3>
+                <h3 className="text-zinc-200 font-semibold mb-2">💧 FLUJO DE EFECTIVO</h3>
                 <p className="text-2xl font-bold text-white">
                   {formatCurrency(metricsData.flujoEfectivo)}
                 </p>
-                <p className="text-sm text-purple-300 mt-1">Liquidez actual</p>
+                <p className="text-sm text-zinc-200 mt-1">Liquidez actual</p>
               </motion.div>
 
               <motion.div
@@ -529,20 +529,20 @@ const DashboardControlMaestro = ({ isActive = false }) => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
           >
-            <div className="bg-black/50 rounded-lg border border-blue-500/30 overflow-hidden">
-              <div className="bg-blue-900/30 p-4 border-b border-blue-500/30">
-                <h3 className="text-blue-400 font-semibold">💳 REGISTRO DE ABONOS</h3>
+            <div className="bg-black/50 rounded-lg border border-zinc-700/30 overflow-hidden">
+              <div className="bg-zinc-950/30 p-4 border-b border-zinc-700/30">
+                <h3 className="text-zinc-300 font-semibold">💳 REGISTRO DE ABONOS</h3>
               </div>
               <div className="overflow-x-auto max-h-96">
                 <table className="w-full">
                   <thead className="bg-black/70">
                     <tr>
-                      <th className="p-3 text-left text-blue-400">Fecha</th>
-                      <th className="p-3 text-left text-blue-400">Concepto</th>
-                      <th className="p-3 text-left text-blue-400">Método</th>
-                      <th className="p-3 text-left text-blue-400">Referencia</th>
-                      <th className="p-3 text-right text-blue-400">Monto</th>
-                      <th className="p-3 text-center text-blue-400">Estado</th>
+                      <th className="p-3 text-left text-zinc-300">Fecha</th>
+                      <th className="p-3 text-left text-zinc-300">Concepto</th>
+                      <th className="p-3 text-left text-zinc-300">Método</th>
+                      <th className="p-3 text-left text-zinc-300">Referencia</th>
+                      <th className="p-3 text-right text-zinc-300">Monto</th>
+                      <th className="p-3 text-center text-zinc-300">Estado</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -556,7 +556,7 @@ const DashboardControlMaestro = ({ isActive = false }) => {
                         <td className="p-3 text-white font-medium">{abono.concepto}</td>
                         <td className="p-3 text-gray-300">{abono.metodo}</td>
                         <td className="p-3 text-gray-300 font-mono text-sm">{abono.referencia}</td>
-                        <td className="p-3 text-right text-blue-400 font-semibold">
+                        <td className="p-3 text-right text-zinc-300 font-semibold">
                           {formatCurrency(abono.monto)}
                         </td>
                         <td className="p-3 text-center">

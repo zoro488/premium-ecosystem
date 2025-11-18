@@ -16,7 +16,7 @@ export const MainLayout: React.FC = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950/20 to-purple-950/20">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950/20 to-zinc-800/20">
       {/* Header Fixed Top */}
       <HeaderUltraModerno />
 

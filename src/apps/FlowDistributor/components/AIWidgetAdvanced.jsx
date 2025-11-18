@@ -280,7 +280,7 @@ const AIWidgetAdvanced = ({ onClose }) => {
         whileHover={{ scale: 1.1, rotate: 5 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsMinimized(false)}
-        className="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full bg-gradient-to-r from-purple-600 via-violet-600 to-blue-600 flex items-center justify-center shadow-2xl group"
+        className="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full bg-gradient-to-r from-zinc-800 via-zinc-800 to-zinc-900 flex items-center justify-center shadow-2xl group"
       >
         <Bot className="w-8 h-8 text-white group-hover:scale-110 transition-transform" />
         <motion.div
@@ -485,7 +485,7 @@ const AIWidgetAdvanced = ({ onClose }) => {
                 {[...Array(5)].map((_, i) => (
                   <motion.div
                     key={i}
-                    className="w-1 bg-cyan-400 rounded-full"
+                    className="w-1 bg-zinc-700 rounded-full"
                     animate={{
                       height: [8, 20, 8],
                     }}
@@ -555,13 +555,13 @@ const AIWidgetAdvanced = ({ onClose }) => {
               transition={{ duration: 3, repeat: Infinity }}
               className="relative"
             >
-              <Sparkles className="w-20 h-20 text-purple-400" />
+              <Sparkles className="w-20 h-20 text-zinc-800" />
               <motion.div
                 className="absolute inset-0"
                 animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0, 0.5] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                <Sparkles className="w-20 h-20 text-blue-400" />
+                <Sparkles className="w-20 h-20 text-zinc-300" />
               </motion.div>
             </motion.div>
 
@@ -575,7 +575,7 @@ const AIWidgetAdvanced = ({ onClose }) => {
             {/* Quick Actions */}
             <div className="w-full space-y-3">
               <div className="flex items-center gap-2 text-sm text-slate-400">
-                <Zap className="w-4 h-4 text-yellow-400" />
+                <Zap className="w-4 h-4 text-zinc-200" />
                 <span className="font-semibold">Acciones rápidas:</span>
               </div>
 
@@ -612,7 +612,7 @@ const AIWidgetAdvanced = ({ onClose }) => {
                     className="p-3 glass-premium hover:bg-white/10 rounded-xl text-left transition-all group"
                   >
                     <div className="text-2xl mb-1">{action.icon}</div>
-                    <div className="text-sm font-medium text-white group-hover:text-purple-300 transition-colors">
+                    <div className="text-sm font-medium text-white group-hover:text-zinc-800 transition-colors">
                       {action.label}
                     </div>
                   </motion.button>
@@ -626,7 +626,7 @@ const AIWidgetAdvanced = ({ onClose }) => {
               transition={{ duration: 2, repeat: Infinity }}
               className="text-xs text-slate-500 flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full"
             >
-              <Mic className="w-3 h-3 text-purple-400" />
+              <Mic className="w-3 h-3 text-zinc-800" />
               <span>Usa tu voz o escribe tu consulta</span>
             </motion.div>
           </motion.div>
@@ -644,7 +644,7 @@ const AIWidgetAdvanced = ({ onClose }) => {
                   <div
                     className={`p-4 rounded-2xl ${
                       msg.type === 'user'
-                        ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-tr-sm shadow-lg'
+                        ? 'bg-gradient-to-r from-zinc-800 to-zinc-900 text-white rounded-tr-sm shadow-lg'
                         : 'glass-premium text-white rounded-tl-sm'
                     }`}
                   >
@@ -670,7 +670,7 @@ const AIWidgetAdvanced = ({ onClose }) => {
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                           onClick={() => handleQuickReply(reply)}
-                          className="px-3 py-1.5 glass-premium hover:bg-purple-500/20 border border-purple-500/30 rounded-full text-xs font-medium transition-all"
+                          className="px-3 py-1.5 glass-premium hover:bg-zinc-800/20 border border-zinc-800/30 rounded-full text-xs font-medium transition-all"
                         >
                           {reply}
                         </motion.button>
@@ -694,9 +694,9 @@ const AIWidgetAdvanced = ({ onClose }) => {
                     animate={{ opacity: [0.3, 1, 0.3] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
                   >
-                    <div className="w-2 h-2 bg-purple-400 rounded-full" />
-                    <div className="w-2 h-2 bg-violet-400 rounded-full" />
-                    <div className="w-2 h-2 bg-blue-400 rounded-full" />
+                    <div className="w-2 h-2 bg-zinc-800 rounded-full" />
+                    <div className="w-2 h-2 bg-zinc-800 rounded-full" />
+                    <div className="w-2 h-2 bg-zinc-700 rounded-full" />
                   </motion.div>
                 </div>
               </motion.div>
@@ -717,7 +717,7 @@ const AIWidgetAdvanced = ({ onClose }) => {
             onClick={toggleVoiceInput}
             className={`p-3 rounded-xl transition-all ${
               isListening
-                ? 'bg-red-500 text-white shadow-lg shadow-red-500/50'
+                ? 'bg-zinc-9000 text-white shadow-lg shadow-red-500/50'
                 : 'glass-premium text-slate-300 hover:text-white'
             }`}
           >
@@ -731,7 +731,7 @@ const AIWidgetAdvanced = ({ onClose }) => {
             onChange={(e) => setInputValue(e.target.value)}
             placeholder={isListening ? 'Escuchando...' : 'Escribe tu mensaje o usa tu voz...'}
             disabled={isListening}
-            className="flex-1 px-4 py-3 glass-premium border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none transition-all"
+            className="flex-1 px-4 py-3 glass-premium border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-zinc-800 focus:border-transparent resize-none transition-all"
             rows={1}
             style={{ maxHeight: '100px' }}
           />
@@ -742,7 +742,7 @@ const AIWidgetAdvanced = ({ onClose }) => {
             whileTap={{ scale: 0.9 }}
             onClick={handleSend}
             disabled={!inputValue.trim() || isListening}
-            className="p-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transition-all"
+            className="p-3 bg-gradient-to-r from-zinc-800 to-zinc-900 text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transition-all"
           >
             <Send className="w-5 h-5" />
           </motion.button>

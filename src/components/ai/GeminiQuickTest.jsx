@@ -207,7 +207,7 @@ export const GeminiQuickTest = () => {
       {/* Header */}
       <div className="text-center space-y-2">
         <div className="flex items-center justify-center gap-2">
-          <Brain className="h-8 w-8 text-purple-500" />
+          <Brain className="h-8 w-8 text-zinc-200" />
           <h1 className="text-3xl font-bold">Gemini AI - Pruebas</h1>
         </div>
         <p className="text-gray-600 dark:text-gray-400">
@@ -234,7 +234,7 @@ export const GeminiQuickTest = () => {
           icon={Sparkles}
           testKey="basic"
           onTest={testBasicConnection}
-          color="text-purple-500"
+          color="text-zinc-200"
         />
 
         <TestCard
@@ -263,7 +263,7 @@ export const GeminiQuickTest = () => {
       </div>
 
       {/* API Info */}
-      <Card className="p-4 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20">
+      <Card className="p-4 bg-gradient-to-br from-zinc-800 to-blue-50 dark:from-zinc-800/20 dark:to-blue-900/20">
         <div className="space-y-2">
           <p className="text-sm font-medium">📊 Información de API</p>
           <div className="grid grid-cols-2 gap-4 text-xs">

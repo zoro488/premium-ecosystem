@@ -156,7 +156,7 @@ export const WidgetVentasChart: React.FC = () => {
       <div className="mb-4">
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-lg font-bold text-white flex items-center gap-2">
-            <TrendingUp className="w-5 h-5 text-green-400" />
+            <TrendingUp className="w-5 h-5 text-zinc-200" />
             Evolución de Ventas
           </h3>
           <Calendar className="w-5 h-5 text-slate-400" />
@@ -169,7 +169,7 @@ export const WidgetVentasChart: React.FC = () => {
               key={p.value}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                 period === p.value
-                  ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white'
+                  ? 'bg-gradient-to-r from-indigo-500 to-zinc-800 text-white'
                   : 'bg-white/5 text-slate-400 hover:bg-white/10'
               }`}
               whileHover={{ scale: 1.05 }}
@@ -194,10 +194,10 @@ export const WidgetVentasChart: React.FC = () => {
           whileHover={{ scale: 1.02 }}
         >
           <div className="flex items-center gap-2 mb-1">
-            <DollarSign className="w-4 h-4 text-green-400" />
+            <DollarSign className="w-4 h-4 text-zinc-200" />
             <span className="text-xs text-slate-400">Total Ventas</span>
           </div>
-          <p className="text-lg font-bold text-green-400">
+          <p className="text-lg font-bold text-zinc-200">
             {formatCurrency(stats.totalVentas, 'USD')}
           </p>
         </motion.div>
@@ -212,10 +212,10 @@ export const WidgetVentasChart: React.FC = () => {
           whileHover={{ scale: 1.02 }}
         >
           <div className="flex items-center gap-2 mb-1">
-            <TrendingUp className="w-4 h-4 text-purple-400" />
+            <TrendingUp className="w-4 h-4 text-zinc-800" />
             <span className="text-xs text-slate-400">Margen</span>
           </div>
-          <p className="text-lg font-bold text-purple-400">{stats.margenUtilidad.toFixed(1)}%</p>
+          <p className="text-lg font-bold text-zinc-800">{stats.margenUtilidad.toFixed(1)}%</p>
         </motion.div>
       </div>
 

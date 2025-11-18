@@ -90,13 +90,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variants: Record<ButtonVariant, string> = {
       primary:
-        'bg-gradient-to-br from-blue-500 via-cyan-500 to-blue-600 text-white border border-blue-400/30 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] focus:ring-blue-500 animate-gradient bg-[length:200%_200%]',
+        'bg-gradient-to-br from-zinc-800 via-cyan-500 to-zinc-900 text-white border border-zinc-600/30 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] focus:ring-blue-500 animate-gradient bg-[length:200%_200%]',
       secondary:
-        'bg-gradient-to-br from-purple-500 via-pink-500 to-purple-600 text-white border border-purple-400/30 hover:shadow-[0_0_30px_rgba(168,85,247,0.5)] focus:ring-purple-500 animate-gradient bg-[length:200%_200%]',
+        'bg-gradient-to-br from-zinc-800 via-zinc-700 to-zinc-800 text-white border border-zinc-800/30 hover:shadow-[0_0_30px_rgba(168,85,247,0.5)] focus:ring-zinc-800 animate-gradient bg-[length:200%_200%]',
       success:
         'bg-gradient-to-br from-emerald-500 via-green-500 to-emerald-600 text-white border border-emerald-400/30 hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] focus:ring-emerald-500',
       danger:
-        'bg-gradient-to-br from-red-500 via-rose-500 to-red-600 text-white border border-red-400/30 hover:shadow-[0_0_30px_rgba(239,68,68,0.5)] focus:ring-red-500',
+        'bg-gradient-to-br from-zinc-700 via-zinc-700 to-zinc-800 text-white border border-red-400/30 hover:shadow-[0_0_30px_rgba(239,68,68,0.5)] focus:ring-red-500',
       ghost:
         'bg-white/5 backdrop-blur-md border border-white/10 text-white hover:bg-white/10 hover:border-white/20 focus:ring-cyan-500',
       glass:
@@ -163,7 +163,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       mirror:
         'bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.9),inset_0_2px_0_rgba(255,255,255,0.2)]',
       holo:
-        'bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-cyan-500/10 border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.9)] animate-gradient bg-[length:200%_200%]',
+        'bg-gradient-to-br from-zinc-800/10 via-zinc-800/10 to-zinc-800/10 border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.9)] animate-gradient bg-[length:200%_200%]',
     };
 
     const glowStyles = {
@@ -232,10 +232,10 @@ export const Badge = ({
     'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold backdrop-blur-xl transition-all duration-300';
 
   const variants: Record<BadgeVariant, string> = {
-    success: 'bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 shadow-[0_0_15px_rgba(16,185,129,0.3)]',
-    warning: 'bg-amber-500/20 text-amber-300 border border-amber-400/40 shadow-[0_0_15px_rgba(245,158,11,0.3)]',
-    danger: 'bg-red-500/20 text-red-300 border border-red-400/40 shadow-[0_0_15px_rgba(239,68,68,0.3)]',
-    info: 'bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 shadow-[0_0_15px_rgba(6,182,212,0.3)]',
+    success: 'bg-zinc-9000/20 text-emerald-300 border border-emerald-400/40 shadow-[0_0_15px_rgba(16,185,129,0.3)]',
+    warning: 'bg-zinc-9000/20 text-amber-300 border border-amber-400/40 shadow-[0_0_15px_rgba(245,158,11,0.3)]',
+    danger: 'bg-zinc-9000/20 text-red-300 border border-red-400/40 shadow-[0_0_15px_rgba(239,68,68,0.3)]',
+    info: 'bg-zinc-9000/20 text-cyan-300 border border-cyan-400/40 shadow-[0_0_15px_rgba(6,182,212,0.3)]',
     neutral: 'bg-white/10 text-slate-200 border border-white/20',
   };
 
@@ -266,9 +266,9 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ label, error, icon: Icon, iconPosition = 'left', className = '', ...props }, ref) => {
     const baseStyles =
-      'w-full px-4 py-3 bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl text-white font-medium placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 focus:bg-white/8 transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.5)]';
+      'w-full px-4 py-3 bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl text-white font-medium placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-zinc-500/50 focus:bg-white/8 transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.5)]';
 
-    const errorStyles = error ? 'border-red-500/50 focus:ring-red-500/50 focus:border-red-500/50' : '';
+    const errorStyles = error ? 'border-zinc-500/50 focus:ring-red-500/50 focus:border-zinc-500/50' : '';
     const iconPadding = Icon ? (iconPosition === 'left' ? 'pl-12' : 'pr-12') : '';
 
     return (
@@ -280,7 +280,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         )}
         <div className="relative group">
           {Icon && iconPosition === 'left' && (
-            <Icon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-cyan-400 transition-colors duration-300" />
+            <Icon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-zinc-300 transition-colors duration-300" />
           )}
           <input
             ref={ref}
@@ -288,14 +288,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             {...props}
           />
           {Icon && iconPosition === 'right' && (
-            <Icon className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-cyan-400 transition-colors duration-300" />
+            <Icon className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-zinc-300 transition-colors duration-300" />
           )}
         </div>
         {error && (
           <motion.p
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-2 text-sm text-red-400 font-medium"
+            className="mt-2 text-sm text-zinc-200 font-medium"
           >
             {error}
           </motion.p>
@@ -320,9 +320,9 @@ interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   ({ label, error, options, className = '', ...props }, ref) => {
     const baseStyles =
-      'w-full px-4 py-3 bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl text-white font-medium focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 focus:bg-white/8 transition-all duration-300 cursor-pointer shadow-[0_4px_16px_rgba(0,0,0,0.5)]';
+      'w-full px-4 py-3 bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl text-white font-medium focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-zinc-500/50 focus:bg-white/8 transition-all duration-300 cursor-pointer shadow-[0_4px_16px_rgba(0,0,0,0.5)]';
 
-    const errorStyles = error ? 'border-red-500/50 focus:ring-red-500/50 focus:border-red-500/50' : '';
+    const errorStyles = error ? 'border-zinc-500/50 focus:ring-red-500/50 focus:border-zinc-500/50' : '';
 
     return (
       <div className="w-full">
@@ -342,7 +342,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           <motion.p
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-2 text-sm text-red-400 font-medium"
+            className="mt-2 text-sm text-zinc-200 font-medium"
           >
             {error}
           </motion.p>
@@ -427,7 +427,7 @@ export const Spinner = ({ size = 'md', className = '' }: SpinnerProps) => {
     <motion.div
       variants={animations.spinner}
       animate="animate"
-      className={`${sizes[size]} border-cyan-500/30 border-t-cyan-500 rounded-full ${className}`}
+      className={`${sizes[size]} border-zinc-500/30 border-t-cyan-500 rounded-full ${className}`}
     />
   );
 };

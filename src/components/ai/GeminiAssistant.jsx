@@ -80,7 +80,7 @@ export const GeminiAssistant = ({
           }}
         />
         <div className="absolute bottom-3 right-3">
-          <Sparkles className="h-5 w-5 text-purple-500" />
+          <Sparkles className="h-5 w-5 text-zinc-200" />
         </div>
       </div>
 
@@ -129,7 +129,7 @@ export const GeminiAssistant = ({
             </Button>
           </div>
 
-          <div className="rounded-lg bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 p-4 border border-purple-200 dark:border-purple-800">
+          <div className="rounded-lg bg-gradient-to-br from-zinc-800 to-blue-50 dark:from-zinc-800/20 dark:to-blue-900/20 p-4 border border-zinc-700 dark:border-zinc-700">
             <div className="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap">
               {response}
             </div>

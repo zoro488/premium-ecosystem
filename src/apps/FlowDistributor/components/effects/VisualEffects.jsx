@@ -123,10 +123,10 @@ export const GradientOrbs = ({ count = 3 }) => {
   }));
 
   const colors = [
-    'from-blue-500/30 to-purple-500/30',
-    'from-purple-500/30 to-pink-500/30',
-    'from-pink-500/30 to-orange-500/30',
-    'from-green-500/30 to-cyan-500/30',
+    'from-zinc-800/30 to-zinc-800/30',
+    'from-zinc-800/30 to-zinc-700/30',
+    'from-zinc-700/30 to-orange-500/30',
+    'from-green-500/30 to-zinc-800/30',
   ];
 
   return (
@@ -330,7 +330,7 @@ export const AuroraBackground = () => {
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       <div className="absolute inset-0 opacity-50">
         <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-blue-500/20"
+          className="absolute inset-0 bg-gradient-to-r from-zinc-800/20 via-zinc-700/20 to-zinc-800/20"
           animate={{
             backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
           }}
@@ -345,7 +345,7 @@ export const AuroraBackground = () => {
           }}
         />
         <motion.div
-          className="absolute inset-0 bg-gradient-to-l from-blue-500/20 via-green-500/20 to-purple-500/20"
+          className="absolute inset-0 bg-gradient-to-l from-zinc-800/20 via-green-500/20 to-zinc-800/20"
           animate={{
             backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
           }}

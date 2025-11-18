@@ -414,13 +414,13 @@ export default function PanelIA() {
   // ============================================================================
 
   const tabs: Array<{ id: TabType; label: string; icon: any; gradient: string }> = [
-    { id: 'chat', label: 'Chat IA', icon: MessageSquare, gradient: 'from-cyan-500 to-blue-600' },
-    { id: 'voice', label: 'Voz', icon: Mic, gradient: 'from-purple-500 to-pink-600' },
+    { id: 'chat', label: 'Chat IA', icon: MessageSquare, gradient: 'from-zinc-800 to-zinc-900' },
+    { id: 'voice', label: 'Voz', icon: Mic, gradient: 'from-zinc-800 to-zinc-700' },
     { id: 'reports', label: 'Reportes', icon: FileText, gradient: 'from-green-500 to-emerald-600' },
-    { id: 'ocr', label: 'OCR', icon: Camera, gradient: 'from-orange-500 to-red-600' },
-    { id: 'predictions', label: 'Predicciones', icon: TrendingUp, gradient: 'from-blue-500 to-indigo-600' },
-    { id: 'navigation', label: 'Navegación', icon: Navigation, gradient: 'from-pink-500 to-rose-600' },
-    { id: 'analytics', label: 'Analytics', icon: BarChart3, gradient: 'from-violet-500 to-purple-600' }
+    { id: 'ocr', label: 'OCR', icon: Camera, gradient: 'from-orange-500 to-zinc-800' },
+    { id: 'predictions', label: 'Predicciones', icon: TrendingUp, gradient: 'from-zinc-800 to-indigo-600' },
+    { id: 'navigation', label: 'Navegación', icon: Navigation, gradient: 'from-zinc-700 to-zinc-700' },
+    { id: 'analytics', label: 'Analytics', icon: BarChart3, gradient: 'from-zinc-800 to-zinc-800' }
   ];
 
   // ============================================================================
@@ -437,11 +437,11 @@ export default function PanelIA() {
       >
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 via-pink-600 to-blue-600 flex items-center justify-center shadow-2xl shadow-purple-500/50">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-zinc-800 via-zinc-700 to-zinc-900 flex items-center justify-center shadow-2xl shadow-zinc-800/50">
               <Brain className="w-8 h-8 text-white" />
             </div>
             <div>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
+              <h1 className="text-4xl font-bold bg-gradient-to-r from-white via-zinc-800 to-zinc-700 bg-clip-text text-transparent">
                 Panel IA Ultra
               </h1>
               <p className="text-white/60 text-sm mt-1">
@@ -472,9 +472,9 @@ export default function PanelIA() {
                     <Icon className="w-4 h-4 text-white" />
                     <span className="text-sm font-medium text-white">{provider.name}</span>
                     {provider.available ? (
-                      <CheckCircle2 className="w-3 h-3 text-green-400" />
+                      <CheckCircle2 className="w-3 h-3 text-zinc-200" />
                     ) : (
-                      <AlertCircle className="w-3 h-3 text-amber-400" />
+                      <AlertCircle className="w-3 h-3 text-zinc-200" />
                     )}
                   </div>
                 </motion.button>
@@ -588,7 +588,7 @@ function ChatTab({ messages, inputMessage, setInputMessage, sendMessage, isProce
       <div className="flex-1 overflow-y-auto p-6 space-y-4">
         {messages.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full text-center">
-            <Sparkles className="w-16 h-16 text-purple-400/50 mb-4" />
+            <Sparkles className="w-16 h-16 text-zinc-800/50 mb-4" />
             <h3 className="text-xl font-bold text-white/80 mb-2">
               ¡Hola! Soy tu asistente IA
             </h3>
@@ -607,13 +607,13 @@ function ChatTab({ messages, inputMessage, setInputMessage, sendMessage, isProce
               <div
                 className={`max-w-[80%] rounded-2xl px-4 py-3 ${
                   message.role === 'user'
-                    ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white'
+                    ? 'bg-gradient-to-r from-zinc-800 to-zinc-900 text-white'
                     : 'bg-white/10 backdrop-blur-sm text-white border border-white/10'
                 }`}
               >
                 <div className="flex items-start gap-2">
                   {message.role === 'assistant' && (
-                    <Bot className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
+                    <Bot className="w-5 h-5 text-zinc-800 flex-shrink-0 mt-0.5" />
                   )}
                   <div className="flex-1">
                     <p className="text-sm whitespace-pre-wrap">{message.content}</p>
@@ -651,7 +651,7 @@ function ChatTab({ messages, inputMessage, setInputMessage, sendMessage, isProce
             whileTap={{ scale: 0.95 }}
             onClick={sendMessage}
             disabled={isProcessing || !inputMessage.trim()}
-            className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl font-medium hover:from-cyan-600 hover:to-blue-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 shadow-lg shadow-cyan-500/25"
+            className="px-6 py-3 bg-gradient-to-r from-zinc-800 to-zinc-900 text-white rounded-xl font-medium hover:from-cyan-600 hover:to-blue-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 shadow-lg shadow-cyan-500/25"
           >
             {isProcessing ? (
               <Loader2 className="w-5 h-5 animate-spin" />
@@ -672,8 +672,8 @@ function VoiceTab({ isRecording, audioBlob, startRecording, stopRecording, trans
       <div className="flex flex-col items-center justify-center space-y-6 min-h-[400px]">
         <div className={`w-32 h-32 rounded-full flex items-center justify-center ${
           isRecording
-            ? 'bg-gradient-to-br from-red-500 to-pink-600 animate-pulse'
-            : 'bg-gradient-to-br from-purple-500 to-pink-600'
+            ? 'bg-gradient-to-br from-zinc-700 to-zinc-700 animate-pulse'
+            : 'bg-gradient-to-br from-zinc-800 to-zinc-700'
         } shadow-2xl`}>
           {isRecording ? (
             <MicOff className="w-16 h-16 text-white" />
@@ -699,7 +699,7 @@ function VoiceTab({ isRecording, audioBlob, startRecording, stopRecording, trans
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={startRecording}
-              className="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-600 text-white rounded-xl font-medium shadow-lg shadow-purple-500/25 flex items-center gap-2"
+              className="px-8 py-4 bg-gradient-to-r from-zinc-800 to-zinc-700 text-white rounded-xl font-medium shadow-lg shadow-zinc-800/25 flex items-center gap-2"
             >
               <Mic className="w-5 h-5" />
               Iniciar Grabación
@@ -709,7 +709,7 @@ function VoiceTab({ isRecording, audioBlob, startRecording, stopRecording, trans
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={stopRecording}
-              className="px-8 py-4 bg-gradient-to-r from-red-500 to-pink-600 text-white rounded-xl font-medium shadow-lg shadow-red-500/25 flex items-center gap-2"
+              className="px-8 py-4 bg-gradient-to-r from-zinc-700 to-zinc-700 text-white rounded-xl font-medium shadow-lg shadow-red-500/25 flex items-center gap-2"
             >
               <MicOff className="w-5 h-5" />
               Detener
@@ -740,8 +740,8 @@ function VoiceTab({ isRecording, audioBlob, startRecording, stopRecording, trans
         </div>
 
         {audioBlob && (
-          <div className="mt-4 p-4 bg-green-500/10 border border-green-500/20 rounded-xl">
-            <p className="text-sm text-green-400 flex items-center gap-2">
+          <div className="mt-4 p-4 bg-zinc-9000/10 border border-zinc-500/20 rounded-xl">
+            <p className="text-sm text-zinc-200 flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4" />
               Audio grabado exitosamente
             </p>
@@ -762,7 +762,7 @@ function ReportsTab({ generateReport, isProcessing }: any) {
         className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl p-6"
       >
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500 to-pink-600 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-zinc-700 to-zinc-700 flex items-center justify-center">
             <FileText className="w-6 h-6 text-white" />
           </div>
           <div>
@@ -780,7 +780,7 @@ function ReportsTab({ generateReport, isProcessing }: any) {
           whileTap={{ scale: 0.95 }}
           onClick={() => generateReport('pdf')}
           disabled={isProcessing}
-          className="w-full px-4 py-3 bg-gradient-to-r from-red-500 to-pink-600 text-white rounded-xl font-medium shadow-lg shadow-red-500/25 flex items-center justify-center gap-2 disabled:opacity-50"
+          className="w-full px-4 py-3 bg-gradient-to-r from-zinc-700 to-zinc-700 text-white rounded-xl font-medium shadow-lg shadow-red-500/25 flex items-center justify-center gap-2 disabled:opacity-50"
         >
           <Download className="w-5 h-5" />
           Generar PDF
@@ -826,7 +826,7 @@ function OCRTab({ fileInputRef, handleFileUpload, isProcessing }: any) {
   return (
     <div className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl p-8">
       <div className="flex flex-col items-center justify-center space-y-6 min-h-[400px]">
-        <div className="w-32 h-32 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center shadow-2xl">
+        <div className="w-32 h-32 rounded-full bg-gradient-to-br from-orange-500 to-zinc-800 flex items-center justify-center shadow-2xl">
           <Camera className="w-16 h-16 text-white" />
         </div>
 
@@ -853,7 +853,7 @@ function OCRTab({ fileInputRef, handleFileUpload, isProcessing }: any) {
           whileTap={{ scale: 0.95 }}
           onClick={() => fileInputRef.current?.click()}
           disabled={isProcessing}
-          className="px-8 py-4 bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-xl font-medium shadow-lg shadow-orange-500/25 flex items-center gap-2 disabled:opacity-50"
+          className="px-8 py-4 bg-gradient-to-r from-orange-500 to-zinc-800 text-white rounded-xl font-medium shadow-lg shadow-orange-500/25 flex items-center gap-2 disabled:opacity-50"
         >
           {isProcessing ? (
             <>
@@ -897,7 +897,7 @@ function PredictionsTab({ predictions, generatePredictions, isLoading }: any) {
           whileTap={{ scale: 0.95 }}
           onClick={generatePredictions}
           disabled={isLoading}
-          className="px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-xl font-medium shadow-lg shadow-blue-500/25 flex items-center gap-2 disabled:opacity-50"
+          className="px-6 py-3 bg-gradient-to-r from-zinc-800 to-indigo-600 text-white rounded-xl font-medium shadow-lg shadow-blue-500/25 flex items-center gap-2 disabled:opacity-50"
         >
           {isLoading ? (
             <>
@@ -921,7 +921,7 @@ function PredictionsTab({ predictions, generatePredictions, isLoading }: any) {
             </h4>
             <div className="flex items-center gap-2">
               <span className="text-sm text-white/60">Precisión del modelo:</span>
-              <span className="text-lg font-bold text-green-400">
+              <span className="text-lg font-bold text-zinc-200">
                 {(predictions.accuracy * 100).toFixed(1)}%
               </span>
             </div>
@@ -954,7 +954,7 @@ function PredictionsTab({ predictions, generatePredictions, isLoading }: any) {
       ) : (
         <div className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl p-12">
           <div className="flex flex-col items-center justify-center text-center">
-            <TrendingUp className="w-16 h-16 text-blue-400/50 mb-4" />
+            <TrendingUp className="w-16 h-16 text-zinc-300/50 mb-4" />
             <h4 className="text-xl font-bold text-white/80 mb-2">
               No hay predicciones generadas
             </h4>
@@ -971,12 +971,12 @@ function PredictionsTab({ predictions, generatePredictions, isLoading }: any) {
 // Navigation Tab
 function NavigationTab() {
   const shortcuts = [
-    { label: 'Ir a Dashboard', icon: BarChart3, action: 'dashboard', gradient: 'from-cyan-500 to-blue-600' },
+    { label: 'Ir a Dashboard', icon: BarChart3, action: 'dashboard', gradient: 'from-zinc-800 to-zinc-900' },
     { label: 'Ver Ventas', icon: TrendingUp, action: 'ventas', gradient: 'from-green-500 to-emerald-600' },
-    { label: 'Órdenes de Compra', icon: FileText, action: 'ordenes', gradient: 'from-orange-500 to-red-600' },
-    { label: 'Clientes', icon: MessageSquare, action: 'clientes', gradient: 'from-purple-500 to-pink-600' },
-    { label: 'Almacén', icon: Upload, action: 'almacen', gradient: 'from-blue-500 to-indigo-600' },
-    { label: 'Reportes', icon: FileText, action: 'reportes', gradient: 'from-pink-500 to-rose-600' }
+    { label: 'Órdenes de Compra', icon: FileText, action: 'ordenes', gradient: 'from-orange-500 to-zinc-800' },
+    { label: 'Clientes', icon: MessageSquare, action: 'clientes', gradient: 'from-zinc-800 to-zinc-700' },
+    { label: 'Almacén', icon: Upload, action: 'almacen', gradient: 'from-zinc-800 to-indigo-600' },
+    { label: 'Reportes', icon: FileText, action: 'reportes', gradient: 'from-zinc-700 to-zinc-700' }
   ];
 
   return (
@@ -1012,7 +1012,7 @@ function AnalyticsTab() {
   return (
     <div className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl p-8">
       <div className="flex flex-col items-center justify-center space-y-6 min-h-[400px]">
-        <BarChart3 className="w-24 h-24 text-violet-400/50" />
+        <BarChart3 className="w-24 h-24 text-zinc-200/50" />
         <div className="text-center">
           <h3 className="text-2xl font-bold text-white mb-2">
             Analytics Avanzado

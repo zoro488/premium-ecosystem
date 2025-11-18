@@ -90,7 +90,7 @@ const LoadingFallback = ({ message = 'Cargando módulo...' }) => (
           transition={{ delay: 0.5 }}
           className="absolute inset-0 flex items-center justify-center"
         >
-          <Package className="w-8 h-8 text-cyan-400" />
+          <Package className="w-8 h-8 text-zinc-300" />
         </motion.div>
       </div>
 
@@ -117,7 +117,7 @@ const LoadingFallback = ({ message = 'Cargando módulo...' }) => (
         initial={{ width: 0 }}
         animate={{ width: '100%' }}
         transition={{ duration: 2, ease: 'easeInOut' }}
-        className="mt-4 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full mx-auto max-w-xs"
+        className="mt-4 h-1 bg-gradient-to-r from-zinc-800 to-zinc-900 rounded-full mx-auto max-w-xs"
       />
     </motion.div>
   </div>

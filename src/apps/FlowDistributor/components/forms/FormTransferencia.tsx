@@ -214,7 +214,7 @@ export const FormTransferencia: React.FC<FormTransferenciaProps> = ({ onClose, o
           }}
         >
           <div className="flex items-center gap-3">
-            <ArrowRightLeft className="w-6 h-6 text-blue-400" />
+            <ArrowRightLeft className="w-6 h-6 text-zinc-300" />
             <div>
               <h2 className="text-2xl font-bold text-white">Nueva Transferencia</h2>
               <p className="text-sm text-slate-400">Transferir entre bancos o bóvedas</p>
@@ -227,9 +227,9 @@ export const FormTransferencia: React.FC<FormTransferenciaProps> = ({ onClose, o
           {/* FECHA */}
           <label className="block">
             <div className="flex items-center gap-2 mb-2">
-              <Calendar className="w-4 h-4 text-blue-400" />
+              <Calendar className="w-4 h-4 text-zinc-300" />
               <span className="text-sm font-medium text-white">
-                Fecha <span className="text-red-400">*</span>
+                Fecha <span className="text-zinc-200">*</span>
               </span>
             </div>
             <input
@@ -239,13 +239,13 @@ export const FormTransferencia: React.FC<FormTransferenciaProps> = ({ onClose, o
               disabled={isSubmitting}
               className={`w-full px-4 py-3 rounded-lg bg-white/5 border text-white transition-all ${
                 errors.fecha
-                  ? 'border-red-500 focus:border-red-400'
-                  : 'border-white/10 focus:border-blue-500'
+                  ? 'border-zinc-500 focus:border-red-400'
+                  : 'border-white/10 focus:border-zinc-700'
               } focus:outline-none focus:ring-2 focus:ring-blue-500/20`}
             />
             {errors.fecha && (
               <motion.p
-                className="mt-2 text-sm text-red-400 flex items-center gap-1"
+                className="mt-2 text-sm text-zinc-200 flex items-center gap-1"
                 initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
               >
@@ -260,9 +260,9 @@ export const FormTransferencia: React.FC<FormTransferenciaProps> = ({ onClose, o
             {/* ORIGEN */}
             <label className="block">
               <div className="flex items-center gap-2 mb-2">
-                <TrendingDown className="w-4 h-4 text-red-400" />
+                <TrendingDown className="w-4 h-4 text-zinc-200" />
                 <span className="text-sm font-medium text-white">
-                  Origen <span className="text-red-400">*</span>
+                  Origen <span className="text-zinc-200">*</span>
                 </span>
               </div>
               <select
@@ -271,8 +271,8 @@ export const FormTransferencia: React.FC<FormTransferenciaProps> = ({ onClose, o
                 disabled={isSubmitting}
                 className={`w-full px-4 py-3 rounded-lg bg-white/5 border text-white appearance-none cursor-pointer transition-all ${
                   errors.origen
-                    ? 'border-red-500 focus:border-red-400'
-                    : 'border-white/10 focus:border-blue-500'
+                    ? 'border-zinc-500 focus:border-red-400'
+                    : 'border-white/10 focus:border-zinc-700'
                 } focus:outline-none focus:ring-2 focus:ring-blue-500/20`}
               >
                 <option value="">Seleccionar...</option>
@@ -285,12 +285,12 @@ export const FormTransferencia: React.FC<FormTransferenciaProps> = ({ onClose, o
               {origen && (
                 <p className="mt-2 text-xs text-slate-400 flex items-center gap-1">
                   Saldo:{' '}
-                  <span className="font-mono text-blue-400">{formatCurrency(saldoOrigen)}</span>
+                  <span className="font-mono text-zinc-300">{formatCurrency(saldoOrigen)}</span>
                 </p>
               )}
               {errors.origen && (
                 <motion.p
-                  className="mt-2 text-sm text-red-400 flex items-center gap-1"
+                  className="mt-2 text-sm text-zinc-200 flex items-center gap-1"
                   initial={{ opacity: 0, y: -5 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
@@ -303,9 +303,9 @@ export const FormTransferencia: React.FC<FormTransferenciaProps> = ({ onClose, o
             {/* DESTINO */}
             <label className="block">
               <div className="flex items-center gap-2 mb-2">
-                <TrendingUp className="w-4 h-4 text-green-400" />
+                <TrendingUp className="w-4 h-4 text-zinc-200" />
                 <span className="text-sm font-medium text-white">
-                  Destino <span className="text-red-400">*</span>
+                  Destino <span className="text-zinc-200">*</span>
                 </span>
               </div>
               <select
@@ -314,8 +314,8 @@ export const FormTransferencia: React.FC<FormTransferenciaProps> = ({ onClose, o
                 disabled={isSubmitting}
                 className={`w-full px-4 py-3 rounded-lg bg-white/5 border text-white appearance-none cursor-pointer transition-all ${
                   errors.destino
-                    ? 'border-red-500 focus:border-red-400'
-                    : 'border-white/10 focus:border-blue-500'
+                    ? 'border-zinc-500 focus:border-red-400'
+                    : 'border-white/10 focus:border-zinc-700'
                 } focus:outline-none focus:ring-2 focus:ring-blue-500/20`}
               >
                 <option value="">Seleccionar...</option>
@@ -330,12 +330,12 @@ export const FormTransferencia: React.FC<FormTransferenciaProps> = ({ onClose, o
               {destino && (
                 <p className="mt-2 text-xs text-slate-400 flex items-center gap-1">
                   Saldo:{' '}
-                  <span className="font-mono text-blue-400">{formatCurrency(saldoDestino)}</span>
+                  <span className="font-mono text-zinc-300">{formatCurrency(saldoDestino)}</span>
                 </p>
               )}
               {errors.destino && (
                 <motion.p
-                  className="mt-2 text-sm text-red-400 flex items-center gap-1"
+                  className="mt-2 text-sm text-zinc-200 flex items-center gap-1"
                   initial={{ opacity: 0, y: -5 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
@@ -350,9 +350,9 @@ export const FormTransferencia: React.FC<FormTransferenciaProps> = ({ onClose, o
           <label className="block">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
-                <DollarSign className="w-4 h-4 text-blue-400" />
+                <DollarSign className="w-4 h-4 text-zinc-300" />
                 <span className="text-sm font-medium text-white">
-                  Monto <span className="text-red-400">*</span>
+                  Monto <span className="text-zinc-200">*</span>
                 </span>
               </div>
               {origen && (
@@ -374,14 +374,14 @@ export const FormTransferencia: React.FC<FormTransferenciaProps> = ({ onClose, o
                 disabled={isSubmitting || !origen}
                 className={`w-full pl-8 pr-4 py-3 rounded-lg bg-white/5 border text-white placeholder-slate-400 transition-all ${
                   errors.monto
-                    ? 'border-red-500 focus:border-red-400'
-                    : 'border-white/10 focus:border-blue-500'
+                    ? 'border-zinc-500 focus:border-red-400'
+                    : 'border-white/10 focus:border-zinc-700'
                 } focus:outline-none focus:ring-2 focus:ring-blue-500/20`}
               />
             </div>
             {errors.monto && (
               <motion.p
-                className="mt-2 text-sm text-red-400 flex items-center gap-1"
+                className="mt-2 text-sm text-zinc-200 flex items-center gap-1"
                 initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
               >
@@ -394,9 +394,9 @@ export const FormTransferencia: React.FC<FormTransferenciaProps> = ({ onClose, o
           {/* CONCEPTO */}
           <label className="block">
             <div className="flex items-center gap-2 mb-2">
-              <FileText className="w-4 h-4 text-blue-400" />
+              <FileText className="w-4 h-4 text-zinc-300" />
               <span className="text-sm font-medium text-white">
-                Concepto <span className="text-red-400">*</span>
+                Concepto <span className="text-zinc-200">*</span>
               </span>
             </div>
             <textarea
@@ -407,14 +407,14 @@ export const FormTransferencia: React.FC<FormTransferenciaProps> = ({ onClose, o
               disabled={isSubmitting}
               className={`w-full px-4 py-3 rounded-lg bg-white/5 border text-white placeholder-slate-400 transition-all ${
                 errors.concepto
-                  ? 'border-red-500 focus:border-red-400'
-                  : 'border-white/10 focus:border-blue-500'
+                  ? 'border-zinc-500 focus:border-red-400'
+                  : 'border-white/10 focus:border-zinc-700'
               } focus:outline-none focus:ring-2 focus:ring-blue-500/20`}
             />
             <p className="mt-1 text-xs text-slate-400">{concepto.length}/200 caracteres</p>
             {errors.concepto && (
               <motion.p
-                className="mt-2 text-sm text-red-400 flex items-center gap-1"
+                className="mt-2 text-sm text-zinc-200 flex items-center gap-1"
                 initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
               >
@@ -427,7 +427,7 @@ export const FormTransferencia: React.FC<FormTransferenciaProps> = ({ onClose, o
           {/* PREVIEW DE LA TRANSFERENCIA */}
           {monto > 0 && origen && destino && (
             <motion.div
-              className="p-4 rounded-lg bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20"
+              className="p-4 rounded-lg bg-gradient-to-r from-zinc-800/10 to-indigo-500/10 border border-zinc-700/20"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
             >
@@ -437,13 +437,13 @@ export const FormTransferencia: React.FC<FormTransferenciaProps> = ({ onClose, o
                   <span className="text-white">
                     {bancoOptions.find((b) => b.value === origen)?.label}:
                   </span>
-                  <span className="text-red-400 font-mono">{formatCurrency(nuevoSaldoOrigen)}</span>
+                  <span className="text-zinc-200 font-mono">{formatCurrency(nuevoSaldoOrigen)}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-white">
                     {bancoOptions.find((b) => b.value === destino)?.label}:
                   </span>
-                  <span className="text-green-400 font-mono">
+                  <span className="text-zinc-200 font-mono">
                     {formatCurrency(nuevoSaldoDestino)}
                   </span>
                 </div>

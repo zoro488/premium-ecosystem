@@ -40,19 +40,19 @@ const THEME_STYLES = {
     border: 'border-gray-200',
   },
   purple: {
-    bg: 'bg-purple-900/95',
+    bg: 'bg-zinc-800/95',
     text: 'text-white',
-    border: 'border-purple-500',
+    border: 'border-zinc-800',
   },
   blue: {
-    bg: 'bg-blue-900/95',
+    bg: 'bg-zinc-950/95',
     text: 'text-white',
-    border: 'border-blue-500',
+    border: 'border-zinc-700',
   },
   gradient: {
-    bg: 'bg-gradient-to-br from-purple-900/95 to-pink-900/95',
+    bg: 'bg-gradient-to-br from-zinc-800/95 to-zinc-700/95',
     text: 'text-white',
-    border: 'border-purple-500',
+    border: 'border-zinc-800',
   },
 };
 

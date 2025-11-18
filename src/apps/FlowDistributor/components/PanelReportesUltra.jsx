@@ -564,17 +564,17 @@ const PanelReportesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
   const getStatusColor = useCallback((estado) => {
     switch (estado) {
       case 'activo':
-        return { color: 'text-green-400', bgColor: 'bg-green-500/20' };
+        return { color: 'text-zinc-200', bgColor: 'bg-zinc-9000/20' };
       case 'borrador':
-        return { color: 'text-yellow-400', bgColor: 'bg-yellow-500/20' };
+        return { color: 'text-zinc-200', bgColor: 'bg-zinc-9000/20' };
       case 'archivado':
         return { color: 'text-gray-400', bgColor: 'bg-gray-500/20' };
       case 'pausado':
-        return { color: 'text-orange-400', bgColor: 'bg-orange-500/20' };
+        return { color: 'text-zinc-200', bgColor: 'bg-zinc-9000/20' };
       case 'exitoso':
-        return { color: 'text-green-400', bgColor: 'bg-green-500/20' };
+        return { color: 'text-zinc-200', bgColor: 'bg-zinc-9000/20' };
       case 'error':
-        return { color: 'text-red-400', bgColor: 'bg-red-500/20' };
+        return { color: 'text-zinc-200', bgColor: 'bg-zinc-9000/20' };
       default:
         return { color: 'text-slate-400', bgColor: 'bg-slate-500/20' };
     }
@@ -733,7 +733,7 @@ const PanelReportesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 <div className="text-2xl font-bold text-white">
                   {showValues ? localData.summary.ejecutionesHoy : '•••'}
                 </div>
-                <div className="flex items-center text-green-400 text-sm mt-1">
+                <div className="flex items-center text-zinc-200 text-sm mt-1">
                   <Play className="w-3 h-3 mr-1" />
                   {localData.summary.usuariosActivos} usuarios
                 </div>
@@ -757,7 +757,7 @@ const PanelReportesUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 <div className="text-2xl font-bold text-white">
                   {showValues ? localData.summary.reportesProgramados : '••'}
                 </div>
-                <div className="flex items-center text-blue-400 text-sm mt-1">
+                <div className="flex items-center text-zinc-300 text-sm mt-1">
                   <Clock className="w-3 h-3 mr-1" />
                   {localData.summary.tiempoPromedioGeneracion}s promedio
                 </div>

@@ -228,7 +228,7 @@ const PremiumDashboardDemo = () => {
                     className="flex items-center justify-between p-4 rounded-xl border border-white/10 transition-all"
                   >
                     <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-zinc-800 to-zinc-800 flex items-center justify-center">
                         <ShoppingCart className="w-5 h-5 text-white" />
                       </div>
                       <div>
@@ -237,7 +237,7 @@ const PremiumDashboardDemo = () => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="text-green-400 font-bold">+$234.50</p>
+                      <p className="text-zinc-200 font-bold">+$234.50</p>
                       <p className="text-xs text-gray-400">Completado</p>
                     </div>
                   </motion.div>

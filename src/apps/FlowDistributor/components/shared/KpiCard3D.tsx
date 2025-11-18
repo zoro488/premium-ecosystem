@@ -231,12 +231,12 @@ export const KpiCard3D = memo<KpiCard3DProps>(
                 transition={{ delay: 0.3 }}
               >
                 {trend > 0 ? (
-                  <TrendingUp className="w-4 h-4 text-green-400" />
+                  <TrendingUp className="w-4 h-4 text-zinc-200" />
                 ) : (
-                  <TrendingDown className="w-4 h-4 text-red-400" />
+                  <TrendingDown className="w-4 h-4 text-zinc-200" />
                 )}
                 <span
-                  className={`text-sm font-medium ${trend > 0 ? 'text-green-400' : 'text-red-400'}`}
+                  className={`text-sm font-medium ${trend > 0 ? 'text-zinc-200' : 'text-zinc-200'}`}
                 >
                   {Math.abs(trend).toFixed(1)}%
                 </span>

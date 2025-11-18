@@ -8,7 +8,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 
 
-import App from './App.jsx';
+import App from './apps/FlowDistributor/chronos-system/App.tsx';
 import ErrorBoundary from './components/ErrorBoundary.jsx';
 import { initializeTracing } from './config/tracing';
 import './index.css';

@@ -107,7 +107,7 @@ export const DashboardMetrics: React.FC = () => {
       {subtitle && <p className="text-sm text-gray-600 mt-1">{subtitle}</p>}
       {trend && trendValue !== undefined && (
         <div
-          className={`flex items-center gap-1 mt-2 text-sm ${trend === 'up' ? 'text-green-600' : 'text-red-600'}`}
+          className={`flex items-center gap-1 mt-2 text-sm ${trend === 'up' ? 'text-white' : 'text-white'}`}
         >
           {trend === 'up' ? (
             <TrendingUp className="h-4 w-4" />
@@ -128,7 +128,7 @@ export const DashboardMetrics: React.FC = () => {
           title="Ventas del Mes"
           value={formatCurrency(metrics.totalVentasMes, 'USD')}
           icon={<DollarSign className="h-6 w-6" />}
-          color="bg-blue-50"
+          color="bg-zinc-900"
           trend={metrics.crecimiento >= 0 ? 'up' : 'down'}
           trendValue={metrics.crecimiento}
         />
@@ -137,7 +137,7 @@ export const DashboardMetrics: React.FC = () => {
           title="Utilidad del Mes"
           value={formatCurrency(metrics.utilidadMes, 'USD')}
           icon={<TrendingUp className="h-6 w-6" />}
-          color="bg-green-50"
+          color="bg-zinc-900"
           subtitle={`Margen: ${metrics.margenMes.toFixed(1)}%`}
         />
 
@@ -145,14 +145,14 @@ export const DashboardMetrics: React.FC = () => {
           title="Compras del Mes"
           value={formatCurrency(metrics.totalComprasMes, 'USD')}
           icon={<ShoppingCart className="h-6 w-6" />}
-          color="bg-purple-50"
+          color="bg-zinc-800"
         />
 
         <MetricCard
           title="Clientes Activos"
           value={metrics.clientesActivos}
           icon={<Users className="h-6 w-6" />}
-          color="bg-orange-50"
+          color="bg-zinc-900"
           subtitle={`${metrics.clientesBloqueados} bloqueados`}
         />
       </div>
@@ -177,13 +177,13 @@ export const DashboardMetrics: React.FC = () => {
         <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-semibold text-gray-900">Cuentas por Cobrar</h3>
-            <DollarSign className="h-5 w-5 text-blue-600" />
+            <DollarSign className="h-5 w-5 text-white" />
           </div>
           <p className="text-2xl font-bold text-gray-900">{metrics.ventasPendientes}</p>
           <p className="text-sm text-gray-600 mt-1">
             {formatCurrency(metrics.montoVentasPendientes, 'USD')}
           </p>
-          <div className="mt-4 flex items-center gap-2 text-sm text-blue-600">
+          <div className="mt-4 flex items-center gap-2 text-sm text-white">
             <CheckCircle className="h-4 w-4" />
             <span>Por cobrar</span>
           </div>
@@ -192,13 +192,13 @@ export const DashboardMetrics: React.FC = () => {
         <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-semibold text-gray-900">Deuda de Clientes</h3>
-            <AlertCircle className="h-5 w-5 text-red-600" />
+            <AlertCircle className="h-5 w-5 text-white" />
           </div>
           <p className="text-2xl font-bold text-gray-900">
             {formatCurrency(metrics.deudaTotal, 'USD')}
           </p>
           <p className="text-sm text-gray-600 mt-1">Créditos otorgados</p>
-          <div className="mt-4 flex items-center gap-2 text-sm text-red-600">
+          <div className="mt-4 flex items-center gap-2 text-sm text-white">
             <AlertCircle className="h-4 w-4" />
             <span>Monitorear</span>
           </div>
@@ -209,7 +209,7 @@ export const DashboardMetrics: React.FC = () => {
       {(metrics.ordenesPendientes > 5 ||
         metrics.deudaTotal > 50000 ||
         metrics.clientesBloqueados > 0) && (
-        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+        <div className="bg-zinc-900 border border-yellow-200 rounded-lg p-4">
           <div className="flex items-start gap-3">
             <AlertCircle className="h-5 w-5 text-yellow-600 mt-0.5" />
             <div>

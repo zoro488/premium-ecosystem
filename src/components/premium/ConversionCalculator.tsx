@@ -1,15 +1,17 @@
-import React, { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useMemo, useState } from 'react';
+
+import { AnimatePresence, motion } from 'framer-motion';
 import {
   ArrowRightLeft,
-  DollarSign,
-  TrendingUp,
   Calculator,
-  Zap,
-  Info,
-  Copy,
   Check,
+  Copy,
+  DollarSign,
+  Info,
+  TrendingUp,
+  Zap,
 } from 'lucide-react';
+
 import { useExchangeRate } from '@/hooks/useExchangeRate';
 
 interface ConversionScenario {
@@ -20,7 +22,7 @@ interface ConversionScenario {
 }
 
 export const ConversionCalculator: React.FC = () => {
-  const { tc, usdToMxn, mxnToUsd, opportunity } = useExchangeRate();
+  const { tc, opportunity } = useExchangeRate();
 
   const [amount, setAmount] = useState<string>('1000');
   const [fromCurrency, setFromCurrency] = useState<'USD' | 'MXN'>('USD');
@@ -56,18 +58,16 @@ export const ConversionCalculator: React.FC = () => {
 
   const amountNum = parseFloat(amount) || 0;
 
-  const conversions = scenarios.map(scenario => {
-    const result = fromCurrency === 'USD'
-      ? amountNum * scenario.tc
-      : amountNum / scenario.tc;
+  const conversions = scenarios.map((scenario) => {
+    const result = fromCurrency === 'USD' ? amountNum * scenario.tc : amountNum / scenario.tc;
 
-    const difference = result - (fromCurrency === 'USD'
-      ? amountNum * scenarios[0].tc
-      : amountNum / scenarios[0].tc);
+    const difference =
+      result - (fromCurrency === 'USD' ? amountNum * scenarios[0].tc : amountNum / scenarios[0].tc);
 
-    const percentDiff = ((difference / (fromCurrency === 'USD'
-      ? amountNum * scenarios[0].tc
-      : amountNum / scenarios[0].tc)) * 100);
+    const percentDiff =
+      (difference /
+        (fromCurrency === 'USD' ? amountNum * scenarios[0].tc : amountNum / scenarios[0].tc)) *
+      100;
 
     return {
       ...scenario,
@@ -78,7 +78,7 @@ export const ConversionCalculator: React.FC = () => {
   });
 
   const handleSwapCurrency = () => {
-    setFromCurrency(prev => prev === 'USD' ? 'MXN' : 'USD');
+    setFromCurrency((prev) => (prev === 'USD' ? 'MXN' : 'USD'));
   };
 
   const handleCopy = (value: number) => {
@@ -93,10 +93,9 @@ export const ConversionCalculator: React.FC = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-xl rounded-2xl border border-white/10 p-6"
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      className="bg-gradient-to-br from-black/80 to-black/90 backdrop-blur-xl rounded-2xl border border-white/10 p-6"
     >
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
@@ -104,7 +103,7 @@ export const ConversionCalculator: React.FC = () => {
           <motion.div
             animate={{ rotate: [0, 180, 360] }}
             transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-            className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full p-2.5 flex items-center justify-center"
+            className="w-12 h-12 bg-gradient-to-br from-black/80 to-black/90 border border-zinc-700/30 rounded-full p-2.5 flex items-center justify-center"
           >
             <Calculator className="text-white w-6 h-6" />
           </motion.div>
@@ -128,14 +127,14 @@ export const ConversionCalculator: React.FC = () => {
               <input
                 type="number"
                 value={amount}
-                onChange={e => setAmount(e.target.value)}
-                className="w-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl pl-12 pr-4 py-4 text-white text-2xl font-bold font-mono placeholder:text-white/40 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all"
+                onChange={(e) => setAmount(e.target.value)}
+                className="w-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl pl-12 pr-4 py-4 text-white text-2xl font-bold font-mono placeholder:text-white/40 focus:outline-none focus:border-zinc-600/50 focus:ring-2 focus:ring-zinc-800/20 transition-all"
                 placeholder="0.00"
               />
             </div>
             {/* Botones rápidos */}
             <div className="flex items-center gap-2 mt-3">
-              {[100, 500, 1000, 5000, 10000].map(value => (
+              {[100, 500, 1000, 5000, 10000].map((value) => (
                 <motion.button
                   key={value}
                   whileHover={{ scale: 1.05 }}
@@ -155,7 +154,7 @@ export const ConversionCalculator: React.FC = () => {
               whileHover={{ scale: 1.1, rotate: 180 }}
               whileTap={{ scale: 0.9 }}
               onClick={handleSwapCurrency}
-              className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center hover:shadow-lg hover:shadow-purple-500/50 transition-all"
+              className="w-12 h-12 bg-gradient-to-br from-black/80 to-black/90 border border-zinc-700/30 rounded-full flex items-center justify-center hover:shadow-lg hover:shadow-zinc-800/50 transition-all"
             >
               <ArrowRightLeft className="w-6 h-6 text-white" />
             </motion.button>
@@ -207,14 +206,12 @@ export const ConversionCalculator: React.FC = () => {
               <div className="flex items-center justify-between mb-3">
                 <div>
                   <div className="flex items-center gap-2 mb-1">
-                    <h4 className={`text-${conversion.color}-400 font-bold`}>
-                      {conversion.label}
-                    </h4>
+                    <h4 className={`text-${conversion.color}-400 font-bold`}>{conversion.label}</h4>
                     {idx === 0 && (
                       <motion.span
                         animate={{ scale: [1, 1.2, 1] }}
                         transition={{ duration: 2, repeat: Infinity }}
-                        className="px-2 py-0.5 bg-purple-500/20 text-purple-400 text-xs rounded-full font-bold"
+                        className="px-2 py-0.5 bg-zinc-800/20 text-zinc-200 text-xs rounded-full font-bold"
                       >
                         EN VIVO
                       </motion.span>
@@ -304,15 +301,15 @@ export const ConversionCalculator: React.FC = () => {
           opportunity.action === 'VENDER_USD'
             ? 'bg-emerald-500/10 border-emerald-500/30'
             : opportunity.action === 'COMPRAR_USD'
-            ? 'bg-blue-500/10 border-blue-500/30'
-            : 'bg-amber-500/10 border-amber-500/30'
+              ? 'bg-blue-500/10 border-blue-500/30'
+              : 'bg-amber-500/10 border-amber-500/30'
         }`}
       >
         <div className="flex items-start gap-3">
           <motion.div
             animate={{ rotate: [0, 10, -10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg p-2 flex items-center justify-center"
+            className="w-10 h-10 bg-gradient-to-br from-black/80 to-black/90 border border-zinc-700/30 rounded-lg p-2 flex items-center justify-center"
           >
             <Zap className="text-white w-6 h-6" />
           </motion.div>
@@ -320,14 +317,13 @@ export const ConversionCalculator: React.FC = () => {
             <h4 className="text-white font-bold mb-1 flex items-center gap-2">
               💡 Recomendación Inteligente
             </h4>
-            <p className="text-white/80 text-sm mb-2">
-              {opportunity.recommendation}
-            </p>
+            <p className="text-white/80 text-sm mb-2">{opportunity.recommendation}</p>
             {opportunity.action === 'VENDER_USD' && (
               <div className="flex items-center gap-2 text-xs">
                 <TrendingUp className="w-4 h-4 text-emerald-400" />
                 <span className="text-emerald-400 font-medium">
-                  TC está {tc.change > 0 ? '+' : ''}{tc.change.toFixed(4)} arriba del promedio
+                  TC está {tc.change > 0 ? '+' : ''}
+                  {tc.change.toFixed(4)} arriba del promedio
                 </span>
               </div>
             )}
@@ -348,7 +344,7 @@ export const ConversionCalculator: React.FC = () => {
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 rounded-xl text-white font-bold transition-all flex items-center justify-center gap-2"
+          className="px-6 py-3 bg-gradient-to-r from-zinc-800 via-zinc-700 to-zinc-800 hover:from-zinc-800 hover:to-zinc-800 rounded-xl text-white font-bold transition-all flex items-center justify-center gap-2"
         >
           <Zap className="w-5 h-5" />
           <span>Convertir Ahora</span>

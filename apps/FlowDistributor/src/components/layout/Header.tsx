@@ -150,7 +150,7 @@ export function Header({ onToggleSidebar }: HeaderProps) {
                 key={currentPage.label}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+                className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-zinc-400 to-zinc-400 bg-clip-text text-transparent"
               >
                 {currentPage.label}
               </motion.h1>
@@ -199,7 +199,7 @@ export function Header({ onToggleSidebar }: HeaderProps) {
                   <motion.span
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-r from-red-500 to-pink-500 rounded-full text-white text-xs font-bold flex items-center justify-center shadow-lg shadow-red-500/50"
+                    className="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-r from-red-500 to-zinc-500 rounded-full text-white text-xs font-bold flex items-center justify-center shadow-lg shadow-red-500/50"
                   >
                     {unreadCount}
                   </motion.span>
@@ -274,7 +274,7 @@ export function Header({ onToggleSidebar }: HeaderProps) {
                 }}
                 className="flex items-center gap-2 p-2 pr-3 hover:bg-white/5 rounded-lg transition-colors group"
               >
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-500 to-zinc-500 flex items-center justify-center">
                   <User className="w-4 h-4 text-white" />
                 </div>
                 <div className="hidden md:block text-left">

@@ -214,13 +214,13 @@ export default function FormAbonoDistribuidor({
       exit={{ opacity: 0 }}
     >
       <motion.div
-        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-slate-900 via-slate-900 to-red-900/20 rounded-2xl border border-white/10 shadow-2xl"
+        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-slate-900 via-slate-900 to-zinc-800/20 rounded-2xl border border-white/10 shadow-2xl"
         initial={{ scale: 0.9, y: 20 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.9, y: 20 }}
       >
         {/* Header */}
-        <div className="sticky top-0 z-10 bg-gradient-to-r from-red-600 to-orange-600 p-6 rounded-t-2xl">
+        <div className="sticky top-0 z-10 bg-gradient-to-r from-zinc-700 to-orange-600 p-6 rounded-t-2xl">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
@@ -254,7 +254,7 @@ export default function FormAbonoDistribuidor({
             </div>
             <div className="text-right">
               <p className="text-sm text-white/60 mb-1">Adeudo Actual</p>
-              <p className="text-3xl font-bold text-red-400">
+              <p className="text-3xl font-bold text-zinc-200">
                 ${(distribuidor.adeudo || 0).toLocaleString('es-MX', { minimumFractionDigits: 2 })}
               </p>
             </div>
@@ -297,8 +297,8 @@ export default function FormAbonoDistribuidor({
                           onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
                           className={`w-full pl-8 pr-4 py-3 bg-slate-800/50 border ${
                             montoExcedido || saldoInsuficiente
-                              ? 'border-red-500'
-                              : 'border-white/10 focus:border-red-500'
+                              ? 'border-zinc-500'
+                              : 'border-white/10 focus:border-zinc-500'
                           } rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 ${
                             montoExcedido || saldoInsuficiente
                               ? 'focus:ring-red-500'
@@ -308,13 +308,13 @@ export default function FormAbonoDistribuidor({
                         />
                       </div>
                       {montoExcedido && (
-                        <p className="text-red-400 text-sm mt-2 flex items-center gap-1">
+                        <p className="text-zinc-200 text-sm mt-2 flex items-center gap-1">
                           <AlertTriangle size={14} />
                           El monto no puede ser mayor al adeudo actual
                         </p>
                       )}
                       {saldoInsuficiente && !montoExcedido && (
-                        <p className="text-red-400 text-sm mt-2 flex items-center gap-1">
+                        <p className="text-zinc-200 text-sm mt-2 flex items-center gap-1">
                           <AlertTriangle size={14} />
                           El banco seleccionado no tiene saldo suficiente
                         </p>
@@ -339,7 +339,7 @@ export default function FormAbonoDistribuidor({
                     >
                       <select
                         {...field}
-                        className="w-full px-4 py-3 bg-slate-800/50 border border-white/10 focus:border-red-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-red-500/50 transition-all"
+                        className="w-full px-4 py-3 bg-slate-800/50 border border-white/10 focus:border-zinc-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-red-500/50 transition-all"
                       >
                         <option value="" className="bg-slate-900">
                           Seleccionar banco...
@@ -369,7 +369,7 @@ export default function FormAbonoDistribuidor({
                             <span className="text-white/60">Después del pago:</span>
                             <span
                               className={`font-semibold ${
-                                nuevoSaldoBanco < 0 ? 'text-red-400' : 'text-green-400'
+                                nuevoSaldoBanco < 0 ? 'text-zinc-200' : 'text-zinc-200'
                               }`}
                             >
                               ${nuevoSaldoBanco.toLocaleString('es-MX', {
@@ -400,7 +400,7 @@ export default function FormAbonoDistribuidor({
                       type="date"
                       value={value instanceof Date ? value.toISOString().split('T')[0] : ''}
                       onChange={(e) => onChange(new Date(e.target.value))}
-                      className="w-full px-4 py-3 bg-slate-800/50 border border-white/10 focus:border-red-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-red-500/50 transition-all"
+                      className="w-full px-4 py-3 bg-slate-800/50 border border-white/10 focus:border-zinc-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-red-500/50 transition-all"
                     />
                   </FieldWrapper>
                 )}
@@ -419,7 +419,7 @@ export default function FormAbonoDistribuidor({
                   >
                     <select
                       {...field}
-                      className="w-full px-4 py-3 bg-slate-800/50 border border-white/10 focus:border-red-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-red-500/50 transition-all"
+                      className="w-full px-4 py-3 bg-slate-800/50 border border-white/10 focus:border-zinc-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-red-500/50 transition-all"
                     >
                       <option value="transferencia" className="bg-slate-900">
                         🏦 Transferencia Bancaria
@@ -453,7 +453,7 @@ export default function FormAbonoDistribuidor({
                       <input
                         {...field}
                         type="text"
-                        className="w-full px-4 py-3 bg-slate-800/50 border border-white/10 focus:border-red-500 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-red-500/50 transition-all"
+                        className="w-full px-4 py-3 bg-slate-800/50 border border-white/10 focus:border-zinc-500 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-red-500/50 transition-all"
                         placeholder={
                           metodoPago === 'cheque'
                             ? 'Ej: CHQ-123456'
@@ -478,7 +478,7 @@ export default function FormAbonoDistribuidor({
                     <input
                       {...field}
                       type="text"
-                      className="w-full px-4 py-3 bg-slate-800/50 border border-white/10 focus:border-red-500 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-red-500/50 transition-all"
+                      className="w-full px-4 py-3 bg-slate-800/50 border border-white/10 focus:border-zinc-500 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-red-500/50 transition-all"
                       placeholder="Ej: FACT-2025-001"
                     />
                   </FieldWrapper>
@@ -499,7 +499,7 @@ export default function FormAbonoDistribuidor({
                       <textarea
                         {...field}
                         rows={3}
-                        className="w-full px-4 py-3 bg-slate-800/50 border border-white/10 focus:border-red-500 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-red-500/50 transition-all resize-none"
+                        className="w-full px-4 py-3 bg-slate-800/50 border border-white/10 focus:border-zinc-500 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-red-500/50 transition-all resize-none"
                         placeholder="Observaciones adicionales sobre el pago..."
                       />
                     </FieldWrapper>
@@ -517,10 +517,10 @@ export default function FormAbonoDistribuidor({
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Impacto en Distribuidor */}
-              <div className="bg-gradient-to-br from-red-500/10 to-red-600/5 border border-red-500/20 rounded-lg p-4">
+              <div className="bg-gradient-to-br from-zinc-700/10 to-zinc-800/5 border border-zinc-500/20 rounded-lg p-4">
                 <div className="flex items-center gap-2 mb-3">
-                  <div className="w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center">
-                    <Receipt className="text-red-400" size={16} />
+                  <div className="w-8 h-8 bg-zinc-9000/20 rounded-lg flex items-center justify-center">
+                    <Receipt className="text-zinc-200" size={16} />
                   </div>
                   <span className="text-sm text-white/60 font-medium">
                     Adeudo Distribuidor
@@ -529,13 +529,13 @@ export default function FormAbonoDistribuidor({
                 <div className="space-y-2">
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-white/60">Actual:</span>
-                    <span className="text-red-400 font-semibold">
+                    <span className="text-zinc-200 font-semibold">
                       ${(distribuidor.adeudo || 0).toLocaleString('es-MX')}
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-white/60">Después:</span>
-                    <span className="text-green-400 font-bold text-lg">
+                    <span className="text-zinc-200 font-bold text-lg">
                       ${nuevoAdeudo.toLocaleString('es-MX')}
                     </span>
                   </div>
@@ -544,10 +544,10 @@ export default function FormAbonoDistribuidor({
 
               {/* Impacto en Banco */}
               {bancoSeleccionado && (
-                <div className="bg-gradient-to-br from-blue-500/10 to-blue-600/5 border border-blue-500/20 rounded-lg p-4">
+                <div className="bg-gradient-to-br from-zinc-800/10 to-zinc-900/5 border border-zinc-700/20 rounded-lg p-4">
                   <div className="flex items-center gap-2 mb-3">
-                    <div className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                      <Building2 className="text-blue-400" size={16} />
+                    <div className="w-8 h-8 bg-zinc-800/20 rounded-lg flex items-center justify-center">
+                      <Building2 className="text-zinc-300" size={16} />
                     </div>
                     <span className="text-sm text-white/60 font-medium">
                       Saldo {bancoSeleccionado.nombre}
@@ -556,7 +556,7 @@ export default function FormAbonoDistribuidor({
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-white/60">Actual:</span>
-                      <span className="text-blue-400 font-semibold">
+                      <span className="text-zinc-300 font-semibold">
                         ${bancoSeleccionado.saldoDisponible.toLocaleString('es-MX')}
                       </span>
                     </div>
@@ -564,7 +564,7 @@ export default function FormAbonoDistribuidor({
                       <span className="text-white/60">Después:</span>
                       <span
                         className={`font-bold text-lg ${
-                          nuevoSaldoBanco < 0 ? 'text-red-400' : 'text-green-400'
+                          nuevoSaldoBanco < 0 ? 'text-zinc-200' : 'text-zinc-200'
                         }`}
                       >
                         ${nuevoSaldoBanco.toLocaleString('es-MX')}
@@ -575,7 +575,7 @@ export default function FormAbonoDistribuidor({
               )}
             </div>
 
-            <div className="mt-4 p-3 bg-orange-500/10 border border-orange-500/20 rounded-lg">
+            <div className="mt-4 p-3 bg-zinc-9000/10 border border-zinc-500/20 rounded-lg">
               <p className="text-xs text-white/60 text-center">
                 💡 El pago se registrará como <strong>GASTO</strong> en el banco{' '}
                 {bancoSeleccionado?.nombre || 'seleccionado'}
@@ -585,12 +585,12 @@ export default function FormAbonoDistribuidor({
 
           {/* Resumen Final */}
           {nuevoAdeudo === 0 && (
-            <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-lg p-6">
-              <div className="flex items-center justify-center gap-3 text-green-400">
+            <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-zinc-500/30 rounded-lg p-6">
+              <div className="flex items-center justify-center gap-3 text-zinc-200">
                 <CheckCircle size={32} />
                 <div>
                   <p className="text-xl font-bold">¡Adeudo Liquidado!</p>
-                  <p className="text-sm text-green-400/80">
+                  <p className="text-sm text-zinc-200/80">
                     El distribuidor quedará sin adeudos pendientes
                   </p>
                 </div>

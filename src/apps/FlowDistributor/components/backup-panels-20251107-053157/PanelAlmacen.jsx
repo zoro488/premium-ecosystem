@@ -112,13 +112,13 @@ const OrdenWidget = ({ orden }) => {
       exit={{ opacity: 0, scale: 0.95 }}
       whileHover={{ y: -4, scale: 1.02 }}
       onClick={() => setExpandido(!expandido)}
-      className="relative p-5 rounded-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 hover:border-green-500/50 cursor-pointer transition-all"
+      className="relative p-5 rounded-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 hover:border-zinc-500/50 cursor-pointer transition-all"
     >
       {/* Header */}
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-green-500/20">
-            <ShoppingCart className="w-5 h-5 text-green-400" />
+          <div className="p-2 rounded-lg bg-zinc-9000/20">
+            <ShoppingCart className="w-5 h-5 text-zinc-200" />
           </div>
           <div>
             <h3 className="text-white font-bold text-lg">{orden.id}</h3>
@@ -127,7 +127,7 @@ const OrdenWidget = ({ orden }) => {
         </div>
 
         <div className="text-right">
-          <div className="text-2xl font-bold text-green-400">{orden.cantidad}</div>
+          <div className="text-2xl font-bold text-zinc-200">{orden.cantidad}</div>
           <div className="text-xs text-gray-400">unidades</div>
         </div>
       </div>
@@ -146,7 +146,7 @@ const OrdenWidget = ({ orden }) => {
 
       {/* Badge de estatus */}
       <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="absolute top-3 right-3">
-        <div className="flex items-center gap-1 px-2 py-1 rounded-full bg-green-500/20 text-green-400 text-xs font-medium">
+        <div className="flex items-center gap-1 px-2 py-1 rounded-full bg-zinc-9000/20 text-zinc-200 text-xs font-medium">
           <CheckCircle className="w-3 h-3" />
           <span>Completado</span>
         </div>
@@ -175,13 +175,13 @@ const SalidaWidget = ({ salida }) => {
       exit={{ opacity: 0, scale: 0.95 }}
       whileHover={{ y: -4, scale: 1.02 }}
       onClick={() => setExpandido(!expandido)}
-      className="relative p-5 rounded-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 hover:border-orange-500/50 cursor-pointer transition-all"
+      className="relative p-5 rounded-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 hover:border-zinc-500/50 cursor-pointer transition-all"
     >
       {/* Header */}
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-orange-500/20">
-            <Truck className="w-5 h-5 text-orange-400" />
+          <div className="p-2 rounded-lg bg-zinc-9000/20">
+            <Truck className="w-5 h-5 text-zinc-200" />
           </div>
           <div>
             <h3 className="text-white font-bold">{salida.cliente}</h3>
@@ -190,7 +190,7 @@ const SalidaWidget = ({ salida }) => {
         </div>
 
         <div className="text-right">
-          <div className="text-2xl font-bold text-orange-400">{salida.cantidad}</div>
+          <div className="text-2xl font-bold text-zinc-200">{salida.cantidad}</div>
           <div className="text-xs text-gray-400">unidades</div>
         </div>
       </div>
@@ -308,7 +308,7 @@ const PanelAlmacen = () => {
           animate={{ opacity: 1, scale: 1 }}
           className="flex flex-col items-center gap-4"
         >
-          <Loader2 className="w-16 h-16 text-purple-400 animate-spin" />
+          <Loader2 className="w-16 h-16 text-zinc-800 animate-spin" />
           <div className="text-white text-xl font-semibold">Cargando datos del almacén...</div>
           <div className="text-gray-400 text-sm">Conectando con Firestore</div>
         </motion.div>
@@ -341,9 +341,9 @@ const PanelAlmacen = () => {
             <motion.div
               whileHover={{ rotate: 360, scale: 1.1 }}
               transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-              className="p-3 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/10 border border-purple-500/30"
+              className="p-3 rounded-xl bg-gradient-to-br from-zinc-800/20 to-zinc-700/10 border border-zinc-800/30"
             >
-              <Package className="w-8 h-8 text-purple-400" />
+              <Package className="w-8 h-8 text-zinc-800" />
             </motion.div>
             <div>
               <motion.h1
@@ -373,8 +373,8 @@ const PanelAlmacen = () => {
               valor: estadisticas.totalSalidas,
               subtexto: `${estadisticas.cantidadSalidas} movimientos`,
               icon: TrendingDown,
-              color: 'from-orange-500 to-red-500',
-              bg: 'from-orange-500/20 to-red-500/10',
+              color: 'from-orange-500 to-zinc-800',
+              bg: 'from-orange-500/20 to-zinc-800/10',
             },
             {
               titulo: 'Balance Neto',
@@ -383,20 +383,20 @@ const PanelAlmacen = () => {
               icon: Activity,
               color:
                 estadisticas.balanceNeto >= 0
-                  ? 'from-blue-500 to-cyan-500'
-                  : 'from-red-500 to-pink-500',
+                  ? 'from-zinc-800 to-zinc-800'
+                  : 'from-zinc-700 to-zinc-700',
               bg:
                 estadisticas.balanceNeto >= 0
-                  ? 'from-blue-500/20 to-cyan-500/10'
-                  : 'from-red-500/20 to-pink-500/10',
+                  ? 'from-zinc-800/20 to-zinc-800/10'
+                  : 'from-zinc-700/20 to-zinc-700/10',
             },
             {
               titulo: 'RF Actual',
               valor: estadisticas.rfActual,
               subtexto: 'Corte actual',
               icon: Package,
-              color: 'from-purple-500 to-pink-500',
-              bg: 'from-purple-500/20 to-pink-500/10',
+              color: 'from-zinc-800 to-zinc-700',
+              bg: 'from-zinc-800/20 to-zinc-700/10',
             },
           ].map((kpi, index) => {
             const Icon = kpi.icon;
@@ -595,17 +595,17 @@ const PanelAlmacen = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="mb-8 p-6 rounded-2xl bg-gradient-to-br from-red-500/20 to-orange-500/10 border border-red-500/30"
+            className="mb-8 p-6 rounded-2xl bg-gradient-to-br from-zinc-700/20 to-orange-500/10 border border-zinc-500/30"
           >
             <div className="flex items-center gap-3">
-              <div className="p-3 rounded-xl bg-red-500/20">
-                <Package className="w-6 h-6 text-red-400" />
+              <div className="p-3 rounded-xl bg-zinc-9000/20">
+                <Package className="w-6 h-6 text-zinc-200" />
               </div>
               <div>
                 <h3 className="text-lg font-bold text-white">⚠️ Alerta de Inventario Bajo</h3>
                 <p className="text-gray-300">
                   Balance neto:{' '}
-                  <span className="font-bold text-red-400">{estadisticas.balanceNeto}</span>{' '}
+                  <span className="font-bold text-zinc-200">{estadisticas.balanceNeto}</span>{' '}
                   unidades
                 </p>
                 <p className="text-sm text-gray-400 mt-1">
@@ -650,7 +650,7 @@ const PanelAlmacen = () => {
                 placeholder="Buscar..."
                 value={busqueda}
                 onChange={(e) => setBusqueda(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:border-purple-500/50 focus:outline-none transition-colors"
+                className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:border-zinc-800/50 focus:outline-none transition-colors"
               />
             </div>
 
@@ -666,7 +666,7 @@ const PanelAlmacen = () => {
                 whileHover={{ scale: 1.02, y: -2 }}
                 value={filtroDistribuidor}
                 onChange={(e) => setFiltroDistribuidor(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-purple-500/50 focus:outline-none appearance-none cursor-pointer transition-colors"
+                className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-zinc-800/50 focus:outline-none appearance-none cursor-pointer transition-colors"
               >
                 <option value="todos">Todos los distribuidores</option>
                 {distribuidores.map((dist) => (
@@ -689,7 +689,7 @@ const PanelAlmacen = () => {
                 whileHover={{ scale: 1.02, y: -2 }}
                 value={filtroCliente}
                 onChange={(e) => setFiltroCliente(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-purple-500/50 focus:outline-none appearance-none cursor-pointer transition-colors"
+                className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-zinc-800/50 focus:outline-none appearance-none cursor-pointer transition-colors"
               >
                 <option value="todos">Todos los clientes</option>
                 {clientes.map((cliente) => (
@@ -708,7 +708,7 @@ const PanelAlmacen = () => {
                 onClick={() => setModoVista('grid')}
                 className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl border transition-all ${
                   modoVista === 'grid'
-                    ? 'bg-purple-500/20 border-purple-500/50 text-purple-400'
+                    ? 'bg-zinc-800/20 border-zinc-800/50 text-zinc-800'
                     : 'bg-white/5 border-white/10 text-gray-400 hover:border-white/20'
                 }`}
               >
@@ -721,7 +721,7 @@ const PanelAlmacen = () => {
                 onClick={() => setModoVista('list')}
                 className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl border transition-all ${
                   modoVista === 'list'
-                    ? 'bg-purple-500/20 border-purple-500/50 text-purple-400'
+                    ? 'bg-zinc-800/20 border-zinc-800/50 text-zinc-800'
                     : 'bg-white/5 border-white/10 text-gray-400 hover:border-white/20'
                 }`}
               >
@@ -748,7 +748,7 @@ const PanelAlmacen = () => {
                 onClick={() => setVistaActual(tab.id)}
                 className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all ${
                   vistaActual === tab.id
-                    ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/10 border border-purple-500/50 text-white'
+                    ? 'bg-gradient-to-r from-zinc-800/20 to-zinc-700/10 border border-zinc-800/50 text-white'
                     : 'bg-white/5 border border-white/10 text-gray-400 hover:border-white/20'
                 }`}
               >

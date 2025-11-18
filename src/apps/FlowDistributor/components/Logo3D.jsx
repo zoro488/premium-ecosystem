@@ -104,7 +104,7 @@ const LogoIcon3D = memo(({ size = 'md', animate = true, className = '' }) => {
       >
         {/* Back layer (depth) */}
         <div
-          className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-600/40 to-blue-600/40 backdrop-blur-sm border border-white/10"
+          className="absolute inset-0 rounded-2xl bg-gradient-to-br from-zinc-800/40 to-zinc-900/40 backdrop-blur-sm border border-white/10"
           style={{
             transform: 'translateZ(-20px)',
           }}
@@ -112,7 +112,7 @@ const LogoIcon3D = memo(({ size = 'md', animate = true, className = '' }) => {
 
         {/* Middle layer */}
         <div
-          className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500/50 to-blue-500/50 backdrop-blur-md border border-white/20"
+          className="absolute inset-0 rounded-2xl bg-gradient-to-br from-zinc-800/50 to-zinc-800/50 backdrop-blur-md border border-white/20"
           style={{
             transform: 'translateZ(-10px)',
           }}
@@ -120,7 +120,7 @@ const LogoIcon3D = memo(({ size = 'md', animate = true, className = '' }) => {
 
         {/* Front layer with icon */}
         <motion.div
-          className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500 backdrop-blur-lg border border-white/30 flex items-center justify-center shadow-2xl"
+          className="absolute inset-0 rounded-2xl bg-gradient-to-br from-zinc-800 to-zinc-800 backdrop-blur-lg border border-white/30 flex items-center justify-center shadow-2xl"
           style={{
             transform: 'translateZ(0px)',
             boxShadow: '0 20px 60px -15px rgba(139, 92, 246, 0.5)',
@@ -222,7 +222,7 @@ const Logo3D = memo(
           >
             {/* Main Title */}
             <motion.h1
-              className={`font-bold leading-none bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent ${sizeConfig.text}`}
+              className={`font-bold leading-none bg-gradient-to-r from-zinc-800 via-blue-400 to-zinc-700 bg-clip-text text-transparent ${sizeConfig.text}`}
               animate={{
                 rotateX: isHovered ? 5 : 0,
                 scale: isHovered ? 1.05 : 1,
@@ -266,7 +266,7 @@ Logo3D.displayName = 'Logo3D';
 export const LogoSplash3D = memo(({ onComplete }) => {
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-slate-950 via-zinc-800 to-slate-950"
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -277,7 +277,7 @@ export const LogoSplash3D = memo(({ onComplete }) => {
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-purple-500/30 rounded-full"
+            className="absolute w-2 h-2 bg-zinc-800/30 rounded-full"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -319,7 +319,7 @@ export const LogoSplash3D = memo(({ onComplete }) => {
         transition={{ delay: 0.5 }}
       >
         <motion.div
-          className="h-full bg-gradient-to-r from-purple-500 to-blue-500"
+          className="h-full bg-gradient-to-r from-zinc-800 to-zinc-800"
           initial={{ width: '0%' }}
           animate={{ width: '100%' }}
           transition={{ duration: 2, delay: 0.8 }}

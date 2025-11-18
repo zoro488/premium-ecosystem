@@ -115,7 +115,7 @@ jobs:
       - name: Update package.json for GitHub Packages
         run: |
           # Actualizar nombre del paquete con scope
-          npm pkg set name="@${{ github.repository_owner }}/premium-ecosystem"
+          npm pkg set name="@${{ github.repository_owner }}/chronos-system"
 
           # Configurar publishConfig
           npm pkg set publishConfig.registry="${{ env.REGISTRY_URL }}"
@@ -153,14 +153,14 @@ jobs:
         run: |
           echo "## 📦 Package Published" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- **Package**: @${{ github.repository_owner }}/premium-ecosystem" >> $GITHUB_STEP_SUMMARY
+          echo "- **Package**: @${{ github.repository_owner }}/chronos-system" >> $GITHUB_STEP_SUMMARY
           echo "- **Version**: ${{ steps.version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Registry**: GitHub Packages" >> $GITHUB_STEP_SUMMARY
           echo "- **Tag**: ${{ inputs.tag || 'latest' }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Installation" >> $GITHUB_STEP_SUMMARY
           echo '```bash' >> $GITHUB_STEP_SUMMARY
-          echo "npm install @${{ github.repository_owner }}/premium-ecosystem@${{ steps.version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "npm install @${{ github.repository_owner }}/chronos-system@${{ steps.version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
 
   # ==================================================
@@ -175,7 +175,7 @@ jobs:
 
     environment:
       name: npm-registry
-      url: https://www.npmjs.com/package/premium-ecosystem
+      url: https://www.npmjs.com/package/@zoro488/chronos-system
 
     steps:
       - uses: actions/checkout@v4

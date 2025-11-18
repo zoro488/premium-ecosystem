@@ -86,14 +86,14 @@ export const ShowcaseEnhancedAAA = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-indigo-900 p-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-zinc-800 to-indigo-900 p-8">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-12"
       >
-        <h1 className="text-6xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-4">
+        <h1 className="text-6xl font-bold bg-gradient-to-r from-zinc-800 via-zinc-700 to-blue-400 bg-clip-text text-transparent mb-4">
           Showcase AAA + IA
         </h1>
         <p className="text-xl text-gray-300">
@@ -111,7 +111,7 @@ export const ShowcaseEnhancedAAA = () => {
               px-6 py-3 rounded-xl font-semibold transition-all duration-300
               ${
                 activeSection === key
-                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg'
+                  ? 'bg-gradient-to-r from-zinc-800 to-zinc-800 text-white shadow-lg'
                   : 'bg-white/10 text-gray-300 hover:bg-white/20'
               }
             `}
@@ -126,7 +126,7 @@ export const ShowcaseEnhancedAAA = () => {
       {/* AI Avatar Button (flotante) */}
       <motion.button
         onClick={() => setShowAvatar(!showAvatar)}
-        className="fixed bottom-8 right-8 z-50 w-16 h-16 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 shadow-2xl flex items-center justify-center text-2xl"
+        className="fixed bottom-8 right-8 z-50 w-16 h-16 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-800 shadow-2xl flex items-center justify-center text-2xl"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         animate={showAvatar ? { rotate: 180 } : { rotate: 0 }}
@@ -168,7 +168,7 @@ export const ShowcaseEnhancedAAA = () => {
               </div>
 
               {/* AI Controls */}
-              <div className="mt-8 p-6 bg-white/5 rounded-2xl border border-purple-500/30">
+              <div className="mt-8 p-6 bg-white/5 rounded-2xl border border-zinc-700/30">
                 <h3 className="text-xl font-bold text-white mb-4">🤖 Generar con IA</h3>
                 <ButtonAAA
                   onClick={() => handleGenerateVariations('ButtonAAA')}
@@ -201,7 +201,7 @@ export const ShowcaseEnhancedAAA = () => {
                 withClearButton
               />
 
-              <div className="mt-8 p-6 bg-white/5 rounded-2xl border border-purple-500/30">
+              <div className="mt-8 p-6 bg-white/5 rounded-2xl border border-zinc-700/30">
                 <h3 className="text-xl font-bold text-white mb-4">🤖 Generar con IA</h3>
                 <ButtonAAA
                   onClick={() => handleGenerateVariations('InputAAA')}
@@ -245,7 +245,7 @@ export const ShowcaseEnhancedAAA = () => {
                 Card con gradiente que cambia con el tiempo.
               </CardAAA>
 
-              <div className="col-span-full mt-8 p-6 bg-white/5 rounded-2xl border border-purple-500/30">
+              <div className="col-span-full mt-8 p-6 bg-white/5 rounded-2xl border border-zinc-700/30">
                 <h3 className="text-xl font-bold text-white mb-4">🤖 Generar con IA</h3>
                 <ButtonAAA onClick={() => handleGenerateVariations('CardAAA')} loading={generating}>
                   {generating ? 'Generando variaciones...' : 'Generar 3 Variaciones'}
@@ -274,7 +274,7 @@ export const ShowcaseEnhancedAAA = () => {
                 </div>
               </div>
 
-              <div className="mt-8 p-6 bg-white/5 rounded-2xl border border-purple-500/30">
+              <div className="mt-8 p-6 bg-white/5 rounded-2xl border border-zinc-700/30">
                 <h3 className="text-xl font-bold text-white mb-4">🤖 Generar con IA</h3>
                 <ButtonAAA
                   onClick={() => handleGenerateVariations('ToggleAAA')}
@@ -291,7 +291,7 @@ export const ShowcaseEnhancedAAA = () => {
             <div className="max-w-4xl mx-auto space-y-8">
               <h2 className="text-3xl font-bold text-white mb-6">🎬 Exportar Animaciones</h2>
 
-              <div className="p-6 bg-white/5 rounded-2xl border border-purple-500/30">
+              <div className="p-6 bg-white/5 rounded-2xl border border-zinc-700/30">
                 <h3 className="text-xl font-bold text-white mb-4">Animaciones Disponibles</h3>
                 <p className="text-gray-300 mb-6">
                   Exporta cualquier animación a formato Lottie (JSON) o After Effects (.jsx)
@@ -301,7 +301,7 @@ export const ShowcaseEnhancedAAA = () => {
                   {Object.keys(animations).map((animName) => (
                     <motion.div
                       key={animName}
-                      className="p-4 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-xl border border-purple-500/30"
+                      className="p-4 bg-gradient-to-r from-zinc-800/10 to-zinc-800/10 rounded-xl border border-zinc-700/30"
                       whileHover={{ scale: 1.02 }}
                     >
                       <div className="flex justify-between items-center">
@@ -339,7 +339,7 @@ export const ShowcaseEnhancedAAA = () => {
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${progress}%` }}
-                        className="h-full bg-gradient-to-r from-purple-500 to-pink-500"
+                        className="h-full bg-gradient-to-r from-zinc-800 to-zinc-800"
                       />
                     </div>
                   </div>
@@ -360,7 +360,7 @@ export const ShowcaseEnhancedAAA = () => {
                   </li>
                   <li>
                     🚀 <strong>Web:</strong> Importar el JSON y usar con{' '}
-                    <code className="text-purple-400">{'<Lottie animationData={json} />'}</code>
+                    <code className="text-zinc-200">{'<Lottie animationData={json} />'}</code>
                   </li>
                   <li>
                     📱 <strong>Mobile:</strong> Compatible con Lottie para iOS y Android
@@ -375,7 +375,7 @@ export const ShowcaseEnhancedAAA = () => {
             <div className="max-w-4xl mx-auto space-y-8">
               <h2 className="text-3xl font-bold text-white mb-6">🤖 IA Generativa</h2>
 
-              <div className="p-6 bg-white/5 rounded-2xl border border-purple-500/30">
+              <div className="p-6 bg-white/5 rounded-2xl border border-zinc-700/30">
                 <h3 className="text-xl font-bold text-white mb-4">Generar Componente Nuevo</h3>
                 <p className="text-gray-300 mb-6">
                   Describe el componente que necesitas y la IA lo generará con código, estilos,
@@ -410,7 +410,7 @@ export const ShowcaseEnhancedAAA = () => {
                   <div className="space-y-4">
                     {generatedVariations.map((variation, idx) => (
                       <div key={idx} className="p-4 bg-black/30 rounded-xl">
-                        <h4 className="font-semibold text-purple-400 mb-2">Variación {idx + 1}</h4>
+                        <h4 className="font-semibold text-zinc-200 mb-2">Variación {idx + 1}</h4>
                         <pre className="text-sm text-gray-300 overflow-x-auto">
                           {JSON.stringify(variation, null, 2)}
                         </pre>
@@ -440,7 +440,7 @@ export const ShowcaseEnhancedAAA = () => {
               exit={{ scale: 0, rotate: 180 }}
               transition={{ type: 'spring', damping: 20 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-gradient-to-br from-purple-900/90 to-indigo-900/90 backdrop-blur-xl rounded-3xl p-8 border-2 border-purple-500/50 shadow-2xl max-w-md"
+              className="bg-gradient-to-br from-zinc-800/90 to-indigo-900/90 backdrop-blur-xl rounded-3xl p-8 border-2 border-zinc-700/50 shadow-2xl max-w-md"
             >
               <AIAvatarInteractive
                 name="FlowBot Supreme"

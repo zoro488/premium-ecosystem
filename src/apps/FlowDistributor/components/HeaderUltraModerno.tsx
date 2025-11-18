@@ -240,7 +240,7 @@ export const HeaderUltraModerno: React.FC = () => {
             >
               💎
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent hidden md:block">
+            <span className="text-xl font-bold bg-gradient-to-r from-zinc-700 to-zinc-800 bg-clip-text text-transparent hidden md:block">
               FlowDistributor
             </span>
           </motion.div>
@@ -389,7 +389,7 @@ export const HeaderUltraModerno: React.FC = () => {
               className="relative w-10 h-10 rounded-xl bg-white/10 hover:bg-white/15 flex items-center justify-center transition-colors"
             >
               <Bell className="w-5 h-5 text-white" />
-              <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+              <span className="absolute top-1 right-1 w-2 h-2 bg-zinc-9000 rounded-full animate-pulse" />
             </motion.button>
 
             {/* Dropdown Notificaciones */}
@@ -457,7 +457,7 @@ export const HeaderUltraModerno: React.FC = () => {
               onClick={() => setShowProfile(!showProfile)}
               className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 hover:bg-white/15 transition-colors"
             >
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-zinc-800 to-zinc-800 flex items-center justify-center">
                 <User className="w-5 h-5 text-white" />
               </div>
               <ChevronDown className="w-4 h-4 text-white" />
@@ -479,7 +479,7 @@ export const HeaderUltraModerno: React.FC = () => {
                 >
                   <div className="p-4 border-b border-white/10">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-zinc-800 to-zinc-800 flex items-center justify-center">
                         <User className="w-6 h-6 text-white" />
                       </div>
                       <div>
@@ -506,9 +506,9 @@ export const HeaderUltraModerno: React.FC = () => {
                       <span className="text-sm text-white">Ayuda</span>
                     </button>
                     <div className="h-px bg-white/10 my-2" />
-                    <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-red-500/20 transition-colors text-left">
-                      <LogOut className="w-5 h-5 text-red-400" />
-                      <span className="text-sm text-red-400">Cerrar Sesión</span>
+                    <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-zinc-9000/20 transition-colors text-left">
+                      <LogOut className="w-5 h-5 text-zinc-200" />
+                      <span className="text-sm text-zinc-200">Cerrar Sesión</span>
                     </button>
                   </div>
                 </motion.div>

@@ -52,11 +52,11 @@ export default function FormGYA({ onClose, onSave, registroExistente = null }) {
   const getIconByTipo = (tipo) => {
     switch (tipo) {
       case 'Ingreso':
-        return <TrendingUp className="w-5 h-5 text-green-400" />;
+        return <TrendingUp className="w-5 h-5 text-zinc-200" />;
       case 'Gasto':
-        return <TrendingDown className="w-5 h-5 text-red-400" />;
+        return <TrendingDown className="w-5 h-5 text-zinc-200" />;
       case 'Abono':
-        return <CreditCard className="w-5 h-5 text-blue-400" />;
+        return <CreditCard className="w-5 h-5 text-zinc-300" />;
       default:
         return <DollarSign className="w-5 h-5" />;
     }
@@ -159,7 +159,7 @@ export default function FormGYA({ onClose, onSave, registroExistente = null }) {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <label className="text-sm text-blue-300 mb-3 block font-semibold">
+            <label className="text-sm text-zinc-300 mb-3 block font-semibold">
               Tipo de Operación
             </label>
             <div className="grid grid-cols-3 gap-3">
@@ -198,7 +198,7 @@ export default function FormGYA({ onClose, onSave, registroExistente = null }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
             >
-              <label className="flex items-center gap-2 text-sm text-blue-300 mb-2">
+              <label className="flex items-center gap-2 text-sm text-zinc-300 mb-2">
                 <Calendar className="w-4 h-4" />
                 Fecha
               </label>
@@ -214,7 +214,7 @@ export default function FormGYA({ onClose, onSave, registroExistente = null }) {
                 <motion.p
                   initial={{ opacity: 0, y: -5 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-red-400 text-xs mt-1 flex items-center gap-1"
+                  className="text-zinc-200 text-xs mt-1 flex items-center gap-1"
                 >
                   <AlertCircle className="w-3 h-3" />
                   {errors.fecha}
@@ -228,7 +228,7 @@ export default function FormGYA({ onClose, onSave, registroExistente = null }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 }}
             >
-              <label className="flex items-center gap-2 text-sm text-blue-300 mb-2">
+              <label className="flex items-center gap-2 text-sm text-zinc-300 mb-2">
                 <DollarSign className="w-4 h-4" />
                 Monto
               </label>
@@ -243,7 +243,7 @@ export default function FormGYA({ onClose, onSave, registroExistente = null }) {
                   errors.monto ? 'border-red-400' : 'border-white/20'
                 } rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-${color}-400/50`}
               />
-              {errors.monto && <p className="text-red-400 text-xs mt-1">{errors.monto}</p>}
+              {errors.monto && <p className="text-zinc-200 text-xs mt-1">{errors.monto}</p>}
             </motion.div>
 
             {/* Destino */}
@@ -252,7 +252,7 @@ export default function FormGYA({ onClose, onSave, registroExistente = null }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <label className="flex items-center gap-2 text-sm text-blue-300 mb-2">
+              <label className="flex items-center gap-2 text-sm text-zinc-300 mb-2">
                 <Building2 className="w-4 h-4" />
                 Destino
               </label>
@@ -269,7 +269,7 @@ export default function FormGYA({ onClose, onSave, registroExistente = null }) {
                   </option>
                 ))}
               </select>
-              {errors.destino && <p className="text-red-400 text-xs mt-1">{errors.destino}</p>}
+              {errors.destino && <p className="text-zinc-200 text-xs mt-1">{errors.destino}</p>}
             </motion.div>
 
             {/* Origen (solo para Ingresos) */}
@@ -279,7 +279,7 @@ export default function FormGYA({ onClose, onSave, registroExistente = null }) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.25 }}
               >
-                <label className="flex items-center gap-2 text-sm text-blue-300 mb-2">
+                <label className="flex items-center gap-2 text-sm text-zinc-300 mb-2">
                   <Building2 className="w-4 h-4" />
                   Origen
                 </label>
@@ -292,7 +292,7 @@ export default function FormGYA({ onClose, onSave, registroExistente = null }) {
                     errors.origen ? 'border-red-400' : 'border-white/20'
                   } rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-green-400/50`}
                 />
-                {errors.origen && <p className="text-red-400 text-xs mt-1">{errors.origen}</p>}
+                {errors.origen && <p className="text-zinc-200 text-xs mt-1">{errors.origen}</p>}
               </motion.div>
             )}
 
@@ -302,7 +302,7 @@ export default function FormGYA({ onClose, onSave, registroExistente = null }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              <label className="flex items-center gap-2 text-sm text-blue-300 mb-2">
+              <label className="flex items-center gap-2 text-sm text-zinc-300 mb-2">
                 <CreditCard className="w-4 h-4" />
                 Cuenta
               </label>
@@ -321,7 +321,7 @@ export default function FormGYA({ onClose, onSave, registroExistente = null }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35 }}
             >
-              <label className="flex items-center gap-2 text-sm text-blue-300 mb-2">
+              <label className="flex items-center gap-2 text-sm text-zinc-300 mb-2">
                 <FileText className="w-4 h-4" />
                 Referencia
               </label>
@@ -341,7 +341,7 @@ export default function FormGYA({ onClose, onSave, registroExistente = null }) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
               >
-                <label className="flex items-center gap-2 text-sm text-blue-300 mb-2">
+                <label className="flex items-center gap-2 text-sm text-zinc-300 mb-2">
                   <Tag className="w-4 h-4" />
                   Categoría
                 </label>
@@ -358,7 +358,7 @@ export default function FormGYA({ onClose, onSave, registroExistente = null }) {
                   <option value="Comercial">Comercial</option>
                 </select>
                 {errors.categoria && (
-                  <p className="text-red-400 text-xs mt-1">{errors.categoria}</p>
+                  <p className="text-zinc-200 text-xs mt-1">{errors.categoria}</p>
                 )}
               </motion.div>
             )}
@@ -370,7 +370,7 @@ export default function FormGYA({ onClose, onSave, registroExistente = null }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45 }}
             >
-              <label className="flex items-center gap-2 text-sm text-blue-300 mb-2">
+              <label className="flex items-center gap-2 text-sm text-zinc-300 mb-2">
                 <FileText className="w-4 h-4" />
                 Concepto
               </label>
@@ -383,7 +383,7 @@ export default function FormGYA({ onClose, onSave, registroExistente = null }) {
                   errors.concepto ? 'border-red-400' : 'border-white/20'
                 } rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 resize-none`}
               />
-              {errors.concepto && <p className="text-red-400 text-xs mt-1">{errors.concepto}</p>}
+              {errors.concepto && <p className="text-zinc-200 text-xs mt-1">{errors.concepto}</p>}
             </motion.div>
           </div>
 

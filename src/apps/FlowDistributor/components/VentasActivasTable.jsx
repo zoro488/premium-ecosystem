@@ -25,23 +25,23 @@ const VentasActivasTable = ({ data, formatCurrency, showValues }) => {
     switch (status) {
       case 'pagado':
         return {
-          color: 'text-green-400',
-          bgColor: 'bg-green-500/10',
-          borderColor: 'border-green-500/20',
+          color: 'text-zinc-200',
+          bgColor: 'bg-zinc-9000/10',
+          borderColor: 'border-zinc-500/20',
           icon: CheckCircle,
         };
       case 'pendiente':
         return {
-          color: 'text-yellow-400',
-          bgColor: 'bg-yellow-500/10',
-          borderColor: 'border-yellow-500/20',
+          color: 'text-zinc-200',
+          bgColor: 'bg-zinc-9000/10',
+          borderColor: 'border-zinc-500/20',
           icon: Clock,
         };
       case 'parcial':
         return {
-          color: 'text-orange-400',
-          bgColor: 'bg-orange-500/10',
-          borderColor: 'border-orange-500/20',
+          color: 'text-zinc-200',
+          bgColor: 'bg-zinc-9000/10',
+          borderColor: 'border-zinc-500/20',
           icon: AlertCircle,
         };
       default:
@@ -149,7 +149,7 @@ const VentasActivasTable = ({ data, formatCurrency, showValues }) => {
 
                   {/* Cliente */}
                   <td className="px-6 py-4">
-                    <div className="font-medium text-white group-hover:text-yellow-400 transition-colors">
+                    <div className="font-medium text-white group-hover:text-zinc-200 transition-colors">
                       {venta.cliente}
                     </div>
                     {venta.concepto && (
@@ -184,7 +184,7 @@ const VentasActivasTable = ({ data, formatCurrency, showValues }) => {
                   {/* Utilidad */}
                   <td className="px-6 py-4 text-right">
                     <div
-                      className={`font-semibold ${venta.utilidad > 0 ? 'text-green-400' : 'text-slate-400'}`}
+                      className={`font-semibold ${venta.utilidad > 0 ? 'text-zinc-200' : 'text-slate-400'}`}
                     >
                       {showValues ? formatCurrency(venta.utilidad || 0) : '••••'}
                     </div>
@@ -229,7 +229,7 @@ const VentasActivasTable = ({ data, formatCurrency, showValues }) => {
             </div>
             <div>
               <div className="text-sm text-slate-400 mb-1">Ingresos Totales</div>
-              <div className="text-xl font-bold text-green-400">
+              <div className="text-xl font-bold text-zinc-200">
                 {showValues
                   ? formatCurrency(data.reduce((sum, v) => sum + v.ingreso, 0))
                   : '••••••••'}
@@ -237,7 +237,7 @@ const VentasActivasTable = ({ data, formatCurrency, showValues }) => {
             </div>
             <div>
               <div className="text-sm text-slate-400 mb-1">Flete Total</div>
-              <div className="text-xl font-bold text-orange-400">
+              <div className="text-xl font-bold text-zinc-200">
                 {showValues
                   ? formatCurrency(data.reduce((sum, v) => sum + (v.fleteUtilidad || 0), 0))
                   : '••••••••'}
@@ -245,7 +245,7 @@ const VentasActivasTable = ({ data, formatCurrency, showValues }) => {
             </div>
             <div>
               <div className="text-sm text-slate-400 mb-1">Utilidad Total</div>
-              <div className="text-xl font-bold text-emerald-400">
+              <div className="text-xl font-bold text-zinc-200">
                 {showValues
                   ? formatCurrency(data.reduce((sum, v) => sum + (v.utilidad || 0), 0))
                   : '••••••••'}

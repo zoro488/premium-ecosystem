@@ -48,7 +48,7 @@ export const ProductDescriptionGenerator = ({ product }) => {
   return (
     <Card className="p-6">
       <div className="flex items-center gap-2 mb-4">
-        <FileText className="h-5 w-5 text-purple-500" />
+        <FileText className="h-5 w-5 text-zinc-200" />
         <h3 className="text-lg font-semibold">Generador de Descripciones</h3>
       </div>
 
@@ -70,7 +70,7 @@ export const ProductDescriptionGenerator = ({ product }) => {
         </Button>
 
         {description && (
-          <div className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 p-4 rounded-lg border border-purple-200 dark:border-purple-800">
+          <div className="bg-gradient-to-br from-zinc-800 to-blue-50 dark:from-zinc-800/20 dark:to-blue-900/20 p-4 rounded-lg border border-zinc-700 dark:border-zinc-700">
             <p className="text-sm whitespace-pre-wrap">{description}</p>
           </div>
         )}
@@ -187,7 +187,7 @@ export const SalesAssistant = () => {
   return (
     <Card className="p-6">
       <div className="flex items-center gap-2 mb-4">
-        <Sparkles className="h-5 w-5 text-purple-500" />
+        <Sparkles className="h-5 w-5 text-zinc-200" />
         <h3 className="text-lg font-semibold">Asistente de Ventas IA</h3>
       </div>
 

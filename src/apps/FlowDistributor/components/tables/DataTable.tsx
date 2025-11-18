@@ -160,9 +160,9 @@ export function DataTable<T extends Record<string, any>>({
       return <ChevronsUpDown className="w-4 h-4 text-white/40" />;
     }
     return sortConfig.direction === 'asc' ? (
-      <ChevronUp className="w-4 h-4 text-cyan-400" />
+      <ChevronUp className="w-4 h-4 text-zinc-300" />
     ) : (
-      <ChevronDown className="w-4 h-4 text-cyan-400" />
+      <ChevronDown className="w-4 h-4 text-zinc-300" />
     );
   };
 
@@ -190,7 +190,7 @@ export function DataTable<T extends Record<string, any>>({
                   setCurrentPage(1);
                 }}
                 placeholder="Buscar..."
-                className="w-full pl-10 pr-4 py-2 rounded-lg backdrop-blur-xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 transition-all outline-none"
+                className="w-full pl-10 pr-4 py-2 rounded-lg backdrop-blur-xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:border-zinc-500/50 focus:ring-2 focus:ring-cyan-500/20 transition-all outline-none"
               />
             </div>
           )}
@@ -211,7 +211,7 @@ export function DataTable<T extends Record<string, any>>({
                       type="checkbox"
                       checked={visibleColumns.has(col.key)}
                       onChange={() => toggleColumnVisibility(col.key)}
-                      className="w-4 h-4 rounded border-white/20 bg-white/5 checked:bg-cyan-500"
+                      className="w-4 h-4 rounded border-white/20 bg-white/5 checked:bg-zinc-9000"
                     />
                     <span className="text-white text-sm">{col.label}</span>
                   </label>
@@ -299,7 +299,7 @@ export function DataTable<T extends Record<string, any>>({
             {searchTerm && (
               <button
                 onClick={() => setSearchTerm('')}
-                className="mt-4 px-4 py-2 rounded-lg bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 transition-colors"
+                className="mt-4 px-4 py-2 rounded-lg bg-zinc-9000/20 hover:bg-zinc-9000/30 text-zinc-300 transition-colors"
               >
                 Limpiar búsqueda
               </button>
@@ -330,7 +330,7 @@ export function DataTable<T extends Record<string, any>>({
                   onClick={() => setCurrentPage(page)}
                   className={`px-3 py-1 rounded-lg transition-all ${
                     currentPage === page
-                      ? 'bg-cyan-500 text-white'
+                      ? 'bg-zinc-9000 text-white'
                       : 'backdrop-blur-xl bg-white/5 border border-white/10 hover:bg-white/10 text-white'
                   }`}
                 >
@@ -368,10 +368,10 @@ export const renderDate = (value: string) => {
 
 export const renderStatus = (value: string) => {
   const colors: Record<string, string> = {
-    Pagado: 'bg-green-500/20 text-green-400 border-green-500/30',
-    Pendiente: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
-    Cancelado: 'bg-red-500/20 text-red-400 border-red-500/30',
-    Completado: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+    Pagado: 'bg-zinc-9000/20 text-zinc-200 border-zinc-500/30',
+    Pendiente: 'bg-zinc-9000/20 text-zinc-200 border-zinc-500/30',
+    Cancelado: 'bg-zinc-9000/20 text-zinc-200 border-zinc-500/30',
+    Completado: 'bg-zinc-800/20 text-zinc-300 border-zinc-700/30',
   };
 
   return (

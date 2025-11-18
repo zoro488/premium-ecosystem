@@ -159,15 +159,15 @@ const PanelOrdenesCompraUltra = memo(({ onDataChange }) => {
   // Get status info
   const getStatusInfo = useCallback((estado) => {
     const statusMap = {
-      aprobada: { color: 'text-green-400', bgColor: 'bg-green-500/20', icon: CheckCircle },
-      en_proceso: { color: 'text-blue-400', bgColor: 'bg-blue-500/20', icon: Clock },
-      en_transito: { color: 'text-purple-400', bgColor: 'bg-purple-500/20', icon: Truck },
+      aprobada: { color: 'text-zinc-200', bgColor: 'bg-zinc-9000/20', icon: CheckCircle },
+      en_proceso: { color: 'text-zinc-300', bgColor: 'bg-zinc-800/20', icon: Clock },
+      en_transito: { color: 'text-zinc-800', bgColor: 'bg-zinc-800/20', icon: Truck },
       pendiente_aprobacion: {
-        color: 'text-yellow-400',
-        bgColor: 'bg-yellow-500/20',
+        color: 'text-zinc-200',
+        bgColor: 'bg-zinc-9000/20',
         icon: AlertCircle,
       },
-      cancelada: { color: 'text-red-400', bgColor: 'bg-red-500/20', icon: AlertTriangle },
+      cancelada: { color: 'text-zinc-200', bgColor: 'bg-zinc-9000/20', icon: AlertTriangle },
     };
     return statusMap[estado] || statusMap.en_proceso;
   }, []);
@@ -175,9 +175,9 @@ const PanelOrdenesCompraUltra = memo(({ onDataChange }) => {
   // Get priority color
   const getPriorityColor = useCallback((prioridad) => {
     const priorityMap = {
-      alta: 'text-red-400 bg-red-500/20',
-      media: 'text-yellow-400 bg-yellow-500/20',
-      baja: 'text-green-400 bg-green-500/20',
+      alta: 'text-zinc-200 bg-zinc-9000/20',
+      media: 'text-zinc-200 bg-zinc-9000/20',
+      baja: 'text-zinc-200 bg-zinc-9000/20',
     };
     return priorityMap[prioridad] || priorityMap.media;
   }, []);
@@ -262,15 +262,15 @@ const PanelOrdenesCompraUltra = memo(({ onDataChange }) => {
       >
         {/* Background Effects */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-cyan-500/5 to-indigo-500/5" />
-          <div className="absolute top-0 left-1/4 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-cyan-500/10 rounded-full blur-2xl" />
+          <div className="absolute inset-0 bg-gradient-to-r from-zinc-800/5 via-cyan-500/5 to-indigo-500/5" />
+          <div className="absolute top-0 left-1/4 w-32 h-32 bg-zinc-800/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-zinc-9000/10 rounded-full blur-2xl" />
 
           {/* Floating purchase order particles */}
           {[...Array(9)].map((_, i) => (
             <motion.div
               key={`po-particle-${i + 1}`}
-              className="absolute w-2 h-2 bg-blue-400/40 rounded-full"
+              className="absolute w-2 h-2 bg-zinc-700/40 rounded-full"
               style={{
                 left: `${12 + i * 9}%`,
                 top: `${20 + (i % 3) * 20}%`,
@@ -294,11 +294,11 @@ const PanelOrdenesCompraUltra = memo(({ onDataChange }) => {
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center space-x-4">
               <motion.div
-                className="p-3 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl backdrop-blur-sm border border-white/10"
+                className="p-3 bg-gradient-to-br from-zinc-800/20 to-zinc-800/20 rounded-xl backdrop-blur-sm border border-white/10"
                 whileHover={{ scale: 1.05, rotate: 5 }}
                 transition={{ duration: 0.3 }}
               >
-                <ShoppingCart className="w-8 h-8 text-blue-400" />
+                <ShoppingCart className="w-8 h-8 text-zinc-300" />
               </motion.div>
 
               <div>
@@ -319,7 +319,7 @@ const PanelOrdenesCompraUltra = memo(({ onDataChange }) => {
                 <div className="text-2xl font-bold text-white">
                   {localData.summary.totalOrdenes}
                 </div>
-                <div className="flex items-center text-blue-400 text-sm mt-1">
+                <div className="flex items-center text-zinc-300 text-sm mt-1">
                   <Package2 className="w-3 h-3 mr-1" />
                   {localData.summary.ordenesActivas} activas
                 </div>
@@ -333,7 +333,7 @@ const PanelOrdenesCompraUltra = memo(({ onDataChange }) => {
                 <div className="text-2xl font-bold text-white">
                   {showValues ? formatCurrency(localData.summary.montoTotal) : '••••••••'}
                 </div>
-                <div className="flex items-center text-green-400 text-sm mt-1">
+                <div className="flex items-center text-zinc-200 text-sm mt-1">
                   <DollarSign className="w-3 h-3 mr-1" />
                   {localData.summary.proveedoresActivos} proveedores
                 </div>
@@ -357,7 +357,7 @@ const PanelOrdenesCompraUltra = memo(({ onDataChange }) => {
                 <div className="text-2xl font-bold text-white">
                   {localData.summary.eficienciaProveedores}%
                 </div>
-                <div className="flex items-center text-cyan-400 text-sm mt-1">
+                <div className="flex items-center text-zinc-300 text-sm mt-1">
                   <Clock className="w-3 h-3 mr-1" />
                   {localData.summary.tiempoPromedioEntrega} días promedio
                 </div>
@@ -367,7 +367,7 @@ const PanelOrdenesCompraUltra = memo(({ onDataChange }) => {
 
           {/* Purchase Orders Status Bar */}
           <motion.div
-            className="p-4 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-xl border border-blue-500/20 backdrop-blur-sm"
+            className="p-4 bg-gradient-to-r from-zinc-800/10 to-zinc-800/10 rounded-xl border border-zinc-700/20 backdrop-blur-sm"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
@@ -378,10 +378,10 @@ const PanelOrdenesCompraUltra = memo(({ onDataChange }) => {
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
                 >
-                  <Shield className="w-5 h-5 text-blue-400" />
+                  <Shield className="w-5 h-5 text-zinc-300" />
                 </motion.div>
                 <span className="text-white font-medium">Sistema de Compras Activo</span>
-                <span className="px-2 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs">
+                <span className="px-2 py-1 bg-zinc-800/20 text-zinc-300 rounded-full text-xs">
                   OC0001-OC0009 monitoreadas
                 </span>
               </div>
@@ -394,7 +394,7 @@ const PanelOrdenesCompraUltra = memo(({ onDataChange }) => {
                     : 'N/A'}
                 </span>
                 <motion.button
-                  className="p-1 text-blue-400 hover:text-blue-300"
+                  className="p-1 text-zinc-300 hover:text-zinc-300"
                   whileHover={{ scale: 1.1 }}
                 >
                   <Settings className="w-4 h-4" />
@@ -424,7 +424,7 @@ const PanelOrdenesCompraUltra = memo(({ onDataChange }) => {
                 onClick={() => setActiveTable(id)}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   activeTable === id
-                    ? 'bg-blue-500/20 text-blue-400 shadow-lg'
+                    ? 'bg-zinc-800/20 text-zinc-300 shadow-lg'
                     : 'text-slate-400 hover:text-white hover:bg-white/5'
                 }`}
                 whileHover={{ scale: 1.02 }}
@@ -459,7 +459,7 @@ const PanelOrdenesCompraUltra = memo(({ onDataChange }) => {
                 placeholder="Buscar órdenes..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/50 w-64"
+                className="pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-zinc-700/50 w-64"
               />
             </div>
 
@@ -520,7 +520,7 @@ const PanelOrdenesCompraUltra = memo(({ onDataChange }) => {
                         className="px-6 py-4 border-b border-white/5 hover:bg-white/5 transition-colors"
                       >
                         <div className="grid grid-cols-10 gap-4 items-center text-sm">
-                          <div className="text-blue-400 font-bold">
+                          <div className="text-zinc-300 font-bold">
                             {orden.numeroOrden}
                             <div className="text-xs text-slate-400 mt-1">
                               {new Date(orden.fechaCreacion).toLocaleDateString()}
@@ -553,13 +553,13 @@ const PanelOrdenesCompraUltra = memo(({ onDataChange }) => {
                             <div className="flex items-center space-x-2 mb-1">
                               <div className="flex-1 bg-white/10 rounded-full h-2">
                                 <motion.div
-                                  className="bg-blue-400 h-2 rounded-full"
+                                  className="bg-zinc-700 h-2 rounded-full"
                                   initial={{ width: 0 }}
                                   animate={{ width: `${orden.progreso}%` }}
                                   transition={{ duration: 1 }}
                                 />
                               </div>
-                              <span className="text-blue-400 text-xs font-medium">
+                              <span className="text-zinc-300 text-xs font-medium">
                                 {orden.progreso}%
                               </span>
                             </div>
@@ -571,7 +571,7 @@ const PanelOrdenesCompraUltra = memo(({ onDataChange }) => {
                             </span>
                           </div>
 
-                          <div className="text-green-400 font-bold">
+                          <div className="text-zinc-200 font-bold">
                             {formatCurrency(orden.montoTotal)}
                           </div>
 
@@ -580,13 +580,13 @@ const PanelOrdenesCompraUltra = memo(({ onDataChange }) => {
                           <div className="flex items-center space-x-2">
                             <motion.button
                               whileHover={{ scale: 1.1 }}
-                              className="p-1 text-blue-400 hover:text-blue-300"
+                              className="p-1 text-zinc-300 hover:text-zinc-300"
                             >
                               <Eye className="w-4 h-4" />
                             </motion.button>
                             <motion.button
                               whileHover={{ scale: 1.1 }}
-                              className="p-1 text-green-400 hover:text-green-300"
+                              className="p-1 text-zinc-200 hover:text-green-300"
                             >
                               <Download className="w-4 h-4" />
                             </motion.button>
@@ -611,7 +611,7 @@ const PanelOrdenesCompraUltra = memo(({ onDataChange }) => {
               className="h-full flex items-center justify-center"
             >
               <div className="text-center">
-                <ShoppingCart className="w-16 h-16 text-blue-400 mx-auto mb-4" />
+                <ShoppingCart className="w-16 h-16 text-zinc-300 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">
                   {activeTable === 'estados'
                     ? 'Estado de Pedidos en Tiempo Real'

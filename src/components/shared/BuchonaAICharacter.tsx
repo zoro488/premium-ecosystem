@@ -378,9 +378,9 @@ export default function BuchonaAICharacter() {
                 }}
               >
                 <div className="absolute inset-0 flex">
-                  <div className="flex-1 bg-gradient-to-br from-purple-900/50 to-black rounded-l-lg" />
+                  <div className="flex-1 bg-gradient-to-br from-zinc-800/50 to-black rounded-l-lg" />
                   <div className="w-1 bg-yellow-400" />
-                  <div className="flex-1 bg-gradient-to-br from-purple-900/50 to-black rounded-r-lg" />
+                  <div className="flex-1 bg-gradient-to-br from-zinc-800/50 to-black rounded-r-lg" />
                 </div>
               </motion.div>
 
@@ -396,7 +396,7 @@ export default function BuchonaAICharacter() {
                 }}
                 className="absolute -left-2 top-8"
               >
-                <Sparkles className="w-4 h-4 text-pink-400 drop-shadow-lg" />
+                <Sparkles className="w-4 h-4 text-zinc-200 drop-shadow-lg" />
               </motion.div>
               <motion.div
                 animate={{
@@ -409,7 +409,7 @@ export default function BuchonaAICharacter() {
                 }}
                 className="absolute -right-2 top-8"
               >
-                <Sparkles className="w-4 h-4 text-pink-400 drop-shadow-lg" />
+                <Sparkles className="w-4 h-4 text-zinc-200 drop-shadow-lg" />
               </motion.div>
 
               {/* Boca */}
@@ -417,7 +417,7 @@ export default function BuchonaAICharacter() {
                 animate={{
                   scaleX: isHovered ? 1.2 : 1,
                 }}
-                className="absolute bottom-4 left-1/2 -translate-x-1/2 w-8 h-2 rounded-full bg-gradient-to-r from-pink-500 to-red-500"
+                className="absolute bottom-4 left-1/2 -translate-x-1/2 w-8 h-2 rounded-full bg-gradient-to-r from-zinc-700 to-zinc-800"
               />
             </div>
 
@@ -474,7 +474,7 @@ export default function BuchonaAICharacter() {
                     exit={{ opacity: 0, y: 0, scale: 0 }}
                     className="absolute top-0 left-1/2 -translate-x-1/2"
                   >
-                    <Zap className="w-6 h-6 text-purple-400 fill-purple-400 drop-shadow-lg" />
+                    <Zap className="w-6 h-6 text-zinc-200 fill-purple-400 drop-shadow-lg" />
                   </motion.div>
 
                   {/* Corazón abajo */}
@@ -484,7 +484,7 @@ export default function BuchonaAICharacter() {
                     exit={{ opacity: 0, y: 0, scale: 0 }}
                     className="absolute bottom-0 left-1/2 -translate-x-1/2"
                   >
-                    <Heart className="w-6 h-6 text-pink-400 fill-pink-400 drop-shadow-lg" />
+                    <Heart className="w-6 h-6 text-zinc-200 fill-pink-400 drop-shadow-lg" />
                   </motion.div>
                 </>
               )}

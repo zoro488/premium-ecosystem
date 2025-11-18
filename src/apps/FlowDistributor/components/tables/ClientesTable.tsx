@@ -78,7 +78,7 @@ export const ClientesTable: React.FC<ClientesTableProps> = memo(
     if (isLoading) {
       return (
         <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-zinc-600"></div>
         </div>
       );
     }
@@ -87,25 +87,25 @@ export const ClientesTable: React.FC<ClientesTableProps> = memo(
       <div className="space-y-4">
         {/* Estadísticas */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-          <div className="bg-blue-50 rounded-lg p-4">
+          <div className="bg-zinc-900 rounded-lg p-4">
             <p className="text-sm text-gray-600">Total Clientes</p>
-            <p className="text-2xl font-bold text-blue-600">{stats.total}</p>
+            <p className="text-2xl font-bold text-white">{stats.total}</p>
           </div>
-          <div className="bg-green-50 rounded-lg p-4">
+          <div className="bg-zinc-900 rounded-lg p-4">
             <p className="text-sm text-gray-600">Activos</p>
-            <p className="text-2xl font-bold text-green-600">{stats.activos}</p>
+            <p className="text-2xl font-bold text-white">{stats.activos}</p>
           </div>
-          <div className="bg-red-50 rounded-lg p-4">
+          <div className="bg-zinc-900 rounded-lg p-4">
             <p className="text-sm text-gray-600">Bloqueados</p>
-            <p className="text-2xl font-bold text-red-600">{stats.bloqueados}</p>
+            <p className="text-2xl font-bold text-white">{stats.bloqueados}</p>
           </div>
-          <div className="bg-purple-50 rounded-lg p-4">
+          <div className="bg-zinc-800 rounded-lg p-4">
             <p className="text-sm text-gray-600">Crédito Total</p>
-            <p className="text-2xl font-bold text-purple-600">
+            <p className="text-2xl font-bold text-zinc-800">
               {formatCurrency(stats.creditoTotal, 'USD')}
             </p>
           </div>
-          <div className="bg-orange-50 rounded-lg p-4">
+          <div className="bg-zinc-900 rounded-lg p-4">
             <p className="text-sm text-gray-600">Deuda Total</p>
             <p className="text-2xl font-bold text-orange-600">
               {formatCurrency(stats.deudaTotal, 'USD')}
@@ -209,12 +209,12 @@ export const ClientesTable: React.FC<ClientesTableProps> = memo(
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-center">
                         {cliente.bloqueado ? (
-                          <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                          <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-zinc-800 text-red-800">
                             <UserX className="h-3 w-3 mr-1" />
                             Bloqueado
                           </span>
                         ) : (
-                          <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                          <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-zinc-800 text-green-800">
                             <UserCheck className="h-3 w-3 mr-1" />
                             Activo
                           </span>
@@ -231,7 +231,7 @@ export const ClientesTable: React.FC<ClientesTableProps> = memo(
                           {onView && (
                             <button
                               onClick={() => onView(cliente)}
-                              className="text-blue-600 hover:text-blue-900"
+                              className="text-white hover:text-zinc-100"
                               title="Ver detalles"
                             >
                               <Eye className="h-4 w-4" />
@@ -240,7 +240,7 @@ export const ClientesTable: React.FC<ClientesTableProps> = memo(
                           {onEdit && (
                             <button
                               onClick={() => onEdit(cliente)}
-                              className="text-green-600 hover:text-green-900"
+                              className="text-white hover:text-green-900"
                               title="Editar"
                             >
                               <Edit className="h-4 w-4" />
@@ -250,8 +250,8 @@ export const ClientesTable: React.FC<ClientesTableProps> = memo(
                             onClick={() => handleToggleBloqueo(cliente)}
                             className={
                               cliente.bloqueado
-                                ? 'text-green-600 hover:text-green-900'
-                                : 'text-red-600 hover:text-red-900'
+                                ? 'text-white hover:text-green-900'
+                                : 'text-white hover:text-red-900'
                             }
                             title={cliente.bloqueado ? 'Desbloquear' : 'Bloquear'}
                           >

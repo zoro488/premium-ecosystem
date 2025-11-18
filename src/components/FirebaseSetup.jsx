@@ -205,7 +205,7 @@ export default function FirebaseSetup() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-zinc-800 to-slate-900 p-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
@@ -288,7 +288,7 @@ export default function FirebaseSetup() {
           <button
             onClick={testAuth}
             disabled={!status.configured || status.testing}
-            className="px-6 py-3 bg-purple-600 hover:bg-purple-700 disabled:bg-slate-600 disabled:cursor-not-allowed text-white rounded-xl font-semibold transition-colors"
+            className="px-6 py-3 bg-zinc-800 hover:bg-zinc-800 disabled:bg-slate-600 disabled:cursor-not-allowed text-white rounded-xl font-semibold transition-colors"
           >
             {status.testing ? '⏳ Probando...' : '🧪 Probar Authentication'}
           </button>
@@ -357,7 +357,7 @@ export default function FirebaseSetup() {
             href="https://console.firebase.google.com/project/premium-ecosystem-1760790572/authentication"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-4 bg-purple-600/20 border border-purple-500/30 rounded-xl hover:bg-purple-600/30 transition-colors"
+            className="p-4 bg-zinc-800/20 border border-zinc-700/30 rounded-xl hover:bg-zinc-800/30 transition-colors"
           >
             <h3 className="text-white font-bold mb-2">🔐 Activar Authentication</h3>
             <p className="text-slate-300 text-sm">

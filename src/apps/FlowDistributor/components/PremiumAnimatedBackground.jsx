@@ -93,7 +93,7 @@ export const HolographicGrid = () => {
 
       {/* Punto de fuga central */}
       <motion.div
-        className="absolute top-1/2 left-1/2 w-2 h-2 bg-cyan-400 rounded-full"
+        className="absolute top-1/2 left-1/2 w-2 h-2 bg-zinc-700 rounded-full"
         style={{ transform: 'translate(-50%, -50%)' }}
         animate={{
           scale: [1, 2, 1],
@@ -149,7 +149,7 @@ export const NeonLights = () => {
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {/* Luz superior */}
       <motion.div
-        className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-cyan-500/10 via-blue-500/5 to-transparent blur-3xl"
+        className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-zinc-800/10 via-zinc-700/5 to-transparent blur-3xl"
         animate={{
           opacity: [0.3, 0.6, 0.3],
         }}
@@ -162,7 +162,7 @@ export const NeonLights = () => {
 
       {/* Luz izquierda */}
       <motion.div
-        className="absolute top-0 bottom-0 left-0 w-64 bg-gradient-to-r from-purple-500/10 via-fuchsia-500/5 to-transparent blur-3xl"
+        className="absolute top-0 bottom-0 left-0 w-64 bg-gradient-to-r from-zinc-800/10 via-zinc-700/5 to-transparent blur-3xl"
         animate={{
           opacity: [0.4, 0.7, 0.4],
         }}
@@ -176,7 +176,7 @@ export const NeonLights = () => {
 
       {/* Luz derecha */}
       <motion.div
-        className="absolute top-0 bottom-0 right-0 w-64 bg-gradient-to-l from-pink-500/10 via-rose-500/5 to-transparent blur-3xl"
+        className="absolute top-0 bottom-0 right-0 w-64 bg-gradient-to-l from-zinc-700/10 via-zinc-700/5 to-transparent blur-3xl"
         animate={{
           opacity: [0.4, 0.7, 0.4],
         }}

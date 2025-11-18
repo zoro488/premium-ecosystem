@@ -123,7 +123,7 @@ export const WidgetDistribucionBancos: React.FC = () => {
       {/* 🎯 HEADER */}
       <div className="mb-4">
         <h3 className="text-lg font-bold text-white flex items-center gap-2 mb-2">
-          <PieChartIcon className="w-5 h-5 text-indigo-400" />
+          <PieChartIcon className="w-5 h-5 text-zinc-200" />
           Distribución de Capital
         </h3>
 
@@ -142,7 +142,7 @@ export const WidgetDistribucionBancos: React.FC = () => {
               <p className="text-xs text-slate-400 mb-1">Capital Total</p>
               <p className="text-xl font-bold text-white">{formatCurrency(stats.total, 'USD')}</p>
             </div>
-            <TrendingUp className="w-8 h-8 text-indigo-400" />
+            <TrendingUp className="w-8 h-8 text-zinc-200" />
           </div>
         </motion.div>
       </div>
@@ -199,14 +199,14 @@ export const WidgetDistribucionBancos: React.FC = () => {
       <div className="mt-4 pt-4 border-t border-white/10 grid grid-cols-2 gap-3">
         <div>
           <p className="text-xs text-slate-500 mb-1">Mayor</p>
-          <p className="text-sm font-bold text-green-400">{stats.highest?.name}</p>
+          <p className="text-sm font-bold text-zinc-200">{stats.highest?.name}</p>
           <p className="text-xs text-slate-400">
             {formatCurrency(stats.highest?.value || 0, 'USD')}
           </p>
         </div>
         <div>
           <p className="text-xs text-slate-500 mb-1">Promedio</p>
-          <p className="text-sm font-bold text-blue-400">{formatCurrency(stats.average, 'USD')}</p>
+          <p className="text-sm font-bold text-zinc-300">{formatCurrency(stats.average, 'USD')}</p>
           <p className="text-xs text-slate-400">{dataWithPercentages.length} bóvedas</p>
         </div>
       </div>

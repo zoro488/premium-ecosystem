@@ -210,7 +210,7 @@ const PanelReportesUltra: FC = memo(() => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => exportarReporteCompleto('json')}
-                className="px-4 py-2 rounded-xl bg-violet-500/20 border border-violet-400/30 text-violet-300 flex items-center gap-2"
+                className="px-4 py-2 rounded-xl bg-zinc-700/20 border border-zinc-800/30 text-zinc-800 flex items-center gap-2"
               >
                 <Download className="w-4 h-4" />
                 JSON
@@ -219,7 +219,7 @@ const PanelReportesUltra: FC = memo(() => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => exportarReporteCompleto('csv')}
-                className="px-4 py-2 rounded-xl bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 flex items-center gap-2"
+                className="px-4 py-2 rounded-xl bg-zinc-9000/20 border border-emerald-400/30 text-emerald-300 flex items-center gap-2"
               >
                 <FileText className="w-4 h-4" />
                 CSV

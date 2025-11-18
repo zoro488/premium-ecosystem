@@ -23,36 +23,36 @@ export const AlertsPanel = memo(({ alertas = [] }) => {
 
   const alertColors = {
     error: {
-      bg: 'from-red-500/20 to-red-600/20',
-      border: 'border-red-500/30',
-      icon: 'text-red-400',
+      bg: 'from-zinc-700/20 to-zinc-800/20',
+      border: 'border-zinc-500/30',
+      icon: 'text-zinc-200',
       glow: 'shadow-[0_0_20px_rgba(239,68,68,0.3)]',
     },
     warning: {
       bg: 'from-amber-500/20 to-orange-600/20',
-      border: 'border-amber-500/30',
-      icon: 'text-amber-400',
+      border: 'border-zinc-500/30',
+      icon: 'text-zinc-200',
       glow: 'shadow-[0_0_20px_rgba(245,158,11,0.3)]',
     },
     success: {
       bg: 'from-emerald-500/20 to-green-600/20',
-      border: 'border-emerald-500/30',
-      icon: 'text-emerald-400',
+      border: 'border-zinc-500/30',
+      icon: 'text-zinc-200',
       glow: 'shadow-[0_0_20px_rgba(16,185,129,0.3)]',
     },
     info: {
-      bg: 'from-blue-500/20 to-cyan-600/20',
-      border: 'border-blue-500/30',
-      icon: 'text-blue-400',
+      bg: 'from-zinc-800/20 to-zinc-900/20',
+      border: 'border-zinc-700/30',
+      icon: 'text-zinc-300',
       glow: 'shadow-[0_0_20px_rgba(59,130,246,0.3)]',
     },
   };
 
   const priorityLabels = {
-    crítica: { label: 'CRÍTICA', color: 'text-red-400 bg-red-500/20' },
-    alta: { label: 'ALTA', color: 'text-orange-400 bg-orange-500/20' },
-    media: { label: 'MEDIA', color: 'text-yellow-400 bg-yellow-500/20' },
-    info: { label: 'INFO', color: 'text-blue-400 bg-blue-500/20' },
+    crítica: { label: 'CRÍTICA', color: 'text-zinc-200 bg-zinc-9000/20' },
+    alta: { label: 'ALTA', color: 'text-zinc-200 bg-zinc-9000/20' },
+    media: { label: 'MEDIA', color: 'text-zinc-200 bg-zinc-9000/20' },
+    info: { label: 'INFO', color: 'text-zinc-300 bg-zinc-800/20' },
   };
 
   const filteredAlerts = alertas.filter((alert) => !dismissedAlerts.has(alert.id));
@@ -83,9 +83,9 @@ export const AlertsPanel = memo(({ alertas = [] }) => {
               repeat: Infinity,
               ease: 'easeInOut',
             }}
-            className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-emerald-500/20 to-green-600/20 border border-emerald-500/30 flex items-center justify-center"
+            className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-emerald-500/20 to-green-600/20 border border-zinc-500/30 flex items-center justify-center"
           >
-            <CheckCircle className="w-8 h-8 text-emerald-400" />
+            <CheckCircle className="w-8 h-8 text-zinc-200" />
           </motion.div>
           <h3 className="text-lg font-semibold text-white mb-2">Todo en Orden</h3>
           <p className="text-white/60 text-sm">No hay alertas activas en el sistema</p>
@@ -113,9 +113,9 @@ export const AlertsPanel = memo(({ alertas = [] }) => {
               repeat: Infinity,
               ease: 'easeInOut',
             }}
-            className="p-2 rounded-lg bg-gradient-to-br from-red-500/20 to-orange-600/20 border border-red-500/30"
+            className="p-2 rounded-lg bg-gradient-to-br from-zinc-700/20 to-orange-600/20 border border-zinc-500/30"
           >
-            <AlertTriangle className="w-5 h-5 text-red-400" />
+            <AlertTriangle className="w-5 h-5 text-zinc-200" />
           </motion.div>
           <div>
             <h3 className="text-lg font-semibold text-white">Alertas Activas</h3>
@@ -130,9 +130,9 @@ export const AlertsPanel = memo(({ alertas = [] }) => {
           key={filteredAlerts.length}
           initial={{ scale: 1.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="px-3 py-1 rounded-full bg-red-500/20 border border-red-500/30"
+          className="px-3 py-1 rounded-full bg-zinc-9000/20 border border-zinc-500/30"
         >
-          <span className="text-red-400 font-bold text-sm">{filteredAlerts.length}</span>
+          <span className="text-zinc-200 font-bold text-sm">{filteredAlerts.length}</span>
         </motion.div>
       </div>
 
@@ -165,7 +165,7 @@ export const AlertsPanel = memo(({ alertas = [] }) => {
                 {/* Pulse effect for critical alerts */}
                 {alert.prioridad === 'crítica' && (
                   <motion.div
-                    className="absolute inset-0 rounded-xl bg-red-500/10"
+                    className="absolute inset-0 rounded-xl bg-zinc-9000/10"
                     animate={{
                       opacity: [0, 0.3, 0],
                       scale: [1, 1.02, 1],
@@ -245,7 +245,7 @@ export const AlertsPanel = memo(({ alertas = [] }) => {
                                 <motion.button
                                   whileHover={{ scale: 1.05 }}
                                   whileTap={{ scale: 0.95 }}
-                                  className="px-3 py-1 rounded-lg bg-blue-500/20 text-blue-400 text-xs font-medium hover:bg-blue-500/30 transition-colors"
+                                  className="px-3 py-1 rounded-lg bg-zinc-800/20 text-zinc-300 text-xs font-medium hover:bg-zinc-800/30 transition-colors"
                                 >
                                   Ver Detalles
                                 </motion.button>
@@ -256,7 +256,7 @@ export const AlertsPanel = memo(({ alertas = [] }) => {
                                     e.stopPropagation();
                                     dismissAlert(alert.id);
                                   }}
-                                  className="px-3 py-1 rounded-lg bg-red-500/20 text-red-400 text-xs font-medium hover:bg-red-500/30 transition-colors"
+                                  className="px-3 py-1 rounded-lg bg-zinc-9000/20 text-zinc-200 text-xs font-medium hover:bg-zinc-9000/30 transition-colors"
                                 >
                                   Descartar
                                 </motion.button>
@@ -285,7 +285,7 @@ export const AlertsPanel = memo(({ alertas = [] }) => {
                 {/* Indicador de prioridad en el borde */}
                 {alert.prioridad === 'crítica' && (
                   <motion.div
-                    className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-red-400 to-red-600 rounded-l-xl"
+                    className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-l-xl"
                     animate={{ opacity: [0.5, 1, 0.5] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
                   />

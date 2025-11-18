@@ -1,28 +1,25 @@
-import { useState, useEffect, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useMemo, useState } from 'react';
+
+import { AnimatePresence, motion } from 'framer-motion';
 import {
+  AlertTriangle,
+  Calendar,
+  CheckCircle,
+  Clock,
+  DollarSign,
+  Download,
+  Edit2,
+  Eye,
+  Package,
+  Plus,
+  Search,
   ShoppingCart,
   TrendingUp,
   Users,
-  DollarSign,
-  AlertTriangle,
-  Plus,
-  Download,
-  Filter,
-  Search,
-  Calendar,
-  Eye,
-  Edit2,
-  Trash2,
-  CheckCircle,
-  Clock,
   XCircle,
-  ArrowUpRight,
-  ArrowDownRight,
-  Package,
 } from 'lucide-react';
 
-import { ChronosCard, ChronosKPI, ChronosTable, ChronosButton } from '@/components/chronos-ui';
+import { ChronosButton, ChronosCard, ChronosKPI, ChronosTable } from '@/components/chronos-ui';
 import { useChronosData } from '@/hooks/useChronosData';
 import { formatCurrency, formatDate } from '@/lib/utils';
 
@@ -68,27 +65,28 @@ export function PanelVentas() {
 
   // Cálculo de KPIs en tiempo real
   const kpis = useMemo(() => {
-    if (!ventas?.length) return {
-      totalVentas: 0,
-      ventasHoy: 0,
-      adeudoTotal: 0,
-      ventaPromedio: 0,
-      clientesActivos: 0,
-      tasaCobranza: 0,
-      tendenciaVentas: 0,
-      tendenciaCobranza: 0,
-    };
+    if (!ventas?.length)
+      return {
+        totalVentas: 0,
+        ventasHoy: 0,
+        adeudoTotal: 0,
+        ventaPromedio: 0,
+        clientesActivos: 0,
+        tasaCobranza: 0,
+        tendenciaVentas: 0,
+        tendenciaCobranza: 0,
+      };
 
     const hoy = new Date();
     hoy.setHours(0, 0, 0, 0);
 
     const totalVentas = ventas.reduce((sum, v) => sum + v.total, 0);
     const ventasHoy = ventas
-      .filter(v => new Date(v.fecha) >= hoy)
+      .filter((v) => new Date(v.fecha) >= hoy)
       .reduce((sum, v) => sum + v.total, 0);
     const adeudoTotal = ventas.reduce((sum, v) => sum + v.adeudo, 0);
     const ventaPromedio = totalVentas / ventas.length;
-    const clientesUnicos = new Set(ventas.map(v => v.clienteId)).size;
+    const clientesUnicos = new Set(ventas.map((v) => v.clienteId)).size;
     const montoPagado = ventas.reduce((sum, v) => sum + v.montoPagado, 0);
     const tasaCobranza = (montoPagado / totalVentas) * 100;
 
@@ -99,15 +97,14 @@ export function PanelVentas() {
     dosMesesAtras.setMonth(dosMesesAtras.getMonth() - 2);
 
     const ventasUltimoMes = ventas
-      .filter(v => new Date(v.fecha) >= unMesAtras)
+      .filter((v) => new Date(v.fecha) >= unMesAtras)
       .reduce((sum, v) => sum + v.total, 0);
     const ventasMesAnterior = ventas
-      .filter(v => new Date(v.fecha) >= dosMesesAtras && new Date(v.fecha) < unMesAtras)
+      .filter((v) => new Date(v.fecha) >= dosMesesAtras && new Date(v.fecha) < unMesAtras)
       .reduce((sum, v) => sum + v.total, 0);
 
-    const tendenciaVentas = ventasMesAnterior > 0
-      ? ((ventasUltimoMes - ventasMesAnterior) / ventasMesAnterior) * 100
-      : 0;
+    const tendenciaVentas =
+      ventasMesAnterior > 0 ? ((ventasUltimoMes - ventasMesAnterior) / ventasMesAnterior) * 100 : 0;
 
     return {
       totalVentas,
@@ -130,24 +127,25 @@ export function PanelVentas() {
     // Filtro por búsqueda
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
-      filtered = filtered.filter(v =>
-        v.numeroVenta.toLowerCase().includes(term) ||
-        v.clienteNombre.toLowerCase().includes(term) ||
-        v.productos.some(p => p.nombre.toLowerCase().includes(term))
+      filtered = filtered.filter(
+        (v) =>
+          v.numeroVenta.toLowerCase().includes(term) ||
+          v.clienteNombre.toLowerCase().includes(term) ||
+          v.productos.some((p) => p.nombre.toLowerCase().includes(term))
       );
     }
 
     // Filtro por estado
     if (selectedEstado !== 'todos') {
-      filtered = filtered.filter(v => v.estadoPago === selectedEstado);
+      filtered = filtered.filter((v) => v.estadoPago === selectedEstado);
     }
 
     // Filtro por rango de fechas
     if (dateRange.start) {
-      filtered = filtered.filter(v => new Date(v.fecha) >= new Date(dateRange.start));
+      filtered = filtered.filter((v) => new Date(v.fecha) >= new Date(dateRange.start));
     }
     if (dateRange.end) {
-      filtered = filtered.filter(v => new Date(v.fecha) <= new Date(dateRange.end));
+      filtered = filtered.filter((v) => new Date(v.fecha) <= new Date(dateRange.end));
     }
 
     // Ordenar por fecha descendente
@@ -162,18 +160,14 @@ export function PanelVentas() {
       key: 'numeroVenta',
       label: '# Venta',
       render: (venta: Venta) => (
-        <div className="font-mono text-sm font-bold text-cyan-400">
-          {venta.numeroVenta}
-        </div>
+        <div className="font-mono text-sm font-bold text-cyan-400">{venta.numeroVenta}</div>
       ),
     },
     {
       key: 'fecha',
       label: 'Fecha',
       render: (venta: Venta) => (
-        <div className="text-sm text-gray-400">
-          {formatDate(venta.fecha)}
-        </div>
+        <div className="text-sm text-gray-400">{formatDate(venta.fecha)}</div>
       ),
     },
     {
@@ -181,12 +175,10 @@ export function PanelVentas() {
       label: 'Cliente',
       render: (venta: Venta) => (
         <div className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-xs font-bold">
+          <div className="h-8 w-8 rounded-full bg-gradient-to-br from-black/80 to-black/90 border border-white/20 flex items-center justify-center text-white text-xs font-bold">
             {venta.clienteNombre.charAt(0)}
           </div>
-          <span className="text-sm font-medium text-white">
-            {venta.clienteNombre}
-          </span>
+          <span className="text-sm font-medium text-white">{venta.clienteNombre}</span>
         </div>
       ),
     },
@@ -204,9 +196,7 @@ export function PanelVentas() {
       key: 'total',
       label: 'Total',
       render: (venta: Venta) => (
-        <div className="text-sm font-bold text-white">
-          {formatCurrency(venta.total)}
-        </div>
+        <div className="text-sm font-bold text-white">{formatCurrency(venta.total)}</div>
       ),
     },
     {
@@ -216,7 +206,9 @@ export function PanelVentas() {
         const estado = ESTADOS_PAGO[venta.estadoPago];
         const Icon = estado.icon;
         return (
-          <div className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium bg-${estado.color}-500/10 text-${estado.color}-400 border border-${estado.color}-500/20`}>
+          <div
+            className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium bg-${estado.color}-500/10 text-${estado.color}-400 border border-${estado.color}-500/20`}
+          >
             <Icon className="h-3 w-3" />
             {estado.label}
           </div>
@@ -227,7 +219,9 @@ export function PanelVentas() {
       key: 'adeudo',
       label: 'Adeudo',
       render: (venta: Venta) => (
-        <div className={`text-sm font-medium ${venta.adeudo > 0 ? 'text-red-400' : 'text-green-400'}`}>
+        <div
+          className={`text-sm font-medium ${venta.adeudo > 0 ? 'text-red-400' : 'text-green-400'}`}
+        >
           {venta.adeudo > 0 ? formatCurrency(venta.adeudo) : '—'}
         </div>
       ),
@@ -392,14 +386,14 @@ export function PanelVentas() {
             <input
               type="date"
               value={dateRange.start}
-              onChange={(e) => setDateRange(prev => ({ ...prev, start: e.target.value }))}
+              onChange={(e) => setDateRange((prev) => ({ ...prev, start: e.target.value }))}
               className="px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-cyan-500/50 transition-colors"
             />
             <span className="text-gray-500">-</span>
             <input
               type="date"
               value={dateRange.end}
-              onChange={(e) => setDateRange(prev => ({ ...prev, end: e.target.value }))}
+              onChange={(e) => setDateRange((prev) => ({ ...prev, end: e.target.value }))}
               className="px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-cyan-500/50 transition-colors"
             />
           </div>

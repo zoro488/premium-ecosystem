@@ -89,7 +89,7 @@ export function FloatingAIWidget() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsExpanded(true)}
-            className="fixed bottom-6 right-6 z-[9999] w-16 h-16 bg-gradient-to-br from-purple-600 to-blue-600 text-white rounded-full shadow-2xl flex items-center justify-center group hover:shadow-purple-500/50 transition-all duration-300"
+            className="fixed bottom-6 right-6 z-[9999] w-16 h-16 bg-gradient-to-br from-zinc-800 to-zinc-900 text-white rounded-full shadow-2xl flex items-center justify-center group hover:shadow-zinc-800/50 transition-all duration-300"
           >
             <Sparkles className="w-7 h-7 group-hover:rotate-12 transition-transform" />
 
@@ -98,7 +98,7 @@ export function FloatingAIWidget() {
               <motion.span
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
-                className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 text-white text-xs rounded-full flex items-center justify-center font-bold"
+                className="absolute -top-1 -right-1 w-6 h-6 bg-zinc-9000 text-white text-xs rounded-full flex items-center justify-center font-bold"
               >
                 {messages.length > 9 ? '9+' : messages.length}
               </motion.span>
@@ -118,7 +118,7 @@ export function FloatingAIWidget() {
             className="fixed bottom-6 right-6 z-[9999] w-[400px] h-[600px] bg-white/10 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="p-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white flex items-center justify-between">
+            <div className="p-4 bg-gradient-to-r from-zinc-800 to-zinc-900 text-white flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <Sparkles className="w-5 h-5" />
                 <h3 className="font-bold">Asistente IA</h3>
@@ -185,7 +185,7 @@ export function FloatingAIWidget() {
                   <div
                     className={`max-w-[80%] p-3 rounded-2xl ${
                       msg.role === 'user'
-                        ? 'bg-gradient-to-br from-purple-600 to-blue-600 text-white'
+                        ? 'bg-gradient-to-br from-zinc-800 to-zinc-900 text-white'
                         : 'bg-white/10 text-white'
                     }`}
                   >
@@ -236,7 +236,7 @@ export function FloatingAIWidget() {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="bg-red-500/20 text-red-300 p-3 rounded-lg text-sm"
+                  className="bg-zinc-9000/20 text-red-300 p-3 rounded-lg text-sm"
                 >
                   {error}
                 </motion.div>
@@ -252,7 +252,7 @@ export function FloatingAIWidget() {
                     onClick={isListening ? stopListening : startListening}
                     className={`p-2 rounded-lg transition-colors ${
                       isListening
-                        ? 'bg-red-500 text-white animate-pulse'
+                        ? 'bg-zinc-9000 text-white animate-pulse'
                         : 'bg-white/10 text-white hover:bg-white/20'
                     }`}
                     title="Comando por voz"
@@ -269,14 +269,14 @@ export function FloatingAIWidget() {
                   onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
                   placeholder="Escribe un mensaje..."
                   disabled={isLoading}
-                  className="flex-1 px-4 py-2 bg-white/10 text-white placeholder-white/50 rounded-lg border border-white/20 focus:outline-none focus:border-purple-500 transition-colors disabled:opacity-50"
+                  className="flex-1 px-4 py-2 bg-white/10 text-white placeholder-white/50 rounded-lg border border-white/20 focus:outline-none focus:border-zinc-800 transition-colors disabled:opacity-50"
                 />
 
                 {/* Send button */}
                 <button
                   onClick={handleSendMessage}
                   disabled={!inputMessage.trim() || isLoading}
-                  className="p-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="p-2 bg-gradient-to-r from-zinc-800 to-zinc-900 text-white rounded-lg hover:shadow-lg hover:shadow-zinc-800/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Send className="w-5 h-5" />
                 </button>

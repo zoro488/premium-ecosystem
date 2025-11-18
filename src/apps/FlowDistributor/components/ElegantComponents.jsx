@@ -157,7 +157,7 @@ export const PremiumKPI = memo(({ title, value, icon: Icon, colors, trend }) => 
         {/* Trend indicator */}
         {trend && (
           <motion.div
-            className={`text-xs font-medium ${trend > 0 ? 'text-green-400' : 'text-red-400'}`}
+            className={`text-xs font-medium ${trend > 0 ? 'text-zinc-200' : 'text-zinc-200'}`}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}

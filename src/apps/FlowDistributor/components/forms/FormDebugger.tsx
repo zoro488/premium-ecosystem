@@ -151,15 +151,15 @@ export function FormDebugger({
         ${isMinimized ? 'w-auto' : 'w-96 max-w-[calc(100vw-2rem)]'}
         max-h-[calc(100vh-2rem)]
         bg-gray-900/95 backdrop-blur-xl
-        border border-purple-500/30
-        rounded-xl shadow-2xl shadow-purple-500/10
+        border border-zinc-800/30
+        rounded-xl shadow-2xl shadow-zinc-800/10
         overflow-hidden
       `}
     >
       {/* Header */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-purple-600/10">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-zinc-800/10">
         <div className="flex items-center gap-2">
-          <Bug className="w-5 h-5 text-purple-400" />
+          <Bug className="w-5 h-5 text-zinc-800" />
           <span className="text-sm font-semibold text-white">
             Form Debugger
           </span>
@@ -177,7 +177,7 @@ export function FormDebugger({
               title="Copiar datos"
             >
               {copied ? (
-                <Check className="w-4 h-4 text-green-400" />
+                <Check className="w-4 h-4 text-zinc-200" />
               ) : (
                 <Copy className="w-4 h-4 text-gray-400" />
               )}
@@ -263,7 +263,7 @@ export function FormDebugger({
                   className={`
                     flex-1 px-4 py-2.5 text-sm font-medium transition-colors
                     ${activeTab === tab
-                      ? 'text-purple-400 border-b-2 border-purple-400 bg-purple-500/10'
+                      ? 'text-zinc-800 border-b-2 border-zinc-800 bg-zinc-800/10'
                       : 'text-gray-400 hover:text-gray-300 hover:bg-white/5'
                     }
                   `}
@@ -328,10 +328,10 @@ function StatBadge({
   color: 'green' | 'red' | 'yellow' | 'blue' | 'gray';
 }) {
   const colors = {
-    green: 'text-green-400 bg-green-500/10',
-    red: 'text-red-400 bg-red-500/10',
-    yellow: 'text-yellow-400 bg-yellow-500/10',
-    blue: 'text-blue-400 bg-blue-500/10',
+    green: 'text-zinc-200 bg-zinc-9000/10',
+    red: 'text-zinc-200 bg-zinc-9000/10',
+    yellow: 'text-zinc-200 bg-zinc-9000/10',
+    blue: 'text-zinc-300 bg-zinc-800/10',
     gray: 'text-gray-400 bg-gray-500/10'
   };
 
@@ -368,8 +368,8 @@ function StateItem({ label, value }: { label: string; value: any }) {
     : JSON.stringify(value);
 
   const valueColor = typeof value === 'boolean'
-    ? value ? 'text-green-400' : 'text-gray-500'
-    : 'text-blue-400';
+    ? value ? 'text-zinc-200' : 'text-gray-500'
+    : 'text-zinc-300';
 
   return (
     <div className="flex items-center justify-between py-1.5 px-2 rounded hover:bg-white/5 transition-colors">

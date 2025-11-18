@@ -383,13 +383,13 @@ const PanelAlmacenUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
     const porcentajeStock = (producto.stockActual / producto.stockMaximo) * 100;
 
     if (porcentajeStock <= 20) {
-      return { color: 'text-red-400', bgColor: 'bg-red-500/20', label: 'Crítico' };
+      return { color: 'text-zinc-200', bgColor: 'bg-zinc-9000/20', label: 'Crítico' };
     } else if (porcentajeStock <= 40) {
-      return { color: 'text-yellow-400', bgColor: 'bg-yellow-500/20', label: 'Bajo' };
+      return { color: 'text-zinc-200', bgColor: 'bg-zinc-9000/20', label: 'Bajo' };
     } else if (porcentajeStock <= 80) {
-      return { color: 'text-green-400', bgColor: 'bg-green-500/20', label: 'Normal' };
+      return { color: 'text-zinc-200', bgColor: 'bg-zinc-9000/20', label: 'Normal' };
     } else {
-      return { color: 'text-blue-400', bgColor: 'bg-blue-500/20', label: 'Alto' };
+      return { color: 'text-zinc-300', bgColor: 'bg-zinc-800/20', label: 'Alto' };
     }
   }, []);
 
@@ -481,8 +481,8 @@ const PanelAlmacenUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
         {/* Background Effects */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 via-emerald-500/5 to-teal-500/5" />
-          <div className="absolute top-0 left-1/4 w-32 h-32 bg-green-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-emerald-500/10 rounded-full blur-2xl" />
+          <div className="absolute top-0 left-1/4 w-32 h-32 bg-zinc-9000/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-zinc-9000/10 rounded-full blur-2xl" />
 
           {/* Floating warehouse particles */}
           {[...Array(8)].map((_, i) => (
@@ -516,7 +516,7 @@ const PanelAlmacenUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 whileHover={{ scale: 1.05, rotate: 5 }}
                 transition={{ duration: 0.3 }}
               >
-                <Warehouse className="w-8 h-8 text-green-400" />
+                <Warehouse className="w-8 h-8 text-zinc-200" />
               </motion.div>
 
               <div>
@@ -537,7 +537,7 @@ const PanelAlmacenUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 <div className="text-2xl font-bold text-white">
                   {localData.summary.totalProductos.toLocaleString()}
                 </div>
-                <div className="flex items-center text-green-400 text-sm mt-1">
+                <div className="flex items-center text-zinc-200 text-sm mt-1">
                   <Package className="w-3 h-3 mr-1" />
                   {localData.summary.stockTotal.toLocaleString()} unidades
                 </div>
@@ -551,7 +551,7 @@ const PanelAlmacenUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 <div className="text-2xl font-bold text-white">
                   {showValues ? formatCurrency(localData.summary.valorInventario) : '••••••••'}
                 </div>
-                <div className="flex items-center text-emerald-400 text-sm mt-1">
+                <div className="flex items-center text-zinc-200 text-sm mt-1">
                   <TrendingUp className="w-3 h-3 mr-1" />
                   Rotación: {localData.summary.rotacionPromedio}x
                 </div>
@@ -575,7 +575,7 @@ const PanelAlmacenUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 <div className="text-2xl font-bold text-white">
                   {localData.summary.ocupacionAlmacen}%
                 </div>
-                <div className="flex items-center text-yellow-400 text-sm mt-1">
+                <div className="flex items-center text-zinc-200 text-sm mt-1">
                   <AlertTriangle className="w-3 h-3 mr-1" />
                   {localData.summary.alertasStock} alertas
                 </div>
@@ -585,7 +585,7 @@ const PanelAlmacenUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
 
           {/* Warehouse Status Bar */}
           <motion.div
-            className="p-4 bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-xl border border-green-500/20 backdrop-blur-sm"
+            className="p-4 bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-xl border border-zinc-500/20 backdrop-blur-sm"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
@@ -596,10 +596,10 @@ const PanelAlmacenUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
                 >
-                  <Scan className="w-5 h-5 text-green-400" />
+                  <Scan className="w-5 h-5 text-zinc-200" />
                 </motion.div>
                 <span className="text-white font-medium">Sistema RFID Activo</span>
-                <span className="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">
+                <span className="px-2 py-1 bg-zinc-9000/20 text-zinc-200 rounded-full text-xs">
                   {localData.summary.movimientosDiarios} movimientos hoy
                 </span>
               </div>
@@ -610,7 +610,7 @@ const PanelAlmacenUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                   {new Date(localData.summary.ultimaActualizacion).toLocaleTimeString()}
                 </span>
                 <motion.button
-                  className="p-1 text-green-400 hover:text-green-300"
+                  className="p-1 text-zinc-200 hover:text-green-300"
                   whileHover={{ scale: 1.1 }}
                 >
                   <Settings className="w-4 h-4" />
@@ -640,7 +640,7 @@ const PanelAlmacenUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 onClick={() => setActiveTable(id)}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   activeTable === id
-                    ? 'bg-green-500/20 text-green-400 shadow-lg'
+                    ? 'bg-zinc-9000/20 text-zinc-200 shadow-lg'
                     : 'text-slate-400 hover:text-white hover:bg-white/5'
                 }`}
                 whileHover={{ scale: 1.02 }}
@@ -674,7 +674,7 @@ const PanelAlmacenUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                 placeholder="Buscar productos..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500/50 w-64"
+                className="pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-zinc-500/50 w-64"
               />
             </div>
 
@@ -737,14 +737,14 @@ const PanelAlmacenUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                             <div className="text-xs text-slate-400 mt-1">{producto.categoria}</div>
                           </div>
 
-                          <div className="text-green-400 font-mono">{producto.codigo}</div>
+                          <div className="text-zinc-200 font-mono">{producto.codigo}</div>
 
                           <div className="text-center">
                             <div className="text-white font-bold">{producto.stockActual}</div>
                             <div className="text-xs text-slate-400">/ {producto.stockMaximo}</div>
                           </div>
 
-                          <div className="text-cyan-400 font-mono text-xs">
+                          <div className="text-zinc-300 font-mono text-xs">
                             {producto.ubicacion}
                           </div>
 
@@ -756,7 +756,7 @@ const PanelAlmacenUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
                             </span>
                           </div>
 
-                          <div className="text-green-400 font-medium">
+                          <div className="text-zinc-200 font-medium">
                             {formatCurrency(producto.valorTotal)}
                           </div>
 
@@ -771,11 +771,11 @@ const PanelAlmacenUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
 
                           <div>
                             {producto.alertas.length > 0 ? (
-                              <span className="px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-xs">
+                              <span className="px-2 py-1 bg-zinc-9000/20 text-zinc-200 rounded-full text-xs">
                                 {producto.alertas.length}
                               </span>
                             ) : (
-                              <CheckCircle className="w-4 h-4 text-green-400" />
+                              <CheckCircle className="w-4 h-4 text-zinc-200" />
                             )}
                           </div>
                         </div>
@@ -798,7 +798,7 @@ const PanelAlmacenUltra = memo(({ data = INITIAL_DATA, onDataChange }) => {
               className="h-full flex items-center justify-center"
             >
               <div className="text-center">
-                <Warehouse className="w-16 h-16 text-green-400 mx-auto mb-4" />
+                <Warehouse className="w-16 h-16 text-zinc-200 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">
                   {activeTable === 'movimientos'
                     ? 'Movimientos de Stock en Tiempo Real'

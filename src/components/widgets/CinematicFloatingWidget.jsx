@@ -43,7 +43,7 @@ const widgetModes = {
     title: 'TEAM SYNC',
     icon: Users,
     color: '#8b5cf6',
-    gradient: 'from-violet-500 to-purple-600',
+    gradient: 'from-violet-500 to-zinc-800',
   },
 };
 

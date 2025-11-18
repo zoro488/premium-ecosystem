@@ -104,10 +104,10 @@ export const TablaIngresosPremium = memo(
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-gradient-to-br from-slate-900/80 via-slate-800/80 to-slate-900/80 backdrop-blur-xl rounded-3xl border border-emerald-500/20 shadow-2xl shadow-emerald-500/10 overflow-hidden"
+        className="bg-gradient-to-br from-slate-900/80 via-slate-800/80 to-slate-900/80 backdrop-blur-xl rounded-3xl border border-zinc-500/20 shadow-2xl shadow-emerald-500/10 overflow-hidden"
       >
         {/* HEADER */}
-        <div className="p-6 border-b border-emerald-500/20 bg-gradient-to-r from-emerald-500/10 to-green-500/10">
+        <div className="p-6 border-b border-zinc-500/20 bg-gradient-to-r from-emerald-500/10 to-green-500/10">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div className="p-3 bg-gradient-to-r from-emerald-500 to-green-500 rounded-2xl">
@@ -136,17 +136,17 @@ export const TablaIngresosPremium = memo(
 
           {/* ESTADÍSTICAS RÁPIDAS */}
           <div className="grid grid-cols-3 gap-4 mt-6">
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-emerald-500/10">
+            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-zinc-500/10">
               <p className="text-emerald-300 text-sm">Total Ingresos</p>
               <p className="text-2xl font-bold text-white mt-1">{formatearMoneda(totalIngresos)}</p>
             </div>
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-emerald-500/10">
+            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-zinc-500/10">
               <p className="text-emerald-300 text-sm">Promedio</p>
               <p className="text-2xl font-bold text-white mt-1">
                 {formatearMoneda(promedioIngreso)}
               </p>
             </div>
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-emerald-500/10">
+            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-zinc-500/10">
               <p className="text-emerald-300 text-sm">Registros</p>
               <p className="text-2xl font-bold text-white mt-1">{ingresosFiltrados.length}</p>
             </div>
@@ -154,17 +154,17 @@ export const TablaIngresosPremium = memo(
         </div>
 
         {/* FILTROS Y BÚSQUEDA */}
-        <div className="p-6 border-b border-emerald-500/10 bg-slate-900/50">
+        <div className="p-6 border-b border-zinc-500/10 bg-slate-900/50">
           <div className="flex gap-4">
             {/* Búsqueda */}
             <div className="flex-1 relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-emerald-400" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-200" />
               <input
                 type="text"
                 value={busqueda}
                 onChange={(e) => setBusqueda(e.target.value)}
                 placeholder="Buscar por cliente o concepto..."
-                className="w-full pl-12 pr-4 py-3 bg-white/5 border border-emerald-500/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-emerald-500 transition-colors"
+                className="w-full pl-12 pr-4 py-3 bg-white/5 border border-zinc-500/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-zinc-500 transition-colors"
               />
               {busqueda && (
                 <button
@@ -183,7 +183,7 @@ export const TablaIngresosPremium = memo(
                 const [campo, direccion] = e.target.value.split('-');
                 setOrdenamiento({ campo, direccion });
               }}
-              className="px-4 py-3 bg-white/5 border border-emerald-500/20 rounded-xl text-white cursor-pointer focus:outline-none focus:border-emerald-500"
+              className="px-4 py-3 bg-white/5 border border-zinc-500/20 rounded-xl text-white cursor-pointer focus:outline-none focus:border-zinc-500"
             >
               <option value="fecha-desc" className="bg-slate-800">
                 Más recientes
@@ -205,7 +205,7 @@ export const TablaIngresosPremium = memo(
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-emerald-500/10 bg-emerald-500/5">
+              <tr className="border-b border-zinc-500/10 bg-zinc-9000/5">
                 <th className="px-6 py-4 text-left text-xs font-semibold text-emerald-300 uppercase tracking-wider">
                   Fecha
                 </th>
@@ -242,11 +242,11 @@ export const TablaIngresosPremium = memo(
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: 20 }}
                       transition={{ delay: index * 0.02 }}
-                      className="border-b border-emerald-500/5 hover:bg-emerald-500/5 transition-colors group"
+                      className="border-b border-zinc-500/5 hover:bg-zinc-9000/5 transition-colors group"
                     >
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-2">
-                          <Calendar className="w-4 h-4 text-emerald-400" />
+                          <Calendar className="w-4 h-4 text-zinc-200" />
                           <span className="text-white font-medium">
                             {formatearFecha(ingreso.fecha)}
                           </span>
@@ -254,7 +254,7 @@ export const TablaIngresosPremium = memo(
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-2">
-                          <User className="w-4 h-4 text-emerald-400" />
+                          <User className="w-4 h-4 text-zinc-200" />
                           <span className="text-white">
                             {ingreso.cliente || ingreso.origen || '-'}
                           </span>
@@ -265,8 +265,8 @@ export const TablaIngresosPremium = memo(
                       </td>
                       <td className="px-6 py-4 text-right">
                         <div className="flex items-center justify-end gap-2">
-                          <ArrowUpRight className="w-4 h-4 text-emerald-400" />
-                          <span className="text-xl font-bold text-emerald-400">
+                          <ArrowUpRight className="w-4 h-4 text-zinc-200" />
+                          <span className="text-xl font-bold text-zinc-200">
                             {formatearMoneda(ingreso.monto)}
                           </span>
                         </div>
@@ -277,9 +277,9 @@ export const TablaIngresosPremium = memo(
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() => onEliminar(ingreso.id)}
-                            className="p-2 hover:bg-red-500/20 rounded-lg transition-colors opacity-0 group-hover:opacity-100"
+                            className="p-2 hover:bg-zinc-9000/20 rounded-lg transition-colors opacity-0 group-hover:opacity-100"
                           >
-                            <Trash2 className="w-4 h-4 text-red-400" />
+                            <Trash2 className="w-4 h-4 text-zinc-200" />
                           </motion.button>
                         </td>
                       )}
@@ -293,7 +293,7 @@ export const TablaIngresosPremium = memo(
 
         {/* PAGINACIÓN */}
         {totalPaginas > 1 && (
-          <div className="p-6 border-t border-emerald-500/10 bg-slate-900/50">
+          <div className="p-6 border-t border-zinc-500/10 bg-slate-900/50">
             <div className="flex items-center justify-between">
               <p className="text-gray-400 text-sm">
                 Mostrando {indiceInicio + 1} a {Math.min(indiceFin, ingresosFiltrados.length)} de{' '}
@@ -387,13 +387,13 @@ export const TablaGastosPremium = memo(({ gastos, titulo = 'Gastos', onAgregar, 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.1 }}
-      className="bg-gradient-to-br from-slate-900/80 via-slate-800/80 to-slate-900/80 backdrop-blur-xl rounded-3xl border border-red-500/20 shadow-2xl shadow-red-500/10 overflow-hidden"
+      className="bg-gradient-to-br from-slate-900/80 via-slate-800/80 to-slate-900/80 backdrop-blur-xl rounded-3xl border border-zinc-500/20 shadow-2xl shadow-red-500/10 overflow-hidden"
     >
       {/* HEADER */}
-      <div className="p-6 border-b border-red-500/20 bg-gradient-to-r from-red-500/10 to-orange-500/10">
+      <div className="p-6 border-b border-zinc-500/20 bg-gradient-to-r from-zinc-700/10 to-orange-500/10">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-gradient-to-r from-red-500 to-orange-500 rounded-2xl">
+            <div className="p-3 bg-gradient-to-r from-zinc-700 to-orange-500 rounded-2xl">
               <TrendingDown className="w-7 h-7 text-white" />
             </div>
             <div>
@@ -409,7 +409,7 @@ export const TablaGastosPremium = memo(({ gastos, titulo = 'Gastos', onAgregar, 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={onAgregar}
-              className="px-6 py-3 bg-gradient-to-r from-red-600 to-orange-600 text-white rounded-xl font-semibold flex items-center gap-2 shadow-lg shadow-red-500/50 hover:shadow-red-500/70 transition-all"
+              className="px-6 py-3 bg-gradient-to-r from-zinc-700 to-orange-600 text-white rounded-xl font-semibold flex items-center gap-2 shadow-lg shadow-red-500/50 hover:shadow-red-500/70 transition-all"
             >
               <Plus className="w-5 h-5" />
               Agregar Gasto
@@ -419,15 +419,15 @@ export const TablaGastosPremium = memo(({ gastos, titulo = 'Gastos', onAgregar, 
 
         {/* ESTADÍSTICAS RÁPIDAS */}
         <div className="grid grid-cols-3 gap-4 mt-6">
-          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-red-500/10">
+          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-zinc-500/10">
             <p className="text-red-300 text-sm">Total Gastos</p>
             <p className="text-2xl font-bold text-white mt-1">{formatearMoneda(totalGastos)}</p>
           </div>
-          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-red-500/10">
+          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-zinc-500/10">
             <p className="text-red-300 text-sm">Promedio</p>
             <p className="text-2xl font-bold text-white mt-1">{formatearMoneda(promedioGasto)}</p>
           </div>
-          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-red-500/10">
+          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-zinc-500/10">
             <p className="text-red-300 text-sm">Registros</p>
             <p className="text-2xl font-bold text-white mt-1">{gastosFiltrados.length}</p>
           </div>
@@ -435,17 +435,17 @@ export const TablaGastosPremium = memo(({ gastos, titulo = 'Gastos', onAgregar, 
       </div>
 
       {/* FILTROS Y BÚSQUEDA */}
-      <div className="p-6 border-b border-red-500/10 bg-slate-900/50">
+      <div className="p-6 border-b border-zinc-500/10 bg-slate-900/50">
         <div className="flex gap-4">
           {/* Búsqueda */}
           <div className="flex-1 relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-red-400" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-200" />
             <input
               type="text"
               value={busqueda}
               onChange={(e) => setBusqueda(e.target.value)}
               placeholder="Buscar por destino o concepto..."
-              className="w-full pl-12 pr-4 py-3 bg-white/5 border border-red-500/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-red-500 transition-colors"
+              className="w-full pl-12 pr-4 py-3 bg-white/5 border border-zinc-500/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-zinc-500 transition-colors"
             />
             {busqueda && (
               <button
@@ -464,7 +464,7 @@ export const TablaGastosPremium = memo(({ gastos, titulo = 'Gastos', onAgregar, 
               const [campo, direccion] = e.target.value.split('-');
               setOrdenamiento({ campo, direccion });
             }}
-            className="px-4 py-3 bg-white/5 border border-red-500/20 rounded-xl text-white cursor-pointer focus:outline-none focus:border-red-500"
+            className="px-4 py-3 bg-white/5 border border-zinc-500/20 rounded-xl text-white cursor-pointer focus:outline-none focus:border-zinc-500"
           >
             <option value="fecha-desc" className="bg-slate-800">
               Más recientes
@@ -486,7 +486,7 @@ export const TablaGastosPremium = memo(({ gastos, titulo = 'Gastos', onAgregar, 
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
-            <tr className="border-b border-red-500/10 bg-red-500/5">
+            <tr className="border-b border-zinc-500/10 bg-zinc-9000/5">
               <th className="px-6 py-4 text-left text-xs font-semibold text-red-300 uppercase tracking-wider">
                 Fecha
               </th>
@@ -535,12 +535,12 @@ export const TablaGastosPremium = memo(({ gastos, titulo = 'Gastos', onAgregar, 
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 20 }}
                     transition={{ delay: index * 0.02 }}
-                    className="border-b border-red-500/5 hover:bg-red-500/5 transition-colors group"
+                    className="border-b border-zinc-500/5 hover:bg-zinc-9000/5 transition-colors group"
                   >
                     {/* Fecha */}
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4 text-red-400" />
+                        <Calendar className="w-4 h-4 text-zinc-200" />
                         <span className="text-white font-medium">
                           {formatearFecha(gasto.fecha)}
                         </span>
@@ -549,7 +549,7 @@ export const TablaGastosPremium = memo(({ gastos, titulo = 'Gastos', onAgregar, 
                     {/* ✅ Origen - CAMPO AGREGADO */}
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2">
-                        <User className="w-4 h-4 text-red-400" />
+                        <User className="w-4 h-4 text-zinc-200" />
                         <span className="text-white">
                           {gasto.origen || gasto.origenDelGastoOAbono || '-'}
                         </span>
@@ -558,15 +558,15 @@ export const TablaGastosPremium = memo(({ gastos, titulo = 'Gastos', onAgregar, 
                     {/* Destino */}
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2">
-                        <User className="w-4 h-4 text-red-400" />
+                        <User className="w-4 h-4 text-zinc-200" />
                         <span className="text-white">{gasto.destino || gasto.cliente || '-'}</span>
                       </div>
                     </td>
                     {/* Monto */}
                     <td className="px-6 py-4 text-right">
                       <div className="flex items-center justify-end gap-2">
-                        <ArrowDownRight className="w-4 h-4 text-red-400" />
-                        <span className="text-xl font-bold text-red-400">
+                        <ArrowDownRight className="w-4 h-4 text-zinc-200" />
+                        <span className="text-xl font-bold text-zinc-200">
                           {formatearMoneda(gasto.monto || gasto.gasto)}
                         </span>
                       </div>
@@ -603,9 +603,9 @@ export const TablaGastosPremium = memo(({ gastos, titulo = 'Gastos', onAgregar, 
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
                           onClick={() => onEliminar(gasto.id)}
-                          className="p-2 hover:bg-red-500/20 rounded-lg transition-colors opacity-0 group-hover:opacity-100"
+                          className="p-2 hover:bg-zinc-9000/20 rounded-lg transition-colors opacity-0 group-hover:opacity-100"
                         >
-                          <Trash2 className="w-4 h-4 text-red-400" />
+                          <Trash2 className="w-4 h-4 text-zinc-200" />
                         </motion.button>
                       </td>
                     )}
@@ -619,7 +619,7 @@ export const TablaGastosPremium = memo(({ gastos, titulo = 'Gastos', onAgregar, 
 
       {/* PAGINACIÓN */}
       {totalPaginas > 1 && (
-        <div className="p-6 border-t border-red-500/10 bg-slate-900/50">
+        <div className="p-6 border-t border-zinc-500/10 bg-slate-900/50">
           <div className="flex items-center justify-between">
             <p className="text-gray-400 text-sm">
               Mostrando {indiceInicio + 1} a {Math.min(indiceFin, gastosFiltrados.length)} de{' '}
@@ -722,14 +722,14 @@ export const TablaCortesPremium = memo(
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
-        className="rounded-3xl overflow-hidden backdrop-blur-xl bg-gradient-to-br from-cyan-500/5 to-blue-500/5 border border-cyan-500/20 shadow-2xl shadow-cyan-500/10"
+        className="rounded-3xl overflow-hidden backdrop-blur-xl bg-gradient-to-br from-zinc-800/5 to-zinc-800/5 border border-zinc-500/20 shadow-2xl shadow-cyan-500/10"
       >
         {/* HEADER CON ESTADÍSTICAS */}
-        <div className="p-6 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border-b border-cyan-500/20">
+        <div className="p-6 bg-gradient-to-r from-zinc-800/10 to-zinc-800/10 border-b border-zinc-500/20">
           <div className="flex items-center justify-between mb-6">
             <div>
               <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                <Activity className="w-7 h-7 text-cyan-400" />
+                <Activity className="w-7 h-7 text-zinc-300" />
                 {titulo}
               </h2>
               <p className="text-gray-400 text-sm mt-1">Gestión de cortes y RF actual del banco</p>
@@ -739,7 +739,7 @@ export const TablaCortesPremium = memo(
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={onAgregar}
-                className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-xl font-semibold flex items-center gap-2 shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-shadow"
+                className="px-6 py-3 bg-gradient-to-r from-zinc-800 to-zinc-800 text-white rounded-xl font-semibold flex items-center gap-2 shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-shadow"
               >
                 <Plus className="w-5 h-5" />
                 Nuevo Corte
@@ -751,34 +751,34 @@ export const TablaCortesPremium = memo(
           <div className="grid grid-cols-3 gap-4">
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className="bg-slate-900/50 rounded-xl p-4 border border-cyan-500/20"
+              className="bg-slate-900/50 rounded-xl p-4 border border-zinc-500/20"
             >
               <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">Total RF</p>
-              <p className="text-2xl font-bold text-cyan-400">
+              <p className="text-2xl font-bold text-zinc-300">
                 {formatearMoneda(estadisticas.total)}
               </p>
             </motion.div>
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className="bg-slate-900/50 rounded-xl p-4 border border-cyan-500/20"
+              className="bg-slate-900/50 rounded-xl p-4 border border-zinc-500/20"
             >
               <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">Promedio</p>
-              <p className="text-2xl font-bold text-cyan-400">
+              <p className="text-2xl font-bold text-zinc-300">
                 {formatearMoneda(estadisticas.promedio)}
               </p>
             </motion.div>
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className="bg-slate-900/50 rounded-xl p-4 border border-cyan-500/20"
+              className="bg-slate-900/50 rounded-xl p-4 border border-zinc-500/20"
             >
               <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">Registros</p>
-              <p className="text-2xl font-bold text-cyan-400">{estadisticas.cantidad}</p>
+              <p className="text-2xl font-bold text-zinc-300">{estadisticas.cantidad}</p>
             </motion.div>
           </div>
         </div>
 
         {/* CONTROLES DE BÚSQUEDA Y FILTROS */}
-        <div className="p-6 bg-slate-900/30 border-b border-cyan-500/10">
+        <div className="p-6 bg-slate-900/30 border-b border-zinc-500/10">
           <div className="flex gap-4">
             <div className="flex-1 relative">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -787,7 +787,7 @@ export const TablaCortesPremium = memo(
                 value={busqueda}
                 onChange={(e) => setBusqueda(e.target.value)}
                 placeholder="Buscar por fecha o monto..."
-                className="w-full pl-12 pr-4 py-3 bg-white/5 border border-cyan-500/20 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 transition-all"
+                className="w-full pl-12 pr-4 py-3 bg-white/5 border border-zinc-500/20 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-zinc-500/50 focus:ring-2 focus:ring-cyan-500/20 transition-all"
               />
             </div>
             <div className="relative">
@@ -795,7 +795,7 @@ export const TablaCortesPremium = memo(
               <select
                 value={ordenamiento}
                 onChange={(e) => setOrdenamiento(e.target.value)}
-                className="pl-12 pr-8 py-3 bg-white/5 border border-cyan-500/20 rounded-xl text-white focus:outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 transition-all appearance-none cursor-pointer"
+                className="pl-12 pr-8 py-3 bg-white/5 border border-zinc-500/20 rounded-xl text-white focus:outline-none focus:border-zinc-500/50 focus:ring-2 focus:ring-cyan-500/20 transition-all appearance-none cursor-pointer"
               >
                 <option value="recientes">Más recientes</option>
                 <option value="antiguos">Más antiguos</option>
@@ -809,7 +809,7 @@ export const TablaCortesPremium = memo(
         {/* TABLA */}
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-slate-900/50 border-b border-cyan-500/20">
+            <thead className="bg-slate-900/50 border-b border-zinc-500/20">
               <tr>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">
                   Fecha
@@ -843,11 +843,11 @@ export const TablaCortesPremium = memo(
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 20 }}
                         transition={{ delay: index * 0.02 }}
-                        className="border-b border-cyan-500/5 hover:bg-cyan-500/5 transition-colors group"
+                        className="border-b border-zinc-500/5 hover:bg-zinc-9000/5 transition-colors group"
                       >
                         <td className="px-6 py-4">
                           <div className="flex items-center gap-2">
-                            <Calendar className="w-4 h-4 text-cyan-400" />
+                            <Calendar className="w-4 h-4 text-zinc-300" />
                             <span className="text-white font-medium">
                               {formatearFecha(corte.fecha)}
                             </span>
@@ -855,9 +855,9 @@ export const TablaCortesPremium = memo(
                         </td>
                         <td className="px-6 py-4 text-right">
                           <div className="flex items-center justify-end gap-2">
-                            <Activity className="w-4 h-4 text-cyan-400" />
+                            <Activity className="w-4 h-4 text-zinc-300" />
                             <span
-                              className={`text-xl font-bold ${valorCorte >= 0 ? 'text-cyan-400' : 'text-red-400'}`}
+                              className={`text-xl font-bold ${valorCorte >= 0 ? 'text-zinc-300' : 'text-zinc-200'}`}
                             >
                               {formatearMoneda(valorCorte)}
                             </span>
@@ -869,9 +869,9 @@ export const TablaCortesPremium = memo(
                               whileHover={{ scale: 1.1 }}
                               whileTap={{ scale: 0.9 }}
                               onClick={() => onEliminar(corte.id)}
-                              className="p-2 hover:bg-red-500/20 rounded-lg transition-colors opacity-0 group-hover:opacity-100"
+                              className="p-2 hover:bg-zinc-9000/20 rounded-lg transition-colors opacity-0 group-hover:opacity-100"
                             >
-                              <Trash2 className="w-4 h-4 text-red-400" />
+                              <Trash2 className="w-4 h-4 text-zinc-200" />
                             </motion.button>
                           </td>
                         )}
@@ -886,7 +886,7 @@ export const TablaCortesPremium = memo(
 
         {/* PAGINACIÓN */}
         {totalPaginas > 1 && (
-          <div className="p-6 border-t border-cyan-500/10 bg-slate-900/50">
+          <div className="p-6 border-t border-zinc-500/10 bg-slate-900/50">
             <div className="flex items-center justify-between">
               <p className="text-gray-400 text-sm">
                 Mostrando {indiceInicio + 1} a {Math.min(indiceFin, cortesFiltrados.length)} de{' '}
@@ -993,14 +993,14 @@ export const TablaTransferenciasPremium = memo(
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
-        className="rounded-3xl overflow-hidden backdrop-blur-xl bg-gradient-to-br from-amber-500/5 to-orange-500/5 border border-amber-500/20 shadow-2xl shadow-amber-500/10"
+        className="rounded-3xl overflow-hidden backdrop-blur-xl bg-gradient-to-br from-amber-500/5 to-orange-500/5 border border-zinc-500/20 shadow-2xl shadow-amber-500/10"
       >
         {/* HEADER CON ESTADÍSTICAS */}
-        <div className="p-6 bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-b border-amber-500/20">
+        <div className="p-6 bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-b border-zinc-500/20">
           <div className="flex items-center justify-between mb-6">
             <div>
               <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                <ArrowRightLeft className="w-7 h-7 text-amber-400" />
+                <ArrowRightLeft className="w-7 h-7 text-zinc-200" />
                 {titulo}
               </h2>
               <p className="text-gray-400 text-sm mt-1">Movimientos entre bancos y cuentas</p>
@@ -1022,36 +1022,36 @@ export const TablaTransferenciasPremium = memo(
           <div className="grid grid-cols-3 gap-4">
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className="bg-slate-900/50 rounded-xl p-4 border border-amber-500/20"
+              className="bg-slate-900/50 rounded-xl p-4 border border-zinc-500/20"
             >
               <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">
                 Total Transferido
               </p>
-              <p className="text-2xl font-bold text-amber-400">
+              <p className="text-2xl font-bold text-zinc-200">
                 {formatearMoneda(estadisticas.total)}
               </p>
             </motion.div>
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className="bg-slate-900/50 rounded-xl p-4 border border-amber-500/20"
+              className="bg-slate-900/50 rounded-xl p-4 border border-zinc-500/20"
             >
               <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">Promedio</p>
-              <p className="text-2xl font-bold text-amber-400">
+              <p className="text-2xl font-bold text-zinc-200">
                 {formatearMoneda(estadisticas.promedio)}
               </p>
             </motion.div>
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className="bg-slate-900/50 rounded-xl p-4 border border-amber-500/20"
+              className="bg-slate-900/50 rounded-xl p-4 border border-zinc-500/20"
             >
               <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">Movimientos</p>
-              <p className="text-2xl font-bold text-amber-400">{estadisticas.cantidad}</p>
+              <p className="text-2xl font-bold text-zinc-200">{estadisticas.cantidad}</p>
             </motion.div>
           </div>
         </div>
 
         {/* CONTROLES DE BÚSQUEDA Y FILTROS */}
-        <div className="p-6 bg-slate-900/30 border-b border-amber-500/10">
+        <div className="p-6 bg-slate-900/30 border-b border-zinc-500/10">
           <div className="flex gap-4">
             <div className="flex-1 relative">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -1060,7 +1060,7 @@ export const TablaTransferenciasPremium = memo(
                 value={busqueda}
                 onChange={(e) => setBusqueda(e.target.value)}
                 placeholder="Buscar por banco origen, destino o concepto..."
-                className="w-full pl-12 pr-4 py-3 bg-white/5 border border-amber-500/20 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/20 transition-all"
+                className="w-full pl-12 pr-4 py-3 bg-white/5 border border-zinc-500/20 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-zinc-500/50 focus:ring-2 focus:ring-amber-500/20 transition-all"
               />
             </div>
             <div className="relative">
@@ -1068,7 +1068,7 @@ export const TablaTransferenciasPremium = memo(
               <select
                 value={ordenamiento}
                 onChange={(e) => setOrdenamiento(e.target.value)}
-                className="pl-12 pr-8 py-3 bg-white/5 border border-amber-500/20 rounded-xl text-white focus:outline-none focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/20 transition-all appearance-none cursor-pointer"
+                className="pl-12 pr-8 py-3 bg-white/5 border border-zinc-500/20 rounded-xl text-white focus:outline-none focus:border-zinc-500/50 focus:ring-2 focus:ring-amber-500/20 transition-all appearance-none cursor-pointer"
               >
                 <option value="recientes">Más recientes</option>
                 <option value="antiguos">Más antiguos</option>
@@ -1082,7 +1082,7 @@ export const TablaTransferenciasPremium = memo(
         {/* TABLA */}
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-slate-900/50 border-b border-amber-500/20">
+            <thead className="bg-slate-900/50 border-b border-zinc-500/20">
               <tr>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">
                   Fecha
@@ -1123,11 +1123,11 @@ export const TablaTransferenciasPremium = memo(
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: 20 }}
                       transition={{ delay: index * 0.02 }}
-                      className="border-b border-amber-500/5 hover:bg-amber-500/5 transition-colors group"
+                      className="border-b border-zinc-500/5 hover:bg-zinc-9000/5 transition-colors group"
                     >
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-2">
-                          <Calendar className="w-4 h-4 text-amber-400" />
+                          <Calendar className="w-4 h-4 text-zinc-200" />
                           <span className="text-white font-medium">
                             {formatearFecha(trans.fecha)}
                           </span>
@@ -1135,7 +1135,7 @@ export const TablaTransferenciasPremium = memo(
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-2">
-                          <ArrowUpRight className="w-4 h-4 text-amber-400" />
+                          <ArrowUpRight className="w-4 h-4 text-zinc-200" />
                           <span className="text-white">
                             {trans.bancoOrigen || trans.origen || '-'}
                           </span>
@@ -1143,7 +1143,7 @@ export const TablaTransferenciasPremium = memo(
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-2">
-                          <ArrowDownRight className="w-4 h-4 text-cyan-400" />
+                          <ArrowDownRight className="w-4 h-4 text-zinc-300" />
                           <span className="text-white">
                             {trans.bancoDestino || trans.destino || '-'}
                           </span>
@@ -1154,8 +1154,8 @@ export const TablaTransferenciasPremium = memo(
                       </td>
                       <td className="px-6 py-4 text-right">
                         <div className="flex items-center justify-end gap-2">
-                          <DollarSign className="w-4 h-4 text-amber-400" />
-                          <span className="text-xl font-bold text-amber-400">
+                          <DollarSign className="w-4 h-4 text-zinc-200" />
+                          <span className="text-xl font-bold text-zinc-200">
                             {formatearMoneda(trans.monto)}
                           </span>
                         </div>
@@ -1166,9 +1166,9 @@ export const TablaTransferenciasPremium = memo(
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() => onEliminar(trans.id)}
-                            className="p-2 hover:bg-red-500/20 rounded-lg transition-colors opacity-0 group-hover:opacity-100"
+                            className="p-2 hover:bg-zinc-9000/20 rounded-lg transition-colors opacity-0 group-hover:opacity-100"
                           >
-                            <Trash2 className="w-4 h-4 text-red-400" />
+                            <Trash2 className="w-4 h-4 text-zinc-200" />
                           </motion.button>
                         </td>
                       )}
@@ -1182,7 +1182,7 @@ export const TablaTransferenciasPremium = memo(
 
         {/* PAGINACIÓN */}
         {totalPaginas > 1 && (
-          <div className="p-6 border-t border-amber-500/10 bg-slate-900/50">
+          <div className="p-6 border-t border-zinc-500/10 bg-slate-900/50">
             <div className="flex items-center justify-between">
               <p className="text-gray-400 text-sm">
                 Mostrando {indiceInicio + 1} a {Math.min(indiceFin, transferenciasFiltradas.length)}{' '}

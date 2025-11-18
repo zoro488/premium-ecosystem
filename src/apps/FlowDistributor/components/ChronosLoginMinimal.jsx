@@ -230,7 +230,7 @@ const ChronosLoginMinimal = ({ onLogin }) => {
                         <motion.div
                           animate={{ rotate: [0, 360] }}
                           transition={{ duration: 0.5 }}
-                          className="text-green-400"
+                          className="text-zinc-200"
                         >
                           ✓
                         </motion.div>
@@ -238,7 +238,7 @@ const ChronosLoginMinimal = ({ onLogin }) => {
                         <motion.div
                           animate={{ x: [-2, 2, -2, 2, 0] }}
                           transition={{ duration: 0.3 }}
-                          className="text-red-400"
+                          className="text-zinc-200"
                         >
                           ✕
                         </motion.div>

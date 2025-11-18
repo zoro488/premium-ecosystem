@@ -15,11 +15,11 @@ export const GlassCard = ({
 }) => {
   const variants = {
     default: 'bg-gray-800/40 border-gray-700/50',
-    primary: 'bg-blue-500/10 border-blue-500/30',
-    success: 'bg-green-500/10 border-green-500/30',
-    warning: 'bg-yellow-500/10 border-yellow-500/30',
-    danger: 'bg-red-500/10 border-red-500/30',
-    purple: 'bg-purple-500/10 border-purple-500/30',
+    primary: 'bg-zinc-800/10 border-zinc-700/30',
+    success: 'bg-zinc-9000/10 border-zinc-500/30',
+    warning: 'bg-zinc-9000/10 border-zinc-500/30',
+    danger: 'bg-zinc-9000/10 border-zinc-500/30',
+    purple: 'bg-zinc-800/10 border-zinc-800/30',
   };
 
   const glowColors = {
@@ -85,34 +85,34 @@ export const StatCard = ({
 }) => {
   const colorClasses = {
     blue: {
-      bg: 'from-blue-500/10 to-blue-600/10',
-      border: 'border-blue-500/20',
-      icon: 'bg-blue-500/20 text-blue-400',
-      text: 'text-blue-400',
+      bg: 'from-zinc-800/10 to-zinc-900/10',
+      border: 'border-zinc-700/20',
+      icon: 'bg-zinc-800/20 text-zinc-300',
+      text: 'text-zinc-300',
     },
     green: {
       bg: 'from-green-500/10 to-green-600/10',
-      border: 'border-green-500/20',
-      icon: 'bg-green-500/20 text-green-400',
-      text: 'text-green-400',
+      border: 'border-zinc-500/20',
+      icon: 'bg-zinc-9000/20 text-zinc-200',
+      text: 'text-zinc-200',
     },
     purple: {
-      bg: 'from-purple-500/10 to-purple-600/10',
-      border: 'border-purple-500/20',
-      icon: 'bg-purple-500/20 text-purple-400',
-      text: 'text-purple-400',
+      bg: 'from-zinc-800/10 to-zinc-800/10',
+      border: 'border-zinc-800/20',
+      icon: 'bg-zinc-800/20 text-zinc-800',
+      text: 'text-zinc-800',
     },
     red: {
-      bg: 'from-red-500/10 to-red-600/10',
-      border: 'border-red-500/20',
-      icon: 'bg-red-500/20 text-red-400',
-      text: 'text-red-400',
+      bg: 'from-zinc-700/10 to-zinc-800/10',
+      border: 'border-zinc-500/20',
+      icon: 'bg-zinc-9000/20 text-zinc-200',
+      text: 'text-zinc-200',
     },
     yellow: {
       bg: 'from-yellow-500/10 to-yellow-600/10',
-      border: 'border-yellow-500/20',
-      icon: 'bg-yellow-500/20 text-yellow-400',
-      text: 'text-yellow-400',
+      border: 'border-zinc-500/20',
+      icon: 'bg-zinc-9000/20 text-zinc-200',
+      text: 'text-zinc-200',
     },
   };
 
@@ -135,7 +135,7 @@ export const StatCard = ({
             transition={{ delay: 0.2 }}
           >
             {trend === 'up' ? (
-              <div className="flex items-center gap-1 text-green-400">
+              <div className="flex items-center gap-1 text-zinc-200">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
                     strokeLinecap="round"
@@ -147,7 +147,7 @@ export const StatCard = ({
                 <span className="text-xs font-medium">{trendValue}</span>
               </div>
             ) : (
-              <div className="flex items-center gap-1 text-red-400">
+              <div className="flex items-center gap-1 text-zinc-200">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
                     strokeLinecap="round"
@@ -195,11 +195,11 @@ export const MetricCard = ({
   showProgress = true,
 }) => {
   const colorClasses = {
-    blue: 'bg-blue-500',
-    green: 'bg-green-500',
-    purple: 'bg-purple-500',
-    red: 'bg-red-500',
-    yellow: 'bg-yellow-500',
+    blue: 'bg-zinc-800',
+    green: 'bg-zinc-9000',
+    purple: 'bg-zinc-800',
+    red: 'bg-zinc-9000',
+    yellow: 'bg-zinc-9000',
   };
 
   const barColor = colorClasses[color] || colorClasses.blue;

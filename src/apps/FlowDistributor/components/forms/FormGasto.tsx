@@ -198,7 +198,7 @@ export const FormGasto: React.FC<FormGastoProps> = ({ onClose, onSuccess }) => {
           }}
         >
           <div className="flex items-center gap-3">
-            <Receipt className="w-6 h-6 text-red-400" />
+            <Receipt className="w-6 h-6 text-zinc-200" />
             <div>
               <h2 className="text-2xl font-bold text-white">Registrar Gasto</h2>
               <p className="text-sm text-slate-400">Ingresa los detalles del gasto</p>
@@ -211,9 +211,9 @@ export const FormGasto: React.FC<FormGastoProps> = ({ onClose, onSuccess }) => {
           {/* FECHA */}
           <label className="block">
             <div className="flex items-center gap-2 mb-2">
-              <Calendar className="w-4 h-4 text-red-400" />
+              <Calendar className="w-4 h-4 text-zinc-200" />
               <span className="text-sm font-medium text-white">
-                Fecha <span className="text-red-400">*</span>
+                Fecha <span className="text-zinc-200">*</span>
               </span>
             </div>
             <input
@@ -223,13 +223,13 @@ export const FormGasto: React.FC<FormGastoProps> = ({ onClose, onSuccess }) => {
               disabled={isSubmitting}
               className={`w-full px-4 py-3 rounded-lg bg-white/5 border text-white transition-all ${
                 errors.fecha
-                  ? 'border-red-500 focus:border-red-400'
-                  : 'border-white/10 focus:border-red-500'
+                  ? 'border-zinc-500 focus:border-red-400'
+                  : 'border-white/10 focus:border-zinc-500'
               } focus:outline-none focus:ring-2 focus:ring-red-500/20`}
             />
             {errors.fecha && (
               <motion.p
-                className="mt-2 text-sm text-red-400 flex items-center gap-1"
+                className="mt-2 text-sm text-zinc-200 flex items-center gap-1"
                 initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
               >
@@ -242,9 +242,9 @@ export const FormGasto: React.FC<FormGastoProps> = ({ onClose, onSuccess }) => {
           {/* CONCEPTO */}
           <label className="block">
             <div className="flex items-center gap-2 mb-2">
-              <FileText className="w-4 h-4 text-red-400" />
+              <FileText className="w-4 h-4 text-zinc-200" />
               <span className="text-sm font-medium text-white">
-                Concepto <span className="text-red-400">*</span>
+                Concepto <span className="text-zinc-200">*</span>
               </span>
             </div>
             <textarea
@@ -255,14 +255,14 @@ export const FormGasto: React.FC<FormGastoProps> = ({ onClose, onSuccess }) => {
               disabled={isSubmitting}
               className={`w-full px-4 py-3 rounded-lg bg-white/5 border text-white placeholder-slate-400 transition-all ${
                 errors.concepto
-                  ? 'border-red-500 focus:border-red-400'
-                  : 'border-white/10 focus:border-red-500'
+                  ? 'border-zinc-500 focus:border-red-400'
+                  : 'border-white/10 focus:border-zinc-500'
               } focus:outline-none focus:ring-2 focus:ring-red-500/20`}
             />
             <p className="mt-1 text-xs text-slate-400">{concepto.length}/500 caracteres</p>
             {errors.concepto && (
               <motion.p
-                className="mt-2 text-sm text-red-400 flex items-center gap-1"
+                className="mt-2 text-sm text-zinc-200 flex items-center gap-1"
                 initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
               >
@@ -275,9 +275,9 @@ export const FormGasto: React.FC<FormGastoProps> = ({ onClose, onSuccess }) => {
           {/* MONTO */}
           <label className="block">
             <div className="flex items-center gap-2 mb-2">
-              <DollarSign className="w-4 h-4 text-red-400" />
+              <DollarSign className="w-4 h-4 text-zinc-200" />
               <span className="text-sm font-medium text-white">
-                Monto <span className="text-red-400">*</span>
+                Monto <span className="text-zinc-200">*</span>
               </span>
             </div>
             <div className="relative">
@@ -292,14 +292,14 @@ export const FormGasto: React.FC<FormGastoProps> = ({ onClose, onSuccess }) => {
                 disabled={isSubmitting}
                 className={`w-full pl-8 pr-4 py-3 rounded-lg bg-white/5 border text-white placeholder-slate-400 transition-all ${
                   errors.monto
-                    ? 'border-red-500 focus:border-red-400'
-                    : 'border-white/10 focus:border-red-500'
+                    ? 'border-zinc-500 focus:border-red-400'
+                    : 'border-white/10 focus:border-zinc-500'
                 } focus:outline-none focus:ring-2 focus:ring-red-500/20`}
               />
             </div>
             {errors.monto && (
               <motion.p
-                className="mt-2 text-sm text-red-400 flex items-center gap-1"
+                className="mt-2 text-sm text-zinc-200 flex items-center gap-1"
                 initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
               >
@@ -312,9 +312,9 @@ export const FormGasto: React.FC<FormGastoProps> = ({ onClose, onSuccess }) => {
           {/* DESTINO (BANCO) */}
           <label className="block">
             <div className="flex items-center gap-2 mb-2">
-              <Building2 className="w-4 h-4 text-red-400" />
+              <Building2 className="w-4 h-4 text-zinc-200" />
               <span className="text-sm font-medium text-white">
-                Banco Destino <span className="text-red-400">*</span>
+                Banco Destino <span className="text-zinc-200">*</span>
               </span>
             </div>
             <select
@@ -323,8 +323,8 @@ export const FormGasto: React.FC<FormGastoProps> = ({ onClose, onSuccess }) => {
               disabled={isSubmitting}
               className={`w-full px-4 py-3 rounded-lg bg-white/5 border text-white appearance-none cursor-pointer transition-all ${
                 errors.destino
-                  ? 'border-red-500 focus:border-red-400'
-                  : 'border-white/10 focus:border-red-500'
+                  ? 'border-zinc-500 focus:border-red-400'
+                  : 'border-white/10 focus:border-zinc-500'
               } focus:outline-none focus:ring-2 focus:ring-red-500/20`}
             >
               <option value="">Seleccionar banco...</option>
@@ -337,14 +337,14 @@ export const FormGasto: React.FC<FormGastoProps> = ({ onClose, onSuccess }) => {
             {destino && bancos[destino] && (
               <p className="mt-2 text-xs text-slate-400 flex items-center gap-1">
                 Saldo disponible:{' '}
-                <span className="font-mono text-green-400">
+                <span className="font-mono text-zinc-200">
                   {formatCurrency(bancos[destino].capitalActual || 0)}
                 </span>
               </p>
             )}
             {errors.destino && (
               <motion.p
-                className="mt-2 text-sm text-red-400 flex items-center gap-1"
+                className="mt-2 text-sm text-zinc-200 flex items-center gap-1"
                 initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
               >
@@ -357,7 +357,7 @@ export const FormGasto: React.FC<FormGastoProps> = ({ onClose, onSuccess }) => {
           {/* INFO BOX */}
           {monto > 0 && destino && (
             <motion.div
-              className="p-4 rounded-lg bg-red-500/10 border border-red-500/20"
+              className="p-4 rounded-lg bg-zinc-9000/10 border border-zinc-500/20"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
             >

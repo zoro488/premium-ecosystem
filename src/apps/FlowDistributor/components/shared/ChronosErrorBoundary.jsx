@@ -100,8 +100,8 @@ class ChronosErrorBoundary extends React.Component {
               transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
               className="flex justify-center mb-6"
             >
-              <div className="w-20 h-20 rounded-full bg-red-500/20 flex items-center justify-center">
-                <AlertTriangle className="w-10 h-10 text-red-500" />
+              <div className="w-20 h-20 rounded-full bg-zinc-9000/20 flex items-center justify-center">
+                <AlertTriangle className="w-10 h-10 text-zinc-100" />
               </div>
             </motion.div>
 
@@ -133,9 +133,9 @@ class ChronosErrorBoundary extends React.Component {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 transition={{ delay: 0.5 }}
-                className="mb-6 p-4 bg-black/40 rounded-lg border border-red-500/20 overflow-hidden"
+                className="mb-6 p-4 bg-black/40 rounded-lg border border-zinc-500/20 overflow-hidden"
               >
-                <p className="text-red-400 font-mono text-xs mb-2 font-semibold">
+                <p className="text-zinc-200 font-mono text-xs mb-2 font-semibold">
                   Error: {error.toString()}
                 </p>
                 {errorInfo && errorInfo.componentStack && (

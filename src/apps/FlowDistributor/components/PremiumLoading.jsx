@@ -33,7 +33,7 @@ export const PremiumLoader = ({ size = 'md', variant = 'spinner' }) => {
         {[0, 1, 2].map((i) => (
           <motion.div
             key={`item-${i}`}
-            className="w-3 h-3 bg-blue-500 rounded-full"
+            className="w-3 h-3 bg-zinc-800 rounded-full"
             animate={{
               y: [0, -10, 0],
               opacity: [0.5, 1, 0.5],
@@ -53,7 +53,7 @@ export const PremiumLoader = ({ size = 'md', variant = 'spinner' }) => {
   if (variant === 'pulse') {
     return (
       <motion.div
-        className={`${sizes[size]} bg-blue-500 rounded-full`}
+        className={`${sizes[size]} bg-zinc-800 rounded-full`}
         animate={{
           scale: [1, 1.2, 1],
           opacity: [0.5, 1, 0.5],
@@ -73,7 +73,7 @@ export const PremiumLoader = ({ size = 'md', variant = 'spinner' }) => {
         {[0, 1, 2, 3, 4].map((i) => (
           <motion.div
             key={`item-${i}`}
-            className="w-2 bg-blue-500 rounded-full"
+            className="w-2 bg-zinc-800 rounded-full"
             animate={{
               height: [20, 40, 20],
             }}
@@ -189,7 +189,7 @@ export const SkeletonChart = ({ type = 'line' }) => {
         {Array.from({ length: 12 }).map((_, i) => (
           <motion.div
             key={`item-${i}`}
-            className="flex-1 bg-blue-500/20 rounded-t"
+            className="flex-1 bg-zinc-800/20 rounded-t"
             style={{ height: `${Math.random() * 100}%` }}
             animate={{
               opacity: [0.3, 0.6, 0.3],
@@ -267,10 +267,10 @@ export const LoadingOverlay = ({ message = 'Cargando...', fullScreen = false }) 
  */
 export const ProgressBar = ({ progress = 0, showPercentage = true, variant = 'default' }) => {
   const variants = {
-    default: 'bg-blue-500',
-    success: 'bg-green-500',
-    warning: 'bg-yellow-500',
-    danger: 'bg-red-500',
+    default: 'bg-zinc-800',
+    success: 'bg-zinc-9000',
+    warning: 'bg-zinc-9000',
+    danger: 'bg-zinc-9000',
   };
 
   return (

@@ -9,6 +9,8 @@
  */
 import React, { useState } from 'react';
 
+
+
 import { AnimatePresence, motion } from 'framer-motion';
 import {
   AlertCircle,
@@ -95,7 +97,7 @@ export const BusinessWorkflowsPanel: React.FC<BusinessWorkflowsPanelProps> = ({
     <>
       {/* Quick Actions Bar */}
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
-        <div className="backdrop-blur-xl bg-gradient-to-r from-blue-500/10 via-purple-500/5 to-green-500/10 border border-blue-500/20 rounded-2xl p-6">
+        <div className="backdrop-blur-xl bg-gradient-to-r from-black/80 to-black/90 border border-blue-500/20 rounded-2xl p-6">
           {/* Header */}
           <div className="flex items-center justify-between mb-4">
             <div>
@@ -109,10 +111,10 @@ export const BusinessWorkflowsPanel: React.FC<BusinessWorkflowsPanelProps> = ({
           {/* Inventory Summary Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
             {/* STK Actual */}
-            <div className="p-4 bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-purple-400/30 rounded-lg">
+            <div className="p-4 bg-gradient-to-br from-black/80 to-black/90 border border-zinc-700/30 rounded-lg">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-purple-500/30 rounded-lg">
-                  <Package className="w-6 h-6 text-purple-200" />
+                <div className="p-2 bg-zinc-800/30 rounded-lg">
+                  <Package className="w-6 h-6 text-zinc-200" />
                 </div>
                 <div>
                   <p className="text-white/70 text-sm">STK Actual</p>
@@ -138,7 +140,7 @@ export const BusinessWorkflowsPanel: React.FC<BusinessWorkflowsPanelProps> = ({
             </div>
 
             {/* Total Salidas */}
-            <div className="p-4 bg-gradient-to-br from-orange-500/20 to-red-500/20 border border-orange-400/30 rounded-lg">
+            <div className="p-4 bg-gradient-to-br from-orange-500/20 to-zinc-800/20 border border-orange-400/30 rounded-lg">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-orange-500/30 rounded-lg">
                   <ShoppingBag className="w-6 h-6 text-orange-200" />
@@ -157,7 +159,7 @@ export const BusinessWorkflowsPanel: React.FC<BusinessWorkflowsPanelProps> = ({
             {/* Nueva Orden de Compra */}
             <button
               onClick={() => setShowOCModal(true)}
-              className="group relative overflow-hidden p-6 rounded-xl border-2 border-blue-500/30 hover:border-blue-500/60 bg-gradient-to-br from-blue-600/10 to-cyan-600/10 hover:from-blue-600/20 hover:to-cyan-600/20 transition-all duration-300"
+              className="group relative overflow-hidden p-6 rounded-xl border-2 border-blue-500/30 hover:border-blue-500/60 bg-gradient-to-br from-black/80 to-black/90 hover:from-black/90 hover:to-black/95 transition-all duration-300"
             >
               <div className="flex items-center gap-4">
                 <div className="p-3 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg group-hover:scale-110 transition-transform">

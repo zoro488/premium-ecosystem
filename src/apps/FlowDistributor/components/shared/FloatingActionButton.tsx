@@ -236,7 +236,7 @@ export const FloatingActionButton = memo<FloatingActionButtonProps>(({
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-xs font-bold text-white border-2 border-gray-900"
+            className="absolute -top-1 -right-1 w-6 h-6 bg-zinc-9000 rounded-full flex items-center justify-center text-xs font-bold text-white border-2 border-gray-900"
           >
             {badge > 99 ? '99+' : badge}
           </motion.div>

@@ -13,7 +13,7 @@
  */
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { memo, useRef } from 'react';
+import { memo, useRef, useState } from 'react';
 
 interface ParallaxLayer {
   speed: number; // 0.1 (slow) to 2.0 (fast)
@@ -198,8 +198,8 @@ export const ParallaxCard = memo<ParallaxCardProps>(({
   intensity = 1,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [rotateX, setRotateX] = React.useState(0);
-  const [rotateY, setRotateY] = React.useState(0);
+  const [rotateX, setRotateX] = useState(0);
+  const [rotateY, setRotateY] = useState(0);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;

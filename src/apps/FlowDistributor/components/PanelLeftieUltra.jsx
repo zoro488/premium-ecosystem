@@ -18,7 +18,7 @@ const PanelLeftieUltra = memo(() => {
       >
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-white mb-2 flex items-center gap-3">
-            <Smartphone className="w-10 h-10 text-purple-400" />
+            <Smartphone className="w-10 h-10 text-zinc-800" />
             Leftie Digital Banking
           </h1>
           <p className="text-gray-400">
@@ -36,9 +36,9 @@ const PanelLeftieUltra = memo(() => {
               border: '1px solid rgba(139, 92, 246, 0.2)'
             }}
           >
-            <CreditCard className="w-8 h-8 text-purple-400 mb-4" />
+            <CreditCard className="w-8 h-8 text-zinc-800 mb-4" />
             <h3 className="text-xl font-bold text-white mb-2">Saldo Total</h3>
-            <p className="text-3xl font-bold text-purple-400">$0.00</p>
+            <p className="text-3xl font-bold text-zinc-800">$0.00</p>
           </motion.div>
 
           <motion.div
@@ -50,9 +50,9 @@ const PanelLeftieUltra = memo(() => {
               border: '1px solid rgba(236, 72, 153, 0.2)'
             }}
           >
-            <TrendingUp className="w-8 h-8 text-pink-400 mb-4" />
+            <TrendingUp className="w-8 h-8 text-zinc-700 mb-4" />
             <h3 className="text-xl font-bold text-white mb-2">Ingresos</h3>
-            <p className="text-3xl font-bold text-pink-400">$0.00</p>
+            <p className="text-3xl font-bold text-zinc-700">$0.00</p>
           </motion.div>
 
           <motion.div
@@ -64,9 +64,9 @@ const PanelLeftieUltra = memo(() => {
               border: '1px solid rgba(59, 130, 246, 0.2)'
             }}
           >
-            <Smartphone className="w-8 h-8 text-blue-400 mb-4" />
+            <Smartphone className="w-8 h-8 text-zinc-300 mb-4" />
             <h3 className="text-xl font-bold text-white mb-2">Transacciones</h3>
-            <p className="text-3xl font-bold text-blue-400">0</p>
+            <p className="text-3xl font-bold text-zinc-300">0</p>
           </motion.div>
         </div>
 
