@@ -25,8 +25,9 @@ export default defineConfig({
       overlay: true,
       protocol: 'ws',
       host: 'localhost',
-      // Removido port y clientPort para usar el mismo puerto del servidor
-      timeout: 30000,
+      port: 3001,
+      clientPort: 3001,
+      timeout: 60000,
     },
     cors: true,
     watch: {

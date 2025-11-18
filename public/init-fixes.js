@@ -2,12 +2,18 @@
 (function () {
   'use strict';
 
-  // Suprimir advertencias de APIs obsoletas (Components)
-  if (typeof Components !== 'undefined') {
+  // Suprimir advertencias de APIs obsoletas de Firefox (Components)
+  if (typeof window.Components !== 'undefined') {
     try {
-      delete window.Components;
+      window.Components = undefined;
+      Object.defineProperty(window, 'Components', {
+        get: function () {
+          return undefined;
+        },
+        configurable: true,
+      });
     } catch (e) {
-      // Ignorar si no se puede eliminar
+      // Ignorar silenciosamente
     }
   }
 
@@ -18,7 +24,7 @@
   console.error = function (...args) {
     const errorString = args.join(' ');
 
-    // Lista de errores a filtrar (relacionados con extensiones)
+    // Lista de errores a filtrar (relacionados con extensiones y APIs obsoletas)
     const suppressPatterns = [
       'Promised response from onMessage listener went out of scope',
       'Extensions',
@@ -27,6 +33,9 @@
       'Could not establish connection',
       'Extension context invalidated',
       'message port closed',
+      'Components es obsoleto',
+      'Components is obsolete',
+      'Components will be removed',
     ];
 
     // Si el error NO es de extensiones, mostrarlo normalmente
@@ -66,18 +75,49 @@
     configurable: false,
   });
 
-  // Manejar errores de WebSocket de forma más robusta
+  // Manejar errores de WebSocket y extensiones de forma robusta
   window.addEventListener('error', function (event) {
     const errorMessage = event.message || '';
+    const errorSource = event.filename || '';
 
+    // Suprimir errores de WebSocket durante carga inicial o reconexión
     if (
       errorMessage.includes('WebSocket') ||
       errorMessage.includes('ws://') ||
-      errorMessage.includes('interrumpió')
+      errorMessage.includes('interrumpió') ||
+      errorMessage.includes('failed to connect')
     ) {
-      // Suprimir errores de WebSocket durante carga inicial
       event.preventDefault();
       event.stopPropagation();
+      return false;
+    }
+
+    // Suprimir errores de extensiones de navegador
+    if (
+      errorMessage.includes('Extension') ||
+      errorMessage.includes('chrome-extension://') ||
+      errorMessage.includes('moz-extension://') ||
+      errorSource.includes('extension') ||
+      errorMessage.includes('Promised response from onMessage')
+    ) {
+      event.preventDefault();
+      event.stopPropagation();
+      return false;
+    }
+  });
+
+  // Suprimir errores unhandled promise rejections de extensiones
+  window.addEventListener('unhandledrejection', function (event) {
+    const reason = event.reason || {};
+    const message = reason.message || String(reason);
+
+    if (
+      message.includes('Extension') ||
+      message.includes('onMessage') ||
+      message.includes('chrome.runtime') ||
+      message.includes('browser.runtime')
+    ) {
+      event.preventDefault();
       return false;
     }
   });
