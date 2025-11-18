@@ -1,0 +1,378 @@
+# ╔════════════════════════════════════════════════════════════════════════════╗
+# ║              CHRONOS SYSTEM - CI/CD AUTOMATIZADO AVANZADO                 ║
+# ║    Workflow completo para build, test, deploy y automation con AI         ║
+# ╚════════════════════════════════════════════════════════════════════════════╝
+
+name: 🚀 Chronos System - Automated CI/CD
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'src/**'
+      - 'package.json'
+      - 'vite.config.js'
+      - '.github/workflows/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'src/**'
+      - 'package.json'
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy'
+        required: true
+        default: 'development'
+        type: choice
+        options:
+          - development
+          - staging
+          - production
+      run_migration:
+        description: 'Run data migration'
+        required: false
+        default: false
+        type: boolean
+      ai_optimization:
+        description: 'Run AI code optimization'
+        required: false
+        default: true
+        type: boolean
+
+env:
+  NODE_VERSION: '20'
+  FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+  VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
+  VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
+  VITE_FIREBASE_PROJECT_ID: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
+  VITE_FIREBASE_STORAGE_BUCKET: ${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}
+  VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
+  VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
+
+jobs:
+  # ===============================================================================
+  # 🔍 ANÁLISIS Y PREPARACIÓN
+  # ===============================================================================
+  prepare:
+    name: 🔍 Análisis y Preparación
+    runs-on: ubuntu-latest
+    outputs:
+      should_deploy: ${{ steps.changes.outputs.should_deploy }}
+      environment: ${{ steps.env.outputs.environment }}
+      commit_message: ${{ steps.commit.outputs.message }}
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔍 Detectar cambios críticos
+        id: changes
+        run: |
+          if git diff --name-only HEAD~1 HEAD | grep -E "(src/|package.json|vite.config.js)" > /dev/null; then
+            echo "should_deploy=true" >> $GITHUB_OUTPUT
+          else
+            echo "should_deploy=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: 🌍 Determinar environment
+        id: env
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "environment=production" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.ref }}" == "refs/heads/develop" ]]; then
+            echo "environment=staging" >> $GITHUB_OUTPUT
+          else
+            echo "environment=development" >> $GITHUB_OUTPUT
+          fi
+
+      - name: 📝 Extraer mensaje de commit
+        id: commit
+        run: |
+          echo "message=$(git log -1 --pretty=%B)" >> $GITHUB_OUTPUT
+
+  # ===============================================================================
+  # 🧪 TESTING Y QUALITY ASSURANCE
+  # ===============================================================================
+  test:
+    name: 🧪 Testing y QA
+    runs-on: ubuntu-latest
+    needs: prepare
+    if: needs.prepare.outputs.should_deploy == 'true'
+    strategy:
+      matrix:
+        test-type: ['unit', 'integration', 'e2e']
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v4
+
+      - name: ⚡ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: |
+          npm ci --prefer-offline --no-audit
+          npm run postinstall || true
+
+      - name: 🔍 Lint y format check
+        if: matrix.test-type == 'unit'
+        run: |
+          npm run lint
+          npm run format:check || true
+          npm run type-check || true
+
+      - name: 🧪 Run tests
+        run: |
+          case "${{ matrix.test-type }}" in
+            "unit")
+              npm run test:coverage
+              ;;
+            "integration")
+              npm run test:integration || npm run test
+              ;;
+            "e2e")
+              npm run test:e2e:headless || echo "E2E tests not configured yet"
+              ;;
+          esac
+
+      - name: 📊 Upload coverage
+        if: matrix.test-type == 'unit'
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./coverage/lcov.info
+          flags: unittests
+          name: chronos-coverage
+
+  # ===============================================================================
+  # 🛡️ SECURITY Y VULNERABILITY SCAN
+  # ===============================================================================
+  security:
+    name: 🛡️ Security Scan
+    runs-on: ubuntu-latest
+    needs: prepare
+    if: needs.prepare.outputs.should_deploy == 'true'
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v4
+
+      - name: ⚡ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: npm ci --prefer-offline --no-audit
+
+      - name: 🔍 Audit dependencies
+        run: |
+          npm audit --audit-level high
+          npm audit fix --dry-run || true
+
+      - name: 🛡️ Security scan con Snyk
+        uses: snyk/actions/node@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high
+
+      - name: 📋 OWASP Dependency Check
+        uses: dependency-check/Dependency-Check_Action@main
+        with:
+          project: 'chronos-system'
+          path: '.'
+          format: 'HTML'
+          args: >
+            --enableRetired
+            --enableExperimental
+            --failOnCVSS 7
+
+  # ===============================================================================
+  # 🏗️ BUILD Y OPTIMIZACIÓN
+  # ===============================================================================
+  build:
+    name: 🏗️ Build y Optimización
+    runs-on: ubuntu-latest
+    needs: [prepare, test]
+    if: needs.prepare.outputs.should_deploy == 'true'
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v4
+
+      - name: ⚡ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: npm ci --prefer-offline --no-audit
+
+      - name: 🤖 AI Code Optimization
+        if: github.event.inputs.ai_optimization == 'true' || github.ref == 'refs/heads/main'
+        run: |
+          echo "🤖 Ejecutando optimización con AI..."
+          npm run ai-optimize || echo "AI optimization no disponible"
+
+      - name: 🏗️ Build production
+        run: |
+          npm run build
+          ls -la dist/
+
+      - name: 📊 Bundle analysis
+        run: |
+          npm run analyze || echo "Bundle analyzer no configurado"
+          du -sh dist/*
+
+      - name: 💾 Cache build artifacts
+        uses: actions/cache@v3
+        with:
+          path: |
+            dist/
+            .firebase/
+          key: build-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            build-${{ runner.os }}-
+
+      - name: ⬆️ Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: chronos-build-${{ github.sha }}
+          path: |
+            dist/
+            package.json
+            firebase.json
+          retention-days: 30
+
+  # ===============================================================================
+  # 🚀 DEPLOYMENT AUTOMATIZADO
+  # ===============================================================================
+  deploy:
+    name: 🚀 Deploy a ${{ needs.prepare.outputs.environment }}
+    runs-on: ubuntu-latest
+    needs: [prepare, test, security, build]
+    if: needs.prepare.outputs.should_deploy == 'true' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
+    environment: ${{ needs.prepare.outputs.environment }}
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v4
+
+      - name: 💾 Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: chronos-build-${{ github.sha }}
+
+      - name: 🔧 Setup Firebase CLI
+        uses: w9jds/setup-firebase@main
+        with:
+          tools: hosting,firestore,functions
+          firebase_token: ${{ secrets.FIREBASE_TOKEN }}
+
+      - name: 🗄️ Run data migration
+        if: github.event.inputs.run_migration == 'true' || contains(needs.prepare.outputs.commit_message, '[migrate]')
+        run: |
+          echo "🗄️ Ejecutando migración de datos..."
+          firebase firestore:rules deploy --project=${{ env.FIREBASE_PROJECT_ID }}
+          node scripts/migrate-data.js || echo "Migration script no encontrado"
+
+      - name: 🌐 Deploy to Firebase Hosting
+        run: |
+          firebase deploy --project=${{ env.FIREBASE_PROJECT_ID }} --only hosting
+
+      - name: 📋 Deploy Firestore rules
+        run: |
+          firebase deploy --project=${{ env.FIREBASE_PROJECT_ID }} --only firestore:rules
+
+      - name: ⚡ Deploy Cloud Functions
+        run: |
+          firebase deploy --project=${{ env.FIREBASE_PROJECT_ID }} --only functions || echo "No functions to deploy"
+
+      - name: 🎯 Update deployment status
+        run: |
+          echo "✅ Deployment successful to ${{ needs.prepare.outputs.environment }}"
+          echo "🌐 URL: https://${{ env.FIREBASE_PROJECT_ID }}.web.app"
+
+  # ===============================================================================
+  # 🧪 POST-DEPLOYMENT TESTING
+  # ===============================================================================
+  post_deploy_test:
+    name: 🧪 Post-Deployment Testing
+    runs-on: ubuntu-latest
+    needs: [prepare, deploy]
+    if: needs.prepare.outputs.should_deploy == 'true' && needs.deploy.result == 'success'
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v4
+
+      - name: ⚡ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: npm ci --prefer-offline --no-audit
+
+      - name: 🌐 Health check
+        run: |
+          curl -f https://${{ env.FIREBASE_PROJECT_ID }}.web.app || exit 1
+          echo "✅ Site is responding"
+
+      - name: 🧪 Smoke tests
+        run: |
+          npm run test:smoke || echo "Smoke tests no configurados"
+
+      - name: 📊 Performance audit
+        run: |
+          npm install -g lighthouse
+          lighthouse https://${{ env.FIREBASE_PROJECT_ID }}.web.app --output=json --output-path=./lighthouse-report.json --chrome-flags="--headless --no-sandbox" || true
+
+      - name: ⬆️ Upload performance report
+        uses: actions/upload-artifact@v3
+        with:
+          name: lighthouse-report-${{ github.sha }}
+          path: lighthouse-report.json
+
+  # ===============================================================================
+  # 📢 NOTIFICACIONES Y REPORTES
+  # ===============================================================================
+  notify:
+    name: 📢 Notificaciones
+    runs-on: ubuntu-latest
+    needs: [prepare, deploy, post_deploy_test]
+    if: always() && needs.prepare.outputs.should_deploy == 'true'
+    steps:
+      - name: 📢 Deployment Success Notification
+        if: needs.deploy.result == 'success'
+        run: |
+          echo "🎉 ¡Deployment exitoso!"
+          echo "🌍 Environment: ${{ needs.prepare.outputs.environment }}"
+          echo "🌐 URL: https://${{ env.FIREBASE_PROJECT_ID }}.web.app"
+          echo "📝 Commit: ${{ needs.prepare.outputs.commit_message }}"
+
+      - name: ❌ Deployment Failed Notification
+        if: needs.deploy.result == 'failure'
+        run: |
+          echo "❌ Deployment falló"
+          echo "🔍 Revisa los logs para más detalles"
+
+      - name: 📊 Generate deployment report
+        run: |
+          echo "# 📊 Deployment Report" > deployment-report.md
+          echo "" >> deployment-report.md
+          echo "- **Environment**: ${{ needs.prepare.outputs.environment }}" >> deployment-report.md
+          echo "- **Status**: ${{ needs.deploy.result }}" >> deployment-report.md
+          echo "- **Commit**: ${{ needs.prepare.outputs.commit_message }}" >> deployment-report.md
+          echo "- **URL**: https://${{ env.FIREBASE_PROJECT_ID }}.web.app" >> deployment-report.md
+          echo "- **Timestamp**: $(date)" >> deployment-report.md
+
+      - name: ⬆️ Upload deployment report
+        uses: actions/upload-artifact@v3
+        with:
+          name: deployment-report-${{ github.sha }}
+          path: deployment-report.md

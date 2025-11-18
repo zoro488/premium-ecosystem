@@ -51,7 +51,7 @@ const ChronosLoginMinimal = ({ onLogin }) => {
   useEffect(() => {
     setValidation({
       email: email.length > 0 ? email.includes('@') && email.length > 5 : null,
-      password: password.length > 0 ? password.length >= 6 : null
+      password: password.length > 0 ? password.length >= 6 : null,
     });
   }, [email, password]);
 
@@ -72,7 +72,7 @@ const ChronosLoginMinimal = ({ onLogin }) => {
       gsap.to(cardRef.current, {
         x: [-10, 10, -10, 10, 0],
         duration: 0.4,
-        ease: 'power2.inOut'
+        ease: 'power2.inOut',
       });
       return;
     }
@@ -84,10 +84,10 @@ const ChronosLoginMinimal = ({ onLogin }) => {
       scale: 0.98,
       duration: 0.1,
       yoyo: true,
-      repeat: 1
+      repeat: 1,
     });
 
-    await new Promise(resolve => setTimeout(resolve, 800));
+    await new Promise((resolve) => setTimeout(resolve, 800));
     onLogin({ email, password });
   };
 
@@ -99,40 +99,44 @@ const ChronosLoginMinimal = ({ onLogin }) => {
       <motion.div
         className="absolute inset-0 opacity-5"
         animate={{
-          backgroundPosition: ['0% 0%', '100% 100%']
+          backgroundPosition: ['0% 0%', '100% 100%'],
         }}
         transition={{
           duration: 30,
           repeat: Infinity,
-          ease: 'linear'
+          ease: 'linear',
         }}
         style={{
           backgroundImage: `
             linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
             linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
           `,
-          backgroundSize: '80px 80px'
+          backgroundSize: '80px 80px',
         }}
       />
 
       {/* Partículas flotantes */}
-      {Array.from({ length: 20 }, (_, i) => ({ id: `login-particle-${i}`, left: Math.random() * 100, top: Math.random() * 100 })).map((particle) => (
+      {Array.from({ length: 20 }, (_, i) => ({
+        id: `login-particle-${i}`,
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+      })).map((particle) => (
         <motion.div
           key={particle.id}
           className="absolute w-1 h-1 bg-white/20 rounded-full"
           style={{
             left: `${particle.left}%`,
-            top: `${particle.top}%`
+            top: `${particle.top}%`,
           }}
           animate={{
             y: [0, -50, 0],
-            opacity: [0, 0.5, 0]
+            opacity: [0, 0.5, 0],
           }}
           transition={{
             duration: 4 + Math.random() * 2,
             delay: Math.random() * 3,
             repeat: Infinity,
-            ease: 'easeInOut'
+            ease: 'easeInOut',
           }}
         />
       ))}
@@ -143,7 +147,7 @@ const ChronosLoginMinimal = ({ onLogin }) => {
         style={{
           rotateX,
           rotateY,
-          transformStyle: 'preserve-3d'
+          transformStyle: 'preserve-3d',
         }}
         onMouseMove={handleMouseMove}
         onMouseLeave={() => {
@@ -187,7 +191,7 @@ const ChronosLoginMinimal = ({ onLogin }) => {
             <div className="relative">
               <motion.div
                 animate={{
-                  scale: focusedField === 'email' ? 1.02 : 1
+                  scale: focusedField === 'email' ? 1.02 : 1,
                 }}
                 transition={{ duration: 0.2 }}
               >
@@ -195,14 +199,20 @@ const ChronosLoginMinimal = ({ onLogin }) => {
                   {/* Icono con microanimación */}
                   <motion.div
                     className="absolute left-0 top-1/2 -translate-y-1/2"
-                    animate={focusedField === 'email' ? {
-                      x: [0, -3, 3, 0],
-                      transition: { duration: 0.3 }
-                    } : {}}
+                    animate={
+                      focusedField === 'email'
+                        ? {
+                            x: [0, -3, 3, 0],
+                            transition: { duration: 0.3 },
+                          }
+                        : {}
+                    }
                   >
-                    <Mail className={`w-5 h-5 transition-colors duration-300 ${
-                      focusedField === 'email' ? 'text-white' : 'text-white/40'
-                    }`} />
+                    <Mail
+                      className={`w-5 h-5 transition-colors duration-300 ${
+                        focusedField === 'email' ? 'text-white' : 'text-white/40'
+                      }`}
+                    />
                   </motion.div>
 
                   <input
@@ -215,7 +225,7 @@ const ChronosLoginMinimal = ({ onLogin }) => {
                     className="w-full pl-10 pr-12 py-4 bg-transparent border-b text-white placeholder-white/30 outline-none transition-all duration-300"
                     style={{
                       borderBottomColor: getBorderColor('email', validation.email),
-                      borderBottomWidth: focusedField === 'email' ? '2px' : '1px'
+                      borderBottomWidth: focusedField === 'email' ? '2px' : '1px',
                     }}
                   />
 
@@ -256,7 +266,9 @@ const ChronosLoginMinimal = ({ onLogin }) => {
                     className="h-full bg-white"
                     initial={{ width: '0%' }}
                     animate={{
-                      width: validation.email ? '100%' : `${Math.min((email.length / 20) * 100, 100)}%`
+                      width: validation.email
+                        ? '100%'
+                        : `${Math.min((email.length / 20) * 100, 100)}%`,
                     }}
                     transition={{ duration: 0.3 }}
                   />
@@ -268,7 +280,7 @@ const ChronosLoginMinimal = ({ onLogin }) => {
             <div className="relative">
               <motion.div
                 animate={{
-                  scale: focusedField === 'password' ? 1.02 : 1
+                  scale: focusedField === 'password' ? 1.02 : 1,
                 }}
                 transition={{ duration: 0.2 }}
               >
@@ -276,14 +288,20 @@ const ChronosLoginMinimal = ({ onLogin }) => {
                   {/* Icono Lock con animación */}
                   <motion.div
                     className="absolute left-0 top-1/2 -translate-y-1/2"
-                    animate={focusedField === 'password' ? {
-                      rotate: [0, -5, 5, 0],
-                      transition: { duration: 0.3 }
-                    } : {}}
+                    animate={
+                      focusedField === 'password'
+                        ? {
+                            rotate: [0, -5, 5, 0],
+                            transition: { duration: 0.3 },
+                          }
+                        : {}
+                    }
                   >
-                    <Lock className={`w-5 h-5 transition-colors duration-300 ${
-                      focusedField === 'password' ? 'text-white' : 'text-white/40'
-                    }`} />
+                    <Lock
+                      className={`w-5 h-5 transition-colors duration-300 ${
+                        focusedField === 'password' ? 'text-white' : 'text-white/40'
+                      }`}
+                    />
                   </motion.div>
 
                   <input
@@ -296,7 +314,7 @@ const ChronosLoginMinimal = ({ onLogin }) => {
                     className="w-full pl-10 pr-12 py-4 bg-transparent border-b text-white placeholder-white/30 outline-none transition-all duration-300"
                     style={{
                       borderBottomColor: getBorderColor('password', validation.password),
-                      borderBottomWidth: focusedField === 'password' ? '2px' : '1px'
+                      borderBottomWidth: focusedField === 'password' ? '2px' : '1px',
                     }}
                   />
 
@@ -308,11 +326,7 @@ const ChronosLoginMinimal = ({ onLogin }) => {
                     whileTap={{ scale: 0.9 }}
                     className="absolute right-0 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors"
                   >
-                    {showPassword ? (
-                      <EyeOff className="w-5 h-5" />
-                    ) : (
-                      <Eye className="w-5 h-5" />
-                    )}
+                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </motion.button>
                 </div>
 
@@ -324,7 +338,7 @@ const ChronosLoginMinimal = ({ onLogin }) => {
                   <motion.div
                     className="h-full"
                     style={{
-                      background: getPasswordStrengthGradient(password.length)
+                      background: getPasswordStrengthGradient(password.length),
                     }}
                     initial={{ width: '0%' }}
                     animate={{ width: `${Math.min((password.length / 12) * 100, 100)}%` }}
@@ -342,20 +356,20 @@ const ChronosLoginMinimal = ({ onLogin }) => {
               whileTap={isFormValid ? { scale: 0.98 } : {}}
               className="relative w-full py-4 mt-8 bg-white text-black font-medium rounded-sm overflow-hidden disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300 group"
               style={{
-                boxShadow: isFormValid ? '0 10px 30px rgba(255,255,255,0.2)' : 'none'
+                boxShadow: isFormValid ? '0 10px 30px rgba(255,255,255,0.2)' : 'none',
               }}
             >
               {/* Efecto de brillo animado */}
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
                 animate={{
-                  x: ['-100%', '200%']
+                  x: ['-100%', '200%'],
                 }}
                 transition={{
                   duration: 2,
                   repeat: Infinity,
                   ease: 'linear',
-                  repeatDelay: 1
+                  repeatDelay: 1,
                 }}
               />
 
@@ -400,7 +414,7 @@ const ChronosLoginMinimal = ({ onLogin }) => {
 };
 
 ChronosLoginMinimal.propTypes = {
-  onLogin: PropTypes.func.isRequired
+  onLogin: PropTypes.func.isRequired,
 };
 
 export default ChronosLoginMinimal;

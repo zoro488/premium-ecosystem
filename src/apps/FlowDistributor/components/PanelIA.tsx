@@ -31,31 +31,24 @@ import {
     Sparkles,
     TrendingUp,
     Upload,
-    Zap
+    Zap,
 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-
-// Servicios IA
 import {
-    analyzeDocument,
-    isGoogleAIConfigured,
-    sendToGemini,
-    transcribeAudio,
-    type GeminiMessage
-} from '../services/google-ai.service';
-
-import {
-    checkOllamaHealth,
-    sendToOllama,
-    type OllamaMessage
-} from '../services/ollama.service';
-
-import {
+    type ClaudeMessage,
     forecastVentas,
     isAWSConfigured,
     sendToClaude,
-    type ClaudeMessage
 } from '../services/aws-ai.service';
+// Servicios IA
+import {
+    analyzeDocument,
+    type GeminiMessage,
+    isGoogleAIConfigured,
+    sendToGemini,
+    transcribeAudio,
+} from '../services/google-ai.service';
+import { checkOllamaHealth, type OllamaMessage, sendToOllama } from '../services/ollama.service';
 
 // ============================================================================
 // TIPOS
@@ -74,7 +67,7 @@ interface AIProvider {
   id: 'gemini' | 'claude' | 'ollama';
   name: string;
   available: boolean;
-  icon: any;
+  icon: React.ComponentType<{ className?: string; size?: number }>;
   description: string;
 }
 
@@ -90,7 +83,9 @@ export default function PanelIA() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputMessage, setInputMessage] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
-  const [selectedProvider, setSelectedProvider] = useState<'gemini' | 'claude' | 'ollama'>('gemini');
+  const [selectedProvider, setSelectedProvider] = useState<'gemini' | 'claude' | 'ollama'>(
+    'gemini'
+  );
 
   // Estado de voz
   const [isRecording, setIsRecording] = useState(false);
@@ -104,22 +99,22 @@ export default function PanelIA() {
       name: 'Google Gemini',
       available: isGoogleAIConfigured(),
       icon: Sparkles,
-      description: 'Gemini Pro - Google AI'
+      description: 'Gemini Pro - Google AI',
     },
     {
       id: 'claude',
       name: 'AWS Claude',
       available: isAWSConfigured(),
       icon: Brain,
-      description: 'Claude 3 - Anthropic'
+      description: 'Claude 3 - Anthropic',
     },
     {
       id: 'ollama',
       name: 'Ollama Local',
       available: false,
       icon: Bot,
-      description: 'Modelos locales gratuitos'
-    }
+      description: 'Modelos locales gratuitos',
+    },
   ]);
 
   // Estado de predicciones
@@ -136,10 +131,8 @@ export default function PanelIA() {
 
   useEffect(() => {
     // Verificar disponibilidad de Ollama al cargar
-    checkOllamaHealth().then(available => {
-      setProviders(prev => prev.map(p =>
-        p.id === 'ollama' ? { ...p, available } : p
-      ));
+    checkOllamaHealth().then((available) => {
+      setProviders((prev) => prev.map((p) => (p.id === 'ollama' ? { ...p, available } : p)));
     });
   }, []);
 
@@ -159,10 +152,10 @@ export default function PanelIA() {
       id: Date.now().toString(),
       role: 'user',
       content: inputMessage,
-      timestamp: new Date()
+      timestamp: new Date(),
     };
 
-    setMessages(prev => [...prev, userMessage]);
+    setMessages((prev) => [...prev, userMessage]);
     setInputMessage('');
     setIsProcessing(true);
 
@@ -170,7 +163,7 @@ export default function PanelIA() {
       let response = '';
 
       // Seleccionar provider disponible
-      const availableProvider = providers.find(p => p.id === selectedProvider && p.available);
+      const availableProvider = providers.find((p) => p.id === selectedProvider && p.available);
       const providerToUse = availableProvider?.id || 'ollama';
 
       // Preparar historial de mensajes
@@ -179,41 +172,44 @@ export default function PanelIA() {
       if (providerToUse === 'gemini') {
         // Usar Google Gemini
         const geminiMessages: GeminiMessage[] = [
-          ...chatHistory.map(m => ({
+          ...chatHistory.map((m) => ({
             role: m.role as 'user' | 'assistant',
-            content: m.content
+            content: m.content,
           })),
-          { role: 'user' as const, content: inputMessage }
+          { role: 'user' as const, content: inputMessage },
         ];
 
         const result = await sendToGemini(geminiMessages, {
-          systemPrompt: 'Eres el asistente IA de FlowDistributor. Ayuda con análisis de datos, reportes, predicciones y navegación del sistema. Responde en español de forma clara y profesional.'
+          systemPrompt:
+            'Eres el asistente IA de FlowDistributor. Ayuda con análisis de datos, reportes, predicciones y navegación del sistema. Responde en español de forma clara y profesional.',
         });
 
         response = result.text;
-
       } else if (providerToUse === 'claude') {
         // Usar AWS Claude
         const claudeMessages: ClaudeMessage[] = [
-          ...chatHistory.map(m => ({
-            role: m.role === 'user' ? 'user' as const : 'assistant' as const,
-            content: m.content
+          ...chatHistory.map((m) => ({
+            role: m.role === 'user' ? ('user' as const) : ('assistant' as const),
+            content: m.content,
           })),
-          { role: 'user' as const, content: inputMessage }
+          { role: 'user' as const, content: inputMessage },
         ];
 
         const result = await sendToClaude(claudeMessages);
         response = result.content;
-
       } else {
         // Usar Ollama (fallback local)
         const ollamaMessages: OllamaMessage[] = [
-          { role: 'system', content: 'Eres el asistente IA de FlowDistributor. Ayuda con análisis, reportes y predicciones.' },
-          ...chatHistory.map(m => ({
+          {
+            role: 'system',
+            content:
+              'Eres el asistente IA de FlowDistributor. Ayuda con análisis, reportes y predicciones.',
+          },
+          ...chatHistory.map((m) => ({
             role: m.role as 'user' | 'assistant' | 'system',
-            content: m.content
+            content: m.content,
           })),
-          { role: 'user' as const, content: inputMessage }
+          { role: 'user' as const, content: inputMessage },
         ];
 
         response = await sendToOllama(ollamaMessages);
@@ -225,11 +221,10 @@ export default function PanelIA() {
         role: 'assistant',
         content: response,
         timestamp: new Date(),
-        provider: providerToUse
+        provider: providerToUse,
       };
 
-      setMessages(prev => [...prev, assistantMessage]);
-
+      setMessages((prev) => [...prev, assistantMessage]);
     } catch (error) {
       console.error('Error en chat:', error);
 
@@ -237,10 +232,10 @@ export default function PanelIA() {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
         content: `❌ Error al procesar el mensaje: ${error instanceof Error ? error.message : 'Error desconocido'}. Intenta con otro proveedor de IA.`,
-        timestamp: new Date()
+        timestamp: new Date(),
       };
 
-      setMessages(prev => [...prev, errorMessage]);
+      setMessages((prev) => [...prev, errorMessage]);
     } finally {
       setIsProcessing(false);
     }
@@ -263,13 +258,12 @@ export default function PanelIA() {
       mediaRecorder.onstop = () => {
         const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
         setAudioBlob(audioBlob);
-        stream.getTracks().forEach(track => track.stop());
+        stream.getTracks().forEach((track) => track.stop());
       };
 
       mediaRecorder.start();
       mediaRecorderRef.current = mediaRecorder;
       setIsRecording(true);
-
     } catch (error) {
       console.error('Error al iniciar grabación:', error);
       alert('No se pudo acceder al micrófono. Verifica los permisos.');
@@ -291,7 +285,7 @@ export default function PanelIA() {
     try {
       const result = await transcribeAudio(audioBlob, {
         language: 'es-MX',
-        model: 'enhanced'
+        model: 'enhanced',
       });
 
       setInputMessage(result.transcript);
@@ -299,7 +293,6 @@ export default function PanelIA() {
 
       // Cambiar a tab de chat
       setActiveTab('chat');
-
     } catch (error) {
       console.error('Error al transcribir:', error);
       alert('Error al transcribir el audio');
@@ -328,25 +321,23 @@ export default function PanelIA() {
           role: 'assistant',
           content: `📄 **Texto extraído:**\n\n${result.text}\n\n¿Qué deseas hacer con esta información?`,
           timestamp: new Date(),
-          provider: 'gemini'
+          provider: 'gemini',
         };
 
-        setMessages(prev => [...prev, message]);
+        setMessages((prev) => [...prev, message]);
         setActiveTab('chat');
-
       } else if (file.type === 'application/pdf') {
         // Procesar PDF
         const message: Message = {
           id: Date.now().toString(),
           role: 'assistant',
           content: '📄 PDF detectado. Procesando documento...',
-          timestamp: new Date()
+          timestamp: new Date(),
         };
 
-        setMessages(prev => [...prev, message]);
+        setMessages((prev) => [...prev, message]);
         setActiveTab('chat');
       }
-
     } catch (error) {
       console.error('Error al procesar archivo:', error);
       alert('Error al procesar el archivo');
@@ -369,13 +360,12 @@ export default function PanelIA() {
         date.setDate(date.getDate() - (30 - i));
         return {
           timestamp: date.toISOString(),
-          value: 15000 + Math.random() * 10000
+          value: 15000 + Math.random() * 10000,
         };
       });
 
       const forecast = await forecastVentas(historicalData, 30);
       setPredictions(forecast);
-
     } catch (error) {
       console.error('Error al generar predicciones:', error);
       alert('Error al generar predicciones');
@@ -396,12 +386,11 @@ export default function PanelIA() {
         id: Date.now().toString(),
         role: 'assistant',
         content: `📊 Generando reporte en formato ${type.toUpperCase()}...\n\nEsta funcionalidad está en desarrollo. Se integrará con jsPDF y ExcelJS para generar reportes completos.`,
-        timestamp: new Date()
+        timestamp: new Date(),
       };
 
-      setMessages(prev => [...prev, message]);
+      setMessages((prev) => [...prev, message]);
       setActiveTab('chat');
-
     } catch (error) {
       console.error('Error al generar reporte:', error);
     } finally {
@@ -413,14 +402,29 @@ export default function PanelIA() {
   // RENDER - TABS
   // ============================================================================
 
-  const tabs: Array<{ id: TabType; label: string; icon: any; gradient: string }> = [
+  const tabs: Array<{
+    id: TabType;
+    label: string;
+    icon: React.ComponentType<{ className?: string; size?: number }>;
+    gradient: string;
+  }> = [
     { id: 'chat', label: 'Chat IA', icon: MessageSquare, gradient: 'from-zinc-800 to-zinc-900' },
     { id: 'voice', label: 'Voz', icon: Mic, gradient: 'from-zinc-800 to-zinc-700' },
     { id: 'reports', label: 'Reportes', icon: FileText, gradient: 'from-green-500 to-emerald-600' },
     { id: 'ocr', label: 'OCR', icon: Camera, gradient: 'from-orange-500 to-zinc-800' },
-    { id: 'predictions', label: 'Predicciones', icon: TrendingUp, gradient: 'from-zinc-800 to-indigo-600' },
-    { id: 'navigation', label: 'Navegación', icon: Navigation, gradient: 'from-zinc-700 to-zinc-700' },
-    { id: 'analytics', label: 'Analytics', icon: BarChart3, gradient: 'from-zinc-800 to-zinc-800' }
+    {
+      id: 'predictions',
+      label: 'Predicciones',
+      icon: TrendingUp,
+      gradient: 'from-zinc-800 to-indigo-600',
+    },
+    {
+      id: 'navigation',
+      label: 'Navegación',
+      icon: Navigation,
+      gradient: 'from-zinc-700 to-zinc-700',
+    },
+    { id: 'analytics', label: 'Analytics', icon: BarChart3, gradient: 'from-zinc-800 to-zinc-800' },
   ];
 
   // ============================================================================
@@ -430,11 +434,7 @@ export default function PanelIA() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-6">
       {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="mb-6"
-      >
+      <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-4">
             <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-zinc-800 via-zinc-700 to-zinc-900 flex items-center justify-center shadow-2xl shadow-zinc-800/50">
@@ -452,7 +452,7 @@ export default function PanelIA() {
 
           {/* Estado de providers */}
           <div className="flex gap-2">
-            {providers.map(provider => {
+            {providers.map((provider) => {
               const Icon = provider.icon;
               return (
                 <motion.button
@@ -485,7 +485,7 @@ export default function PanelIA() {
 
         {/* Tabs de navegación */}
         <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
-          {tabs.map(tab => {
+          {tabs.map((tab) => {
             const Icon = tab.icon;
             return (
               <motion.button
@@ -541,10 +541,7 @@ export default function PanelIA() {
           )}
 
           {activeTab === 'reports' && (
-            <ReportsTab
-              generateReport={generateReport}
-              isProcessing={isProcessing}
-            />
+            <ReportsTab generateReport={generateReport} isProcessing={isProcessing} />
           )}
 
           {activeTab === 'ocr' && (
@@ -563,13 +560,9 @@ export default function PanelIA() {
             />
           )}
 
-          {activeTab === 'navigation' && (
-            <NavigationTab />
-          )}
+          {activeTab === 'navigation' && <NavigationTab />}
 
-          {activeTab === 'analytics' && (
-            <AnalyticsTab />
-          )}
+          {activeTab === 'analytics' && <AnalyticsTab />}
         </motion.div>
       </AnimatePresence>
     </div>
@@ -581,7 +574,23 @@ export default function PanelIA() {
 // ============================================================================
 
 // Chat Tab
-function ChatTab({ messages, inputMessage, setInputMessage, sendMessage, isProcessing, messagesEndRef }: any) {
+interface ChatTabProps {
+  messages: Array<{ role: string; content: string; timestamp?: string }>;
+  inputMessage: string;
+  setInputMessage: (message: string) => void;
+  sendMessage: () => void;
+  isProcessing: boolean;
+  messagesEndRef: React.RefObject<HTMLDivElement>;
+}
+
+function ChatTab({
+  messages,
+  inputMessage,
+  setInputMessage,
+  sendMessage,
+  isProcessing,
+  messagesEndRef,
+}: ChatTabProps) {
   return (
     <div className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl overflow-hidden flex flex-col h-[calc(100vh-300px)]">
       {/* Mensajes */}
@@ -589,11 +598,10 @@ function ChatTab({ messages, inputMessage, setInputMessage, sendMessage, isProce
         {messages.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full text-center">
             <Sparkles className="w-16 h-16 text-zinc-800/50 mb-4" />
-            <h3 className="text-xl font-bold text-white/80 mb-2">
-              ¡Hola! Soy tu asistente IA
-            </h3>
+            <h3 className="text-xl font-bold text-white/80 mb-2">¡Hola! Soy tu asistente IA</h3>
             <p className="text-white/60 max-w-md">
-              Puedo ayudarte con análisis de datos, generar reportes, hacer predicciones y navegar por el sistema. ¿En qué puedo ayudarte hoy?
+              Puedo ayudarte con análisis de datos, generar reportes, hacer predicciones y navegar
+              por el sistema. ¿En qué puedo ayudarte hoy?
             </p>
           </div>
         ) : (
@@ -666,15 +674,33 @@ function ChatTab({ messages, inputMessage, setInputMessage, sendMessage, isProce
 }
 
 // Voice Tab
-function VoiceTab({ isRecording, audioBlob, startRecording, stopRecording, transcribeAudio, isProcessing }: any) {
+interface VoiceTabProps {
+  isRecording: boolean;
+  audioBlob: Blob | null;
+  startRecording: () => void;
+  stopRecording: () => void;
+  transcribeAudio: () => void;
+  isProcessing: boolean;
+}
+
+function VoiceTab({
+  isRecording,
+  audioBlob,
+  startRecording,
+  stopRecording,
+  transcribeAudio,
+  isProcessing,
+}: VoiceTabProps) {
   return (
     <div className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl p-8">
       <div className="flex flex-col items-center justify-center space-y-6 min-h-[400px]">
-        <div className={`w-32 h-32 rounded-full flex items-center justify-center ${
-          isRecording
-            ? 'bg-gradient-to-br from-zinc-700 to-zinc-700 animate-pulse'
-            : 'bg-gradient-to-br from-zinc-800 to-zinc-700'
-        } shadow-2xl`}>
+        <div
+          className={`w-32 h-32 rounded-full flex items-center justify-center ${
+            isRecording
+              ? 'bg-gradient-to-br from-zinc-700 to-zinc-700 animate-pulse'
+              : 'bg-gradient-to-br from-zinc-800 to-zinc-700'
+          } shadow-2xl`}
+        >
           {isRecording ? (
             <MicOff className="w-16 h-16 text-white" />
           ) : (
@@ -753,7 +779,12 @@ function VoiceTab({ isRecording, audioBlob, startRecording, stopRecording, trans
 }
 
 // Reports Tab
-function ReportsTab({ generateReport, isProcessing }: any) {
+interface ReportsTabProps {
+  generateReport: (type: string) => void;
+  isProcessing: boolean;
+}
+
+function ReportsTab({ generateReport, isProcessing }: ReportsTabProps) {
   return (
     <div className="grid md:grid-cols-2 gap-6">
       {/* Reporte PDF */}
@@ -822,7 +853,13 @@ function ReportsTab({ generateReport, isProcessing }: any) {
 }
 
 // OCR Tab
-function OCRTab({ fileInputRef, handleFileUpload, isProcessing }: any) {
+interface OCRTabProps {
+  fileInputRef: React.RefObject<HTMLInputElement>;
+  handleFileUpload: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  isProcessing: boolean;
+}
+
+function OCRTab({ fileInputRef, handleFileUpload, isProcessing }: OCRTabProps) {
   return (
     <div className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl p-8">
       <div className="flex flex-col items-center justify-center space-y-6 min-h-[400px]">
@@ -831,11 +868,10 @@ function OCRTab({ fileInputRef, handleFileUpload, isProcessing }: any) {
         </div>
 
         <div className="text-center">
-          <h3 className="text-2xl font-bold text-white mb-2">
-            OCR - Reconocimiento de Texto
-          </h3>
+          <h3 className="text-2xl font-bold text-white mb-2">OCR - Reconocimiento de Texto</h3>
           <p className="text-white/60 max-w-md">
-            Sube una imagen o documento para extraer el texto automáticamente usando Google Document AI
+            Sube una imagen o documento para extraer el texto automáticamente usando Google Document
+            AI
           </p>
         </div>
 
@@ -884,7 +920,13 @@ function OCRTab({ fileInputRef, handleFileUpload, isProcessing }: any) {
 }
 
 // Predictions Tab
-function PredictionsTab({ predictions, generatePredictions, isLoading }: any) {
+interface PredictionsTabProps {
+  predictions: { predictions: Array<{ date: string; value: number; confidence: number }> };
+  generatePredictions: () => void;
+  isLoading: boolean;
+}
+
+function PredictionsTab({ predictions, generatePredictions, isLoading }: PredictionsTabProps) {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
@@ -928,38 +970,37 @@ function PredictionsTab({ predictions, generatePredictions, isLoading }: any) {
           </div>
 
           <div className="space-y-2 max-h-[400px] overflow-y-auto">
-            {predictions.predictions.slice(0, 10).map((pred: any, idx: number) => (
-              <div
-                key={idx}
-                className="p-4 bg-white/5 rounded-xl border border-white/10 flex justify-between items-center"
-              >
-                <div>
-                  <p className="text-sm text-white/60">
-                    {new Date(pred.timestamp).toLocaleDateString()}
-                  </p>
-                  <p className="text-lg font-bold text-white">
-                    ${pred.value.toFixed(2)}
-                  </p>
+            {predictions.predictions
+              .slice(0, 10)
+              .map((pred: { date: string; value: number; confidence: number }, idx: number) => (
+                <div
+                  key={idx}
+                  className="p-4 bg-white/5 rounded-xl border border-white/10 flex justify-between items-center"
+                >
+                  <div>
+                    <p className="text-sm text-white/60">
+                      {new Date(pred.timestamp).toLocaleDateString()}
+                    </p>
+                    <p className="text-lg font-bold text-white">${pred.value.toFixed(2)}</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-xs text-white/50">Rango de confianza</p>
+                    <p className="text-sm text-white/70">
+                      ${pred.confidence.low.toFixed(0)} - ${pred.confidence.high.toFixed(0)}
+                    </p>
+                  </div>
                 </div>
-                <div className="text-right">
-                  <p className="text-xs text-white/50">Rango de confianza</p>
-                  <p className="text-sm text-white/70">
-                    ${pred.confidence.low.toFixed(0)} - ${pred.confidence.high.toFixed(0)}
-                  </p>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       ) : (
         <div className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl p-12">
           <div className="flex flex-col items-center justify-center text-center">
             <TrendingUp className="w-16 h-16 text-zinc-300/50 mb-4" />
-            <h4 className="text-xl font-bold text-white/80 mb-2">
-              No hay predicciones generadas
-            </h4>
+            <h4 className="text-xl font-bold text-white/80 mb-2">No hay predicciones generadas</h4>
             <p className="text-white/60 max-w-md">
-              Haz clic en "Generar Predicciones" para analizar tus datos y obtener proyecciones futuras
+              Haz clic en "Generar Predicciones" para analizar tus datos y obtener proyecciones
+              futuras
             </p>
           </div>
         </div>
@@ -971,12 +1012,37 @@ function PredictionsTab({ predictions, generatePredictions, isLoading }: any) {
 // Navigation Tab
 function NavigationTab() {
   const shortcuts = [
-    { label: 'Ir a Dashboard', icon: BarChart3, action: 'dashboard', gradient: 'from-zinc-800 to-zinc-900' },
-    { label: 'Ver Ventas', icon: TrendingUp, action: 'ventas', gradient: 'from-green-500 to-emerald-600' },
-    { label: 'Órdenes de Compra', icon: FileText, action: 'ordenes', gradient: 'from-orange-500 to-zinc-800' },
-    { label: 'Clientes', icon: MessageSquare, action: 'clientes', gradient: 'from-zinc-800 to-zinc-700' },
+    {
+      label: 'Ir a Dashboard',
+      icon: BarChart3,
+      action: 'dashboard',
+      gradient: 'from-zinc-800 to-zinc-900',
+    },
+    {
+      label: 'Ver Ventas',
+      icon: TrendingUp,
+      action: 'ventas',
+      gradient: 'from-green-500 to-emerald-600',
+    },
+    {
+      label: 'Órdenes de Compra',
+      icon: FileText,
+      action: 'ordenes',
+      gradient: 'from-orange-500 to-zinc-800',
+    },
+    {
+      label: 'Clientes',
+      icon: MessageSquare,
+      action: 'clientes',
+      gradient: 'from-zinc-800 to-zinc-700',
+    },
     { label: 'Almacén', icon: Upload, action: 'almacen', gradient: 'from-zinc-800 to-indigo-600' },
-    { label: 'Reportes', icon: FileText, action: 'reportes', gradient: 'from-zinc-700 to-zinc-700' }
+    {
+      label: 'Reportes',
+      icon: FileText,
+      action: 'reportes',
+      gradient: 'from-zinc-700 to-zinc-700',
+    },
   ];
 
   return (
@@ -1014,16 +1080,12 @@ function AnalyticsTab() {
       <div className="flex flex-col items-center justify-center space-y-6 min-h-[400px]">
         <BarChart3 className="w-24 h-24 text-zinc-200/50" />
         <div className="text-center">
-          <h3 className="text-2xl font-bold text-white mb-2">
-            Analytics Avanzado
-          </h3>
+          <h3 className="text-2xl font-bold text-white mb-2">Analytics Avanzado</h3>
           <p className="text-white/60 max-w-md">
             Análisis profundo de datos, visualizaciones interactivas y métricas clave de rendimiento
           </p>
         </div>
-        <div className="text-sm text-white/40">
-          Próximamente...
-        </div>
+        <div className="text-sm text-white/40">Próximamente...</div>
       </div>
     </div>
   );

@@ -16,8 +16,9 @@
  * @author CHRONOS System
  * @version 1.0.0
  */
-import { motion } from 'framer-motion';
 import { Outlet } from 'react-router-dom';
+
+import { motion } from 'framer-motion';
 
 import { UltraHeader } from './UltraHeader';
 import { UltraSidebar } from './UltraSidebar';
@@ -70,9 +71,7 @@ export const PremiumLayout = ({
           transition={{ duration: 0.5, delay: 0.2 }}
           className="flex-1 overflow-auto"
         >
-          <div className="container mx-auto p-6 lg:p-8">
-            {children || <Outlet />}
-          </div>
+          <div className="container mx-auto p-6 lg:p-8">{children || <Outlet />}</div>
         </motion.main>
       </div>
     </div>

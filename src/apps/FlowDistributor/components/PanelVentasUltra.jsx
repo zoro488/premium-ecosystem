@@ -25,11 +25,7 @@ import { memo, useCallback, useMemo, useRef, useState } from 'react';
 
 import { motion } from 'framer-motion';
 import 'jspdf-autotable';
-import {
-  DollarSign,
-  Eye,
-  TrendingUp
-} from 'lucide-react';
+import { DollarSign, Eye, TrendingUp } from 'lucide-react';
 
 import ventasData from '../data/panel-ventas-local-manual.json';
 import VentasActivasTable from './VentasActivasTable';
@@ -54,7 +50,7 @@ const PanelVentasUltra = memo(() => {
     bancoDestino: '',
     montoMin: '',
     montoMax: '',
-    estado: 'all'
+    estado: 'all',
   });
 
   const itemsPerPage = 10;
@@ -122,24 +118,24 @@ const PanelVentasUltra = memo(() => {
 
   // Función de ordenamiento
   const handleSort = useCallback((key) => {
-    setSortConfig(prev => ({
+    setSortConfig((prev) => ({
       key,
-      direction: prev.key === key && prev.direction === 'asc' ? 'desc' : 'asc'
+      direction: prev.key === key && prev.direction === 'asc' ? 'desc' : 'asc',
     }));
   }, []);
 
   // Función de exportación a Excel
   const exportToExcel = useCallback(() => {
-    const dataToExport = filteredAndSortedVentas.map(venta => ({
-      'Fecha': venta.fecha,
-      'Cliente': venta.cliente,
-      'Concepto': venta.concepto || 'N/A',
-      'Cantidad': venta.cantidad || 0,
+    const dataToExport = filteredAndSortedVentas.map((venta) => ({
+      Fecha: venta.fecha,
+      Cliente: venta.cliente,
+      Concepto: venta.concepto || 'N/A',
+      Cantidad: venta.cantidad || 0,
       'Precio Unitario': venta.precioUnitario || 0,
       'Ingreso Total': venta.ingreso,
       'Banco Destino': venta.bancoDestino || 'N/A',
-      'Estado': venta.estatus,
-      'Método de Pago': venta.metodoPago || 'N/A'
+      Estado: venta.estatus,
+      'Método de Pago': venta.metodoPago || 'N/A',
     }));
 
     const wb = XLSX.utils.book_new();
@@ -155,7 +151,7 @@ const PanelVentasUltra = memo(() => {
       { wch: 15 }, // Ingreso
       { wch: 20 }, // Banco
       { wch: 12 }, // Estado
-      { wch: 15 }  // Método
+      { wch: 15 }, // Método
     ];
 
     XLSX.utils.book_append_sheet(wb, ws, 'Ventas');
@@ -176,12 +172,12 @@ const PanelVentasUltra = memo(() => {
     doc.text(`Generado: ${new Date().toLocaleString('es-MX')}`, 14, 28);
 
     // Tabla
-    const tableData = filteredAndSortedVentas.map(venta => [
+    const tableData = filteredAndSortedVentas.map((venta) => [
       venta.fecha,
       venta.cliente,
       venta.concepto || 'N/A',
       formatCurrency(venta.ingreso),
-      venta.estatus
+      venta.estatus,
     ]);
 
     doc.autoTable({
@@ -190,7 +186,7 @@ const PanelVentasUltra = memo(() => {
       body: tableData,
       theme: 'grid',
       styles: { fontSize: 8, cellPadding: 3 },
-      headStyles: { fillColor: [99, 102, 241], textColor: 255 }
+      headStyles: { fillColor: [99, 102, 241], textColor: 255 },
     });
 
     // Totales
@@ -205,16 +201,14 @@ const PanelVentasUltra = memo(() => {
 
   // Selección múltiple
   const toggleSelectVenta = useCallback((id) => {
-    setSelectedVentas(prev =>
-      prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
-    );
+    setSelectedVentas((prev) => (prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]));
   }, []);
 
   const selectAllVentas = useCallback(() => {
     if (selectedVentas.length === filteredAndSortedVentas.length) {
       setSelectedVentas([]);
     } else {
-      setSelectedVentas(filteredAndSortedVentas.map(v => v.id));
+      setSelectedVentas(filteredAndSortedVentas.map((v) => v.id));
     }
   }, [selectedVentas, filteredAndSortedVentas]);
 
@@ -227,19 +221,32 @@ const PanelVentasUltra = memo(() => {
         (venta.concepto && venta.concepto.toLowerCase().includes(searchTerm.toLowerCase()));
 
       // Filtro de estado
-      const matchesStatus = filters.estado === 'all' || venta.estatus.toLowerCase() === filters.estado;
+      const matchesStatus =
+        filters.estado === 'all' || venta.estatus.toLowerCase() === filters.estado;
 
       // Filtros avanzados
       const matchesFechaInicio = !filters.fechaInicio || venta.fecha >= filters.fechaInicio;
       const matchesFechaFin = !filters.fechaFin || venta.fecha <= filters.fechaFin;
       const matchesCliente = !filters.clienteId || venta.cliente.includes(filters.clienteId);
-      const matchesProducto = !filters.productoId || (venta.concepto && venta.concepto.includes(filters.productoId));
+      const matchesProducto =
+        !filters.productoId || (venta.concepto && venta.concepto.includes(filters.productoId));
       const matchesBanco = !filters.bancoDestino || venta.bancoDestino === filters.bancoDestino;
-      const matchesMontoMin = !filters.montoMin || venta.ingreso >= Number.parseFloat(filters.montoMin);
-      const matchesMontoMax = !filters.montoMax || venta.ingreso <= Number.parseFloat(filters.montoMax);
+      const matchesMontoMin =
+        !filters.montoMin || venta.ingreso >= Number.parseFloat(filters.montoMin);
+      const matchesMontoMax =
+        !filters.montoMax || venta.ingreso <= Number.parseFloat(filters.montoMax);
 
-      return matchesSearch && matchesStatus && matchesFechaInicio && matchesFechaFin &&
-             matchesCliente && matchesProducto && matchesBanco && matchesMontoMin && matchesMontoMax;
+      return (
+        matchesSearch &&
+        matchesStatus &&
+        matchesFechaInicio &&
+        matchesFechaFin &&
+        matchesCliente &&
+        matchesProducto &&
+        matchesBanco &&
+        matchesMontoMin &&
+        matchesMontoMax
+      );
     });
 
     // Ordenamiento
@@ -454,7 +461,8 @@ const PanelVentasUltra = memo(() => {
             }`}
           >
             <Filter className="w-4 h-4" />
-            Filtros {showFilters && `(${Object.values(filters).filter(v => v && v !== 'all').length})`}
+            Filtros{' '}
+            {showFilters && `(${Object.values(filters).filter((v) => v && v !== 'all').length})`}
           </button>
 
           {/* Botón Exportar */}
@@ -542,7 +550,7 @@ const PanelVentasUltra = memo(() => {
                 <input
                   type="date"
                   value={filters.fechaInicio}
-                  onChange={(e) => setFilters(prev => ({ ...prev, fechaInicio: e.target.value }))}
+                  onChange={(e) => setFilters((prev) => ({ ...prev, fechaInicio: e.target.value }))}
                   className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 />
               </div>
@@ -556,7 +564,7 @@ const PanelVentasUltra = memo(() => {
                 <input
                   type="date"
                   value={filters.fechaFin}
-                  onChange={(e) => setFilters(prev => ({ ...prev, fechaFin: e.target.value }))}
+                  onChange={(e) => setFilters((prev) => ({ ...prev, fechaFin: e.target.value }))}
                   className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 />
               </div>
@@ -569,7 +577,7 @@ const PanelVentasUltra = memo(() => {
                 </label>
                 <select
                   value={filters.estado}
-                  onChange={(e) => setFilters(prev => ({ ...prev, estado: e.target.value }))}
+                  onChange={(e) => setFilters((prev) => ({ ...prev, estado: e.target.value }))}
                   className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 >
                   <option value="all">Todos</option>
@@ -587,7 +595,9 @@ const PanelVentasUltra = memo(() => {
                 </label>
                 <select
                   value={filters.bancoDestino}
-                  onChange={(e) => setFilters(prev => ({ ...prev, bancoDestino: e.target.value }))}
+                  onChange={(e) =>
+                    setFilters((prev) => ({ ...prev, bancoDestino: e.target.value }))
+                  }
                   className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 >
                   <option value="">Todos</option>
@@ -611,7 +621,7 @@ const PanelVentasUltra = memo(() => {
                   type="number"
                   placeholder="0"
                   value={filters.montoMin}
-                  onChange={(e) => setFilters(prev => ({ ...prev, montoMin: e.target.value }))}
+                  onChange={(e) => setFilters((prev) => ({ ...prev, montoMin: e.target.value }))}
                   className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 />
               </div>
@@ -626,7 +636,7 @@ const PanelVentasUltra = memo(() => {
                   type="number"
                   placeholder="∞"
                   value={filters.montoMax}
-                  onChange={(e) => setFilters(prev => ({ ...prev, montoMax: e.target.value }))}
+                  onChange={(e) => setFilters((prev) => ({ ...prev, montoMax: e.target.value }))}
                   className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 />
               </div>
@@ -634,16 +644,18 @@ const PanelVentasUltra = memo(() => {
               {/* Botones de acción */}
               <div className="col-span-full flex gap-3 justify-end mt-2">
                 <button
-                  onClick={() => setFilters({
-                    fechaInicio: '',
-                    fechaFin: '',
-                    clienteId: '',
-                    productoId: '',
-                    bancoDestino: '',
-                    montoMin: '',
-                    montoMax: '',
-                    estado: 'all'
-                  })}
+                  onClick={() =>
+                    setFilters({
+                      fechaInicio: '',
+                      fechaFin: '',
+                      clienteId: '',
+                      productoId: '',
+                      bancoDestino: '',
+                      montoMin: '',
+                      montoMax: '',
+                      estado: 'all',
+                    })
+                  }
                   className="px-4 py-2 bg-white/5 text-slate-300 border border-white/10 rounded-lg hover:bg-white/10 transition-all"
                 >
                   Limpiar Filtros
@@ -667,17 +679,14 @@ const PanelVentasUltra = memo(() => {
 
         {/* Paginación */}
         {totalPages > 1 && (
-          <motion.div
-            className="mt-4 flex items-center justify-between"
-            variants={itemVariants}
-          >
+          <motion.div className="mt-4 flex items-center justify-between" variants={itemVariants}>
             <div className="text-slate-400 text-sm">
               Página {currentPage} de {totalPages}
             </div>
 
             <div className="flex gap-2">
               <button
-                onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
                 disabled={currentPage === 1}
                 className={`p-2 rounded-lg transition-all ${
                   currentPage === 1
@@ -709,17 +718,18 @@ const PanelVentasUltra = memo(() => {
                       {page}
                     </button>
                   );
-                } else if (
-                  page === currentPage - 2 ||
-                  page === currentPage + 2
-                ) {
-                  return <span key={page} className="px-2 text-slate-600">...</span>;
+                } else if (page === currentPage - 2 || page === currentPage + 2) {
+                  return (
+                    <span key={page} className="px-2 text-slate-600">
+                      ...
+                    </span>
+                  );
                 }
                 return null;
               })}
 
               <button
-                onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
                 disabled={currentPage === totalPages}
                 className={`p-2 rounded-lg transition-all ${
                   currentPage === totalPages

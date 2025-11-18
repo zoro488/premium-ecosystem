@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    './index.html',
-    './src/**/*.{js,ts,jsx,tsx}',
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
@@ -220,8 +217,9 @@ export default {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'gradient-mesh': 'radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.2) 0, transparent 50%), radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.2) 0, transparent 50%), radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.2) 0, transparent 50%), radial-gradient(at 0% 100%, rgba(16, 185, 129, 0.2) 0, transparent 50%)',
-        'shimmer': 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)',
+        'gradient-mesh':
+          'radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.2) 0, transparent 50%), radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.2) 0, transparent 50%), radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.2) 0, transparent 50%), radial-gradient(at 0% 100%, rgba(16, 185, 129, 0.2) 0, transparent 50%)',
+        shimmer: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)',
       },
       blur: {
         xs: '2px',
@@ -234,8 +232,5 @@ export default {
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-  ],
-}
+  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+};

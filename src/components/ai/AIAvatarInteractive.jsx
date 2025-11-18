@@ -12,11 +12,7 @@
  */
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-
-
 import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-
-
 
 import {
   use3DTilt,

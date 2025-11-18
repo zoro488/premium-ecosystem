@@ -14,11 +14,11 @@ const ChronosHeader = ({
   showSearch = true,
   showActions = true,
   onSearchChange,
-  searchPlaceholder = "Search...",
+  searchPlaceholder = 'Search...',
   customActions,
   notificationCount = 0,
   onNotificationClick,
-  onRefresh
+  onRefresh,
 }) => {
   const [searchFocused, setSearchFocused] = React.useState(false);
 
@@ -37,7 +37,7 @@ const ChronosHeader = ({
             linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
             linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
           `,
-          backgroundSize: '60px 60px'
+          backgroundSize: '60px 60px',
         }}
       />
 
@@ -45,10 +45,7 @@ const ChronosHeader = ({
         {/* Left Side - Logo + Title */}
         <div className="flex items-center gap-6">
           {/* Logo pequeño animado */}
-          <motion.div
-            whileHover={{ scale: 1.05, rotate: 5 }}
-            className="cursor-pointer"
-          >
+          <motion.div whileHover={{ scale: 1.05, rotate: 5 }} className="cursor-pointer">
             <ChronosLogo size="sm" animated={true} />
           </motion.div>
 
@@ -83,14 +80,16 @@ const ChronosHeader = ({
             <motion.div
               animate={{
                 width: searchFocused ? 320 : 240,
-                scale: searchFocused ? 1.02 : 1
+                scale: searchFocused ? 1.02 : 1,
               }}
               transition={{ duration: 0.3 }}
               className="relative"
             >
-              <Search className={`absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 transition-colors duration-300 ${
-                searchFocused ? 'text-white' : 'text-white/40'
-              }`} />
+              <Search
+                className={`absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 transition-colors duration-300 ${
+                  searchFocused ? 'text-white' : 'text-white/40'
+                }`}
+              />
               <input
                 type="text"
                 placeholder={searchPlaceholder}
@@ -99,7 +98,7 @@ const ChronosHeader = ({
                 onBlur={() => setSearchFocused(false)}
                 className="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-sm text-white text-sm placeholder-white/30 outline-none transition-all duration-300"
                 style={{
-                  borderColor: searchFocused ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.1)'
+                  borderColor: searchFocused ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.1)',
                 }}
               />
 
@@ -110,7 +109,7 @@ const ChronosHeader = ({
                   animate={{ opacity: 1 }}
                   className="absolute inset-0 rounded-sm pointer-events-none"
                   style={{
-                    boxShadow: '0 0 20px rgba(255,255,255,0.1)'
+                    boxShadow: '0 0 20px rgba(255,255,255,0.1)',
                   }}
                 />
               )}
@@ -202,7 +201,7 @@ ChronosHeader.propTypes = {
   customActions: PropTypes.node,
   notificationCount: PropTypes.number,
   onNotificationClick: PropTypes.func,
-  onRefresh: PropTypes.func
+  onRefresh: PropTypes.func,
 };
 
 export default ChronosHeader;

@@ -23,7 +23,12 @@ export default defineConfig({
     strictPort: false,
     hmr: {
       overlay: true,
+      protocol: 'ws',
+      host: 'localhost',
+      // Removido port y clientPort para usar el mismo puerto del servidor
+      timeout: 30000,
     },
+    cors: true,
     watch: {
       usePolling: false,
       ignored: [

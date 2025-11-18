@@ -180,5 +180,5 @@ function NavegacionPrincipal({ vistaActiva, setVistaActiva }) {
 
 NavegacionPrincipal.propTypes = {
   vistaActiva: PropTypes.string.isRequired,
-  setVistaActiva: PropTypes.func.isRequired
+  setVistaActiva: PropTypes.func.isRequired,
 };

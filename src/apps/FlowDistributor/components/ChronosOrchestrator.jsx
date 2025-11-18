@@ -45,7 +45,7 @@ const ChronosOrchestrator = ({ onAuthComplete, children }) => {
   const pageVariants = {
     initial: { opacity: 0 },
     animate: { opacity: 1, transition: { duration: 0.6, ease: 'easeOut' } },
-    exit: { opacity: 0, transition: { duration: 0.4, ease: 'easeIn' } }
+    exit: { opacity: 0, transition: { duration: 0.4, ease: 'easeIn' } },
   };
 
   return (
@@ -88,12 +88,7 @@ const ChronosOrchestrator = ({ onAuthComplete, children }) => {
         )}
 
         {currentStage === 'app' && (
-          <motion.div
-            key="app"
-            variants={pageVariants}
-            initial="initial"
-            animate="animate"
-          >
+          <motion.div key="app" variants={pageVariants} initial="initial" animate="animate">
             {children}
           </motion.div>
         )}
@@ -104,7 +99,7 @@ const ChronosOrchestrator = ({ onAuthComplete, children }) => {
 
 ChronosOrchestrator.propTypes = {
   onAuthComplete: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export default ChronosOrchestrator;

@@ -117,13 +117,11 @@ export class ExchangeRateService {
 
   // Fetch desde ExchangeRate-API
   async fetchFromExchangeRateAPI() {
-    const response = await fetch(
-      `${API_CONFIGS.exchangeRateAPI.baseUrl}/USD`
-    );
+    const response = await fetch(`${API_CONFIGS.exchangeRateAPI.baseUrl}/USD`);
     const data = await response.json();
 
     const mxnRate = data.rates.MXN;
-    const spread = 0.30; // Spread típico de casa de cambio
+    const spread = 0.3; // Spread típico de casa de cambio
 
     return {
       buy: mxnRate,
@@ -137,13 +135,11 @@ export class ExchangeRateService {
   // Fetch desde Open Exchange Rates
   async fetchFromOpenExchangeRates() {
     const { baseUrl, appId } = API_CONFIGS.openExchangeRates;
-    const response = await fetch(
-      `${baseUrl}/latest.json?app_id=${appId}&base=USD&symbols=MXN`
-    );
+    const response = await fetch(`${baseUrl}/latest.json?app_id=${appId}&base=USD&symbols=MXN`);
     const data = await response.json();
 
     const mxnRate = data.rates.MXN;
-    const spread = 0.30;
+    const spread = 0.3;
 
     return {
       buy: mxnRate,
@@ -166,7 +162,7 @@ export class ExchangeRateService {
 
     const latestData = data.bmx.series[0].datos[0];
     const mxnRate = Number.parseFloat(latestData.dato);
-    const spread = 0.30;
+    const spread = 0.3;
 
     return {
       buy: mxnRate,
@@ -183,7 +179,7 @@ export class ExchangeRateService {
     const volatility = 0.15;
     const trend = Math.sin(Date.now() / 100000) * 0.5;
     const random = (Math.random() - 0.5) * volatility;
-    const spread = 0.30;
+    const spread = 0.3;
 
     const buy = baseRate + trend + random;
 
@@ -206,7 +202,7 @@ export class ExchangeRateService {
     const data = this.getHistoricalData();
     if (data.length < 20) return null;
 
-    const prices = data.map(d => d.buy);
+    const prices = data.map((d) => d.buy);
 
     return {
       sma20: this.calculateSMA(prices, 20),
@@ -250,13 +246,11 @@ export class ExchangeRateService {
       changes.push(prices[i] - prices[i - 1]);
     }
 
-    const gains = changes.map(c => (c > 0 ? c : 0));
-    const losses = changes.map(c => (c < 0 ? Math.abs(c) : 0));
+    const gains = changes.map((c) => (c > 0 ? c : 0));
+    const losses = changes.map((c) => (c < 0 ? Math.abs(c) : 0));
 
-    const avgGain =
-      gains.slice(-period).reduce((a, b) => a + b, 0) / period;
-    const avgLoss =
-      losses.slice(-period).reduce((a, b) => a + b, 0) / period;
+    const avgGain = gains.slice(-period).reduce((a, b) => a + b, 0) / period;
+    const avgLoss = losses.slice(-period).reduce((a, b) => a + b, 0) / period;
 
     const rs = avgGain / avgLoss;
     const rsi = 100 - 100 / (1 + rs);
@@ -288,7 +282,7 @@ export class ExchangeRateService {
     if (!sma) return null;
 
     const slice = prices.slice(-period);
-    const squaredDiffs = slice.map(price => Math.pow(price - sma, 2));
+    const squaredDiffs = slice.map((price) => Math.pow(price - sma, 2));
     const variance = squaredDiffs.reduce((a, b) => a + b, 0) / period;
     const standardDeviation = Math.sqrt(variance);
 
@@ -304,7 +298,7 @@ export class ExchangeRateService {
   calculateVolatility(prices, period = 20) {
     const slice = prices.slice(-period);
     const mean = slice.reduce((a, b) => a + b, 0) / period;
-    const squaredDiffs = slice.map(price => Math.pow(price - mean, 2));
+    const squaredDiffs = slice.map((price) => Math.pow(price - mean, 2));
     const variance = squaredDiffs.reduce((a, b) => a + b, 0) / period;
     return Math.sqrt(variance);
   }
@@ -373,7 +367,7 @@ export class TradingStrategyEngine {
       reason = `Precio ${Math.abs(deviation).toFixed(2)}% por encima de la media. Oportunidad de venta.`;
     }
 
-    return confidence > 0 ? { action, confidence, reason, targetSpread: 0.30 } : null;
+    return confidence > 0 ? { action, confidence, reason, targetSpread: 0.3 } : null;
   }
 
   // Estrategia 2: Seguimiento de Tendencia
@@ -402,7 +396,7 @@ export class TradingStrategyEngine {
       reason = 'Tendencia bajista confirmada (Death Cross). Vender USD.';
     }
 
-    return confidence > 0 ? { action, confidence, reason, targetSpread: 0.30 } : null;
+    return confidence > 0 ? { action, confidence, reason, targetSpread: 0.3 } : null;
   }
 
   // Estrategia 3: Momentum Trading
@@ -431,7 +425,7 @@ export class TradingStrategyEngine {
       reason = `RSI en sobrecompra (${rsi.toFixed(1)}). Momentum bajista. Vender USD.`;
     }
 
-    return confidence > 0 ? { action, confidence, reason, targetSpread: 0.30 } : null;
+    return confidence > 0 ? { action, confidence, reason, targetSpread: 0.3 } : null;
   }
 
   // Estrategia 4: Volatility Breakout
@@ -446,7 +440,7 @@ export class TradingStrategyEngine {
     let action = 'HOLD';
     let confidence = 0;
     let reason = '';
-    let targetSpread = 0.30;
+    let targetSpread = 0.3;
 
     // Alta volatilidad: ampliar spread
     if (volatility > 0.15) {
@@ -510,9 +504,9 @@ export class AlertSystem {
   constructor(thresholds = {}) {
     this.thresholds = {
       priceChange: thresholds.priceChange || 0.5, // 0.5% cambio
-      volatility: thresholds.volatility || 0.20, // Alta volatilidad
-      spread: thresholds.spread || 0.50, // Spread máximo
-      inventoryImbalance: thresholds.inventoryImbalance || 0.70, // 70% en una moneda
+      volatility: thresholds.volatility || 0.2, // Alta volatilidad
+      spread: thresholds.spread || 0.5, // Spread máximo
+      inventoryImbalance: thresholds.inventoryImbalance || 0.7, // 70% en una moneda
       ...thresholds,
     };
     this.alerts = [];
@@ -560,7 +554,10 @@ export class AlertSystem {
 
     // Alerta de inventario desbalanceado
     const dollarRatio = inventory.usd / (inventory.usd + inventory.mxn / currentRate.buy);
-    if (dollarRatio > this.thresholds.inventoryImbalance || dollarRatio < (1 - this.thresholds.inventoryImbalance)) {
+    if (
+      dollarRatio > this.thresholds.inventoryImbalance ||
+      dollarRatio < 1 - this.thresholds.inventoryImbalance
+    ) {
       this.alerts.push({
         type: 'INVENTORY_ALERT',
         severity: 'HIGH',

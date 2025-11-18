@@ -201,17 +201,17 @@ export const UltraPremiumToast = ({ type = 'info', title, message, onClose, dura
 /**
  * Notification Container
  */
-export const NotificationContainer = ({ notifications, onClose }) => {
+export const NotificationContainer = ({ notifications = [], onClose }) => {
   return (
     <div className="fixed top-6 right-6 z-[9999] flex flex-col gap-4 pointer-events-none">
       <AnimatePresence mode="popLayout">
-        {notifications.map((notification) => (
+        {notifications?.map((notification) => (
           <div key={notification.id} className="pointer-events-auto">
             <UltraPremiumToast
               type={notification.type}
               title={notification.title}
               message={notification.message}
-              onClose={() => onClose(notification.id)}
+              onClose={() => onClose?.(notification.id)}
               duration={notification.duration}
             />
           </div>

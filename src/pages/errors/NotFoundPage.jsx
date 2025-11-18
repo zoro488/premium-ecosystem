@@ -1,9 +1,10 @@
 /**
  * 404 Not Found Page
  */
+import { Link } from 'react-router-dom';
+
 import { motion } from 'framer-motion';
 import { Home, Search } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 export const NotFoundPage = () => (
   <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-black to-gray-900">
@@ -20,9 +21,7 @@ export const NotFoundPage = () => (
         404
       </motion.div>
       <h1 className="text-3xl font-bold text-white">Página no encontrada</h1>
-      <p className="text-gray-400">
-        Lo sentimos, la página que buscas no existe o ha sido movida.
-      </p>
+      <p className="text-gray-400">Lo sentimos, la página que buscas no existe o ha sido movida.</p>
       <div className="flex items-center justify-center gap-4 pt-4">
         <Link
           to="/"

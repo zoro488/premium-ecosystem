@@ -408,9 +408,7 @@ export const DashboardVentasPremium = ({ ventas = [], productos = [], vendedores
                     </div>
                     <div className="text-right">
                       <p className="text-zinc-200 font-bold">{formatCurrency(vendedor.total)}</p>
-                      <p className="text-xs text-zinc-800">
-                        Comisión: {formatCurrency(comision)}
-                      </p>
+                      <p className="text-xs text-zinc-800">Comisión: {formatCurrency(comision)}</p>
                     </div>
                   </motion.div>
                 );

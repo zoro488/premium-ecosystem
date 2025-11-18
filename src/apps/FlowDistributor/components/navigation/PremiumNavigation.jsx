@@ -34,7 +34,7 @@ export const PremiumHeader = ({
   onMenuClick,
   notifications = 0,
   darkMode = false,
-  onToggleDarkMode
+  onToggleDarkMode,
 }) => {
   const [scrolled, setScrolled] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
@@ -54,9 +54,10 @@ export const PremiumHeader = ({
       className={`
         fixed top-0 left-0 right-0 z-50
         transition-all duration-300
-        ${scrolled
-          ? 'bg-white/10 backdrop-blur-2xl shadow-glass-lg border-b border-white/10'
-          : 'bg-transparent'
+        ${
+          scrolled
+            ? 'bg-white/10 backdrop-blur-2xl shadow-glass-lg border-b border-white/10'
+            : 'bg-transparent'
         }
       `}
     >
@@ -77,17 +78,16 @@ export const PremiumHeader = ({
               <Menu className="w-6 h-6 text-white" />
             </motion.button>
 
-            <motion.div
-              className="flex items-center gap-3"
-              whileHover={{ scale: 1.02 }}
-            >
+            <motion.div className="flex items-center gap-3" whileHover={{ scale: 1.02 }}>
               <div className="relative">
-                <div className="
+                <div
+                  className="
                   w-12 h-12 rounded-xl
                   bg-gradient-to-br from-zinc-800 to-zinc-800
                   flex items-center justify-center
                   shadow-glow-lg animate-glow-pulse
-                ">
+                "
+                >
                   <Sparkles className="w-6 h-6 text-white" />
                 </div>
                 <div className="absolute -top-1 -right-1">
@@ -96,9 +96,7 @@ export const PremiumHeader = ({
               </div>
 
               <div className="hidden md:block">
-                <h1 className="text-xl font-bold text-white text-gradient">
-                  {title}
-                </h1>
+                <h1 className="text-xl font-bold text-white text-gradient">{title}</h1>
                 <p className="text-xs text-gray-400">{subtitle}</p>
               </div>
             </motion.div>
@@ -109,16 +107,20 @@ export const PremiumHeader = ({
             className="hidden lg:block flex-1 max-w-md"
             animate={{ width: searchFocused ? '100%' : 'auto' }}
           >
-            <div className={`
+            <div
+              className={`
               relative group
               ${searchFocused ? 'ring-2 ring-blue-500/50' : ''}
               rounded-xl transition-all
-            `}>
-              <Search className="
+            `}
+            >
+              <Search
+                className="
                 absolute left-3 top-1/2 -translate-y-1/2
                 w-5 h-5 text-gray-400
                 group-hover:text-zinc-300 transition-colors
-              " />
+              "
+              />
               <input
                 type="text"
                 placeholder="Buscar transacciones, clientes..."
@@ -134,12 +136,14 @@ export const PremiumHeader = ({
                   transition-all outline-none
                 "
               />
-              <kbd className="
+              <kbd
+                className="
                 absolute right-3 top-1/2 -translate-y-1/2
                 px-2 py-1 rounded bg-white/5 border border-white/10
                 text-xs text-gray-400
                 hidden group-hover:block
-              ">
+              "
+              >
                 Ctrl K
               </kbd>
             </div>
@@ -177,13 +181,15 @@ export const PremiumHeader = ({
             >
               <Bell className="w-5 h-5 text-white group-hover:animate-wiggle" />
               {notifications > 0 && (
-                <span className="
+                <span
+                  className="
                   absolute -top-1 -right-1
                   w-5 h-5 rounded-full
                   bg-zinc-9000 text-white text-xs font-bold
                   flex items-center justify-center
                   animate-pulse
-                ">
+                "
+                >
                   {notifications}
                 </span>
               )}
@@ -270,10 +276,12 @@ const UserDropdown = () => {
         <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-zinc-800 to-zinc-800 flex items-center justify-center">
           <User className="w-4 h-4 text-white" />
         </div>
-        <ChevronDown className={`
+        <ChevronDown
+          className={`
           w-4 h-4 text-white transition-transform
           ${isOpen ? 'rotate-180' : ''}
-        `} />
+        `}
+        />
       </motion.button>
 
       <AnimatePresence>
@@ -290,7 +298,7 @@ const UserDropdown = () => {
               shadow-premium
             "
           >
-            {menuItems.map((item, index) => (
+            {menuItems.map((item, index) =>
               item.divider ? (
                 <div key={index} className="h-px bg-white/10 my-2" />
               ) : (
@@ -311,7 +319,7 @@ const UserDropdown = () => {
                   <span>{item.label}</span>
                 </motion.button>
               )
-            ))}
+            )}
           </motion.div>
         )}
       </AnimatePresence>
@@ -332,17 +340,12 @@ export const PremiumBreadcrumb = ({ items = [] }) => {
             onClick={item.onClick}
             className={`
               text-sm font-medium transition-all
-              ${index === items.length - 1
-                ? 'text-white'
-                : 'text-gray-400 hover:text-white'
-              }
+              ${index === items.length - 1 ? 'text-white' : 'text-gray-400 hover:text-white'}
             `}
           >
             {item.label}
           </motion.button>
-          {index < items.length - 1 && (
-            <ChevronDown className="w-4 h-4 text-gray-500 -rotate-90" />
-          )}
+          {index < items.length - 1 && <ChevronDown className="w-4 h-4 text-gray-500 -rotate-90" />}
         </React.Fragment>
       ))}
     </nav>
@@ -352,12 +355,7 @@ export const PremiumBreadcrumb = ({ items = [] }) => {
 // ============================================
 // FLOATING ACTION BUTTON
 // ============================================
-export const FloatingActionButton = ({
-  icon: Icon,
-  onClick,
-  label,
-  position = 'bottom-right'
-}) => {
+export const FloatingActionButton = ({ icon: Icon, onClick, label, position = 'bottom-right' }) => {
   const [showLabel, setShowLabel] = useState(false);
 
   const positionClasses = {
@@ -427,10 +425,7 @@ export const TabNavigation = ({ tabs = [], activeTab, onChange }) => {
           className={`
             relative px-6 py-2.5 rounded-lg
             text-sm font-medium transition-all
-            ${activeTab === (tab.id || index)
-              ? 'text-white'
-              : 'text-gray-400 hover:text-white'
-            }
+            ${activeTab === (tab.id || index) ? 'text-white' : 'text-gray-400 hover:text-white'}
           `}
         >
           {/* Active Background */}
@@ -451,10 +446,12 @@ export const TabNavigation = ({ tabs = [], activeTab, onChange }) => {
             {tab.icon && <tab.icon className="w-4 h-4" />}
             {tab.label}
             {tab.badge && (
-              <span className="
+              <span
+                className="
                 px-1.5 py-0.5 rounded-full
                 bg-zinc-9000 text-white text-xs font-bold
-              ">
+              "
+              >
                 {tab.badge}
               </span>
             )}

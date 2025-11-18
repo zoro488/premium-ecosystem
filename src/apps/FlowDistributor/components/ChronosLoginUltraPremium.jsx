@@ -31,16 +31,18 @@ const ChronosLoginUltraPremium = ({ onLogin }) => {
   const rotateY = useTransform(mouseX, [-300, 300], [-5, 5]);
 
   // Partículas flotantes
-  const particles = useMemo(() =>
-    Array.from({ length: 50 }, (_, i) => ({
-      id: i,
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-      size: 1 + Math.random() * 2,
-      duration: 10 + Math.random() * 20,
-      delay: Math.random() * 5,
-    }))
-  , []);
+  const particles = useMemo(
+    () =>
+      Array.from({ length: 50 }, (_, i) => ({
+        id: i,
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        size: 1 + Math.random() * 2,
+        duration: 10 + Math.random() * 20,
+        delay: Math.random() * 5,
+      })),
+    []
+  );
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -175,7 +177,8 @@ const ChronosLoginUltraPremium = ({ onLogin }) => {
           <div
             className="relative rounded-3xl p-10 backdrop-blur-xl"
             style={{
-              background: 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.05) 100%)',
+              background:
+                'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.05) 100%)',
               border: '1px solid rgba(255, 255, 255, 0.15)',
               boxShadow: `
                 0 30px 60px -20px rgba(0, 0, 0, 0.8),
@@ -195,7 +198,8 @@ const ChronosLoginUltraPremium = ({ onLogin }) => {
               <motion.div
                 className="inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-6"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 100%)',
+                  background:
+                    'linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 100%)',
                   border: '1px solid rgba(255, 255, 255, 0.2)',
                   boxShadow: '0 10px 30px -10px rgba(255, 255, 255, 0.2)',
                 }}
@@ -268,7 +272,8 @@ const ChronosLoginUltraPremium = ({ onLogin }) => {
                 <motion.label
                   className="block text-white/60 text-xs tracking-wider uppercase mb-3 font-light"
                   animate={{
-                    color: focusedField === 'email' ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.6)',
+                    color:
+                      focusedField === 'email' ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.6)',
                   }}
                 >
                   Correo Electrónico
@@ -290,12 +295,14 @@ const ChronosLoginUltraPremium = ({ onLogin }) => {
                     }}
                     placeholder="usuario@chronos.com"
                     animate={{
-                      borderColor: focusedField === 'email' ?
-                        'rgba(255, 255, 255, 0.3)' :
-                        'rgba(255, 255, 255, 0.1)',
-                      boxShadow: focusedField === 'email' ?
-                        '0 0 20px rgba(255, 255, 255, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.05)' :
-                        'none',
+                      borderColor:
+                        focusedField === 'email'
+                          ? 'rgba(255, 255, 255, 0.3)'
+                          : 'rgba(255, 255, 255, 0.1)',
+                      boxShadow:
+                        focusedField === 'email'
+                          ? '0 0 20px rgba(255, 255, 255, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.05)'
+                          : 'none',
                     }}
                     whileFocus={{ scale: 1.01 }}
                   />
@@ -317,7 +324,10 @@ const ChronosLoginUltraPremium = ({ onLogin }) => {
                 <motion.label
                   className="block text-white/60 text-xs tracking-wider uppercase mb-3 font-light"
                   animate={{
-                    color: focusedField === 'password' ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.6)',
+                    color:
+                      focusedField === 'password'
+                        ? 'rgba(255,255,255,0.9)'
+                        : 'rgba(255,255,255,0.6)',
                   }}
                 >
                   Contraseña
@@ -339,12 +349,14 @@ const ChronosLoginUltraPremium = ({ onLogin }) => {
                     }}
                     placeholder="••••••••••"
                     animate={{
-                      borderColor: focusedField === 'password' ?
-                        'rgba(255, 255, 255, 0.3)' :
-                        'rgba(255, 255, 255, 0.1)',
-                      boxShadow: focusedField === 'password' ?
-                        '0 0 20px rgba(255, 255, 255, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.05)' :
-                        'none',
+                      borderColor:
+                        focusedField === 'password'
+                          ? 'rgba(255, 255, 255, 0.3)'
+                          : 'rgba(255, 255, 255, 0.1)',
+                      boxShadow:
+                        focusedField === 'password'
+                          ? '0 0 20px rgba(255, 255, 255, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.05)'
+                          : 'none',
                     }}
                     whileFocus={{ scale: 1.01 }}
                   />
@@ -356,9 +368,15 @@ const ChronosLoginUltraPremium = ({ onLogin }) => {
                     whileTap={{ scale: 0.95 }}
                   >
                     {showPassword ? (
-                      <EyeOff className="w-5 h-5 text-white/40 hover:text-white/70 transition-colors" strokeWidth={1.5} />
+                      <EyeOff
+                        className="w-5 h-5 text-white/40 hover:text-white/70 transition-colors"
+                        strokeWidth={1.5}
+                      />
                     ) : (
-                      <Eye className="w-5 h-5 text-white/40 hover:text-white/70 transition-colors" strokeWidth={1.5} />
+                      <Eye
+                        className="w-5 h-5 text-white/40 hover:text-white/70 transition-colors"
+                        strokeWidth={1.5}
+                      />
                     )}
                   </motion.button>
                   <motion.div
@@ -402,7 +420,8 @@ const ChronosLoginUltraPremium = ({ onLogin }) => {
                 <div
                   className="relative py-4 rounded-xl flex items-center justify-center gap-3 transition-all duration-300"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 100%)',
+                    background:
+                      'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 100%)',
                     border: '1px solid rgba(255, 255, 255, 0.2)',
                     boxShadow: '0 10px 30px -10px rgba(255, 255, 255, 0.2)',
                   }}
@@ -433,11 +452,17 @@ const ChronosLoginUltraPremium = ({ onLogin }) => {
                     />
                   ) : (
                     <>
-                      <Shield className="w-5 h-5 text-white/80 group-hover:text-white transition-colors" strokeWidth={1.5} />
+                      <Shield
+                        className="w-5 h-5 text-white/80 group-hover:text-white transition-colors"
+                        strokeWidth={1.5}
+                      />
                       <span className="text-white/90 font-light tracking-wider uppercase text-sm group-hover:text-white transition-colors">
                         Acceder al Sistema
                       </span>
-                      <ArrowRight className="w-5 h-5 text-white/60 group-hover:text-white group-hover:translate-x-1 transition-all" strokeWidth={1.5} />
+                      <ArrowRight
+                        className="w-5 h-5 text-white/60 group-hover:text-white group-hover:translate-x-1 transition-all"
+                        strokeWidth={1.5}
+                      />
                     </>
                   )}
                 </div>
@@ -471,9 +496,7 @@ const ChronosLoginUltraPremium = ({ onLogin }) => {
             >
               <div className="flex items-center justify-center gap-2 text-white/30 text-xs">
                 <Shield className="w-3 h-3" strokeWidth={1.5} />
-                <span className="tracking-wider font-light uppercase">
-                  Conexión Segura SSL/TLS
-                </span>
+                <span className="tracking-wider font-light uppercase">Conexión Segura SSL/TLS</span>
               </div>
             </motion.div>
           </div>
@@ -482,16 +505,18 @@ const ChronosLoginUltraPremium = ({ onLogin }) => {
           {['top-left', 'top-right', 'bottom-left', 'bottom-right'].map((corner) => (
             <motion.div
               key={corner}
-              className={`absolute w-12 h-12 ${
-                corner.includes('top') ? 'top-0' : 'bottom-0'
-              } ${
+              className={`absolute w-12 h-12 ${corner.includes('top') ? 'top-0' : 'bottom-0'} ${
                 corner.includes('left') ? 'left-0' : 'right-0'
               }`}
               style={{
                 borderTop: corner.includes('top') ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
-                borderBottom: corner.includes('bottom') ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
+                borderBottom: corner.includes('bottom')
+                  ? '1px solid rgba(255, 255, 255, 0.1)'
+                  : 'none',
                 borderLeft: corner.includes('left') ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
-                borderRight: corner.includes('right') ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
+                borderRight: corner.includes('right')
+                  ? '1px solid rgba(255, 255, 255, 0.1)'
+                  : 'none',
               }}
               animate={{
                 opacity: [0.2, 0.5, 0.2],
@@ -522,7 +547,7 @@ const ChronosLoginUltraPremium = ({ onLogin }) => {
 };
 
 ChronosLoginUltraPremium.propTypes = {
-  onLogin: PropTypes.func.isRequired
+  onLogin: PropTypes.func.isRequired,
 };
 
 export default ChronosLoginUltraPremium;

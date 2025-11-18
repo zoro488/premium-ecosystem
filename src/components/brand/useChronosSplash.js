@@ -1,7 +1,6 @@
 /**
  * 🎯 Hook para controlar el Splash Screen de CHRONOS
  */
-
 import { useState } from 'react';
 
 export function useChronosSplash() {

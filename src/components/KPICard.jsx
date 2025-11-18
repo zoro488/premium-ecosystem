@@ -1,10 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowDownRight, ArrowUpRight, Minus } from 'lucide-react';
 
-
-
-
-
 /**
  * 📊 KPI CARD PREMIUM
  * Tarjeta de KPI con:

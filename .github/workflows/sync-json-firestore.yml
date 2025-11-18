@@ -1,0 +1,59 @@
+name: 🔄 Sync JSON to Firestore
+
+on:
+    push:
+        paths:
+            - "data/bancos.json"
+            - "data/*.json"
+    workflow_dispatch:
+        inputs:
+            force:
+                description: "Forzar sincronización completa"
+                required: false
+                default: "false"
+
+jobs:
+    sync:
+        name: Sincronizar JSON → Firestore
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: 📥 Checkout code
+              uses: actions/checkout@v4
+
+            - name: 📦 Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "20"
+                  cache: "npm"
+
+            - name: 📥 Install dependencies
+              run: npm ci
+
+            - name: 🔄 Sync bancos.json → Firestore
+              run: node scripts/sync-json-to-firestore.js
+              env:
+                  FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+                  FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+                  FORCE_SYNC: ${{ github.event.inputs.force }}
+
+            - name: ✅ Verificar sincronización
+              run: node scripts/verificar-firestore-completo.js
+
+            - name: 📊 Sync summary
+              if: always()
+              run: |
+                  echo "### 🔄 Sincronización completada" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "- **Archivo:** data/bancos.json" >> $GITHUB_STEP_SUMMARY
+                  echo "- **Timestamp:** $(date -u)" >> $GITHUB_STEP_SUMMARY
+                  echo "- **Status:** ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+
+            - name: 📤 Commit verification results
+              if: success()
+              run: |
+                  git config --global user.name "github-actions[bot]"
+                  git config --global user.email "github-actions[bot]@users.noreply.github.com"
+                  git add FIRESTORE_ESTADO_ACTUAL.json
+                  git commit -m "chore: update Firestore verification [skip ci]" || echo "No changes"
+                  git push origin ${{ github.ref_name }} || echo "Nothing to push"

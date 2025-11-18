@@ -16,8 +16,7 @@ export const AnimatedButton = ({
 }) => {
   const variants = {
     primary: 'bg-gradient-to-r from-zinc-800 to-zinc-900 hover:from-zinc-700 hover:to-zinc-800',
-    secondary:
-      'bg-gradient-to-r from-zinc-800 to-zinc-700 hover:from-zinc-800 hover:to-zinc-700',
+    secondary: 'bg-gradient-to-r from-zinc-800 to-zinc-700 hover:from-zinc-800 hover:to-zinc-700',
     success:
       'bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700',
     danger: 'bg-gradient-to-r from-zinc-700 to-zinc-700 hover:from-zinc-700 hover:to-zinc-700',

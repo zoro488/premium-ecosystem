@@ -87,5 +87,5 @@ Card.Description = CardDescription;
 Card.Content = CardContent;
 Card.Footer = CardFooter;
 
+export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle };
 export default Card;
-export { CardHeader, CardTitle, CardDescription, CardContent, CardFooter };

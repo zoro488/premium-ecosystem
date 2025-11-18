@@ -9,7 +9,9 @@ export const VentasPanel = () => {
       try {
         const v = await firestoreService.getCollection('ventas');
         setData(v);
-      } catch (e) { console.error(e); }
+      } catch (e) {
+        console.error(e);
+      }
     })();
   }, []);
 

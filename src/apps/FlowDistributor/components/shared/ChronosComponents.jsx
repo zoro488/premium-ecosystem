@@ -10,20 +10,20 @@ export const ChronosBadge = ({
   variant = 'default', // default, success, warning, danger, info
   size = 'md',
   pulse = false,
-  className = ''
+  className = '',
 }) => {
   const variants = {
     default: 'bg-white/10 text-white border-white/20',
     success: 'bg-zinc-9000/20 text-zinc-200 border-zinc-500/30',
     warning: 'bg-zinc-9000/20 text-zinc-200 border-zinc-500/30',
     danger: 'bg-zinc-9000/20 text-zinc-200 border-zinc-500/30',
-    info: 'bg-zinc-800/20 text-zinc-300 border-zinc-700/30'
+    info: 'bg-zinc-800/20 text-zinc-300 border-zinc-700/30',
   };
 
   const sizes = {
     sm: 'px-2 py-0.5 text-[10px]',
     md: 'px-2.5 py-1 text-xs',
-    lg: 'px-3 py-1.5 text-sm'
+    lg: 'px-3 py-1.5 text-sm',
   };
 
   return (
@@ -66,7 +66,7 @@ export const ChronosTabs = ({ tabs, activeTab, onChange, className = '' }) => {
             whileTap={{ scale: 0.98 }}
             className="relative px-6 py-3 text-sm font-light tracking-wide transition-colors"
             style={{
-              color: isActive ? 'white' : 'rgba(255,255,255,0.5)'
+              color: isActive ? 'white' : 'rgba(255,255,255,0.5)',
             }}
           >
             {tab.label}
@@ -106,7 +106,7 @@ export const ChronosProgress = ({
   label,
   showValue = true,
   color = 'rgba(255,255,255,0.9)',
-  height = 8
+  height = 8,
 }) => {
   const percentage = Math.min((value / max) * 100, 100);
 
@@ -115,24 +115,15 @@ export const ChronosProgress = ({
       {/* Label y Value */}
       {(label || showValue) && (
         <div className="flex items-center justify-between mb-2">
-          {label && (
-            <span className="text-xs text-white/60">
-              {label}
-            </span>
-          )}
+          {label && <span className="text-xs text-white/60">{label}</span>}
           {showValue && (
-            <span className="text-xs text-white font-light">
-              {Math.round(percentage)}%
-            </span>
+            <span className="text-xs text-white font-light">{Math.round(percentage)}%</span>
           )}
         </div>
       )}
 
       {/* Progress bar */}
-      <div
-        className="relative w-full bg-white/10 rounded-full overflow-hidden"
-        style={{ height }}
-      >
+      <div className="relative w-full bg-white/10 rounded-full overflow-hidden" style={{ height }}>
         {/* Fill */}
         <motion.div
           initial={{ width: 0 }}
@@ -140,20 +131,20 @@ export const ChronosProgress = ({
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="h-full rounded-full relative"
           style={{
-            background: `linear-gradient(90deg, ${color}, ${color}DD)`
+            background: `linear-gradient(90deg, ${color}, ${color}DD)`,
           }}
         >
           {/* Shine effect */}
           <motion.div
             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
             animate={{
-              x: ['-100%', '200%']
+              x: ['-100%', '200%'],
             }}
             transition={{
               duration: 1.5,
               repeat: Infinity,
               repeatDelay: 1,
-              ease: 'linear'
+              ease: 'linear',
             }}
           />
         </motion.div>
@@ -168,7 +159,7 @@ ChronosProgress.propTypes = {
   label: PropTypes.string,
   showValue: PropTypes.bool,
   color: PropTypes.string,
-  height: PropTypes.number
+  height: PropTypes.number,
 };
 
 /**
@@ -183,7 +174,7 @@ export const ChronosTooltip = ({ children, content, position = 'top' }) => {
       top: 'bottom',
       bottom: 'top',
       left: 'right',
-      right: 'left'
+      right: 'left',
     };
     return positionMap[position] || 'left';
   };
@@ -194,7 +185,7 @@ export const ChronosTooltip = ({ children, content, position = 'top' }) => {
       top: '0 1px 1px 0',
       bottom: '1px 0 0 1px',
       left: '1px 1px 0 0',
-      right: '0 0 1px 1px'
+      right: '0 0 1px 1px',
     };
     return borderMap[position] || '0 0 1px 1px';
   };
@@ -203,7 +194,7 @@ export const ChronosTooltip = ({ children, content, position = 'top' }) => {
     top: 'bottom-full left-1/2 -translate-x-1/2 mb-2',
     bottom: 'top-full left-1/2 -translate-x-1/2 mt-2',
     left: 'right-full top-1/2 -translate-y-1/2 mr-2',
-    right: 'left-full top-1/2 -translate-y-1/2 ml-2'
+    right: 'left-full top-1/2 -translate-y-1/2 ml-2',
   };
 
   return (
@@ -230,7 +221,7 @@ export const ChronosTooltip = ({ children, content, position = 'top' }) => {
             ${positions[position]}
           `}
           style={{
-            boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
+            boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
           }}
         >
           {content}
@@ -242,10 +233,11 @@ export const ChronosTooltip = ({ children, content, position = 'top' }) => {
               [getArrowPosition(position)]: '-4px',
               left: position === 'top' || position === 'bottom' ? '50%' : undefined,
               top: position === 'left' || position === 'right' ? '50%' : undefined,
-              transform: position === 'top' || position === 'bottom'
-                ? 'translateX(-50%)'
-                : 'translateY(-50%)',
-              borderWidth: getArrowBorder(position)
+              transform:
+                position === 'top' || position === 'bottom'
+                  ? 'translateX(-50%)'
+                  : 'translateY(-50%)',
+              borderWidth: getArrowBorder(position),
             }}
           />
         </motion.div>
@@ -260,18 +252,20 @@ ChronosBadge.propTypes = {
   variant: PropTypes.oneOf(['default', 'success', 'warning', 'danger', 'info']),
   size: PropTypes.oneOf(['sm', 'md', 'lg']),
   pulse: PropTypes.bool,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 ChronosTabs.propTypes = {
-  tabs: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    icon: PropTypes.elementType
-  })).isRequired,
+  tabs: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      icon: PropTypes.elementType,
+    })
+  ).isRequired,
   activeTab: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 ChronosProgressBar.propTypes = {
@@ -280,13 +274,13 @@ ChronosProgressBar.propTypes = {
   label: PropTypes.string,
   showValue: PropTypes.bool,
   color: PropTypes.string,
-  height: PropTypes.number
+  height: PropTypes.number,
 };
 
 ChronosTooltip.propTypes = {
   children: PropTypes.node.isRequired,
   content: PropTypes.node.isRequired,
-  position: PropTypes.oneOf(['top', 'bottom', 'left', 'right'])
+  position: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
 };
 
 export default ChronosBadge;

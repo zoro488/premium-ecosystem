@@ -2,13 +2,13 @@ name: 🤖 Auto-Healing & Self-Repair
 
 on:
   schedule:
-    - cron: '0 */6 * * *' # Every 6 hours
+    - cron: "0 */6 * * *" # Every 6 hours
   workflow_dispatch:
     inputs:
       repair_level:
-        description: 'Repair level'
+        description: "Repair level"
         required: true
-        default: 'standard'
+        default: "standard"
         type: choice
         options:
           - minimal
@@ -16,7 +16,7 @@ on:
           - aggressive
 
 env:
-  NODE_VERSION: '20'
+  NODE_VERSION: "20"
 
 jobs:
   health-check:
@@ -34,7 +34,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+          cache: "npm"
 
       - name: 📦 Install dependencies
         run: npm ci --prefer-offline --no-audit
@@ -106,7 +106,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+          cache: "npm"
 
       - name: 📦 Update dependencies
         run: |
@@ -117,12 +117,29 @@ jobs:
         run: npm test --passWithNoTests
 
       - name: 💾 Commit changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add package.json package-lock.json
           git commit -m "🤖 chore: auto-update dependencies" || echo "No changes to commit"
-          git push
+
+          # Push with retry logic
+          for i in {1..5}; do
+            if git push origin HEAD:${GITHUB_REF#refs/heads/}; then
+              echo "✅ Push successful!"
+              break
+            else
+              if [ $i -lt 5 ]; then
+                echo "⚠️ Push failed. Retrying in $((i*10))s..."
+                sleep $((i*10))
+              else
+                echo "❌ Push failed after 5 attempts"
+                exit 1
+              fi
+            fi
+          done
 
   auto-fix-security:
     name: 🔒 Auto-Fix Security Vulnerabilities
@@ -140,7 +157,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+          cache: "npm"
 
       - name: 🔒 Fix vulnerabilities
         run: |
@@ -151,12 +168,29 @@ jobs:
         run: npm test --passWithNoTests
 
       - name: 💾 Commit security fixes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add package.json package-lock.json
           git commit -m "🔒 chore: fix security vulnerabilities" || echo "No changes to commit"
-          git push
+
+          # Push with retry logic
+          for i in {1..5}; do
+            if git push origin HEAD:${GITHUB_REF#refs/heads/}; then
+              echo "✅ Push successful!"
+              break
+            else
+              if [ $i -lt 5 ]; then
+                echo "⚠️ Push failed. Retrying in $((i*10))s..."
+                sleep $((i*10))
+              else
+                echo "❌ Push failed after 5 attempts"
+                exit 1
+              fi
+            fi
+          done
 
       - name: 🚨 Create issue if critical vulns remain
         if: failure()
@@ -187,7 +221,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+          cache: "npm"
 
       - name: 📦 Install dependencies
         run: npm ci --prefer-offline --no-audit
@@ -221,7 +255,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+          cache: "npm"
 
       - name: 📦 Install dependencies
         run: npm ci --prefer-offline --no-audit
@@ -285,7 +319,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+          cache: "npm"
 
       - name: 📦 Install dependencies
         run: npm ci --prefer-offline --no-audit

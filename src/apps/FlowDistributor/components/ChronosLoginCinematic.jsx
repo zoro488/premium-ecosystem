@@ -28,7 +28,7 @@ const ChronosLoginCinematic = ({ onLogin }) => {
   const logoSpring = useSpring({
     from: { scale: 0, rotate: -180 },
     to: { scale: 1, rotate: 0 },
-    config: { tension: 200, friction: 20 }
+    config: { tension: 200, friction: 20 },
   });
 
   // Partículas flotantes de fondo
@@ -39,7 +39,7 @@ const ChronosLoginCinematic = ({ onLogin }) => {
       y: Math.random() * 100,
       size: Math.random() * 4 + 1,
       duration: Math.random() * 20 + 10,
-      delay: Math.random() * 5
+      delay: Math.random() * 5,
     }))
   );
 
@@ -64,7 +64,7 @@ const ChronosLoginCinematic = ({ onLogin }) => {
 
     setValidationState({
       email: email.length > 0 ? emailValid : null,
-      password: password.length > 0 ? passwordValid : null
+      password: password.length > 0 ? passwordValid : null,
     });
 
     if (emailValid && passwordValid) {
@@ -82,7 +82,7 @@ const ChronosLoginCinematic = ({ onLogin }) => {
       gsap.to(cardRef.current, {
         x: [-10, 10, -10, 10, 0],
         duration: 0.4,
-        ease: 'power2.inOut'
+        ease: 'power2.inOut',
       });
       return;
     }
@@ -90,13 +90,13 @@ const ChronosLoginCinematic = ({ onLogin }) => {
     setIsLoading(true);
 
     // Animación de éxito con confetti
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 1500));
 
     confetti({
       particleCount: 150,
       spread: 70,
       origin: { y: 0.6 },
-      colors: ['#ffffff', '#cccccc', '#888888']
+      colors: ['#ffffff', '#cccccc', '#888888'],
     });
 
     setTimeout(() => {
@@ -109,7 +109,7 @@ const ChronosLoginCinematic = ({ onLogin }) => {
       ref={containerRef}
       className="fixed inset-0 flex items-center justify-center overflow-hidden"
       style={{
-        background: 'radial-gradient(ellipse at top, #1a1a1a 0%, #000000 100%)'
+        background: 'radial-gradient(ellipse at top, #1a1a1a 0%, #000000 100%)',
       }}
     >
       {/* Partículas de fondo flotantes */}
@@ -120,22 +120,22 @@ const ChronosLoginCinematic = ({ onLogin }) => {
           initial={{
             x: `${particle.x}%`,
             y: `${particle.y}%`,
-            opacity: 0.1
+            opacity: 0.1,
           }}
           animate={{
             y: [`${particle.y}%`, `${particle.y - 20}%`, `${particle.y}%`],
-            opacity: [0.1, 0.3, 0.1]
+            opacity: [0.1, 0.3, 0.1],
           }}
           transition={{
             duration: particle.duration,
             delay: particle.delay,
             repeat: Infinity,
-            ease: 'easeInOut'
+            ease: 'easeInOut',
           }}
           style={{
             width: particle.size,
             height: particle.size,
-            filter: 'blur(1px)'
+            filter: 'blur(1px)',
           }}
         />
       ))}
@@ -149,15 +149,15 @@ const ChronosLoginCinematic = ({ onLogin }) => {
               linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
               linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
             `,
-            backgroundSize: '60px 60px'
+            backgroundSize: '60px 60px',
           }}
           animate={{
-            backgroundPosition: ['0px 0px', '60px 60px']
+            backgroundPosition: ['0px 0px', '60px 60px'],
           }}
           transition={{
             duration: 20,
             repeat: Infinity,
-            ease: 'linear'
+            ease: 'linear',
           }}
         />
       </div>
@@ -173,15 +173,15 @@ const ChronosLoginCinematic = ({ onLogin }) => {
             left: '50%',
             top: '50%',
             marginLeft: -(200 + ring * 75),
-            marginTop: -(200 + ring * 75)
+            marginTop: -(200 + ring * 75),
           }}
           animate={{
-            rotate: 360 * (ring % 2 === 0 ? 1 : -1)
+            rotate: 360 * (ring % 2 === 0 ? 1 : -1),
           }}
           transition={{
             duration: 30 + ring * 10,
             repeat: Infinity,
-            ease: 'linear'
+            ease: 'linear',
           }}
         />
       ))}
@@ -192,7 +192,7 @@ const ChronosLoginCinematic = ({ onLogin }) => {
         style={{
           rotateX,
           rotateY,
-          transformStyle: 'preserve-3d'
+          transformStyle: 'preserve-3d',
         }}
         className="relative z-10"
       >
@@ -209,14 +209,14 @@ const ChronosLoginCinematic = ({ onLogin }) => {
             boxShadow: `
               0 25px 50px -12px rgba(0, 0, 0, 0.8),
               inset 0 1px 0 0 rgba(255, 255, 255, 0.1)
-            `
+            `,
           }}
         >
           {/* Efecto de brillo superior */}
           <div
             className="absolute top-0 left-0 right-0 h-px"
             style={{
-              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)'
+              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)',
             }}
           />
 
@@ -236,18 +236,18 @@ const ChronosLoginCinematic = ({ onLogin }) => {
                     initial={{
                       x: '50%',
                       y: '50%',
-                      scale: 0
+                      scale: 0,
                     }}
                     animate={{
                       x: `${50 + (Math.random() - 0.5) * 100}%`,
                       y: `${50 + (Math.random() - 0.5) * 100}%`,
                       scale: [0, 1, 0],
-                      opacity: [0, 1, 0]
+                      opacity: [0, 1, 0],
                     }}
                     transition={{
                       duration: 2,
                       delay: i * 0.1,
-                      repeat: Infinity
+                      repeat: Infinity,
                     }}
                   />
                 ))}
@@ -257,22 +257,19 @@ const ChronosLoginCinematic = ({ onLogin }) => {
 
           <div className="p-12">
             {/* Logo animado */}
-            <animated.div
-              style={logoSpring}
-              className="flex justify-center mb-8"
-            >
+            <animated.div style={logoSpring} className="flex justify-center mb-8">
               <div className="relative">
                 {/* Resplandor del logo */}
                 <motion.div
                   className="absolute inset-0 blur-2xl opacity-50"
                   animate={{
                     scale: [1, 1.2, 1],
-                    opacity: [0.3, 0.6, 0.3]
+                    opacity: [0.3, 0.6, 0.3],
                   }}
                   transition={{
                     duration: 3,
                     repeat: Infinity,
-                    ease: 'easeInOut'
+                    ease: 'easeInOut',
                   }}
                 >
                   <div className="w-20 h-20 rounded-full bg-white" />
@@ -309,7 +306,7 @@ const ChronosLoginCinematic = ({ onLogin }) => {
               style={{
                 background: 'linear-gradient(180deg, #ffffff 0%, #cccccc 100%)',
                 WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent'
+                WebkitTextFillColor: 'transparent',
               }}
             >
               CHRONOS
@@ -330,7 +327,7 @@ const ChronosLoginCinematic = ({ onLogin }) => {
               <div className="relative">
                 <motion.div
                   animate={{
-                    scale: focusedField === 'email' ? 1.02 : 1
+                    scale: focusedField === 'email' ? 1.02 : 1,
                   }}
                   transition={{ duration: 0.2 }}
                 >
@@ -340,7 +337,7 @@ const ChronosLoginCinematic = ({ onLogin }) => {
                       className="absolute left-4 top-1/2 -translate-y-1/2 z-10"
                       animate={{
                         scale: focusedField === 'email' ? 1.1 : 1,
-                        rotate: focusedField === 'email' ? [0, -10, 10, 0] : 0
+                        rotate: focusedField === 'email' ? [0, -10, 10, 0] : 0,
                       }}
                       transition={{ duration: 0.5 }}
                     >
@@ -357,15 +354,16 @@ const ChronosLoginCinematic = ({ onLogin }) => {
                       placeholder="Email address"
                       className="w-full pl-12 pr-12 py-4 rounded-xl text-white placeholder-gray-500 outline-none transition-all duration-300"
                       style={{
-                        background: focusedField === 'email'
-                          ? 'rgba(255, 255, 255, 0.08)'
-                          : 'rgba(255, 255, 255, 0.05)',
-                        border: focusedField === 'email'
-                          ? '1px solid rgba(255, 255, 255, 0.2)'
-                          : '1px solid rgba(255, 255, 255, 0.1)',
-                        boxShadow: focusedField === 'email'
-                          ? '0 0 20px rgba(255, 255, 255, 0.1)'
-                          : 'none'
+                        background:
+                          focusedField === 'email'
+                            ? 'rgba(255, 255, 255, 0.08)'
+                            : 'rgba(255, 255, 255, 0.05)',
+                        border:
+                          focusedField === 'email'
+                            ? '1px solid rgba(255, 255, 255, 0.2)'
+                            : '1px solid rgba(255, 255, 255, 0.1)',
+                        boxShadow:
+                          focusedField === 'email' ? '0 0 20px rgba(255, 255, 255, 0.1)' : 'none',
                       }}
                     />
 
@@ -398,7 +396,7 @@ const ChronosLoginCinematic = ({ onLogin }) => {
                       className="h-full bg-gradient-to-r from-white to-gray-400"
                       initial={{ width: '0%' }}
                       animate={{
-                        width: validationState.email ? '100%' : `${(email.length / 15) * 100}%`
+                        width: validationState.email ? '100%' : `${(email.length / 15) * 100}%`,
                       }}
                       transition={{ duration: 0.3 }}
                     />
@@ -410,7 +408,7 @@ const ChronosLoginCinematic = ({ onLogin }) => {
               <div className="relative">
                 <motion.div
                   animate={{
-                    scale: focusedField === 'password' ? 1.02 : 1
+                    scale: focusedField === 'password' ? 1.02 : 1,
                   }}
                   transition={{ duration: 0.2 }}
                 >
@@ -420,7 +418,7 @@ const ChronosLoginCinematic = ({ onLogin }) => {
                       className="absolute left-4 top-1/2 -translate-y-1/2 z-10"
                       animate={{
                         scale: focusedField === 'password' ? 1.1 : 1,
-                        rotate: focusedField === 'password' ? [0, -5, 5, 0] : 0
+                        rotate: focusedField === 'password' ? [0, -5, 5, 0] : 0,
                       }}
                       transition={{ duration: 0.5 }}
                     >
@@ -437,15 +435,18 @@ const ChronosLoginCinematic = ({ onLogin }) => {
                       placeholder="Password"
                       className="w-full pl-12 pr-12 py-4 rounded-xl text-white placeholder-gray-500 outline-none transition-all duration-300"
                       style={{
-                        background: focusedField === 'password'
-                          ? 'rgba(255, 255, 255, 0.08)'
-                          : 'rgba(255, 255, 255, 0.05)',
-                        border: focusedField === 'password'
-                          ? '1px solid rgba(255, 255, 255, 0.2)'
-                          : '1px solid rgba(255, 255, 255, 0.1)',
-                        boxShadow: focusedField === 'password'
-                          ? '0 0 20px rgba(255, 255, 255, 0.1)'
-                          : 'none'
+                        background:
+                          focusedField === 'password'
+                            ? 'rgba(255, 255, 255, 0.08)'
+                            : 'rgba(255, 255, 255, 0.05)',
+                        border:
+                          focusedField === 'password'
+                            ? '1px solid rgba(255, 255, 255, 0.2)'
+                            : '1px solid rgba(255, 255, 255, 0.1)',
+                        boxShadow:
+                          focusedField === 'password'
+                            ? '0 0 20px rgba(255, 255, 255, 0.1)'
+                            : 'none',
                       }}
                     />
 
@@ -455,10 +456,7 @@ const ChronosLoginCinematic = ({ onLogin }) => {
                       onClick={() => setShowPassword(!showPassword)}
                       className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
                     >
-                      <motion.div
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
+                      <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                         {showPassword ? (
                           <EyeOff className="w-5 h-5" />
                         ) : (
@@ -477,11 +475,12 @@ const ChronosLoginCinematic = ({ onLogin }) => {
                     <motion.div
                       className="h-full"
                       style={{
-                        background: password.length < 6
-                          ? 'linear-gradient(to right, #ef4444, #f59e0b)'
-                          : password.length < 10
-                          ? 'linear-gradient(to right, #f59e0b, #10b981)'
-                          : 'linear-gradient(to right, #10b981, #06b6d4)'
+                        background:
+                          password.length < 6
+                            ? 'linear-gradient(to right, #ef4444, #f59e0b)'
+                            : password.length < 10
+                              ? 'linear-gradient(to right, #f59e0b, #10b981)'
+                              : 'linear-gradient(to right, #10b981, #06b6d4)',
                       }}
                       initial={{ width: '0%' }}
                       animate={{ width: `${(password.length / 12) * 100}%` }}
@@ -500,22 +499,23 @@ const ChronosLoginCinematic = ({ onLogin }) => {
                 className="w-full py-4 rounded-xl font-bold text-black relative overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{
                   background: 'linear-gradient(135deg, #ffffff 0%, #cccccc 100%)',
-                  boxShadow: '0 10px 30px rgba(255, 255, 255, 0.2)'
+                  boxShadow: '0 10px 30px rgba(255, 255, 255, 0.2)',
                 }}
               >
                 {/* Efecto de brillo animado */}
                 <motion.div
                   className="absolute inset-0"
                   style={{
-                    background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)'
+                    background:
+                      'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
                   }}
                   animate={{
-                    x: ['-100%', '100%']
+                    x: ['-100%', '100%'],
                   }}
                   transition={{
                     duration: 2,
                     repeat: Infinity,
-                    ease: 'linear'
+                    ease: 'linear',
                   }}
                 />
 
@@ -552,15 +552,15 @@ const ChronosLoginCinematic = ({ onLogin }) => {
                   key={i}
                   whileHover={{ scale: 1.2, color: '#ffffff' }}
                   animate={{
-                    y: [0, -5, 0]
+                    y: [0, -5, 0],
                   }}
                   transition={{
                     y: {
                       duration: 2,
                       delay: i * 0.3,
                       repeat: Infinity,
-                      ease: 'easeInOut'
-                    }
+                      ease: 'easeInOut',
+                    },
                   }}
                 >
                   <Icon className="w-4 h-4" />
@@ -575,7 +575,7 @@ const ChronosLoginCinematic = ({ onLogin }) => {
 };
 
 ChronosLoginCinematic.propTypes = {
-  onLogin: PropTypes.func.isRequired
+  onLogin: PropTypes.func.isRequired,
 };
 
 export default ChronosLoginCinematic;

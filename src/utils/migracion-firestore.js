@@ -4,8 +4,8 @@
  * ║   Migra datos_excel_reales_completos.json a Firestore correctamente       ║
  * ╚════════════════════════════════════════════════════════════════════════════╝
  */
-
 import { collection, doc, runTransaction, serverTimestamp, writeBatch } from 'firebase/firestore';
+
 import { db } from '../chronos-system/config/firebase';
 import datosExcel from '../data/datos_excel_reales_completos.json';
 
@@ -35,7 +35,7 @@ export const migrarDatosCompletos = async () => {
     console.log('💰 Migrando ventas del Control Maestro...');
     const ventasMigradas = await migrarControlMaestro(datosExcel.controlMaestro || []);
     resultados.ventas = ventasMigradas.length;
-    resultados.clientes = new Set(ventasMigradas.map(v => v.clienteId)).size;
+    resultados.clientes = new Set(ventasMigradas.map((v) => v.clienteId)).size;
 
     // 3. Migrar datos de cada banco (movimientos históricos)
     console.log('🏦 Migrando movimientos bancarios...');
@@ -183,11 +183,12 @@ const migrarControlMaestro = async (controlMaestro) => {
         }
 
         // 2. Determinar estado de pago
-        const estadoPago = registro.estatus === 'Pagado'
-          ? 'pagado'
-          : registro.estatus === 'Parcial'
-            ? 'parcial'
-            : 'pendiente';
+        const estadoPago =
+          registro.estatus === 'Pagado'
+            ? 'pagado'
+            : registro.estatus === 'Parcial'
+              ? 'parcial'
+              : 'pendiente';
 
         const montoPagado = estadoPago === 'pagado' ? registro.ingreso : 0;
         const saldoPendiente = registro.ingreso - montoPagado;

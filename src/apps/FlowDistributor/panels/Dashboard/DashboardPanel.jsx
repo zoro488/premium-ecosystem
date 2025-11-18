@@ -1,16 +1,15 @@
-
 export const DashboardPanel = ({ setActivePanel }) => {
   const metrics = [
     { title: 'Ventas Hoy', value: '$45,231', change: '+12%' },
     { title: 'Órdenes Pendientes', value: '23', change: '-5%' },
     { title: 'Inventario Bajo', value: '8', change: '+2' },
-    { title: 'Bancos Total', value: '$1.2M', change: '+8%' }
+    { title: 'Bancos Total', value: '$1.2M', change: '+8%' },
   ];
 
   return (
     <div className="dashboard-panel">
       <div className="metrics-grid">
-        {metrics.map(metric => (
+        {metrics.map((metric) => (
           <div key={metric.title} className="metric-card">
             <h4>{metric.title}</h4>
             <p className="metric-value">{metric.value}</p>

@@ -1,8 +1,6 @@
 import { Suspense, lazy, useEffect, useState } from 'react';
 import { Route, BrowserRouter as Router, Routes, useLocation, useNavigate } from 'react-router-dom';
 
-
-
 import { motion } from 'framer-motion';
 import {
   ArrowLeft,

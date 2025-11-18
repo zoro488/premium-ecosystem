@@ -21,11 +21,11 @@ const exchangeSystem = createExchangeSystem({
 
   // Umbrales de alertas
   alertThresholds: {
-    priceChange: 0.5,        // 0.5% cambio → alerta
-    volatility: 0.20,         // 20% volatilidad → alerta
-    spread: 0.50,             // $0.50 MXN spread → alerta
-    inventoryImbalance: 0.70, // 70% en una moneda → alerta
-  }
+    priceChange: 0.5, // 0.5% cambio → alerta
+    volatility: 0.2, // 20% volatilidad → alerta
+    spread: 0.5, // $0.50 MXN spread → alerta
+    inventoryImbalance: 0.7, // 70% en una moneda → alerta
+  },
 });
 
 /**
@@ -34,7 +34,7 @@ const exchangeSystem = createExchangeSystem({
 export const ExchangeDashboard = () => {
   // Estado del inventario (conectar con tu base de datos)
   const [inventory, setInventory] = useState({
-    usd: 50000,  // $50,000 USD
+    usd: 50000, // $50,000 USD
     mxn: 800000, // $800,000 MXN
   });
 
@@ -98,14 +98,14 @@ export const ExchangeDashboard = () => {
 
     // Actualizar inventario
     if (type === 'BUY_USD') {
-      setInventory(prev => ({
+      setInventory((prev) => ({
         usd: prev.usd + amount,
-        mxn: prev.mxn - (amount * currentRate.buy),
+        mxn: prev.mxn - amount * currentRate.buy,
       }));
     } else if (type === 'SELL_USD') {
-      setInventory(prev => ({
+      setInventory((prev) => ({
         usd: prev.usd - amount,
-        mxn: prev.mxn + (amount * currentRate.sell),
+        mxn: prev.mxn + amount * currentRate.sell,
       }));
     }
 
@@ -133,9 +133,13 @@ export const ExchangeDashboard = () => {
                 key={index}
                 className={`
                   p-3 rounded-lg
-                  ${alert.severity === 'HIGH' ? 'bg-zinc-9000/20' :
-                    alert.severity === 'MEDIUM' ? 'bg-zinc-9000/20' :
-                    'bg-zinc-800/20'}
+                  ${
+                    alert.severity === 'HIGH'
+                      ? 'bg-zinc-9000/20'
+                      : alert.severity === 'MEDIUM'
+                        ? 'bg-zinc-9000/20'
+                        : 'bg-zinc-800/20'
+                  }
                 `}
               >
                 <div className="flex items-center justify-between">
@@ -289,7 +293,7 @@ export const calculateProfit = (amount, buyRate, sellRate) => {
 
 // Calcular spread óptimo según condiciones
 export const calculateOptimalSpread = (volatility, inventoryBalance, timeOfDay) => {
-  let baseSpread = 0.30;
+  let baseSpread = 0.3;
 
   // Ajuste por volatilidad
   if (volatility > 0.15) {
@@ -311,7 +315,7 @@ export const calculateOptimalSpread = (volatility, inventoryBalance, timeOfDay) 
     baseSpread += 0.05; // Mayor spread en hora pico
   }
 
-  return Math.max(0.20, Math.min(0.50, baseSpread)); // Entre 0.20 y 0.50
+  return Math.max(0.2, Math.min(0.5, baseSpread)); // Entre 0.20 y 0.50
 };
 
 // Determinar si es buen momento para operar

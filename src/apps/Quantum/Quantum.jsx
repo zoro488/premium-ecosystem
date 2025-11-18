@@ -406,9 +406,7 @@ const Quantum = () => {
               </div>
               <div>
                 <h1 className="text-3xl font-bold">Quantum</h1>
-                <p className="text-zinc-200 text-sm">
-                  Sistema de Procesamiento Cuántico Avanzado
-                </p>
+                <p className="text-zinc-200 text-sm">Sistema de Procesamiento Cuántico Avanzado</p>
               </div>
             </div>
             <div className="flex items-center gap-3">

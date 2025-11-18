@@ -17,7 +17,7 @@ export const FlowDistributorCore = () => {
     ventas: VentasPanel,
     almacen: AlmacenPanel,
     bancos: BancosPanel,
-    ia: PanelIA
+    ia: PanelIA,
   };
 
   const ActiveComponent = panels[activePanel] || DashboardPanel;

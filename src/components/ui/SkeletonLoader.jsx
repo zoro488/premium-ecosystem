@@ -5,10 +5,6 @@
  */
 import { motion } from 'framer-motion';
 
-
-
-
-
 // Skeleton base component
 export const Skeleton = ({ className = '', variant = 'default', ...props }) => {
   const variants = {

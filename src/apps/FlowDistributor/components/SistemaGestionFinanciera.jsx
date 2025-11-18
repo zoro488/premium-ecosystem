@@ -65,7 +65,7 @@ const SECCIONES = [
     icon: Building2,
     color: 'from-amber-500 to-orange-400',
     bg: 'from-amber-500/20 to-orange-500/10',
-  componente: PanelBovedaMonteFinanciero,
+    componente: PanelBovedaMonteFinanciero,
   },
   {
     id: 'boveda-usa',
@@ -74,7 +74,7 @@ const SECCIONES = [
     icon: DollarSign,
     color: 'from-zinc-800 to-zinc-800',
     bg: 'from-zinc-800/20 to-zinc-800/10',
-  componente: PanelBovedaUSAUltra,
+    componente: PanelBovedaUSAUltra,
   },
   {
     id: 'azteca',
@@ -83,7 +83,7 @@ const SECCIONES = [
     icon: Building2,
     color: 'from-indigo-500 to-zinc-800',
     bg: 'from-indigo-500/20 to-zinc-800/10',
-  componente: PanelAztecaUltra,
+    componente: PanelAztecaUltra,
   },
   {
     id: 'leftie',
@@ -92,7 +92,7 @@ const SECCIONES = [
     icon: Activity,
     color: 'from-teal-500 to-green-500',
     bg: 'from-teal-500/20 to-green-500/10',
-  componente: PanelLeftieUltra,
+    componente: PanelLeftieUltra,
   },
   {
     id: 'profit',
@@ -101,7 +101,7 @@ const SECCIONES = [
     icon: TrendingUp,
     color: 'from-green-500 to-emerald-500',
     bg: 'from-green-500/20 to-emerald-500/10',
-  componente: PanelProfitUltra,
+    componente: PanelProfitUltra,
   },
   {
     id: 'ventas',
@@ -110,7 +110,7 @@ const SECCIONES = [
     icon: ShoppingCart,
     color: 'from-green-500 to-emerald-400',
     bg: 'from-green-500/20 to-emerald-500/10',
-  componente: PanelVentaLocal,
+    componente: PanelVentaLocal,
   },
   {
     id: 'gya',
@@ -119,7 +119,7 @@ const SECCIONES = [
     icon: DollarSign,
     color: 'from-zinc-800 to-zinc-700',
     bg: 'from-zinc-800/20 to-zinc-800/10',
-  componente: PanelGYAUltra,
+    componente: PanelGYAUltra,
   },
   {
     id: 'almacen',
@@ -128,7 +128,7 @@ const SECCIONES = [
     icon: Package,
     color: 'from-zinc-800 to-zinc-800',
     bg: 'from-zinc-800/20 to-zinc-800/10',
-  componente: PanelAlmacenUltra,
+    componente: PanelAlmacenUltra,
   },
   {
     id: 'ordenes',
@@ -137,7 +137,7 @@ const SECCIONES = [
     icon: TrendingUp,
     color: 'from-amber-500 to-orange-400',
     bg: 'from-amber-500/20 to-orange-500/10',
-  componente: PanelOrdenesCompraUltra,
+    componente: PanelOrdenesCompraUltra,
   },
   {
     id: 'distribuidores',
@@ -146,7 +146,7 @@ const SECCIONES = [
     icon: Users,
     color: 'from-indigo-500 to-zinc-800',
     bg: 'from-indigo-500/20 to-zinc-800/10',
-  componente: PanelDistribuidoresUltra,
+    componente: PanelDistribuidoresUltra,
   },
 ];
 
@@ -262,7 +262,7 @@ Sidebar.propTypes = {
   seccionActiva: PropTypes.string.isRequired,
   onCambiarSeccion: PropTypes.func.isRequired,
   sidebarAbierto: PropTypes.bool.isRequired,
-  onToggleSidebar: PropTypes.func.isRequired
+  onToggleSidebar: PropTypes.func.isRequired,
 };
 
 /**

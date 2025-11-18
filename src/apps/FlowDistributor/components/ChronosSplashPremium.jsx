@@ -41,7 +41,7 @@ const ChronosSplashPremium = ({ onComplete, duration = 5000 }) => {
           setTimeout(onComplete, 1000);
           return 100;
         }
-        return prev + (100 / (duration / 50));
+        return prev + 100 / (duration / 50);
       });
     }, 50);
 
@@ -310,13 +310,8 @@ const ChronosSplashPremium = ({ onComplete, duration = 5000 }) => {
 
             {/* Porcentaje */}
             <div className="flex items-center justify-between mt-3">
-              <span className="text-white/40 text-xs tracking-wider font-light">
-                LOADING
-              </span>
-              <motion.span
-                className="text-white/60 text-xs font-mono"
-                key={Math.floor(progress)}
-              >
+              <span className="text-white/40 text-xs tracking-wider font-light">LOADING</span>
+              <motion.span className="text-white/60 text-xs font-mono" key={Math.floor(progress)}>
                 {Math.floor(progress)}%
               </motion.span>
             </div>
@@ -354,12 +349,8 @@ const ChronosSplashPremium = ({ onComplete, duration = 5000 }) => {
             animate={{ opacity: 1 }}
             transition={{ delay: 2.5 }}
           >
-            <p className="text-white/30 text-xs tracking-wider font-light mb-1">
-              CHRONOS v2.0.0
-            </p>
-            <p className="text-white/20 text-xs font-light">
-              © 2025 Enterprise Solutions
-            </p>
+            <p className="text-white/30 text-xs tracking-wider font-light mb-1">CHRONOS v2.0.0</p>
+            <p className="text-white/20 text-xs font-light">© 2025 Enterprise Solutions</p>
           </motion.div>
 
           {/* Botón Skip (opcional) */}
@@ -412,7 +403,7 @@ const ChronosSplashPremium = ({ onComplete, duration = 5000 }) => {
 
 ChronosSplashPremium.propTypes = {
   onComplete: PropTypes.func.isRequired,
-  duration: PropTypes.number
+  duration: PropTypes.number,
 };
 
 export default ChronosSplashPremium;

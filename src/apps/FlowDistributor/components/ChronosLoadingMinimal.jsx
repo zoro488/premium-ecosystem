@@ -18,12 +18,12 @@ const ChronosLoadingMinimal = ({ progress = 0 }) => {
     { threshold: 40, text: 'Connecting Database', icon: '◑' },
     { threshold: 60, text: 'Securing Connection', icon: '◒' },
     { threshold: 80, text: 'Preparing Interface', icon: '◐' },
-    { threshold: 95, text: 'Almost Ready', icon: '◓' }
+    { threshold: 95, text: 'Almost Ready', icon: '◓' },
   ];
 
   useEffect(() => {
     // Actualizar mensaje basado en progreso
-    const currentMessage = messages.reverse().find(m => progress >= m.threshold);
+    const currentMessage = messages.reverse().find((m) => progress >= m.threshold);
     if (currentMessage) {
       setStatusMessage(currentMessage.text);
     }
@@ -33,7 +33,7 @@ const ChronosLoadingMinimal = ({ progress = 0 }) => {
       gsap.to(progressBarRef.current, {
         scaleX: progress / 100,
         duration: 0.3,
-        ease: 'power2.out'
+        ease: 'power2.out',
       });
     }
   }, [progress]);
@@ -44,19 +44,19 @@ const ChronosLoadingMinimal = ({ progress = 0 }) => {
       <motion.div
         className="absolute inset-0 opacity-5"
         animate={{
-          backgroundPosition: ['0% 0%', '100% 100%']
+          backgroundPosition: ['0% 0%', '100% 100%'],
         }}
         transition={{
           duration: 20,
           repeat: Infinity,
-          ease: 'linear'
+          ease: 'linear',
         }}
         style={{
           backgroundImage: `
             linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
             linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
           `,
-          backgroundSize: '50px 50px'
+          backgroundSize: '50px 50px',
         }}
       />
 
@@ -69,18 +69,18 @@ const ChronosLoadingMinimal = ({ progress = 0 }) => {
             width: Math.random() * 3 + 1,
             height: Math.random() * 3 + 1,
             left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`
+            top: `${Math.random() * 100}%`,
           }}
           animate={{
             y: [0, -100, 0],
             opacity: [0, 0.4, 0],
-            scale: [0, 1, 0]
+            scale: [0, 1, 0],
           }}
           transition={{
             duration: 5 + Math.random() * 3,
             delay: Math.random() * 3,
             repeat: Infinity,
-            ease: 'easeInOut'
+            ease: 'easeInOut',
           }}
         />
       ))}
@@ -91,12 +91,12 @@ const ChronosLoadingMinimal = ({ progress = 0 }) => {
         <motion.div
           animate={{
             scale: [1, 1.05, 1],
-            filter: ['brightness(1)', 'brightness(1.2)', 'brightness(1)']
+            filter: ['brightness(1)', 'brightness(1.2)', 'brightness(1)'],
           }}
           transition={{
             duration: 3,
             repeat: Infinity,
-            ease: 'easeInOut'
+            ease: 'easeInOut',
           }}
           className="mb-16"
         >
@@ -127,7 +127,7 @@ const ChronosLoadingMinimal = ({ progress = 0 }) => {
             transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
             className="text-lg"
           >
-            {messages.find(m => m.text === statusMessage)?.icon || '◐'}
+            {messages.find((m) => m.text === statusMessage)?.icon || '◐'}
           </motion.span>
           <span className="tracking-wide">{statusMessage}</span>
         </motion.div>
@@ -143,8 +143,9 @@ const ChronosLoadingMinimal = ({ progress = 0 }) => {
               style={{
                 width: '100%',
                 transform: 'scaleX(0)',
-                background: 'linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,1), rgba(255,255,255,0.3))',
-                boxShadow: '0 0 10px rgba(255,255,255,0.5)'
+                background:
+                  'linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,1), rgba(255,255,255,0.3))',
+                boxShadow: '0 0 10px rgba(255,255,255,0.5)',
               }}
             />
 
@@ -152,16 +153,17 @@ const ChronosLoadingMinimal = ({ progress = 0 }) => {
             <motion.div
               className="absolute inset-0"
               style={{
-                background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent)',
-                width: '30%'
+                background:
+                  'linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent)',
+                width: '30%',
               }}
               animate={{
-                x: ['-100%', '400%']
+                x: ['-100%', '400%'],
               }}
               transition={{
                 duration: 2,
                 repeat: Infinity,
-                ease: 'linear'
+                ease: 'linear',
               }}
             />
           </div>
@@ -173,15 +175,23 @@ const ChronosLoadingMinimal = ({ progress = 0 }) => {
                 key={point}
                 className="w-1 h-1 rounded-full"
                 style={{
-                  background: progress >= point ? '#ffffff' : 'rgba(255,255,255,0.2)'
+                  background: progress >= point ? '#ffffff' : 'rgba(255,255,255,0.2)',
                 }}
-                animate={progress >= point ? {
-                  scale: [1, 1.5, 1],
-                  boxShadow: ['0 0 0px rgba(255,255,255,0)', '0 0 8px rgba(255,255,255,1)', '0 0 0px rgba(255,255,255,0)']
-                } : {}}
+                animate={
+                  progress >= point
+                    ? {
+                        scale: [1, 1.5, 1],
+                        boxShadow: [
+                          '0 0 0px rgba(255,255,255,0)',
+                          '0 0 8px rgba(255,255,255,1)',
+                          '0 0 0px rgba(255,255,255,0)',
+                        ],
+                      }
+                    : {}
+                }
                 transition={{
                   duration: 0.5,
-                  delay: i * 0.1
+                  delay: i * 0.1,
                 }}
               />
             ))}
@@ -189,10 +199,7 @@ const ChronosLoadingMinimal = ({ progress = 0 }) => {
         </div>
 
         {/* Porcentaje con animación de conteo */}
-        <motion.div
-          className="mt-6 text-white/40 font-mono text-sm"
-          key={Math.floor(progress)}
-        >
+        <motion.div className="mt-6 text-white/40 font-mono text-sm" key={Math.floor(progress)}>
           <motion.span
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -208,12 +215,12 @@ const ChronosLoadingMinimal = ({ progress = 0 }) => {
           style={{ width: 200, x: '-50%' }}
           animate={{
             scaleX: [1, 1.2, 1],
-            opacity: [0.2, 0.4, 0.2]
+            opacity: [0.2, 0.4, 0.2],
           }}
           transition={{
             duration: 2,
             repeat: Infinity,
-            ease: 'easeInOut'
+            ease: 'easeInOut',
           }}
         />
       </div>
@@ -222,7 +229,7 @@ const ChronosLoadingMinimal = ({ progress = 0 }) => {
 };
 
 ChronosLoadingMinimal.propTypes = {
-  progress: PropTypes.number
+  progress: PropTypes.number,
 };
 
 export default ChronosLoadingMinimal;

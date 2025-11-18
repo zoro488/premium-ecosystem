@@ -2,11 +2,12 @@
  * 🔐 CHRONOS LOGIN PAGE - Ultra Premium
  * Login page con glassmorphism y animaciones épicas
  */
+import { useState } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowRight, Chrome, Eye, EyeOff, Github, Lock, Mail, Sparkles } from 'lucide-react';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+
 import { ChronosLogoWithText } from './ChronosLogos';
 
 export function ChronosLoginPage({ onLogin, onSocialLogin }) {
@@ -45,7 +46,6 @@ export function ChronosLoginPage({ onLogin, onSocialLogin }) {
 
   return (
     <div className="min-h-screen w-full overflow-hidden relative bg-black flex items-center justify-center">
-
       {/* ========================================
           FONDO CÓSMICO ANIMADO
       ======================================== */}
@@ -59,16 +59,16 @@ export function ChronosLoginPage({ onLogin, onSocialLogin }) {
               className="absolute w-1 h-1 bg-white rounded-full"
               style={{
                 left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`
+                top: `${Math.random() * 100}%`,
               }}
               animate={{
                 opacity: [0.2, 1, 0.2],
-                scale: [1, 1.5, 1]
+                scale: [1, 1.5, 1],
               }}
               transition={{
                 duration: 3 + Math.random() * 4,
                 repeat: Infinity,
-                delay: Math.random() * 3
+                delay: Math.random() * 3,
               }}
             />
           );
@@ -78,7 +78,7 @@ export function ChronosLoginPage({ onLogin, onSocialLogin }) {
         <motion.div
           className="absolute inset-0 flex items-center justify-center"
           animate={{ rotate: 360 }}
-          transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 100, repeat: Infinity, ease: 'linear' }}
         >
           <div className="absolute w-[800px] h-[800px] rounded-full border border-blue-500/10" />
           <div className="absolute w-[600px] h-[600px] rounded-full border border-zinc-700/10" />
@@ -89,7 +89,8 @@ export function ChronosLoginPage({ onLogin, onSocialLogin }) {
         <div
           className="absolute inset-0"
           style={{
-            background: 'radial-gradient(circle at 50% 40%, rgba(102,126,234,0.15) 0%, rgba(118,75,162,0.08) 30%, transparent 70%)'
+            background:
+              'radial-gradient(circle at 50% 40%, rgba(102,126,234,0.15) 0%, rgba(118,75,162,0.08) 30%, transparent 70%)',
           }}
         />
       </div>
@@ -102,11 +103,10 @@ export function ChronosLoginPage({ onLogin, onSocialLogin }) {
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{
           duration: 0.8,
-          ease: [0.43, 0.13, 0.23, 0.96]
+          ease: [0.43, 0.13, 0.23, 0.96],
         }}
         className="relative z-10 w-full max-w-md mx-4"
       >
-
         {/* CARD PRINCIPAL CON GLASSMORPHISM */}
         <div
           className="relative overflow-hidden rounded-3xl p-8 md:p-10"
@@ -114,14 +114,15 @@ export function ChronosLoginPage({ onLogin, onSocialLogin }) {
             background: 'rgba(15, 15, 25, 0.75)',
             backdropFilter: 'blur(20px)',
             border: '1px solid rgba(255, 255, 255, 0.1)',
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05)'
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05)',
           }}
         >
           {/* Efecto de luz superior */}
           <div
             className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px"
             style={{
-              background: 'linear-gradient(90deg, transparent 0%, rgba(102,126,234,0.8) 50%, transparent 100%)'
+              background:
+                'linear-gradient(90deg, transparent 0%, rgba(102,126,234,0.8) 50%, transparent 100%)',
             }}
           />
 
@@ -146,9 +147,7 @@ export function ChronosLoginPage({ onLogin, onSocialLogin }) {
               <Sparkles className="w-6 h-6 text-yellow-400" />
               Bienvenido
             </h2>
-            <p className="text-gray-400">
-              Ingresa a tu cuenta CHRONOS
-            </p>
+            <p className="text-gray-400">Ingresa a tu cuenta CHRONOS</p>
           </motion.div>
 
           {/* Mensaje de Error */}
@@ -160,16 +159,13 @@ export function ChronosLoginPage({ onLogin, onSocialLogin }) {
                 exit={{ opacity: 0, y: -10, height: 0 }}
                 className="mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/30 backdrop-blur-sm"
               >
-                <p className="text-red-400 text-sm text-center">
-                  {error}
-                </p>
+                <p className="text-red-400 text-sm text-center">{error}</p>
               </motion.div>
             )}
           </AnimatePresence>
 
           {/* FORMULARIO DE LOGIN */}
           <form onSubmit={handleSubmit} className="space-y-5">
-
             {/* Email Input */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -200,9 +196,7 @@ export function ChronosLoginPage({ onLogin, onSocialLogin }) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.7 }}
             >
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Contraseña
-              </label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">Contraseña</label>
               <div className="relative">
                 <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
                 <input
@@ -220,11 +214,7 @@ export function ChronosLoginPage({ onLogin, onSocialLogin }) {
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300 transition-colors"
                 >
-                  {showPassword ? (
-                    <EyeOff className="w-5 h-5" />
-                  ) : (
-                    <Eye className="w-5 h-5" />
-                  )}
+                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
               </div>
             </motion.div>
@@ -243,10 +233,7 @@ export function ChronosLoginPage({ onLogin, onSocialLogin }) {
                 />
                 Recordarme
               </label>
-              <button
-                type="button"
-                className="text-blue-400 hover:text-blue-300 transition-colors"
-              >
+              <button type="button" className="text-blue-400 hover:text-blue-300 transition-colors">
                 ¿Olvidaste tu contraseña?
               </button>
             </motion.div>
@@ -261,7 +248,7 @@ export function ChronosLoginPage({ onLogin, onSocialLogin }) {
               className="relative w-full py-4 rounded-xl font-semibold text-white overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed"
               style={{
                 background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
-                boxShadow: '0 0 30px rgba(102,126,234,0.4)'
+                boxShadow: '0 0 30px rgba(102,126,234,0.4)',
               }}
               whileHover={{ scale: isLoading ? 1 : 1.02 }}
               whileTap={{ scale: isLoading ? 1 : 0.98 }}
@@ -274,7 +261,7 @@ export function ChronosLoginPage({ onLogin, onSocialLogin }) {
                 transition={{
                   duration: 2,
                   repeat: Infinity,
-                  ease: 'linear'
+                  ease: 'linear',
                 }}
               />
 
@@ -309,9 +296,7 @@ export function ChronosLoginPage({ onLogin, onSocialLogin }) {
               <div className="w-full border-t border-white/10" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-[rgba(15,15,25,0.75)] text-gray-500">
-                O continúa con
-              </span>
+              <span className="px-4 bg-[rgba(15,15,25,0.75)] text-gray-500">O continúa con</span>
             </div>
           </motion.div>
 
@@ -365,8 +350,9 @@ export function ChronosLoginPage({ onLogin, onSocialLogin }) {
         <div
           className="absolute -bottom-40 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full pointer-events-none -z-10"
           style={{
-            background: 'radial-gradient(circle, rgba(102,126,234,0.3) 0%, rgba(118,75,162,0.2) 40%, transparent 70%)',
-            filter: 'blur(80px)'
+            background:
+              'radial-gradient(circle, rgba(102,126,234,0.3) 0%, rgba(118,75,162,0.2) 40%, transparent 70%)',
+            filter: 'blur(80px)',
           }}
         />
       </motion.div>
@@ -386,17 +372,17 @@ export function ChronosLoginPage({ onLogin, onSocialLogin }) {
               background: `linear-gradient(135deg, ${
                 i % 3 === 0 ? '#667eea' : i % 3 === 1 ? '#764ba2' : '#f093fb'
               } 0%, transparent 100%)`,
-              filter: 'blur(1px)'
+              filter: 'blur(1px)',
             }}
             animate={{
               y: [0, -100, 0],
-              opacity: [0, 0.6, 0]
+              opacity: [0, 0.6, 0],
             }}
             transition={{
               duration: 6 + Math.random() * 4,
               repeat: Infinity,
               delay: Math.random() * 4,
-              ease: "easeInOut"
+              ease: 'easeInOut',
             }}
           />
         );
@@ -406,7 +392,8 @@ export function ChronosLoginPage({ onLogin, onSocialLogin }) {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'radial-gradient(circle at center, transparent 0%, transparent 60%, rgba(0,0,0,0.5) 100%)'
+          background:
+            'radial-gradient(circle at center, transparent 0%, transparent 60%, rgba(0,0,0,0.5) 100%)',
         }}
       />
     </div>
@@ -415,7 +402,7 @@ export function ChronosLoginPage({ onLogin, onSocialLogin }) {
 
 ChronosLoginPage.propTypes = {
   onLogin: PropTypes.func.isRequired,
-  onSocialLogin: PropTypes.func.isRequired
+  onSocialLogin: PropTypes.func.isRequired,
 };
 
 export default ChronosLoginPage;

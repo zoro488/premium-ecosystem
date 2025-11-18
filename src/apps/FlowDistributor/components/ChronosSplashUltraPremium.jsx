@@ -30,26 +30,31 @@ const ChronosSplashUltraPremium = ({ onComplete, duration = 6000 }) => {
   const rotateY = useTransform(mouseX, [-300, 300], [-10, 10]);
 
   // Textos de carga épicos
-  const loadingTexts = useMemo(() => [
-    'QUANTUM PROCESSORS ONLINE',
-    'NEURAL NETWORKS SYNCHRONIZED',
-    'TIME MATRIX CALIBRATED',
-    'HOLOGRAPHIC INTERFACE ACTIVE',
-    'CHRONOS SYSTEM INITIALIZED',
-  ], []);
+  const loadingTexts = useMemo(
+    () => [
+      'QUANTUM PROCESSORS ONLINE',
+      'NEURAL NETWORKS SYNCHRONIZED',
+      'TIME MATRIX CALIBRATED',
+      'HOLOGRAPHIC INTERFACE ACTIVE',
+      'CHRONOS SYSTEM INITIALIZED',
+    ],
+    []
+  );
 
   // Partículas orbitales inteligentes
-  const particles = useMemo(() =>
-    Array.from({ length: 80 }, (_, i) => ({
-      id: i,
-      angle: (360 / 80) * i,
-      radius: 180 + (i % 4) * 40,
-      speed: 3 + (i % 5),
-      size: 1 + (i % 3) * 0.5,
-      delay: i * 0.015,
-      opacity: 0.3 + (i % 3) * 0.2,
-    }))
-  , []);
+  const particles = useMemo(
+    () =>
+      Array.from({ length: 80 }, (_, i) => ({
+        id: i,
+        angle: (360 / 80) * i,
+        radius: 180 + (i % 4) * 40,
+        speed: 3 + (i % 5),
+        size: 1 + (i % 3) * 0.5,
+        delay: i * 0.015,
+        opacity: 0.3 + (i % 3) * 0.2,
+      })),
+    []
+  );
 
   useEffect(() => {
     // Tracking del mouse
@@ -67,7 +72,7 @@ const ChronosSplashUltraPremium = ({ onComplete, duration = 6000 }) => {
           setTimeout(onComplete, 800);
           return 100;
         }
-        return prev + (100 / (duration / 60));
+        return prev + 100 / (duration / 60);
       });
     }, 60);
 
@@ -95,7 +100,7 @@ const ChronosSplashUltraPremium = ({ onComplete, duration = 6000 }) => {
           filter: 'blur(30px)',
         }}
         transition={{
-          exit: { duration: 1, ease: [0.76, 0, 0.24, 1] }
+          exit: { duration: 1, ease: [0.76, 0, 0.24, 1] },
         }}
         style={{ perspective: 2000 }}
       >
@@ -212,7 +217,8 @@ const ChronosSplashUltraPremium = ({ onComplete, duration = 6000 }) => {
             <motion.div
               className="relative w-80 h-80 rounded-full flex items-center justify-center"
               style={{
-                background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)',
+                background:
+                  'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)',
                 backdropFilter: 'blur(20px)',
                 border: '2px solid rgba(255, 255, 255, 0.2)',
                 boxShadow: `
@@ -372,7 +378,8 @@ const ChronosSplashUltraPremium = ({ onComplete, duration = 6000 }) => {
                 className="absolute inset-y-0 left-0 rounded-full"
                 style={{
                   width: `${progress}%`,
-                  background: 'linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.3) 100%)',
+                  background:
+                    'linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.3) 100%)',
                   backgroundSize: '200% 100%',
                 }}
                 animate={{
@@ -388,7 +395,8 @@ const ChronosSplashUltraPremium = ({ onComplete, duration = 6000 }) => {
                 <div
                   className="absolute inset-0 opacity-50"
                   style={{
-                    background: 'linear-gradient(180deg, rgba(255,255,255,0.6) 0%, transparent 50%)',
+                    background:
+                      'linear-gradient(180deg, rgba(255,255,255,0.6) 0%, transparent 50%)',
                   }}
                 />
               </motion.div>
@@ -396,9 +404,7 @@ const ChronosSplashUltraPremium = ({ onComplete, duration = 6000 }) => {
 
             {/* Estadísticas de progreso */}
             <div className="flex items-center justify-between mt-4 px-1">
-              <span className="text-white/40 text-xs tracking-wider font-light">
-                INITIALIZING
-              </span>
+              <span className="text-white/40 text-xs tracking-wider font-light">INITIALIZING</span>
               <motion.span
                 className="text-white/70 text-sm font-mono tabular-nums"
                 key={Math.floor(progress / 10)}
@@ -425,9 +431,10 @@ const ChronosSplashUltraPremium = ({ onComplete, duration = 6000 }) => {
                 animate={{
                   scale: i === Math.floor((progress / 100) * 5) ? [1, 1.5, 1] : 1,
                   opacity: i <= Math.floor((progress / 100) * 5) ? 0.8 : 0.2,
-                  backgroundColor: i <= Math.floor((progress / 100) * 5) ?
-                    'rgba(255, 255, 255, 0.8)' :
-                    'rgba(255, 255, 255, 0.2)',
+                  backgroundColor:
+                    i <= Math.floor((progress / 100) * 5)
+                      ? 'rgba(255, 255, 255, 0.8)'
+                      : 'rgba(255, 255, 255, 0.2)',
                 }}
                 transition={{
                   duration: 0.5,
@@ -482,7 +489,7 @@ const ChronosSplashUltraPremium = ({ onComplete, duration = 6000 }) => {
 
 ChronosSplashUltraPremium.propTypes = {
   onComplete: PropTypes.func.isRequired,
-  duration: PropTypes.number
+  duration: PropTypes.number,
 };
 
 export default ChronosSplashUltraPremium;

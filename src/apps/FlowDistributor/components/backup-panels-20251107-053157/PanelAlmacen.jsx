@@ -24,20 +24,20 @@ import { memo, useMemo, useState } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import {
-    Activity,
-    BarChart3,
-    Calendar,
-    CheckCircle,
-    Filter,
-    Grid,
-    List,
-    Package,
-    Search,
-    ShoppingCart,
-    TrendingDown,
-    TrendingUp,
-    Truck,
-    User
+  Activity,
+  BarChart3,
+  Calendar,
+  CheckCircle,
+  Filter,
+  Grid,
+  List,
+  Package,
+  Search,
+  ShoppingCart,
+  TrendingDown,
+  TrendingUp,
+  Truck,
+  User,
 } from 'lucide-react';
 
 // Importar Firestore
@@ -229,9 +229,12 @@ const PanelAlmacen = () => {
   const [modoVista, setModoVista] = useState('grid'); // 'grid', 'list'
 
   // 🔥 Cargar datos desde Firestore en tiempo real
-  const { data: ordenesCompra, loading: loadingOrdenes } = useFirestoreCollection('almacen_ordenes_compra');
-  const { data: ingresosAlmacen, loading: loadingIngresos } = useFirestoreCollection('almacen_ingresos');
-  const { data: salidasAlmacen, loading: loadingSalidas } = useFirestoreCollection('almacen_salidas');
+  const { data: ordenesCompra, loading: loadingOrdenes } =
+    useFirestoreCollection('almacen_ordenes_compra');
+  const { data: ingresosAlmacen, loading: loadingIngresos } =
+    useFirestoreCollection('almacen_ingresos');
+  const { data: salidasAlmacen, loading: loadingSalidas } =
+    useFirestoreCollection('almacen_salidas');
 
   // Mapear órdenes de compra al formato esperado
   const ORDENES_COMPRA_ALMACEN = useMemo(() => {

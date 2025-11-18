@@ -24,16 +24,16 @@ import { memo, useCallback, useMemo, useRef, useState } from 'react';
 
 import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import {
-    DollarSign,
-    Download,
-    Exchange,
-    Eye,
-    EyeOff,
-    Flag,
-    Globe,
-    Search,
-    Settings,
-    Shield,
+  DollarSign,
+  Download,
+  Exchange,
+  Eye,
+  EyeOff,
+  Flag,
+  Globe,
+  Search,
+  Settings,
+  Shield,
 } from 'lucide-react';
 import PropTypes from 'prop-types';
 

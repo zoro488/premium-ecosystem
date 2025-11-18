@@ -13,18 +13,22 @@ const ChronosCard = ({
   onClick,
   hoverable = true,
   glowOnHover = true,
-  index = 0
+  index = 0,
 }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
-      whileHover={hoverable ? {
-        scale: 1.02,
-        y: -4,
-        transition: { duration: 0.2 }
-      } : {}}
+      whileHover={
+        hoverable
+          ? {
+              scale: 1.02,
+              y: -4,
+              transition: { duration: 0.2 },
+            }
+          : {}
+      }
       onClick={onClick}
       className={`
         relative backdrop-blur-xl bg-white/5 border border-white/10
@@ -33,7 +37,7 @@ const ChronosCard = ({
         ${className}
       `}
       style={{
-        boxShadow: '0 4px 24px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.1)'
+        boxShadow: '0 4px 24px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.1)',
       }}
     >
       {/* Glow effect on hover */}
@@ -43,7 +47,8 @@ const ChronosCard = ({
           whileHover={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
           style={{
-            background: 'radial-gradient(circle at center, rgba(255,255,255,0.05), transparent 70%)'
+            background:
+              'radial-gradient(circle at center, rgba(255,255,255,0.05), transparent 70%)',
           }}
         />
       )}
@@ -53,13 +58,13 @@ const ChronosCard = ({
         <motion.div
           className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
           animate={{
-            x: ['-200%', '200%']
+            x: ['-200%', '200%'],
           }}
           transition={{
             duration: 3,
             repeat: Infinity,
             repeatDelay: 5,
-            ease: 'linear'
+            ease: 'linear',
           }}
           style={{ transform: 'skewX(-20deg)' }}
         />
@@ -80,24 +85,14 @@ const ChronosCard = ({
               </motion.div>
             )}
             <div className="flex-1">
-              {title && (
-                <h3 className="text-lg font-light text-white tracking-wider">
-                  {title}
-                </h3>
-              )}
-              {subtitle && (
-                <p className="text-xs text-white/40 mt-1">
-                  {subtitle}
-                </p>
-              )}
+              {title && <h3 className="text-lg font-light text-white tracking-wider">{title}</h3>}
+              {subtitle && <p className="text-xs text-white/40 mt-1">{subtitle}</p>}
             </div>
           </div>
         )}
 
         {/* Body */}
-        <div className="p-6">
-          {children}
-        </div>
+        <div className="p-6">{children}</div>
       </div>
 
       {/* Border glow */}
@@ -105,7 +100,7 @@ const ChronosCard = ({
         className="absolute inset-0 pointer-events-none"
         style={{
           borderRadius: 'inherit',
-          background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%)'
+          background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%)',
         }}
       />
     </motion.div>
@@ -122,7 +117,7 @@ export const ChronosStatCard = ({
   trend,
   trendLabel,
   color = 'rgba(255,255,255,0.9)',
-  index = 0
+  index = 0,
 }) => {
   const isPositive = trend > 0;
 
@@ -138,7 +133,7 @@ export const ChronosStatCard = ({
       <div
         className="absolute top-0 right-0 w-32 h-32 blur-3xl opacity-20"
         style={{
-          background: `radial-gradient(circle, ${color}, transparent)`
+          background: `radial-gradient(circle, ${color}, transparent)`,
         }}
       />
 
@@ -154,9 +149,7 @@ export const ChronosStatCard = ({
       )}
 
       {/* Title */}
-      <p className="text-sm text-white/60 mb-2 tracking-wide">
-        {title}
-      </p>
+      <p className="text-sm text-white/60 mb-2 tracking-wide">{title}</p>
 
       {/* Value animado */}
       <motion.div
@@ -174,17 +167,11 @@ export const ChronosStatCard = ({
           <motion.div
             animate={{ y: isPositive ? [-2, 2, -2] : [2, -2, 2] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className={`text-sm font-medium ${
-              isPositive ? 'text-zinc-200' : 'text-zinc-200'
-            }`}
+            className={`text-sm font-medium ${isPositive ? 'text-zinc-200' : 'text-zinc-200'}`}
           >
             {isPositive ? '↑' : '↓'} {Math.abs(trend)}%
           </motion.div>
-          {trendLabel && (
-            <span className="text-xs text-white/40">
-              {trendLabel}
-            </span>
-          )}
+          {trendLabel && <span className="text-xs text-white/40">{trendLabel}</span>}
         </div>
       )}
 
@@ -192,13 +179,13 @@ export const ChronosStatCard = ({
       <motion.div
         className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none"
         animate={{
-          x: ['-100%', '200%']
+          x: ['-100%', '200%'],
         }}
         transition={{
           duration: 2,
           repeat: Infinity,
           repeatDelay: 3,
-          ease: 'linear'
+          ease: 'linear',
         }}
       />
     </motion.div>

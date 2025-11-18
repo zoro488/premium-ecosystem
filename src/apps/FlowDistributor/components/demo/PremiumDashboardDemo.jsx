@@ -119,7 +119,9 @@ const PremiumDashboardDemo = () => {
   ];
 
   return (
-    <div className={`min-h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-50'} transition-colors duration-300`}>
+    <div
+      className={`min-h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-50'} transition-colors duration-300`}
+    >
       {/* Background Effects */}
       <PremiumBackground theme="aurora" interactive={true} />
 
@@ -136,37 +138,23 @@ const PremiumDashboardDemo = () => {
       {/* Main Content */}
       <div className="relative z-10 max-w-screen-2xl mx-auto px-6 pt-24 pb-12">
         {/* Welcome Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
-        >
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
           <h1 className="text-4xl font-bold text-white mb-2 text-gradient">
             ¡Bienvenido de nuevo! 👋
           </h1>
-          <p className="text-gray-400 text-lg">
-            Aquí está un resumen de tu negocio hoy
-          </p>
+          <p className="text-gray-400 text-lg">Aquí está un resumen de tu negocio hoy</p>
         </motion.div>
 
         {/* Metrics Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 stagger-fade-in">
           {metrics.map((metric, index) => (
-            <MetricCardPremium
-              key={index}
-              {...metric}
-              delay={index * 0.1}
-            />
+            <MetricCardPremium key={index} {...metric} delay={index * 0.1} />
           ))}
         </div>
 
         {/* Tab Navigation */}
         <div className="mb-8">
-          <TabNavigation
-            tabs={tabs}
-            activeTab={activeTab}
-            onChange={setActiveTab}
-          />
+          <TabNavigation tabs={tabs} activeTab={activeTab} onChange={setActiveTab} />
         </div>
 
         {/* Stats Widgets */}
@@ -204,9 +192,7 @@ const PremiumDashboardDemo = () => {
             <GlassCard3D className="h-full">
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h3 className="text-2xl font-bold text-white mb-1">
-                    Actividad Reciente
-                  </h3>
+                  <h3 className="text-2xl font-bold text-white mb-1">Actividad Reciente</h3>
                   <p className="text-gray-400">Últimas transacciones y eventos</p>
                 </div>
                 <div className="flex gap-2">
@@ -250,9 +236,7 @@ const PremiumDashboardDemo = () => {
           <div className="space-y-6">
             {/* Progress Card */}
             <GlassCard3D>
-              <h3 className="text-xl font-bold text-white mb-6">
-                Objetivos del Mes
-              </h3>
+              <h3 className="text-xl font-bold text-white mb-6">Objetivos del Mes</h3>
               <div className="flex flex-col items-center justify-center py-6">
                 <ProgressRing
                   percentage={75}
@@ -270,9 +254,7 @@ const PremiumDashboardDemo = () => {
 
             {/* Quick Actions Card */}
             <GlassCard3D>
-              <h3 className="text-xl font-bold text-white mb-4">
-                Acciones Rápidas
-              </h3>
+              <h3 className="text-xl font-bold text-white mb-4">Acciones Rápidas</h3>
               <div className="space-y-3">
                 {quickActions.map((action, index) => (
                   <QuickActionButton

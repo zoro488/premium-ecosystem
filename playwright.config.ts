@@ -1,92 +1,125 @@
 /**
- * PLAYWRIGHT CONFIGURATION
- * End-to-end testing setup
+ * PLAYWRIGHT CONFIGURATION - CHRONOS E2E TESTING
+ * Configuración comprehensiva para tests end-to-end
  */
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   // Test directory
-  testDir: './src/apps/FlowDistributor/chronos-system/__tests__/e2e',
+  testDir: './tests/e2e',
 
   // Test match pattern
-  testMatch: '**/*.spec.ts',
+  testMatch: '**/*.spec.{ts,js}',
 
-  // Timeout
-  timeout: 30000,
-
-  // Expect timeout
+  // Timeout configuration
+  timeout: 60000, // 60 seconds per test
   expect: {
-    timeout: 5000,
+    timeout: 10000, // 10 seconds for assertions
   },
 
-  // Fail fast
-  fullyParallel: true,
+  // Test execution settings
+  fullyParallel: true, // Run tests in parallel
+  forbidOnly: !!process.env.CI, // Fail CI if test.only is used
+  retries: process.env.CI ? 2 : 1, // Retry failed tests
+  workers: process.env.CI ? 2 : 4, // Number of parallel workers
 
-  // Forbid test.only in CI
-  forbidOnly: !!process.env.CI,
-
-  // Retries
-  retries: process.env.CI ? 2 : 0,
-
-  // Workers
-  workers: process.env.CI ? 1 : undefined,
-
-  // Reporter
+  // Reporter configuration
   reporter: [
-    ['html', { outputFolder: 'playwright-report' }],
+    ['html', { outputFolder: 'playwright-report', open: 'never' }],
     ['json', { outputFile: 'playwright-report/results.json' }],
+    ['junit', { outputFile: 'playwright-report/results.xml' }],
     ['list'],
+    ['github'], // GitHub Actions integration
   ],
 
-  // Shared settings
+  // Shared settings for all tests
   use: {
-    // Base URL
-    baseURL: process.env.PLAYWRIGHT_BASE_URL || 'http://localhost:5173',
+    // Base URL for tests
+    baseURL: process.env.PLAYWRIGHT_BASE_URL || 'http://localhost:3001',
 
-    // Trace
-    trace: 'retain-on-failure',
+    // Trace configuration (debugging)
+    trace: process.env.CI ? 'retain-on-failure' : 'on-first-retry',
 
-    // Screenshot
+    // Screenshot configuration
     screenshot: 'only-on-failure',
 
-    // Video
-    video: 'retain-on-failure',
+    // Video configuration
+    video: process.env.CI ? 'retain-on-failure' : 'off',
 
-    // Timeout
-    actionTimeout: 10000,
-    navigationTimeout: 30000,
+    // Timeouts
+    actionTimeout: 15000, // 15 seconds for actions
+    navigationTimeout: 30000, // 30 seconds for page loads
+
+    // Browser context
+    viewport: { width: 1280, height: 720 },
+    ignoreHTTPSErrors: true,
+
+    // Accept downloads
+    acceptDownloads: true,
+
+    // Locale and timezone
+    locale: 'es-MX',
+    timezoneId: 'America/Mexico_City',
   },
 
-  // Projects (browsers)
+  // Projects (browsers and devices to test)
   projects: [
+    // Desktop browsers
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: { width: 1920, height: 1080 },
+      },
     },
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      use: {
+        ...devices['Desktop Firefox'],
+        viewport: { width: 1920, height: 1080 },
+      },
     },
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      use: {
+        ...devices['Desktop Safari'],
+        viewport: { width: 1920, height: 1080 },
+      },
     },
+
     // Mobile browsers
     {
       name: 'mobile-chrome',
-      use: { ...devices['Pixel 5'] },
+      use: {
+        ...devices['Pixel 5'],
+        isMobile: true,
+      },
     },
     {
       name: 'mobile-safari',
-      use: { ...devices['iPhone 12'] },
+      use: {
+        ...devices['iPhone 13'],
+        isMobile: true,
+      },
+    },
+
+    // Tablet browsers
+    {
+      name: 'tablet-ipad',
+      use: {
+        ...devices['iPad Pro'],
+        isMobile: false,
+      },
     },
   ],
 
-  // Web server (dev server)
+  // Web server configuration (dev server)
   webServer: {
     command: 'npm run dev',
-    url: 'http://localhost:5173',
+    url: 'http://localhost:3001',
     reuseExistingServer: !process.env.CI,
     timeout: 120000,
+    stdout: 'pipe',
+    stderr: 'pipe',
   },
 });

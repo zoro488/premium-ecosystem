@@ -1,111 +1,33 @@
-name: Feature Request
-description: Sugerir una nueva funcionalidad o mejora
-title: "[FEATURE] "
-labels: ["enhancement", "needs-review"]
-assignees: []
-
+name: ⭐️ Feature Request
+description: Suggest a new feature or improvement for the GitHub Copilot CLI.
+type: Feature
+labels:
+  - "triage"
 body:
   - type: markdown
     attributes:
       value: |
-        ¡Gracias por tu sugerencia! Completa la siguiente información para que podamos evaluar tu propuesta.
-
-  - type: dropdown
-    id: app
+        <br />
+        Thank you for taking the time to suggest a feature! Please answer each question below to the best of your ability; it is okay to leave questions blank if you have to.
+  - type: input
+    id: title
     attributes:
-      label: Aplicación Objetivo
-      description: ¿Para qué aplicación es esta funcionalidad?
-      options:
-        - FlowDistributor
-        - ShadowPrime
-        - Apollo
-        - Synapse
-        - Nexus
-        - Hub Principal
-        - Todas las Aplicaciones
-        - Nueva Aplicación
-    validations:
-      required: true
-
-  - type: dropdown
-    id: priority
-    attributes:
-      label: Prioridad
-      description: ¿Qué tan importante es esta funcionalidad?
-      options:
-        - Alta - Necesaria para el negocio
-        - Media - Mejoraría significativamente la UX
-        - Baja - Nice to have
-    validations:
-      required: true
-
+      label: Describe the feature or problem you'd like to solve
+      description: A clear and concise description of what the feature or problem is.
   - type: textarea
-    id: problem
+    id: description
     attributes:
-      label: Problema a Resolver
-      description: ¿Qué problema resuelve esta funcionalidad?
-      placeholder: Actualmente es difícil/imposible...
-    validations:
-      required: true
-
+      label: Proposed solution
+      description: How will it benefit GitHub Copilot CLI and its users?
   - type: textarea
-    id: solution
+    id: examples
     attributes:
-      label: Solución Propuesta
-      description: Describe cómo te gustaría que funcionara
-      placeholder: Me gustaría poder...
-    validations:
-      required: true
-
+      label: Example prompts or workflows
+      description: Share 3-5 example prompts or workflows it would enable; just enough detail to show value.
   - type: textarea
-    id: alternatives
+    id: additional_context
     attributes:
-      label: Alternativas Consideradas
-      description: ¿Has considerado otras soluciones o workarounds?
-      placeholder: Otra opción sería...
-
-  - type: textarea
-    id: mockups
-    attributes:
-      label: Mockups o Diseños
-      description: Si tienes diseños o wireframes, compártelos aquí
-      placeholder: Arrastra y suelta imágenes aquí
-
-  - type: textarea
-    id: impact
-    attributes:
-      label: Impacto Esperado
-      description: ¿Cómo beneficiará esto a los usuarios?
+      label: Additional context
+      description: Add any other context about the feature request here.
       placeholder: |
-        - Reducirá el tiempo de X en Y%
-        - Mejorará la experiencia de...
-        - Permitirá hacer...
-
-  - type: dropdown
-    id: breaking
-    attributes:
-      label: ¿Breaking Change?
-      description: ¿Esta funcionalidad requiere cambios que rompan compatibilidad?
-      options:
-        - No - Totalmente compatible
-        - Sí - Requiere migración de datos
-        - Sí - Cambios en API
-        - No estoy seguro
-    validations:
-      required: true
-
-  - type: textarea
-    id: technical
-    attributes:
-      label: Consideraciones Técnicas
-      description: Si tienes conocimiento técnico, sugiere cómo implementarlo
-      placeholder: |
-        - Tecnologías:
-        - APIs necesarias:
-        - Complejidad estimada:
-
-  - type: textarea
-    id: additional
-    attributes:
-      label: Información Adicional
-      description: Cualquier otro contexto o información relevante
+        - Screenshots or mockups

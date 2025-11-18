@@ -15,7 +15,7 @@ class ChronosErrorBoundary extends React.Component {
       hasError: false,
       error: null,
       errorInfo: null,
-      errorCount: 0
+      errorCount: 0,
     };
   }
 
@@ -32,7 +32,7 @@ class ChronosErrorBoundary extends React.Component {
       {
         error: error.toString(),
         componentStack: errorInfo.componentStack,
-        errorCount: errorCount + 1
+        errorCount: errorCount + 1,
       },
       LOG_CATEGORY.UI
     );
@@ -41,7 +41,7 @@ class ChronosErrorBoundary extends React.Component {
     this.setState({
       error,
       errorInfo,
-      errorCount: errorCount + 1
+      errorCount: errorCount + 1,
     });
 
     // Enviar a servicio de monitoreo si está configurado
@@ -54,7 +54,7 @@ class ChronosErrorBoundary extends React.Component {
     this.setState({
       hasError: false,
       error: null,
-      errorInfo: null
+      errorInfo: null,
     });
 
     if (this.props.onReset) {
@@ -216,7 +216,7 @@ ChronosErrorBoundary.propTypes = {
   onError: PropTypes.func,
   onReset: PropTypes.func,
   onGoHome: PropTypes.func,
-  fallback: PropTypes.func
+  fallback: PropTypes.func,
 };
 
 // PropTypes
@@ -224,7 +224,7 @@ ChronosErrorBoundary.defaultProps = {
   onError: null,
   onReset: null,
   onGoHome: null,
-  fallback: null
+  fallback: null,
 };
 
 export default ChronosErrorBoundary;

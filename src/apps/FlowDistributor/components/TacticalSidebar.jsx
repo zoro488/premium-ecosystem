@@ -163,9 +163,7 @@ const TacticalSidebar = ({
                 exit={{ opacity: 0, x: -20 }}
                 className="flex flex-col"
               >
-                <h2 className="text-zinc-200 font-bold text-sm tracking-wider">
-                  CHRONOS TACTICAL
-                </h2>
+                <h2 className="text-zinc-200 font-bold text-sm tracking-wider">CHRONOS TACTICAL</h2>
                 <p className={`text-xs ${getSystemStatusColor()}`}>STATUS: {systemStatus}</p>
               </motion.div>
             )}

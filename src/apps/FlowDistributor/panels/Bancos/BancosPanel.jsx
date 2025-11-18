@@ -8,7 +8,7 @@ const BANCOS = [
   { id: 'hsbc', nombre: 'HSBC', color: '#DB0011' },
   { id: 'scotiabank', nombre: 'Scotiabank', color: '#EE0000' },
   { id: 'banorte', nombre: 'Banorte', color: '#C8102E' },
-  { id: 'inbursa', nombre: 'Inbursa', color: '#003DA5' }
+  { id: 'inbursa', nombre: 'Inbursa', color: '#003DA5' },
 ];
 
 export const BancosPanel = () => {
@@ -18,7 +18,9 @@ export const BancosPanel = () => {
       <h2>Gestión de Bancos</h2>
       <div className="bancos-tabs">
         {BANCOS.map((b, i) => (
-          <button key={b.id} onClick={() => setSelected(i)} style={{marginRight:8}}>{b.nombre}</button>
+          <button key={b.id} onClick={() => setSelected(i)} style={{ marginRight: 8 }}>
+            {b.nombre}
+          </button>
         ))}
       </div>
       <BancoDetail banco={BANCOS[selected]} />

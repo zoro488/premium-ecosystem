@@ -12,18 +12,9 @@ export { default as ChronosTable, ChronosTableCard } from './ChronosTable';
 export { default as ChronosErrorBoundary } from './ChronosErrorBoundary';
 
 // UI Components
-export {
-  ChronosButton,
-  ChronosInput,
-  ChronosModal
-} from './ChronosUI';
+export { ChronosButton, ChronosInput, ChronosModal } from './ChronosUI';
 
-export {
-  ChronosBadge,
-  ChronosTabs,
-  ChronosProgress,
-  ChronosTooltip
-} from './ChronosComponents';
+export { ChronosBadge, ChronosTabs, ChronosProgress, ChronosTooltip } from './ChronosComponents';
 
 // PropTypes
 export * from './ChronosPropTypes';
@@ -44,12 +35,12 @@ export const ChronosTheme = {
     success: '#10B981',
     warning: '#F59E0B',
     danger: '#EF4444',
-    info: '#3B82F6'
+    info: '#3B82F6',
   },
 
   fonts: {
     primary: '"Helvetica Neue", Arial, sans-serif',
-    mono: '"Courier New", monospace'
+    mono: '"Courier New", monospace',
   },
 
   spacing: {
@@ -58,22 +49,22 @@ export const ChronosTheme = {
     md: '1rem',
     lg: '1.5rem',
     xl: '2rem',
-    '2xl': '3rem'
+    '2xl': '3rem',
   },
 
   borderRadius: {
     sm: '0.125rem',
     md: '0.25rem',
     lg: '0.5rem',
-    full: '9999px'
+    full: '9999px',
   },
 
   shadows: {
     sm: '0 2px 8px rgba(0,0,0,0.1)',
     md: '0 4px 16px rgba(0,0,0,0.15)',
     lg: '0 8px 32px rgba(0,0,0,0.2)',
-    glow: '0 0 20px rgba(255,255,255,0.1)'
-  }
+    glow: '0 0 20px rgba(255,255,255,0.1)',
+  },
 };
 
 /**
@@ -84,32 +75,32 @@ export const ChronosAnimations = {
   fadeIn: {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
-    exit: { opacity: 0 }
+    exit: { opacity: 0 },
   },
 
   slideUp: {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -20 }
+    exit: { opacity: 0, y: -20 },
   },
 
   scaleIn: {
     initial: { opacity: 0, scale: 0.9 },
     animate: { opacity: 1, scale: 1 },
-    exit: { opacity: 0, scale: 0.9 }
+    exit: { opacity: 0, scale: 0.9 },
   },
 
   slideInFromRight: {
     initial: { opacity: 0, x: 100 },
     animate: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: 100 }
+    exit: { opacity: 0, x: 100 },
   },
 
   slideInFromLeft: {
     initial: { opacity: 0, x: -100 },
     animate: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: -100 }
-  }
+    exit: { opacity: 0, x: -100 },
+  },
 };
 
 /**
@@ -121,7 +112,7 @@ export const ChronosUtils = {
   formatCurrency: (value, currency = 'USD') => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency
+      currency,
     }).format(value);
   },
 
@@ -129,7 +120,7 @@ export const ChronosUtils = {
   formatNumber: (value, decimals = 0) => {
     return new Intl.NumberFormat('en-US', {
       minimumFractionDigits: decimals,
-      maximumFractionDigits: decimals
+      maximumFractionDigits: decimals,
     }).format(value);
   },
 
@@ -140,7 +131,7 @@ export const ChronosUtils = {
       return d.toLocaleDateString('en-US', {
         month: 'short',
         day: 'numeric',
-        year: 'numeric'
+        year: 'numeric',
       });
     }
     if (format === 'long') {
@@ -148,7 +139,7 @@ export const ChronosUtils = {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
-        day: 'numeric'
+        day: 'numeric',
       });
     }
     return d.toLocaleDateString();
@@ -164,5 +155,5 @@ export const ChronosUtils = {
   truncate: (text, length = 50) => {
     if (!text || text.length <= length) return text;
     return text.substring(0, length) + '...';
-  }
+  },
 };

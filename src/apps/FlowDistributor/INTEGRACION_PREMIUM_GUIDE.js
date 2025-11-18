@@ -30,7 +30,6 @@ import {
   PremiumBackground,
   AuroraBackground,
   SpotlightEffect,
-
 } from './components/premium';
 
 // Importar estilos de animaciones
@@ -64,9 +63,7 @@ function FlowDistributor() {
       />
 
       {/* Contenido principal con z-index relativo */}
-      <div className="relative z-10 pt-20">
-        {/* Tu contenido existente */}
-      </div>
+      <div className="relative z-10 pt-20">{/* Tu contenido existente */}</div>
 
       {/* Floating Action Button */}
       <FloatingActionButton
@@ -161,9 +158,7 @@ const PanelControl = () => (
     </div>
 
     {/* Tu contenido existente aquí */}
-    <div className="space-y-4">
-      {/* ... */}
-    </div>
+    <div className="space-y-4">{/* ... */}</div>
   </GlassCard3D>
 );
 
@@ -247,9 +242,7 @@ const TendenciasSection = ({ ventas, clientes, productos }) => (
 
 const ObjetivosCard = ({ objetivos }) => (
   <GlassCard3D className="p-6">
-    <h3 className="text-xl font-bold text-white mb-6">
-      Objetivos del Mes
-    </h3>
+    <h3 className="text-xl font-bold text-white mb-6">Objetivos del Mes</h3>
 
     <div className="grid grid-cols-2 gap-6">
       <div className="flex flex-col items-center">
@@ -307,9 +300,7 @@ const PanelsNavigation = ({ activePanel, setActivePanel }) => (
 
 const QuickActionsPanel = () => (
   <GlassCard3D className="p-6">
-    <h3 className="text-xl font-bold text-white mb-4">
-      Acciones Rápidas
-    </h3>
+    <h3 className="text-xl font-bold text-white mb-4">Acciones Rápidas</h3>
 
     <div className="space-y-3">
       <QuickActionButton
@@ -350,9 +341,7 @@ const QuickActionsPanel = () => (
 // Agregar clase stagger-fade-in al contenedor
 const TransaccionesList = ({ transacciones }) => (
   <GlassCard3D className="p-6">
-    <h3 className="text-xl font-bold text-white mb-4">
-      Transacciones Recientes
-    </h3>
+    <h3 className="text-xl font-bold text-white mb-4">Transacciones Recientes</h3>
 
     {/* Agregar clase para animaciones escalonadas */}
     <div className="space-y-3 stagger-fade-in">
@@ -399,20 +388,13 @@ function FlowDistributorPremium() {
         <MetricasSection metricas={metricas} />
 
         {/* Navegación de Paneles */}
-        <PanelsNavigation
-          activePanel={activePanel}
-          setActivePanel={setActivePanel}
-        />
+        <PanelsNavigation activePanel={activePanel} setActivePanel={setActivePanel} />
 
         {/* Stats Grid */}
         <StatsGrid stats={stats} />
 
         {/* Tendencias */}
-        <TendenciasSection
-          ventas={ventasData}
-          clientes={clientesData}
-          productos={productosData}
-        />
+        <TendenciasSection ventas={ventasData} clientes={clientesData} productos={productosData} />
 
         {/* Layout Principal */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

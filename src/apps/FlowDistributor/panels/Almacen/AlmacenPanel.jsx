@@ -9,7 +9,9 @@ export const AlmacenPanel = () => {
       try {
         const p = await firestoreService.getCollection('productos');
         setProductos(p);
-      } catch (e) { console.error(e); }
+      } catch (e) {
+        console.error(e);
+      }
     })();
   }, []);
 

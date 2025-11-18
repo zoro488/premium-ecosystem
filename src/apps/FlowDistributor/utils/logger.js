@@ -10,7 +10,7 @@ export const LOG_LEVEL = {
   INFO: 1,
   WARN: 2,
   ERROR: 3,
-  NONE: 4
+  NONE: 4,
 };
 
 // Categorías de log
@@ -22,7 +22,7 @@ export const LOG_CATEGORY = {
   PERFORMANCE: 'PERFORMANCE',
   NETWORK: 'NETWORK',
   VALIDATION: 'VALIDATION',
-  SYSTEM: 'SYSTEM'
+  SYSTEM: 'SYSTEM',
 };
 
 // Configuración (cambiar según ambiente)
@@ -32,16 +32,16 @@ const CONFIG = {
   enableCategory: true,
   enableColor: true,
   sendToRemote: false, // Activar para enviar a Sentry/CloudWatch
-  remoteEndpoint: null
+  remoteEndpoint: null,
 };
 
 // Colores ANSI para consola
 const COLORS = {
-  DEBUG: '\x1b[36m',   // Cyan
-  INFO: '\x1b[32m',    // Green
-  WARN: '\x1b[33m',    // Yellow
-  ERROR: '\x1b[31m',   // Red
-  RESET: '\x1b[0m'
+  DEBUG: '\x1b[36m', // Cyan
+  INFO: '\x1b[32m', // Green
+  WARN: '\x1b[33m', // Yellow
+  ERROR: '\x1b[31m', // Red
+  RESET: '\x1b[0m',
 };
 
 // Emojis por categoría
@@ -53,7 +53,7 @@ const CATEGORY_EMOJI = {
   [LOG_CATEGORY.PERFORMANCE]: '⚡',
   [LOG_CATEGORY.NETWORK]: '🌐',
   [LOG_CATEGORY.VALIDATION]: '✅',
-  [LOG_CATEGORY.SYSTEM]: '⚙️'
+  [LOG_CATEGORY.SYSTEM]: '⚙️',
 };
 
 /**
@@ -85,8 +85,8 @@ function formatMessage(level, category, message, data) {
     meta: {
       timestamp: Date.now(),
       level,
-      category
-    }
+      category,
+    },
   };
 }
 
@@ -107,8 +107,8 @@ async function sendToRemote(level, category, message, data) {
         data,
         timestamp: Date.now(),
         userAgent: navigator.userAgent,
-        url: globalThis.location?.href
-      })
+        url: globalThis.location?.href,
+      }),
     });
   } catch (error) {
     // Evitar loop infinito de errores
@@ -176,11 +176,14 @@ const logger = {
    * Log de error
    */
   error: (message, error = null, category = LOG_CATEGORY.SYSTEM) => {
-    const errorData = error instanceof Error ? {
-      message: error.message,
-      stack: error.stack,
-      name: error.name
-    } : error;
+    const errorData =
+      error instanceof Error
+        ? {
+            message: error.message,
+            stack: error.stack,
+            name: error.name,
+          }
+        : error;
 
     log(LOG_LEVEL.ERROR, 'ERROR', category, message, errorData);
   },
@@ -213,7 +216,7 @@ const logger = {
   /**
    * Obtener configuración actual
    */
-  getConfig: () => ({ ...CONFIG })
+  getConfig: () => ({ ...CONFIG }),
 };
 
 // Export default y named

@@ -1,0 +1,318 @@
+name: 🤖 Run Automation Agents
+
+on:
+  schedule:
+    # Ejecutar diariamente a las 2 AM UTC
+    - cron: '0 2 * * *'
+
+  workflow_dispatch:
+    inputs:
+      agent:
+        description: 'Agent to run'
+        required: true
+        type: choice
+        options:
+          - all
+          - auto-complete
+          - test-generator
+          - monitoring
+        default: 'all'
+
+      create_prs:
+        description: 'Create PRs automatically'
+        required: false
+        type: boolean
+        default: false
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  monitoring:
+    name: 📊 Monitoring Dashboard
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.agent == 'all' || github.event.inputs.agent == 'monitoring' || github.event_name == 'schedule' }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: |
+          npm install @octokit/rest
+          mkdir -p automation-reports
+
+      - name: Run Monitoring Dashboard Agent
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node .github/agents/monitoring-dashboard-agent.js
+
+      - name: Display Dashboard
+        run: |
+          echo "📊 Dashboard Generated:"
+          cat automation-reports/dashboard.md
+
+      - name: Upload Dashboard
+        uses: actions/upload-artifact@v4
+        with:
+          name: monitoring-dashboard
+          path: |
+            automation-reports/dashboard.md
+            automation-reports/monitoring-report.json
+          retention-days: 30
+
+      - name: Post Dashboard to PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs')
+            const dashboard = fs.readFileSync('automation-reports/dashboard.md', 'utf8')
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: dashboard
+            })
+
+  auto-complete:
+    name: 🔄 Auto-Complete Agent
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.agent == 'all' || github.event.inputs.agent == 'auto-complete' }}
+    needs: [monitoring]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: |
+          npm install @octokit/rest
+          mkdir -p automation-reports
+
+      - name: Run Auto-Complete Agent
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node .github/agents/auto-complete-agent.js
+
+      - name: Display Progress Report
+        run: |
+          echo "🔄 Progress Report:"
+          cat automation-reports/progress-report.json | jq '.'
+
+      - name: Upload Progress Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: auto-complete-report
+          path: |
+            automation-reports/progress-report.json
+            automation-reports/auto-complete-log.txt
+          retention-days: 30
+
+      - name: Create Summary
+        run: |
+          echo "## 🔄 Auto-Complete Agent Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          GAPS=$(jq '.gaps_identified' automation-reports/progress-report.json)
+          ISSUES=$(jq '.issues_created' automation-reports/progress-report.json)
+          CODE=$(jq '.code_generated' automation-reports/progress-report.json)
+
+          echo "- **Gaps Identified:** $GAPS" >> $GITHUB_STEP_SUMMARY
+          echo "- **Issues Created:** $ISSUES" >> $GITHUB_STEP_SUMMARY
+          echo "- **Code Generated:** $CODE" >> $GITHUB_STEP_SUMMARY
+
+  test-generator:
+    name: 🧪 Test Generator Agent
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.agent == 'all' || github.event.inputs.agent == 'test-generator' }}
+    needs: [auto-complete]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: |
+          npm install @octokit/rest
+          npm install
+          mkdir -p automation-reports
+
+      - name: Run Test Generator Agent
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CREATE_PRS: ${{ github.event.inputs.create_prs }}
+        run: node .github/agents/test-generator-agent.js
+
+      - name: Display Coverage Report
+        run: |
+          echo "🧪 Test Coverage Report:"
+          cat automation-reports/test-coverage-report.json | jq '.'
+
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-coverage-report
+          path: |
+            automation-reports/test-coverage-report.json
+            automation-reports/test-generator-log.txt
+          retention-days: 30
+
+      - name: Create PR with Generated Tests
+        if: ${{ github.event.inputs.create_prs == 'true' }}
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+          BRANCH="auto/generated-tests-$(date +%Y%m%d-%H%M%S)"
+          git checkout -b $BRANCH
+
+          # Add generated tests
+          git add src/
+
+          if git diff --staged --quiet; then
+            echo "No tests generated"
+          else
+            git commit -m "test: Add auto-generated tests
+
+Generated by Test Generator Agent
+- Added unit tests for components without coverage
+- Added E2E tests for critical flows
+- Improved overall test coverage"
+
+            git push origin $BRANCH
+
+            gh pr create \
+              --title "🧪 Auto-generated Tests" \
+              --body "$(cat automation-reports/test-coverage-report.json | jq -r '.summary')" \
+              --label "testing,automation" \
+              --base main \
+              --head $BRANCH
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Summary
+        run: |
+          echo "## 🧪 Test Generator Agent Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          UNIT=$(jq '.tests_generated.unit' automation-reports/test-coverage-report.json)
+          E2E=$(jq '.tests_generated.e2e' automation-reports/test-coverage-report.json)
+          BEFORE=$(jq -r '.coverage_improvement.before' automation-reports/test-coverage-report.json)
+          AFTER=$(jq -r '.coverage_improvement.after' automation-reports/test-coverage-report.json)
+
+          echo "- **Unit Tests Generated:** $UNIT" >> $GITHUB_STEP_SUMMARY
+          echo "- **E2E Tests Generated:** $E2E" >> $GITHUB_STEP_SUMMARY
+          echo "- **Coverage Before:** $BEFORE" >> $GITHUB_STEP_SUMMARY
+          echo "- **Coverage After:** $AFTER" >> $GITHUB_STEP_SUMMARY
+
+  final-report:
+    name: 📝 Final Report
+    runs-on: ubuntu-latest
+    needs: [monitoring, auto-complete, test-generator]
+    if: always()
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download All Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts/
+
+      - name: Generate Final Report
+        run: |
+          echo "# 🤖 Automation Agents Execution Report" > AUTOMATION_EXECUTION_REPORT.md
+          echo "" >> AUTOMATION_EXECUTION_REPORT.md
+          echo "**Timestamp:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> AUTOMATION_EXECUTION_REPORT.md
+          echo "**Workflow Run:** [${{ github.run_id }}](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> AUTOMATION_EXECUTION_REPORT.md
+          echo "" >> AUTOMATION_EXECUTION_REPORT.md
+
+          echo "## 📊 Dashboard" >> AUTOMATION_EXECUTION_REPORT.md
+          if [ -f "artifacts/monitoring-dashboard/dashboard.md" ]; then
+            cat artifacts/monitoring-dashboard/dashboard.md >> AUTOMATION_EXECUTION_REPORT.md
+          else
+            echo "❌ Dashboard not generated" >> AUTOMATION_EXECUTION_REPORT.md
+          fi
+          echo "" >> AUTOMATION_EXECUTION_REPORT.md
+
+          echo "## 🔄 Auto-Complete Results" >> AUTOMATION_EXECUTION_REPORT.md
+          if [ -f "artifacts/auto-complete-report/progress-report.json" ]; then
+            cat artifacts/auto-complete-report/progress-report.json | jq '.' >> AUTOMATION_EXECUTION_REPORT.md
+          else
+            echo "⏭️ Auto-Complete agent skipped" >> AUTOMATION_EXECUTION_REPORT.md
+          fi
+          echo "" >> AUTOMATION_EXECUTION_REPORT.md
+
+          echo "## 🧪 Test Coverage Results" >> AUTOMATION_EXECUTION_REPORT.md
+          if [ -f "artifacts/test-coverage-report/test-coverage-report.json" ]; then
+            cat artifacts/test-coverage-report/test-coverage-report.json | jq '.' >> AUTOMATION_EXECUTION_REPORT.md
+          else
+            echo "⏭️ Test Generator agent skipped" >> AUTOMATION_EXECUTION_REPORT.md
+          fi
+
+      - name: Upload Final Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: final-automation-report
+          path: AUTOMATION_EXECUTION_REPORT.md
+          retention-days: 90
+
+      - name: Create Issue on Failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🚨 Automation Agents Failed',
+              body: `The automation agents workflow failed.
+
+              **Workflow Run:** [#${{ github.run_id }}](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+              **Triggered by:** ${{ github.actor }}
+              **Timestamp:** ${new Date().toISOString()}
+
+              Please check the logs for more details.`,
+              labels: ['bug', 'automation', 'critical']
+            })
+
+      - name: Notify on Success
+        if: success()
+        run: |
+          echo "✅ All automation agents completed successfully!"
+          echo "📊 Check artifacts for detailed reports"
+
+  notify:
+    name: 📢 Notify Results
+    runs-on: ubuntu-latest
+    needs: [final-report]
+    if: always() && github.event_name == 'schedule'
+
+    steps:
+      - name: Send Notification
+        run: |
+          echo "🔔 Automation agents execution completed"
+          echo "📊 View results: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"

@@ -59,10 +59,10 @@ const ErrorFallback = ({ error, resetErrorBoundary, panelName }) => (
 
 ErrorFallback.propTypes = {
   error: PropTypes.shape({
-    message: PropTypes.string
+    message: PropTypes.string,
   }).isRequired,
   resetErrorBoundary: PropTypes.func.isRequired,
-  panelName: PropTypes.string.isRequired
+  panelName: PropTypes.string.isRequired,
 };
 
 /**
@@ -84,7 +84,7 @@ const PanelErrorBoundary = ({ children, panelName }) => {
 
 PanelErrorBoundary.propTypes = {
   children: PropTypes.node.isRequired,
-  panelName: PropTypes.string.isRequired
+  panelName: PropTypes.string.isRequired,
 };
 
 /**
@@ -106,7 +106,7 @@ const PanelSuspense = ({ children, panelName }) => (
 
 PanelSuspense.propTypes = {
   children: PropTypes.node.isRequired,
-  panelName: PropTypes.string.isRequired
+  panelName: PropTypes.string.isRequired,
 };
 
 /**
@@ -150,7 +150,7 @@ export const OptimizedPanel = ({ panelType, isActive, ...props }) => {
 
 OptimizedPanel.propTypes = {
   panelType: PropTypes.string.isRequired,
-  isActive: PropTypes.bool.isRequired
+  isActive: PropTypes.bool.isRequired,
 };
 
 /**
@@ -165,8 +165,8 @@ export const PreloadManager = () => {
         await import('../panels/DashboardControlMaestro');
 
         // Luego precargar otros paneles con delay
-  setTimeout(() => import('./PanelDistribuidoresUltra'), 1000);
-  setTimeout(() => import('./PanelClientesUltra'), 2000);
+        setTimeout(() => import('./PanelDistribuidoresUltra'), 1000);
+        setTimeout(() => import('./PanelClientesUltra'), 2000);
         setTimeout(() => import('../panels/PanelAnalisisReportes'), 3000);
         setTimeout(() => import('../panels/PanelSicarIA'), 4000);
       } catch (error) {
@@ -248,7 +248,7 @@ export const ChronosSystemProvider = ({ children }) => {
 };
 
 ChronosSystemProvider.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 /**

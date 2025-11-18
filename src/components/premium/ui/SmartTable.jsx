@@ -20,16 +20,10 @@
  * @author CHRONOS System
  * @version 1.0.0
  */
-import { AnimatePresence, motion } from 'framer-motion';
-import {
-    ArrowDown,
-    ArrowUp,
-    Download,
-    Filter,
-    Search,
-    X,
-} from 'lucide-react';
 import { useMemo, useState } from 'react';
+
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowDown, ArrowUp, Download, Filter, Search, X } from 'lucide-react';
 
 // ============================================================================
 // SMART TABLE COMPONENT
@@ -65,8 +59,8 @@ export const SmartTable = ({
           ? prev.direction === 'asc'
             ? 'desc'
             : prev.direction === 'desc'
-            ? null
-            : 'asc'
+              ? null
+              : 'asc'
           : 'asc',
     }));
   };
@@ -142,9 +136,7 @@ export const SmartTable = ({
   // ========== EXPORT ==========
   const exportToCSV = () => {
     const headers = columns.map((col) => col.label).join(',');
-    const rows = filteredData
-      .map((row) => columns.map((col) => row[col.key]).join(','))
-      .join('\n');
+    const rows = filteredData.map((row) => columns.map((col) => row[col.key]).join(',')).join('\n');
     const csv = `${headers}\n${rows}`;
     const blob = new Blob([csv], { type: 'text/csv' });
     const url = URL.createObjectURL(blob);
@@ -238,25 +230,27 @@ export const SmartTable = ({
                 </button>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                {columns.filter((col) => col.filterable !== false).map((col) => (
-                  <div key={col.key} className="relative">
-                    <label className="text-xs text-gray-400 mb-1 block">{col.label}</label>
-                    <input
-                      type="text"
-                      placeholder={`Filtrar ${col.label}...`}
-                      value={columnFilters[col.key] || ''}
-                      onChange={(e) =>
-                        setColumnFilters((prev) => ({ ...prev, [col.key]: e.target.value }))
-                      }
-                      className="
+                {columns
+                  .filter((col) => col.filterable !== false)
+                  .map((col) => (
+                    <div key={col.key} className="relative">
+                      <label className="text-xs text-gray-400 mb-1 block">{col.label}</label>
+                      <input
+                        type="text"
+                        placeholder={`Filtrar ${col.label}...`}
+                        value={columnFilters[col.key] || ''}
+                        onChange={(e) =>
+                          setColumnFilters((prev) => ({ ...prev, [col.key]: e.target.value }))
+                        }
+                        className="
                         w-full px-3 py-1.5
                         bg-white/5 border border-white/10
                         rounded text-white text-sm
                         focus:outline-none focus:border-blue-500/50
                       "
-                    />
-                  </div>
-                ))}
+                      />
+                    </div>
+                  ))}
               </div>
             </div>
           </motion.div>
@@ -278,7 +272,9 @@ export const SmartTable = ({
                     <th className="px-4 py-3 w-12">
                       <input
                         type="checkbox"
-                        checked={selectedRows.size === paginatedData.length && paginatedData.length > 0}
+                        checked={
+                          selectedRows.size === paginatedData.length && paginatedData.length > 0
+                        }
                         onChange={toggleSelectAll}
                         className="w-4 h-4 rounded border-white/20 bg-white/10"
                       />
@@ -299,11 +295,19 @@ export const SmartTable = ({
                           <div className="flex flex-col">
                             <ArrowUp
                               size={12}
-                              className={sortConfig.key === col.key && sortConfig.direction === 'asc' ? 'text-blue-400' : 'text-gray-600'}
+                              className={
+                                sortConfig.key === col.key && sortConfig.direction === 'asc'
+                                  ? 'text-blue-400'
+                                  : 'text-gray-600'
+                              }
                             />
                             <ArrowDown
                               size={12}
-                              className={sortConfig.key === col.key && sortConfig.direction === 'desc' ? 'text-blue-400' : 'text-gray-600'}
+                              className={
+                                sortConfig.key === col.key && sortConfig.direction === 'desc'
+                                  ? 'text-blue-400'
+                                  : 'text-gray-600'
+                              }
                             />
                           </div>
                         )}
@@ -314,10 +318,16 @@ export const SmartTable = ({
               </thead>
               <tbody className="divide-y divide-white/5">
                 {loading ? (
-                  <TableSkeleton columns={columns.length + (enableSelection ? 1 : 0)} rows={pageSize} />
+                  <TableSkeleton
+                    columns={columns.length + (enableSelection ? 1 : 0)}
+                    rows={pageSize}
+                  />
                 ) : paginatedData.length === 0 ? (
                   <tr>
-                    <td colSpan={columns.length + (enableSelection ? 1 : 0)} className="px-4 py-12 text-center">
+                    <td
+                      colSpan={columns.length + (enableSelection ? 1 : 0)}
+                      className="px-4 py-12 text-center"
+                    >
                       <div className="flex flex-col items-center gap-3">
                         <X size={48} className="text-gray-600" />
                         <p className="text-gray-400">{emptyMessage}</p>
@@ -367,7 +377,8 @@ export const SmartTable = ({
       {totalPages > 1 && (
         <div className="flex items-center justify-between">
           <div className="text-sm text-gray-400">
-            Mostrando {(currentPage - 1) * pageSize + 1} - {Math.min(currentPage * pageSize, filteredData.length)} de {filteredData.length}
+            Mostrando {(currentPage - 1) * pageSize + 1} -{' '}
+            {Math.min(currentPage * pageSize, filteredData.length)} de {filteredData.length}
           </div>
           <div className="flex items-center gap-2">
             <button

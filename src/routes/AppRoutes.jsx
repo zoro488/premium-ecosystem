@@ -18,9 +18,10 @@
  * @author CHRONOS System
  * @version 1.0.0
  */
-import { AnimatePresence } from 'framer-motion';
-import { lazy, Suspense } from 'react';
+import { Suspense, lazy } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+
+import { AnimatePresence } from 'framer-motion';
 
 import { PremiumLayout } from '../components/premium/layouts/PremiumLayout';
 
@@ -102,8 +103,8 @@ export const AppRoutes = ({ user, onLogin, onLogout }) => {
   ];
 
   const mockQuickActions = [
-    { label: 'Nueva Venta', onClick: () => window.location.href = '/ventas/nueva' },
-    { label: 'Nuevo Cliente', onClick: () => window.location.href = '/clientes' },
+    { label: 'Nueva Venta', onClick: () => (window.location.href = '/ventas/nueva') },
+    { label: 'Nuevo Cliente', onClick: () => (window.location.href = '/clientes') },
   ];
 
   return (

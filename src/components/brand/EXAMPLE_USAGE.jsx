@@ -2,17 +2,25 @@
  * 📖 EJEMPLO DE USO: CHRONOS BRAND COMPONENTS
  * Cómo implementar el sistema de branding completo
  */
-
 import { useState } from 'react';
+// ============================================
+// EJEMPLO 3: Integración con React Router
+// ============================================
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+
+import { ChronosLoginPage, ChronosSplashScreen, useChronosSplash } from './components/brand';
+// ============================================
+// EJEMPLO 2: Usar los logos individualmente
+// ============================================
 import {
-    ChronosLoginPage,
-    ChronosSplashScreen,
-    useChronosSplash
+  ChronosLogoCompact,
+  ChronosLogoFull,
+  ChronosLogoIcon,
+  ChronosLogoWithText,
 } from './components/brand';
 
-// ============================================
 // EJEMPLO 1: App con Splash → Login → Dashboard
-// ============================================
+
 export function ChronosApp() {
   const { showSplash, hideSplash } = useChronosSplash();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -39,47 +47,27 @@ export function ChronosApp() {
   return (
     <>
       {/* SPLASH SCREEN - Se muestra al cargar */}
-      {showSplash && (
-        <ChronosSplashScreen onComplete={hideSplash} />
-      )}
+      {showSplash && <ChronosSplashScreen onComplete={hideSplash} />}
 
       {/* LOGIN PAGE - Se muestra si no está autenticado */}
       {!showSplash && !isAuthenticated && (
-        <ChronosLoginPage
-          onLogin={handleLogin}
-          onSocialLogin={handleSocialLogin}
-        />
+        <ChronosLoginPage onLogin={handleLogin} onSocialLogin={handleSocialLogin} />
       )}
 
       {/* DASHBOARD - Se muestra si está autenticado */}
       {!showSplash && isAuthenticated && (
         <div className="p-8">
-          <h1 className="text-4xl font-bold text-white">
-            🎉 ¡Bienvenido a CHRONOS!
-          </h1>
-          <p className="text-gray-400 mt-4">
-            Dashboard Principal
-          </p>
+          <h1 className="text-4xl font-bold text-white">🎉 ¡Bienvenido a CHRONOS!</h1>
+          <p className="text-gray-400 mt-4">Dashboard Principal</p>
         </div>
       )}
     </>
   );
 }
 
-// ============================================
-// EJEMPLO 2: Usar los logos individualmente
-// ============================================
-import {
-    ChronosLogoCompact,
-    ChronosLogoFull,
-    ChronosLogoIcon,
-    ChronosLogoWithText
-} from './components/brand';
-
 export function LogosExample() {
   return (
     <div className="p-8 space-y-12 bg-black min-h-screen">
-
       {/* Logo Full - Para Splash Screen o Hero */}
       <div className="text-center">
         <h2 className="text-white text-2xl mb-4">Logo Full</h2>
@@ -108,9 +96,8 @@ export function LogosExample() {
 }
 
 // ============================================
-// EJEMPLO 3: Integración con React Router
+
 // ============================================
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 export function ChronosAppWithRouter() {
   const { showSplash, hideSplash } = useChronosSplash();
@@ -145,13 +132,7 @@ export function ChronosAppWithRouter() {
 
         <Route
           path="/dashboard"
-          element={
-            user ? (
-              <div>Dashboard</div>
-            ) : (
-              <Navigate to="/login" replace />
-            )
-          }
+          element={user ? <div>Dashboard</div> : <Navigate to="/login" replace />}
         />
 
         <Route path="*" element={<Navigate to="/login" replace />} />

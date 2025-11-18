@@ -9,9 +9,9 @@ const ChronosTable = ({
   data,
   onRowClick,
   renderCell,
-  emptyMessage = "No data available",
+  emptyMessage = 'No data available',
   hoverable = true,
-  striped = false
+  striped = false,
 }) => {
   if (!data || data.length === 0) {
     return (
@@ -53,10 +53,14 @@ const ChronosTable = ({
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: rowIndex * 0.03 }}
-              whileHover={hoverable ? {
-                backgroundColor: 'rgba(255,255,255,0.05)',
-                scale: 1.01
-              } : {}}
+              whileHover={
+                hoverable
+                  ? {
+                      backgroundColor: 'rgba(255,255,255,0.05)',
+                      scale: 1.01,
+                    }
+                  : {}
+              }
               onClick={() => onRowClick?.(row)}
               className={`
                 border-b border-white/5 transition-all cursor-pointer
@@ -64,10 +68,7 @@ const ChronosTable = ({
               `}
             >
               {headers.map((header, cellIndex) => (
-                <td
-                  key={cellIndex}
-                  className="px-6 py-4 text-sm text-white/80"
-                >
+                <td key={cellIndex} className="px-6 py-4 text-sm text-white/80">
                   {renderCell ? renderCell(row, header, cellIndex) : row[header]}
                 </td>
               ))}
@@ -109,27 +110,15 @@ export const ChronosTableCard = ({
             </motion.div>
           )}
           <div>
-            <h3 className="text-lg font-light text-white tracking-wider">
-              {title}
-            </h3>
-            {subtitle && (
-              <p className="text-xs text-white/40 mt-1">
-                {subtitle}
-              </p>
-            )}
+            <h3 className="text-lg font-light text-white tracking-wider">{title}</h3>
+            {subtitle && <p className="text-xs text-white/40 mt-1">{subtitle}</p>}
           </div>
         </div>
-        {actions && (
-          <div className="flex items-center gap-2">
-            {actions}
-          </div>
-        )}
+        {actions && <div className="flex items-center gap-2">{actions}</div>}
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto">
-        {children || <ChronosTable {...tableProps} />}
-      </div>
+      <div className="overflow-x-auto">{children || <ChronosTable {...tableProps} />}</div>
     </motion.div>
   );
 };

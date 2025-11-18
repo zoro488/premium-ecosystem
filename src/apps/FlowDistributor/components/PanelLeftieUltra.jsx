@@ -33,7 +33,7 @@ const PanelLeftieUltra = memo(() => {
             style={{
               background: 'rgba(139, 92, 246, 0.1)',
               backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(139, 92, 246, 0.2)'
+              border: '1px solid rgba(139, 92, 246, 0.2)',
             }}
           >
             <CreditCard className="w-8 h-8 text-zinc-800 mb-4" />
@@ -47,7 +47,7 @@ const PanelLeftieUltra = memo(() => {
             style={{
               background: 'rgba(236, 72, 153, 0.1)',
               backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(236, 72, 153, 0.2)'
+              border: '1px solid rgba(236, 72, 153, 0.2)',
             }}
           >
             <TrendingUp className="w-8 h-8 text-zinc-700 mb-4" />
@@ -61,7 +61,7 @@ const PanelLeftieUltra = memo(() => {
             style={{
               background: 'rgba(59, 130, 246, 0.1)',
               backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(59, 130, 246, 0.2)'
+              border: '1px solid rgba(59, 130, 246, 0.2)',
             }}
           >
             <Smartphone className="w-8 h-8 text-zinc-300 mb-4" />
@@ -70,11 +70,12 @@ const PanelLeftieUltra = memo(() => {
           </motion.div>
         </div>
 
-        <div className="mt-8 p-8 rounded-2xl text-center"
+        <div
+          className="mt-8 p-8 rounded-2xl text-center"
           style={{
             background: 'rgba(15, 23, 42, 0.6)',
             backdropFilter: 'blur(10px)',
-            border: '1px solid rgba(139, 92, 246, 0.2)'
+            border: '1px solid rgba(139, 92, 246, 0.2)',
           }}
         >
           <p className="text-gray-400 text-lg">

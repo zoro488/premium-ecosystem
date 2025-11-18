@@ -23,9 +23,24 @@
   --glass-subtle: rgba(40, 40, 40, 0.25);
 
   /* 🪞 Efectos Espejo y Metallic */
-  --mirror-silver: linear-gradient(135deg, rgba(200, 200, 220, 0.15) 0%, rgba(160, 160, 180, 0.08) 50%, rgba(120, 120, 140, 0.03) 100%);
-  --mirror-chrome: linear-gradient(135deg, rgba(240, 240, 255, 0.12) 0%, rgba(200, 200, 220, 0.06) 50%, rgba(160, 160, 180, 0.02) 100%);
-  --mirror-platinum: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(220, 220, 240, 0.09) 50%, rgba(180, 180, 200, 0.04) 100%);
+  --mirror-silver: linear-gradient(
+    135deg,
+    rgba(200, 200, 220, 0.15) 0%,
+    rgba(160, 160, 180, 0.08) 50%,
+    rgba(120, 120, 140, 0.03) 100%
+  );
+  --mirror-chrome: linear-gradient(
+    135deg,
+    rgba(240, 240, 255, 0.12) 0%,
+    rgba(200, 200, 220, 0.06) 50%,
+    rgba(160, 160, 180, 0.02) 100%
+  );
+  --mirror-platinum: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(220, 220, 240, 0.09) 50%,
+    rgba(180, 180, 200, 0.04) 100%
+  );
 
   /* 🌈 Acentos Metálicos Premium - Negro Absoluto */
   --accent-platinum: #d4d4d8;
@@ -40,7 +55,12 @@
   --gradient-platinum: linear-gradient(135deg, #27272a 0%, #18181b 50%, #09090b 100%);
   --gradient-silver: linear-gradient(135deg, #3f3f46 0%, #27272a 50%, #18181b 100%);
   --gradient-titanium: linear-gradient(135deg, #52525b 0%, #3f3f46 50%, #27272a 100%);
-  --gradient-aurora: linear-gradient(135deg, rgba(212, 212, 216, 0.1) 0%, rgba(161, 161, 170, 0.05) 50%, rgba(113, 113, 122, 0.02) 100%);
+  --gradient-aurora: linear-gradient(
+    135deg,
+    rgba(212, 212, 216, 0.1) 0%,
+    rgba(161, 161, 170, 0.05) 50%,
+    rgba(113, 113, 122, 0.02) 100%
+  );
 
   /* ✨ Texto Ultra-Legible con Grises Plateados */
   --text-white-pure: #ffffff;
@@ -110,9 +130,15 @@ body {
   background: #000000;
   background-image:
     /* Subtle Metallic Grain */
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.01) 0px, transparent 1px, transparent 2px, rgba(255, 255, 255, 0.01) 3px),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.01) 0px,
+      transparent 1px,
+      transparent 2px,
+      rgba(255, 255, 255, 0.01) 3px
+    ),
     /* Dark Gradient Overlay */
-    radial-gradient(circle at 50% 50%, rgba(39, 39, 42, 0.3) 0%, transparent 60%);
+      radial-gradient(circle at 50% 50%, rgba(39, 39, 42, 0.3) 0%, transparent 60%);
   background-attachment: fixed;
   color: var(--text-white-pure);
   font-family:
@@ -206,7 +232,9 @@ body {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.9),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 
   .glass-light {
@@ -228,13 +256,17 @@ body {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.9),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .glass-card:hover {
     transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 1), 0 0 0 1px rgba(59, 130, 246, 0.5);
+    box-shadow:
+      0 20px 50px rgba(0, 0, 0, 1),
+      0 0 0 1px rgba(59, 130, 246, 0.5);
     border-color: rgba(59, 130, 246, 0.6);
     background: rgba(17, 17, 17, 0.95);
   }
@@ -321,7 +353,9 @@ body {
   }
 
   .hover-glow:hover {
-    box-shadow: 0 0 40px rgba(59, 130, 246, 0.8), 0 0 80px rgba(59, 130, 246, 0.4);
+    box-shadow:
+      0 0 40px rgba(59, 130, 246, 0.8),
+      0 0 80px rgba(59, 130, 246, 0.4);
   }
 
   /* ========== LAYOUTS ESPECÍFICOS ========== */
@@ -385,7 +419,9 @@ body {
     backdrop-filter: blur(var(--blur-medium));
     -webkit-backdrop-filter: blur(var(--blur-medium));
     border: 1px solid var(--border-mirror-medium);
-    box-shadow: var(--shadow-glass-lg), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    box-shadow:
+      var(--shadow-glass-lg),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
 
   .mirror-chrome {
@@ -394,7 +430,9 @@ body {
     backdrop-filter: blur(var(--blur-strong));
     -webkit-backdrop-filter: blur(var(--blur-strong));
     border: 1px solid var(--border-mirror-bright);
-    box-shadow: var(--shadow-glass-xl), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    box-shadow:
+      var(--shadow-glass-xl),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
   }
 
   .mirror-platinum {
@@ -403,7 +441,9 @@ body {
     backdrop-filter: blur(var(--blur-extreme));
     -webkit-backdrop-filter: blur(var(--blur-extreme));
     border: 2px solid var(--border-mirror-bright);
-    box-shadow: var(--shadow-glass-2xl), inset 0 2px 0 rgba(255, 255, 255, 0.3);
+    box-shadow:
+      var(--shadow-glass-2xl),
+      inset 0 2px 0 rgba(255, 255, 255, 0.3);
   }
 
   /* 🌈 Gradient Holographic Cards */
@@ -518,7 +558,9 @@ body {
   textarea.input-spatial:focus {
     background: var(--glass-medium) !important;
     border-color: var(--border-accent-glow) !important;
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2), var(--glow-blue) !important;
+    box-shadow:
+      0 0 0 4px rgba(59, 130, 246, 0.2),
+      var(--glow-blue) !important;
     outline: none;
   }
 
@@ -581,14 +623,21 @@ body {
   }
 
   /* 📊 Typography Ultra-Premium */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: var(--text-white-pure) !important;
     font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1.2;
   }
 
-  p, span, div {
+  p,
+  span,
+  div {
     color: var(--text-silver-medium);
     letter-spacing: -0.01em;
   }

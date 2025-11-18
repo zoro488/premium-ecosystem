@@ -22,22 +22,22 @@ export default {
           green: '#10b981',
           red: '#ef4444',
           amber: '#f59e0b',
-        }
+        },
       },
       boxShadow: {
-        'neon': '0 0 20px -5px var(--tw-shadow-color)',
-        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+        neon: '0 0 20px -5px var(--tw-shadow-color)',
+        glass: '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
       },
       animation: {
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float': 'float 6s ease-in-out infinite',
+        float: 'float 6s ease-in-out infinite',
       },
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
-        }
-      }
+        },
+      },
     },
   },
   plugins: [require('tailwind-scrollbar')({ nocompatible: true })],

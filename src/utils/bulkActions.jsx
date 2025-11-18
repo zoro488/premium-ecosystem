@@ -229,9 +229,7 @@ export const SelectionCheckbox = ({ checked, onChange, disabled = false, label =
           className={`
           w-5 h-5 rounded border-2 transition-all duration-200
           ${
-            checked
-              ? 'bg-zinc-800 border-zinc-700'
-              : 'border-slate-400 group-hover:border-zinc-600'
+            checked ? 'bg-zinc-800 border-zinc-700' : 'border-slate-400 group-hover:border-zinc-600'
           }
           ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
         `}

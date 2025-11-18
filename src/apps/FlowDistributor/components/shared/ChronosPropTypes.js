@@ -20,9 +20,9 @@ export const ChronosHeaderPropTypes = {
     PropTypes.shape({
       label: PropTypes.string.isRequired,
       onClick: PropTypes.func.isRequired,
-      icon: PropTypes.elementType
+      icon: PropTypes.elementType,
     })
-  )
+  ),
 };
 
 // ============================================================================
@@ -32,7 +32,7 @@ export const ChronosPanelContainerPropTypes = {
   children: PropTypes.node.isRequired,
   enableParticles: PropTypes.bool,
   particleCount: PropTypes.number,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 // ============================================================================
@@ -45,7 +45,7 @@ export const ChronosCardPropTypes = {
   icon: PropTypes.elementType,
   className: PropTypes.string,
   onClick: PropTypes.func,
-  index: PropTypes.number
+  index: PropTypes.number,
 };
 
 export const ChronosStatCardPropTypes = {
@@ -55,7 +55,7 @@ export const ChronosStatCardPropTypes = {
   trend: PropTypes.number,
   subtitle: PropTypes.string,
   className: PropTypes.string,
-  index: PropTypes.number
+  index: PropTypes.number,
 };
 
 // ============================================================================
@@ -67,7 +67,7 @@ export const ChronosTablePropTypes = {
   renderCell: PropTypes.func,
   onRowClick: PropTypes.func,
   striped: PropTypes.bool,
-  emptyMessage: PropTypes.string
+  emptyMessage: PropTypes.string,
 };
 
 export const ChronosTableCardPropTypes = {
@@ -80,7 +80,7 @@ export const ChronosTableCardPropTypes = {
   onRowClick: PropTypes.func,
   actions: PropTypes.node,
   striped: PropTypes.bool,
-  emptyMessage: PropTypes.string
+  emptyMessage: PropTypes.string,
 };
 
 // ============================================================================
@@ -96,7 +96,7 @@ export const ChronosButtonPropTypes = {
   fullWidth: PropTypes.bool,
   onClick: PropTypes.func,
   className: PropTypes.string,
-  type: PropTypes.oneOf(['button', 'submit', 'reset'])
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
 };
 
 // ============================================================================
@@ -114,7 +114,7 @@ export const ChronosInputPropTypes = {
   error: PropTypes.string,
   disabled: PropTypes.bool,
   required: PropTypes.bool,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 // ============================================================================
@@ -126,7 +126,7 @@ export const ChronosModalPropTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   size: PropTypes.oneOf(['sm', 'md', 'lg', 'xl']),
-  showCloseButton: PropTypes.bool
+  showCloseButton: PropTypes.bool,
 };
 
 // ============================================================================
@@ -137,7 +137,7 @@ export const ChronosBadgePropTypes = {
   variant: PropTypes.oneOf(['default', 'success', 'warning', 'danger', 'info']),
   size: PropTypes.oneOf(['sm', 'md', 'lg']),
   pulse: PropTypes.bool,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 // ============================================================================
@@ -149,12 +149,12 @@ export const ChronosTabsPropTypes = {
       id: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
       badge: PropTypes.number,
-      icon: PropTypes.elementType
+      icon: PropTypes.elementType,
     })
   ).isRequired,
   activeTab: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 // ============================================================================
@@ -166,7 +166,7 @@ export const ChronosProgressPropTypes = {
   label: PropTypes.string,
   showPercentage: PropTypes.bool,
   color: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 // ============================================================================
@@ -176,7 +176,7 @@ export const ChronosTooltipPropTypes = {
   content: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   position: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
-  delay: PropTypes.number
+  delay: PropTypes.number,
 };
 
 // ============================================================================
@@ -185,7 +185,7 @@ export const ChronosTooltipPropTypes = {
 export const ChronosLogoPropTypes = {
   size: PropTypes.oneOf(['sm', 'md', 'lg', 'xl']),
   className: PropTypes.string,
-  animated: PropTypes.bool
+  animated: PropTypes.bool,
 };
 
 // ============================================================================
@@ -196,7 +196,7 @@ export const ChronosErrorBoundaryPropTypes = {
   onError: PropTypes.func,
   onReset: PropTypes.func,
   onGoHome: PropTypes.func,
-  fallback: PropTypes.func
+  fallback: PropTypes.func,
 };
 
 // ============================================================================
@@ -206,7 +206,7 @@ export const ChronosDashboardPropTypes = {
   data: PropTypes.shape({
     stats: PropTypes.object,
     transactions: PropTypes.array,
-    alerts: PropTypes.array
+    alerts: PropTypes.array,
   }),
-  onNavigate: PropTypes.func
+  onNavigate: PropTypes.func,
 };

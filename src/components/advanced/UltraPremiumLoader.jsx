@@ -409,10 +409,14 @@ export const InlineSpinner = ({ className = 'w-5 h-5' }) => {
   );
 };
 
+// Export principal para compatibilidad
+export const UltraPremiumLoader = PageLoader;
+
 export default {
   HolographicSpinner,
   SkeletonLoader,
   PageLoader,
   AnimatedProgressBar,
   InlineSpinner,
+  UltraPremiumLoader,
 };

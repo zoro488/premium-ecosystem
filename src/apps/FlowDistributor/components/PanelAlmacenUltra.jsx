@@ -52,10 +52,12 @@ const transformData = (data) => {
     totalProductos: almacenData.ordenesCompra.reduce((acc, item) => acc + item.cantidad, 0),
     stockTotal: almacenData.ingresos - almacenData.salida,
     valorInventario: 0, // This needs to be calculated based on the inventory
-    movimientosDiarios: almacenData.salidas.filter(item => {
-        const today = new Date().toISOString().slice(0, 10);
-        const itemDate = new Date(item.fecha.split('/').reverse().join('-')).toISOString().slice(0, 10);
-        return today === itemDate;
+    movimientosDiarios: almacenData.salidas.filter((item) => {
+      const today = new Date().toISOString().slice(0, 10);
+      const itemDate = new Date(item.fecha.split('/').reverse().join('-'))
+        .toISOString()
+        .slice(0, 10);
+      return today === itemDate;
     }).length,
     rotacionPromedio: 0, // This needs to be calculated
     ocupacionAlmacen: 0, // This needs to be calculated

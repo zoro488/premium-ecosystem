@@ -19,33 +19,33 @@ export const MetricCardPremium = ({
   icon: Icon,
   trend = 'up',
   color = 'primary',
-  delay = 0
+  delay = 0,
 }) => {
   const colorClasses = {
     primary: {
       bg: 'from-zinc-800/20 to-zinc-800/20',
       glow: 'shadow-glow',
       icon: 'text-zinc-300',
-      trend: trend === 'up' ? 'text-zinc-200' : 'text-zinc-200'
+      trend: trend === 'up' ? 'text-zinc-200' : 'text-zinc-200',
     },
     success: {
       bg: 'from-green-500/20 to-emerald-500/20',
       glow: 'shadow-glow-success',
       icon: 'text-zinc-200',
-      trend: trend === 'up' ? 'text-zinc-200' : 'text-zinc-200'
+      trend: trend === 'up' ? 'text-zinc-200' : 'text-zinc-200',
     },
     warning: {
       bg: 'from-yellow-500/20 to-orange-500/20',
       glow: 'shadow-glow-warning',
       icon: 'text-zinc-200',
-      trend: trend === 'up' ? 'text-zinc-200' : 'text-zinc-200'
+      trend: trend === 'up' ? 'text-zinc-200' : 'text-zinc-200',
     },
     purple: {
       bg: 'from-zinc-800/20 to-zinc-700/20',
       glow: 'shadow-glow-purple',
       icon: 'text-zinc-800',
-      trend: trend === 'up' ? 'text-zinc-200' : 'text-zinc-200'
-    }
+      trend: trend === 'up' ? 'text-zinc-200' : 'text-zinc-200',
+    },
   };
 
   const colors = colorClasses[color] || colorClasses.primary;
@@ -74,10 +74,12 @@ export const MetricCardPremium = ({
       <div className="relative z-10">
         {/* Header with Icon */}
         <div className="flex items-center justify-between mb-4">
-          <div className={`
+          <div
+            className={`
             p-3 rounded-xl bg-white/5 backdrop-blur-sm
             ${colors.icon} group-hover:scale-110 transition-transform
-          `}>
+          `}
+          >
             <Icon className="w-6 h-6" />
           </div>
           <div className={`flex items-center gap-1 text-sm font-semibold ${colors.trend}`}>
@@ -98,9 +100,7 @@ export const MetricCardPremium = ({
         </div>
 
         {/* Title */}
-        <p className="text-sm text-gray-300 font-medium">
-          {title}
-        </p>
+        <p className="text-sm text-gray-300 font-medium">{title}</p>
 
         {/* Progress Bar */}
         <div className="mt-4 h-1 bg-white/10 rounded-full overflow-hidden">
@@ -122,12 +122,16 @@ export const MetricCardPremium = ({
 export const GlassCard3D = ({ children, className = '', hover3D = true }) => {
   return (
     <motion.div
-      whileHover={hover3D ? {
-        scale: 1.02,
-        rotateX: 5,
-        rotateY: 5,
-        transition: { duration: 0.3 }
-      } : {}}
+      whileHover={
+        hover3D
+          ? {
+              scale: 1.02,
+              rotateX: 5,
+              rotateY: 5,
+              transition: { duration: 0.3 },
+            }
+          : {}
+      }
       style={{ transformStyle: 'preserve-3d' }}
       className={`
         relative overflow-hidden rounded-2xl p-6
@@ -139,17 +143,21 @@ export const GlassCard3D = ({ children, className = '', hover3D = true }) => {
     >
       {/* Floating particles effect */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute w-2 h-2 bg-zinc-700/30 rounded-full blur-sm animate-float"
-             style={{ top: '20%', left: '10%', animationDelay: '0s' }} />
-        <div className="absolute w-3 h-3 bg-zinc-800/30 rounded-full blur-sm animate-float"
-             style={{ top: '60%', right: '15%', animationDelay: '1s' }} />
-        <div className="absolute w-2 h-2 bg-zinc-700/30 rounded-full blur-sm animate-float"
-             style={{ bottom: '30%', left: '20%', animationDelay: '2s' }} />
+        <div
+          className="absolute w-2 h-2 bg-zinc-700/30 rounded-full blur-sm animate-float"
+          style={{ top: '20%', left: '10%', animationDelay: '0s' }}
+        />
+        <div
+          className="absolute w-3 h-3 bg-zinc-800/30 rounded-full blur-sm animate-float"
+          style={{ top: '60%', right: '15%', animationDelay: '1s' }}
+        />
+        <div
+          className="absolute w-2 h-2 bg-zinc-700/30 rounded-full blur-sm animate-float"
+          style={{ bottom: '30%', left: '20%', animationDelay: '2s' }}
+        />
       </div>
 
-      <div className="relative z-10">
-        {children}
-      </div>
+      <div className="relative z-10">{children}</div>
     </motion.div>
   );
 };
@@ -163,7 +171,7 @@ export const StatWidget = ({
   value,
   suffix = '',
   color = 'blue',
-  animated = true
+  animated = true,
 }) => {
   const [count, setCount] = React.useState(0);
   const numericValue = typeof value === 'number' ? value : Number.parseFloat(value) || 0;
@@ -206,18 +214,22 @@ export const StatWidget = ({
       whileHover={{ scale: 1.05 }}
       className="relative group cursor-pointer"
     >
-      <div className={`
+      <div
+        className={`
         relative overflow-hidden rounded-xl p-4
         bg-gradient-to-br ${colorClasses[color]}/10
         backdrop-blur-lg border border-white/10
         hover:shadow-glow-lg transition-all duration-300
-      `}>
+      `}
+      >
         {/* Icon */}
         <div className="flex items-center gap-3 mb-3">
-          <div className={`
+          <div
+            className={`
             p-2 rounded-lg bg-gradient-to-br ${colorClasses[color]}/20
             group-hover:scale-110 transition-transform
-          `}>
+          `}
+          >
             <Icon className="w-5 h-5 text-white" />
           </div>
           <span className="text-sm text-gray-300 font-medium">{label}</span>
@@ -225,10 +237,12 @@ export const StatWidget = ({
 
         {/* Value */}
         <div className="flex items-baseline gap-1">
-          <span className={`
+          <span
+            className={`
             text-2xl font-bold bg-gradient-to-r ${colorClasses[color]}
             bg-clip-text text-transparent
-          `}>
+          `}
+          >
             {animated ? count.toLocaleString() : numericValue.toLocaleString()}
           </span>
           <span className="text-sm text-gray-400">{suffix}</span>
@@ -236,11 +250,13 @@ export const StatWidget = ({
 
         {/* Animated border */}
         <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity">
-          <div className={`
+          <div
+            className={`
             absolute inset-0 rounded-xl
             bg-gradient-to-r ${colorClasses[color]}
             blur-xl opacity-50 animate-pulse-glow
-          `} />
+          `}
+          />
         </div>
       </div>
     </motion.div>
@@ -250,13 +266,7 @@ export const StatWidget = ({
 // ============================================
 // MINI CHART WIDGET
 // ============================================
-export const MiniChartWidget = ({
-  title,
-  value,
-  data = [],
-  color = 'blue',
-  sparkline = true
-}) => {
+export const MiniChartWidget = ({ title, value, data = [], color = 'blue', sparkline = true }) => {
   const colorMap = {
     blue: { stroke: '#60a5fa', fill: 'rgba(96, 165, 250, 0.1)' },
     green: { stroke: '#34d399', fill: 'rgba(52, 211, 153, 0.1)' },
@@ -306,17 +316,18 @@ export const MiniChartWidget = ({
           </div>
 
           {sparkline && data.length > 0 && (
-            <svg width="100" height="40" className="opacity-70 group-hover:opacity-100 transition-opacity">
+            <svg
+              width="100"
+              height="40"
+              className="opacity-70 group-hover:opacity-100 transition-opacity"
+            >
               <defs>
                 <linearGradient id={`gradient-${color}`} x1="0%" y1="0%" x2="0%" y2="100%">
                   <stop offset="0%" style={{ stopColor: colors.stroke, stopOpacity: 0.3 }} />
                   <stop offset="100%" style={{ stopColor: colors.stroke, stopOpacity: 0 }} />
                 </linearGradient>
               </defs>
-              <path
-                d={`${generatePath()} L 100,40 L 0,40 Z`}
-                fill={`url(#gradient-${color})`}
-              />
+              <path d={`${generatePath()} L 100,40 L 0,40 Z`} fill={`url(#gradient-${color})`} />
               <path
                 d={generatePath()}
                 fill="none"
@@ -330,7 +341,10 @@ export const MiniChartWidget = ({
 
         {/* Trend indicator */}
         <div className="flex items-center gap-2 text-xs">
-          <TrendingUp className={`w-3 h-3 ${color === 'red' ? 'rotate-90' : ''}`} style={{ color: colors.stroke }} />
+          <TrendingUp
+            className={`w-3 h-3 ${color === 'red' ? 'rotate-90' : ''}`}
+            style={{ color: colors.stroke }}
+          />
           <span style={{ color: colors.stroke }}>vs mes anterior</span>
         </div>
       </div>
@@ -352,7 +366,7 @@ export const QuickActionButton = ({
   label,
   onClick,
   color = 'primary',
-  badge = null
+  badge = null,
 }) => {
   const colorClasses = {
     primary: 'from-zinc-800 to-zinc-800 hover:from-zinc-900 hover:to-zinc-800',
@@ -383,13 +397,15 @@ export const QuickActionButton = ({
       <span className="relative z-10">{label}</span>
 
       {badge && (
-        <span className="
+        <span
+          className="
           absolute -top-1 -right-1
           w-5 h-5 rounded-full
           bg-zinc-9000 text-white text-xs
           flex items-center justify-center
           animate-pulse
-        ">
+        "
+        >
           {badge}
         </span>
       )}
@@ -438,7 +454,7 @@ export const ProgressRing = ({
   size = 120,
   strokeWidth = 8,
   color = 'blue',
-  label = ''
+  label = '',
 }) => {
   const radius = (size - strokeWidth) / 2;
   const circumference = radius * 2 * Math.PI;

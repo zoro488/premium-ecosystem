@@ -6,16 +6,55 @@
  */
 import { getAnalytics, logEvent, setUserProperties } from 'firebase/analytics';
 import { initializeApp } from 'firebase/app';
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
-import { Timestamp, arrayRemove, arrayUnion, collection, deleteDoc, doc, enableMultiTabIndexedDbPersistence, getDoc, getDocs, getFirestore, increment, limit, onSnapshot, orderBy, query, runTransaction, serverTimestamp, setDoc, startAfter, updateDoc, where, writeBatch } from 'firebase/firestore';
+import {
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  getAuth,
+  onAuthStateChanged,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile,
+} from 'firebase/auth';
+import {
+  Timestamp,
+  arrayRemove,
+  arrayUnion,
+  collection,
+  deleteDoc,
+  doc,
+  enableMultiTabIndexedDbPersistence,
+  getDoc,
+  getDocs,
+  getFirestore,
+  increment,
+  limit,
+  onSnapshot,
+  orderBy,
+  query,
+  runTransaction,
+  serverTimestamp,
+  setDoc,
+  startAfter,
+  updateDoc,
+  where,
+  writeBatch,
+} from 'firebase/firestore';
 import { getFunctions, httpsCallable } from 'firebase/functions';
 import { getPerformance, trace } from 'firebase/performance';
 import { fetchAndActivate, getAll, getRemoteConfig, getValue } from 'firebase/remote-config';
-import { deleteObject, getDownloadURL, getMetadata, getStorage, listAll, ref, updateMetadata, uploadBytes, uploadBytesResumable } from 'firebase/storage';
-
-
-
-
+import {
+  deleteObject,
+  getDownloadURL,
+  getMetadata,
+  getStorage,
+  listAll,
+  ref,
+  updateMetadata,
+  uploadBytes,
+  uploadBytesResumable,
+} from 'firebase/storage';
 
 // ============================================
 // CONFIGURACIÓN DE FIREBASE
@@ -427,7 +466,9 @@ export class FunctionsManager {
   // Llamar función
   async call(functionName, data = {}) {
     if (!functions) {
-      console.warn('Firebase Functions no está disponible. Esta funcionalidad requiere plan Blaze.');
+      console.warn(
+        'Firebase Functions no está disponible. Esta funcionalidad requiere plan Blaze.'
+      );
       return { success: false, error: 'Functions not available' };
     }
     const callable = httpsCallable(functions, functionName);
@@ -554,19 +595,44 @@ export const remoteConfigManager = new RemoteConfigManager();
 // ============================================
 
 export {
-    GoogleAuthProvider, Timestamp,
-    // App
-    app, arrayRemove, arrayUnion,
-    // Firestore utilities
-    collection, createUserWithEmailAndPassword, deleteDoc, deleteObject, doc, signOut as firebaseSignOut, getDoc,
-    getDocs, getDownloadURL,
-    // Functions utilities
-    httpsCallable, increment, limit, onAuthStateChanged, onSnapshot, orderBy, query, runTransaction, serverTimestamp, setDoc,
-    // Auth utilities
-    signInWithEmailAndPassword, signInWithPopup, startAfter,
-    // Storage utilities
-    ref as storageRef, updateDoc, uploadBytes,
-    uploadBytesResumable, where, writeBatch
+  GoogleAuthProvider,
+  Timestamp,
+  // App
+  app,
+  arrayRemove,
+  arrayUnion,
+  // Firestore utilities
+  collection,
+  createUserWithEmailAndPassword,
+  deleteDoc,
+  deleteObject,
+  doc,
+  signOut as firebaseSignOut,
+  getDoc,
+  getDocs,
+  getDownloadURL,
+  // Functions utilities
+  httpsCallable,
+  increment,
+  limit,
+  onAuthStateChanged,
+  onSnapshot,
+  orderBy,
+  query,
+  runTransaction,
+  serverTimestamp,
+  setDoc,
+  // Auth utilities
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  startAfter,
+  // Storage utilities
+  ref as storageRef,
+  updateDoc,
+  uploadBytes,
+  uploadBytesResumable,
+  where,
+  writeBatch,
 };
 
 export default app;

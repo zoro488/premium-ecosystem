@@ -10,7 +10,7 @@ const ChronosPanelContainer = ({
   children,
   className = '',
   showParticles = true,
-  animationDelay = 0
+  animationDelay = 0,
 }) => {
   return (
     <motion.div
@@ -24,19 +24,19 @@ const ChronosPanelContainer = ({
       <motion.div
         className="absolute inset-0 opacity-5"
         animate={{
-          backgroundPosition: ['0% 0%', '100% 100%']
+          backgroundPosition: ['0% 0%', '100% 100%'],
         }}
         transition={{
           duration: 40,
           repeat: Infinity,
-          ease: 'linear'
+          ease: 'linear',
         }}
         style={{
           backgroundImage: `
             linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
             linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
           `,
-          backgroundSize: '80px 80px'
+          backgroundSize: '80px 80px',
         }}
       />
 
@@ -49,18 +49,18 @@ const ChronosPanelContainer = ({
               className="absolute w-1 h-1 bg-white/20 rounded-full"
               style={{
                 left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`
+                top: `${Math.random() * 100}%`,
               }}
               animate={{
                 y: [0, -100, 0],
                 opacity: [0, 0.5, 0],
-                scale: [0, 1, 0]
+                scale: [0, 1, 0],
               }}
               transition={{
                 duration: 5 + Math.random() * 3,
                 delay: Math.random() * 5,
                 repeat: Infinity,
-                ease: 'easeInOut'
+                ease: 'easeInOut',
               }}
             />
           ))}
@@ -68,9 +68,7 @@ const ChronosPanelContainer = ({
       )}
 
       {/* Contenido */}
-      <div className="relative z-10">
-        {children}
-      </div>
+      <div className="relative z-10">{children}</div>
     </motion.div>
   );
 };
@@ -79,7 +77,7 @@ ChronosPanelContainer.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   showParticles: PropTypes.bool,
-  animationDelay: PropTypes.number
+  animationDelay: PropTypes.number,
 };
 
 export default ChronosPanelContainer;

@@ -18,7 +18,7 @@ const ChronosSplashMinimal = ({ onComplete }) => {
     const timeline = gsap.timeline({
       onComplete: () => {
         setTimeout(onComplete, 300);
-      }
+      },
     });
 
     // Fase 1: Logo aparece y se expande (0-1.5s)
@@ -26,7 +26,7 @@ const ChronosSplashMinimal = ({ onComplete }) => {
       duration: 0.8,
       opacity: 1,
       ease: 'power2.out',
-      onComplete: () => setShowText(true)
+      onComplete: () => setShowText(true),
     });
 
     // Fase 2: Texto aparece letra por letra (1.5-3s)
@@ -42,8 +42,8 @@ const ChronosSplashMinimal = ({ onComplete }) => {
         duration: 0.5,
         stagger: {
           each: 0.08,
-          ease: 'power2.out'
-        }
+          ease: 'power2.out',
+        },
       });
     }, '+=0.5');
 
@@ -63,20 +63,28 @@ const ChronosSplashMinimal = ({ onComplete }) => {
       }
     };
 
-    timeline.to({}, {
-      duration: 1,
-      onUpdate: function() {
-        updateGlowEffect(this);
-      }
-    }, '-=0.5');
+    timeline.to(
+      {},
+      {
+        duration: 1,
+        onUpdate: function () {
+          updateGlowEffect(this);
+        },
+      },
+      '-=0.5'
+    );
 
     // Fase 4: Fade out elegante (3.5-4s)
-    timeline.to(containerRef.current, {
-      opacity: 0,
-      scale: 1.1,
-      duration: 0.6,
-      ease: 'power2.in'
-    }, '+=0.8');
+    timeline.to(
+      containerRef.current,
+      {
+        opacity: 0,
+        scale: 1.1,
+        duration: 0.6,
+        ease: 'power2.in',
+      },
+      '+=0.8'
+    );
 
     return () => timeline.kill();
   }, [onComplete]);
@@ -84,23 +92,27 @@ const ChronosSplashMinimal = ({ onComplete }) => {
   return (
     <div className="fixed inset-0 bg-black overflow-hidden">
       {/* Partículas sutiles de fondo */}
-      {Array.from({ length: 30 }, (_, i) => ({ id: `particle-${i}`, left: Math.random() * 100, top: Math.random() * 100 })).map((particle) => (
+      {Array.from({ length: 30 }, (_, i) => ({
+        id: `particle-${i}`,
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+      })).map((particle) => (
         <motion.div
           key={particle.id}
           className="absolute w-px h-px bg-white rounded-full"
           style={{
             left: `${particle.left}%`,
-            top: `${particle.top}%`
+            top: `${particle.top}%`,
           }}
           animate={{
             opacity: [0, 0.3, 0],
-            scale: [0, 1, 0]
+            scale: [0, 1, 0],
           }}
           transition={{
             duration: 3 + Math.random() * 2,
             delay: Math.random() * 2,
             repeat: Infinity,
-            ease: 'easeInOut'
+            ease: 'easeInOut',
           }}
         />
       ))}
@@ -123,15 +135,13 @@ const ChronosSplashMinimal = ({ onComplete }) => {
 
         {/* Texto CHRONOS con microanimaciones */}
         {showText && (
-          <div
-            ref={textRef}
-            className="relative"
-          >
-            <div className="text-8xl font-light tracking-[0.3em] text-white select-none relative"
+          <div ref={textRef} className="relative">
+            <div
+              className="text-8xl font-light tracking-[0.3em] text-white select-none relative"
               style={{
                 fontFamily: '"Helvetica Neue", Arial, sans-serif',
                 fontWeight: 200,
-                perspective: '1000px'
+                perspective: '1000px',
               }}
             >
               {'CHRONOS'.split('').map((letter, i) => (
@@ -140,7 +150,7 @@ const ChronosSplashMinimal = ({ onComplete }) => {
                   className="letter inline-block relative"
                   style={{
                     opacity: 0,
-                    transformStyle: 'preserve-3d'
+                    transformStyle: 'preserve-3d',
                   }}
                 >
                   {letter}
@@ -151,7 +161,7 @@ const ChronosSplashMinimal = ({ onComplete }) => {
                       transform: 'scaleY(-1)',
                       background: 'linear-gradient(to bottom, rgba(255,255,255,0.2), transparent)',
                       WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent'
+                      WebkitTextFillColor: 'transparent',
                     }}
                   >
                     {letter}
@@ -188,7 +198,7 @@ const ChronosSplashMinimal = ({ onComplete }) => {
 };
 
 ChronosSplashMinimal.propTypes = {
-  onComplete: PropTypes.func.isRequired
+  onComplete: PropTypes.func.isRequired,
 };
 
 export default ChronosSplashMinimal;

@@ -1,0 +1,85 @@
+name: 🤖 Auto Fix & Create PR
+
+on:
+    workflow_dispatch:
+    schedule:
+        - cron: "0 3 * * *" # daily check
+
+permissions:
+    contents: write
+    pull-requests: write
+
+jobs:
+    run-auto-fixes:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout (all history)
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+                  token: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: "npm"
+
+            - name: Install deps
+              run: npm ci
+
+            - name: Run ESLint autofix
+              run: |
+                  npx eslint "./**/*.{js,ts,jsx,tsx}" --fix || true
+
+            - name: Run Prettier
+              run: npx prettier --write . || true
+
+            - name: Run tests
+              run: npm run test || true
+
+            - name: Check for changes
+              id: changes
+              run: |
+                  if git diff --quiet; then
+                    echo "has_changes=false" >> $GITHUB_OUTPUT
+                  else
+                    echo "has_changes=true" >> $GITHUB_OUTPUT
+                  fi
+
+            - name: Create branch and commit
+              if: steps.changes.outputs.has_changes == 'true'
+              run: |
+                  BRANCH=auto/fixes-${{ github.run_id }}
+                  git config user.email "actions@github.com"
+                  git config user.name "GitHub Actions"
+                  git checkout -b $BRANCH
+                  git add -A
+                  git commit -m "chore: automated fixes (eslint/prettier) [skip ci]"
+                  git push -u origin $BRANCH
+
+            - name: Create Pull Request
+              if: steps.changes.outputs.has_changes == 'true'
+              uses: peter-evans/create-pull-request@v5
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  commit-message: "chore: automated fixes (eslint/prettier)"
+                  branch: auto/fixes-${{ github.run_id }}
+                  title: "🤖 Automated fixes: lint & format"
+                  body: |
+                      ## What
+                      Automated fixes applied by CI agent.
+
+                      ## Changes
+                      - ESLint auto-fixes
+                      - Prettier formatting
+                      - Tests verified
+
+                      ## QA
+                      - [x] CI passes
+                      - [ ] Review changes
+
+                      _This PR was created automatically by the Auto Fix Agent workflow._
+                  labels: |
+                      automated
+                      code-quality

@@ -88,12 +88,7 @@ export const useIntersectionObserver = (options = {}) => {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const elementRef = useRef(null);
 
-  const {
-    threshold = 0,
-    root = null,
-    rootMargin = '0%',
-    freezeOnceVisible = false,
-  } = options;
+  const { threshold = 0, root = null, rootMargin = '0%', freezeOnceVisible = false } = options;
 
   useEffect(() => {
     const element = elementRef.current;

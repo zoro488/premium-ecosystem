@@ -87,7 +87,8 @@
 }
 
 @keyframes pulseGlow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
   }
   50% {
@@ -96,7 +97,8 @@
 }
 
 @keyframes glowPulse {
-  0%, 100% {
+  0%,
+  100% {
     filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.6));
   }
   50% {
@@ -105,7 +107,8 @@
 }
 
 @keyframes neonGlow {
-  0%, 100% {
+  0%,
+  100% {
     text-shadow:
       0 0 10px rgba(99, 102, 241, 0.8),
       0 0 20px rgba(99, 102, 241, 0.6),
@@ -124,7 +127,8 @@
    ======================================== */
 
 @keyframes floatParticle {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) translateX(0);
   }
   25% {
@@ -190,7 +194,8 @@
 }
 
 @keyframes tilt {
-  0%, 100% {
+  0%,
+  100% {
     transform: rotate(-1deg);
   }
   50% {
@@ -231,19 +236,23 @@
 }
 
 @keyframes heartbeat {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
-  10%, 30% {
+  10%,
+  30% {
     transform: scale(0.9);
   }
-  20%, 40% {
+  20%,
+  40% {
     transform: scale(1.1);
   }
 }
 
 @keyframes wiggle {
-  0%, 100% {
+  0%,
+  100% {
     transform: rotate(0deg);
   }
   25% {
@@ -255,13 +264,21 @@
 }
 
 @keyframes shake {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateX(0);
   }
-  10%, 30%, 50%, 70%, 90% {
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
     transform: translateX(-5px);
   }
-  20%, 40%, 60%, 80% {
+  20%,
+  40%,
+  60%,
+  80% {
     transform: translateX(5px);
   }
 }
@@ -280,7 +297,8 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
@@ -291,7 +309,9 @@
 }
 
 @keyframes dotPulse {
-  0%, 80%, 100% {
+  0%,
+  80%,
+  100% {
     transform: scale(0);
     opacity: 0.5;
   }
@@ -340,12 +360,7 @@
 
 .animate-shimmer {
   animation: shimmer 2s linear infinite;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
   background-size: 200% 100%;
 }
 
@@ -496,11 +511,7 @@
 }
 
 .glass-morphism {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.05)
-  );
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
   backdrop-filter: blur(25px) saturate(180%);
   -webkit-backdrop-filter: blur(25px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -527,14 +538,7 @@
 }
 
 .gradient-rainbow {
-  background: linear-gradient(
-    135deg,
-    #6366f1,
-    #a855f7,
-    #ec4899,
-    #f59e0b,
-    #10b981
-  );
+  background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899, #f59e0b, #10b981);
   background-size: 300% 300%;
   animation: gradientShift 6s ease infinite;
 }
@@ -606,16 +610,36 @@
   animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) backwards;
 }
 
-.stagger-fade-in > *:nth-child(1) { animation-delay: 0.05s; }
-.stagger-fade-in > *:nth-child(2) { animation-delay: 0.1s; }
-.stagger-fade-in > *:nth-child(3) { animation-delay: 0.15s; }
-.stagger-fade-in > *:nth-child(4) { animation-delay: 0.2s; }
-.stagger-fade-in > *:nth-child(5) { animation-delay: 0.25s; }
-.stagger-fade-in > *:nth-child(6) { animation-delay: 0.3s; }
-.stagger-fade-in > *:nth-child(7) { animation-delay: 0.35s; }
-.stagger-fade-in > *:nth-child(8) { animation-delay: 0.4s; }
-.stagger-fade-in > *:nth-child(9) { animation-delay: 0.45s; }
-.stagger-fade-in > *:nth-child(10) { animation-delay: 0.5s; }
+.stagger-fade-in > *:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.stagger-fade-in > *:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.stagger-fade-in > *:nth-child(3) {
+  animation-delay: 0.15s;
+}
+.stagger-fade-in > *:nth-child(4) {
+  animation-delay: 0.2s;
+}
+.stagger-fade-in > *:nth-child(5) {
+  animation-delay: 0.25s;
+}
+.stagger-fade-in > *:nth-child(6) {
+  animation-delay: 0.3s;
+}
+.stagger-fade-in > *:nth-child(7) {
+  animation-delay: 0.35s;
+}
+.stagger-fade-in > *:nth-child(8) {
+  animation-delay: 0.4s;
+}
+.stagger-fade-in > *:nth-child(9) {
+  animation-delay: 0.45s;
+}
+.stagger-fade-in > *:nth-child(10) {
+  animation-delay: 0.5s;
+}
 
 /* ========================================
    SCROLL ANIMATIONS

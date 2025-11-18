@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+
+import { AnimatePresence, motion } from 'framer-motion';
 
 const placeholders = ['LOGO 1', 'LOGO 2', 'LOGO 3', 'CHRONOS'];
 

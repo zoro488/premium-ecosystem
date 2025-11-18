@@ -19,6 +19,7 @@ import {
   CheckCircle2,
   Clock,
   Copy,
+  DollarSign,
   Download,
   Eye,
   FileSpreadsheet,
@@ -34,15 +35,19 @@ import {
   Redo2,
   Search,
   Send,
+  Settings,
   Sparkles,
   Sun,
   Target,
   Trash2,
   TrendingDown,
+  TrendingUp,
   Undo2,
   UserCheck,
+  Users,
   Wallet,
   Warehouse,
+  X,
   Zap,
 } from 'lucide-react';
 import {
@@ -235,7 +240,9 @@ const AIAssistantUltra = lazy(() => import('./components/AIAssistantUltra'));
 
 // 🤖 NUEVOS COMPONENTES DE IA (GEMINI + AWS + OLLAMA)
 const PanelIA = lazy(() => import('./components/ai/PanelIA').then((m) => ({ default: m.PanelIA })));
-const FloatingAIWidget = lazy(() => import('./components/ai/FloatingAIWidget').then((m) => ({ default: m.FloatingAIWidget })));
+const FloatingAIWidget = lazy(() =>
+  import('./components/ai/FloatingAIWidget').then((m) => ({ default: m.FloatingAIWidget }))
+);
 
 // 💱 WIDGET DE TIPO DE CAMBIO
 const CurrencyExchangeWidget = lazy(() => import('./components/widgets/CurrencyExchangeWidget'));
@@ -348,10 +355,10 @@ ContextMenu.propTypes = {
       danger: PropTypes.bool,
       disabled: PropTypes.bool,
       divider: PropTypes.bool,
-      shortcut: PropTypes.string
+      shortcut: PropTypes.string,
     })
   ).isRequired,
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
 };
 
 // COMPONENTE PRINCIPAL
@@ -2158,7 +2165,9 @@ export default function FlowDistributor() {
       setGastosAbonos([...gastosAbonos, nuevoAbono]);
 
       // Acreditar a banco
-      const conceptoIngreso = observaciones ? `Abono de ${cliente} - ${observaciones}` : `Abono de ${cliente}`;
+      const conceptoIngreso = observaciones
+        ? `Abono de ${cliente} - ${observaciones}`
+        : `Abono de ${cliente}`;
       const nuevoRegistro = {
         id: `ING-${bancoDestino}-${Date.now()}`,
         fecha: new Date().toISOString(),
@@ -2236,7 +2245,9 @@ export default function FlowDistributor() {
       setGastosAbonos([...gastosAbonos, nuevoGasto]);
 
       // Debitar del banco
-      const conceptoEgreso = observaciones ? `Gasto: ${concepto} - ${observaciones}` : `Gasto: ${concepto}`;
+      const conceptoEgreso = observaciones
+        ? `Gasto: ${concepto} - ${observaciones}`
+        : `Gasto: ${concepto}`;
       const nuevoRegistro = {
         id: `EGR-${bancoOrigen}-${Date.now()}`,
         fecha: new Date().toISOString(),
@@ -2315,7 +2326,9 @@ export default function FlowDistributor() {
       setGastosAbonos([...gastosAbonos, nuevaTransferencia]);
 
       // Egreso en banco origen
-      const conceptoEgresoOrigen = concepto ? `Transferencia a ${bancoDestino.nombre}: ${concepto}` : `Transferencia a ${bancoDestino.nombre}`;
+      const conceptoEgresoOrigen = concepto
+        ? `Transferencia a ${bancoDestino.nombre}: ${concepto}`
+        : `Transferencia a ${bancoDestino.nombre}`;
       const egresoOrigen = {
         id: `TRANS-OUT-${timestamp}`,
         fecha: new Date().toISOString(),
@@ -2326,7 +2339,9 @@ export default function FlowDistributor() {
       };
 
       // Ingreso en banco destino
-      const conceptoIngresoDestino = concepto ? `Transferencia desde ${bancoOrigen.nombre}: ${concepto}` : `Transferencia desde ${bancoOrigen.nombre}`;
+      const conceptoIngresoDestino = concepto
+        ? `Transferencia desde ${bancoOrigen.nombre}: ${concepto}`
+        : `Transferencia desde ${bancoOrigen.nombre}`;
       const ingresoDestino = {
         id: `TRANS-IN-${timestamp}`,
         fecha: new Date().toISOString(),
@@ -3680,7 +3695,7 @@ export default function FlowDistributor() {
         label: 'Inteligencia IA',
         badge: '🤖',
         color: 'purple',
-        gradient: 'from-zinc-500 via-zinc-500 to-zinc-800'
+        gradient: 'from-zinc-500 via-zinc-500 to-zinc-800',
       },
     ];
 

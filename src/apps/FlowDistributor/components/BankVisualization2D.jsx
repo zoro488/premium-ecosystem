@@ -7,16 +7,16 @@ import { useState } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import {
-    Activity,
-    AlertCircle,
-    ArrowUpRight,
-    Building2,
-    CheckCircle,
-    Clock,
-    DollarSign,
-    PieChart,
-    Sparkles,
-    TrendingUp,
+  Activity,
+  AlertCircle,
+  ArrowUpRight,
+  Building2,
+  CheckCircle,
+  Clock,
+  DollarSign,
+  PieChart,
+  Sparkles,
+  TrendingUp,
 } from 'lucide-react';
 
 /**

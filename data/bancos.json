@@ -1,0 +1,123 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdate": "2025-11-18T21:00:00.000Z",
+    "description": "Base de datos JSON local para los 8 bancos del sistema Chronos",
+    "totalBancos": 8
+  },
+  "bancos": [
+    {
+      "id": "boveda-monte",
+      "nombre": "Bóveda Monte",
+      "tipo": "fijo",
+      "capitalActual": 0,
+      "historicoIngresos": 0,
+      "historicoEgresos": 0,
+      "historicoTransferencias": 0,
+      "descripcion": "Banco de almacenamiento principal Monte",
+      "activo": true,
+      "color": "cyan",
+      "icono": "🏦",
+      "orden": 1
+    },
+    {
+      "id": "fletes",
+      "nombre": "Fletes Sur",
+      "tipo": "variable",
+      "capitalActual": 185792,
+      "historicoIngresos": 185792,
+      "historicoEgresos": 0,
+      "historicoTransferencias": 0,
+      "descripcion": "Banco para gastos de transporte y logística",
+      "activo": true,
+      "color": "orange",
+      "icono": "🚚",
+      "orden": 2
+    },
+    {
+      "id": "utilidades",
+      "nombre": "Utilidades",
+      "tipo": "variable",
+      "capitalActual": 278688,
+      "historicoIngresos": 278688,
+      "historicoEgresos": 0,
+      "historicoTransferencias": 0,
+      "descripcion": "Banco de utilidades generales",
+      "activo": true,
+      "color": "green",
+      "icono": "💰",
+      "orden": 3
+    },
+    {
+      "id": "azteca",
+      "nombre": "Banco Azteca",
+      "tipo": "fijo",
+      "capitalActual": 0,
+      "historicoIngresos": 0,
+      "historicoEgresos": 0,
+      "historicoTransferencias": 0,
+      "descripcion": "Cuenta bancaria Azteca",
+      "activo": true,
+      "color": "purple",
+      "icono": "🏛️",
+      "orden": 4
+    },
+    {
+      "id": "leftie",
+      "nombre": "Leftie",
+      "tipo": "fijo",
+      "capitalActual": 0,
+      "historicoIngresos": 0,
+      "historicoEgresos": 0,
+      "historicoTransferencias": 0,
+      "descripcion": "Cuenta bancaria Leftie",
+      "activo": true,
+      "color": "pink",
+      "icono": "🏪",
+      "orden": 5
+    },
+    {
+      "id": "profit",
+      "nombre": "Profit",
+      "tipo": "variable",
+      "capitalActual": 0,
+      "historicoIngresos": 0,
+      "historicoEgresos": 0,
+      "historicoTransferencias": 0,
+      "descripcion": "Banco de utilidades finales",
+      "activo": true,
+      "color": "emerald",
+      "icono": "🏆",
+      "orden": 6
+    },
+    {
+      "id": "boveda-usa",
+      "nombre": "Bóveda USA",
+      "tipo": "fijo",
+      "capitalActual": 128005,
+      "historicoIngresos": 128005,
+      "historicoEgresos": 0,
+      "historicoTransferencias": 0,
+      "descripcion": "Banco de almacenamiento USA",
+      "activo": true,
+      "color": "indigo",
+      "icono": "🇺🇸",
+      "orden": 7
+    },
+    {
+      "id": "almacen-monte",
+      "nombre": "Almacén Monte",
+      "tipo": "variable",
+      "capitalActual": 17,
+      "historicoIngresos": 17,
+      "historicoEgresos": 0,
+      "historicoTransferencias": 0,
+      "descripcion": "Almacén principal Monte (unidades físicas)",
+      "activo": true,
+      "color": "slate",
+      "icono": "📦",
+      "orden": 8
+    }
+  ],
+  "operaciones": []
+}

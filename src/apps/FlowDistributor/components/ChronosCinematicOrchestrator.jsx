@@ -19,7 +19,7 @@ const ChronosCinematicOrchestrator = ({ onAuthComplete, children }) => {
         { progress: 60, status: 'Initializing Network', duration: 700 },
         { progress: 80, status: 'Securing Connections', duration: 500 },
         { progress: 95, status: 'Starting Analytics', duration: 400 },
-        { progress: 100, status: 'System Ready', duration: 500 }
+        { progress: 100, status: 'System Ready', duration: 500 },
       ];
 
       let currentPhaseIndex = 0;
@@ -60,7 +60,7 @@ const ChronosCinematicOrchestrator = ({ onAuthComplete, children }) => {
     initial: {
       opacity: 0,
       scale: 0.95,
-      filter: 'blur(10px)'
+      filter: 'blur(10px)',
     },
     animate: {
       opacity: 1,
@@ -68,8 +68,8 @@ const ChronosCinematicOrchestrator = ({ onAuthComplete, children }) => {
       filter: 'blur(0px)',
       transition: {
         duration: 0.8,
-        ease: [0.43, 0.13, 0.23, 0.96]
-      }
+        ease: [0.43, 0.13, 0.23, 0.96],
+      },
     },
     exit: {
       opacity: 0,
@@ -77,9 +77,9 @@ const ChronosCinematicOrchestrator = ({ onAuthComplete, children }) => {
       filter: 'blur(10px)',
       transition: {
         duration: 0.6,
-        ease: [0.43, 0.13, 0.23, 0.96]
-      }
-    }
+        ease: [0.43, 0.13, 0.23, 0.96],
+      },
+    },
   };
 
   return (
@@ -107,10 +107,7 @@ const ChronosCinematicOrchestrator = ({ onAuthComplete, children }) => {
             exit="exit"
             className="absolute inset-0"
           >
-            <ChronosLoadingCinematic
-              progress={loadingProgress}
-              status={loadingStatus}
-            />
+            <ChronosLoadingCinematic progress={loadingProgress} status={loadingStatus} />
           </motion.div>
         )}
 
@@ -145,7 +142,7 @@ const ChronosCinematicOrchestrator = ({ onAuthComplete, children }) => {
 
 ChronosCinematicOrchestrator.propTypes = {
   onAuthComplete: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export default ChronosCinematicOrchestrator;

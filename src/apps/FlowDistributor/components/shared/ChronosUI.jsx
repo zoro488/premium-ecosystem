@@ -15,19 +15,19 @@ export const ChronosButton = ({
   disabled = false,
   loading = false,
   className = '',
-  fullWidth = false
+  fullWidth = false,
 }) => {
   const variants = {
     primary: 'bg-white text-black hover:bg-white/90',
     secondary: 'bg-white/10 text-white hover:bg-white/15 border border-white/20',
     ghost: 'bg-transparent text-white hover:bg-white/5 border border-white/10',
-    danger: 'bg-zinc-9000/20 text-zinc-200 hover:bg-zinc-9000/30 border border-zinc-500/30'
+    danger: 'bg-zinc-9000/20 text-zinc-200 hover:bg-zinc-9000/30 border border-zinc-500/30',
   };
 
   const sizes = {
     sm: 'px-3 py-1.5 text-xs',
     md: 'px-4 py-2 text-sm',
-    lg: 'px-6 py-3 text-base'
+    lg: 'px-6 py-3 text-base',
   };
 
   return (
@@ -46,7 +46,7 @@ export const ChronosButton = ({
         ${className}
       `}
       style={{
-        boxShadow: variant === 'primary' ? '0 4px 14px rgba(255,255,255,0.1)' : 'none'
+        boxShadow: variant === 'primary' ? '0 4px 14px rgba(255,255,255,0.1)' : 'none',
       }}
     >
       {/* Loading spinner */}
@@ -75,13 +75,13 @@ export const ChronosButton = ({
       <motion.div
         className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none"
         animate={{
-          x: ['-200%', '200%']
+          x: ['-200%', '200%'],
         }}
         transition={{
           duration: 2,
           repeat: Infinity,
           repeatDelay: 3,
-          ease: 'linear'
+          ease: 'linear',
         }}
       />
     </motion.button>
@@ -107,19 +107,17 @@ export const ChronosInput = ({
   return (
     <div className={className}>
       {/* Label */}
-      {label && (
-        <label className="block text-xs text-white/60 mb-2 tracking-wide">
-          {label}
-        </label>
-      )}
+      {label && <label className="block text-xs text-white/60 mb-2 tracking-wide">{label}</label>}
 
       {/* Input wrapper */}
       <div className="relative">
         {/* Icon */}
         {Icon && (
-          <Icon className={`absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 transition-colors ${
-            focused ? 'text-white' : 'text-white/40'
-          }`} />
+          <Icon
+            className={`absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 transition-colors ${
+              focused ? 'text-white' : 'text-white/40'
+            }`}
+          />
         )}
 
         {/* Input */}
@@ -134,8 +132,8 @@ export const ChronosInput = ({
             borderColor: focused
               ? 'rgba(255,255,255,0.3)'
               : error
-              ? 'rgba(239,68,68,0.3)'
-              : 'rgba(255,255,255,0.1)'
+                ? 'rgba(239,68,68,0.3)'
+                : 'rgba(255,255,255,0.1)',
           }}
           className={`
             w-full px-4 py-2.5 bg-white/5 border rounded-sm
@@ -154,7 +152,7 @@ export const ChronosInput = ({
             animate={{ opacity: 1 }}
             className="absolute inset-0 rounded-sm pointer-events-none"
             style={{
-              boxShadow: '0 0 20px rgba(255,255,255,0.1)'
+              boxShadow: '0 0 20px rgba(255,255,255,0.1)',
             }}
           />
         )}
@@ -184,13 +182,13 @@ export const ChronosModal = ({
   subtitle,
   children,
   size = 'md', // sm, md, lg, xl
-  showClose = true
+  showClose = true,
 }) => {
   const sizes = {
     sm: 'max-w-md',
     md: 'max-w-lg',
     lg: 'max-w-2xl',
-    xl: 'max-w-4xl'
+    xl: 'max-w-4xl',
   };
 
   if (!isOpen) return null;
@@ -225,14 +223,8 @@ export const ChronosModal = ({
         {/* Header */}
         <div className="flex items-start justify-between p-6 border-b border-white/10">
           <div>
-            <h2 className="text-xl font-light text-white tracking-wider">
-              {title}
-            </h2>
-            {subtitle && (
-              <p className="text-sm text-white/50 mt-1">
-                {subtitle}
-              </p>
-            )}
+            <h2 className="text-xl font-light text-white tracking-wider">{title}</h2>
+            {subtitle && <p className="text-sm text-white/50 mt-1">{subtitle}</p>}
           </div>
           {showClose && (
             <motion.button
@@ -247,9 +239,7 @@ export const ChronosModal = ({
         </div>
 
         {/* Content */}
-        <div className="p-6">
-          {children}
-        </div>
+        <div className="p-6">{children}</div>
       </motion.div>
     </motion.div>
   );

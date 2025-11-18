@@ -5,8 +5,10 @@
 
 // Logos
 export {
-    ChronosLogoCompact, ChronosLogoFull, ChronosLogoIcon,
-    ChronosLogoWithText
+  ChronosLogoCompact,
+  ChronosLogoFull,
+  ChronosLogoIcon,
+  ChronosLogoWithText,
 } from './ChronosLogos';
 
 // Splash Screen

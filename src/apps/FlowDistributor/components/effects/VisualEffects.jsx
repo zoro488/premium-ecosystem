@@ -14,7 +14,7 @@ import { motion } from 'framer-motion';
 export const ParticlesBackground = ({
   particleCount = 50,
   color = 'rgba(99, 102, 241, 0.5)',
-  speed = 'normal'
+  speed = 'normal',
 }) => {
   const canvasRef = useRef(null);
 
@@ -177,11 +177,7 @@ export const FloatingShapes = ({ shapeCount = 10 }) => {
         <motion.div
           key={shape.id}
           className={`absolute ${
-            shape.shape === 'circle'
-              ? 'rounded-full'
-              : shape.shape === 'square'
-              ? 'rounded-lg'
-              : ''
+            shape.shape === 'circle' ? 'rounded-full' : shape.shape === 'square' ? 'rounded-lg' : ''
           } bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm`}
           style={{
             width: shape.size,
@@ -212,18 +208,13 @@ export const FloatingShapes = ({ shapeCount = 10 }) => {
 export const GridPattern = ({
   gridSize = 50,
   lineColor = 'rgba(99, 102, 241, 0.1)',
-  glowColor = 'rgba(99, 102, 241, 0.3)'
+  glowColor = 'rgba(99, 102, 241, 0.3)',
 }) => {
   return (
     <div className="fixed inset-0 pointer-events-none z-0">
       <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <pattern
-            id="grid"
-            width={gridSize}
-            height={gridSize}
-            patternUnits="userSpaceOnUse"
-          >
+          <pattern id="grid" width={gridSize} height={gridSize} patternUnits="userSpaceOnUse">
             <path
               d={`M ${gridSize} 0 L 0 0 0 ${gridSize}`}
               fill="none"
@@ -490,7 +481,7 @@ export const CursorGlowTrail = ({ color = 'rgba(99, 102, 241, 0.5)' }) => {
 // ============================================
 export const PremiumBackground = ({
   theme = 'aurora', // aurora, particles, mesh, stars, grid
-  interactive = false
+  interactive = false,
 }) => {
   const renderBackground = () => {
     switch (theme) {

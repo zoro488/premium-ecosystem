@@ -15,7 +15,11 @@ import PropTypes from 'prop-types';
 import { Activity, Cpu, Database, Zap } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-const ChronosLoadingPremium = ({ isVisible = true, loadingText = 'LOADING SYSTEM', onComplete }) => {
+const ChronosLoadingPremium = ({
+  isVisible = true,
+  loadingText = 'LOADING SYSTEM',
+  onComplete,
+}) => {
   const [dots, setDots] = useState('');
   const [currentPhase, setCurrentPhase] = useState(0);
 
@@ -186,23 +190,20 @@ const ChronosLoadingPremium = ({ isVisible = true, loadingText = 'LOADING SYSTEM
           </div>
 
           {/* Corner decorations */}
-          {[
-            'top-4 left-4',
-            'top-4 right-4',
-            'bottom-4 left-4',
-            'bottom-4 right-4',
-          ].map((position, i) => (
-            <motion.div
-              key={i}
-              className={`absolute ${position} w-8 h-8 border-l-2 border-t-2 border-white/20`}
-              style={{
-                transform: `rotate(${i * 90}deg)`,
-              }}
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-            />
-          ))}
+          {['top-4 left-4', 'top-4 right-4', 'bottom-4 left-4', 'bottom-4 right-4'].map(
+            (position, i) => (
+              <motion.div
+                key={i}
+                className={`absolute ${position} w-8 h-8 border-l-2 border-t-2 border-white/20`}
+                style={{
+                  transform: `rotate(${i * 90}deg)`,
+                }}
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+              />
+            )
+          )}
 
           {/* Status text bottom */}
           <motion.div
@@ -224,7 +225,7 @@ const ChronosLoadingPremium = ({ isVisible = true, loadingText = 'LOADING SYSTEM
 ChronosLoadingPremium.propTypes = {
   isVisible: PropTypes.bool,
   loadingText: PropTypes.string,
-  onComplete: PropTypes.func
+  onComplete: PropTypes.func,
 };
 
 export default ChronosLoadingPremium;

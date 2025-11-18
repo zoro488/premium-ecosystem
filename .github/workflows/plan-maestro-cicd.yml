@@ -1,0 +1,326 @@
+name: 🎯 Plan Maestro - CI/CD Complete
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'src/apps/FlowDistributor/**'
+      - 'src/components/**'
+      - '.github/workflows/plan-maestro-cicd.yml'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      fase:
+        description: 'Fase del Plan Maestro a ejecutar'
+        required: true
+        type: choice
+        options:
+          - fase-1
+          - fase-2
+          - fase-3
+          - fase-4
+          - all
+        default: 'all'
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  # ===================================================================
+  # JOB 1: ANÁLISIS Y VALIDACIÓN
+  # ===================================================================
+  analyze:
+    name: 📊 Analizar Plan Maestro
+    runs-on: ubuntu-latest
+
+    outputs:
+      componentes_total: ${{ steps.analysis.outputs.componentes_total }}
+      componentes_completados: ${{ steps.analysis.outputs.componentes_completados }}
+      progreso_porcentaje: ${{ steps.analysis.outputs.progreso_porcentaje }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Instalar Dependencias
+        run: npm ci
+
+      - name: Analizar Plan Maestro
+        id: analysis
+        run: |
+          echo "🔍 Analizando Plan Maestro..."
+
+          # Contar componentes especificados
+          COMPONENTES_TOTAL=$(grep -c "interface\|const.*=.*{" src/apps/FlowDistributor/chronos-system/gg/PLAN_MAESTRO_COMPLETO_Version2.md || echo "200")
+
+          # Contar componentes implementados
+          COMPONENTES_IMPL=$(find src/components -name "*.tsx" -o -name "*.jsx" | wc -l)
+
+          # Calcular progreso
+          PROGRESO=$(echo "scale=1; ($COMPONENTES_IMPL / $COMPONENTES_TOTAL) * 100" | bc)
+
+          echo "componentes_total=$COMPONENTES_TOTAL" >> $GITHUB_OUTPUT
+          echo "componentes_completados=$COMPONENTES_IMPL" >> $GITHUB_OUTPUT
+          echo "progreso_porcentaje=$PROGRESO" >> $GITHUB_OUTPUT
+
+          echo "✅ Análisis completo:"
+          echo "   Total componentes: $COMPONENTES_TOTAL"
+          echo "   Implementados: $COMPONENTES_IMPL"
+          echo "   Progreso: $PROGRESO%"
+
+      - name: Validar Estructura
+        run: |
+          echo "📁 Validando estructura de archivos..."
+
+          # Verificar que existen las carpetas principales
+          for dir in src/components src/apps/FlowDistributor src/services src/hooks; do
+            if [ -d "$dir" ]; then
+              echo "✅ $dir"
+            else
+              echo "❌ Falta: $dir"
+              exit 1
+            fi
+          done
+
+  # ===================================================================
+  # JOB 2: TESTS AUTOMÁTICOS
+  # ===================================================================
+  test:
+    name: 🧪 Tests Automáticos
+    runs-on: ubuntu-latest
+    needs: [analyze]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Instalar Dependencias
+        run: npm ci
+
+      - name: Ejecutar Tests Unitarios
+        run: npm run test -- --coverage
+        continue-on-error: true
+
+      - name: Upload Coverage
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./coverage/coverage-final.json
+          flags: unittests
+          name: codecov-plan-maestro
+
+      - name: Generar Reporte Coverage
+        run: |
+          echo "📊 Reporte de Coverage:"
+          cat coverage/coverage-summary.json | jq '.total'
+
+  # ===================================================================
+  # JOB 3: LINT Y FORMATO
+  # ===================================================================
+  lint:
+    name: 🔍 Lint y Formato
+    runs-on: ubuntu-latest
+    needs: [analyze]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Instalar Dependencias
+        run: npm ci
+
+      - name: ESLint
+        run: npm run lint
+        continue-on-error: true
+
+      - name: Prettier Check
+        run: npm run format -- --check
+        continue-on-error: true
+
+      - name: TypeScript Check
+        run: npx tsc --noEmit
+        continue-on-error: true
+
+  # ===================================================================
+  # JOB 4: EJECUTAR AGENTS
+  # ===================================================================
+  run-agents:
+    name: 🤖 Ejecutar Plan Maestro Agent
+    runs-on: ubuntu-latest
+    needs: [analyze, test, lint]
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Instalar Dependencias
+        run: |
+          npm ci
+          npm install @octokit/rest
+
+      - name: Ejecutar Plan Maestro Agent
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node .github/agents/plan-maestro-agent.js
+
+      - name: Upload Agent Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: plan-maestro-reports
+          path: automation-reports/
+          retention-days: 30
+
+  # ===================================================================
+  # JOB 5: BUILD Y VALIDACIÓN
+  # ===================================================================
+  build:
+    name: 🏗️ Build Production
+    runs-on: ubuntu-latest
+    needs: [test, lint]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Instalar Dependencias
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Analizar Bundle Size
+        run: |
+          echo "📦 Analizando tamaño del bundle..."
+          du -sh dist/
+          find dist/ -name "*.js" -exec du -h {} \; | sort -rh | head -10
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: dist/
+          retention-days: 7
+
+  # ===================================================================
+  # JOB 6: GENERAR REPORTE FINAL
+  # ===================================================================
+  report:
+    name: 📝 Generar Reporte Final
+    runs-on: ubuntu-latest
+    needs: [analyze, test, lint, build]
+    if: always()
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download All Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts/
+
+      - name: Generar Reporte Markdown
+        run: |
+          cat > PLAN_MAESTRO_CI_REPORT.md << 'EOF'
+          # 📊 REPORTE CI/CD - PLAN MAESTRO
+
+          **Fecha:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')
+          **Workflow Run:** [${{ github.run_id }}](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          **Commit:** ${{ github.sha }}
+
+          ## 📈 Progreso del Plan Maestro
+
+          - **Componentes Total:** ${{ needs.analyze.outputs.componentes_total }}
+          - **Componentes Completados:** ${{ needs.analyze.outputs.componentes_completados }}
+          - **Progreso:** ${{ needs.analyze.outputs.progreso_porcentaje }}%
+
+          ## ✅ Jobs Ejecutados
+
+          | Job | Estado |
+          |-----|--------|
+          | Análisis | ${{ needs.analyze.result }} |
+          | Tests | ${{ needs.test.result }} |
+          | Lint | ${{ needs.lint.result }} |
+          | Build | ${{ needs.build.result }} |
+
+          ## 🎯 Próximos Pasos
+
+          1. Revisar issues abiertos
+          2. Continuar con siguiente fase
+          3. Actualizar documentación
+          4. Ejecutar deployment
+
+          ---
+          🤖 Reporte generado automáticamente por GitHub Actions
+          EOF
+
+          cat PLAN_MAESTRO_CI_REPORT.md
+
+      - name: Upload Final Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: final-report
+          path: PLAN_MAESTRO_CI_REPORT.md
+          retention-days: 90
+
+      - name: Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs')
+            const report = fs.readFileSync('PLAN_MAESTRO_CI_REPORT.md', 'utf8')
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: report
+            })
+
+  # ===================================================================
+  # JOB 7: NOTIFICACIONES
+  # ===================================================================
+  notify:
+    name: 📢 Notificaciones
+    runs-on: ubuntu-latest
+    needs: [analyze, test, lint, build, report]
+    if: always()
+
+    steps:
+      - name: Resumen Final
+        run: |
+          echo "🎉 Pipeline CI/CD completado"
+          echo "📊 Progreso: ${{ needs.analyze.outputs.progreso_porcentaje }}%"
+          echo "🔗 Ver detalles: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"

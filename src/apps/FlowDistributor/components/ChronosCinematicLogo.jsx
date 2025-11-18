@@ -20,11 +20,11 @@ const ChronosCinematicLogo = ({ onComplete }) => {
             particleCount: 200,
             spread: 100,
             origin: { y: 0.5 },
-            colors: ['#ffffff', '#000000', '#888888', '#cccccc']
+            colors: ['#ffffff', '#000000', '#888888', '#cccccc'],
           });
           setTimeout(onComplete, 1000);
         }, 500);
-      }
+      },
     });
 
     // FASE 1: Partículas convergiendo (0-2s)
@@ -35,41 +35,53 @@ const ChronosCinematicLogo = ({ onComplete }) => {
       x: 0,
       y: 0,
       ease: 'power4.out',
-      stagger: 0.05
+      stagger: 0.05,
     });
 
     // FASE 2: Formación del logo "C" (2-3.5s)
-    timeline.to('.logo-path', {
-      duration: 1.5,
-      strokeDashoffset: 0,
-      fill: '#ffffff',
-      ease: 'power2.inOut'
-    }, '-=0.5');
+    timeline.to(
+      '.logo-path',
+      {
+        duration: 1.5,
+        strokeDashoffset: 0,
+        fill: '#ffffff',
+        ease: 'power2.inOut',
+      },
+      '-=0.5'
+    );
 
     // FASE 3: Explosion de energia (3.5-4.5s)
-    timeline.to('.energy-ring', {
-      duration: 1,
-      scale: 3,
-      opacity: 0,
-      ease: 'power2.out',
-      stagger: 0.1
-    }, '-=0.5');
+    timeline.to(
+      '.energy-ring',
+      {
+        duration: 1,
+        scale: 3,
+        opacity: 0,
+        ease: 'power2.out',
+        stagger: 0.1,
+      },
+      '-=0.5'
+    );
 
     // FASE 4: Texto aparece con morfing (4.5-6s)
-    timeline.fromTo('.text-chronos', {
-      opacity: 0,
-      scale: 0.5,
-      y: 50,
-      filter: 'blur(20px)'
-    }, {
-      duration: 1.5,
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      filter: 'blur(0px)',
-      ease: 'elastic.out(1, 0.5)',
-      stagger: 0.05
-    });
+    timeline.fromTo(
+      '.text-chronos',
+      {
+        opacity: 0,
+        scale: 0.5,
+        y: 50,
+        filter: 'blur(20px)',
+      },
+      {
+        duration: 1.5,
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        filter: 'blur(0px)',
+        ease: 'elastic.out(1, 0.5)',
+        stagger: 0.05,
+      }
+    );
 
     // FASE 5: Pulso final infinito (6s+)
     timeline.to('.logo-container', {
@@ -77,7 +89,7 @@ const ChronosCinematicLogo = ({ onComplete }) => {
       scale: 1.05,
       ease: 'power1.inOut',
       yoyo: true,
-      repeat: 2
+      repeat: 2,
     });
 
     // Actualizar fase visual
@@ -105,19 +117,22 @@ const ChronosCinematicLogo = ({ onComplete }) => {
       ref={containerRef}
       className="fixed inset-0 flex items-center justify-center overflow-hidden"
       style={{
-        background: 'radial-gradient(ellipse at center, #1a1a1a 0%, #000000 100%)'
+        background: 'radial-gradient(ellipse at center, #1a1a1a 0%, #000000 100%)',
       }}
     >
       {/* Grid animado de fondo */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
             linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
             linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)
           `,
-          backgroundSize: '50px 50px',
-          animation: 'gridMove 20s linear infinite'
-        }} />
+            backgroundSize: '50px 50px',
+            animation: 'gridMove 20s linear infinite',
+          }}
+        />
       </div>
 
       {/* Partículas convergentes */}
@@ -129,13 +144,13 @@ const ChronosCinematicLogo = ({ onComplete }) => {
             x: p.x,
             y: p.y,
             scale: 0,
-            opacity: 0
+            opacity: 0,
           }}
           style={{
             width: p.size,
             height: p.size,
             boxShadow: '0 0 10px rgba(255,255,255,0.8)',
-            transitionDelay: `${p.delay}s`
+            transitionDelay: `${p.delay}s`,
           }}
         />
       ))}
@@ -150,23 +165,15 @@ const ChronosCinematicLogo = ({ onComplete }) => {
             height: 100,
             opacity: 0.3,
             boxShadow: '0 0 30px rgba(255,255,255,0.5)',
-            transitionDelay: `${ring * 0.1}s`
+            transitionDelay: `${ring * 0.1}s`,
           }}
         />
       ))}
 
       {/* Logo Container */}
-      <div
-        ref={logoRef}
-        className="logo-container relative z-10"
-      >
+      <div ref={logoRef} className="logo-container relative z-10">
         {/* SVG Logo "C" con efecto de trazo */}
-        <svg
-          width="300"
-          height="300"
-          viewBox="0 0 300 300"
-          className="relative"
-        >
+        <svg width="300" height="300" viewBox="0 0 300 300" className="relative">
           {/* Definiciones de gradientes y filtros */}
           <defs>
             <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -176,15 +183,21 @@ const ChronosCinematicLogo = ({ onComplete }) => {
             </linearGradient>
 
             <filter id="glow">
-              <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+              <feGaussianBlur stdDeviation="4" result="coloredBlur" />
               <feMerge>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
 
             <filter id="shadow">
-              <feDropShadow dx="0" dy="4" stdDeviation="8" floodColor="#000000" floodOpacity="0.8"/>
+              <feDropShadow
+                dx="0"
+                dy="4"
+                stdDeviation="8"
+                floodColor="#000000"
+                floodOpacity="0.8"
+              />
             </filter>
           </defs>
 
@@ -211,7 +224,7 @@ const ChronosCinematicLogo = ({ onComplete }) => {
             filter="url(#glow)"
             style={{
               strokeDasharray: 1000,
-              strokeDashoffset: 1000
+              strokeDashoffset: 1000,
             }}
           />
 
@@ -226,7 +239,7 @@ const ChronosCinematicLogo = ({ onComplete }) => {
             className="logo-path"
             style={{
               strokeDasharray: 630,
-              strokeDashoffset: 630
+              strokeDashoffset: 630,
             }}
           />
 
@@ -246,7 +259,7 @@ const ChronosCinematicLogo = ({ onComplete }) => {
                 opacity="0"
                 className="logo-path"
                 style={{
-                  animation: `orbitPulse 2s infinite ${i * 0.2}s`
+                  animation: `orbitPulse 2s infinite ${i * 0.2}s`,
                 }}
               />
             );
@@ -267,7 +280,7 @@ const ChronosCinematicLogo = ({ onComplete }) => {
                   className="text-chronos inline-block"
                   style={{
                     opacity: 0,
-                    transitionDelay: `${i * 0.1}s`
+                    transitionDelay: `${i * 0.1}s`,
                   }}
                 >
                   {char}
@@ -282,7 +295,7 @@ const ChronosCinematicLogo = ({ onComplete }) => {
                 background: 'linear-gradient(180deg, #ffffff 0%, #cccccc 50%, #888888 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
-                textShadow: '0 4px 20px rgba(0,0,0,0.8)'
+                textShadow: '0 4px 20px rgba(0,0,0,0.8)',
               }}
             >
               {'CHRONOS'.split('').map((char, i) => (
@@ -291,7 +304,7 @@ const ChronosCinematicLogo = ({ onComplete }) => {
                   className="text-chronos inline-block"
                   style={{
                     opacity: 0,
-                    transitionDelay: `${i * 0.1}s`
+                    transitionDelay: `${i * 0.1}s`,
                   }}
                 >
                   {char}
@@ -319,17 +332,17 @@ const ChronosCinematicLogo = ({ onComplete }) => {
             initial={{ width: 0, opacity: 0 }}
             animate={{
               width: phase >= 2 ? 200 : 0,
-              opacity: phase >= 2 ? [0, 0.6, 0] : 0
+              opacity: phase >= 2 ? [0, 0.6, 0] : 0,
             }}
             transition={{
               duration: 1,
               delay: 3.5 + i * 0.05,
               repeat: Infinity,
-              repeatDelay: 2
+              repeatDelay: 2,
             }}
             style={{
               transform: `rotate(${angle}deg)`,
-              filter: 'blur(1px)'
+              filter: 'blur(1px)',
             }}
           />
         ))}
@@ -352,13 +365,24 @@ const ChronosCinematicLogo = ({ onComplete }) => {
       {/* Estilos de animación */}
       <style jsx>{`
         @keyframes gridMove {
-          0% { transform: translate(0, 0); }
-          100% { transform: translate(50px, 50px); }
+          0% {
+            transform: translate(0, 0);
+          }
+          100% {
+            transform: translate(50px, 50px);
+          }
         }
 
         @keyframes orbitPulse {
-          0%, 100% { opacity: 0; transform: scale(1); }
-          50% { opacity: 1; transform: scale(1.5); }
+          0%,
+          100% {
+            opacity: 0;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1.5);
+          }
         }
 
         .logo-path {
@@ -382,7 +406,7 @@ const ChronosCinematicLogo = ({ onComplete }) => {
 };
 
 ChronosCinematicLogo.propTypes = {
-  onComplete: PropTypes.func.isRequired
+  onComplete: PropTypes.func.isRequired,
 };
 
 export default ChronosCinematicLogo;

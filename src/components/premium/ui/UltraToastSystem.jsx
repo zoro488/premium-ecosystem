@@ -20,16 +20,10 @@
  * @author CHRONOS System
  * @version 2.0.0
  */
-import { AnimatePresence, motion } from 'framer-motion';
-import {
-    AlertCircle,
-    CheckCircle,
-    Info,
-    Loader2,
-    X,
-    XCircle,
-} from 'lucide-react';
 import { createContext, useCallback, useContext, useState } from 'react';
+
+import { AnimatePresence, motion } from 'framer-motion';
+import { AlertCircle, CheckCircle, Info, Loader2, X, XCircle } from 'lucide-react';
 
 // ============================================================================
 // TOAST CONTEXT
@@ -192,12 +186,7 @@ const ToastContainer = ({ toasts, position, onRemove }) => {
     >
       <AnimatePresence>
         {toasts.map((toast, index) => (
-          <Toast
-            key={toast.id}
-            toast={toast}
-            index={index}
-            onRemove={() => onRemove(toast.id)}
-          />
+          <Toast key={toast.id} toast={toast} index={index} onRemove={() => onRemove(toast.id)} />
         ))}
       </AnimatePresence>
     </div>
@@ -247,7 +236,7 @@ const Toast = ({ toast, index, onRemove }) => {
     if (toast.progress && toast.duration > 0) {
       const interval = setInterval(() => {
         setProgress((prev) => {
-          const newProgress = prev - (100 / (toast.duration / 100));
+          const newProgress = prev - 100 / (toast.duration / 100);
           if (newProgress <= 0) {
             clearInterval(interval);
             return 0;
@@ -295,9 +284,7 @@ const Toast = ({ toast, index, onRemove }) => {
         <motion.div
           animate={toast.type === 'loading' ? { rotate: 360 } : {}}
           transition={
-            toast.type === 'loading'
-              ? { duration: 1, repeat: Infinity, ease: 'linear' }
-              : {}
+            toast.type === 'loading' ? { duration: 1, repeat: Infinity, ease: 'linear' } : {}
           }
           className="flex-shrink-0"
         >
@@ -306,9 +293,7 @@ const Toast = ({ toast, index, onRemove }) => {
 
         {/* Text */}
         <div className="flex-1 min-w-0">
-          {toast.title && (
-            <p className="text-white font-semibold mb-1">{toast.title}</p>
-          )}
+          {toast.title && <p className="text-white font-semibold mb-1">{toast.title}</p>}
           <p className="text-gray-300 text-sm">{toast.message}</p>
 
           {/* Action Button */}
@@ -358,10 +343,10 @@ const Toast = ({ toast, index, onRemove }) => {
               toast.type === 'success'
                 ? 'bg-green-500'
                 : toast.type === 'error'
-                ? 'bg-red-500'
-                : toast.type === 'warning'
-                ? 'bg-yellow-500'
-                : 'bg-blue-500'
+                  ? 'bg-red-500'
+                  : toast.type === 'warning'
+                    ? 'bg-yellow-500'
+                    : 'bg-blue-500'
             }`}
           />
         </div>
