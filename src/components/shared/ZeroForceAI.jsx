@@ -120,10 +120,10 @@ const ZeroForceAI = ({
   const colorMap = {
     cyan: 'from-cyan-500 via-blue-500 to-cyan-600',
     blue: 'from-blue-500 via-indigo-500 to-blue-600',
-    purple: 'from-purple-500 via-pink-500 to-purple-600',
+    purple: 'from-zinc-800 via-zinc-700 to-zinc-800',
     green: 'from-green-500 via-emerald-500 to-green-600',
     orange: 'from-orange-500 via-amber-500 to-orange-600',
-    red: 'from-red-500 via-rose-500 to-red-600',
+    red: 'from-zinc-700 via-rose-500 to-zinc-800',
   };
 
   const gradientColor = colorMap[accentColor] || colorMap.cyan;
@@ -581,7 +581,7 @@ Responde con máxima precisión, análisis profundo y formato ultra-estructurado
             isUser
               ? 'bg-gradient-to-br from-blue-500 to-cyan-500'
               : isSystem
-                ? 'bg-gradient-to-br from-purple-500 to-pink-500'
+                ? 'bg-gradient-to-br from-zinc-800 to-zinc-800'
                 : `bg-gradient-to-br ${gradientColor}`
           }
           shadow-lg`}
@@ -618,7 +618,7 @@ Responde con máxima precisión, análisis profundo y formato ultra-estructurado
               isUser
                 ? 'bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-400/30'
                 : isSystem
-                  ? 'bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-400/30'
+                  ? 'bg-gradient-to-br from-zinc-800/20 to-zinc-800/20 border border-zinc-700/30'
                   : 'bg-white/5 border border-cyan-400/20 shadow-lg shadow-cyan-500/10'
             }
           `}
@@ -730,7 +730,7 @@ Responde con máxima precisión, análisis profundo y formato ultra-estructurado
         </button>
         <button
           onClick={() => setInputMessage('Predice tendencias')}
-          className="px-3 py-2 bg-white/5 hover:bg-purple-500/10 border border-white/10 hover:border-purple-400/30 rounded-lg text-xs text-slate-300 hover:text-purple-400 transition-all flex items-center gap-2"
+          className="px-3 py-2 bg-white/5 hover:bg-zinc-800/10 border border-white/10 hover:border-zinc-700/30 rounded-lg text-xs text-slate-300 hover:text-zinc-200 transition-all flex items-center gap-2"
         >
           <BarChart3 className="w-3.5 h-3.5" />
           Predecir
@@ -1286,7 +1286,7 @@ Responde con máxima precisión, análisis profundo y formato ultra-estructurado
 
                   <label className="flex items-center justify-between p-3 bg-white/5 rounded-xl cursor-pointer hover:bg-white/10 transition-colors">
                     <span className="text-sm text-slate-300 flex items-center gap-2">
-                      <Sparkles className="w-4 h-4 text-purple-400" />
+                      <Sparkles className="w-4 h-4 text-zinc-200" />
                       Sugerencias proactivas
                     </span>
                     <input
@@ -1353,7 +1353,7 @@ Responde con máxima precisión, análisis profundo y formato ultra-estructurado
         )}
       </AnimatePresence>
 
-      <style jsx>{`
+      <style>{`
         .custom-scrollbar::-webkit-scrollbar {
           width: 6px;
         }

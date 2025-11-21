@@ -21,11 +21,11 @@ export const THEMES = {
       glass: 'rgba(255, 255, 255, 0.05)',
     },
     gradients: {
-      primary: 'from-purple-500 to-pink-500',
+      primary: 'from-zinc-800 via-zinc-700 to-zinc-800',
       secondary: 'from-blue-500 to-cyan-500',
       success: 'from-green-500 to-emerald-500',
       warning: 'from-yellow-500 to-orange-500',
-      danger: 'from-red-500 to-pink-500',
+      danger: 'from-zinc-700 to-zinc-800',
     },
   },
 
@@ -50,7 +50,7 @@ export const THEMES = {
       secondary: 'from-cyan-500 to-teal-500',
       success: 'from-emerald-500 to-green-500',
       warning: 'from-amber-500 to-orange-500',
-      danger: 'from-rose-500 to-red-500',
+      danger: 'from-rose-500 to-zinc-800',
     },
   },
 
@@ -71,11 +71,11 @@ export const THEMES = {
       glass: 'rgba(245, 158, 11, 0.05)',
     },
     gradients: {
-      primary: 'from-orange-500 to-red-500',
-      secondary: 'from-red-500 to-pink-500',
+      primary: 'from-orange-500 to-zinc-800',
+      secondary: 'from-zinc-700 to-zinc-800',
       success: 'from-green-500 to-lime-500',
       warning: 'from-yellow-500 to-orange-500',
-      danger: 'from-red-600 to-pink-600',
+      danger: 'from-zinc-700 to-zinc-800',
     },
   },
 
@@ -100,7 +100,7 @@ export const THEMES = {
       secondary: 'from-green-500 to-lime-500',
       success: 'from-green-400 to-emerald-500',
       warning: 'from-yellow-500 to-amber-500',
-      danger: 'from-red-500 to-orange-500',
+      danger: 'from-zinc-700 to-orange-500',
     },
   },
 
@@ -121,11 +121,11 @@ export const THEMES = {
       glass: 'rgba(99, 102, 241, 0.05)',
     },
     gradients: {
-      primary: 'from-indigo-500 to-purple-600',
-      secondary: 'from-purple-500 to-violet-600',
+      primary: 'from-indigo-500 to-zinc-800',
+      secondary: 'from-zinc-800 to-violet-600',
       success: 'from-emerald-500 to-teal-500',
       warning: 'from-amber-500 to-yellow-500',
-      danger: 'from-red-500 to-rose-600',
+      danger: 'from-zinc-700 to-rose-600',
     },
   },
 
@@ -146,11 +146,11 @@ export const THEMES = {
       glass: 'rgba(236, 72, 153, 0.05)',
     },
     gradients: {
-      primary: 'from-pink-500 to-rose-500',
-      secondary: 'from-fuchsia-500 to-pink-500',
+      primary: 'from-zinc-800 via-zinc-700 to-zinc-800',
+      secondary: 'from-fuchsia-500 to-zinc-800',
       success: 'from-green-400 to-emerald-400',
       warning: 'from-orange-400 to-amber-400',
-      danger: 'from-red-500 to-pink-500',
+      danger: 'from-zinc-700 to-zinc-800',
     },
   },
 };
@@ -336,7 +336,7 @@ export const ThemeCustomizer = ({ isOpen, onClose }) => {
             <button
               onClick={toggleDarkMode}
               className={`relative w-16 h-8 rounded-full transition-colors ${
-                isDarkMode ? 'bg-purple-500' : 'bg-slate-600'
+                isDarkMode ? 'bg-zinc-800' : 'bg-slate-600'
               }`}
             >
               <div
@@ -364,7 +364,7 @@ export const ThemeCustomizer = ({ isOpen, onClose }) => {
                   onClick={() => changeTheme(themeName)}
                   className={`p-4 rounded-xl border-2 transition-all ${
                     currentTheme === themeName
-                      ? 'border-purple-500 bg-purple-500/10 scale-105'
+                      ? 'border-zinc-700 bg-zinc-900/10 scale-105'
                       : 'border-white/10 hover:border-white/20 hover:scale-102'
                   }`}
                 >
@@ -402,7 +402,7 @@ export const ThemeCustomizer = ({ isOpen, onClose }) => {
                   onClick={() => changeComponentSize(size)}
                   className={`p-4 rounded-xl border-2 transition-all ${
                     componentSize === size
-                      ? 'border-purple-500 bg-purple-500/10'
+                      ? 'border-zinc-700 bg-zinc-900/10'
                       : 'border-white/10 hover:border-white/20'
                   }`}
                 >
@@ -465,7 +465,7 @@ export const ThemeCustomizer = ({ isOpen, onClose }) => {
           </button>
           <button
             onClick={onClose}
-            className="flex-1 px-4 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl font-semibold hover:shadow-lg transition-all"
+            className="flex-1 px-4 py-3 bg-gradient-to-r from-zinc-800 via-zinc-700 to-zinc-800 rounded-xl font-semibold hover:shadow-lg transition-all"
           >
             Guardar Cambios
           </button>

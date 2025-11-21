@@ -19,10 +19,10 @@ export const ToastContainer = ({ toasts, onRemove }) => {
           };
 
           const colors = {
-            success: 'from-green-500 to-emerald-500 border-green-500/50',
-            error: 'from-red-500 to-pink-500 border-red-500/50',
-            warning: 'from-yellow-500 to-orange-500 border-yellow-500/50',
-            info: 'from-blue-500 to-cyan-500 border-blue-500/50',
+            success: 'from-green-500 to-emerald-500 border-zinc-500/50',
+            error: 'from-zinc-700 to-zinc-700 border-zinc-500/50',
+            warning: 'from-yellow-500 to-orange-500 border-zinc-500/50',
+            info: 'from-zinc-800 to-zinc-800 border-zinc-700/50',
           };
 
           return (

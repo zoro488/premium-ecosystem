@@ -1,0 +1,113 @@
+import React from 'react';
+import { Outlet, NavLink, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { ChronosAIAssistant } from '../ai/ChronosAIAssistant';
+import { 
+  LayoutDashboard, wallet, ShoppingCart, Users, 
+  Package, Truck, TrendingUp, Settings, LogOut 
+} from 'lucide-react'; // Asegúrate de tener estos iconos
+
+const SidebarItem = ({ to, icon: Icon, label }: { to: string; icon: any; label: string }) => {
+    const location = useLocation();
+    const isActive = location.pathname === to;
+    
+    return (
+        <NavLink to={to} className="relative group">
+            {isActive && (
+                <motion.div
+                    layoutId="activeTab"
+                    className="absolute inset-0 bg-chronos-500/10 border-r-2 border-chronos-400 rounded-r-xl"
+                    initial={false}
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                />
+            )}
+            <div className={`flex items-center space-x-3 px-4 py-3 relative z-10 transition-colors ${isActive ? 'text-chronos-400' : 'text-metal-300 group-hover:text-white'}`}>
+                <Icon className="w-5 h-5" />
+                <span className="font-medium tracking-wide text-sm">{label}</span>
+            </div>
+        </NavLink>
+    );
+};
+
+export const MainLayout = () => {
+  return (
+    <div className="flex h-screen bg-[#0a0a0f] overflow-hidden font-sans text-gray-100">
+      
+      {/* Fondo Ambiental */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-chronos-900/20 rounded-full blur-[120px]" />
+          <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-900/10 rounded-full blur-[120px]" />
+      </div>
+
+      {/* Sidebar Metálica */}
+      <motion.aside 
+        initial={{ x: -100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        className="w-72 bg-metal-900/50 backdrop-blur-2xl border-r border-white/5 z-10 flex flex-col"
+      >
+        <div className="p-8 flex items-center space-x-3">
+             {/* Mini Logo */}
+             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-chronos-400 to-chronos-600 flex items-center justify-center shadow-neon">
+                <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                </svg>
+             </div>
+             <h1 className="font-orbitron font-bold text-xl tracking-wider text-white">CHRONOS</h1>
+        </div>
+
+        <nav className="flex-1 py-6 space-y-1 overflow-y-auto">
+            <div className="px-4 mb-4 text-xs font-mono text-metal-500 uppercase tracking-widest">Principal</div>
+            <SidebarItem to="/" icon={LayoutDashboard} label="Puente de Mando" />
+            <SidebarItem to="/ventas" icon={TrendingUp} label="Terminal de Ventas" />
+            <SidebarItem to="/bancos" icon={Wallet} label="Bóvedas Bancarias" />
+            
+            <div className="px-4 mb-4 mt-8 text-xs font-mono text-metal-500 uppercase tracking-widest">Operaciones</div>
+            <SidebarItem to="/almacen" icon={Package} label="Control Almacén" />
+            <SidebarItem to="/ordenes" icon={ShoppingCart} label="Órdenes de Compra" />
+            <SidebarItem to="/clientes" icon={Users} label="Directorio Clientes" />
+            <SidebarItem to="/fletes" icon={Truck} label="Logística & Fletes" />
+        </nav>
+
+        <div className="p-4 border-t border-white/5">
+            <button className="w-full flex items-center space-x-3 px-4 py-3 text-metal-400 hover:text-red-400 hover:bg-red-500/5 rounded-xl transition-all">
+                <LogOut className="w-5 h-5" />
+                <span className="font-medium">Desconectar</span>
+            </button>
+        </div>
+      </motion.aside>
+
+      {/* Área Principal */}
+      <main className="flex-1 overflow-x-hidden overflow-y-auto relative z-10">
+          {/* Header Flotante */}
+          <header className="sticky top-0 z-20 px-8 py-4">
+              <div className="bg-metal-900/70 backdrop-blur-xl border border-white/10 rounded-2xl p-4 flex justify-between items-center shadow-glass">
+                  <div className="flex items-center space-x-4">
+                      <h2 className="text-sm font-mono text-metal-400">UBICACIÓN ACTUAL: <span className="text-white">DASHBOARD PRINCIPAL</span></h2>
+                  </div>
+                  <div className="flex items-center space-x-6">
+                       {/* Status Indicators */}
+                       <div className="flex items-center space-x-2 text-xs font-mono text-green-400">
+                           <span className="relative flex h-2 w-2">
+                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                            </span>
+                           <span>SISTEMAS NOMINALES</span>
+                       </div>
+                       {/* User Avatar */}
+                       <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-metal-700 to-metal-500 border-2 border-white/10"></div>
+                  </div>
+              </div>
+          </header>
+
+          {/* Contenido Dinámico */}
+          <div className="p-8">
+              <Outlet />
+          </div>
+      </main>
+
+      {/* CHRONOS AI INTEGRATION */}
+      <ChronosAIAssistant />
+
+    </div>
+  );
+};

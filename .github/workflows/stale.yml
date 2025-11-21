@@ -1,0 +1,69 @@
+# ============================================================================
+# Stale Issues and PRs Management
+# ============================================================================
+name: 🗑️ Mark Stale Issues/PRs
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Daily at midnight UTC
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mark stale issues and PRs
+        uses: actions/stale@v9
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+          # Issues configuration
+          stale-issue-message: |
+            👋 This issue has been automatically marked as stale because it has not had recent activity.
+
+            **What happens next:**
+            - If you believe this issue is still valid, please add a comment with updates
+            - This issue will be closed in 7 days if no further activity occurs
+            - You can always reopen the issue later if needed
+
+            Thank you for your contributions! 🙏
+
+          stale-issue-label: '🕸️ stale'
+          days-before-stale: 60
+          days-before-close: 7
+          exempt-issue-labels: 'pinned,🔥 priority-high,🔒 security,📌 in-progress'
+
+          # PRs configuration
+          stale-pr-message: |
+            👋 This pull request has been automatically marked as stale because it has not had recent activity.
+
+            **What happens next:**
+            - If you're still working on this PR, please add a comment or push new commits
+            - This PR will be closed in 7 days if no further activity occurs
+            - You can always reopen the PR later if needed
+
+            Thank you for your contributions! 🙏
+
+          stale-pr-label: '🕸️ stale'
+          days-before-pr-stale: 45
+          days-before-pr-close: 7
+          exempt-pr-labels: 'pinned,🔥 priority-high,🔒 security,🚧 wip'
+
+          # Common configuration
+          close-issue-message: |
+            🤖 This issue was automatically closed because it has been stale for 7 days with no activity.
+
+            If you believe this was closed in error, please feel free to reopen it!
+
+          close-pr-message: |
+            🤖 This pull request was automatically closed because it has been stale for 7 days with no activity.
+
+            If you'd like to continue working on this, please feel free to reopen it!
+
+          operations-per-run: 100
+          remove-stale-when-updated: true
+          ascending: false

@@ -1,4 +1,3 @@
-
 import { clsx } from 'clsx';
 import { motion } from 'framer-motion';
 
@@ -88,5 +87,5 @@ Card.Description = CardDescription;
 Card.Content = CardContent;
 Card.Footer = CardFooter;
 
+export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle };
 export default Card;
-export { CardHeader, CardTitle, CardDescription, CardContent, CardFooter };

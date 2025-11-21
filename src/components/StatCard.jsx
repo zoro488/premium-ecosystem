@@ -18,8 +18,8 @@ const StatCard = ({
   trend,
   trendValue,
   color = 'purple',
-  gradient = 'from-purple-500 to-pink-500',
-  bgGradient = 'from-purple-500/10 to-pink-500/5',
+  gradient = 'from-zinc-800 to-zinc-800',
+  bgGradient = 'from-zinc-800/10 to-zinc-800/5',
   onClick,
   delay = 0,
 }) => {

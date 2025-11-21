@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { AlertCircle, RefreshCw } from 'lucide-react';
+import PropTypes from 'prop-types';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -12,19 +13,30 @@ class ErrorBoundary extends React.Component {
     };
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(_error) {
     return { hasError: true };
   }
 
   componentDidCatch(error, errorInfo) {
+    // Extraer información serializable del error para evitar referencias circulares
+    const safeError = {
+      message: error?.message || 'Unknown error',
+      stack: error?.stack || '',
+      name: error?.name || 'Error',
+    };
+
+    const safeErrorInfo = {
+      componentStack: errorInfo?.componentStack || '',
+    };
+
     this.setState({
-      error,
-      errorInfo,
+      error: safeError,
+      errorInfo: safeErrorInfo,
     });
 
     // Log to console in development
     if (import.meta.env.DEV) {
-      // console.error('Error Boundary caught error:', error, errorInfo);
+      console.error('Error Boundary caught error:', error, errorInfo);
     }
   }
 
@@ -39,7 +51,7 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 flex items-center justify-center p-4">
+        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-zinc-800 to-gray-900 flex items-center justify-center p-4">
           <div className="max-w-md w-full bg-gray-800/50 backdrop-blur-sm border border-red-500/30 rounded-xl p-8 shadow-2xl">
             <div className="flex items-center gap-3 mb-6">
               <div className="p-3 bg-red-500/20 rounded-lg">
@@ -53,8 +65,10 @@ class ErrorBoundary extends React.Component {
 
             {import.meta.env.DEV && this.state.error && (
               <div className="mb-6 p-4 bg-gray-900/50 rounded-lg border border-gray-700">
-                <p className="text-xs font-mono text-red-300 mb-2">{this.state.error.toString()}</p>
-                {this.state.errorInfo && (
+                <p className="text-xs font-mono text-red-300 mb-2">
+                  {this.state.error.name}: {this.state.error.message}
+                </p>
+                {this.state.errorInfo && this.state.errorInfo.componentStack && (
                   <details className="text-xs font-mono text-gray-400">
                     <summary className="cursor-pointer text-gray-500 hover:text-gray-300">
                       Stack trace
@@ -69,7 +83,7 @@ class ErrorBoundary extends React.Component {
 
             <button
               onClick={this.handleReset}
-              className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors font-medium"
+              className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-zinc-800 hover:bg-zinc-800 text-white rounded-lg transition-colors font-medium"
             >
               <RefreshCw className="w-4 h-4" />
               Intentar de nuevo
@@ -86,5 +100,9 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
+
+ErrorBoundary.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default ErrorBoundary;

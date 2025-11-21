@@ -2,6 +2,65 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "🚀 Chronos: Deploy Development",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-File",
+        "./scripts/firebase-automation.ps1",
+        "-Action",
+        "deploy",
+        "-Environment",
+        "development"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🤖 Chronos: AI Auto-Complete Pages",
+      "type": "shell",
+      "command": "node",
+      "args": [
+        "./scripts/chronos-automation-agent.js"
+      ],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "⚙️ Chronos: Complete Implementation",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "🤖 Chronos: AI Auto-Complete Pages",
+        "🔍 ESLint",
+        "🧪 Run Unit Tests",
+        "🚀 Chronos: Deploy Development"
+      ],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated"
+      }
+    },
+    {
       "label": "🤖 Copilot: Analyze Code",
       "type": "shell",
       "command": "pwsh",

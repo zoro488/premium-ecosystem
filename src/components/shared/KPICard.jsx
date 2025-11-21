@@ -24,7 +24,7 @@ const borderClasses = {
   green: 'border-green-500/20',
   blue: 'border-blue-500/20',
   red: 'border-red-500/20',
-  purple: 'border-purple-500/20',
+  purple: 'border-zinc-700/20',
   emerald: 'border-emerald-500/20',
   yellow: 'border-yellow-500/20',
 };
@@ -33,7 +33,7 @@ const textClasses = {
   green: 'text-green-400',
   blue: 'text-blue-400',
   red: 'text-red-400',
-  purple: 'text-purple-400',
+  purple: 'text-zinc-200',
   emerald: 'text-emerald-400',
   yellow: 'text-yellow-400',
 };
@@ -42,7 +42,7 @@ const badgeClasses = {
   green: 'text-green-400 bg-green-400/20',
   blue: 'text-blue-400 bg-blue-400/20',
   red: 'text-red-400 bg-red-400/20',
-  purple: 'text-purple-400 bg-purple-400/20',
+  purple: 'text-zinc-200 bg-zinc-800/20',
   emerald: 'text-emerald-400 bg-emerald-400/20',
   yellow: 'text-yellow-400 bg-yellow-400/20',
 };

@@ -5,7 +5,8 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
-    "strict": true
+    "strict": true,
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["vite.config.js", "playwright.config.js"]
+  "include": ["vite.config.js", "playwright.config.ts", "playwright.config.js"]
 }

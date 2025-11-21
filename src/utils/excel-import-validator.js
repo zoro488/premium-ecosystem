@@ -122,7 +122,7 @@ export class ExcelImportValidator {
         });
       }
     }
-     // console.log(`✓ Ventas: ${validated.length}/${ventas.length} validadas`);
+    // console.log(`✓ Ventas: ${validated.length}/${ventas.length} validadas`);
     return validated;
   }
 
@@ -164,7 +164,7 @@ export class ExcelImportValidator {
         });
       }
     }
-     // console.log(`✓ Clientes: ${validated.length}/${clientes.length} validados`);
+    // console.log(`✓ Clientes: ${validated.length}/${clientes.length} validados`);
     return validated;
   }
 
@@ -193,7 +193,7 @@ export class ExcelImportValidator {
         });
       }
     }
-     // console.log(`✓ Órdenes: ${validated.length}/${ordenes.length} validadas`);
+    // console.log(`✓ Órdenes: ${validated.length}/${ordenes.length} validadas`);
     return validated;
   }
 
@@ -393,7 +393,7 @@ export class ExcelImportValidator {
         });
       }
     }
-     // console.log(`✓ Validación cruzada completada: ${this.warnings.length} advertencias`);
+    // console.log(`✓ Validación cruzada completada: ${this.warnings.length} advertencias`);
   }
 
   /**

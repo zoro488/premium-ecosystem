@@ -76,7 +76,7 @@ export function EnterpriseFeaturesDemo() {
       icon: Shield,
       title: 'Zod Validation',
       description: 'Type-safe runtime validation',
-      color: 'from-purple-500 to-pink-500',
+      color: 'from-zinc-800 to-zinc-800',
       demo: () => {
         const testData = {
           id: 1,
@@ -128,7 +128,7 @@ export function EnterpriseFeaturesDemo() {
       icon: Database,
       title: 'IndexedDB',
       description: '500MB+ storage capacity',
-      color: 'from-red-500 to-rose-500',
+      color: 'from-zinc-700 to-rose-500',
       demo: async () => {
         const testData = { test: 'Enterprise data', timestamp: Date.now() };
         const result = await db.save('demo', testData);
@@ -168,7 +168,7 @@ export function EnterpriseFeaturesDemo() {
           <motion.h1
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
-            className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+            className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-zinc-800 to-zinc-800 bg-clip-text text-transparent"
           >
             🚀 Enterprise Features Demo
           </motion.h1>
@@ -296,7 +296,7 @@ export function EnterpriseFeaturesDemo() {
 
           <div className="glass rounded-xl p-4 border border-white/10 text-center">
             <p className="text-sm text-slate-400 mb-1">Status</p>
-            <p className="text-2xl font-bold text-purple-400">PREMIUM</p>
+            <p className="text-2xl font-bold text-zinc-200">PREMIUM</p>
           </div>
         </motion.div>
       </motion.div>

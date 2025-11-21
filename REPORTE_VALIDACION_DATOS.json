@@ -1,0 +1,35 @@
+{
+  "timestamp": "2025-11-03T12:52:51.808Z",
+  "estructura": {
+    "ordenesCompra": 9,
+    "ventasLocales": 96,
+    "clientesUnicos": 26,
+    "distribuidores": 2
+  },
+  "kpis": {
+    "totalCostos": 14478800,
+    "totalIngresos": 14371700,
+    "utilidadNeta": -107100,
+    "margen": -0.75,
+    "totalCompras": 2296,
+    "totalVendido": 2279,
+    "stockTeórico": 17
+  },
+  "bovedas": {
+    "bovedaMonte": 14371700,
+    "fleteSur": 0,
+    "utilidades": 0,
+    "azteca": 0,
+    "bovedaUSA": 0,
+    "total": 14371700
+  },
+  "validacion": {
+    "ordenesCompra": "✅",
+    "ventasLocales": "✅",
+    "clientes": "✅",
+    "almacen": "✅"
+  },
+  "alertas": [
+    "⚠️ Utilidad negativa: $-107,100"
+  ]
+}

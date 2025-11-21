@@ -1,0 +1,86 @@
+/* ChronosMainApp Error Styles */
+
+.chronos-error-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: #ef4444;
+  border-radius: 50%;
+  animation: chronos-error-pulse 2s infinite;
+}
+
+.chronos-error-particle-0 {
+  left: 15%;
+  top: 20%;
+  animation-delay: 0s;
+}
+.chronos-error-particle-1 {
+  left: 85%;
+  top: 15%;
+  animation-delay: 0.3s;
+}
+.chronos-error-particle-2 {
+  left: 25%;
+  top: 75%;
+  animation-delay: 0.6s;
+}
+.chronos-error-particle-3 {
+  left: 75%;
+  top: 80%;
+  animation-delay: 0.9s;
+}
+.chronos-error-particle-4 {
+  left: 50%;
+  top: 30%;
+  animation-delay: 1.2s;
+}
+.chronos-error-particle-5 {
+  left: 65%;
+  top: 60%;
+  animation-delay: 1.5s;
+}
+
+@keyframes chronos-error-pulse {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.5);
+  }
+}
+
+/* Lazy loading optimizations */
+.chronos-lazy {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.chronos-lazy.chronos-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Performance optimizations */
+.chronos-gpu-accelerated {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Mobile optimizations */
+@media screen and (max-width: 768px) {
+  .chronos-error-particle {
+    width: 2px;
+    height: 2px;
+  }
+
+  .chronos-lazy {
+    transform: translateY(10px);
+  }
+}

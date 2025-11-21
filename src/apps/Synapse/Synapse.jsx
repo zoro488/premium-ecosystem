@@ -243,7 +243,7 @@ const aiModels = [
     name: 'DALL-E 3',
     provider: 'OpenAI',
     icon: Image,
-    color: 'from-purple-500 to-pink-500',
+    color: 'from-zinc-800 to-zinc-800',
     capabilities: ['image'],
     speed: 'slow',
   },
@@ -486,7 +486,10 @@ const Message = ({ message }) => {
           {/* Code Blocks */}
           {message.codeBlocks &&
             message.codeBlocks.map((block, index) => (
-              <div key={`item-${index}`} className="mt-4 rounded-xl overflow-hidden border border-white/10">
+              <div
+                key={`item-${index}`}
+                className="mt-4 rounded-xl overflow-hidden border border-white/10"
+              >
                 <div className="flex items-center justify-between px-4 py-2 bg-slate-900/50 border-b border-white/10">
                   <span className="text-xs font-mono text-slate-400">{block.language}</span>
                   <button

@@ -1,0 +1,13 @@
+{
+  "folders": [
+	{
+		"path": "."
+	},
+	{
+		"path": "../chronos-system"
+	}
+],
+  "settings": {
+    "powershell.cwd": "chronos-system"
+  }
+}

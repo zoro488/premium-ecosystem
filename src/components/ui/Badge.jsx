@@ -1,4 +1,3 @@
-
 import { clsx } from 'clsx';
 import { motion } from 'framer-motion';
 
@@ -11,7 +10,7 @@ const Badge = ({ children, variant = 'default', size = 'md', className, ...props
     warning: 'bg-yellow-500/20 text-yellow-300 border border-yellow-500/30',
     danger: 'bg-red-500/20 text-red-300 border border-red-500/30',
     info: 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30',
-    purple: 'bg-purple-500/20 text-purple-300 border border-purple-500/30',
+    purple: 'bg-zinc-800/20 text-zinc-200 border border-zinc-700/30',
   };
 
   const sizes = {
@@ -45,4 +44,5 @@ const Badge = ({ children, variant = 'default', size = 'md', className, ...props
   );
 };
 
+export { Badge };
 export default Badge;

@@ -1,0 +1,165 @@
+{
+  "fecha": "2025-11-18T20:56:53.187Z",
+  "colecciones": [
+    {
+      "nombre": "bancos",
+      "documentos": 11,
+      "estado": "CON_DATOS"
+    },
+    {
+      "nombre": "clientes",
+      "documentos": 31,
+      "estado": "CON_DATOS"
+    },
+    {
+      "nombre": "distribuidores",
+      "documentos": 6,
+      "estado": "CON_DATOS"
+    },
+    {
+      "nombre": "ordenesCompra",
+      "documentos": 9,
+      "estado": "CON_DATOS"
+    },
+    {
+      "nombre": "ventas",
+      "documentos": 96,
+      "estado": "CON_DATOS"
+    },
+    {
+      "nombre": "productos",
+      "documentos": 2,
+      "estado": "CON_DATOS",
+      "ejemplos": [
+        {
+          "id": "PROD-001",
+          "nombre": "Producto Principal"
+        },
+        {
+          "id": "prod_001",
+          "nombre": "Producto Principal"
+        }
+      ]
+    },
+    {
+      "nombre": "almacen",
+      "documentos": 211,
+      "estado": "CON_DATOS"
+    },
+    {
+      "nombre": "movimientosBancarios",
+      "documentos": 0,
+      "estado": "VACIA"
+    },
+    {
+      "nombre": "gastos",
+      "documentos": 394,
+      "estado": "CON_DATOS"
+    },
+    {
+      "nombre": "transferencias",
+      "documentos": 116,
+      "estado": "CON_DATOS"
+    },
+    {
+      "nombre": "adeudosClientes",
+      "documentos": 0,
+      "estado": "VACIA"
+    },
+    {
+      "nombre": "adeudosDistribuidores",
+      "documentos": 0,
+      "estado": "VACIA"
+    },
+    {
+      "nombre": "ingresos",
+      "documentos": 0,
+      "estado": "VACIA"
+    },
+    {
+      "nombre": "gastosBancarios",
+      "documentos": 0,
+      "estado": "VACIA"
+    },
+    {
+      "nombre": "cortes",
+      "documentos": 0,
+      "estado": "VACIA"
+    },
+    {
+      "nombre": "bovedaMonte",
+      "documentos": 0,
+      "estado": "VACIA"
+    },
+    {
+      "nombre": "bovedaUsa",
+      "documentos": 0,
+      "estado": "VACIA"
+    },
+    {
+      "nombre": "azteca",
+      "documentos": 1,
+      "estado": "CON_DATOS",
+      "ejemplos": [
+        {
+          "id": "cuenta"
+        }
+      ]
+    },
+    {
+      "nombre": "leftie",
+      "documentos": 1,
+      "estado": "CON_DATOS",
+      "ejemplos": [
+        {
+          "id": "cuenta"
+        }
+      ]
+    },
+    {
+      "nombre": "profit",
+      "documentos": 1,
+      "estado": "CON_DATOS",
+      "ejemplos": [
+        {
+          "id": "cuenta"
+        }
+      ]
+    },
+    {
+      "nombre": "utilidades",
+      "documentos": 1,
+      "estado": "CON_DATOS",
+      "ejemplos": [
+        {
+          "id": "cuenta"
+        }
+      ]
+    },
+    {
+      "nombre": "fletes",
+      "documentos": 0,
+      "estado": "VACIA"
+    },
+    {
+      "nombre": "operaciones_bancos",
+      "documentos": 0,
+      "estado": "VACIA"
+    }
+  ],
+  "resumen": {
+    "totalColecciones": 23,
+    "coleccionesConDatos": 13,
+    "coleccionesVacias": 10,
+    "coleccionesConError": 0,
+    "totalDocumentos": 880
+  },
+  "datosEsperados": {
+    "clientes": 31,
+    "distribuidores": "2-6",
+    "ordenesCompra": 9,
+    "ventas": 96,
+    "gastosAbonos": "~306",
+    "bancos": 8
+  }
+}

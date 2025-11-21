@@ -1,727 +1,83 @@
-# 💎 Premium Ecosystem - Supreme Edition 2025
+# GitHub Copilot CLI (Public Preview)
 
-[![CI Tests](https://github.com/yourusername/premium-ecosystem/workflows/CI%20-%20Tests%20%26%20Quality/badge.svg)](https://github.com/yourusername/premium-ecosystem/actions)
-[![Deploy Status](https://github.com/yourusername/premium-ecosystem/workflows/Deploy%20to%20Production/badge.svg)](https://github.com/yourusername/premium-ecosystem/actions)
-[![CodeQL](https://github.com/yourusername/premium-ecosystem/workflows/CodeQL%20Security%20Analysis/badge.svg)](https://github.com/yourusername/premium-ecosystem/security/code-scanning)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Node Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)](https://nodejs.org/)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Blueprint 2025](https://img.shields.io/badge/Blueprint-Supreme%202025-8B5CF6)](OPTIMIZACION_FLOWDISTRIBUTOR_BLUEPRINT_2025.md)
-[![3D Ready](https://img.shields.io/badge/Three.js-0.160-06B6D4)](https://threejs.org/)
-[![Real-time](https://img.shields.io/badge/Socket.io-4.7-10B981)](https://socket.io/)
+The power of GitHub Copilot, now in your terminal.
 
-**Ecosistema empresarial premium de 5 aplicaciones de última generación con visualizaciones 3D, real-time WebSocket, glassmorphism premium y animaciones scroll-driven siguiendo el Blueprint Supreme 2025.**
+GitHub Copilot CLI brings AI-powered coding assistance directly to your command line, enabling you to build, debug, and understand code through natural language conversations. Powered by the same agentic harness as GitHub's Copilot coding agent, it provides intelligent assistance while staying deeply integrated with your GitHub workflow.
 
-🏆 **Objetivo:** Superar a los ganadores de Awwwards Site of the Year 2025
+See [our official documentation](https://docs.github.com/copilot/concepts/agents/about-copilot-cli) for more information.
 
-## 🚀 Inicio Rápido (1 comando)
+![Image of the splash screen for the Copilot CLI](https://github.com/user-attachments/assets/51ac25d2-c074-467a-9c88-38a8d76690e3)
 
-```powershell
-# Iniciar frontend + backend en paralelo
-.\INICIO-RAPIDO.ps1
+## 🚀 Introduction and Overview
+
+We're bringing the power of GitHub Copilot coding agent directly to your terminal. With GitHub Copilot CLI, you can work locally and synchronously with an AI agent that understands your code and GitHub context.
+
+- **Terminal-native development:** Work with Copilot coding agent directly in your command line — no context switching required.
+- **GitHub integration out of the box:** Access your repositories, issues, and pull requests using natural language, all authenticated with your existing GitHub account.
+- **Agentic capabilities:** Build, edit, debug, and refactor code with an AI collaborator that can plan and execute complex tasks.
+- **MCP-powered extensibility:** Take advantage of the fact that the coding agent ships with GitHub's MCP server by default and supports custom MCP servers to extend capabilities.
+- **Full control:** Preview every action before execution — nothing happens without your explicit approval.
+
+We're still early in our journey, but with your feedback, we're rapidly iterating to make the GitHub Copilot CLI the best possible companion in your terminal.
+
+## 📦 Getting Started
+
+### Supported Platforms
+
+- **Linux**
+- **macOS**
+- **Windows**
+
+### Prerequisites
+
+- **Node.js** v22 or higher
+- **npm** v10 or higher
+- (On Windows) **PowerShell** v6 or higher
+- An **active Copilot subscription**. See [Copilot plans](https://github.com/features/copilot/plans?ref_cta=Copilot+plans+signup&ref_loc=install-copilot-cli&ref_page=docs).
+
+If you have access to GitHub Copilot via your organization of enterprise, you cannot use GitHub Copilot CLI if your organization owner or enterprise administrator has disabled it in the organization or enterprise settings. See [Managing policies and features for GitHub Copilot in your organization](http://docs.github.com/copilot/managing-copilot/managing-github-copilot-in-your-organization/managing-github-copilot-features-in-your-organization/managing-policies-for-copilot-in-your-organization) for more information.
+
+### Installation
+
+Install globally with npm:
+```bash
+npm install -g @github/copilot
 ```
 
-**URLs:**
-- 🌐 Frontend: http://localhost:5173
-- 🔴 WebSocket: ws://localhost:3001
-
-## ⚡ Stack Tecnológico Premium
-
-## ⚡ Stack Tecnológico Premium
-
-### Core Framework
-- ⚛️ **React 18** - Concurrent features, Suspense, Error Boundaries
-- ⚡ **Vite 5** - Lightning fast HMR, optimized builds
-- 🎨 **TailwindCSS 3** - Utility-first CSS con custom design system
-
-### 3D & Visualizaciones (NEW 🚀)
-- 🎮 **Three.js r160** - WebGL 3D graphics engine
-- 🔮 **@react-three/fiber 8.15** - React renderer for Three.js
-- ✨ **@react-three/drei 9.92** - Useful helpers (Float, Text3D, Environment, etc.)
-- 🎬 **@react-three/postprocessing 2.16** - Bloom, SSAO, DepthOfField, ChromaticAberration
-
-### Animaciones & Interactividad
-- 🎭 **Framer Motion 11** - Production-ready spring physics animations
-- 📜 **Scroll-Driven CSS Animations** - View Timeline API, Parallax multicapa
-- 🪄 **Glassmorphism 3D** - Backdrop blur premium, gradient overlays
-- 🌌 **Aurora Backgrounds** - Multi-layer animated gradients
-
-### Real-time & Collaboration (NEW 🔴)
-- 🔴 **Socket.io 4.7** - WebSocket bidirectional real-time communication
-- 📡 **Yjs 13.6** - CRDT for collaborative editing
-- 🔔 **Real-time Notifications** - Toast system con 4 tipos (info/success/warning/error)
-
-### Performance & Optimization (NEW ⚡)
-- 🚀 **Million.js 3.0** - Virtual DOM optimization (70% faster)
-- 📦 **Code Splitting** - React.lazy() + Suspense
-- 🖼️ **Lazy Images** - Progressive loading
-- 📊 **Bundle Analysis** - Vite bundle analyzer
-
-### State & Data
-- 🐻 **Zustand** - Lightweight state management
-- 🔄 **TanStack Query (React Query)** - Server state synchronization
-- 📝 **React Hook Form** - Performant form validation
-- 🛡️ **Zod** - TypeScript-first schema validation
-
-### Firebase Backend
-- 🔥 **Firestore** - NoSQL real-time database
-- 🔐 **Firebase Auth** - Authentication
-- 📁 **Storage** - File uploads
-- 📊 **Analytics** - User tracking
-
-### Design System (NEW 🎨)
-```javascript
-designSystem = {
-  glass: Glassmorphism con backdrop-blur-xl
-  aurora: Animated gradient backgrounds
-  bento: 12-column responsive grid
-  colors: Primary, Accent, Semantic palettes
-  springs: 4 presets (default, gentle, bouncy, stiff)
-  gradients: Premium multi-color gradients
-}
-```
-
-## 🎯 Características de Producción
-
-### Desarrollo y Testing
-- ✅ **Testing completo**: Unit tests (Vitest) + E2E tests (Playwright) + Coverage
-- ✅ **CI/CD Automatizado**: GitHub Actions con 3 workflows (CI, Deploy, Security)
-- ✅ **Code Quality**: ESLint + Prettier + Pre-commit hooks
-- ✅ **Bundle Optimization**: Code splitting, lazy loading, tree shaking
-
-### Seguridad
-- ✅ **CodeQL Analysis**: Security scanning automático
-- ✅ **Dependabot**: Actualizaciones automáticas de dependencias
-- ✅ **Secret Scanning**: Detección de credenciales en el código
-- ✅ **Branch Protection**: Reglas de protección en rama main
-
-### Monitoreo y Analytics
-- ✅ **Error Monitoring**: Sentry integration con error boundary
-- ✅ **Analytics**: Google Analytics 4 con tracking avanzado
-- ✅ **Performance**: Lighthouse CI score 95+
-- ✅ **Sentry Releases**: Release tracking automático
-
-### Deployment
-- ✅ **Multi-platform**: Deploy a Vercel + Firebase Hosting
-- ✅ **Preview Deployments**: URL única por cada PR
-- ✅ **Automatic Releases**: Semantic versioning
-- ✅ **Rollback**: One-click rollback en Vercel/Firebase
-
-### Colaboración
-- ✅ **GitHub Codespaces**: Desarrollo en la nube listo para usar
-- ✅ **Issue Templates**: Templates para bugs y features
-- ✅ **PR Templates**: Template completo con checklist
-- ✅ **CODEOWNERS**: Revisión automática de código
-
-## 🌟 Aplicaciones Incluidas
-
-### 1. **FlowDistributor Supreme** 💼🎮
-Sistema de gestión empresarial premium con visualizaciones 3D interactivas.
-
-**Características Premium:**
-- 🎮 **3D Visualizations:** Bancos, ventas e inventario en Three.js
-- 🔴 **Real-time:** WebSocket notifications con Socket.io
-- 🎨 **Glassmorphism:** Design system premium con backdrop-blur
-- 📜 **Scroll Animations:** 30+ animaciones scroll-driven (View Timeline API)
-- 💾 **167+ Excel Records:** 7 bancos, 96 transacciones, 31 clientes integrados
-- 🌌 **Aurora Backgrounds:** Animated gradient overlays
-- ⚡ **Million.js:** Optimización Virtual DOM (70% faster)
-
-**Componentes 3D Incluidos:**
-1. **BankVisualization3D** - Cubos flotantes con efecto cristal
-   - MeshTransmissionMaterial premium
-   - Color dinámico según capital
-   - Sparkles + Float animations
-   - Bloom + ChromaticAberration post-processing
-
-2. **SalesChart3D** - Gráficos de barras interactivos
-   - Barras con MeshDistortMaterial
-   - Scale lerp smooth en hover
-   - SSAO + Bloom effects
-   - 6 colores premium
-
-3. **InventoryVisualization3D** - Productos en espiral
-   - Geometría dinámica (Box/Cylinder/Sphere)
-   - Partículas en hover
-   - DepthOfField bokeh effect
-   - Estadísticas en tiempo real
-
-**Dashboard Tradicional:**
-- Gestión de 7 bancos ($16.3M capital)
-- Sistema de órdenes y clientes
-- Control de inventario y almacén
-- Panel de ventas y distribuidores
-- Reportes detallados
-- Notificaciones toast animadas
-
-**Color Theme:** Azul-Cyan
-**Ruta:** `/flow`
-
----
-
-### 2. **ShadowPrime** 💰
-Gestión avanzada de wallets y criptomonedas.
-
-**Características:**
-- Gestión de múltiples wallets crypto
-- Dashboard de activos
-- Transacciones en tiempo real
-- Gráficos de rendimiento
-- Seguridad avanzada
-- Portfolio tracking
-
-**Color Theme:** Púrpura-Violeta
-**Ruta:** `/shadow`
-
----
-
-### 3. **Apollo** 🛰️
-Sistema de rastreo GPS y control de drones con IA.
-
-**Características:**
-- Rastreo en vivo de vehículos GPS
-- Control de drones autónomos
-- Scanner IA con detección de objetos
-- Mapa interactivo en tiempo real
-- Sistema de alertas
-- Visualización de rutas
-- Métricas de batería y combustible
-
-**Color Theme:** Verde-Esmeralda
-**Ruta:** `/apollo`
-
----
-
-### 4. **Synapse** 🧠
-Asistente de IA conversacional avanzado.
-
-**Características:**
-- Chat con múltiples modelos de IA (GPT-4, Claude, DALL-E)
-- Gestión de conversaciones
-- Code highlighting y copy
-- Búsqueda y filtrado
-- Historial completo
-- Quick actions
-- Attachments y voice input
-
-**Color Theme:** Naranja-Ámbar
-**Ruta:** `/synapse`
-
----
-
-### 5. **Nexus** 🔗
-Centro de control y monitoreo del ecosistema completo.
-
-**Características:**
-- Dashboard centralizado
-- Monitoreo de todas las apps
-- Métricas de rendimiento del sistema
-- Actividad en tiempo real
-- Sistema de alertas
-- Analytics integrados
-- Navegación rápida entre apps
-
-**Color Theme:** Rosa-Rose
-**Ruta:** `/nexus`
-
----
-
-## 🛠️ Tecnologías Utilizadas
-
-- **React 18.2** - Framework UI
-- **Vite 5.0** - Build tool & dev server
-- **Tailwind CSS 3.4** - Utility-first CSS
-- **Framer Motion 10.16** - Animaciones fluidas
-- **Lucide React 0.294** - Iconos modernos
-- **React Router DOM 6.20** - Navegación
-- **Three.js & React Three Fiber** - Gráficos 3D (opcional)
-
----
-
-## 📦 Instalación
-
-### 1. Clonar o descargar el proyecto
+### Launching the CLI
 
 ```bash
-cd C:\Users\xpovo\Documents\premium-ecosystem
+copilot
 ```
 
-### 2. Instalar dependencias
+On first launch, you'll be greeted with our adorable animated banner! If you'd like to see this banner again, launch `copilot` with the `--banner` flag. 
 
-```bash
-npm install
-```
+If you're not currently logged in to GitHub, you'll be prompted to use the `/login` slash command. Enter this command and follow the on-screen instructions to authenticate.
 
-Esto instalará todas las dependencias necesarias listadas en `package.json`.
+#### Authenticate with a Personal Access Token (PAT)
 
-### 3. Iniciar el servidor de desarrollo
+You can also authenticate using a fine-grained PAT with the "Copilot Requests" permission enabled.
 
-```bash
-npm run dev
-```
+1. Visit https://github.com/settings/personal-access-tokens/new
+2. Under "Permissions," click "add permissions" and select "Copilot Requests"
+3. Generate your token
+4. Add the token to your environment via the environment variable `GH_TOKEN` or `GITHUB_TOKEN` (in order of precedence)
 
-El proyecto se abrirá en `http://localhost:5173`
+### Using the CLI
 
----
+Launch `copilot` in a folder that contains code you want to work with. 
 
-## 🎨 Estructura del Proyecto
+By default, `copilot` utilizes Claude Sonnet 4.5. Run the `/model` slash command to choose from other available models, including Claude Sonnet 4 and GPT-5
 
-```
-premium-ecosystem/
-├── src/
-│   ├── main.jsx                 # Entry point
-│   ├── App.jsx                  # Hub principal con router
-│   ├── index.css                # Estilos globales
-│   └── apps/                    # Carpeta de aplicaciones
-│       ├── FlowDistributor/
-│       │   └── FlowDistributor.jsx
-│       ├── ShadowPrime/
-│       │   └── ShadowPrime.jsx
-│       ├── Apollo/
-│       │   └── Apollo.jsx
-│       ├── Synapse/
-│       │   └── Synapse.jsx
-│       └── Nexus/
-│           └── Nexus.jsx
-├── index.html                   # HTML principal
-├── package.json                 # Dependencias y scripts
-├── vite.config.js               # Configuración Vite
-├── tailwind.config.js           # Configuración Tailwind
-├── postcss.config.js            # PostCSS config
-├── .gitignore                   # Git exclusiones
-└── README.md                    # Este archivo
-```
+Each time you submit a prompt to GitHub Copilot CLI, your monthly quota of premium requests is reduced by one. For information about premium requests, see [About premium requests](https://docs.github.com/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests).
 
----
+For more information about how to use the GitHub Copilot CLI, see [our official documentation](https://docs.github.com/copilot/concepts/agents/about-copilot-cli).
 
-## 🚀 Scripts Disponibles
 
-```bash
-# Desarrollo (puerto 5173)
-npm run dev
+## 📢 Feedback and Participation
 
-# Build de producción
-npm run build
+We're excited to have you join us early in the Copilot CLI journey.
 
-# Preview del build
-npm run preview
+This is an early-stage preview, and we're building quickly. Expect frequent updates--please keep your client up to date for the latest features and fixes!
 
-# Lint del código
-npm run lint
-```
-
----
-
-## 🎯 Características Principales
-
-### Diseño Premium
-- **Glass morphism** effects en todos los componentes
-- **Gradientes** personalizados para cada aplicación
-- **Animaciones** fluidas con Framer Motion
-- **Responsive design** completo
-- **Dark theme** profesional
-
-### Navegación
-- **Hub 3D** con fondo animado de estrellas
-- Navegación entre apps sin recargar
-- Botón "Volver al Hub" en cada app
-- Transiciones suaves entre vistas
-
-### Componentes Reutilizables
-- Sidebar colapsable
-- Cards animadas
-- Modales y dropdowns
-- Gráficos y métricas
-- Sistema de notificaciones
-- Formularios avanzados
-
----
-
-## 🔧 Personalización
-
-### Colores
-
-Cada aplicación tiene su propio esquema de colores definido en `src/App.jsx`:
-
-```jsx
-const apps = [
-  {
-    id: 'flow',
-    color: 'from-blue-500 to-cyan-500',
-    // ...
-  },
-  // ...
-];
-```
-
-### Estilos Globales
-
-Los estilos glass morphism están en `src/index.css`:
-
-```css
-.glass {
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-```
-
-### Añadir Nueva Aplicación
-
-1. Crear carpeta en `src/apps/MiApp/`
-2. Crear componente `MiApp.jsx`
-3. Registrar en `src/App.jsx`:
-
-```jsx
-import MiApp from './apps/MiApp/MiApp';
-
-const apps = [
-  // ...
-  {
-    id: 'miapp',
-    name: 'MiApp',
-    path: '/miapp',
-    component: MiApp,
-    // ...
-  },
-];
-```
-
----
-
-## 📱 Responsive Design
-
-Todas las aplicaciones son completamente responsive:
-
-- **Desktop:** Vista completa con sidebar expandido
-- **Tablet:** Grid adaptativo
-- **Mobile:** Sidebar colapsable, cards apiladas
-
----
-
-## 🎨 Paleta de Colores
-
-| App | Primario | Secundario | Uso |
-|-----|----------|------------|-----|
-| FlowDistributor | `#3B82F6` (blue-500) | `#06B6D4` (cyan-500) | Negocios |
-| ShadowPrime | `#A855F7` (purple-500) | `#8B5CF6` (violet-500) | Crypto |
-| Apollo | `#10B981` (green-500) | `#059669` (emerald-500) | GPS/Drones |
-| Synapse | `#F97316` (orange-500) | `#F59E0B` (amber-500) | IA |
-| Nexus | `#EC4899` (pink-500) | `#F43F5E` (rose-500) | Control |
-
----
-
-## 🐛 Solución de Problemas
-
-### Error: "Cannot find module"
-```bash
-npm install
-```
-
-### Puerto 5173 ocupado
-Edita `vite.config.js`:
-```js
-export default defineConfig({
-  server: {
-    port: 3000, // Cambia el puerto
-  },
-});
-```
-
-### Estilos no se aplican
-```bash
-npm run build
-rm -rf node_modules
-npm install
-```
-
----
-
-## 📄 Licencia
-
-Este proyecto es de uso privado.
-
----
-
-## 👤 Autor
-
-**Equipo Premium Ecosystem**
-
----
-
-## 🎉 ¡Listo para Usar!
-
-Una vez instalado, simplemente ejecuta:
-
-```bash
-npm run dev
-```
-
-Y disfruta del ecosistema premium más completo del mercado 🚀
-
----
-
-## 📸 Screenshots
-
-### Hub Principal
-Vista 3D interactiva con las 5 aplicaciones
-
-### FlowDistributor
-Dashboard empresarial con 6 bancos y métricas
-
-### Apollo
-Mapa GPS en vivo con drones y IA
-
-### Synapse
-Chat IA con múltiples modelos
-
-### Nexus
-Centro de control centralizado
-
----
-
-## 💾 Sistema de Persistencia
-
-### Almacenamiento Automático
-
-Todas las aplicaciones guardan automáticamente los datos usando `localStorage`:
-
-**FlowDistributor**:
-- ✅ Bancos y finanzas
-- ✅ Órdenes de compra
-- ✅ Distribuidores
-- ✅ Ventas y clientes
-- ✅ Inventario/almacén
-- ✅ Tema y configuraciones UI
-
-**ShadowPrime**:
-- ✅ Wallets y balances
-- ✅ Transacciones
-- ✅ Configuraciones
-
-**Apollo**:
-- ✅ Vehículos GPS
-- ✅ Drones
-- ✅ Detecciones
-- ✅ Configuraciones
-
-**Synapse**:
-- ✅ Conversaciones
-- ✅ Mensajes
-- ✅ Modelo IA seleccionado
-- ✅ Configuraciones
-
-**Nexus**:
-- ✅ Estado de apps
-- ✅ Actividad
-- ✅ Configuraciones
-
-### Storage API (`src/utils/storage.js`)
-
-```javascript
-// Importar utilidades
-import { useLocalStorage, STORAGE_KEYS, storage } from './utils/storage';
-
-// Hook React para persistencia automática
-const [datos, setDatos] = useLocalStorage(STORAGE_KEYS.MI_KEY, valorInicial);
-
-// Funciones de storage
-storage.set('mi_key', { dato: 'valor' });
-storage.get('mi_key', defaultValue);
-storage.remove('mi_key');
-storage.clear();
-
-// IndexedDB para datos grandes
-import { db } from './utils/storage';
-await db.init(['storeName']);
-await db.add('storeName', data);
-await db.getAll('storeName');
-
-// Exportar/Importar datos
-import { exportAllData, importData } from './utils/storage';
-exportAllData(); // Descarga JSON
-importData(jsonString); // Restaura desde JSON
-```
-
-### Limpieza de Datos
-
-Para resetear todas las apps, ejecuta en consola del navegador:
-
-```javascript
-localStorage.clear();
-location.reload();
-```
-
----
-
-## 🎨 Componentes Compartidos
-
-### AIAssistant
-
-Todas las apps incluyen un asistente IA premium:
-
-```jsx
-import AIAssistant from '../../components/shared/AIAssistant';
-
-<AIAssistant
-  systemName="MiApp"
-  systemContext="Contexto específico del sistema"
-  accentColor="blue" // blue, purple, green, orange, pink, red, cyan
-  position="bottom-right" // bottom-right, bottom-left, top-right, top-left
-/>
-```
-
-**Características**:
-- 💬 Chat interactivo
-- 🎨 Temas personalizables por app
-- ⚡ Quick actions
-- 📝 Sugerencias contextuales
-- 🎯 Floating action button
-- ✨ Animaciones premium
-
----
-
-## 🔑 Configuración de APIs
-
-### Archivo de Configuración
-
-Todas las APIs están centralizadas en [src/config/api.js](src/config/api.js)
-
-### Obtener API Keys
-
-Consulta la **[Guía Completa de APIs](API_SETUP_GUIDE.md)** para instrucciones detalladas sobre cómo obtener cada API key.
-
-### Configuración Rápida
-
-1. Copia el archivo de ejemplo:
-```bash
-cp .env.example .env
-```
-
-2. Edita `.env` y agrega tus API keys
-
-3. Reinicia el servidor:
-```bash
-npm run dev
-```
-
-### APIs Recomendadas para Empezar
-
-| API | Aplicación | Prioridad | Costo |
-|-----|------------|-----------|-------|
-| **OpenAI** | Todas (AI Assistant) | 🔴 Alta | $20-50/mes |
-| **Mapbox** | Apollo | 🔴 Alta | Gratis (50k/mes) |
-| **Supabase** | Todas (DB real) | 🟡 Media | Gratis (500MB) |
-| **CoinGecko** | ShadowPrime | 🟡 Media | Gratis |
-| **SendGrid** | FlowDistributor | 🟢 Baja | Gratis (100/día) |
-
-Ver [API_SETUP_GUIDE.md](API_SETUP_GUIDE.md) para la lista completa de 40+ APIs disponibles.
-
----
-
-## 🔧 GitHub & CI/CD
-
-### GitHub Actions Workflows
-
-El proyecto incluye 3 workflows automatizados:
-
-#### 1. **CI - Tests & Quality** ([ci.yml](.github/workflows/ci.yml))
-Se ejecuta en cada push y PR:
-- ✅ Lint con ESLint
-- ✅ Unit tests con Vitest
-- ✅ E2E tests con Playwright
-- ✅ Coverage report a Codecov
-- ✅ Build de producción
-- ✅ Lighthouse performance check
-
-#### 2. **Deploy to Production** ([deploy.yml](.github/workflows/deploy.yml))
-Se ejecuta al hacer merge a `main`:
-- ✅ Deploy automático a Vercel
-- ✅ Deploy automático a Firebase Hosting
-- ✅ Preview deployments para PRs
-- ✅ Sentry release tracking
-
-#### 3. **CodeQL Security Analysis** ([codeql.yml](.github/workflows/codeql.yml))
-Se ejecuta semanalmente y en cada PR:
-- ✅ Análisis de seguridad estático
-- ✅ Dependency review
-- ✅ Secret scanning
-- ✅ NPM security audit
-
-### Configurar GitHub
-
-Para aprovechar todas las funcionalidades de GitHub:
-
-1. **Lee la guía completa**: [GITHUB_SETUP_GUIDE.md](GITHUB_SETUP_GUIDE.md)
-2. Configura GitHub Secrets (Vercel, Firebase, Sentry)
-3. Habilita branch protection en `main`
-4. Activa GitHub Discussions
-5. Instala GitHub Apps recomendadas
-
-### GitHub Codespaces
-
-Abre el proyecto en un entorno de desarrollo completo en la nube:
-
-```bash
-# Desde GitHub.com:
-Code → Codespaces → Create codespace on main
-```
-
-Todo está preconfigurado en [.devcontainer/devcontainer.json](.devcontainer/devcontainer.json).
-
-### Contribuir
-
-Lee nuestra [Guía de Contribución](CONTRIBUTING.md) para:
-- Estándares de código
-- Proceso de desarrollo
-- Conventional Commits
-- Testing guidelines
-
-### Seguridad
-
-Reporta vulnerabilidades siguiendo nuestra [Política de Seguridad](SECURITY.md).
-
----
-
-## 🔄 Actualizaciones Futuras
-
-- [x] Integración con APIs - **DOCUMENTADO** ✨
-- [x] GitHub Actions CI/CD - **IMPLEMENTADO** 🚀
-- [x] Security scanning - **IMPLEMENTADO** 🔒
-- [x] GitHub Codespaces - **CONFIGURADO** ☁️
-- [x] Issue/PR templates - **CREADOS** 📋
-- [ ] Implementación real de APIs
-- [ ] Sistema de autenticación completo
-- [x] Base de datos persistente (localStorage + IndexedDB)
-- [ ] Notificaciones push
-- [ ] PWA support completo
-- [x] Tests automatizados (CI/CD)
-- [ ] Documentación de componentes (Storybook)
-- [x] Modo claro/oscuro toggle (FlowDistributor)
-- [ ] Multi-idioma (i18n)
-- [x] Export/Import de datos
-
----
-
-## 📊 Estado del Proyecto
-
-| Característica | Estado |
-|----------------|--------|
-| Navegación entre apps | ✅ Completo |
-| Persistencia de datos | ✅ Completo |
-| Animaciones premium | ✅ Completo |
-| Asistente IA | ✅ Completo |
-| Diseño responsive | ✅ Completo |
-| Glassmorphism | ✅ Completo |
-| Cursor effects | ✅ Completo |
-| Lazy loading | ✅ Completo |
-| Gráficos/Analytics | ✅ Completo |
-| APIs reales | 🔄 Pendiente |
-| Mapbox/Cesium | 🔄 Pendiente |
-| Backend | 🔄 Pendiente |
-
----
-
-**¡Gracias por usar Premium Ecosystem! 🎊**
-
-**Servidor corriendo en**: `http://localhost:3004`
+Your insights are invaluable! Open issue in this repo, join Discussions, and run `/feedback` from the CLI to submit a confidential feedback survey!

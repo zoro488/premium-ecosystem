@@ -73,10 +73,10 @@ const AIAssistant = ({
 
   const colorMap = {
     blue: 'from-blue-500 to-cyan-500',
-    purple: 'from-purple-500 to-pink-500',
+    purple: 'from-zinc-800 to-zinc-800',
     green: 'from-green-500 to-emerald-500',
     orange: 'from-orange-500 to-amber-500',
-    red: 'from-red-500 to-rose-500',
+    red: 'from-zinc-700 to-rose-500',
     cyan: 'from-cyan-500 to-teal-500',
   };
 

@@ -1,0 +1,463 @@
+/**
+ * 🎨 ULTRA PREMIUM DESIGN SYSTEM
+ * Sistema de diseño negro profundo con animaciones avanzadas
+ * Inspirado en: Apple Vision Pro, Linear, Vercel, Stripe
+ */
+
+/* ============================================
+   🌑 COLOR SYSTEM - BLACK DEPTH SCALE
+   ============================================ */
+
+:root {
+  /* Negro Profundo - Escala de profundidad */
+  --black-void: #000000;
+  --black-deep: #0a0a0a;
+  --black-space: #121212;
+  --black-carbon: #1a1a1a;
+  --black-obsidian: #1f1f1f;
+
+  /* Grises Metálicos */
+  --gray-steel: #27272a;
+  --gray-iron: #3f3f46;
+  --gray-silver: #52525b;
+  --gray-platinum: #71717a;
+  --gray-chrome: #a1a1aa;
+
+  /* Blancos Premium */
+  --white-silk: #d4d4d8;
+  --white-pearl: #e4e4e7;
+  --white-diamond: #f4f4f5;
+  --white-pure: #fafafa;
+  --white-absolute: #ffffff;
+
+  /* Glassmorphism Premium */
+  --glass-ultra: rgba(0, 0, 0, 0.98);
+  --glass-deep: rgba(10, 10, 10, 0.95);
+  --glass-dark: rgba(18, 18, 18, 0.9);
+  --glass-medium: rgba(39, 39, 42, 0.85);
+  --glass-light: rgba(63, 63, 70, 0.8);
+
+  /* Borders & Strokes */
+  --border-subtle: rgba(255, 255, 255, 0.03);
+  --border-soft: rgba(255, 255, 255, 0.05);
+  --border-medium: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.12);
+  --border-bright: rgba(255, 255, 255, 0.18);
+
+  /* Shadows Premium */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.8);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.85), 0 1px 2px rgba(0, 0, 0, 0.9);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.9), 0 2px 4px rgba(0, 0, 0, 0.95);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.92), 0 4px 8px rgba(0, 0, 0, 0.96);
+  --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.94), 0 8px 16px rgba(0, 0, 0, 0.98);
+  --shadow-2xl: 0 24px 48px rgba(0, 0, 0, 0.96), 0 12px 24px rgba(0, 0, 0, 1);
+
+  /* Glow Effects */
+  --glow-subtle: 0 0 20px rgba(255, 255, 255, 0.03);
+  --glow-soft: 0 0 40px rgba(255, 255, 255, 0.05);
+  --glow-medium: 0 0 60px rgba(255, 255, 255, 0.08);
+  --glow-strong: 0 0 80px rgba(255, 255, 255, 0.12);
+
+  /* Blur Levels */
+  --blur-subtle: 8px;
+  --blur-soft: 12px;
+  --blur-medium: 16px;
+  --blur-strong: 24px;
+  --blur-extreme: 32px;
+
+  /* Spacing System - 4px base */
+  --space-xs: 0.25rem; /* 4px */
+  --space-sm: 0.5rem; /* 8px */
+  --space-md: 1rem; /* 16px */
+  --space-lg: 1.5rem; /* 24px */
+  --space-xl: 2rem; /* 32px */
+  --space-2xl: 3rem; /* 48px */
+  --space-3xl: 4rem; /* 64px */
+
+  /* Border Radius */
+  --radius-sm: 0.375rem; /* 6px */
+  --radius-md: 0.5rem; /* 8px */
+  --radius-lg: 0.75rem; /* 12px */
+  --radius-xl: 1rem; /* 16px */
+  --radius-2xl: 1.5rem; /* 24px */
+  --radius-full: 9999px;
+
+  /* Z-Index Scale */
+  --z-base: 1;
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-notification: 1080;
+  --z-max: 9999;
+}
+
+/* ============================================
+   ⚡ ANIMATION SYSTEM
+   ============================================ */
+
+/* Timing Functions Premium */
+:root {
+  --ease-linear: linear;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.6, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-elastic: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  --ease-expo: cubic-bezier(0.87, 0, 0.13, 1);
+  --ease-circ: cubic-bezier(0.85, 0, 0.15, 1);
+
+  /* Duration Scale */
+  --duration-instant: 50ms;
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-smooth: 350ms;
+  --duration-slow: 500ms;
+  --duration-slower: 750ms;
+  --duration-slowest: 1000ms;
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: var(--glow-subtle);
+  }
+  50% {
+    box-shadow: var(--glow-medium);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   🎭 UTILITY CLASSES
+   ============================================ */
+
+/* Glass Effects */
+.glass-ultra {
+  background: var(--glass-ultra);
+  backdrop-filter: blur(var(--blur-extreme));
+  -webkit-backdrop-filter: blur(var(--blur-extreme));
+}
+
+.glass-deep {
+  background: var(--glass-deep);
+  backdrop-filter: blur(var(--blur-strong));
+  -webkit-backdrop-filter: blur(var(--blur-strong));
+}
+
+.glass-dark {
+  background: var(--glass-dark);
+  backdrop-filter: blur(var(--blur-medium));
+  -webkit-backdrop-filter: blur(var(--blur-medium));
+}
+
+.glass-medium {
+  background: var(--glass-medium);
+  backdrop-filter: blur(var(--blur-soft));
+  -webkit-backdrop-filter: blur(var(--blur-soft));
+}
+
+/* Border Glow Effects */
+.border-glow {
+  position: relative;
+}
+
+.border-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--border-bright), var(--border-subtle));
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-smooth);
+}
+
+.border-glow:hover::before {
+  opacity: 1;
+}
+
+/* Shimmer Effect */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 100%
+  );
+  animation: shimmer 2s infinite;
+}
+
+/* Smooth Transitions */
+.transition-all {
+  transition: all var(--duration-normal) var(--ease-smooth);
+}
+
+.transition-colors {
+  transition:
+    color var(--duration-fast) var(--ease-smooth),
+    background-color var(--duration-fast) var(--ease-smooth),
+    border-color var(--duration-fast) var(--ease-smooth);
+}
+
+.transition-transform {
+  transition: transform var(--duration-normal) var(--ease-smooth);
+}
+
+.transition-opacity {
+  transition: opacity var(--duration-fast) var(--ease-smooth);
+}
+
+/* ============================================
+   🎯 COMPONENT PATTERNS
+   ============================================ */
+
+/* Premium Card */
+.premium-card {
+  background: var(--glass-dark);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-lg);
+  transition: all var(--duration-normal) var(--ease-smooth);
+}
+
+.premium-card:hover {
+  border-color: var(--border-medium);
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-2px);
+}
+
+/* Premium Button */
+.premium-button {
+  position: relative;
+  padding: var(--space-md) var(--space-xl);
+  background: var(--glass-medium);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  color: var(--white-pure);
+  font-weight: 500;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all var(--duration-fast) var(--ease-smooth);
+}
+
+.premium-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-smooth);
+}
+
+.premium-button:hover {
+  background: var(--glass-light);
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.premium-button:hover::before {
+  opacity: 1;
+}
+
+.premium-button:active {
+  transform: scale(0.98);
+}
+
+/* Premium Input */
+.premium-input {
+  width: 100%;
+  padding: var(--space-md);
+  background: var(--glass-dark);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  color: var(--white-pure);
+  font-size: 0.9375rem;
+  transition: all var(--duration-fast) var(--ease-smooth);
+}
+
+.premium-input:focus {
+  outline: none;
+  border-color: var(--border-strong);
+  background: var(--glass-medium);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.05);
+}
+
+.premium-input::placeholder {
+  color: var(--gray-platinum);
+}
+
+/* Hover Effects */
+.hover-lift {
+  transition:
+    transform var(--duration-normal) var(--ease-smooth),
+    box-shadow var(--duration-normal) var(--ease-smooth);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.hover-glow {
+  transition: box-shadow var(--duration-normal) var(--ease-smooth);
+}
+
+.hover-glow:hover {
+  box-shadow: var(--glow-strong);
+}
+
+.hover-scale {
+  transition: transform var(--duration-fast) var(--ease-smooth);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* ============================================
+   📱 RESPONSIVE UTILITIES
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --border-soft: rgba(255, 255, 255, 0.15);
+    --border-medium: rgba(255, 255, 255, 0.25);
+    --border-strong: rgba(255, 255, 255, 0.35);
+  }
+}

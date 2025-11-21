@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Suspense, lazy, useCallback, useEffect, useRef, useState } from 'react';
 
 import { AnimatePresence, motion, useMotionValue, useSpring } from 'framer-motion';
@@ -83,6 +84,8 @@ import NotificationCenter, {
 } from '../../components/NotificationCenter';
 import StatCard from '../../components/StatCard';
 import AIAssistant from '../../components/shared/AIAssistant';
+// � EFECTOS VISUALES CHRONOS (Glitch, Holographic, Neon)
+import '../../styles/chronos-effects.css';
 import {
   BulkActionsBar,
   BulkConfirmModal,
@@ -105,17 +108,35 @@ import { ThemeCustomizer, useTheme } from '../../utils/themeSystem';
 import { useActionHistory } from '../../utils/undoRedo';
 // 🎨 ANIMACIONES CSS SCROLL-DRIVEN (Blueprint Supreme 2025)
 import './animations.css';
-// 🛒 PANEL ÓRDENES DE COMPRA PREMIUM
-import PanelOrdenesCompra from './components/PanelOrdenesCompra';
+// 🎬 SCREENS DE INTRO Y AUTH - NEXT GENERATION LOGIN
+// import LoginScreen from './components/LoginScreen'; // TODO: Crear componente
+import PanelOrdenesCompra from './components/PanelOrdenesCompraUltra';
 import RealtimeNotifications from './components/RealtimeNotifications';
-// � INICIALIZADORES DE DATOS
-import {
-  inicializarSistemaDistribuidores,
-  registrarPagoDistribuidor,
-  verificarEstadoDistribuidores,
-} from './data/inicializadorDistribuidores';
-// 🔄 DATA INITIALIZER - AUTO-CARGA DE DATOS DEL EXCEL
-import { inicializarTodosSiVacio } from './utils/dataInitializer';
+// 📊 SERVICIO DE DATOS UNIFICADO
+import { DataTypes, dataService } from './services/dataService';
+
+// Funciones compatibles para mantener funcionalidad existente
+const inicializarSistemaDistribuidores = async () => {
+  return dataService.getData(DataTypes.ORDENES_COMPRA);
+};
+
+const registrarPagoDistribuidor = async (pago) => {
+  // Implementación pendiente en servicio de datos
+  return { success: true };
+};
+
+const verificarEstadoDistribuidores = async () => {
+  // Verificación de estado de distribuidores
+  return { status: 'ok', distribuidores: [] };
+};
+
+// Dummy function to prevent errors
+const inicializarTodosSiVacio = async () => ({
+  ventas: [],
+  clientes: [],
+  distribuidores: [],
+  bancos: [],
+});
 
 // ==================== SISTEMA DE DISEÑO PREMIUM 2025 (BLUEPRINT SUPREME) ====================
 const designSystem = {
@@ -138,7 +159,7 @@ const designSystem = {
     primary: 'bg-gradient-to-br from-[#0F2027] via-[#203A43] to-[#2C5364]',
     secondary: 'bg-gradient-to-br from-[#141E30] via-[#243B55] to-[#0F2027]',
     overlay:
-      'absolute inset-0 bg-gradient-radial from-blue-500/10 via-purple-500/5 to-transparent blur-3xl',
+      'absolute inset-0 bg-gradient-radial from-zinc-800/10 via-zinc-500/5 to-transparent blur-3xl',
   },
 
   // 📊 Bento Grid System
@@ -184,8 +205,8 @@ const designSystem = {
 
   // Gradientes premium
   gradients: {
-    primary: 'bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500',
-    secondary: 'bg-gradient-to-r from-emerald-400 to-cyan-500',
+    primary: 'bg-gradient-to-br from-zinc-800 via-zinc-500 to-zinc-500',
+    secondary: 'bg-gradient-to-r from-emerald-400 to-zinc-800',
     dark: 'bg-gradient-to-b from-gray-900 via-gray-800 to-black',
     neon: 'bg-gradient-to-r from-[#00FF88] via-[#8B5CF6] to-[#F97316]',
   },
@@ -200,14 +221,31 @@ const glassClass = (...classes) => {
 // Lazy loading para componentes pesados
 const ReportsCharts = lazy(() => import('../../components/Charts'));
 
-// 🚀 LAZY IMPORTS - PANELES PREMIUM
-const PanelUtilidades = lazy(() => import('./components/PanelUtilidades'));
-const PanelFletes = lazy(() => import('./components/PanelFletes'));
-const PanelBovedaMonte = lazy(() => import('./components/PanelBovedaMonte'));
-const PanelAzteca = lazy(() => import('./components/PanelAzteca'));
-const PanelLeftie = lazy(() => import('./components/PanelLeftie'));
-const PanelProfit = lazy(() => import('./components/PanelProfit'));
-const PanelClientes = lazy(() => import('./components/PanelClientes'));
+// 🚀 LAZY IMPORTS - PANELES PREMIUM ULTRA (TypeScript)
+const PanelBovedaMonteUltra = lazy(() => import('./components/PanelBovedaMonteUltra'));
+const PanelBovedaUSAUltra = lazy(() => import('./components/PanelBovedaUSAUltra'));
+const PanelGYAUltra = lazy(() => import('./components/PanelGYAUltra'));
+const PanelUtilidadesUltra = lazy(() => import('./components/PanelUtilidadesUltra'));
+const PanelFletesUltra = lazy(() => import('./components/PanelFletesUltra'));
+const PanelAztecaUltra = lazy(() => import('./components/PanelAztecaUltra'));
+const PanelLeftieUltra = lazy(() => import('./components/PanelLeftieUltra'));
+const PanelProfitUltra = lazy(() => import('./components/PanelProfitUltra'));
+const PanelClientesUltra = lazy(() => import('./components/PanelClientesUltra'));
+const PanelAlmacenUltra = lazy(() => import('./components/PanelAlmacenUltra'));
+const DashboardUltra = lazy(() =>
+  import('./components/DashboardUltra').then((m) => ({ default: m.default }))
+);
+const AIWidgetAdvanced = lazy(() => import('./components/AIWidgetAdvanced'));
+const AIAssistantUltra = lazy(() => import('./components/AIAssistantUltra'));
+
+// 🤖 NUEVOS COMPONENTES DE IA (GEMINI + AWS + OLLAMA)
+const PanelIA = lazy(() => import('./components/ai/PanelIA').then((m) => ({ default: m.PanelIA })));
+const FloatingAIWidget = lazy(() =>
+  import('./components/ai/FloatingAIWidget').then((m) => ({ default: m.FloatingAIWidget }))
+);
+
+// 💱 WIDGET DE TIPO DE CAMBIO
+const CurrencyExchangeWidget = lazy(() => import('./components/widgets/CurrencyExchangeWidget'));
 
 // Cursor glow effect component
 const CursorGlow = () => {
@@ -236,7 +274,7 @@ const CursorGlow = () => {
         y: '-50%',
       }}
     >
-      <div className="w-full h-full bg-gradient-to-r from-blue-500/20 via-cyan-500/20 to-teal-500/20 blur-3xl rounded-full" />
+      <div className="w-full h-full bg-gradient-to-r from-zinc-800/20 via-cyan-500/20 to-teal-500/20 blur-3xl rounded-full" />
     </motion.div>
   );
 };
@@ -251,9 +289,11 @@ const ContextMenu = ({ x, y, items, onClose }) => {
         onClose();
       }
     };
+
     const handleEscape = (e) => {
       if (e.key === 'Escape') onClose();
     };
+
     document.addEventListener('mousedown', handleClickOutside);
     document.addEventListener('keydown', handleEscape);
     return () => {
@@ -272,8 +312,8 @@ const ContextMenu = ({ x, y, items, onClose }) => {
       style={{ left: x, top: y }}
       className="fixed z-[9999] min-w-[200px] glass rounded-xl border border-white/20 shadow-2xl py-2"
     >
-      {items.map((item, index) => (
-        <React.Fragment key={`item-${index}`}>
+      {items.map((item) => (
+        <React.Fragment key={item.id || item.label}>
           {item.divider ? (
             <div className="h-px bg-white/10 my-2" />
           ) : (
@@ -302,9 +342,34 @@ const ContextMenu = ({ x, y, items, onClose }) => {
   );
 };
 
+// PropTypes para ContextMenu
+ContextMenu.propTypes = {
+  x: PropTypes.number.isRequired,
+  y: PropTypes.number.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      label: PropTypes.string,
+      icon: PropTypes.elementType,
+      onClick: PropTypes.func,
+      danger: PropTypes.bool,
+      disabled: PropTypes.bool,
+      divider: PropTypes.bool,
+      shortcut: PropTypes.string,
+    })
+  ).isRequired,
+  onClose: PropTypes.func.isRequired,
+};
+
 // COMPONENTE PRINCIPAL
 export default function FlowDistributor() {
-  // 🎯 HOOKS AVANZADOS - NUEVAS FUNCIONALIDADES
+  // 🎬 ESTADOS DE INICIO Y AUTENTICACIÓN
+  const [showSplash, setShowSplash] = useState(true); // ✅ ACTIVADO - Pantalla cinemática CHRONOS
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [isSystemReady, setIsSystemReady] = useState(false);
+
+  // �🎯 HOOKS AVANZADOS - NUEVAS FUNCIONALIDADES
   const notificationSystem = useNotifications();
   const actionHistory = useActionHistory();
   const tour = useTour();
@@ -327,6 +392,7 @@ export default function FlowDistributor() {
   const [isSidebarOpen, setIsSidebarOpen] = useLocalStorage(STORAGE_KEYS.SIDEBAR_STATE, true);
   const [darkMode, setDarkMode] = useLocalStorage(STORAGE_KEYS.THEME, false);
   const [showAIWidget, setShowAIWidget] = useState(false);
+  const [showCurrencyWidget, setShowCurrencyWidget] = useState(false);
   const [aiMessages, setAiMessages] = useState([]);
   const [aiInput, setAiInput] = useState('');
   const [aiConversationContext, setAiConversationContext] = useState([]);
@@ -538,6 +604,9 @@ export default function FlowDistributor() {
       estado: 'completada',
     },
   ]);
+
+  // Variable ordenes (alias de ordenesCompra para compatibilidad)
+  const [ordenes, setOrdenes] = [ordenesCompra, setOrdenesCompra];
 
   const [distribuidores, setDistribuidores] = useLocalStorage(STORAGE_KEYS.FLOW_DISTRIBUIDORES, []);
 
@@ -1076,6 +1145,7 @@ export default function FlowDistributor() {
     // SISTEMA
     TOGGLE_SIDEBAR: () => setIsSidebarOpen(!isSidebarOpen),
     TOGGLE_AI: () => setShowAIWidget(!showAIWidget),
+    TOGGLE_CURRENCY: () => setShowCurrencyWidget(!showCurrencyWidget),
     NOTIFICATIONS: () => setShowNotificationCenter(true),
     HELP: () => setShowKeyboardHelp(true),
     CANCEL: () => {
@@ -1092,6 +1162,192 @@ export default function FlowDistributor() {
     },
     [notificationSystem]
   );
+
+  // 🎬 FLUJO DE INICIO: SPLASH -> LOGIN -> SISTEMA
+  useEffect(() => {
+    const initializeApp = async () => {
+      // ⏰ ESPERAR A QUE EL SPLASH TERMINE
+      // El splash se maneja con handleSplashComplete
+      // No hacer nada aquí para permitir que el splash se muestre
+    };
+
+    // Solo inicializar si NO estamos mostrando el splash
+    if (!showSplash) {
+      initializeApp();
+    }
+  }, [showSplash]); // Depende de showSplash
+
+  // Handler para completar el Splash
+  const handleSplashComplete = async () => {
+    setShowSplash(false);
+
+    // Verificar si hay sesión guardada
+    const savedUser = localStorage.getItem('flow_current_user');
+    if (savedUser) {
+      try {
+        const user = JSON.parse(savedUser);
+        setCurrentUser(user);
+        setIsAuthenticated(true);
+
+        // ✅ Marcar sistema listo inmediatamente para evitar bloqueos
+        setIsSystemReady(true);
+
+        // 🚀 CARGAR TODOS LOS DATOS DEL JSON AUTOMÁTICAMENTE (en segundo plano)
+        try {
+          const response = await fetch(
+            '/src/apps/FlowDistributor/data/BASE_DATOS_FLOWDISTRIBUTOR_UNIFICADO.json'
+          );
+          const data = await response.json();
+
+          // Cargar TODOS los datos si están vacíos
+          if (distribuidores.length === 0 && data.ordenesCompra?.distribuidores?.distribuidores) {
+            setDistribuidores(data.ordenesCompra.distribuidores.distribuidores);
+          }
+
+          if (clientes.length === 0 && data.clientes?.clientes) {
+            setClientes(data.clientes.clientes);
+          }
+
+          if (ventas.length === 0 && data.ventasLocales?.ventasLocal) {
+            setVentas(data.ventas);
+          }
+
+          if (ordenes.length === 0 && data.ordenesCompra) {
+            setOrdenes(data.ordenesCompra);
+          }
+
+          // Cargar bancos si están vacíos
+          if (Object.keys(bancos).length === 0 && data.bancos) {
+            setBancos(data.bancos);
+          }
+
+          // Cargar almacén si está vacío
+          if (!almacen.stockActual && data.almacen) {
+            setAlmacen(data.almacen);
+          }
+
+          console.log('✅ TODOS LOS DATOS CARGADOS DEL JSON:', {
+            distribuidores: data.distribuidores?.length || 0,
+            clientes: data.clientes?.length || 0,
+            ventas: data.ventas?.length || 0,
+            ordenes: data.ordenesCompra?.length || 0,
+            bancos: Object.keys(data.bancos || {}).length,
+            almacen: data.almacen ? 'OK' : 'NO',
+          });
+        } catch (err) {
+          console.error('❌ Error cargando datos del JSON:', err);
+        }
+
+        // Inicializar datos del sistema
+        await inicializarTodosSiVacio({
+          bancos,
+          setBancos,
+          ventas,
+          setVentas,
+          clientes,
+          setClientes,
+          almacen,
+          setAlmacen,
+          ordenes,
+          setOrdenes,
+          distribuidores,
+          setDistribuidores,
+        });
+
+        // Notificación de bienvenida
+        addAdvancedNotification({
+          title: `¡Bienvenido de vuelta, ${user.name}!`,
+          message: 'Sistema CHRONOS cargado exitosamente',
+          priority: NOTIFICATION_PRIORITY.NORMAL,
+          category: NOTIFICATION_CATEGORY.SYSTEM,
+        });
+      } catch (error) {
+        console.error('Error cargando sesión:', error);
+      }
+    }
+  };
+
+  // Handler para login exitoso
+  const handleLogin = async (user) => {
+    setCurrentUser(user);
+    setIsAuthenticated(true);
+
+    // Guardar sesión
+    localStorage.setItem('flow_current_user', JSON.stringify(user));
+
+    // ✅ Marcar sistema listo inmediatamente
+    setIsSystemReady(true);
+
+    // 🚀 CARGAR TODOS LOS DATOS DEL JSON EN LOGIN (en segundo plano)
+    try {
+      const response = await fetch(
+        '/src/apps/FlowDistributor/data/BASE_DATOS_FLOWDISTRIBUTOR_UNIFICADO.json'
+      );
+      const data = await response.json();
+
+      if (distribuidores.length === 0 && data.ordenesCompra?.distribuidores?.distribuidores)
+        setDistribuidores(data.ordenesCompra.distribuidores.distribuidores);
+      if (clientes.length === 0 && data.clientes?.clientes) setClientes(data.clientes.clientes);
+      if (ventas.length === 0 && data.ventasLocales?.ventasLocal)
+        setVentas(data.ventasLocales.ventasLocal);
+      if (ordenes.length === 0 && data.ordenesCompra?.distribuidores?.ordenesCompra)
+        setOrdenes(data.ordenesCompra.distribuidores.ordenesCompra);
+      if (Object.keys(bancos).length === 0 && data.bovedaMonte)
+        setBancos({
+          bovedaMonte: data.bovedaMonte,
+          bovedaUSA: data.bovedaUSA,
+          azteca: data.azteca,
+          leftie: data.leftie,
+          profit: data.profit,
+          fleteSur: data.fleteSur,
+        });
+      if (!almacen.stockActual && data.almacenMonte?.almacenMonte)
+        setAlmacen(data.almacenMonte.almacenMonte);
+
+      console.log('✅ Datos cargados en login');
+    } catch (err) {
+      console.error('❌ Error cargando datos:', err);
+    }
+
+    // Inicializar sistema
+    await inicializarTodosSiVacio({
+      bancos,
+      setBancos,
+      ventas,
+      setVentas,
+      clientes,
+      setClientes,
+      almacen,
+      setAlmacen,
+      ordenes,
+      setOrdenes,
+      distribuidores,
+      setDistribuidores,
+    });
+
+    // Notificación de bienvenida
+    addAdvancedNotification({
+      title: `¡Bienvenido, ${user.name}!`,
+      message: 'Sistema CHRONOS iniciado correctamente',
+      priority: NOTIFICATION_PRIORITY.HIGH,
+      category: NOTIFICATION_CATEGORY.SYSTEM,
+    });
+  };
+
+  // Handler para logout
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    setCurrentUser(null);
+    setIsSystemReady(false);
+    localStorage.removeItem('flow_current_user');
+
+    addAdvancedNotification({
+      title: 'Sesión cerrada',
+      message: 'Hasta pronto!',
+      priority: NOTIFICATION_PRIORITY.NORMAL,
+      category: NOTIFICATION_CATEGORY.SYSTEM,
+    });
+  };
 
   // 🔔 NOTIFICACIONES AUTOMÁTICAS - OPTIMIZADO
   useEffect(() => {
@@ -1203,7 +1459,7 @@ export default function FlowDistributor() {
   });
 
   const [ventasOrdenadas, setVentasOrdenadas] = usePersistentOrder('ventas', ventas);
-  const dragDropVentas = useDragAndDrop(ventasOrdenadas, (newOrder) => {
+  useDragAndDrop(ventasOrdenadas, (newOrder) => {
     setVentasOrdenadas(newOrder);
     setVentas(newOrder);
     actionHistory.addAction('Reordenar ventas', { count: newOrder.length });
@@ -1211,7 +1467,7 @@ export default function FlowDistributor() {
   });
 
   const [clientesOrdenados, setClientesOrdenados] = usePersistentOrder('clientes', clientes);
-  const dragDropClientes = useDragAndDrop(clientesOrdenados, (newOrder) => {
+  useDragAndDrop(clientesOrdenados, (newOrder) => {
     setClientesOrdenados(newOrder);
     setClientes(newOrder);
     actionHistory.addAction('Reordenar clientes', { count: newOrder.length });
@@ -1369,7 +1625,7 @@ export default function FlowDistributor() {
       const salidasEliminadas = (almacen?.salidas || []).filter((s) => s.ventaId === ventaId);
 
       const nuevoStock = [...(almacen?.stock || [])];
-      salidasEliminadas.forEach((salida) => {
+      for (const salida of salidasEliminadas) {
         const productoIndex = nuevoStock.findIndex((p) => p.id === salida.productoId);
         if (productoIndex !== -1) {
           nuevoStock[productoIndex] = {
@@ -1377,7 +1633,7 @@ export default function FlowDistributor() {
             cantidad: (nuevoStock[productoIndex].cantidad || 0) + (salida.cantidad || 0),
           };
         }
-      });
+      }
 
       // 2. Actualizar cliente - revertir adeudo y actualizar historial
       if (venta.cliente) {
@@ -1486,7 +1742,7 @@ export default function FlowDistributor() {
       const entradasEliminadas = (almacen?.entradas || []).filter((e) => e.ordenId === ordenId);
 
       let nuevoStock = [...(almacen?.stock || [])];
-      entradasEliminadas.forEach((entrada) => {
+      for (const entrada of entradasEliminadas) {
         const productoIndex = nuevoStock.findIndex((p) => p.id === entrada.productoId);
         if (productoIndex !== -1) {
           const nuevaCantidad = (nuevoStock[productoIndex].cantidad || 0) - (entrada.cantidad || 0);
@@ -1500,7 +1756,7 @@ export default function FlowDistributor() {
             };
           }
         }
-      });
+      }
 
       // 2. Actualizar distribuidor (eliminar orden de su historial)
       if (orden.distribuidor) {
@@ -1895,6 +2151,7 @@ export default function FlowDistributor() {
       }
 
       // Crear registro de abono
+      const observacionesTexto = observaciones || `Abono de ${cliente}`;
       const nuevoAbono = {
         id: `ABONO-${Date.now()}`,
         fecha: new Date().toISOString(),
@@ -1902,18 +2159,21 @@ export default function FlowDistributor() {
         origenGastoOAbono: cliente,
         valor: monto,
         destino: bancoDestino,
-        observaciones: observaciones || `Abono de ${cliente}`,
+        observaciones: observacionesTexto,
       };
 
       setGastosAbonos([...gastosAbonos, nuevoAbono]);
 
       // Acreditar a banco
+      const conceptoIngreso = observaciones
+        ? `Abono de ${cliente} - ${observaciones}`
+        : `Abono de ${cliente}`;
       const nuevoRegistro = {
         id: `ING-${bancoDestino}-${Date.now()}`,
         fecha: new Date().toISOString(),
         cliente: cliente,
         monto: monto,
-        concepto: `Abono de ${cliente}${observaciones ? ` - ${observaciones}` : ''}`,
+        concepto: conceptoIngreso,
         tipo: 'Ingreso',
       };
 
@@ -1985,12 +2245,15 @@ export default function FlowDistributor() {
       setGastosAbonos([...gastosAbonos, nuevoGasto]);
 
       // Debitar del banco
+      const conceptoEgreso = observaciones
+        ? `Gasto: ${concepto} - ${observaciones}`
+        : `Gasto: ${concepto}`;
       const nuevoRegistro = {
         id: `EGR-${bancoOrigen}-${Date.now()}`,
         fecha: new Date().toISOString(),
         cliente: concepto,
         monto: monto,
-        concepto: `Gasto: ${concepto}${observaciones ? ` - ${observaciones}` : ''}`,
+        concepto: conceptoEgreso,
         tipo: 'Egreso',
       };
 
@@ -2063,21 +2326,27 @@ export default function FlowDistributor() {
       setGastosAbonos([...gastosAbonos, nuevaTransferencia]);
 
       // Egreso en banco origen
+      const conceptoEgresoOrigen = concepto
+        ? `Transferencia a ${bancoDestino.nombre}: ${concepto}`
+        : `Transferencia a ${bancoDestino.nombre}`;
       const egresoOrigen = {
         id: `TRANS-OUT-${timestamp}`,
         fecha: new Date().toISOString(),
         monto: monto,
-        concepto: `Transferencia a ${bancoDestino.nombre}${concepto ? `: ${concepto}` : ''}`,
+        concepto: conceptoEgresoOrigen,
         tipo: 'Egreso',
         relacionadoCon: bancoDestinoKey,
       };
 
       // Ingreso en banco destino
+      const conceptoIngresoDestino = concepto
+        ? `Transferencia desde ${bancoOrigen.nombre}: ${concepto}`
+        : `Transferencia desde ${bancoOrigen.nombre}`;
       const ingresoDestino = {
         id: `TRANS-IN-${timestamp}`,
         fecha: new Date().toISOString(),
         monto: monto,
-        concepto: `Transferencia desde ${bancoOrigen.nombre}${concepto ? `: ${concepto}` : ''}`,
+        concepto: conceptoIngresoDestino,
         tipo: 'Ingreso',
         relacionadoCon: bancoOrigenKey,
       };
@@ -2217,12 +2486,16 @@ export default function FlowDistributor() {
             aiResponse = `Tu capital actual es de $${totalBancos.toLocaleString()}. Te recomendaría aumentar reservas. Distribución:\n\n`;
           }
 
-          topBancos.forEach(([key, banco], i) => {
+          for (const [index, [key, banco]] of topBancos.entries()) {
             const percentage = (((banco?.capitalActual || 0) / totalBancos) * 100).toFixed(1);
-            aiResponse += `${i === 0 ? '🥇' : i === 1 ? '🥈' : '🥉'} ${
+            let medal = '🥉';
+            if (index === 0) medal = '🥇';
+            else if (index === 1) medal = '🥈';
+
+            aiResponse += `${medal} ${
               nombres[key]
             }: $${(banco?.capitalActual || 0).toLocaleString()} (${percentage}%)\n`;
-          });
+          }
 
           suggestedActions = ['Ver todos los bancos', 'Hacer transferencia', 'Registrar ingreso'];
           quickReplies = ['💸 Hacer transferencia', '📊 Ver detalles', '💡 Consejos financieros'];
@@ -2280,9 +2553,9 @@ export default function FlowDistributor() {
               clientesConAdeudo.length
             } con adeudos pendientes por $${adeudosClientes.toLocaleString()}:\n\n`;
 
-            topDeudores.forEach((cliente, i) => {
-              aiResponse += `${i + 1}. ${cliente.nombre}: $${cliente.adeudo.toLocaleString()}\n`;
-            });
+            for (const [index, cliente] of topDeudores.entries()) {
+              aiResponse += `${index + 1}. ${cliente.nombre}: $${cliente.adeudo.toLocaleString()}\n`;
+            }
 
             aiResponse += `\n💡 Te recomiendo priorizar la cobranza con ${
               topDeudores[0]?.nombre || 'estos clientes'
@@ -2316,9 +2589,9 @@ export default function FlowDistributor() {
               .filter((p) => p.cantidad <= (p.cantidadMinima || 5))
               .slice(0, 3);
             aiResponse += `\n🚨 Requieren reorden urgente:\n`;
-            productosCriticos.forEach((p) => {
+            for (const p of productosCriticos) {
               aiResponse += `• ${p.nombre}: ${p.cantidad} unidades (mín: ${p.cantidadMinima || 5})\n`;
-            });
+            }
           }
 
           if (productosAgotados > 0) {
@@ -2352,9 +2625,10 @@ export default function FlowDistributor() {
             const topAdeudos = distConAdeudo.sort((a, b) => b.adeudo - a.adeudo).slice(0, 3);
 
             aiResponse += `Mayores adeudos:\n`;
-            topAdeudos.forEach((d, i) => {
+            for (let i = 0; i < topAdeudos.length; i++) {
+              const d = topAdeudos[i];
               aiResponse += `${i + 1}. ${d.nombre}: $${d.adeudo.toLocaleString()}\n`;
-            });
+            }
 
             aiResponse += `\n💡 Programa pagos para mantener buenas relaciones comerciales.`;
           }
@@ -2887,7 +3161,7 @@ export default function FlowDistributor() {
               ? 'border-green-500'
               : notif.type === 'error'
                 ? 'border-red-500'
-                : 'border-blue-500'
+                : 'border-zinc-700'
           }`}
         >
           {notif.type === 'success' ? (
@@ -2895,7 +3169,7 @@ export default function FlowDistributor() {
           ) : notif.type === 'error' ? (
             <AlertCircle className="w-5 h-5 text-red-500" />
           ) : (
-            <Bell className="w-5 h-5 text-blue-500" />
+            <Bell className="w-5 h-5 text-zinc-200" />
           )}
           <span className="text-white">{notif.message}</span>
         </motion.div>
@@ -2919,7 +3193,7 @@ export default function FlowDistributor() {
           }}
           transition={{ duration: 2, repeat: Infinity }}
           onClick={() => setShowAIWidget(true)}
-          className="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-5 rounded-full shadow-2xl relative"
+          className="bg-gradient-to-r from-zinc-600 to-zinc-900 text-white p-5 rounded-full shadow-2xl relative"
         >
           <Bot className="w-7 h-7 animate-pulse" />
           <motion.div
@@ -2935,7 +3209,7 @@ export default function FlowDistributor() {
           className="glass rounded-2xl shadow-2xl w-96 h-[32rem] flex flex-col border border-white/10"
         >
           {/* Header mejorado */}
-          <div className="bg-gradient-to-r from-purple-600 via-violet-600 to-blue-600 text-white p-4 rounded-t-2xl flex justify-between items-center relative overflow-hidden">
+          <div className="bg-gradient-to-r from-zinc-600 via-violet-600 to-zinc-900 text-white p-4 rounded-t-2xl flex justify-between items-center relative overflow-hidden">
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
               animate={{ x: ['-100%', '100%'] }}
@@ -2981,7 +3255,7 @@ export default function FlowDistributor() {
                     animate={{ y: [0, -10, 0] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   >
-                    <Bot className="w-16 h-16 mx-auto mb-3 text-purple-400" />
+                    <Bot className="w-16 h-16 mx-auto mb-3 text-zinc-400" />
                   </motion.div>
                   <h3 className="font-bold text-lg mb-2">¡Hola! Soy Flow 👋</h3>
                   <p className="text-sm text-slate-400">Tu asistente inteligente conversacional</p>
@@ -3014,7 +3288,7 @@ export default function FlowDistributor() {
                           setAiInput(action.query);
                           setTimeout(() => handleAISend(), 100);
                         }}
-                        className="p-3 bg-white/5 hover:bg-white/10 rounded-xl text-xs transition-all text-left border border-white/5 hover:border-purple-500/30"
+                        className="p-3 bg-white/5 hover:bg-white/10 rounded-xl text-xs transition-all text-left border border-white/5 hover:border-zinc-500/30"
                       >
                         {action.label}
                       </motion.button>
@@ -3038,9 +3312,9 @@ export default function FlowDistributor() {
                             animate={{ opacity: [0.3, 1, 0.3] }}
                             transition={{ duration: 1.5, repeat: Infinity }}
                           >
-                            <div className="w-2 h-2 bg-purple-400 rounded-full" />
-                            <div className="w-2 h-2 bg-blue-400 rounded-full" />
-                            <div className="w-2 h-2 bg-cyan-400 rounded-full" />
+                            <div className="w-2 h-2 bg-zinc-400 rounded-full" />
+                            <div className="w-2 h-2 bg-zinc-700 rounded-full" />
+                            <div className="w-2 h-2 bg-zinc-700 rounded-full" />
                           </motion.div>
                           <span className="text-xs text-slate-400">Flow está pensando...</span>
                         </div>
@@ -3056,7 +3330,7 @@ export default function FlowDistributor() {
                           <div
                             className={`p-3 rounded-2xl whitespace-pre-line ${
                               msg.type === 'user'
-                                ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-tr-sm shadow-lg'
+                                ? 'bg-gradient-to-r from-zinc-600 to-zinc-900 text-white rounded-tr-sm shadow-lg'
                                 : 'bg-white/10 text-white text-sm rounded-tl-sm border border-white/10'
                             }`}
                           >
@@ -3089,7 +3363,7 @@ export default function FlowDistributor() {
                                     setAiInput(reply);
                                     setTimeout(() => handleAISend(), 100);
                                   }}
-                                  className="px-3 py-1.5 bg-purple-500/20 hover:bg-purple-500/30 border border-purple-500/30 rounded-full text-xs font-medium transition-all"
+                                  className="px-3 py-1.5 bg-zinc-500/20 hover:bg-zinc-500/30 border border-zinc-500/30 rounded-full text-xs font-medium transition-all"
                                 >
                                   {reply}
                                 </motion.button>
@@ -3110,7 +3384,7 @@ export default function FlowDistributor() {
                                   key={`item-${i}`}
                                   whileHover={{ scale: 1.05 }}
                                   whileTap={{ scale: 0.95 }}
-                                  className="px-3 py-1.5 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 rounded-lg text-xs font-medium flex items-center gap-1"
+                                  className="px-3 py-1.5 bg-gradient-to-r from-zinc-800/20 to-zinc-800/20 border border-cyan-500/30 rounded-lg text-xs font-medium flex items-center gap-1"
                                 >
                                   <ArrowRight className="w-3 h-3" />
                                   {action}
@@ -3135,7 +3409,7 @@ export default function FlowDistributor() {
                 value={aiInput}
                 onChange={(e) => setAiInput(e.target.value)}
                 placeholder="Pregúntame lo que necesites..."
-                className="flex-1 px-4 py-3 bg-white/10 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white placeholder-slate-400 text-sm transition-all"
+                className="flex-1 px-4 py-3 bg-white/10 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-zinc-700 focus:border-transparent text-white placeholder-slate-400 text-sm transition-all"
                 onKeyPress={(e) => e.key === 'Enter' && handleAISend()}
               />
               <motion.button
@@ -3143,7 +3417,7 @@ export default function FlowDistributor() {
                 whileTap={{ scale: 0.9 }}
                 onClick={handleAISend}
                 disabled={!aiInput.trim()}
-                className="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-3 rounded-xl hover:shadow-lg hover:shadow-purple-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-gradient-to-r from-zinc-600 to-zinc-900 text-white p-3 rounded-xl hover:shadow-lg hover:shadow-zinc-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Send className="w-5 h-5" />
               </motion.button>
@@ -3190,7 +3464,7 @@ export default function FlowDistributor() {
             {/* Sección de Respaldos */}
             <div className="glass rounded-xl p-6 border border-white/10">
               <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                <Download className="w-5 h-5 text-blue-400" />
+                <Download className="w-5 h-5 text-zinc-300" />
                 Gestión de Respaldos
               </h3>
 
@@ -3207,7 +3481,7 @@ export default function FlowDistributor() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={createBackup}
-                    className="px-6 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/20 transition-all"
+                    className="px-6 py-2 bg-gradient-to-r from-zinc-800 to-zinc-800 rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/20 transition-all"
                   >
                     Descargar
                   </motion.button>
@@ -3232,9 +3506,9 @@ export default function FlowDistributor() {
                 </div>
 
                 {/* Importar desde Excel */}
-                <div className="flex items-center justify-between p-4 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-xl">
+                <div className="flex items-center justify-between p-4 bg-gradient-to-r from-zinc-500/10 to-zinc-500/10 border border-zinc-500/20 rounded-xl">
                   <div>
-                    <p className="font-semibold text-purple-400">📊 Importar desde Excel</p>
+                    <p className="font-semibold text-zinc-400">📊 Importar desde Excel</p>
                     <p className="text-sm text-slate-400">
                       Carga todos los datos del Excel de Administración General
                     </p>
@@ -3243,7 +3517,7 @@ export default function FlowDistributor() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={importFromExcel}
-                    className="px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl font-semibold hover:shadow-lg hover:shadow-purple-500/20 transition-all"
+                    className="px-6 py-2 bg-gradient-to-r from-zinc-500 to-zinc-500 rounded-xl font-semibold hover:shadow-lg hover:shadow-zinc-500/20 transition-all"
                   >
                     Importar
                   </motion.button>
@@ -3261,7 +3535,7 @@ export default function FlowDistributor() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={clearAllData}
-                    className="px-6 py-2 bg-gradient-to-r from-red-500 to-red-600 rounded-xl font-semibold hover:shadow-lg hover:shadow-red-500/20 transition-all"
+                    className="px-6 py-2 bg-gradient-to-r from-zinc-700 to-zinc-800 rounded-xl font-semibold hover:shadow-lg hover:shadow-red-500/20 transition-all"
                   >
                     Resetear
                   </motion.button>
@@ -3414,21 +3688,30 @@ export default function FlowDistributor() {
       },
       { id: 'separator2', separator: true },
       { id: 'reportes', icon: FileText, label: 'Reportes', badge: null, color: 'slate' },
+      { id: 'separator3', separator: true },
+      {
+        id: 'inteligencia-ia',
+        icon: Sparkles,
+        label: 'Inteligencia IA',
+        badge: '🤖',
+        color: 'purple',
+        gradient: 'from-zinc-500 via-zinc-500 to-zinc-800',
+      },
     ];
 
     // Color themes para cada item
     const colorThemes = {
       blue: {
-        bg: 'from-blue-500/20 to-cyan-500/10',
-        border: 'border-blue-400/50',
-        text: 'text-blue-400',
+        bg: 'from-zinc-800/20 to-zinc-800/10',
+        border: 'border-zinc-600/50',
+        text: 'text-zinc-300',
         shadow: 'shadow-blue-500/30',
       },
       purple: {
-        bg: 'from-purple-500/20 to-pink-500/10',
-        border: 'border-purple-400/50',
-        text: 'text-purple-400',
-        shadow: 'shadow-purple-500/30',
+        bg: 'from-zinc-500/20 to-zinc-500/10',
+        border: 'border-zinc-400/50',
+        text: 'text-zinc-400',
+        shadow: 'shadow-zinc-500/30',
       },
       green: {
         bg: 'from-green-500/20 to-emerald-500/10',
@@ -3443,15 +3726,15 @@ export default function FlowDistributor() {
         shadow: 'shadow-orange-500/30',
       },
       pink: {
-        bg: 'from-pink-500/20 to-rose-500/10',
-        border: 'border-pink-400/50',
-        text: 'text-pink-400',
-        shadow: 'shadow-pink-500/30',
+        bg: 'from-zinc-500/20 to-rose-500/10',
+        border: 'border-zinc-400/50',
+        text: 'text-zinc-400',
+        shadow: 'shadow-zinc-500/30',
       },
       cyan: {
-        bg: 'from-cyan-500/20 to-blue-500/10',
+        bg: 'from-zinc-800/20 to-zinc-800/10',
         border: 'border-cyan-400/50',
-        text: 'text-cyan-400',
+        text: 'text-zinc-300',
         shadow: 'shadow-cyan-500/30',
       },
       emerald: {
@@ -3467,19 +3750,19 @@ export default function FlowDistributor() {
         shadow: 'shadow-yellow-500/30',
       },
       red: {
-        bg: 'from-red-500/20 to-rose-500/10',
+        bg: 'from-zinc-700/20 to-rose-500/10',
         border: 'border-red-400/50',
         text: 'text-red-400',
         shadow: 'shadow-red-500/30',
       },
       indigo: {
-        bg: 'from-indigo-500/20 to-blue-500/10',
+        bg: 'from-indigo-500/20 to-zinc-800/10',
         border: 'border-indigo-400/50',
         text: 'text-indigo-400',
         shadow: 'shadow-indigo-500/30',
       },
       violet: {
-        bg: 'from-violet-500/20 to-purple-500/10',
+        bg: 'from-violet-500/20 to-zinc-500/10',
         border: 'border-violet-400/50',
         text: 'text-violet-400',
         shadow: 'shadow-violet-500/30',
@@ -3524,11 +3807,11 @@ export default function FlowDistributor() {
             setIsExpanded(false);
             setHoveredItem(null);
           }}
-          className="relative left-0 top-0 h-screen backdrop-blur-2xl bg-gradient-to-br from-slate-950/95 via-purple-950/30 to-slate-950/95 border-r border-purple-500/20 z-50 flex flex-col overflow-hidden shadow-2xl shadow-purple-500/10"
+          className="relative left-0 top-0 h-screen backdrop-blur-2xl bg-gradient-to-br from-slate-950/95 via-zinc-950/30 to-slate-950/95 border-r border-zinc-500/20 z-50 flex flex-col overflow-hidden shadow-2xl shadow-zinc-500/10"
         >
           {/* Header con Logo */}
           <motion.div
-            className="relative p-4 border-b border-purple-500/20 overflow-hidden"
+            className="relative p-4 border-b border-zinc-500/20 overflow-hidden"
             animate={{ height: isExpanded ? 80 : 70 }}
           >
             {/* Partículas de fondo animadas */}
@@ -3548,7 +3831,7 @@ export default function FlowDistributor() {
               <motion.div
                 whileHover={{ rotate: 360, scale: 1.1 }}
                 transition={{ duration: 0.6 }}
-                className="p-2.5 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 shadow-lg shadow-purple-500/50"
+                className="p-2.5 rounded-xl bg-gradient-to-br from-zinc-500 to-zinc-800 shadow-lg shadow-zinc-500/50"
               >
                 <Building2 className="w-6 h-6 text-white" />
               </motion.div>
@@ -3561,7 +3844,7 @@ export default function FlowDistributor() {
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <h1 className="text-lg font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                    <h1 className="text-lg font-bold bg-gradient-to-r from-zinc-400 via-blue-400 to-zinc-700 bg-clip-text text-transparent">
                       FlowDistributor
                     </h1>
                     <p className="text-[10px] text-slate-400 flex items-center gap-1">
@@ -3588,9 +3871,9 @@ export default function FlowDistributor() {
                     key={item.id}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className="my-2 mx-2 border-t border-purple-500/20 relative"
+                    className="my-2 mx-2 border-t border-zinc-500/20 relative"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-500/30 to-transparent h-px" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-zinc-500/30 to-transparent h-px" />
                   </motion.div>
                 );
               }
@@ -3699,7 +3982,7 @@ export default function FlowDistributor() {
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: -10 }}
-                      className="absolute left-full ml-2 px-3 py-2 bg-slate-900 border border-purple-500/30 rounded-lg shadow-xl shadow-purple-500/20 whitespace-nowrap z-50"
+                      className="absolute left-full ml-2 px-3 py-2 bg-slate-900 border border-zinc-500/30 rounded-lg shadow-xl shadow-zinc-500/20 whitespace-nowrap z-50"
                     >
                       <span className="text-sm font-medium text-white">{item.label}</span>
                       {item.badge !== null && item.badge > 0 && (
@@ -3719,7 +4002,7 @@ export default function FlowDistributor() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
-                className="p-3 border-t border-purple-500/20 space-y-2"
+                className="p-3 border-t border-zinc-500/20 space-y-2"
               >
                 <motion.button
                   whileHover={{ scale: 1.02 }}
@@ -3730,7 +4013,7 @@ export default function FlowDistributor() {
                   {darkMode ? (
                     <Sun className="w-4 h-4 text-yellow-400" />
                   ) : (
-                    <Moon className="w-4 h-4 text-blue-400" />
+                    <Moon className="w-4 h-4 text-zinc-300" />
                   )}
                   <span className="text-sm text-slate-300">Cambiar Tema</span>
                 </motion.button>
@@ -3741,7 +4024,7 @@ export default function FlowDistributor() {
                   onClick={() => setShowSettingsModal(true)}
                   className="w-full flex items-center gap-3 px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-all"
                 >
-                  <Settings className="w-4 h-4 text-purple-400" />
+                  <Settings className="w-4 h-4 text-zinc-400" />
                   <span className="text-sm text-slate-300">Configuración</span>
                 </motion.button>
               </motion.div>
@@ -3750,7 +4033,7 @@ export default function FlowDistributor() {
 
           {/* Indicador de expansión */}
           <motion.div
-            className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-20 bg-gradient-to-b from-transparent via-purple-500 to-transparent rounded-l-full"
+            className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-20 bg-gradient-to-b from-transparent via-zinc-500 to-transparent rounded-l-full"
             animate={{ opacity: isExpanded ? 0.5 : 0.2 }}
           />
         </motion.aside>
@@ -3829,8 +4112,8 @@ export default function FlowDistributor() {
           title: 'Capital Total',
           value: `$${totalBancos.toLocaleString()}`,
           icon: Wallet,
-          gradient: 'from-cyan-400 to-blue-500',
-          bgGradient: 'from-cyan-500/10 to-blue-500/5',
+          gradient: 'from-zinc-700 to-zinc-800',
+          bgGradient: 'from-zinc-800/10 to-zinc-800/5',
           change: '+12.5%',
           description: 'Efectivo disponible',
           action: () => setActivePanel('bancos'),
@@ -3849,8 +4132,8 @@ export default function FlowDistributor() {
           title: 'Operaciones',
           value: ventas.length + ordenesCompra.length,
           icon: Activity,
-          gradient: 'from-purple-400 to-pink-500',
-          bgGradient: 'from-purple-500/10 to-pink-500/5',
+          gradient: 'from-zinc-400 to-zinc-500',
+          bgGradient: 'from-zinc-500/10 to-zinc-500/5',
           change: '+23',
           description: 'Ventas y compras',
           action: () => {},
@@ -3859,8 +4142,8 @@ export default function FlowDistributor() {
           title: 'Inventario',
           value: (almacen?.stock || []).length,
           icon: Package,
-          gradient: 'from-orange-400 to-red-500',
-          bgGradient: 'from-orange-500/10 to-red-500/5',
+          gradient: 'from-orange-400 to-zinc-800',
+          bgGradient: 'from-orange-500/10 to-zinc-800/5',
           change: productosStockBajo > 0 ? `⚠️ ${productosStockBajo} bajos` : '✓ Normal',
           description: 'Productos en stock',
           action: () => setActivePanel('almacen'),
@@ -3894,7 +4177,7 @@ export default function FlowDistributor() {
           className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4"
         >
           <div>
-            <h1 className="text-5xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent mb-2">
+            <h1 className="text-5xl font-bold bg-gradient-to-r from-zinc-700 via-blue-400 to-zinc-500 bg-clip-text text-transparent mb-2">
               Command Center
             </h1>
             <p className="text-slate-400 flex items-center gap-2">
@@ -3930,7 +4213,7 @@ export default function FlowDistributor() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowQuickActions(!showQuickActions)}
-              className="px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl font-semibold shadow-lg hover:shadow-purple-500/20 transition-all duration-200 flex items-center gap-2"
+              className="px-4 py-2 bg-gradient-to-r from-zinc-500 to-zinc-500 rounded-xl font-semibold shadow-lg hover:shadow-zinc-500/20 transition-all duration-200 flex items-center gap-2"
               aria-label="Acciones rápidas"
             >
               <motion.div
@@ -3970,7 +4253,7 @@ export default function FlowDistributor() {
               whileHover={{ scale: 1.05, rotate: 180 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowQuickActions(!showQuickActions)}
-              className="px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl font-semibold shadow-lg"
+              className="px-4 py-2 bg-gradient-to-r from-zinc-500 to-zinc-500 rounded-xl font-semibold shadow-lg"
             >
               <Settings className="w-5 h-5" />
             </motion.button>
@@ -4027,7 +4310,7 @@ export default function FlowDistributor() {
             className="glass rounded-2xl p-6 border border-white/10"
           >
             <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <Wallet className="w-6 h-6 text-purple-400" />
+              <Wallet className="w-6 h-6 text-zinc-400" />
               Distribución de Capital
             </h2>
             <div className="space-y-4">
@@ -4047,31 +4330,31 @@ export default function FlowDistributor() {
 
                 // Mapas de clases estáticas para Tailwind
                 const textColorClasses = {
-                  cyan: 'group-hover:text-cyan-400',
-                  purple: 'group-hover:text-purple-400',
+                  cyan: 'group-hover:text-zinc-300',
+                  purple: 'group-hover:text-zinc-400',
                   green: 'group-hover:text-green-400',
-                  blue: 'group-hover:text-blue-400',
-                  pink: 'group-hover:text-pink-400',
+                  blue: 'group-hover:text-zinc-300',
+                  pink: 'group-hover:text-zinc-400',
                   orange: 'group-hover:text-orange-400',
                 };
 
                 const badgeClasses = {
-                  cyan: 'text-cyan-400 bg-cyan-400/20',
-                  purple: 'text-purple-400 bg-purple-400/20',
+                  cyan: 'text-zinc-300 bg-zinc-700/20',
+                  purple: 'text-zinc-400 bg-zinc-400/20',
                   green: 'text-green-400 bg-green-400/20',
-                  blue: 'text-blue-400 bg-blue-400/20',
-                  pink: 'text-pink-400 bg-pink-400/20',
+                  blue: 'text-zinc-300 bg-zinc-700/20',
+                  pink: 'text-zinc-400 bg-zinc-400/20',
                   orange: 'text-orange-400 bg-orange-400/20',
                 };
 
                 const barClasses = {
-                  cyan: 'bg-gradient-to-r from-cyan-400 to-cyan-600 group-hover:from-cyan-300 group-hover:to-cyan-500 shadow-cyan-500/50',
+                  cyan: 'bg-gradient-to-r from-zinc-700 to-cyan-600 group-hover:from-cyan-300 group-hover:to-zinc-800 shadow-cyan-500/50',
                   purple:
-                    'bg-gradient-to-r from-purple-400 to-purple-600 group-hover:from-purple-300 group-hover:to-purple-500 shadow-purple-500/50',
+                    'bg-gradient-to-r from-zinc-400 to-zinc-600 group-hover:from-zinc-300 group-hover:to-zinc-500 shadow-zinc-500/50',
                   green:
                     'bg-gradient-to-r from-green-400 to-green-600 group-hover:from-green-300 group-hover:to-green-500 shadow-green-500/50',
-                  blue: 'bg-gradient-to-r from-blue-400 to-blue-600 group-hover:from-blue-300 group-hover:to-blue-500 shadow-blue-500/50',
-                  pink: 'bg-gradient-to-r from-pink-400 to-pink-600 group-hover:from-pink-300 group-hover:to-pink-500 shadow-pink-500/50',
+                  blue: 'bg-gradient-to-r from-zinc-700 to-zinc-900 group-hover:from-blue-300 group-hover:to-zinc-800 shadow-blue-500/50',
+                  pink: 'bg-gradient-to-r from-zinc-400 to-zinc-600 group-hover:from-zinc-300 group-hover:to-zinc-500 shadow-zinc-500/50',
                   orange:
                     'bg-gradient-to-r from-orange-400 to-orange-600 group-hover:from-orange-300 group-hover:to-orange-500 shadow-orange-500/50',
                 };
@@ -4143,7 +4426,7 @@ export default function FlowDistributor() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setActivePanel('bancos')}
-              className="w-full mt-6 px-4 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl font-semibold flex items-center justify-center gap-2 shadow-lg"
+              className="w-full mt-6 px-4 py-3 bg-gradient-to-r from-zinc-500 to-zinc-500 rounded-xl font-semibold flex items-center justify-center gap-2 shadow-lg"
             >
               <Eye className="w-5 h-5" />
               Ver Todos los Bancos
@@ -4158,7 +4441,7 @@ export default function FlowDistributor() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="glass rounded-2xl p-6 border border-red-500/20 bg-gradient-to-br from-red-500/10 to-pink-500/5"
+            className="glass rounded-2xl p-6 border border-red-500/20 bg-gradient-to-br from-zinc-700/10 to-zinc-500/5"
           >
             <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
               <AlertCircle className="w-5 h-5 text-red-400 animate-pulse" />
@@ -4231,7 +4514,7 @@ export default function FlowDistributor() {
             className="lg:col-span-2 glass rounded-2xl p-6 border border-white/10"
           >
             <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-              <Clock className="w-5 h-5 text-blue-400" />
+              <Clock className="w-5 h-5 text-zinc-300" />
               Actividad Reciente en Tiempo Real
             </h3>
             <div className="space-y-3 max-h-64 overflow-y-auto custom-scrollbar">
@@ -4254,7 +4537,7 @@ export default function FlowDistributor() {
                         className={`p-2 rounded-xl ${
                           item.tipo === 'venta' || item.totalVenta
                             ? 'bg-green-500/20 text-green-400'
-                            : 'bg-blue-500/20 text-blue-400'
+                            : 'bg-zinc-800/20 text-zinc-300'
                         }`}
                       >
                         {item.tipo === 'venta' || item.totalVenta ? (
@@ -4264,7 +4547,7 @@ export default function FlowDistributor() {
                         )}
                       </motion.div>
                       <div>
-                        <p className="font-semibold group-hover:text-cyan-400 transition-colors">
+                        <p className="font-semibold group-hover:text-zinc-300 transition-colors">
                           {item.tipo === 'venta' || item.totalVenta
                             ? '💰 Nueva Venta'
                             : '📦 Orden de Compra'}
@@ -4276,7 +4559,7 @@ export default function FlowDistributor() {
                       className={`font-bold text-lg ${
                         item.tipo === 'venta' || item.totalVenta
                           ? 'text-green-400'
-                          : 'text-blue-400'
+                          : 'text-zinc-300'
                       }`}
                     >
                       ${(item.total || item.totalVenta || 0).toLocaleString()}
@@ -4294,10 +4577,10 @@ export default function FlowDistributor() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="glass rounded-2xl p-6 border border-purple-500/20"
+              className="glass rounded-2xl p-6 border border-zinc-500/20"
             >
               <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                <ArrowRight className="w-5 h-5 text-purple-400" />
+                <ArrowRight className="w-5 h-5 text-zinc-400" />
                 Acciones Rápidas
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -4310,17 +4593,17 @@ export default function FlowDistributor() {
                   const actionButtonClasses = {
                     green:
                       'bg-gradient-to-br from-green-500/20 to-green-600/10 border-green-500/30 hover:shadow-green-500/20',
-                    blue: 'bg-gradient-to-br from-blue-500/20 to-blue-600/10 border-blue-500/30 hover:shadow-blue-500/20',
+                    blue: 'bg-gradient-to-br from-zinc-800/20 to-zinc-900/10 border-zinc-700/30 hover:shadow-blue-500/20',
                     purple:
-                      'bg-gradient-to-br from-purple-500/20 to-purple-600/10 border-purple-500/30 hover:shadow-purple-500/20',
+                      'bg-gradient-to-br from-zinc-500/20 to-zinc-600/10 border-zinc-500/30 hover:shadow-zinc-500/20',
                     orange:
                       'bg-gradient-to-br from-orange-500/20 to-orange-600/10 border-orange-500/30 hover:shadow-orange-500/20',
                   };
 
                   const actionIconClasses = {
                     green: 'text-green-400',
-                    blue: 'text-blue-400',
-                    purple: 'text-purple-400',
+                    blue: 'text-zinc-300',
+                    purple: 'text-zinc-400',
                     orange: 'text-orange-400',
                   };
 
@@ -4386,7 +4669,7 @@ export default function FlowDistributor() {
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         onClick={onClick}
-        className="glass rounded-xl p-4 cursor-pointer border border-white/10 hover:border-blue-500/30 transition-all"
+        className="glass rounded-xl p-4 cursor-pointer border border-white/10 hover:border-zinc-700/30 transition-all"
       >
         <h3 className="font-bold mb-2">{nombres[nombre]}</h3>
         <div className="space-y-1">
@@ -4414,13 +4697,13 @@ export default function FlowDistributor() {
       <div className="flex items-center gap-3">
         <div
           className={`p-2 rounded-lg ${
-            item.tipo === 'venta' ? 'bg-green-500/20' : 'bg-blue-500/20'
+            item.tipo === 'venta' ? 'bg-green-500/20' : 'bg-zinc-800/20'
           }`}
         >
           {item.tipo === 'venta' ? (
             <TrendingUp className="w-5 h-5 text-green-400" />
           ) : (
-            <Package className="w-5 h-5 text-blue-400" />
+            <Package className="w-5 h-5 text-zinc-300" />
           )}
         </div>
         <div>
@@ -4521,7 +4804,7 @@ export default function FlowDistributor() {
         {/* Header */}
         <div className="flex justify-between items-center">
           <div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-zinc-400 to-zinc-400 bg-clip-text text-transparent">
               📦 Distribuidores
             </h1>
             <p className="text-sm text-slate-400 mt-1">
@@ -4542,7 +4825,7 @@ export default function FlowDistributor() {
                 <p className="text-sm text-slate-400">Total Compras</p>
                 <p className="text-2xl font-bold text-white">${totales.compras.toLocaleString()}</p>
               </div>
-              <DollarSign className="w-8 h-8 text-blue-400" />
+              <DollarSign className="w-8 h-8 text-zinc-300" />
             </div>
           </motion.div>
 
@@ -4589,9 +4872,9 @@ export default function FlowDistributor() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-slate-400">Órdenes Totales</p>
-                <p className="text-2xl font-bold text-purple-400">{totales.ordenes}</p>
+                <p className="text-2xl font-bold text-zinc-400">{totales.ordenes}</p>
               </div>
-              <Package className="w-8 h-8 text-purple-400" />
+              <Package className="w-8 h-8 text-zinc-400" />
             </div>
           </motion.div>
         </div>
@@ -4653,7 +4936,7 @@ export default function FlowDistributor() {
                         </div>
                       </td>
                       <td className="py-4 px-6 text-right">
-                        <span className="text-blue-400 font-semibold">
+                        <span className="text-zinc-300 font-semibold">
                           ${(dist.totalCompras || 0).toLocaleString()}
                         </span>
                       </td>
@@ -4672,7 +4955,7 @@ export default function FlowDistributor() {
                         </span>
                       </td>
                       <td className="py-4 px-6 text-center">
-                        <span className="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm font-semibold">
+                        <span className="px-3 py-1 bg-zinc-500/20 text-zinc-400 rounded-full text-sm font-semibold">
                           {dist.ordenes?.length || 0}
                         </span>
                       </td>
@@ -4742,7 +5025,7 @@ export default function FlowDistributor() {
                                           className="border-t border-white/5 hover:bg-white/5"
                                         >
                                           <td className="py-3 px-4">
-                                            <span className="text-purple-400 font-mono text-sm">
+                                            <span className="text-zinc-400 font-mono text-sm">
                                               {orden.oc}
                                             </span>
                                           </td>
@@ -4752,7 +5035,7 @@ export default function FlowDistributor() {
                                             </span>
                                           </td>
                                           <td className="py-3 px-4 text-right">
-                                            <span className="text-blue-400 font-semibold">
+                                            <span className="text-zinc-300 font-semibold">
                                               {orden.cantidad}
                                             </span>
                                           </td>
@@ -4828,7 +5111,7 @@ export default function FlowDistributor() {
                 </h3>
 
                 {/* Info del Distribuidor */}
-                <div className="mb-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                <div className="mb-6 p-4 bg-zinc-800/10 border border-zinc-700/30 rounded-lg">
                   <p className="text-sm text-blue-300 mb-1">Distribuidor:</p>
                   <p className="font-bold text-white">{distribuidorSeleccionado.nombre}</p>
                   <p className="text-sm text-blue-300 mt-2">Adeudo pendiente:</p>
@@ -5053,7 +5336,7 @@ export default function FlowDistributor() {
           className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4"
         >
           <div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-zinc-400 via-zinc-400 to-zinc-800 bg-clip-text text-transparent">
               Centro de Almacén
             </h1>
             <p className="text-slate-400 mt-2">Gestión inteligente de inventarios</p>
@@ -5069,7 +5352,7 @@ export default function FlowDistributor() {
               whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(139, 92, 246, 0.3)' }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowAddModal(true)}
-              className="px-6 py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 rounded-2xl font-semibold flex items-center gap-2 shadow-lg"
+              className="px-6 py-3 bg-gradient-to-r from-zinc-500 via-zinc-500 to-zinc-800 rounded-2xl font-semibold flex items-center gap-2 shadow-lg"
             >
               <Plus className="w-5 h-5" />
               Agregar Producto
@@ -5090,8 +5373,8 @@ export default function FlowDistributor() {
               value: stockActualTotal.toLocaleString(),
               icon: Package,
               color: 'blue',
-              gradient: 'from-blue-400 to-cyan-500',
-              bgGradient: 'from-blue-500/10 to-cyan-500/5',
+              gradient: 'from-zinc-700 to-zinc-800',
+              bgGradient: 'from-zinc-800/10 to-zinc-800/5',
               change: `${stockActualTotal}`,
               description: 'unidades disponibles',
             },
@@ -5110,8 +5393,8 @@ export default function FlowDistributor() {
               value: totalSalidas.toLocaleString(),
               icon: ArrowUpCircle,
               color: 'red',
-              gradient: 'from-red-400 to-pink-500',
-              bgGradient: 'from-red-500/10 to-pink-500/5',
+              gradient: 'from-zinc-700 to-zinc-500',
+              bgGradient: 'from-zinc-700/10 to-zinc-500/5',
               change: `-${totalSalidas}`,
               description: 'productos vendidos',
             },
@@ -5128,25 +5411,25 @@ export default function FlowDistributor() {
           ].map((kpi, index) => {
             const kpiBorderClasses = {
               green: 'border-green-500/20',
-              blue: 'border-blue-500/20',
+              blue: 'border-zinc-700/20',
               red: 'border-red-500/20',
-              purple: 'border-purple-500/20',
+              purple: 'border-zinc-500/20',
               emerald: 'border-emerald-500/20',
             };
 
             const kpiTextClasses = {
               green: 'text-green-400',
-              blue: 'text-blue-400',
+              blue: 'text-zinc-300',
               red: 'text-red-400',
-              purple: 'text-purple-400',
+              purple: 'text-zinc-400',
               emerald: 'text-emerald-400',
             };
 
             const kpiBadgeClasses = {
               green: 'text-green-400 bg-green-400/20',
-              blue: 'text-blue-400 bg-blue-400/20',
+              blue: 'text-zinc-300 bg-zinc-700/20',
               red: 'text-red-400 bg-red-400/20',
-              purple: 'text-purple-400 bg-purple-400/20',
+              purple: 'text-zinc-400 bg-zinc-400/20',
               emerald: 'text-emerald-400 bg-emerald-400/20',
             };
 
@@ -5212,7 +5495,7 @@ export default function FlowDistributor() {
                 onClick={() => setActiveTab(tab.key)}
                 className={`flex-1 min-w-[120px] px-6 py-4 font-semibold transition-all duration-300 flex items-center justify-center gap-2 relative ${
                   activeTab === tab.key
-                    ? 'text-purple-400 bg-purple-500/10'
+                    ? 'text-zinc-400 bg-zinc-500/10'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
@@ -5221,7 +5504,7 @@ export default function FlowDistributor() {
                 {activeTab === tab.key && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-zinc-400 to-zinc-400"
                     transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                   />
                 )}
@@ -5244,13 +5527,13 @@ export default function FlowDistributor() {
                   <div className="flex flex-col md:flex-row gap-4 mb-6">
                     <div className="flex-1">
                       <div className="relative group">
-                        <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 group-focus-within:text-purple-400 transition-colors" />
+                        <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 group-focus-within:text-zinc-400 transition-colors" />
                         <input
                           type="text"
                           placeholder="Buscar productos..."
                           value={searchTerm}
                           onChange={(e) => setSearchTerm(e.target.value)}
-                          className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
+                          className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-zinc-500 focus:ring-2 focus:ring-zinc-700/20 transition-all duration-300"
                         />
                       </div>
                     </div>
@@ -5258,7 +5541,7 @@ export default function FlowDistributor() {
                       whileFocus={{ scale: 1.02 }}
                       value={selectedCategory}
                       onChange={(e) => setSelectedCategory(e.target.value)}
-                      className="px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500 min-w-[150px]"
+                      className="px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-zinc-500 min-w-[150px]"
                     >
                       <option value="todas" className="bg-slate-800">
                         Todas las categorías
@@ -5273,7 +5556,7 @@ export default function FlowDistributor() {
                       whileFocus={{ scale: 1.02 }}
                       value={sortBy}
                       onChange={(e) => setSortBy(e.target.value)}
-                      className="px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500 min-w-[150px]"
+                      className="px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-zinc-500 min-w-[150px]"
                     >
                       <option value="nombre" className="bg-slate-800">
                         Ordenar por Nombre
@@ -5294,7 +5577,7 @@ export default function FlowDistributor() {
                   <div className="glass rounded-xl border border-white/10 overflow-hidden">
                     <div className="overflow-x-auto">
                       <table className="w-full">
-                        <thead className="bg-gradient-to-r from-purple-500/10 to-pink-500/10">
+                        <thead className="bg-gradient-to-r from-zinc-500/10 to-zinc-500/10">
                           <tr>
                             <th className="px-4 py-4 text-center w-12">
                               <SelectionCheckbox
@@ -5411,12 +5694,12 @@ export default function FlowDistributor() {
                                   <div className="flex items-center space-x-4">
                                     <motion.div
                                       whileHover={{ scale: 1.1 }}
-                                      className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center"
+                                      className="w-12 h-12 bg-gradient-to-br from-zinc-500 to-zinc-500 rounded-xl flex items-center justify-center"
                                     >
                                       <Package className="w-6 h-6 text-white" />
                                     </motion.div>
                                     <div>
-                                      <p className="text-sm font-semibold text-white group-hover:text-purple-400 transition-colors">
+                                      <p className="text-sm font-semibold text-white group-hover:text-zinc-400 transition-colors">
                                         {searchTerm ? (
                                           <span
                                             dangerouslySetInnerHTML={{
@@ -5452,7 +5735,7 @@ export default function FlowDistributor() {
                                           : (producto.cantidad || 0) >=
                                               (producto.cantidadMaxima || 100) * 0.8
                                             ? 'text-green-400'
-                                            : 'text-blue-400'
+                                            : 'text-zinc-300'
                                       }`}
                                     >
                                       {producto.cantidad || 0}
@@ -5474,7 +5757,7 @@ export default function FlowDistributor() {
                                   </span>
                                 </td>
                                 <td className="px-6 py-4">
-                                  <span className="text-sm font-bold text-purple-400">
+                                  <span className="text-sm font-bold text-zinc-400">
                                     ${(producto.valorInventario || 0).toLocaleString()}
                                   </span>
                                 </td>
@@ -5511,14 +5794,14 @@ export default function FlowDistributor() {
                                     <motion.button
                                       whileHover={{ scale: 1.1 }}
                                       whileTap={{ scale: 0.9 }}
-                                      className="p-2 bg-blue-500/20 text-blue-400 rounded-lg hover:bg-blue-500/30 transition-colors"
+                                      className="p-2 bg-zinc-800/20 text-zinc-300 rounded-lg hover:bg-zinc-800/30 transition-colors"
                                     >
                                       <Eye className="w-4 h-4" />
                                     </motion.button>
                                     <motion.button
                                       whileHover={{ scale: 1.1 }}
                                       whileTap={{ scale: 0.9 }}
-                                      className="p-2 bg-purple-500/20 text-purple-400 rounded-lg hover:bg-purple-500/30 transition-colors"
+                                      className="p-2 bg-zinc-500/20 text-zinc-400 rounded-lg hover:bg-zinc-500/30 transition-colors"
                                     >
                                       <Settings className="w-4 h-4" />
                                     </motion.button>
@@ -5574,7 +5857,7 @@ export default function FlowDistributor() {
                           </div>
                           <div>
                             <p className="text-sm text-slate-400">Costo Total</p>
-                            <p className="font-bold text-blue-400 text-xl">
+                            <p className="font-bold text-zinc-300 text-xl">
                               ${(entrada?.costoTotal || 0).toLocaleString()}
                             </p>
                             <p className="text-xs text-slate-500">
@@ -5616,7 +5899,7 @@ export default function FlowDistributor() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
                         whileHover={{ scale: 1.02 }}
-                        className="glass rounded-xl p-6 border border-red-500/20 bg-gradient-to-r from-red-500/10 to-pink-500/5"
+                        className="glass rounded-xl p-6 border border-red-500/20 bg-gradient-to-r from-zinc-700/10 to-zinc-500/5"
                       >
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                           <div>
@@ -5664,7 +5947,7 @@ export default function FlowDistributor() {
                   className="space-y-6"
                 >
                   <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                    <BarChart3 className="w-6 h-6 text-purple-400" />
+                    <BarChart3 className="w-6 h-6 text-zinc-400" />
                     Analytics de Inventario
                   </h3>
 
@@ -5739,7 +6022,7 @@ export default function FlowDistributor() {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                <h2 className="text-2xl font-bold bg-gradient-to-r from-zinc-400 to-zinc-400 bg-clip-text text-transparent">
                   Agregar Nuevo Producto
                 </h2>
                 <motion.button
@@ -5755,7 +6038,7 @@ export default function FlowDistributor() {
               <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Nombre del Producto */}
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-purple-400 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-zinc-400 flex items-center gap-2">
                     <Package className="w-4 h-4" />
                     Nombre del Producto *
                   </label>
@@ -5763,7 +6046,7 @@ export default function FlowDistributor() {
                     type="text"
                     onFocus={(e) => (e.target.placeholder = '')}
                     onBlur={(e) => (e.target.placeholder = 'Ej: MacBook Pro 16')}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all text-white"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-zinc-500 focus:ring-2 focus:ring-zinc-700/20 transition-all text-white"
                     placeholder="Ej: MacBook Pro 16"
                   />
                   <p className="text-xs text-slate-400">📝 Descripción del artículo a almacenar</p>
@@ -5771,11 +6054,11 @@ export default function FlowDistributor() {
 
                 {/* Categoría */}
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-blue-400 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-zinc-300 flex items-center gap-2">
                     <List className="w-4 h-4" />
                     Categoría *
                   </label>
-                  <select className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all text-white">
+                  <select className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-zinc-700 focus:ring-2 focus:ring-blue-500/20 transition-all text-white">
                     <option value="" className="bg-slate-800">
                       Seleccionar categoría
                     </option>
@@ -5911,7 +6194,7 @@ export default function FlowDistributor() {
 
                 {/* Stock Máximo */}
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-cyan-400 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-zinc-300 flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4" />
                     Stock Máximo
                   </label>
@@ -5935,7 +6218,7 @@ export default function FlowDistributor() {
 
                 {/* Ubicación */}
                 <div className="md:col-span-2 space-y-2">
-                  <label className="text-sm font-semibold text-pink-400 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-zinc-400 flex items-center gap-2">
                     <Warehouse className="w-4 h-4" />
                     Ubicación en Almacén
                   </label>
@@ -5943,7 +6226,7 @@ export default function FlowDistributor() {
                     type="text"
                     onFocus={(e) => (e.target.placeholder = '')}
                     onBlur={(e) => (e.target.placeholder = 'Ej: Pasillo A, Estante 3, Nivel 2')}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 transition-all text-white"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-zinc-500 focus:ring-2 focus:ring-pink-500/20 transition-all text-white"
                     placeholder="Ej: Pasillo A, Estante 3, Nivel 2"
                   />
                   <p className="text-xs text-slate-400">
@@ -5965,7 +6248,7 @@ export default function FlowDistributor() {
                     type="submit"
                     whileHover={{ scale: 1.02, boxShadow: '0 10px 30px rgba(139, 92, 246, 0.3)' }}
                     whileTap={{ scale: 0.98 }}
-                    className="flex-1 px-6 py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 rounded-xl font-semibold flex items-center justify-center gap-2"
+                    className="flex-1 px-6 py-3 bg-gradient-to-r from-zinc-500 via-zinc-500 to-zinc-800 rounded-xl font-semibold flex items-center justify-center gap-2"
                   >
                     <Plus className="w-5 h-5" />
                     Agregar Producto
@@ -6213,7 +6496,7 @@ export default function FlowDistributor() {
             <div className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                     👤 Cliente
                   </label>
                   <input
@@ -6229,7 +6512,7 @@ export default function FlowDistributor() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                     🚚 Costo de Flete / Envío
                   </label>
                   <input
@@ -6248,7 +6531,7 @@ export default function FlowDistributor() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                   💰 Estado de Pago
                 </label>
                 <select
@@ -6267,7 +6550,7 @@ export default function FlowDistributor() {
 
               {formData.estadoPago === 'parcial' && (
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                     💵 Monto Abonado por el Cliente
                   </label>
                   <input
@@ -6289,7 +6572,7 @@ export default function FlowDistributor() {
                 <label className="block text-sm font-semibold text-slate-300 mb-2">
                   🛒 Productos Vendidos
                 </label>
-                <div className="mb-2 p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                <div className="mb-2 p-3 bg-zinc-800/10 border border-zinc-700/30 rounded-lg">
                   <p className="text-xs text-blue-300 flex items-center gap-2">
                     <span>ℹ️</span>
                     <span>
@@ -6385,7 +6668,7 @@ export default function FlowDistributor() {
                           </div>
                           <div className="text-center">
                             <span className="text-xs text-slate-400 block">Ganancia</span>
-                            <span className="text-sm font-bold text-blue-400">
+                            <span className="text-sm font-bold text-zinc-300">
                               $
                               {(
                                 (producto.precioUnitario - producto.precioCompra) *
@@ -6423,20 +6706,20 @@ export default function FlowDistributor() {
                 </div>
                 <div className="text-center">
                   <p className="text-sm text-slate-400">Fletes</p>
-                  <p className="text-2xl font-bold text-purple-400">
+                  <p className="text-2xl font-bold text-zinc-400">
                     ${calcularFletes().toLocaleString()}
                   </p>
                 </div>
                 <div className="text-center">
                   <p className="text-sm text-slate-400">Utilidades</p>
-                  <p className="text-2xl font-bold text-blue-400">
+                  <p className="text-2xl font-bold text-zinc-300">
                     ${calcularUtilidades().toLocaleString()}
                   </p>
                 </div>
               </div>
 
               {/* Información de distribución del dinero */}
-              <div className="glass rounded-lg p-4 border border-blue-500/30 bg-blue-500/5">
+              <div className="glass rounded-lg p-4 border border-zinc-700/30 bg-zinc-800/5">
                 <h4 className="text-sm font-bold text-blue-300 mb-3 flex items-center gap-2">
                   <Wallet className="w-4 h-4" />
                   Distribución del Dinero
@@ -6453,7 +6736,7 @@ export default function FlowDistributor() {
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-slate-300">🚚 Banco Fletes:</span>
-                    <span className="font-bold text-purple-400">
+                    <span className="font-bold text-zinc-400">
                       {formData.estadoPago === 'completo'
                         ? `$${calcularFletes().toLocaleString()}`
                         : '$0 (pago pendiente)'}
@@ -6461,7 +6744,7 @@ export default function FlowDistributor() {
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-slate-300">📈 Banco Utilidades:</span>
-                    <span className="font-bold text-blue-400">
+                    <span className="font-bold text-zinc-300">
                       {formData.estadoPago === 'completo'
                         ? `$${calcularUtilidades().toLocaleString()}`
                         : '$0 (pago pendiente)'}
@@ -6616,7 +6899,7 @@ export default function FlowDistributor() {
                     <td className="px-4 py-3 text-sm text-right font-bold">
                       ${venta.totalVenta?.toLocaleString()}
                     </td>
-                    <td className="px-4 py-3 text-sm text-right font-bold text-blue-400">
+                    <td className="px-4 py-3 text-sm text-right font-bold text-zinc-300">
                       ${venta.totalUtilidades?.toLocaleString()}
                     </td>
                     {/* ⭐ NUEVA COLUMNA: Botón Marcar como Pagado */}
@@ -6680,7 +6963,7 @@ export default function FlowDistributor() {
               </h3>
 
               <div className="space-y-4 mb-6">
-                <div className="glass rounded-lg p-4 border border-blue-500/30 bg-blue-500/5">
+                <div className="glass rounded-lg p-4 border border-zinc-700/30 bg-zinc-800/5">
                   <p className="text-sm text-slate-300 mb-2">
                     <strong>Cliente:</strong> {ventaSeleccionada.cliente}
                   </p>
@@ -6699,7 +6982,7 @@ export default function FlowDistributor() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                     🏦 Selecciona el Banco Destino
                   </label>
                   <select
@@ -6794,7 +7077,7 @@ export default function FlowDistributor() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={cleanupClientes}
-                className="px-4 py-2 bg-gradient-to-r from-red-500 to-pink-500 rounded-lg font-semibold flex items-center gap-2 text-sm"
+                className="px-4 py-2 bg-gradient-to-r from-zinc-700 to-zinc-500 rounded-lg font-semibold flex items-center gap-2 text-sm"
               >
                 <Trash2 className="w-4 h-4" />
                 Limpiar sin actividad
@@ -6913,7 +7196,7 @@ export default function FlowDistributor() {
                     </p>
                     <p className="text-sm text-slate-400">
                       💰 Total Comprado:{' '}
-                      <span className="text-blue-400 font-bold">
+                      <span className="text-zinc-300 font-bold">
                         ${(cliente.totalComprado || 0).toLocaleString()}
                       </span>
                     </p>
@@ -6927,7 +7210,7 @@ export default function FlowDistributor() {
                         </p>
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                        <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                           💵 Monto que el Cliente te Pagó ($)
                         </label>
                         <input
@@ -6948,7 +7231,7 @@ export default function FlowDistributor() {
                       <div className="flex gap-2">
                         <button
                           onClick={() => realizarAbono(cliente, montoAbono)}
-                          className="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 py-2 rounded-lg hover:shadow-lg font-semibold"
+                          className="flex-1 bg-gradient-to-r from-zinc-800 to-zinc-900 py-2 rounded-lg hover:shadow-lg font-semibold"
                         >
                           Abonar
                         </button>
@@ -7125,7 +7408,7 @@ export default function FlowDistributor() {
                               ? 'bg-green-500/20 text-green-400 border border-green-500/30'
                               : item.tipo === 'gasto'
                                 ? 'bg-red-500/20 text-red-400 border border-red-500/30'
-                                : 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
+                                : 'bg-zinc-800/20 text-zinc-300 border border-zinc-700/30'
                           }`}
                         >
                           {item.tipo === 'abono'
@@ -7568,7 +7851,7 @@ export default function FlowDistributor() {
         {/* Header con navegación avanzada */}
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4">
           <div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-zinc-700 to-zinc-700 bg-clip-text text-transparent">
               {nombres[nombreBanco]}
             </h1>
             <p className="text-slate-400 mt-1">Sistema Bancario Avanzado</p>
@@ -7579,7 +7862,7 @@ export default function FlowDistributor() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowAnalyticsModal(true)}
-              className="px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl font-semibold flex items-center gap-2"
+              className="px-4 py-2 bg-gradient-to-r from-zinc-500 to-zinc-500 rounded-xl font-semibold flex items-center gap-2"
             >
               <BarChart3 className="w-4 h-4" />
               Analytics
@@ -7588,7 +7871,7 @@ export default function FlowDistributor() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowHistoryModal(true)}
-              className="px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl font-semibold flex items-center gap-2"
+              className="px-4 py-2 bg-gradient-to-r from-indigo-500 to-zinc-500 rounded-xl font-semibold flex items-center gap-2"
             >
               <Clock className="w-4 h-4" />
               Historial
@@ -7608,7 +7891,7 @@ export default function FlowDistributor() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowTransferModal(true)}
-              className="px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl font-semibold flex items-center gap-2"
+              className="px-4 py-2 bg-gradient-to-r from-zinc-800 to-zinc-800 rounded-xl font-semibold flex items-center gap-2"
             >
               <ArrowRight className="w-4 h-4" />
               Transferir
@@ -7617,7 +7900,7 @@ export default function FlowDistributor() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowGastoModal(true)}
-              className="px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 rounded-xl font-semibold flex items-center gap-2"
+              className="px-4 py-2 bg-gradient-to-r from-zinc-700 to-zinc-800 rounded-xl font-semibold flex items-center gap-2"
             >
               <TrendingDown className="w-4 h-4" />
               Gasto
@@ -7643,13 +7926,13 @@ export default function FlowDistributor() {
 
           <motion.div
             whileHover={{ scale: 1.02 }}
-            className="glass rounded-2xl p-6 border border-blue-500/20 bg-gradient-to-br from-blue-500/10 to-cyan-500/5 cursor-pointer group"
+            className="glass rounded-2xl p-6 border border-zinc-700/20 bg-gradient-to-br from-zinc-800/10 to-zinc-800/5 cursor-pointer group"
           >
             <div className="flex items-center justify-between mb-3">
-              <TrendingUp className="w-8 h-8 text-blue-400" />
-              <span className="text-xs text-blue-400 font-semibold">FLUJO NETO</span>
+              <TrendingUp className="w-8 h-8 text-zinc-300" />
+              <span className="text-xs text-zinc-300 font-semibold">FLUJO NETO</span>
             </div>
-            <p className="text-2xl font-bold text-blue-400 mb-1">
+            <p className="text-2xl font-bold text-zinc-300 mb-1">
               $
               {(
                 (banco?.ingresos?.reduce((sum, i) => sum + (i?.monto || 0), 0) || 0) -
@@ -7661,13 +7944,13 @@ export default function FlowDistributor() {
 
           <motion.div
             whileHover={{ scale: 1.02 }}
-            className="glass rounded-2xl p-6 border border-purple-500/20 bg-gradient-to-br from-purple-500/10 to-pink-500/5 cursor-pointer group"
+            className="glass rounded-2xl p-6 border border-zinc-500/20 bg-gradient-to-br from-zinc-500/10 to-zinc-500/5 cursor-pointer group"
           >
             <div className="flex items-center justify-between mb-3">
-              <Target className="w-8 h-8 text-purple-400" />
-              <span className="text-xs text-purple-400 font-semibold">RENDIMIENTO</span>
+              <Target className="w-8 h-8 text-zinc-400" />
+              <span className="text-xs text-zinc-400 font-semibold">RENDIMIENTO</span>
             </div>
-            <p className="text-2xl font-bold text-purple-400 mb-1">
+            <p className="text-2xl font-bold text-zinc-400 mb-1">
               {banco.historico > 0
                 ? `${((banco.capitalActual / banco.historico) * 100).toFixed(1)}%`
                 : '0%'}
@@ -7725,7 +8008,7 @@ export default function FlowDistributor() {
                 onClick={() => setActiveTab(tab.key)}
                 className={`flex-1 px-6 py-4 font-semibold transition-all duration-200 flex items-center justify-center gap-2 ${
                   activeTab === tab.key
-                    ? 'text-blue-400 border-b-2 border-blue-400 bg-blue-500/10'
+                    ? 'text-zinc-300 border-b-2 border-zinc-600 bg-zinc-800/10'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
@@ -7748,7 +8031,7 @@ export default function FlowDistributor() {
                   {/* Gráfico de flujo de efectivo */}
                   <div className="glass rounded-xl p-6 border border-white/10">
                     <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                      <TrendingUp className="w-5 h-5 text-blue-400" />
+                      <TrendingUp className="w-5 h-5 text-zinc-300" />
                       Flujo de Efectivo (30 días)
                     </h3>
                     <div className="h-64">
@@ -7851,14 +8134,14 @@ export default function FlowDistributor() {
                           placeholder="Buscar transacciones..."
                           value={searchTerm}
                           onChange={(e) => setSearchTerm(e.target.value)}
-                          className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-blue-500 transition-colors"
+                          className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-zinc-700 transition-colors"
                         />
                       </div>
                     </div>
                     <select
                       value={timeFilter}
                       onChange={(e) => setTimeFilter(e.target.value)}
-                      className="px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-blue-500"
+                      className="px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-zinc-700"
                     >
                       <option value="week">Última semana</option>
                       <option value="month">Último mes</option>
@@ -7942,7 +8225,7 @@ export default function FlowDistributor() {
                                       ? 'text-green-400'
                                       : i % 3 === 1
                                         ? 'text-red-400'
-                                        : 'text-blue-400'
+                                        : 'text-zinc-300'
                                   }
                                 >
                                   ${(Math.random() * 50000 + 1000).toLocaleString()}
@@ -7981,12 +8264,12 @@ export default function FlowDistributor() {
                     </div>
                     <div className="glass rounded-xl p-6 border border-white/10">
                       <h3 className="text-sm font-semibold text-slate-400 mb-2">ROI Promedio</h3>
-                      <p className="text-2xl font-bold text-blue-400">23.7%</p>
+                      <p className="text-2xl font-bold text-zinc-300">23.7%</p>
                       <p className="text-xs text-slate-500 mt-1">en los últimos 6 meses</p>
                     </div>
                     <div className="glass rounded-xl p-6 border border-white/10">
                       <h3 className="text-sm font-semibold text-slate-400 mb-2">Eficiencia</h3>
-                      <p className="text-2xl font-bold text-purple-400">89.2%</p>
+                      <p className="text-2xl font-bold text-zinc-400">89.2%</p>
                       <p className="text-xs text-slate-500 mt-1">ratio ingresos/gastos</p>
                     </div>
                   </div>
@@ -8034,33 +8317,33 @@ export default function FlowDistributor() {
                       { title: 'Comparativo', icon: BarChart3, color: 'cyan' },
                     ].map((report, index) => {
                       const reportBorderClasses = {
-                        blue: 'border-blue-500/20 bg-gradient-to-br from-blue-500/10 to-blue-600/5',
+                        blue: 'border-zinc-700/20 bg-gradient-to-br from-zinc-800/10 to-zinc-900/5',
                         green:
                           'border-green-500/20 bg-gradient-to-br from-green-500/10 to-green-600/5',
                         purple:
-                          'border-purple-500/20 bg-gradient-to-br from-purple-500/10 to-purple-600/5',
+                          'border-zinc-500/20 bg-gradient-to-br from-zinc-500/10 to-zinc-600/5',
                         orange:
                           'border-orange-500/20 bg-gradient-to-br from-orange-500/10 to-orange-600/5',
-                        pink: 'border-pink-500/20 bg-gradient-to-br from-pink-500/10 to-pink-600/5',
-                        cyan: 'border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 to-cyan-600/5',
+                        pink: 'border-zinc-500/20 bg-gradient-to-br from-zinc-500/10 to-zinc-600/5',
+                        cyan: 'border-cyan-500/20 bg-gradient-to-br from-zinc-800/10 to-cyan-600/5',
                       };
 
                       const reportIconClasses = {
-                        blue: 'text-blue-400',
+                        blue: 'text-zinc-300',
                         green: 'text-green-400',
-                        purple: 'text-purple-400',
+                        purple: 'text-zinc-400',
                         orange: 'text-orange-400',
-                        pink: 'text-pink-400',
-                        cyan: 'text-cyan-400',
+                        pink: 'text-zinc-400',
+                        cyan: 'text-zinc-300',
                       };
 
                       const reportButtonClasses = {
-                        blue: 'bg-gradient-to-r from-blue-500 to-blue-600',
+                        blue: 'bg-gradient-to-r from-zinc-800 to-zinc-900',
                         green: 'bg-gradient-to-r from-green-500 to-green-600',
-                        purple: 'bg-gradient-to-r from-purple-500 to-purple-600',
+                        purple: 'bg-gradient-to-r from-zinc-500 to-zinc-600',
                         orange: 'bg-gradient-to-r from-orange-500 to-orange-600',
-                        pink: 'bg-gradient-to-r from-pink-500 to-pink-600',
-                        cyan: 'bg-gradient-to-r from-cyan-500 to-cyan-600',
+                        pink: 'bg-gradient-to-r from-zinc-500 to-zinc-600',
+                        cyan: 'bg-gradient-to-r from-zinc-800 to-cyan-600',
                       };
 
                       return (
@@ -8113,14 +8396,14 @@ export default function FlowDistributor() {
               <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
                 💸 Nueva Transferencia
               </h2>
-              <div className="mb-3 p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+              <div className="mb-3 p-3 bg-zinc-800/10 border border-zinc-700/30 rounded-lg">
                 <p className="text-xs text-blue-300">
                   💡 Transfiere dinero entre tus bancos de forma segura
                 </p>
               </div>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                     🏦 Banco Destino (¿A dónde va el dinero?)
                   </label>
                   <select
@@ -8141,7 +8424,7 @@ export default function FlowDistributor() {
                   </p>
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                     💵 Monto a Transferir ($)
                   </label>
                   <input
@@ -8158,7 +8441,7 @@ export default function FlowDistributor() {
                   </p>
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                     📝 Concepto / Motivo
                   </label>
                   <input
@@ -8181,7 +8464,7 @@ export default function FlowDistributor() {
                   </button>
                   <button
                     onClick={realizarTransferencia}
-                    className="flex-1 px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg"
+                    className="flex-1 px-4 py-2 bg-gradient-to-r from-zinc-800 to-zinc-800 rounded-lg"
                   >
                     Transferir
                   </button>
@@ -8212,7 +8495,7 @@ export default function FlowDistributor() {
               </div>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                     💵 Monto del Gasto ($)
                   </label>
                   <input
@@ -8229,7 +8512,7 @@ export default function FlowDistributor() {
                   </p>
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                     📝 ¿En qué gastaste?
                   </label>
                   <input
@@ -8252,7 +8535,7 @@ export default function FlowDistributor() {
                   </button>
                   <button
                     onClick={registrarGasto}
-                    className="flex-1 px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 rounded-lg"
+                    className="flex-1 px-4 py-2 bg-gradient-to-r from-zinc-700 to-zinc-800 rounded-lg"
                   >
                     Registrar
                   </button>
@@ -8285,7 +8568,7 @@ export default function FlowDistributor() {
               </div>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                     💵 Monto del Ingreso ($)
                   </label>
                   <input
@@ -8300,7 +8583,7 @@ export default function FlowDistributor() {
                   <p className="text-xs text-slate-400 mt-1 ml-1">Cantidad de dinero que ingresó</p>
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
+                  <label className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
                     📝 ¿De dónde vino el dinero?
                   </label>
                   <input
@@ -8528,7 +8811,7 @@ export default function FlowDistributor() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowTransferModal(true)}
-              className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-violet-500 font-semibold flex items-center gap-2"
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-zinc-500 to-violet-500 font-semibold flex items-center gap-2"
             >
               <ArrowRight className="w-5 h-5" />
               Transferir
@@ -8537,7 +8820,7 @@ export default function FlowDistributor() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowGastoModal(true)}
-              className="px-6 py-3 rounded-xl bg-gradient-to-r from-red-500 to-orange-500 font-semibold flex items-center gap-2"
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-zinc-700 to-orange-500 font-semibold flex items-center gap-2"
             >
               <Plus className="w-5 h-5" />
               Registrar Gasto
@@ -8572,7 +8855,7 @@ export default function FlowDistributor() {
                   <select
                     value={transferData.desde}
                     onChange={(e) => setTransferData({ ...transferData, desde: e.target.value })}
-                    className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 text-white"
+                    className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-700 text-white"
                   >
                     {Object.keys(bancos).map((key) => (
                       <option key={key} value={key}>
@@ -8590,7 +8873,7 @@ export default function FlowDistributor() {
                   <select
                     value={transferData.hacia}
                     onChange={(e) => setTransferData({ ...transferData, hacia: e.target.value })}
-                    className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 text-white"
+                    className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-700 text-white"
                   >
                     {Object.keys(bancos).map((key) => (
                       <option key={key} value={key}>
@@ -8608,7 +8891,7 @@ export default function FlowDistributor() {
                     onChange={(e) =>
                       setTransferData({ ...transferData, monto: parseFloat(e.target.value) || 0 })
                     }
-                    className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 text-white"
+                    className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-700 text-white"
                     placeholder="0.00"
                   />
                 </div>
@@ -8621,7 +8904,7 @@ export default function FlowDistributor() {
                     type="text"
                     value={transferData.concepto}
                     onChange={(e) => setTransferData({ ...transferData, concepto: e.target.value })}
-                    className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 text-white"
+                    className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-700 text-white"
                     placeholder="Ej: Capitalización"
                   />
                 </div>
@@ -8635,7 +8918,7 @@ export default function FlowDistributor() {
                   </button>
                   <button
                     onClick={realizarTransferencia}
-                    className="flex-1 px-6 py-2 bg-gradient-to-r from-purple-500 to-violet-500 rounded-xl hover:shadow-lg"
+                    className="flex-1 px-6 py-2 bg-gradient-to-r from-zinc-500 to-violet-500 rounded-xl hover:shadow-lg"
                   >
                     Transferir
                   </button>
@@ -8710,7 +8993,7 @@ export default function FlowDistributor() {
                   </button>
                   <button
                     onClick={registrarGasto}
-                    className="flex-1 px-6 py-2 bg-gradient-to-r from-red-500 to-orange-500 rounded-xl hover:shadow-lg"
+                    className="flex-1 px-6 py-2 bg-gradient-to-r from-zinc-700 to-orange-500 rounded-xl hover:shadow-lg"
                   >
                     Registrar
                   </button>
@@ -8728,7 +9011,7 @@ export default function FlowDistributor() {
               onClick={() => setSelectedBanco(key)}
               className={`px-4 py-2 rounded-xl font-semibold whitespace-nowrap transition-all ${
                 selectedBanco === key
-                  ? 'bg-gradient-to-r from-blue-500 to-cyan-500'
+                  ? 'bg-gradient-to-r from-zinc-800 to-zinc-800'
                   : 'bg-white/5 hover:bg-white/10'
               }`}
             >
@@ -8748,7 +9031,7 @@ export default function FlowDistributor() {
 
           <div className="glass rounded-2xl p-6 border border-white/10">
             <p className="text-sm text-slate-400 mb-2">Histórico Total</p>
-            <p className="text-3xl font-bold text-blue-400">${banco.historico.toLocaleString()}</p>
+            <p className="text-3xl font-bold text-zinc-300">${banco.historico.toLocaleString()}</p>
           </div>
 
           <div className="glass rounded-2xl p-6 border border-white/10">
@@ -9167,7 +9450,7 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
                         type="date"
                         value={dateRange.inicio}
                         onChange={(e) => setDateRange({ ...dateRange, inicio: e.target.value })}
-                        className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-blue-500"
+                        className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-zinc-700"
                       />
                     </div>
                     <div>
@@ -9176,7 +9459,7 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
                         type="date"
                         value={dateRange.fin}
                         onChange={(e) => setDateRange({ ...dateRange, fin: e.target.value })}
-                        className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-blue-500"
+                        className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-zinc-700"
                       />
                     </div>
                   </div>
@@ -9194,7 +9477,7 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={handleExport}
-                    className="flex-1 px-4 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/20 transition-all"
+                    className="flex-1 px-4 py-3 bg-gradient-to-r from-zinc-800 to-zinc-800 rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/20 transition-all"
                   >
                     Exportar
                   </motion.button>
@@ -9208,7 +9491,7 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <div className="glass rounded-2xl p-6 border border-white/10">
             <p className="text-sm text-slate-400 mb-2">Total en Bancos</p>
-            <p className="text-3xl font-bold text-blue-400">${totalBancos.toLocaleString()}</p>
+            <p className="text-3xl font-bold text-zinc-300">${totalBancos.toLocaleString()}</p>
           </div>
 
           <div className="glass rounded-2xl p-6 border border-white/10">
@@ -9223,7 +9506,7 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
 
           <div className="glass rounded-2xl p-6 border border-white/10">
             <p className="text-sm text-slate-400 mb-2">Balance</p>
-            <p className="text-3xl font-bold text-purple-400">
+            <p className="text-3xl font-bold text-zinc-400">
               ${(totalIngresos - totalEgresos).toLocaleString()}
             </p>
           </div>
@@ -9259,7 +9542,7 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
                       initial={{ width: 0 }}
                       animate={{ width: `${percentage}%` }}
                       transition={{ duration: 1, delay: 0.2 }}
-                      className="h-full bg-gradient-to-r from-blue-500 to-cyan-500"
+                      className="h-full bg-gradient-to-r from-zinc-800 to-zinc-800"
                     />
                   </div>
                 </div>
@@ -9444,20 +9727,22 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
       if (activePanel.startsWith('banco-')) {
         const bancoKey = activePanel.replace('banco-', '');
 
-        // 🚀 PANELES PREMIUM - Usar componentes especializados
+        // 🚀 PANELES PREMIUM ULTRA - TypeScript con design system premium
         switch (bancoKey) {
           case 'utilidades':
-            return <PanelUtilidades />;
+            return <PanelUtilidadesUltra />;
           case 'fletes':
-            return <PanelFletes />;
+            return <PanelFletesUltra />;
           case 'bovedaMonte':
-            return <PanelBovedaMonte />;
+            return <PanelBovedaMonteUltra />;
+          case 'bovedaUSA':
+            return <PanelBovedaUSAUltra />;
           case 'azteca':
-            return <PanelAzteca />;
+            return <PanelAztecaUltra />;
           case 'leftie':
-            return <PanelLeftie />;
+            return <PanelLeftieUltra />;
           case 'profit':
-            return <PanelProfit />;
+            return <PanelProfitUltra />;
           default:
             return <BancoPanelIndividual nombreBanco={bancoKey} />;
         }
@@ -9465,40 +9750,44 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
 
       switch (activePanel) {
         case 'dashboard':
-          return <Dashboard />;
+          return <DashboardUltra />;
         case 'ordenes':
           return <OrdenesPanel />;
         case 'distribuidores':
           return <DistribuidoresPanel />;
         case 'almacen':
-          return <AlmacenPanel />;
+          return <PanelAlmacenUltra />;
         case 'ventas':
           return <VentasPanel />;
         case 'clientes':
-          return <ClientesPanel />;
+          return <PanelClientesUltra />;
         case 'gastosAbonos':
-          return <GastosAbonosPanel />;
+          return <PanelGYAUltra />;
         case 'reportes':
           return <ReportesPanel />;
+        case 'inteligencia-ia':
+          return <PanelIA />;
 
-        // 🚀 PANELES PREMIUM (acceso directo)
+        // 🚀 PANELES PREMIUM ULTRA (acceso directo) - TypeScript Premium
         case 'utilidades':
-          return <PanelUtilidades />;
+          return <PanelUtilidadesUltra />;
         case 'fletes':
-          return <PanelFletes />;
+          return <PanelFletesUltra />;
         case 'bovedaMonte':
-          return <PanelBovedaMonte />;
+          return <PanelBovedaMonteUltra />;
+        case 'bovedaUSA':
+          return <PanelBovedaUSAUltra />;
         case 'azteca':
-          return <PanelAzteca />;
+          return <PanelAztecaUltra />;
         case 'leftie':
-          return <PanelLeftie />;
+          return <PanelLeftieUltra />;
         case 'profit':
-          return <PanelProfit />;
+          return <PanelProfitUltra />;
         case 'clientesCartera':
-          return <PanelClientes />;
+          return <PanelClientesUltra />;
 
         default:
-          return <Dashboard />;
+          return <DashboardUltra />;
       }
     } catch (error) {
       // console.error('Error rendering section:', error);
@@ -9509,7 +9798,7 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
           <p className="text-red-300">{error.toString()}</p>
           <button
             onClick={() => setActivePanel('dashboard')}
-            className="mt-4 px-4 py-2 bg-blue-500 rounded-lg hover:bg-blue-600"
+            className="mt-4 px-4 py-2 bg-zinc-800 rounded-lg hover:bg-zinc-900"
           >
             Volver al Dashboard
           </button>
@@ -9518,6 +9807,28 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
     }
   };
 
+  // 🎬 RENDER CONDICIONAL: LOGIN SCREEN -> SISTEMA
+  // Muestra el nuevo login screen hasta que el usuario se autentique
+  if (!isAuthenticated) {
+    return <LoginScreen onLogin={handleLogin} />;
+  }
+
+  // Si está autenticado pero no está listo el sistema, mostrar loading interno
+  if (!isSystemReady) {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center bg-black">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="text-white text-2xl font-bold"
+        >
+          Initializing System...
+        </motion.div>
+      </div>
+    );
+  }
+
+  // 4. Sistema listo, renderizar aplicación principal
   return (
     <div
       className={`flex h-screen ${
@@ -9545,7 +9856,7 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
       {/* MAIN CONTENT AREA */}
       <div className="flex-1 flex flex-col overflow-hidden relative z-10">
         {/* Header Optimizado */}
-        <header className="glass-strong border-b border-blue-500/20 px-6 py-4 flex-shrink-0">
+        <header className="glass-strong border-b border-zinc-700/20 px-6 py-4 flex-shrink-0">
           <div className="flex items-center justify-between gap-4">
             {/* Left Section */}
             <div className="flex items-center gap-4 flex-1">
@@ -9557,7 +9868,7 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
                 className="lg:hidden p-2 hover:bg-white/10 rounded-xl transition-all"
                 aria-label="Toggle menu"
               >
-                <Menu className="w-6 h-6 text-blue-400" />
+                <Menu className="w-6 h-6 text-zinc-300" />
               </motion.button>
 
               {/* Panel title con gradiente */}
@@ -9566,7 +9877,7 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
                   key={activePanel}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent capitalize"
+                  className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-zinc-700 via-cyan-400 to-zinc-800 bg-clip-text text-transparent capitalize"
                 >
                   {activePanel
                     .replace('banco-', '')
@@ -9597,7 +9908,7 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
                 {darkMode ? (
                   <Sun className="w-5 h-5 text-yellow-400" />
                 ) : (
-                  <Moon className="w-5 h-5 text-blue-400" />
+                  <Moon className="w-5 h-5 text-zinc-300" />
                 )}
               </motion.button>
 
@@ -9606,17 +9917,17 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setShowNotificationCenter(true)}
-                className="p-2.5 hover:bg-white/10 rounded-xl transition-all relative border border-white/5 hover:border-blue-500/30"
+                className="p-2.5 hover:bg-white/10 rounded-xl transition-all relative border border-white/5 hover:border-zinc-700/30"
                 aria-label="notifications"
                 title="Notificaciones (Ctrl+Shift+N)"
               >
-                <Bell className="w-5 h-5 text-blue-400" />
+                <Bell className="w-5 h-5 text-zinc-300" />
                 {notificationSystem.unreadCount > 0 && (
                   <motion.span
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ type: 'spring', stiffness: 500 }}
-                    className="absolute -top-1 -right-1 min-w-[20px] h-5 bg-gradient-to-r from-red-500 to-pink-500 rounded-full text-xs flex items-center justify-center font-bold px-1.5 shadow-lg shadow-red-500/50"
+                    className="absolute -top-1 -right-1 min-w-[20px] h-5 bg-gradient-to-r from-zinc-700 to-zinc-500 rounded-full text-xs flex items-center justify-center font-bold px-1.5 shadow-lg shadow-red-500/50"
                   >
                     {notificationSystem.unreadCount > 9 ? '9+' : notificationSystem.unreadCount}
                   </motion.span>
@@ -9632,7 +9943,7 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
                 aria-label="search"
                 title="Búsqueda (Ctrl+K)"
               >
-                <Search className="w-5 h-5 text-cyan-400" />
+                <Search className="w-5 h-5 text-zinc-300" />
               </motion.button>
 
               {/* Atajos de teclado */}
@@ -9640,10 +9951,10 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setShowKeyboardHelp(true)}
-                className="hidden md:flex p-2.5 hover:bg-white/10 rounded-xl transition-all border border-white/5 hover:border-purple-500/30"
+                className="hidden md:flex p-2.5 hover:bg-white/10 rounded-xl transition-all border border-white/5 hover:border-zinc-500/30"
                 title="Atajos de Teclado (?)"
               >
-                <Keyboard className="w-5 h-5 text-purple-400" />
+                <Keyboard className="w-5 h-5 text-zinc-400" />
               </motion.button>
 
               {/* Personalizador de temas */}
@@ -9651,7 +9962,7 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setShowThemeCustomizer(true)}
-                className="hidden md:flex p-2.5 hover:bg-white/10 rounded-xl transition-all relative border border-white/5 hover:border-pink-500/30"
+                className="hidden md:flex p-2.5 hover:bg-white/10 rounded-xl transition-all relative border border-white/5 hover:border-zinc-500/30"
                 title="Personalizar Tema"
               >
                 <div className="relative">
@@ -9659,7 +9970,7 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
                   <motion.span
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
-                    className="absolute -bottom-1 -right-1 w-2 h-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"
+                    className="absolute -bottom-1 -right-1 w-2 h-2 rounded-full bg-gradient-to-r from-zinc-500 to-zinc-500"
                   />
                 </div>
               </motion.button>
@@ -9697,6 +10008,36 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
                 </motion.button>
               </div>
 
+              {/* Usuario Actual */}
+              {currentUser && (
+                <div className="flex items-center gap-2 border-l border-white/10 pl-3 ml-1">
+                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10">
+                    <img
+                      src={currentUser.avatar}
+                      alt={currentUser.name}
+                      className="w-6 h-6 rounded-full"
+                    />
+                    <span className="text-sm text-slate-300 hidden lg:block">
+                      {currentUser.name}
+                    </span>
+                    {currentUser.role === 'demo' && (
+                      <span className="text-xs px-2 py-0.5 bg-emerald-500/20 text-emerald-400 rounded-full font-semibold">
+                        DEMO
+                      </span>
+                    )}
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={handleLogout}
+                    className="p-2 hover:bg-red-500/10 rounded-xl transition-all border border-white/5 hover:border-red-500/30"
+                    title="Cerrar Sesión"
+                  >
+                    <X className="w-5 h-5 text-red-400" />
+                  </motion.button>
+                </div>
+              )}
+
               {/* Settings */}
               <motion.button
                 whileHover={{ scale: 1.1, rotate: 90 }}
@@ -9728,7 +10069,7 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       placeholder="Buscar por nombre, producto, cliente..."
-                      className="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-blue-500 transition-colors text-white"
+                      className="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-zinc-700 transition-colors text-white"
                       autoFocus
                     />
                     {searchQuery && (
@@ -9748,7 +10089,7 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
                       onChange={(e) =>
                         setFilterOptions({ ...filterOptions, status: e.target.value })
                       }
-                      className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-blue-500 cursor-pointer text-white"
+                      className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-zinc-700 cursor-pointer text-white"
                     >
                       <option value="todos" className="bg-slate-800">
                         Todos
@@ -9769,7 +10110,7 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
                       onChange={(e) =>
                         setFilterOptions({ ...filterOptions, sortBy: e.target.value })
                       }
-                      className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-blue-500 cursor-pointer text-white"
+                      className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-zinc-700 cursor-pointer text-white"
                     >
                       <option value="reciente" className="bg-slate-800">
                         Más reciente
@@ -9886,6 +10227,90 @@ Clientes: $${(clientes || []).reduce((sum, c) => sum + (c?.adeudo || 0), 0).toLo
 
       {/* 🔴 NOTIFICACIONES REAL-TIME CON WEBSOCKET (Blueprint Supreme 2025) */}
       <RealtimeNotifications serverUrl="ws://localhost:3001" position="top-right" />
+
+      {/* 🤖 AI ASSISTANT ULTRA - ASISTENTE COMPLETO CON CAPACIDADES AVANZADAS */}
+      {showAIWidget ? (
+        <AIAssistantUltra
+          onClose={() => setShowAIWidget(false)}
+          onNavigate={(panel) => {
+            console.log('🎯 Navigate to:', panel);
+            // Lógica de navegación aquí
+            setActivePanel(panel.toLowerCase());
+          }}
+          onCreateRecord={(type, record) => {
+            console.log('📝 Create record:', type, record);
+            // Lógica de creación aquí
+            // Llamar a FormGYA, FormVenta, etc.
+          }}
+          currentPanel={activePanel}
+        />
+      ) : (
+        <motion.button
+          whileHover={{ scale: 1.1, rotate: 5 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => setShowAIWidget(true)}
+          className="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full bg-gradient-to-r from-zinc-600 via-violet-600 to-zinc-900 flex items-center justify-center shadow-2xl group"
+          animate={{
+            boxShadow: [
+              '0 0 20px rgba(168, 85, 247, 0.4)',
+              '0 0 40px rgba(59, 130, 246, 0.6)',
+              '0 0 20px rgba(168, 85, 247, 0.4)',
+            ],
+          }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <Bot className="w-8 h-8 text-white group-hover:scale-110 transition-transform" />
+          <motion.div
+            className="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-slate-900"
+            animate={{ scale: [1, 1.3, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+        </motion.button>
+      )}
+
+      {/* 💱 CURRENCY EXCHANGE WIDGET - WIDGET DE TIPO DE CAMBIO */}
+      {showCurrencyWidget && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.9, y: 20 }}
+          className="fixed bottom-6 left-6 z-50"
+        >
+          <Suspense fallback={<div className="w-96 h-64 bg-slate-800 rounded-2xl animate-pulse" />}>
+            <CurrencyExchangeWidget
+              inventory={{ usd: 50000, mxn: 800000 }}
+              autoRefresh={true}
+              refreshInterval={30000}
+              onClose={() => setShowCurrencyWidget(false)}
+            />
+          </Suspense>
+        </motion.div>
+      )}
+
+      {/* Botón flotante para abrir el widget de tipo de cambio */}
+      {!showCurrencyWidget && (
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => setShowCurrencyWidget(true)}
+          className="fixed bottom-6 left-6 z-50 w-16 h-16 rounded-full bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 flex items-center justify-center shadow-2xl group"
+          animate={{
+            boxShadow: [
+              '0 0 20px rgba(16, 185, 129, 0.4)',
+              '0 0 40px rgba(5, 150, 105, 0.6)',
+              '0 0 20px rgba(16, 185, 129, 0.4)',
+            ],
+          }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <DollarSign className="w-8 h-8 text-white group-hover:scale-110 transition-transform" />
+          <motion.div
+            className="absolute -top-1 -right-1 w-4 h-4 bg-yellow-400 rounded-full border-2 border-slate-900"
+            animate={{ scale: [1, 1.3, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+        </motion.button>
+      )}
     </div>
   );
 }

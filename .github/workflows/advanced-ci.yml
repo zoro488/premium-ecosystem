@@ -315,7 +315,7 @@ jobs:
       - name: OWASP Dependency Check
         uses: dependency-check/Dependency-Check_Action@main
         with:
-          project: 'premium-ecosystem'
+          project: 'chronos-system'
           path: '.'
           format: 'HTML'
         continue-on-error: true
@@ -378,7 +378,7 @@ jobs:
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
           channelId: ${{ matrix.environment }}
           projectId: premium-ecosystem-1760790572
 

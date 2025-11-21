@@ -26,7 +26,7 @@ const Nexus = lazy(() => import('./apps/Nexus/Nexus'));
 // Componente de Loading
 const LoadingScreen = ({ _appName }) => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-blue-950/20 to-purple-950/20">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-blue-950/20 to-zinc-800/20">
       <div className="text-center">
         <motion.div
           animate={{
@@ -68,9 +68,9 @@ const HomePage = () => {
       description: 'Plataforma de gestión empresarial avanzada',
       icon: Wallet,
       path: '/shadowprime',
-      color: 'from-purple-500 to-pink-500',
-      bgColor: 'from-purple-500/10 to-pink-500/10',
-      borderColor: 'border-purple-500/30',
+      color: 'from-zinc-800 to-zinc-800',
+      bgColor: 'from-zinc-800/10 to-zinc-800/10',
+      borderColor: 'border-zinc-700/30',
     },
     {
       id: 'apollo',
@@ -78,8 +78,8 @@ const HomePage = () => {
       description: 'Sistema de análisis y reportes empresariales',
       icon: Satellite,
       path: '/apollo',
-      color: 'from-orange-500 to-red-500',
-      bgColor: 'from-orange-500/10 to-red-500/10',
+      color: 'from-orange-500 to-zinc-800',
+      bgColor: 'from-orange-500/10 to-zinc-800/10',
       borderColor: 'border-orange-500/30',
     },
     {
@@ -105,10 +105,10 @@ const HomePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950/20 to-purple-950/20">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950/20 to-zinc-800/20">
       {/* Header */}
       <header className="relative overflow-hidden border-b border-white/10 bg-slate-900/50 backdrop-blur-xl">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-cyan-600/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-zinc-800/10 to-cyan-600/10" />
         <div className="relative container mx-auto px-6 py-8">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -117,10 +117,10 @@ const HomePage = () => {
           >
             <div className="flex items-center justify-center gap-3 mb-4">
               <Sparkles className="w-8 h-8 text-blue-400" />
-              <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+              <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-zinc-800 to-cyan-400 bg-clip-text text-transparent">
                 Premium Ecosystem
               </h1>
-              <Sparkles className="w-8 h-8 text-purple-400" />
+              <Sparkles className="w-8 h-8 text-zinc-200" />
             </div>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
               Suite empresarial completa con 5 aplicaciones integradas para maximizar tu

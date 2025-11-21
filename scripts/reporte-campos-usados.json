@@ -1,0 +1,212 @@
+{
+  "PanelDistribuidores": {
+    "hoja": "distribuidores_oc",
+    "totalCampos": 11,
+    "camposUsados": 6,
+    "camposNoUsados": 5,
+    "porcentajeUso": 55,
+    "visualizacion": {
+      "tabla": false,
+      "cards": true,
+      "graficos": true,
+      "formularios": true
+    },
+    "camposEncontrados": [
+      {
+        "campo": "OC",
+        "camelCase": "oc",
+        "ocurrencias": 1
+      },
+      {
+        "campo": "Fecha",
+        "camelCase": "fecha",
+        "ocurrencias": 10
+      },
+      {
+        "campo": "Origen",
+        "camelCase": "origen",
+        "ocurrencias": 1
+      },
+      {
+        "campo": "Cantidad",
+        "camelCase": "cantidad",
+        "ocurrencias": 2
+      },
+      {
+        "campo": "Costo Total",
+        "camelCase": "costoTotal",
+        "ocurrencias": 14
+      },
+      {
+        "campo": "Deuda",
+        "camelCase": "deuda",
+        "ocurrencias": 1
+      }
+    ],
+    "camposFaltantes": [
+      {
+        "campo": "Costo Distribuidor",
+        "camelCase": "costoDistribuidor"
+      },
+      {
+        "campo": "Costo Transporte",
+        "camelCase": "costoTransporte"
+      },
+      {
+        "campo": "Costo Por Unidad",
+        "camelCase": "costoPorUnidad"
+      },
+      {
+        "campo": "Stock Actual",
+        "camelCase": "stockActual"
+      },
+      {
+        "campo": "Pago a Distribuidor",
+        "camelCase": "pagoADistribuidor"
+      }
+    ]
+  },
+  "PanelOrdenesCompra": {
+    "hoja": "distribuidores_oc",
+    "totalCampos": 11,
+    "camposUsados": 9,
+    "camposNoUsados": 2,
+    "porcentajeUso": 82,
+    "visualizacion": {
+      "tabla": false,
+      "cards": true,
+      "graficos": true,
+      "formularios": true
+    },
+    "camposEncontrados": [
+      {
+        "campo": "OC",
+        "camelCase": "oc",
+        "ocurrencias": 7
+      },
+      {
+        "campo": "Fecha",
+        "camelCase": "fecha",
+        "ocurrencias": 10
+      },
+      {
+        "campo": "Origen",
+        "camelCase": "origen",
+        "ocurrencias": 5
+      },
+      {
+        "campo": "Cantidad",
+        "camelCase": "cantidad",
+        "ocurrencias": 9
+      },
+      {
+        "campo": "Costo Distribuidor",
+        "camelCase": "costoDistribuidor",
+        "ocurrencias": 7
+      },
+      {
+        "campo": "Costo Transporte",
+        "camelCase": "costoTransporte",
+        "ocurrencias": 7
+      },
+      {
+        "campo": "Costo Por Unidad",
+        "camelCase": "costoPorUnidad",
+        "ocurrencias": 4
+      },
+      {
+        "campo": "Costo Total",
+        "camelCase": "costoTotal",
+        "ocurrencias": 13
+      },
+      {
+        "campo": "Deuda",
+        "camelCase": "deuda",
+        "ocurrencias": 10
+      }
+    ],
+    "camposFaltantes": [
+      {
+        "campo": "Stock Actual",
+        "camelCase": "stockActual"
+      },
+      {
+        "campo": "Pago a Distribuidor",
+        "camelCase": "pagoADistribuidor"
+      }
+    ]
+  },
+  "PanelVentas": {
+    "hoja": "control_maestro_ventas",
+    "totalCampos": 12,
+    "camposUsados": 8,
+    "camposNoUsados": 4,
+    "porcentajeUso": 67,
+    "visualizacion": {
+      "tabla": false,
+      "cards": true,
+      "graficos": true,
+      "formularios": true
+    },
+    "camposEncontrados": [
+      {
+        "campo": "Fecha",
+        "camelCase": "fecha",
+        "ocurrencias": 5
+      },
+      {
+        "campo": "Cantidad",
+        "camelCase": "cantidad",
+        "ocurrencias": 1
+      },
+      {
+        "campo": "Cliente",
+        "camelCase": "cliente",
+        "ocurrencias": 18
+      },
+      {
+        "campo": "Precio De Venta",
+        "camelCase": "precioDeVenta",
+        "ocurrencias": 9
+      },
+      {
+        "campo": "Ingreso",
+        "camelCase": "ingreso",
+        "ocurrencias": 2
+      },
+      {
+        "campo": "Flete",
+        "camelCase": "flete",
+        "ocurrencias": 1
+      },
+      {
+        "campo": "Utilidad",
+        "camelCase": "utilidad",
+        "ocurrencias": 3
+      },
+      {
+        "campo": "Estatus",
+        "camelCase": "estatus",
+        "ocurrencias": 16
+      }
+    ],
+    "camposFaltantes": [
+      {
+        "campo": "OC Relacionada",
+        "camelCase": "ocRelacionada"
+      },
+      {
+        "campo": "Bóveda Monte",
+        "camelCase": "bóvedaMonte"
+      },
+      {
+        "campo": "Flete Utilidad",
+        "camelCase": "fleteUtilidad"
+      },
+      {
+        "campo": "Concepto",
+        "camelCase": "concepto"
+      }
+    ]
+  }
+}

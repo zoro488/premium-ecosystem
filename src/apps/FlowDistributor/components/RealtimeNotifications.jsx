@@ -63,17 +63,17 @@ function NotificationCard({ notification, onClose }) {
   };
 
   const colors = {
-    info: 'from-blue-500/20 to-blue-600/10 border-blue-500/30',
-    success: 'from-green-500/20 to-green-600/10 border-green-500/30',
-    warning: 'from-yellow-500/20 to-yellow-600/10 border-yellow-500/30',
-    error: 'from-red-500/20 to-red-600/10 border-red-500/30',
+    info: 'from-zinc-800/20 to-zinc-900/10 border-zinc-700/30',
+    success: 'from-green-500/20 to-green-600/10 border-zinc-500/30',
+    warning: 'from-yellow-500/20 to-yellow-600/10 border-zinc-500/30',
+    error: 'from-zinc-700/20 to-zinc-800/10 border-zinc-500/30',
   };
 
   const iconColors = {
-    info: 'text-blue-400',
-    success: 'text-green-400',
-    warning: 'text-yellow-400',
-    error: 'text-red-400',
+    info: 'text-zinc-300',
+    success: 'text-zinc-200',
+    warning: 'text-zinc-200',
+    error: 'text-zinc-200',
   };
 
   return (
@@ -153,14 +153,14 @@ export default function RealtimeNotifications({
         <div className="flex items-center gap-2 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full px-4 py-2">
           {isConnected ? (
             <>
-              <Wifi className="w-4 h-4 text-green-400" />
-              <span className="text-green-400 text-sm font-medium">Conectado</span>
+              <Wifi className="w-4 h-4 text-zinc-200" />
+              <span className="text-zinc-200 text-sm font-medium">Conectado</span>
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
             </>
           ) : (
             <>
-              <WifiOff className="w-4 h-4 text-red-400" />
-              <span className="text-red-400 text-sm font-medium">Desconectado</span>
+              <WifiOff className="w-4 h-4 text-zinc-200" />
+              <span className="text-zinc-200 text-sm font-medium">Desconectado</span>
               <div className="w-2 h-2 bg-red-400 rounded-full" />
             </>
           )}
@@ -177,7 +177,7 @@ export default function RealtimeNotifications({
         <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-3 hover:bg-white/10 transition-all">
           <Bell className="w-5 h-5 text-white" />
           {notifications.length > 0 && (
-            <div className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+            <div className="absolute -top-1 -right-1 bg-zinc-9000 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
               {notifications.length}
             </div>
           )}

@@ -236,7 +236,7 @@ const AnimatedChart = ({
                 onClick={() => setChartType(t)}
                 className={`p-2 rounded transition-all ${
                   chartType === t
-                    ? 'bg-purple-500 text-white'
+                    ? 'bg-zinc-800 text-white'
                     : 'text-slate-400 hover:text-white hover:bg-white/5'
                 }`}
               >

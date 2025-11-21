@@ -1,0 +1,314 @@
+/*
+ * 🎨 Chronos Glitch Effects
+ * Efectos visuales premium que coinciden con el diseño del intro
+ */
+
+/* Glitch Text Effect */
+@keyframes glitch {
+  0% {
+    text-shadow:
+      0.05em 0 0 rgba(59, 130, 246, 0.75),
+      -0.05em -0.025em 0 rgba(34, 211, 238, 0.75),
+      -0.025em 0.05em 0 rgba(124, 58, 237, 0.75);
+  }
+  14% {
+    text-shadow:
+      0.05em 0 0 rgba(59, 130, 246, 0.75),
+      -0.05em -0.025em 0 rgba(34, 211, 238, 0.75),
+      -0.025em 0.05em 0 rgba(124, 58, 237, 0.75);
+  }
+  15% {
+    text-shadow:
+      -0.05em -0.025em 0 rgba(59, 130, 246, 0.75),
+      0.025em 0.025em 0 rgba(34, 211, 238, 0.75),
+      -0.05em -0.05em 0 rgba(124, 58, 237, 0.75);
+  }
+  49% {
+    text-shadow:
+      -0.05em -0.025em 0 rgba(59, 130, 246, 0.75),
+      0.025em 0.025em 0 rgba(34, 211, 238, 0.75),
+      -0.05em -0.05em 0 rgba(124, 58, 237, 0.75);
+  }
+  50% {
+    text-shadow:
+      0.025em 0.05em 0 rgba(59, 130, 246, 0.75),
+      0.05em 0 0 rgba(34, 211, 238, 0.75),
+      0 -0.05em 0 rgba(124, 58, 237, 0.75);
+  }
+  99% {
+    text-shadow:
+      0.025em 0.05em 0 rgba(59, 130, 246, 0.75),
+      0.05em 0 0 rgba(34, 211, 238, 0.75),
+      0 -0.05em 0 rgba(124, 58, 237, 0.75);
+  }
+  100% {
+    text-shadow:
+      -0.025em 0 0 rgba(59, 130, 246, 0.75),
+      -0.025em -0.025em 0 rgba(34, 211, 238, 0.75),
+      -0.025em -0.05em 0 rgba(124, 58, 237, 0.75);
+  }
+}
+
+.glitch-text {
+  animation: glitch 1s linear infinite;
+}
+
+/* Chromatic Aberration */
+@keyframes chromatic {
+  0%,
+  100% {
+    text-shadow:
+      -2px 0 0 rgba(59, 130, 246, 0.7),
+      2px 0 0 rgba(34, 211, 238, 0.7);
+  }
+  50% {
+    text-shadow:
+      2px 0 0 rgba(59, 130, 246, 0.7),
+      -2px 0 0 rgba(34, 211, 238, 0.7);
+  }
+}
+
+.chromatic {
+  animation: chromatic 2s ease-in-out infinite;
+}
+
+/* Neon Glow */
+.neon-glow-blue {
+  text-shadow:
+    0 0 10px rgba(59, 130, 246, 0.8),
+    0 0 20px rgba(59, 130, 246, 0.6),
+    0 0 30px rgba(59, 130, 246, 0.4),
+    0 0 40px rgba(59, 130, 246, 0.2);
+}
+
+.neon-glow-cyan {
+  text-shadow:
+    0 0 10px rgba(34, 211, 238, 0.8),
+    0 0 20px rgba(34, 211, 238, 0.6),
+    0 0 30px rgba(34, 211, 238, 0.4),
+    0 0 40px rgba(34, 211, 238, 0.2);
+}
+
+/* Holographic Effect */
+@keyframes holographic {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.holographic {
+  background: linear-gradient(
+    90deg,
+    rgba(59, 130, 246, 0.3),
+    rgba(34, 211, 238, 0.3),
+    rgba(124, 58, 237, 0.3),
+    rgba(236, 72, 153, 0.3),
+    rgba(59, 130, 246, 0.3)
+  );
+  background-size: 200% 200%;
+  animation: holographic 3s ease infinite;
+}
+
+/* Scan Lines */
+.scanlines {
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+}
+
+/* CRT Effect */
+@keyframes flicker {
+  0% {
+    opacity: 0.95;
+  }
+  5% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0.93;
+  }
+  15% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0.97;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.crt-effect {
+  animation: flicker 0.15s infinite;
+}
+
+/* Gradient Border Animation */
+@keyframes gradient-border {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.gradient-border {
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    rgba(59, 130, 246, 0.5),
+    rgba(34, 211, 238, 0.5),
+    rgba(59, 130, 246, 0.5)
+  );
+  background-size: 200% 200%;
+  animation: gradient-border 3s ease infinite;
+  padding: 2px;
+  border-radius: 0.5rem;
+}
+
+.gradient-border-content {
+  background: #0f1729;
+  border-radius: calc(0.5rem - 2px);
+}
+
+/* Pulse Glow */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(34, 211, 238, 0.8);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Glassmorphism Premium */
+.glass-premium {
+  background: rgba(15, 23, 41, 0.6);
+  backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Cyberpunk Grid */
+.cyber-grid {
+  background-image:
+    linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Loading Bar Glow */
+@keyframes loading-glow {
+  0% {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    box-shadow:
+      0 0 20px rgba(34, 211, 238, 0.8),
+      0 0 30px rgba(59, 130, 246, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+  }
+}
+
+.loading-glow {
+  animation: loading-glow 1.5s ease-in-out infinite;
+}
+
+/* Particle Effect */
+@keyframes particle-float {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(50px);
+    opacity: 0;
+  }
+}
+
+.particle {
+  animation: particle-float 8s linear infinite;
+}
+
+/* Digital Rain Effect */
+@keyframes rain {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.digital-rain {
+  animation: rain 5s linear infinite;
+}
+
+/* Zoom Effect */
+@keyframes zoom-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.zoom-pulse {
+  animation: zoom-pulse 3s ease-in-out infinite;
+}
+
+/* Responsive Glow Intensity */
+@media (max-width: 768px) {
+  .neon-glow-blue,
+  .neon-glow-cyan {
+    text-shadow:
+      0 0 5px rgba(59, 130, 246, 0.6),
+      0 0 10px rgba(59, 130, 246, 0.4);
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .glitch-text,
+  .chromatic,
+  .holographic,
+  .crt-effect,
+  .gradient-border,
+  .pulse-glow,
+  .loading-glow,
+  .particle,
+  .digital-rain,
+  .zoom-pulse {
+    animation: none;
+  }
+}

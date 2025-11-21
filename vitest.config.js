@@ -100,6 +100,13 @@ export default defineConfig({
       '@config': path.resolve(__dirname, './src/config'),
       '@services': path.resolve(__dirname, './src/services'),
       '@lib': path.resolve(__dirname, './src/lib'),
+      '@types': path.resolve(__dirname, './src/types'),
+      '@stores': path.resolve(__dirname, './src/stores'),
+      '@validation': path.resolve(__dirname, './src/validation'),
+      '@flowdistributor': path.resolve(__dirname, './src/apps/FlowDistributor'),
+      '@flowdistributor-types': path.resolve(__dirname, './src/apps/FlowDistributor/types'),
+      '@flowdistributor-services': path.resolve(__dirname, './src/apps/FlowDistributor/services'),
+      '@flowdistributor-hooks': path.resolve(__dirname, './src/apps/FlowDistributor/hooks'),
     },
   },
 });

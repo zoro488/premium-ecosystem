@@ -43,25 +43,25 @@ const KPICard = ({
   // Colores según status
   const statusColors = {
     success: {
-      bg: 'from-green-500/10 to-emerald-500/5',
+      bg: 'from-black/80 to-black/90',
       border: 'border-green-500/20',
       text: 'text-green-400',
       glow: 'shadow-green-500/20',
     },
     warning: {
-      bg: 'from-yellow-500/10 to-orange-500/5',
+      bg: 'from-black/80 to-black/90',
       border: 'border-yellow-500/20',
       text: 'text-yellow-400',
       glow: 'shadow-yellow-500/20',
     },
     danger: {
-      bg: 'from-red-500/10 to-pink-500/5',
+      bg: 'from-black/80 to-black/90',
       border: 'border-red-500/20',
       text: 'text-red-400',
       glow: 'shadow-red-500/20',
     },
     neutral: {
-      bg: 'from-slate-500/10 to-gray-500/5',
+      bg: 'from-black/80 to-black/90',
       border: 'border-slate-500/20',
       text: 'text-slate-400',
       glow: 'shadow-slate-500/20',

@@ -1,0 +1,144 @@
+# VS Code - Archivos a ignorar en búsquedas e indexación
+# Esto mejora dramáticamente el rendimiento
+
+# Documentación de análisis (cientos de archivos)
+ANALISIS_*.md
+REPORTE_*.md
+AUDITORIA_*.md
+VERIFICACION_*.md
+RESUMEN_*.md
+INFORME_*.md
+CONFIRMACION_*.md
+CORRECCION*.md
+IMPLEMENTACION_*.md
+SESION_*.md
+PLAN_*.md
+PROGRESO_*.md
+STATUS_*.md
+ESTADO_*.md
+ESTRATEGIA_*.md
+MIGRACION_*.md
+MEJORAS_*.md
+TRANSFORMACION_*.md
+INTEGRACION_*.md
+DEPLOYMENT_*.md
+SINCRONIZACION_*.md
+OPTIMIZACION_*.md
+FLOWDISTRIBUTOR_*.md
+SISTEMA_*.md
+GUIA_*.md
+SOLUCION_*.md
+FIXES_*.md
+
+# Archivos Excel
+*.xlsx
+Administación_General*.xlsx
+Copia\ de\ *.xlsx
+
+# JSON de datos
+*_export_*.json
+*_data_*.json
+datos_*.json
+analisis_*.json
+tablas_*.json
+clientes_*.json
+gastos_*.json
+panel-*.json
+BASE_DATOS_*.json
+excel_*.json
+validation_*.json
+
+# Scripts de análisis Python
+analizar_*.py
+extraer_*.py
+inspeccionar_*.py
+transformar_*.py
+consolidar_*.py
+mapear_*.py
+insertar_*.py
+aplicar_*.py
+cargar_*.py
+analisis_*.py
+
+# Scripts PowerShell de utilidad
+actualizar-*.ps1
+verificar-*.ps1
+cargar-*.ps1
+limpiar-*.ps1
+resumen-*.ps1
+fix-*.ps1
+add-*.ps1
+setup-*.ps1
+deploy-*.ps1
+install-*.ps1
+validate-*.ps1
+quick-*.ps1
+auto-*.ps1
+checklist-*.ps1
+DEMO-*.ps1
+FULL-*.ps1
+
+# Scripts Batch
+*.bat
+
+# Scripts Shell
+activate-*.sh
+setup-*.sh
+deploy.sh
+
+# JavaScript de utilidad
+activate-*.js
+test-*.js
+debug-*.js
+calcular-*.js
+cargar-*.js
+dashboard-*.js
+generar-*.js
+import-*.js
+verificar-*.js
+gemini-cli.js
+gya_export_completo.js
+list-gemini-models.js
+auditoria-completa-datos.js
+
+# Archivos de texto
+*.txt
+ACCESO-RAPIDO.txt
+CONFIRMACION_FINAL.txt
+LEEME-*.txt
+SISTEMA-LISTO-AHORA.txt
+STATUS_VISUAL.txt
+validation_summary.txt
+
+# Backups y carpetas temporales
+.backup-*/
+backups/
+Nueva\ carpeta/
+output/
+reports/
+test-output-manual/
+
+# Videos
+*.mp4
+*.mov
+*.avi
+
+# Otros
+nul
+Zoom\ Glitch\ Logo\ -\ Square/
+AdobeStock_*.mp4
+codacy-cli.jar
+
+# HTML de utilidad
+LIMPIAR_LOCALSTORAGE*.html
+verify-firebase.html
+GUIA_VISUAL_CAMBIOS.html
+
+# Configuraciones duplicadas
+.eslintrc-production.json
+.eslintrc.ultra.json
+.npmrc.example
+.env.production.template
+docker-compose.override.yml
+Dockerfile.e2e
+Dockerfile.test

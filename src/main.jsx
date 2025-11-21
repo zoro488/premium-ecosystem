@@ -2,10 +2,31 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import * as Sentry from '@sentry/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import App from './App.jsx';
+import App from './apps/FlowDistributor/chronos-system/App.tsx';
 import ErrorBoundary from './components/ErrorBoundary.jsx';
+import { initializeTracing } from './config/tracing';
 import './index.css';
+
+// Inicializar tracing con OpenTelemetry (opcional - sin bloquear app)
+try {
+  initializeTracing();
+} catch (error) {
+  console.warn('[Main] Tracing no disponible:', error);
+}
+
+// Create QueryClient instance
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000, // 5 minutes
+      cacheTime: 10 * 60 * 1000, // 10 minutes
+      retry: 3,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 // Initialize Sentry only in production
 if (import.meta.env.PROD && import.meta.env.VITE_SENTRY_DSN) {
@@ -30,8 +51,51 @@ if (import.meta.env.PROD && import.meta.env.VITE_SENTRY_DSN) {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ErrorBoundary>
-      <App />
-    </ErrorBoundary>
+    <QueryClientProvider client={queryClient}>
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>
+    </QueryClientProvider>
   </React.StrictMode>
 );
+
+// HMR (Hot Module Replacement) - Solo en desarrollo
+if (import.meta.hot) {
+  let reconnectAttempts = 0;
+  const maxReconnectAttempts = 5;
+
+  import.meta.hot.on('vite:ws:disconnect', () => {
+    if (reconnectAttempts < maxReconnectAttempts) {
+      reconnectAttempts++;
+      // eslint-disable-next-line no-console
+      console.log(
+        `🔄 WebSocket desconectado. Intento ${reconnectAttempts}/${maxReconnectAttempts}`
+      );
+
+      // Intentar reconectar con backoff exponencial
+      setTimeout(
+        () => {
+          window.location.reload();
+        },
+        Math.min(1000 * 2 ** reconnectAttempts, 10000)
+      );
+    } else {
+      // eslint-disable-next-line no-console
+      console.error('❌ No se pudo reconectar. Reinicia el servidor con: npm run dev');
+    }
+  });
+
+  import.meta.hot.on('vite:ws:connect', () => {
+    if (reconnectAttempts > 0) {
+      // eslint-disable-next-line no-console
+      console.log('✅ WebSocket reconectado');
+      reconnectAttempts = 0;
+    }
+  });
+
+  // Manejar errores de HMR
+  import.meta.hot.on('vite:error', (error) => {
+    // eslint-disable-next-line no-console
+    console.error('❌ Error de HMR:', error);
+  });
+}

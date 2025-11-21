@@ -1,0 +1,439 @@
+name: 🔒 Security Audit & Compliance
+
+on:
+  schedule:
+    # Auditoría semanal los lunes a las 04:00 UTC
+    - cron: '0 4 * * 1'
+    # Escaneo diario ligero a las 06:00 UTC
+    - cron: '0 6 * * *'
+
+  push:
+    branches:
+      - main
+      - develop
+
+  pull_request:
+    branches:
+      - main
+      - develop
+
+  workflow_dispatch:
+    inputs:
+      scan_type:
+        description: 'Tipo de escaneo'
+        required: true
+        type: choice
+        options:
+          - full
+          - quick
+          - dependencies
+          - code
+          - secrets
+        default: 'full'
+
+env:
+  NODE_VERSION: '20.x'
+
+jobs:
+  dependency-scan:
+    name: 📦 Dependency Security Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🔍 NPM Audit
+        run: |
+          npm audit --json > npm-audit.json || true
+          npm audit
+
+      - name: 📊 Analyze vulnerabilities
+        run: |
+          CRITICAL=$(jq '.metadata.vulnerabilities.critical // 0' npm-audit.json)
+          HIGH=$(jq '.metadata.vulnerabilities.high // 0' npm-audit.json)
+          MODERATE=$(jq '.metadata.vulnerabilities.moderate // 0' npm-audit.json)
+
+          echo "🔴 Critical: $CRITICAL"
+          echo "🟠 High: $HIGH"
+          echo "🟡 Moderate: $MODERATE"
+
+          if [ "$CRITICAL" -gt 0 ]; then
+            echo "❌ Critical vulnerabilities found!"
+            exit 1
+          fi
+
+      - name: 🔍 Snyk security scan
+        uses: snyk/actions/node@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high --json-file-output=snyk-report.json
+
+      - name: 📤 Upload security reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-security-reports
+          path: |
+            npm-audit.json
+            snyk-report.json
+
+  code-security-scan:
+    name: 🔍 Code Security Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔍 Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript, typescript
+          queries: security-and-quality
+
+      - name: 🏗️ Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: 🔍 Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:javascript"
+
+  secret-scan:
+    name: 🔐 Secret Detection
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔍 TruffleHog OSS
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ github.event.repository.default_branch }}
+          head: HEAD
+          extra_args: --debug --only-verified
+
+      - name: 🔍 GitLeaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
+
+      - name: 🔍 Check environment files
+        run: |
+          echo "Checking for exposed secrets in config files..."
+
+          # Verificar archivos .env
+          if find . -name ".env" -not -path "*/node_modules/*" | grep -q .; then
+            echo "⚠️ Warning: .env files found (should be in .gitignore)"
+            find . -name ".env" -not -path "*/node_modules/*"
+          fi
+
+          # Verificar claves de Firebase
+          if grep -r "AIza" --include="*.js" --include="*.ts" --include="*.json" --exclude-dir=node_modules .; then
+            echo "❌ Possible Firebase API keys found in code!"
+            exit 1
+          fi
+
+  firebase-security:
+    name: 🔥 Firebase Security Rules
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: 🔍 Validate Firestore Rules
+        run: |
+          if [ -f "firestore.rules" ]; then
+            echo "✅ Firestore rules found"
+
+            # Verificar reglas básicas de seguridad
+            if grep -q "allow read, write: if true" firestore.rules; then
+              echo "❌ CRITICAL: Insecure rules found (allow all)!"
+              exit 1
+            fi
+
+            if grep -q "request.auth" firestore.rules; then
+              echo "✅ Authentication checks present"
+            else
+              echo "⚠️ Warning: No authentication checks found"
+            fi
+          else
+            echo "❌ firestore.rules not found!"
+            exit 1
+          fi
+
+      - name: 🔍 Validate Storage Rules
+        run: |
+          if [ -f "storage.rules" ]; then
+            echo "✅ Storage rules found"
+
+            if grep -q "allow read, write: if true" storage.rules; then
+              echo "❌ CRITICAL: Insecure storage rules!"
+              exit 1
+            fi
+          else
+            echo "⚠️ Warning: storage.rules not found"
+          fi
+
+      - name: 🧪 Test Firestore Rules
+        run: npm run test:firestore-rules || echo "⚠️ Firestore rules tests not configured"
+
+  vulnerability-assessment:
+    name: 🎯 Vulnerability Assessment
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 🔍 OWASP Dependency Check
+        uses: dependency-check/Dependency-Check_Action@main
+        with:
+          project: 'chronos-system'
+          path: '.'
+          format: 'ALL'
+          args: >
+            --enableRetired
+            --enableExperimental
+
+      - name: 📤 Upload OWASP reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: owasp-reports
+          path: reports/
+
+  compliance-check:
+    name: ✅ Compliance Verification
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 📋 Check required files
+        run: |
+          REQUIRED_FILES=(
+            "LICENSE"
+            "README.md"
+            "SECURITY.md"
+            "CODE_OF_CONDUCT.md"
+            ".github/PULL_REQUEST_TEMPLATE.md"
+            ".github/ISSUE_TEMPLATE/bug_report.md"
+            "firestore.rules"
+            "firebase.json"
+          )
+
+          MISSING_FILES=()
+
+          for file in "${REQUIRED_FILES[@]}"; do
+            if [ ! -f "$file" ]; then
+              MISSING_FILES+=("$file")
+              echo "❌ Missing: $file"
+            else
+              echo "✅ Found: $file"
+            fi
+          done
+
+          if [ ${#MISSING_FILES[@]} -gt 0 ]; then
+            echo "⚠️ Warning: ${#MISSING_FILES[@]} required files missing"
+          fi
+
+      - name: 🔍 Check security headers
+        run: |
+          # Verificar configuración de headers de seguridad
+          if [ -f "firebase.json" ]; then
+            if grep -q "headers" firebase.json; then
+              echo "✅ Security headers configured"
+            else
+              echo "⚠️ Warning: Security headers not configured"
+            fi
+          fi
+
+      - name: 📊 License compliance
+        run: |
+          npm install -g license-checker
+          license-checker --json --out licenses.json
+
+          # Verificar licencias problemáticas
+          PROBLEMATIC=$(jq -r 'to_entries[] | select(.value.licenses | contains("GPL")) | .key' licenses.json || echo "")
+
+          if [ -n "$PROBLEMATIC" ]; then
+            echo "⚠️ Warning: GPL licenses found:"
+            echo "$PROBLEMATIC"
+          fi
+
+  penetration-testing:
+    name: 🎯 Basic Penetration Testing
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' || github.event.inputs.scan_type == 'full'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 🔍 SQL Injection check
+        run: |
+          echo "Checking for potential SQL injection vulnerabilities..."
+
+          # Buscar patrones inseguros
+          if grep -r "query.*\+.*req\." --include="*.js" --include="*.ts" --exclude-dir=node_modules .; then
+            echo "⚠️ Potential SQL injection vulnerability found"
+          fi
+
+      - name: 🔍 XSS vulnerability check
+        run: |
+          echo "Checking for potential XSS vulnerabilities..."
+
+          # Buscar uso de dangerouslySetInnerHTML
+          if grep -r "dangerouslySetInnerHTML" --include="*.jsx" --include="*.tsx" --exclude-dir=node_modules .; then
+            echo "⚠️ dangerouslySetInnerHTML usage found - verify sanitization"
+          fi
+
+      - name: 🔍 CSRF protection check
+        run: |
+          echo "Checking CSRF protection..."
+
+          if grep -r "csrf" --include="*.js" --include="*.ts" --exclude-dir=node_modules . | grep -i "token\|protection"; then
+            echo "✅ CSRF protection found"
+          else
+            echo "⚠️ Warning: No CSRF protection detected"
+          fi
+
+  security-report:
+    name: 📊 Generate Security Report
+    runs-on: ubuntu-latest
+    needs: [dependency-scan, code-security-scan, secret-scan, firebase-security, vulnerability-assessment, compliance-check]
+    if: always()
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 📥 Download all reports
+        uses: actions/download-artifact@v4
+        with:
+          path: security-reports/
+
+      - name: 📊 Consolidate reports
+        run: |
+          mkdir -p final-report
+
+          cat > final-report/security-audit-$(date +%Y%m%d).md <<EOF
+          # 🔒 Security Audit Report
+
+          **Date:** $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          **Repository:** ${{ github.repository }}
+          **Branch:** ${{ github.ref_name }}
+          **Commit:** ${{ github.sha }}
+
+          ## 📊 Summary
+
+          | Check | Status |
+          |-------|--------|
+          | Dependency Scan | ${{ needs.dependency-scan.result }} |
+          | Code Security | ${{ needs.code-security-scan.result }} |
+          | Secret Detection | ${{ needs.secret-scan.result }} |
+          | Firebase Security | ${{ needs.firebase-security.result }} |
+          | Vulnerability Assessment | ${{ needs.vulnerability-assessment.result }} |
+          | Compliance Check | ${{ needs.compliance-check.result }} |
+
+          ## 🎯 Recommendations
+
+          1. ✅ Mantener dependencias actualizadas
+          2. ✅ Revisar y actualizar reglas de Firestore regularmente
+          3. ✅ Rotar claves y secretos periódicamente
+          4. ✅ Implementar monitoreo de seguridad continuo
+          5. ✅ Realizar auditorías de código regulares
+
+          ## 📎 Detailed Reports
+
+          Ver archivos adjuntos para reportes detallados.
+          EOF
+
+          cat final-report/security-audit-*.md
+
+      - name: 📤 Upload consolidated report
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-audit-report
+          path: final-report/
+          retention-days: 90
+
+  notify-security-team:
+    name: 📢 Notify Security Team
+    runs-on: ubuntu-latest
+    needs: [security-report]
+    if: |
+      always() &&
+      (needs.dependency-scan.result == 'failure' ||
+       needs.code-security-scan.result == 'failure' ||
+       needs.secret-scan.result == 'failure' ||
+       needs.firebase-security.result == 'failure')
+
+    steps:
+      - name: 📧 Send security alert
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: '🚨 SECURITY ALERT: Vulnerabilities Detected'
+          body: |
+            🚨 Se han detectado vulnerabilidades de seguridad.
+
+            📅 Fecha: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+            📦 Repositorio: ${{ github.repository }}
+            🌿 Branch: ${{ github.ref_name }}
+            🔗 Detalles: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+            Por favor, revisa los reportes y toma acción inmediata.
+          to: security@company.com,${{ secrets.NOTIFICATION_EMAIL }}
+          from: Security Scanner
+
+      - name: 🐛 Create security issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = `🚨 **ALERTA DE SEGURIDAD**\n\n` +
+                        `Se han detectado vulnerabilidades durante el escaneo automático.\n\n` +
+                        `**Timestamp:** ${new Date().toISOString()}\n` +
+                        `**Branch:** ${{ github.ref_name }}\n` +
+                        `**Run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\n\n` +
+                        `## 📋 Estado de Escaneos\n` +
+                        `- Dependencias: ${{ needs.dependency-scan.result }}\n` +
+                        `- Código: ${{ needs.code-security-scan.result }}\n` +
+                        `- Secretos: ${{ needs.secret-scan.result }}\n` +
+                        `- Firebase: ${{ needs.firebase-security.result }}\n\n` +
+                        `## ⚠️ ACCIÓN REQUERIDA\n` +
+                        `- [ ] Revisar reportes de seguridad\n` +
+                        `- [ ] Identificar vulnerabilidades críticas\n` +
+                        `- [ ] Implementar fixes\n` +
+                        `- [ ] Verificar y re-ejecutar escaneo\n` +
+                        `- [ ] Actualizar documentación de seguridad`;
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🚨 SECURITY: Vulnerabilities Detected - ${new Date().toISOString().split('T')[0]}`,
+              body: body,
+              labels: ['security', 'critical', 'automated', 'high-priority'],
+              assignees: ['zoro488']
+            });

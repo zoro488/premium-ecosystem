@@ -1,0 +1,206 @@
+{
+  "ventas": {
+    "columnas": [
+      {
+        "numero": 1,
+        "letra": "A",
+        "nombre": "Fecha"
+      },
+      {
+        "numero": 2,
+        "letra": "B",
+        "nombre": "OC Relacionada"
+      },
+      {
+        "numero": 3,
+        "letra": "C",
+        "nombre": "Cantidad"
+      },
+      {
+        "numero": 4,
+        "letra": "D",
+        "nombre": "Cliente"
+      },
+      {
+        "numero": 5,
+        "letra": "E",
+        "nombre": "Bóveda Monte"
+      },
+      {
+        "numero": 6,
+        "letra": "F",
+        "nombre": "Precio De Venta"
+      },
+      {
+        "numero": 7,
+        "letra": "G",
+        "nombre": "Ingreso"
+      },
+      {
+        "numero": 8,
+        "letra": "H",
+        "nombre": "Flete"
+      },
+      {
+        "numero": 9,
+        "letra": "I",
+        "nombre": "Flete Utilidad"
+      },
+      {
+        "numero": 10,
+        "letra": "J",
+        "nombre": "Utilidad"
+      },
+      {
+        "numero": 11,
+        "letra": "K",
+        "nombre": "Estatus"
+      },
+      {
+        "numero": 12,
+        "letra": "L",
+        "nombre": "Concepto"
+      }
+    ],
+    "total_columnas": 12,
+    "total_registros": 80,
+    "ejemplo": [
+      {
+        "Fecha": "2025-08-23",
+        "OC Relacionada": "OC0001",
+        "Cantidad": 150.0,
+        "Cliente": "Bódega M-P",
+        "Bóveda Monte": 945000,
+        "Precio De Venta": 6300.0,
+        "Ingreso": 945000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 75000,
+        "Utilidad": 0,
+        "Estatus": "Pendiente",
+        "Concepto": null
+      },
+      {
+        "Fecha": "2025-08-23",
+        "OC Relacionada": "OC0001",
+        "Cantidad": 60.0,
+        "Cliente": "Valle",
+        "Bóveda Monte": 378000,
+        "Precio De Venta": 6800.0,
+        "Ingreso": 408000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 30000,
+        "Utilidad": 0,
+        "Estatus": "Pendiente",
+        "Concepto": null
+      },
+      {
+        "Fecha": "2025-08-23",
+        "OC Relacionada": "OC0001",
+        "Cantidad": 50.0,
+        "Cliente": "Ax",
+        "Bóveda Monte": 315000,
+        "Precio De Venta": 7000.0,
+        "Ingreso": 350000,
+        "Flete": "Aplica",
+        "Flete Utilidad": 25000,
+        "Utilidad": 10000,
+        "Estatus": "Pagado",
+        "Concepto": null
+      }
+    ]
+  },
+  "gastos_abonos": {
+    "columnas": [
+      {
+        "numero": 13,
+        "letra": "M",
+        "nombre": "Panel"
+      },
+      {
+        "numero": 14,
+        "letra": "N",
+        "nombre": "RF Actual"
+      },
+      {
+        "numero": 15,
+        "letra": "O",
+        "nombre": "Fecha"
+      },
+      {
+        "numero": 16,
+        "letra": "P",
+        "nombre": "Origen del Gasto o Abono"
+      },
+      {
+        "numero": 17,
+        "letra": "Q",
+        "nombre": "Valor"
+      },
+      {
+        "numero": 18,
+        "letra": "R",
+        "nombre": "TC"
+      },
+      {
+        "numero": 19,
+        "letra": "S",
+        "nombre": "Pesos"
+      },
+      {
+        "numero": 20,
+        "letra": "T",
+        "nombre": "Destino"
+      },
+      {
+        "numero": 21,
+        "letra": "U",
+        "nombre": "Concepto"
+      },
+      {
+        "numero": 22,
+        "letra": "V",
+        "nombre": "Observaciones"
+      }
+    ],
+    "total_columnas": 10,
+    "total_registros": 8,
+    "ejemplo": [
+      {
+        "Panel": "Almacén Villa",
+        "RF Actual": 165,
+        "Fecha": "2025-08-23",
+        "Origen del Gasto o Abono": "Valle",
+        "Valor": 189000.0,
+        "TC": 0.0,
+        "Pesos": 0,
+        "Destino": "Boveda Monte",
+        "Concepto": null,
+        "Observaciones": null
+      },
+      {
+        "Panel": "Bóveda Monte",
+        "RF Actual": 234750,
+        "Fecha": "2025-08-23",
+        "Origen del Gasto o Abono": "Valle",
+        "Valor": 30000.0,
+        "TC": 0.0,
+        "Pesos": 0,
+        "Destino": "Flete Sur",
+        "Concepto": null,
+        "Observaciones": null
+      },
+      {
+        "Panel": "Flete Sur",
+        "RF Actual": 168199,
+        "Fecha": "2025-08-25",
+        "Origen del Gasto o Abono": "Lamas",
+        "Valor": 213000.0,
+        "TC": 0.0,
+        "Pesos": 0,
+        "Destino": "Leftie",
+        "Concepto": " playa azul#30 (7,100x30)",
+        "Observaciones": "lamas #30 playa azul"
+      }
+    ]
+  }
+}

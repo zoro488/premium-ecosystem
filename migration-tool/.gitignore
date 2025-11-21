@@ -1,0 +1,24 @@
+# Dependencias de Node
+/node_modules
+package-lock.json
+
+# Archivos sensibles - NUNCA SUBIR A GIT
+serviceAccountKey.json
+*.json.key
+
+# Archivos de datos locales
+BASE_DATOS_FLOWDISTRIBUTOR_UNIFICADO.json
+
+# Logs
+*.log
+npm-debug.log*
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo

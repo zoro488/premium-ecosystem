@@ -1,4 +1,3 @@
-
 // Componente simple de prueba
 const TestApp = () => {
   return (

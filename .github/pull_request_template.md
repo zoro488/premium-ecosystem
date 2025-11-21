@@ -1,53 +1,180 @@
-# Pull Request
+# 🚀 Pull Request
 
-## Descripción
-<!-- Descripción clara y concisa de los cambios -->
+<!--
+AUTOMATED EVALUATION: This PR will be evaluated by our comprehensive CI/CD pipeline
+✅ Lint & Format | 📘 Type Check | 🧪 Tests | ⚡ Performance | 🔒 Security | ♿ Accessibility
+-->
 
-## Tipo de Cambio
-<!-- Marca con 'x' las opciones que apliquen -->
+## 📋 PR Metadata
+**Type:** <!-- Feature / Bug Fix / Refactor / Docs / Performance / Security -->
+**Priority:** <!-- P0 - Critical / P1 - High / P2 - Medium / P3 - Low -->
+**Estimated Effort:** <!-- S / M / L / XL -->
+**Deployment Risk:** <!-- Low / Medium / High / Critical -->
 
-- [ ] Bug fix (cambio que arregla un issue)
-- [ ] Nueva funcionalidad (cambio que agrega funcionalidad)
-- [ ] Breaking change (cambio que rompe compatibilidad)
-- [ ] Refactoring (mejora de código sin cambiar funcionalidad)
-- [ ] Documentación
-- [ ] Testing
-- [ ] CI/CD
-- [ ] Otro (especificar):
+## 📖 Description
+<!-- Provide a detailed description of the changes -->
 
-## Aplicaciones Afectadas
-<!-- Marca con 'x' todas las que apliquen -->
 
-- [ ] FlowDistributor
-- [ ] ShadowPrime
-- [ ] Apollo
-- [ ] Synapse
-- [ ] Nexus
-- [ ] Hub Principal
-- [ ] Componentes Compartidos
-- [ ] Configuración/Build
+## 🎯 Type of Change
+<!-- Mark with 'x' the type(s) that apply -->
+- [ ] 🐛 **Bug Fix** - Non-breaking change which fixes an issue
+- [ ] ✨ **New Feature** - Non-breaking change which adds functionality
+- [ ] 💥 **Breaking Change** - Fix or feature that would cause existing functionality to not work
+- [ ] 📝 **Documentation** - Documentation only changes
+- [ ] ♻️ **Refactoring** - Code changes that neither fix a bug nor add a feature
+- [ ] ⚡ **Performance** - Changes that improve performance
+- [ ] 🧪 **Testing** - Adding or updating tests
+- [ ] 🔧 **Configuration** - Changes to configuration files
+- [ ] 🔒 **Security** - Security vulnerability fix or improvement
 
-## Issue Relacionado
-<!-- Vincula el issue que resuelve este PR -->
+## 🎨 Applications Affected
+<!-- Mark with 'x' all that apply -->
+- [ ] **FlowDistributor** - Main business management system
+- [ ] **SmartSales** - Intelligent sales system
+- [ ] **ClientHub** - CRM system
+- [ ] **AnalyticsPro** - Analytics dashboard
+- [ ] **TeamSync** - Team collaboration
+- [ ] **Shared Components** - Cross-app components
+- [ ] **Backend/Firebase** - Database, auth, functions
+- [ ] **CI/CD Pipeline** - Build, test, deployment
+- [ ] **Infrastructure** - Configuration, Docker, etc.
 
-Closes #(issue_number)
-Fixes #(issue_number)
-Related to #(issue_number)
+## 🔗 Related Issues
+<!-- Link related issues using #issue_number -->
+Closes #
+Fixes #
+Related to #
 
-## Cambios Realizados
-<!-- Lista detallada de cambios -->
+## 📝 Changes Made
+<!-- Provide a detailed list of changes -->
 
+### Frontend Changes
 -
+
+### Backend Changes
 -
+
+### Configuration Changes
 -
 
-## Screenshots o Videos
-<!-- Si aplica, agrega imágenes o videos demostrando los cambios -->
+## ✅ Comprehensive Checklist
 
-## Testing Realizado
-<!-- Describe las pruebas que realizaste -->
+### 🎨 Code Quality (Required)
+- [ ] Code follows project style guidelines (ESLint + Prettier)
+- [ ] Self-review completed
+- [ ] Code is well-commented (complex logic explained)
+- [ ] Documentation updated (README, JSDoc, inline comments)
+- [ ] No console.log or debugging code remaining
+- [ ] No hardcoded values (use env variables/constants)
 
-- [ ] Unit tests agregados/actualizados
+### 🧪 Testing (Required)
+- [ ] Unit tests added/updated for new code
+- [ ] E2E tests added for critical flows
+- [ ] All tests passing locally
+- [ ] Test coverage maintained or improved
+- [ ] Edge cases considered and tested
+
+**Test Results:**
+```bash
+npm test           # ✅ / ❌ Passing
+npm run test:e2e   # ✅ / ❌ Passing
+Coverage: __%      # Target: ≥80%
+```
+
+### 📘 TypeScript (if applicable)
+- [ ] No TypeScript errors
+- [ ] Type definitions added for new code
+- [ ] No `any` type (or properly justified with comment)
+- [ ] Strict mode compliance maintained
+- [ ] Interface/Type definitions exported where needed
+
+**TypeScript Check:**
+```bash
+npx tsc --noEmit   # ✅ / ❌ Errors: 0
+```
+
+### 🎨 Linting & Formatting (Required)
+- [ ] ESLint passes with 0 errors, 0 warnings
+- [ ] Prettier formatting applied
+- [ ] Import statements organized
+- [ ] Unused imports removed
+
+**Lint Check:**
+```bash
+npm run lint       # ✅ / ❌
+npm run format:check # ✅ / ❌
+```
+
+### ⚡ Performance (if applicable)
+- [ ] Bundle size impact assessed (<1MB target)
+- [ ] Lazy loading implemented where appropriate
+- [ ] useMemo/useCallback used for expensive operations
+- [ ] Images optimized (WebP format)
+- [ ] No performance regressions
+
+**Performance Metrics:**
+```
+Bundle Size Impact: +/- __ KB
+Lighthouse Score: __/100 (target: ≥90)
+FCP: __ms (target: <1.8s)
+LCP: __ms (target: <2.5s)
+```
+
+### 🔒 Security (Required)
+- [ ] No sensitive data exposed (API keys, passwords, tokens)
+- [ ] Input validation implemented
+- [ ] SQL injection / XSS vulnerabilities checked
+- [ ] Dependencies scanned (npm audit)
+- [ ] Firebase security rules updated (if schema change)
+- [ ] Environment variables used for secrets
+
+**Security Audit:**
+```bash
+npm audit          # ✅ / ❌
+Critical: 0        # Target: 0
+High: 0            # Target: 0
+```
+
+### ♿ Accessibility (for UI changes)
+- [ ] ARIA labels added where needed
+- [ ] Keyboard navigation tested
+- [ ] Color contrast ≥4.5:1 (WCAG AA)
+- [ ] Screen reader compatible
+- [ ] Focus indicators visible
+- [ ] Semantic HTML used
+
+**Accessibility Score:**
+```
+axe-core violations: __ (target: 0 critical)
+WCAG 2.1 Level: AA ✅ / ❌
+```
+
+### 📱 Responsive Design (for UI changes)
+- [ ] Mobile tested (375px viewport)
+- [ ] Tablet tested (768px viewport)
+- [ ] Desktop tested (1920px viewport)
+- [ ] Touch targets ≥44x44px
+- [ ] Text legible at all sizes
+
+**Cross-Browser Testing:**
+- [ ] Chrome (latest) ✅ / ❌
+- [ ] Firefox (latest) ✅ / ❌
+- [ ] Safari (latest) ✅ / ❌
+- [ ] Edge (latest) ✅ / ❌
+
+### 🔥 Firebase/Backend (if applicable)
+- [ ] Firestore security rules tested
+- [ ] Composite indexes created for queries
+- [ ] Cloud Functions tested locally (emulator)
+- [ ] Data migrations documented
+- [ ] Backup/rollback plan prepared
+
+### 🚀 Deployment Readiness
+- [ ] Environment variables documented
+- [ ] Migration steps documented (if DB change)
+- [ ] Rollback plan prepared (for risky changes)
+- [ ] Monitoring/alerts configured
+- [ ] Changelog updated
 - [ ] E2E tests agregados/actualizados
 - [ ] Testing manual realizado
 - [ ] Testing en diferentes navegadores

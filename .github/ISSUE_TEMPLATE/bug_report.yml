@@ -1,114 +1,48 @@
-name: Bug Report
-description: Reportar un error o problema en el sistema
-title: "[BUG] "
-labels: ["bug", "needs-triage"]
-assignees: []
-
+name: 🐞 Bug Report
+description: Report a bug or unexpected behavior in the GitHub Copilot CLI.
+type: Bug
+labels:
+  - "triage"
 body:
   - type: markdown
     attributes:
       value: |
-        Gracias por reportar un bug. Por favor completa la siguiente información para ayudarnos a resolverlo.
-
-  - type: dropdown
-    id: app
-    attributes:
-      label: Aplicación Afectada
-      description: ¿En qué aplicación del ecosistema ocurre el bug?
-      options:
-        - FlowDistributor
-        - ShadowPrime
-        - Apollo
-        - Synapse
-        - Nexus
-        - Hub Principal
-        - Componentes Compartidos
-        - Otro
-    validations:
-      required: true
-
-  - type: dropdown
-    id: severity
-    attributes:
-      label: Severidad
-      description: ¿Qué tan grave es el problema?
-      options:
-        - Crítico - El sistema no funciona
-        - Alto - Funcionalidad importante afectada
-        - Medio - Problema molesto pero con workaround
-        - Bajo - Problema menor o cosmético
-    validations:
-      required: true
-
+        <br />
+        Thank you for taking the time to report a bug!  Please answer each question below to the best of your ability; it is okay to leave questions blank if you have to.
   - type: textarea
     id: description
     attributes:
-      label: Descripción del Bug
-      description: Descripción clara y concisa del problema
-      placeholder: El sistema falla cuando...
-    validations:
-      required: true
-
-  - type: textarea
-    id: steps
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+  - type: input
+    id: version
     attributes:
-      label: Pasos para Reproducir
-      description: ¿Cómo podemos reproducir el error?
+      label: Affected version
+      description: The version of the `copilot` where you encountered the bug (if applicable).
       placeholder: |
-        1. Ir a '...'
-        2. Hacer clic en '...'
-        3. Scroll down a '...'
-        4. Ver error
-    validations:
-      required: true
-
+        Paste output from `copilot --version`
   - type: textarea
-    id: expected
+    id: steps_to_reproduce
     attributes:
-      label: Comportamiento Esperado
-      description: ¿Qué esperabas que sucediera?
-      placeholder: Debería...
-    validations:
-      required: true
-
+      label: Steps to reproduce the behavior
+      description: A clear and concise list of steps to reproduce the behavior. Please include any commands you ran and their output.
+      placeholder: |
+        1. Type '...'
+        2. View the output '...'
+        3. See error
   - type: textarea
-    id: actual
+    id: expected_behavior
     attributes:
-      label: Comportamiento Actual
-      description: ¿Qué sucede en realidad?
-      placeholder: En su lugar...
-    validations:
-      required: true
-
+      label: Expected behavior
+      description: A clear and concise description of what you expected to happen.
   - type: textarea
-    id: screenshots
+    id: additional_context
     attributes:
-      label: Screenshots o Videos
-      description: Si es aplicable, agrega capturas de pantalla o videos
-      placeholder: Arrastra y suelta imágenes aquí
-
-  - type: textarea
-    id: environment
-    attributes:
-      label: Entorno
-      description: Información sobre tu entorno de ejecución
-      value: |
-        - OS: [e.g. Windows 11, macOS 13, Ubuntu 22.04]
-        - Browser: [e.g. Chrome 120, Firefox 121, Safari 17]
-        - Node version: [e.g. 18.17.0]
-        - Build: [e.g. Development, Production]
-    validations:
-      required: true
-
-  - type: textarea
-    id: logs
-    attributes:
-      label: Logs de Error
-      description: Si hay mensajes de error en la consola, pégalos aquí
-      render: shell
-
-  - type: textarea
-    id: additional
-    attributes:
-      label: Información Adicional
-      description: Cualquier otro contexto relevante sobre el problema
+      label: Additional context
+      description: Add any other context about the problem here.
+      placeholder: |
+        - Logs using `--log-level` and `--log-file` flags
+        - Operating system (e.g., Windows, macOS, Linux)
+        - CPU architecture (e.g., x86_64, ARM)
+        - Terminal emulator (e.g., Terminal, iTerm2, Windows Terminal)
+        - Shell (e.g., bash, zsh, fish)

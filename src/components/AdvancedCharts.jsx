@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import {
   Area,
@@ -136,7 +135,7 @@ export const SalesHeatmap = ({ data, width = '100%', height = 400 }) => {
 
       <div className="mt-4 text-sm text-slate-400">
         <p className="flex items-center gap-2">
-          <span className="inline-block w-3 h-3 rounded-full bg-purple-500"></span>
+          <span className="inline-block w-3 h-3 rounded-full bg-zinc-800"></span>
           Colores más intensos = Mayor volumen de ventas
         </p>
       </div>
@@ -349,9 +348,9 @@ export const PeriodComparison = ({
       </ResponsiveContainer>
 
       <div className="mt-4 grid grid-cols-3 gap-4">
-        <div className="text-center p-3 bg-purple-500/10 rounded-xl border border-purple-500/20">
+        <div className="text-center p-3 bg-zinc-800/10 rounded-xl border border-zinc-700/20">
           <p className="text-sm text-slate-400">Actual</p>
-          <p className="text-xl font-bold text-purple-400">${totalActual.toLocaleString()}</p>
+          <p className="text-xl font-bold text-zinc-200">${totalActual.toLocaleString()}</p>
         </div>
         <div className="text-center p-3 bg-slate-500/10 rounded-xl border border-slate-500/20">
           <p className="text-sm text-slate-400">Anterior</p>

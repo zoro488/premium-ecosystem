@@ -1,0 +1,73 @@
+name: 🔧 Git Push Helper
+
+on:
+    workflow_call:
+        inputs:
+            branch:
+                description: "Branch to push to"
+                required: false
+                default: "main"
+                type: string
+            commit-message:
+                description: "Commit message"
+                required: false
+                default: "Auto-commit from workflow"
+                type: string
+
+jobs:
+    safe-push:
+        name: Safe Git Push
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: 📥 Checkout with full history
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+                  token: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: 🔧 Configure Git
+              run: |
+                  git config --global user.name "GitHub Actions"
+                  git config --global user.email "actions@github.com"
+
+            - name: 🔄 Fetch all branches
+              run: git fetch --all --prune
+
+            - name: 📤 Push with retry logic
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: |
+                  MAX_RETRIES=5
+                  RETRY_DELAY=10
+
+                  for i in $(seq 1 $MAX_RETRIES); do
+                    echo "🔄 Attempt $i of $MAX_RETRIES..."
+
+                    if git push origin HEAD:${{ inputs.branch }}; then
+                      echo "✅ Push successful!"
+                      exit 0
+                    fi
+
+                    EXIT_CODE=$?
+
+                    if [ $i -lt $MAX_RETRIES ]; then
+                      echo "⚠️ Push failed with exit code $EXIT_CODE. Retrying in ${RETRY_DELAY}s..."
+                      sleep $RETRY_DELAY
+
+                      # Exponential backoff
+                      RETRY_DELAY=$((RETRY_DELAY * 2))
+                    else
+                      echo "❌ Push failed after $MAX_RETRIES attempts"
+                      exit $EXIT_CODE
+                    fi
+                  done
+
+            - name: 📊 Push Summary
+              if: always()
+              run: |
+                  echo "### 📤 Push Summary" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "- **Branch:** ${{ inputs.branch }}" >> $GITHUB_STEP_SUMMARY
+                  echo "- **Commit:** ${{ inputs.commit-message }}" >> $GITHUB_STEP_SUMMARY
+                  echo "- **Status:** ${{ job.status }}" >> $GITHUB_STEP_SUMMARY

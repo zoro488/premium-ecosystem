@@ -91,7 +91,7 @@ const AdvancedDataTable = ({
                   e.stopPropagation();
                   onEdit(row.original);
                 }}
-                className="p-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 text-purple-400 transition-colors"
+                className="p-2 rounded-lg bg-zinc-800/10 hover:bg-zinc-800/20 text-zinc-200 transition-colors"
                 title="Editar"
               >
                 <Edit className="w-4 h-4" />
@@ -154,7 +154,7 @@ const AdvancedDataTable = ({
               value={globalFilter ?? ''}
               onChange={(e) => setGlobalFilter(e.target.value)}
               placeholder="Buscar en todas las columnas..."
-              className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white placeholder-slate-400 transition-all"
+              className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-zinc-700 focus:border-transparent text-white placeholder-slate-400 transition-all"
             />
             <AnimatePresence>
               {globalFilter && (
@@ -197,7 +197,7 @@ const AdvancedDataTable = ({
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center gap-2 font-semibold shadow-lg hover:shadow-purple-500/20 transition-all"
+              className="px-4 py-2 bg-gradient-to-r from-zinc-800 to-zinc-800 rounded-lg flex items-center gap-2 font-semibold shadow-lg hover:shadow-zinc-900/50-500/20 transition-all"
             >
               <Download className="w-4 h-4" />
               Exportar
@@ -237,9 +237,9 @@ const AdvancedDataTable = ({
                             {header.column.getIsSorted() === false ? (
                               <ChevronsUpDown className="w-4 h-4 text-slate-500" />
                             ) : header.column.getIsSorted() === 'asc' ? (
-                              <ChevronUp className="w-4 h-4 text-purple-400" />
+                              <ChevronUp className="w-4 h-4 text-zinc-200" />
                             ) : (
-                              <ChevronDown className="w-4 h-4 text-purple-400" />
+                              <ChevronDown className="w-4 h-4 text-zinc-200" />
                             )}
                           </motion.div>
                         )}
@@ -356,7 +356,7 @@ const AdvancedDataTable = ({
                   w-8 h-8 rounded-lg font-semibold transition-all
                   ${
                     table.getState().pagination.pageIndex === pageIndex
-                      ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg'
+                      ? 'bg-gradient-to-r from-zinc-800 to-zinc-800 text-white shadow-lg'
                       : 'bg-white/5 hover:bg-white/10 text-slate-300'
                   }
                 `}
@@ -390,7 +390,7 @@ const AdvancedDataTable = ({
         <select
           value={table.getState().pagination.pageSize}
           onChange={(e) => table.setPageSize(Number(e.target.value))}
-          className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white"
+          className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-zinc-700 text-white"
         >
           {[10, 20, 30, 50, 100].map((size) => (
             <option key={size} value={size} className="bg-slate-800">

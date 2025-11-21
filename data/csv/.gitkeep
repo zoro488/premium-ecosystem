@@ -1,0 +1,17 @@
+# Esta carpeta contendrá los 12 archivos CSV para importación
+
+Coloca aquí los siguientes archivos:
+
+1. Copia de Administación_General - Clientes.csv
+2. Copia de Administación_General - Distribuidores.csv
+3. Copia de Administación_General - Control_Maestro.csv
+4. Copia de Administación_General - Almacen_Monte.csv
+5. Copia de Administación_General - Bóveda_Monte.csv
+6. Copia de Administación_General - Bóveda_USA.csv
+7. Copia de Administación_General - Profit.csv
+8. Copia de Administación_General - Leftie.csv
+9. Copia de Administación_General - Flete_Sur.csv
+10. Copia de Administación_General - Utilidades.csv
+11. Copia de Administación_General - Azteca.csv
+
+⚠️ IMPORTANTE: Estos archivos NO se subirán a git por seguridad.

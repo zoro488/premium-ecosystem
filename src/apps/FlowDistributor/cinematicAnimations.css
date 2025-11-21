@@ -1,0 +1,55 @@
+/**
+ * 🎬 CHRONOS - Animaciones Cinematográficas
+ * Animaciones CSS para efectos cinematográficos del sistema CHRONOS
+ */
+
+/* Animaciones de escaneo */
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+/* Animaciones de pulso holográfico */
+@keyframes holographic-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* Glow effect */
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(249, 115, 22, 0.5);
+  }
+  50% {
+    box-shadow:
+      0 0 20px rgba(249, 115, 22, 0.8),
+      0 0 30px rgba(249, 115, 22, 0.6);
+  }
+}
+
+/* Clase de utilidad para animación de escaneo */
+.scan-animation {
+  animation: scan 3s linear infinite;
+}
+
+/* Clase para pulso holográfico */
+.holographic-pulse {
+  animation: holographic-pulse 2s ease-in-out infinite;
+}
+
+/* Clase para glow */
+.glow-effect {
+  animation: glow 2s ease-in-out infinite;
+}

@@ -130,4 +130,26 @@ const Select = ({
   );
 };
 
+// Subcomponentes para compatibilidad con shadcn/ui API
+export const SelectTrigger = ({ children, className, ...props }) => (
+  <div className={className} {...props}>
+    {children}
+  </div>
+);
+
+export const SelectValue = ({ placeholder }) => <span>{placeholder}</span>;
+
+export const SelectContent = ({ children, className, ...props }) => (
+  <div className={className} {...props}>
+    {children}
+  </div>
+);
+
+export const SelectItem = ({ value, children, ...props }) => (
+  <div data-value={value} {...props}>
+    {children}
+  </div>
+);
+
+export { Select };
 export default Select;

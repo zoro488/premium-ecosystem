@@ -1,5 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+
+import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronDown, ChevronUp, ChevronsUpDown, Search } from 'lucide-react';
 
 /**
@@ -59,14 +60,17 @@ export const VirtualizedTable = ({
   const totalPages = Math.ceil(sortedData.length / pageSize);
 
   // Manejar ordenamiento
-  const handleSort = useCallback((key) => {
-    if (!sortable) return;
+  const handleSort = useCallback(
+    (key) => {
+      if (!sortable) return;
 
-    setSortConfig((prev) => ({
-      key,
-      direction: prev.key === key && prev.direction === 'asc' ? 'desc' : 'asc',
-    }));
-  }, [sortable]);
+      setSortConfig((prev) => ({
+        key,
+        direction: prev.key === key && prev.direction === 'asc' ? 'desc' : 'asc',
+      }));
+    },
+    [sortable]
+  );
 
   // Renderizar icono de ordenamiento
   const renderSortIcon = (columnKey) => {
@@ -77,9 +81,9 @@ export const VirtualizedTable = ({
     }
 
     return sortConfig.direction === 'asc' ? (
-      <ChevronUp className="w-4 h-4 text-blue-400" />
+      <ChevronUp className="w-4 h-4 text-zinc-300" />
     ) : (
-      <ChevronDown className="w-4 h-4 text-blue-400" />
+      <ChevronDown className="w-4 h-4 text-zinc-300" />
     );
   };
 
@@ -188,9 +192,7 @@ export const VirtualizedTable = ({
                           {column.render ? (
                             column.render(row[column.key], row)
                           ) : (
-                            <span className="text-sm text-gray-300">
-                              {row[column.key]}
-                            </span>
+                            <span className="text-sm text-gray-300">{row[column.key]}</span>
                           )}
                         </td>
                       ))}
@@ -207,8 +209,8 @@ export const VirtualizedTable = ({
           <div className="px-6 py-4 bg-gray-900/30 border-t border-gray-700/30 flex items-center justify-between">
             <div className="text-sm text-gray-400">
               Mostrando {currentPage * pageSize + 1} -{' '}
-              {Math.min((currentPage + 1) * pageSize, sortedData.length)} de{' '}
-              {sortedData.length} resultados
+              {Math.min((currentPage + 1) * pageSize, sortedData.length)} de {sortedData.length}{' '}
+              resultados
             </div>
 
             <div className="flex gap-2">
@@ -259,7 +261,7 @@ export const VirtualizedTable = ({
                       onClick={() => setCurrentPage(pageNumber)}
                       className={`px-3 py-1 rounded-lg ${
                         currentPage === pageNumber
-                          ? 'bg-blue-500 text-white'
+                          ? 'bg-zinc-800 text-white'
                           : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
                       }`}
                       whileHover={{ scale: 1.05 }}

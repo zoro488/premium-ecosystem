@@ -1,0 +1,6 @@
+{
+  "type": "module",
+  "bin": {
+    "adobe-automation": "./adobe-automation.js"
+  }
+}
