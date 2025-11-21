@@ -1,0 +1,108 @@
+name: Chronos System Automation
+
+on:
+  # Backup diario a las 2 AM (UTC-6 = 8 AM UTC)
+  schedule:
+    - cron: '0 8 * * *'  # Daily backup
+    - cron: '0 14 * * 1' # Weekly report (Mondays 8 AM México)
+  
+  # Permitir ejecución manual
+  workflow_dispatch:
+    inputs:
+      task:
+        description: 'Tarea a ejecutar'
+        required: true
+        type: choice
+        options:
+          - backup
+          - weekly-report
+          - verify-integrity
+          - all
+
+jobs:
+  daily-backup:
+    if: github.event.schedule == '0 8 * * *' || github.event.inputs.task == 'backup' || github.event.inputs.task == 'all'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: |
+          cd scripts
+          npm install
+
+      - name: Configure Firebase credentials
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          echo "$GOOGLE_APPLICATION_CREDENTIALS_JSON" > $HOME/service-account.json
+          export GOOGLE_APPLICATION_CREDENTIALS=$HOME/service-account.json
+
+      - name: Run daily backup
+        run: |
+          cd scripts
+          node backup-daily.js
+
+  weekly-report:
+    if: github.event.schedule == '0 14 * * 1' || github.event.inputs.task == 'weekly-report' || github.event.inputs.task == 'all'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: |
+          cd scripts
+          npm install
+
+      - name: Configure Firebase credentials
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          echo "$GOOGLE_APPLICATION_CREDENTIALS_JSON" > $HOME/service-account.json
+          export GOOGLE_APPLICATION_CREDENTIALS=$HOME/service-account.json
+
+      - name: Generate weekly report
+        run: |
+          cd scripts
+          node weekly-report.js
+
+  verify-integrity:
+    if: github.event.inputs.task == 'verify-integrity' || github.event.inputs.task == 'all'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: |
+          cd scripts
+          npm install
+
+      - name: Configure Firebase credentials
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          echo "$GOOGLE_APPLICATION_CREDENTIALS_JSON" > $HOME/service-account.json
+          export GOOGLE_APPLICATION_CREDENTIALS=$HOME/service-account.json
+
+      - name: Verify system integrity
+        run: |
+          cd scripts
+          node verificar-integridad.js
